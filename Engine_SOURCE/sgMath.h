@@ -980,5 +980,5 @@ namespace sg::math
         static RECT __cdecl ComputeTitleSafeArea(UINT backBufferWidth, UINT backBufferHeight) noexcept;
     };
 
-#include "yaMath.inl"
+#include "sgMath.inl"
 }

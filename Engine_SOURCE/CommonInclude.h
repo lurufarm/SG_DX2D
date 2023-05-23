@@ -30,7 +30,7 @@ constexpr typename std::enable_if<enable_bitmask_operators<E>::enable, E>::type 
 }
 
 template<typename E>
-constexpr typename std::enable_if<enable_bitmask_operators<E>::enable, E>::type operator|=(E& lhs, E rhs)
+constexpr typename std::enable_if<enable_bitmask_operators<E>::enable, E&>::type operator|=(E& lhs, E rhs)
 {
 	typedef typename std::underlying_type<E>::type underlying;
 	lhs = static_cast<E>

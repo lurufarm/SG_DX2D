@@ -14,6 +14,9 @@ namespace sg
 	}
 	void Application::Run()
 	{
+		Update();
+		LateUpdate();
+		Render();
 	}
 	void Application::Initialize()
 	{
@@ -26,6 +29,7 @@ namespace sg
 	}
 	void Application::Render()
 	{
+		graphicDevice->Draw();
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
 	{
