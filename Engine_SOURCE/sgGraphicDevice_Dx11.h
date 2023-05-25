@@ -17,6 +17,9 @@ namespace sg::graphics
 		~GraphicDevice_Dx11();
 
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
+		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data);
+		bool CreateShader();
+
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
 		void Draw();
 
@@ -42,6 +45,13 @@ namespace sg::graphics
 
 		// 더블버퍼링 작업을 진행해주는 Swap Chain
 		Microsoft::WRL::ComPtr<IDXGISwapChain> mSwapChain;
+
 	};
+
+	inline GraphicDevice_Dx11*& GetDevice()
+	{
+		static GraphicDevice_Dx11* device = nullptr;
+		return device;
+	}
 }
 

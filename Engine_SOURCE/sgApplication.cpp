@@ -1,5 +1,9 @@
 #include "sgApplication.h"
 
+#include "sgInput.h"
+#include "sgTime.h"
+#include "sgRenderer.h"
+
 namespace sg
 {
 	Application::Application()
@@ -20,15 +24,23 @@ namespace sg
 	}
 	void Application::Initialize()
 	{
+		Time::Initialize();
+		Input::Initialize();
+
+		renderer::Initialize();
 	}
 	void Application::Update()
 	{
+		Time::Update();
+		Input::Update();
 	}
 	void Application::LateUpdate()
 	{
 	}
 	void Application::Render()
 	{
+		Time::Render();
+
 		graphicDevice->Draw();
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

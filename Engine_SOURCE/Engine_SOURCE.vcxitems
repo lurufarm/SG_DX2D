@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTime.h" />
@@ -33,6 +34,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTime.cpp" />

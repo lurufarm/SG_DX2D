@@ -66,6 +66,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResources.h">
       <Filter>Resource\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResource.cpp">
       <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
