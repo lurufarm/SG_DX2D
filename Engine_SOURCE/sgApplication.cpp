@@ -41,7 +41,8 @@ namespace sg
 	{
 		Time::Render();
 
-		graphicDevice->Draw();
+		//graphicDevice->Draw(4);
+		graphicDevice->Draw(10);
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
 	{
@@ -52,6 +53,7 @@ namespace sg
 			mHeight = height;
 
 			graphicDevice = std::make_unique<sg::graphics::GraphicDevice_Dx11>();
+			sg::graphics::GetDevice() = graphicDevice.get();
 		}
 
 		RECT rt = { 0, 0, (LONG)width, (LONG)height };
