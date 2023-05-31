@@ -211,80 +211,6 @@ namespace sg::graphics
 		return true;
 	}
 
-	bool GraphicDevice_Dx11::CreateShader(int polynum)
-	{
-		///* [annotation] */
-		//_In_reads_(BytecodeLength)  const void* pShaderBytecode,
-		//	/* [annotation] */
-		//	_In_  SIZE_T BytecodeLength,
-		//	/* [annotation] */
-		//	_In_opt_  ID3D11ClassLinkage* pClassLinkage,
-		//	/* [annotation] */
-		//	_COM_Outptr_opt_  ID3D11VertexShader** ppVertexShader
-
-		//ID3DBlob* vsBlob = nullptr;
-
-		std::filesystem::path shaderPath
-			= std::filesystem::current_path().parent_path();
-		shaderPath += L"\\Shader_SOURCE\\";
-
-		std::filesystem::path vsPath(shaderPath.c_str());
-		vsPath += L"polyVS.hlsl";
-
-		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &sg::renderer::polyVSBlob, &sg::renderer::errorBlob);
-
-		if (sg::renderer::errorBlob)
-		{
-			OutputDebugStringA((char*)sg::renderer::errorBlob->GetBufferPointer());
-			sg::renderer::errorBlob->Release();
-		}
-
-		mDevice->CreateVertexShader(sg::renderer::polyVSBlob->GetBufferPointer()
-			, sg::renderer::polyVSBlob->GetBufferSize()
-			, nullptr, &sg::renderer::polyVSShader);
-
-		std::filesystem::path psPath(shaderPath.c_str());
-		psPath += L"polyPS.hlsl";
-
-		D3DCompileFromFile(psPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &sg::renderer::polyPSBlob, &sg::renderer::errorBlob);
-
-		if (sg::renderer::errorBlob)
-		{
-			OutputDebugStringA((char*)sg::renderer::errorBlob->GetBufferPointer());
-			sg::renderer::errorBlob->Release();
-		}
-
-		mDevice->CreatePixelShader(sg::renderer::polyPSBlob->GetBufferPointer()
-			, sg::renderer::polyPSBlob->GetBufferSize()
-			, nullptr, &sg::renderer::polyPSShader);
-
-
-		// Input Layout 정점 구조 정보를 넘겨주어야 한다.
-		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
-
-		arrLayout[0].AlignedByteOffset = 0;
-		arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-		arrLayout[0].InputSlot = 0;
-		arrLayout[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-		arrLayout[0].SemanticName = "POSITION";
-		arrLayout[0].SemanticIndex = 0;
-
-		arrLayout[1].AlignedByteOffset = 12;
-		arrLayout[1].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-		arrLayout[1].InputSlot = 0;
-		arrLayout[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-		arrLayout[1].SemanticName = "COLOR";
-		arrLayout[1].SemanticIndex = 0;
-
-		mDevice->CreateInputLayout(arrLayout, 2
-			, renderer::polyVSBlob->GetBufferPointer()
-			, renderer::polyVSBlob->GetBufferSize()
-			, &renderer::polyLayout);
-
-		return true;
-	}
 	bool GraphicDevice_Dx11::CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data)
 	{
 		D3D11_TEXTURE2D_DESC dxgiDesc = {};
@@ -348,7 +274,6 @@ namespace sg::graphics
 		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
 		mContext->IASetInputLayout(renderer::triangleLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		//mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST);
 
 		// Bind VS, PS
 		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
@@ -356,13 +281,12 @@ namespace sg::graphics
 
 		// Draw Render Target
 		mContext->Draw(3, 0);
-		//mContext->Draw(10, 0);
 
 		// 렌더타겟에 있는 이미지를 화면에 그려준다.
 		mSwapChain->Present(0, 0);
 	}
 
-	void GraphicDevice_Dx11::Draw(int polynum)
+	void GraphicDevice_Dx11::Draw(int vertexesnum, int indexnum, ID3D11Buffer* buffer, ID3D11Buffer* indexbuffer)
 	{
 
 		// render target clear
@@ -390,19 +314,19 @@ namespace sg::graphics
 		UINT vertexsize = sizeof(renderer::Vertex);
 		UINT offset = 0;
 
-		mContext->IASetVertexBuffers(0, 1, &renderer::polyBuffer, &vertexsize, &offset);
-		mContext->IASetInputLayout(renderer::polyLayout);
+		mContext->IASetVertexBuffers(0, 1, &buffer, &vertexsize, &offset);
+		mContext->IASetInputLayout(renderer::triangleLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-		mContext->IASetIndexBuffer(renderer::indexBuffer, DXGI_FORMAT::DXGI_FORMAT_R32_UINT, offset);
+		mContext->IASetIndexBuffer(indexbuffer, DXGI_FORMAT::DXGI_FORMAT_R32_UINT, offset);
 
 		// Bind VS, PS
-		mContext->VSSetShader(renderer::polyVSShader, 0, 0);
-		mContext->PSSetShader(renderer::polyPSShader, 0, 0);
+		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
+		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->DrawIndexed((polynum - 2) * 3, 0, 0);
-		//mContext->Draw(10, 0);
+		mContext->DrawIndexed(indexnum, 0, 0);
+
 
 		// 렌더타겟에 있는 이미지를 화면에 그려준다.
 		mSwapChain->Present(0, 0);

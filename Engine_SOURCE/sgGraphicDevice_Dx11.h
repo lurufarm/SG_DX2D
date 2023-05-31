@@ -19,13 +19,12 @@ namespace sg::graphics
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
 		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data);
 		bool CreateShader();
-		bool CreateShader(int polynum);
 
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
 
 		void BindViewPort(D3D11_VIEWPORT* viewport);
 		void Draw();
-		void Draw(int polynum);
+		void Draw(int vertexesnum, int indexnum, ID3D11Buffer* buffer, ID3D11Buffer* indexbuffer);
 
 	private:
 		// 실제 그래픽 카드 하드웨어 객체

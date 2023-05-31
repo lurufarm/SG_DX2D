@@ -41,8 +41,9 @@ namespace sg
 	{
 		Time::Render();
 
-		//graphicDevice->Draw(4);
-		graphicDevice->Draw(10);
+		//graphicDevice->Draw();
+		graphicDevice->Draw(14, 30, renderer::myBuffer, renderer::myindexBuffer);
+
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
 	{
