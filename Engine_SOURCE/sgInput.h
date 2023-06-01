@@ -38,7 +38,7 @@ namespace sg
 
 		static void Initialize();
 		static void Update();
-		static void Render(HDC hdc);
+		static void Render();
 
 		inline static eKeyState GetKeyState(eKeyCode keyCode)
 		{

@@ -13,30 +13,30 @@ namespace sg::renderer
 
 
 	extern Vertex vertexes[];
+	extern Vertex square[];
+	extern Vertex star[];
 
 	extern ID3D11InputLayout* triangleLayout;
 	extern ID3D11Buffer* triangleBuffer;
+	extern ID3D11Buffer* triangleConstantBuffer;
 	extern ID3DBlob* errorBlob;
 	extern ID3DBlob* triangleVSBlob;
 	extern ID3D11VertexShader* triangleVSShader;
 	extern ID3DBlob* trianglePSBlob;
 	extern ID3D11PixelShader* trianglePSShader;
+	extern ID3D11Buffer* triangleIdxBuffer;
 
-	extern ID3D11InputLayout* polyLayout;
-	extern ID3D11Buffer* polyBuffer;
-	extern ID3D11Buffer* polyindexBuffer;
+	extern ID3D11Buffer* squareBuffer;
+	extern ID3D11Buffer* squareIdxBuffer;
 
-	extern ID3D11InputLayout* myLayout;
-	extern ID3D11Buffer* myBuffer;
-	extern ID3D11Buffer* myindexBuffer;
+	extern ID3D11Buffer* starBuffer;
+	extern ID3D11Buffer* starIdxBuffer;
 
-	//extern ID3D11InputLayout* starLayout;
-	//extern ID3D11Buffer* starBuffer;
-	//extern ID3D11Buffer* starindexBuffer;
-
+	extern Vector4 trianglePos;
 
 
 
 	void Initialize();
+	void Update();
 
 }

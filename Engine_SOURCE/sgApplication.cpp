@@ -33,6 +33,8 @@ namespace sg
 	{
 		Time::Update();
 		Input::Update();
+
+		renderer::Update();
 	}
 	void Application::LateUpdate()
 	{
@@ -40,9 +42,8 @@ namespace sg
 	void Application::Render()
 	{
 		Time::Render();
-
 		//graphicDevice->Draw();
-		graphicDevice->Draw(14, 30, renderer::myBuffer, renderer::myindexBuffer);
+		graphicDevice->Draw(30);
 
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

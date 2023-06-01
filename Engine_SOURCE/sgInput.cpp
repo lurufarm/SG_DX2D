@@ -80,7 +80,7 @@ namespace sg
 			}
 		}
 	}
-	void Input::Render(HDC hdc)
+	void Input::Render()
 	{
 	}
 }

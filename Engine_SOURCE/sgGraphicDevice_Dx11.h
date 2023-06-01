@@ -1,6 +1,7 @@
 #pragma once
 
 #include "LuruEngine.h"
+#include "sgGraphics.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -22,9 +23,15 @@ namespace sg::graphics
 
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
 
+
 		void BindViewPort(D3D11_VIEWPORT* viewport);
+
+		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size);
+		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+
 		void Draw();
-		void Draw(int vertexesnum, int indexnum, ID3D11Buffer* buffer, ID3D11Buffer* indexbuffer);
+		void Draw(UINT indexnum);
 
 	private:
 		// 실제 그래픽 카드 하드웨어 객체
