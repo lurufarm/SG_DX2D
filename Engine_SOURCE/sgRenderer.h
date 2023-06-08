@@ -1,9 +1,12 @@
 #pragma once
 #include "LuruEngine.h"
 #include "sgGraphicDevice_Dx11.h"
+#include "sgMesh.h"
+#include "sgShader.h"
+#include "sgConstantBuffer.h"
 
 using namespace sg::math;
-namespace sg::renderer
+namespace renderer
 {
 	struct Vertex
 	{
@@ -16,27 +19,14 @@ namespace sg::renderer
 	extern Vertex square[];
 	extern Vertex star[];
 
-	extern ID3D11InputLayout* triangleLayout;
-	extern ID3D11Buffer* triangleBuffer;
-	extern ID3D11Buffer* triangleConstantBuffer;
-	extern ID3DBlob* errorBlob;
-	extern ID3DBlob* triangleVSBlob;
-	extern ID3D11VertexShader* triangleVSShader;
-	extern ID3DBlob* trianglePSBlob;
-	extern ID3D11PixelShader* trianglePSShader;
-	extern ID3D11Buffer* triangleIdxBuffer;
+	extern sg::Mesh* mesh;
+	extern sg::Shader* shader;
+	extern sg::graphics::ConstantBuffer* constantBuffer;
 
-	extern ID3D11Buffer* squareBuffer;
-	extern ID3D11Buffer* squareIdxBuffer;
-
-	extern ID3D11Buffer* starBuffer;
-	extern ID3D11Buffer* starIdxBuffer;
-
-	extern Vector4 trianglePos;
-
-
+	extern Vector4 MovePos;
 
 	void Initialize();
 	void Update();
+	void Release();
 
 }

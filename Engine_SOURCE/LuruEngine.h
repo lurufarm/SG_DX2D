@@ -16,7 +16,6 @@
 #include <limits>		// 부동 소수점 표현 및 반올림과 관련된 클래스 탬플릿 numeric_limits 및 두개의 열거형을 정의합니다.
 #include <memory>		// 메모리 관련 라이브러리
 #include <filesystem>	// 파일 입출력 편하게 도와주는 라이브러리
-#include <wrl.h>		//
 
 #include "CommonInclude.h"
 #include "sgEnums.h"

@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Editor_Window.h"
 #include "sgApplication.h"
+#include "sgRenderer.h"
 
 sg::Application application;
 
@@ -64,6 +65,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             application.Run();
         }
     }
+    renderer::Release();
     return (int)msg.wParam;
 }
 
