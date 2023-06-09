@@ -31,9 +31,9 @@ namespace sg::graphics
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 
 		void BindViewPort(D3D11_VIEWPORT* viewport);
-		
+		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
 		void Draw();
-		void Draw(UINT indexnum);
+		void Present();
 
 	private:
 		// 실제 그래픽 카드 하드웨어 객체

@@ -290,6 +290,11 @@ namespace sg::graphics
 		mContext->RSSetViewports(1, viewport);
 	}
 
+	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
+	{
+		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 
@@ -314,18 +319,18 @@ namespace sg::graphics
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
-		// Input assembler 정점 데이터 정보 지정
-		renderer::mesh->BindBuffer();
-
-		//mContext->IASetInputLayout(renderer::shader->GetInputLayout());
-
-		// Bind VS, PS
-		renderer::shader->Binds();
-		
-		// Draw Render Target
-		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+		//// Input assembler 정점 데이터 정보 지정
+		//renderer::mesh->BindBuffer();
+		//// Bind VS, PS
+		//renderer::shader->Binds();
+		//// Draw Render Target
+		//mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 
 		// 렌더타겟에 있는 이미지를 화면에 그려준다.
+		//mSwapChain->Present(0, 0);
+	}
+	void GraphicDevice_Dx11::Present()
+	{
 		mSwapChain->Present(0, 0);
 	}
 }

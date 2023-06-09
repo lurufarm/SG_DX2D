@@ -67,10 +67,10 @@ namespace renderer
 
 		// Constant Buffer ¼³Á¤
 		constantBuffer = new sg::graphics::ConstantBuffer(eCBType::Transform);
-		constantBuffer->Create(sizeof(Vector4));
+		constantBuffer->Create(sizeof(Vector4) * 2);
 
-		constantBuffer->SetData(&MovePos);
-		constantBuffer->Bind(eShaderStage::VS);
+		//constantBuffer->SetData(&MovePos);
+		//constantBuffer->Bind(eShaderStage::VS);
 
 	}
 	
@@ -84,19 +84,19 @@ namespace renderer
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].pos = Vector3(-1.0f, 1.0f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].pos = Vector3(1.0f, -1.0f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].pos = Vector3(-1.0f, -1.0f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-		MovePos = { 0.0f, 0.0f, 0.0f, 1.0f };
+		//MovePos = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 		//square[0].pos = Vector3(0.2f, 0.8f, 0.0f);
 		//square[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
@@ -139,23 +139,24 @@ namespace renderer
 	}
 	void Update()
 	{
-		if (Input::KeyP(eKeyCode::W) || Input::KeyD(eKeyCode::W))
-		{
-			MovePos.y += 0.5 * Time::DeltaTime();
-		}
-		else if (Input::KeyP(eKeyCode::S) || Input::KeyD(eKeyCode::S))
-		{
-			MovePos.y -= 0.5 * Time::DeltaTime();
-		}
-		if (Input::KeyP(eKeyCode::A) || Input::KeyD(eKeyCode::A))
-		{
-			MovePos.x -= 0.5 * Time::DeltaTime();
-		}
-		else if (Input::KeyP(eKeyCode::D) || Input::KeyD(eKeyCode::D))
-		{
-			MovePos.x += 0.5 * Time::DeltaTime();
-		}
-		shader->Binds();
+		//if (Input::KeyP(eKeyCode::W) || Input::KeyD(eKeyCode::W))
+		//{
+		//	MovePos.y += 0.5 * Time::DeltaTime();
+		//}
+		//else if (Input::KeyP(eKeyCode::S) || Input::KeyD(eKeyCode::S))
+		//{
+		//MovePos.y -= 0.5 * Time::DeltaTime();
+		//}
+		//if (Input::KeyP(eKeyCode::A) || Input::KeyD(eKeyCode::A))
+		//{
+		//	MovePos.x -= 0.5 * Time::DeltaTime();
+		//}
+		//else if (Input::KeyP(eKeyCode::D) || Input::KeyD(eKeyCode::D))
+		//{
+		//	MovePos.x += 0.5 * Time::DeltaTime();
+		//}
+		//constantBuffer->SetData(&MovePos);
+		//constantBuffer->Bind(eShaderStage::VS);
 	}
 
 	void Release()

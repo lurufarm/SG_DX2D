@@ -11,19 +11,34 @@ struct VSOut
 	float4 Color : COLOR;
 };
 
-cbuffer Transform : register(b0)
+/*cbuffer Transform : register(b0)
 {
 	float4 Pos;
+}*/
+
+cbuffer Transform : register(b0)
+{
+    float Scale;
+    float3 Pos;
+    float4 Color;
 }
+
 
 VSOut main(VSIn In)
 {
+    float3 Inpos = In.Pos;
+    Inpos.xy *= Scale;
+    Inpos.xy += Pos.xy;
 	VSOut Out = (VSOut)0.0f;
-	
-	Out.Pos = float4(In.Pos, 1.0f);
-	Out.Pos.x += Pos.x;
-	Out.Pos.y += Pos.y;
+
+	Out.Pos = float4(Inpos, 1.0f);
+	//Out.Pos.x += Pos.x;
+	//Out.Pos.y += Pos.y;
 	Out.Color = In.Color;
+	Out.Color = Color;
+	
+    Out.Pos.x /= 800.0f;
+    Out.Pos.y /= 450.0f;
 
 	return Out;
 }

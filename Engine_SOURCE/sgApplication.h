@@ -1,6 +1,7 @@
 #pragma once
 #include "LuruEngine.h"
 #include "sgGraphicDevice_Dx11.h"
+#include "sgScene.h"
 
 namespace sg
 {
@@ -33,6 +34,8 @@ namespace sg
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
+		Scene* mScene;
 
 	};
 
