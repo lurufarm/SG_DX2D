@@ -13,7 +13,7 @@ namespace sg
 		Enemy();
 		~Enemy();
 
-		struct eNemoStat
+		struct eEnemyStat
 		{
 			float mScale;
 			Vector3 mPos;
@@ -25,11 +25,6 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
-		void SetNemo(class Nemo* nemo)
-		{
-			mNemo = nemo;
-		}
-
 		void SetStat(float scale, Vector3 pos, Vector4 color)
 		{
 			mStat.mScale = scale;
@@ -37,24 +32,19 @@ namespace sg
 			mStat.mColor = color;
 		}
 
-		eNemoStat GetStat()
+		eEnemyStat GetStat()
 		{
 			return mStat;
 		}
 
-		static int mNemonum;
+		static int mEnemynum;
+		bool mDeath;
 
 	private:
 		eState mState;
 
-		eNemoStat mStat;
+		eEnemyStat mStat;
 
-		Vertex mSquare[4];
-
-		class Mesh* mMesh;
-		class Shader* mShader;
-
-		class Nemo* mNemo;
 
 
 	};

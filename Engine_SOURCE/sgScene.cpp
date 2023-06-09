@@ -14,16 +14,15 @@ namespace sg
 	{
 		//Nemo* nemo = new Nemo();
 		//mGameObjects.push_back(nemo);
-		Enemy* enemy[30] = {};
 		mPlayer = new Nemo();
+		mPlayer->SetName(L"player");
 		mGameObjects.push_back(mPlayer);
 
-		for (size_t i = 0; i < 10; i++)
+		for (size_t i = 0; i < 30; i++)
 		{
-			enemy[i] = new Enemy();
-			enemy[i]->SetName(L"enemy");
-			enemy[i]->SetNemo(mPlayer);
-			mGameObjects.push_back(enemy[i]);
+			Enemy* newenemy = new Enemy();
+			newenemy->SetName(L"enemy");
+			mGameObjects.push_back(newenemy);
 		}
 	}
 	void Scene::Update()
@@ -34,21 +33,42 @@ namespace sg
 			
 		for (GameObject* gameObj : mGameObjects)
 		{
-			Vector2 enemyPos = Vector2(((Enemy*)gameObj)->GetStat().mPos.x, ((Enemy*)gameObj)->GetStat().mPos.y);
-			float enemyScale = ((Enemy*)gameObj)->GetStat().mScale;
-
+			if (gameObj == nullptr)
+				int a = 0;
 			if (gameObj->GetName() == L"enemy")
 			{
+				Enemy* enemy = dynamic_cast<Enemy*>(gameObj);
+				Vector2 enemyPos = Vector2(enemy->GetStat().mPos.x, enemy->GetStat().mPos.y);
+				float enemyScale = enemy->GetStat().mScale;
+
 				if (fabs(enemyPos.x - nemoPos.x) < (enemyScale)+(nemoScale)
 					&& fabs(enemyPos.y - nemoPos.y) < (enemyScale)+(nemoScale))
 				{
 					//gameObj->SetState(GameObject::eState::Dead);
-					mPlayer->SetStat(nemoScale + enemyScale / 2, Vector3(nemoPos.x, nemoPos.y, 0.0f), mPlayer->GetStat().mColor);
-					((Enemy*)gameObj)->SetStat(0.0f, Vector3::Zero, Vector4::Zero);
+					mPlayer->SetScale(nemoScale + enemyScale / 2.0f);//), Vector3(nemoPos.x, nemoPos.y, 0.0f), mPlayer->GetStat().mColor);
+					enemy->mDeath = true;
+
+					if (enemy->mDeath && enemy->GetStat().mScale != 0.0f)
+					{
+						enemy->SetStat(0.0f, Vector3(enemyPos.x, enemyPos.y, 0.0f), Vector4::Zero);
+						enemy->mEnemynum--;
+					}
+
 				}
 			}
-			gameObj->Update();
+				gameObj->Update();
 		}
+			if (Enemy::mEnemynum <= 25)
+			{
+				for (size_t i = 0; i < 5; i++)
+				{
+					Enemy* newenemy = new Enemy();
+					newenemy->SetName(L"enemy");
+					mGameObjects.push_back(newenemy);
+				}
+			}
+		
+
 	}
 	void Scene::LateUpdate()
 	{

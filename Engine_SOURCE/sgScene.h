@@ -19,6 +19,8 @@ namespace sg
 		std::vector<GameObject*> mGameObjects;
 
 		class Nemo* mPlayer;
+		//class Enemy* mEnemy[30];
+		//std::vector<Enemy*> mEnemy;
 
 	};
 }

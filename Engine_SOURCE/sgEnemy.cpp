@@ -15,15 +15,15 @@ namespace sg
 {
 	using namespace renderer;
 
-	int Enemy::mNemonum = 0;
+	int Enemy::mEnemynum = 0;
 
 	Enemy::Enemy()
-		: mMesh(new Mesh())
-		, mShader(new Shader())
-		, mState(eState::Active)
+		: mState(eState::Active)
+		, mDeath(false)
 		, mStat{}
 	{
-		mNemonum++;
+		mEnemynum++;
+
 		std::random_device rd;
 		std::mt19937 gen(rd());
 

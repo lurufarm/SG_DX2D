@@ -31,23 +31,19 @@ namespace sg
 			mStat.mPos = pos;
 			mStat.mColor = color;
 		}
+		void SetScale(float scale)
+		{
+			mStat.mScale = scale;
+		}
 
 		eNemoStat GetStat()
 		{
 			return mStat;
 		}
 
-		static int mNemonum;
-
 	private:
 		eState mState;
-
 		eNemoStat mStat;
-
-		Vertex mSquare[4];
-
-		class Mesh* mMesh;
-		class Shader* mShader;
 
 	};
 }

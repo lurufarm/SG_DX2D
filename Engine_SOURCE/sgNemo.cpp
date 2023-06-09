@@ -15,19 +15,11 @@ namespace sg
 	using namespace renderer;
 
 	Nemo::Nemo()
-		: mMesh(new Mesh())
-		, mShader(new Shader())
-		, mState(eState::Active)
+		: mState(eState::Active)
 		, mStat{}
 	{
 		std::random_device rd;
 		std::mt19937 gen(rd());
-
-		//float pos[2] = {};
-		//std::uniform_real_distribution<float> randomxpos(-800.0f, 800.0f);
-		//std::uniform_real_distribution<float>randomypos(-450.0f, 450.0f);
-		//pos[0] = randomxpos(gen);
-		//pos[1] = randomypos(gen);
 
 		float color[3] = {};
 		for (size_t i = 0; i < 3; i++)
@@ -36,6 +28,7 @@ namespace sg
 			color[i] = randomcolor(gen);
 		}
 		SetStat(30.0f, Vector3(0.0f, 0.0f, 0.0f), Vector4(color[0], color[1], color[2], 1.0f));
+
 	}
 	Nemo::~Nemo()
 	{
