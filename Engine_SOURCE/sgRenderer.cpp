@@ -2,33 +2,23 @@
 #include "sgInput.h"
 #include "sgTime.h"
 
+#include "sgResources.h"
+#include "sgTexture.h"
+
 namespace renderer
 {
 	using namespace sg;
+	using namespace sg::graphics;
 
 	Vertex vertexes[4] = {};
-	Vertex square[4] = {};
-	Vertex star[10] = {};
-	
 	sg::Mesh* mesh = nullptr;
 	sg::Shader* shader = nullptr;
 	sg::graphics::ConstantBuffer* constantBuffer = nullptr;
 
-	Vector4 MovePos = { 0.0f, 0.0f, 0.0f, 1.0f };
-
-
-	ID3D11Buffer* squareBuffer = nullptr;
-	ID3D11Buffer* squareIdxBuffer = nullptr;
-
-	ID3D11Buffer* starBuffer = nullptr;
-	ID3D11Buffer* starIdxBuffer = nullptr;
-
-	//Vector4 MovePos = { 0.0f, 0.0f, 0.0f, 1.0f };
-
 	void SetupState()
 	{
 		// Input Layout 정점 구조를 정보를 넘겨준다.
-		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
+		D3D11_INPUT_ELEMENT_DESC arrLayout[3] = {};
 
 		arrLayout[0].AlignedByteOffset = 0;
 		arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -44,7 +34,14 @@ namespace renderer
 		arrLayout[1].SemanticName = "COLOR";
 		arrLayout[1].SemanticIndex = 0;
 
-		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
+		arrLayout[2].AlignedByteOffset = 28;
+		arrLayout[2].Format = DXGI_FORMAT_R32G32_FLOAT;
+		arrLayout[2].InputSlot = 0;
+		arrLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		arrLayout[2].SemanticName = "TEXCOORD";
+		arrLayout[2].SemanticIndex = 0;
+
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 	}
@@ -66,18 +63,17 @@ namespace renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer 설정
-		constantBuffer = new sg::graphics::ConstantBuffer(eCBType::Transform);
+		constantBuffer = new ConstantBuffer(eCBType::Transform);
 		constantBuffer->Create(sizeof(Vector4));
 
-		constantBuffer->SetData(&MovePos);
-		constantBuffer->Bind(eShaderStage::VS);
+		//constantBuffer->SetData(&MovePos);
+		//constantBuffer->Bind(eShaderStage::VS);
 
 	}
 	
 	void LoadShader()
 	{
 		shader = new sg::Shader();
-
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 	}
@@ -86,76 +82,50 @@ namespace renderer
 	{
 		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
 
 		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
 
 		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
 
 		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-
-		MovePos = { 0.0f, 0.0f, 0.0f, 1.0f };
-
-		//square[0].pos = Vector3(0.2f, 0.8f, 0.0f);
-		//square[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		//square[1].pos = Vector3(0.8f, 0.8f, 0.0f);
-		//square[1].color = Vector4(0.0f, 1.0f, 1.0f, 1.0f);
-		//square[2].pos = Vector3(0.8f, 0.2f, 0.0f);
-		//square[2].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//square[3].pos = Vector3(0.2f, 0.2f, 0.0f);
-		//square[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-
-		//star[0].pos = Vector3(-0.5f, 0.8f, 0.0f);
-		//star[0].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[1].pos = Vector3(-0.4f, 0.6f, 0.0f);
-		//star[1].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[2].pos = Vector3(-0.2f, 0.5f, 0.0f);
-		//star[2].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[3].pos = Vector3(-0.3f, 0.35f, 0.0f);
-		//star[3].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[4].pos = Vector3(-0.3f, 0.1f, 0.0f);
-		//star[4].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[5].pos = Vector3(-0.5, 0.2f, 0.0f);
-		//star[5].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[6].pos = Vector3(-0.7f, 0.1f, 0.0f);
-		//star[6].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[7].pos = Vector3(-0.7f, 0.35f, 0.0f);
-		//star[7].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[8].pos = Vector3(-0.8f, 0.5f, 0.0f);
-		//star[8].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-		//star[9].pos = Vector3(-0.6f, 0.6f, 0.0f);
-		//star[9].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-
-		//std::vector<UINT>squareidx = { 0, 1, 2, 0, 2, 3};
-		//std::vector<UINT>staridx = { 0, 1, 9, 1, 2, 3, 3, 4, 5, 5, 6, 7, 7, 8, 9, 1, 3, 5, 1, 5, 7, 1, 7, 9};
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		LoadBuffer();
 		LoadShader();
 		SetupState();
 
+		Texture* texture
+			= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+
+		texture->BindShader(eShaderStage::PS, 0);
 
 	}
 	void Update()
 	{
-		if (Input::KeyP(eKeyCode::W) || Input::KeyD(eKeyCode::W))
-		{
-			MovePos.y += 0.5 * Time::DeltaTime();
-		}
-		else if (Input::KeyP(eKeyCode::S) || Input::KeyD(eKeyCode::S))
-		{
-			MovePos.y -= 0.5 * Time::DeltaTime();
-		}
-		if (Input::KeyP(eKeyCode::A) || Input::KeyD(eKeyCode::A))
-		{
-			MovePos.x -= 0.5 * Time::DeltaTime();
-		}
-		else if (Input::KeyP(eKeyCode::D) || Input::KeyD(eKeyCode::D))
-		{
-			MovePos.x += 0.5 * Time::DeltaTime();
-		}
-		shader->Binds();
+		//if (Input::KeyP(eKeyCode::W) || Input::KeyD(eKeyCode::W))
+		//{
+		//	MovePos.y += 0.5 * Time::DeltaTime();
+		//}
+		//else if (Input::KeyP(eKeyCode::S) || Input::KeyD(eKeyCode::S))
+		//{
+		//	MovePos.y -= 0.5 * Time::DeltaTime();
+		//}
+		//if (Input::KeyP(eKeyCode::A) || Input::KeyD(eKeyCode::A))
+		//{
+		//	MovePos.x -= 0.5 * Time::DeltaTime();
+		//}
+		//else if (Input::KeyP(eKeyCode::D) || Input::KeyD(eKeyCode::D))
+		//{
+		//	MovePos.x += 0.5 * Time::DeltaTime();
+		//}
+
+		//constantBuffer->SetData(&MovePos);
 	}
 
 	void Release()

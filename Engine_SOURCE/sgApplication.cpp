@@ -3,6 +3,7 @@
 #include "sgInput.h"
 #include "sgTime.h"
 #include "sgRenderer.h"
+#include "sgSceneManager.h"
 
 namespace sg
 {
@@ -28,21 +29,28 @@ namespace sg
 		Input::Initialize();
 
 		renderer::Initialize();
+		SceneManager::Initialize();
 	}
 	void Application::Update()
 	{
 		Time::Update();
 		Input::Update();
-
-		renderer::Update();
+		SceneManager::Update();
 	}
 	void Application::LateUpdate()
 	{
+		SceneManager::LateUpdate();
 	}
 	void Application::Render()
 	{
 		Time::Render();
-		graphicDevice->Draw();
+
+		graphicDevice->ClearTarget();
+		graphicDevice->UpdateViewPort();
+		SceneManager::Render();
+		//graphicDevice->Draw();
+
+		graphicDevice->Present();
 
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

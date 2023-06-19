@@ -29,11 +29,20 @@ namespace sg::graphics
 		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size);
 		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+		void BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV);
+
 
 		void BindViewPort(D3D11_VIEWPORT* viewport);
 		
+		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+		void ClearTarget();
+		void UpdateViewPort();
 		void Draw();
-		void Draw(UINT indexnum);
+		void Present();
+		//void Draw(UINT indexnum);
+
+		ID3D11Device* GetID3D11Device() { return mDevice.Get(); }
+
 
 	private:
 		// 실제 그래픽 카드 하드웨어 객체

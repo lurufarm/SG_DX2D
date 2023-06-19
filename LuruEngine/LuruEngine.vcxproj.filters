@@ -6,4 +6,15 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Load">
+      <UniqueIdentifier>{a79c56fb-2fc3-4902-b6d0-024541fb2aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{e64a6c36-4045-4b74-8df4-adb4e3513c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
 </Project>

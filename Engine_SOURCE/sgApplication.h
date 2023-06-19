@@ -12,6 +12,7 @@ namespace sg
 		~Application();
 
 		void Run();
+
 		void Initialize();
 		void Update();
 		void LateUpdate();

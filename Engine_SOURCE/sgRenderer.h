@@ -12,18 +12,19 @@ namespace renderer
 	{
 		Vector3 pos;
 		Vector4 color;
+		Vector2 uv;
 	};
 
 
 	extern Vertex vertexes[];
-	extern Vertex square[];
-	extern Vertex star[];
+	//extern Vertex square[];
+	//extern Vertex star[];
 
 	extern sg::Mesh* mesh;
 	extern sg::Shader* shader;
 	extern sg::graphics::ConstantBuffer* constantBuffer;
 
-	extern Vector4 MovePos;
+	//extern Vector4 MovePos;
 
 	void Initialize();
 	void Update();

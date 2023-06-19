@@ -7,7 +7,7 @@ namespace sg
 	{
 	public:
 		template <typename T>
-		static T* Finde(const std::wstring& key)
+		static T* Find(const std::wstring& key)
 		{
 			// 리소스 맵에서 데이터를 탐색한다. 데이터가 있다면 해당 데이터를 반환하고,
 			// 없다면 end를 반환해준다.
@@ -27,7 +27,7 @@ namespace sg
 		static T* Load(const std::wstring& key, const std::wstring& path)
 		{
 			// 키 값(이름)으로 탐색한다.
-			T* resource = Resources::Finde<T>(key);
+			T* resource = Resources::Find<T>(key);
 			if (resource != nullptr)
 			{
 				return resource;
