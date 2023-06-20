@@ -21,4 +21,13 @@ namespace sg::enums
 		UI,
 		End,
 	};
+
+	enum class eResourceType
+	{
+		Texture,
+		Mesh,
+		Shader,
+		Material,
+		End,
+	};
 }

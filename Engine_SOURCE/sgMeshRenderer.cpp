@@ -27,12 +27,10 @@ namespace sg
 		tr->BindConstantBuffer();
 
 		// Input assembler 정점 데이터 정보 지정
-		renderer::mesh->BindBuffer();
-
+		mMesh->BindBuffer();
 		// Bind VS, PS
-		renderer::shader->Binds();
-
+		mMaterial->Binds();
 		// Draw Render Target
-		GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+		mMesh->Render();
 	}
 }

@@ -5,6 +5,8 @@
 #include "Editor_Window.h"
 #include "sgApplication.h"
 #include "sgRenderer.h"
+#include "sgResources.h"
+#include "sgSceneManager.h"
 
 sg::Application application;
 
@@ -66,6 +68,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
     renderer::Release();
+    sg::Resources::Release();
+    sg::SceneManager::Release();
+
     return (int)msg.wParam;
 }
 

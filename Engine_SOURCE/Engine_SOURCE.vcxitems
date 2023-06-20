@@ -26,6 +26,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h" />
@@ -49,6 +50,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMeshRenderer.cpp" />

@@ -202,6 +202,14 @@ namespace sg::graphics
 		return true;
 	}
 
+	bool GraphicDevice_Dx11::CreateSampler(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState)
+	{
+		if (FAILED(mDevice->CreateSamplerState(pSamplerDesc, ppSamplerState)))
+			return false;
+
+		return true;
+	}
+
 	void GraphicDevice_Dx11::BindInputLayout(ID3D11InputLayout* pInputLayout)
 	{
 		mContext->IASetInputLayout(pInputLayout);
@@ -307,6 +315,35 @@ namespace sg::graphics
 			break;
 		case eShaderStage::CS:
 			mContext->CSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::End:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GraphicDevice_Dx11::BindSampler(eShaderStage stage, UINT StartSlot, ID3D11SamplerState** ppSamplers)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetSamplers(StartSlot, 1, ppSamplers);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetSamplers(StartSlot, 1, ppSamplers);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetSamplers(StartSlot, 1, ppSamplers);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetSamplers(StartSlot, 1, ppSamplers);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetSamplers(StartSlot, 1, ppSamplers);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetSamplers(StartSlot, 1, ppSamplers);
 			break;
 		case eShaderStage::End:
 			break;

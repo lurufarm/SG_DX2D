@@ -4,6 +4,7 @@
 
 #include "sgResources.h"
 #include "sgTexture.h"
+#include "sgMaterial.h"
 
 namespace renderer
 {
@@ -11,9 +12,8 @@ namespace renderer
 	using namespace sg::graphics;
 
 	Vertex vertexes[4] = {};
-	sg::Mesh* mesh = nullptr;
-	sg::Shader* shader = nullptr;
-	sg::graphics::ConstantBuffer* constantBuffer = nullptr;
+	sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
+	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
 	void SetupState()
 	{
@@ -41,15 +41,39 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
+		Shader* shader = sg::Resources::Find<Shader>(L"TriangleShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
+
+		shader = sg::Resources::Find<Shader>(L"SpriteShader");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
+		// Sampler State
+		D3D11_SAMPLER_DESC desc = {};
+		desc.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		GetDevice()->CreateSampler(&desc, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
+		GetDevice()->BindSampler(eShaderStage::PS, 0, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
+
+		desc.Filter = D3D11_FILTER_ANISOTROPIC;
+		GetDevice()->CreateSampler(&desc, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
+		GetDevice()->BindSampler(eShaderStage::PS, 1, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
+
+
+
 	}
 	
 	void LoadBuffer()
 	{
 		// Vertex Buffer 설정
-		mesh = new sg::Mesh();
+		Mesh* mesh = new sg::Mesh();
+		Resources::Insert(L"RectMesh", mesh);
+
 		mesh->CreateVertexBuffer(vertexes, 4);
 
 		// Index Buffer 설정
@@ -63,8 +87,8 @@ namespace renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer 설정
-		constantBuffer = new ConstantBuffer(eCBType::Transform);
-		constantBuffer->Create(sizeof(Vector4));
+		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
 
 		//constantBuffer->SetData(&MovePos);
 		//constantBuffer->Bind(eShaderStage::VS);
@@ -73,9 +97,24 @@ namespace renderer
 	
 	void LoadShader()
 	{
-		shader = new sg::Shader();
+		Shader* shader = new sg::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		sg::Resources::Insert(L"TriangleShader", shader);
+
+		Shader* spriteShader = new sg::Shader();
+		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		sg::Resources::Insert(L"SpriteShader", spriteShader);
+
+		Texture* texture
+			= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+
+		Material* spriteMaterial = new sg::graphics::Material();
+		spriteMaterial->SetShader(spriteShader);
+		spriteMaterial->SetTexture(texture);
+		Resources::Insert(L"SpriteMaterial", spriteMaterial);
+
 	}
 
 	void Initialize()
@@ -130,8 +169,13 @@ namespace renderer
 
 	void Release()
 	{
-		delete mesh;
-		delete shader;
-		delete constantBuffer;
+		for (ConstantBuffer* buff : constantBuffer)
+		{
+			if (buff == nullptr)
+				continue;
+
+			delete buff;
+			buff = nullptr;
+		}
 	}
 }

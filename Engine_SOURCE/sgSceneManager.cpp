@@ -9,6 +9,8 @@ namespace sg
 	void SceneManager::Initialize()
 	{
 		mActiveScene = new TitleScene();
+		mScenes.insert(std::make_pair(L"TitleScene", mActiveScene));
+
 		mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
@@ -22,6 +24,14 @@ namespace sg
 	void SceneManager::Render()
 	{
 		mActiveScene->Render();
+	}
+	void SceneManager::Release()
+	{
+		for (auto iter : mScenes)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
 	}
 	Scene* SceneManager::LoadScene(std::wstring name)
 	{

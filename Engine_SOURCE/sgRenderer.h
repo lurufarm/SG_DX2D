@@ -6,6 +6,7 @@
 #include "sgConstantBuffer.h"
 
 using namespace sg::math;
+using namespace sg::graphics;
 namespace renderer
 {
 	struct Vertex
@@ -17,14 +18,7 @@ namespace renderer
 
 
 	extern Vertex vertexes[];
-	//extern Vertex square[];
-	//extern Vertex star[];
-
-	extern sg::Mesh* mesh;
-	extern sg::Shader* shader;
-	extern sg::graphics::ConstantBuffer* constantBuffer;
-
-	//extern Vector4 MovePos;
+	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	void Initialize();
 	void Update();
