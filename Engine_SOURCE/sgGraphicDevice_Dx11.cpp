@@ -95,8 +95,8 @@ namespace sg::graphics
 		dxgiDesc.BufferDesc.RefreshRate.Denominator = 1;
 		dxgiDesc.BufferDesc.Scaling = DXGI_MODE_SCALING::DXGI_MODE_SCALING_UNSPECIFIED;
 		dxgiDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER::DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-
-		dxgiDesc.SampleDesc.Count = 1;
+	
+		dxgiDesc.SampleDesc.Count = 1; 
 		dxgiDesc.SampleDesc.Quality = 0;
 
 		Microsoft::WRL::ComPtr<IDXGIDevice> pDXGIDevice = nullptr;
@@ -225,8 +225,7 @@ namespace sg::graphics
 		, const UINT* pStrides
 		, const UINT* pOffsets)
 	{
-		mContext->IASetVertexBuffers(startslot, 1, ppVertexBuffers, pStrides, pOffsets);
-	}
+		mContext->IASetVertexBuffers(startslot, 1, ppVertexBuffers, pStrides, pOffsets);	}
 
 	void GraphicDevice_Dx11::BindIndexBuffer(ID3D11Buffer* pIndexBuffer
 		, DXGI_FORMAT format
@@ -250,7 +249,6 @@ namespace sg::graphics
 	{
 		D3D11_MAPPED_SUBRESOURCE subRes = {};
 		mContext->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &subRes);
-		//
 		memcpy(subRes.pData, data, size);
 		mContext->Unmap(buffer, 0);
 	}

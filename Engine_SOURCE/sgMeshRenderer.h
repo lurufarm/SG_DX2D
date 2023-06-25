@@ -16,11 +16,14 @@ namespace sg
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetMesh(Mesh* mesh) { mMesh = mesh; }
-		void SetMaterial(Material* material) { mMaterial = material; }
+		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
+		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
+
+		std::shared_ptr<Mesh> GetMesh() { return mMesh; }
+		std::shared_ptr<Material> GetMaterial() { return mMaterial; }
 
 	private:
-		Mesh* mMesh;
-		Material* mMaterial;
+		std::shared_ptr<Mesh> mMesh;
+		std::shared_ptr<Material> mMaterial;
 	};
 }

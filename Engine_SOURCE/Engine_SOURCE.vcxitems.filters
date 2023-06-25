@@ -49,6 +49,12 @@
     <Filter Include="Texture">
       <UniqueIdentifier>{488113d9-214b-47d0-97f1-9401b40c89b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Script">
+      <UniqueIdentifier>{07042f10-664d-400f-9816-677c75d93429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gobj_BG">
+      <UniqueIdentifier>{1d006c0a-9e72-4704-bb9f-694f85ee916d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -124,7 +130,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTexture.h">
       <Filter>Texture</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgScript.h">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCameraScript.h">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.h">
+      <Filter>Gobj_BG</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.h">
+      <Filter>Gobj_BG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -188,7 +211,24 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTexture.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgScript.cpp">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCameraScript.cpp">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.cpp">
+      <Filter>Gobj_BG</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.cpp">
+      <Filter>Gobj_BG</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sgMath.inl">

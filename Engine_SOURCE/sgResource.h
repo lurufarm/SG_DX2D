@@ -16,6 +16,8 @@ namespace sg
 		void SetKey(const std::wstring& key) { mKey = key; }
 		void SetPath(const std::wstring& path) { mPath = path; }
 
+		enums::eResourceType GetType() { return mType; }
+
 	private:
 
 		const enums::eResourceType mType;

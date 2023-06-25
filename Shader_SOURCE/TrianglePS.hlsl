@@ -13,8 +13,7 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-texture2D catTexture : register(t0);
-
+Texture2D catTexture : register(t0);
 
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);

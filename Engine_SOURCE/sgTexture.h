@@ -13,6 +13,8 @@
 
 namespace sg::graphics
 {
+	using namespace sg::math;
+
 	class Texture : public Resource
 	{
 	public:
@@ -21,9 +23,18 @@ namespace sg::graphics
 
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
+		void Clear();
+
+		float GetWidth() { return mWidth; }
+		float GetHeight() { return mHeight; }
+		Vector3 GetRatio();
 
 	private:
 		ScratchImage mImage;
+
+		float mWidth;
+		float mHeight;
+
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
 		D3D11_TEXTURE2D_DESC mDesc;

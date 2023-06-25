@@ -9,6 +9,8 @@ namespace sg::graphics
 		, mTexture(nullptr)
 		, mSRV(nullptr)
 		, mDesc{}
+		, mWidth(0)
+		, mHeight(0)
 	{
 	}
 	Texture::~Texture()
@@ -46,10 +48,38 @@ namespace sg::graphics
 		);
 		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 		
+		mWidth = mImage.GetMetadata().width;
+		mHeight = mImage.GetMetadata().height;
 		return S_OK;
 	}
 	void Texture::BindShader(eShaderStage stage, UINT startSlot)
 	{
 		GetDevice()->BindShaderResource(stage, startSlot, mSRV.GetAddressOf());
+	}
+	void Texture::Clear()
+	{
+		ID3D11ShaderResourceView* srv = nullptr;
+
+		GetDevice()->BindShaderResource(eShaderStage::VS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::DS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::GS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::HS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::CS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
+	}
+	Vector3 Texture::GetRatio()
+	{
+		if (mWidth > mHeight)
+		{
+			return Vector3(mWidth / mHeight, 1.0f, 1.0f);
+		}
+		else if (mWidth < mHeight)
+		{
+			return Vector3(1.0f, mHeight / mWidth, 1.0f);
+		}
+		else if (mWidth == mHeight)
+		{
+			return Vector3(1.0f, 1.0f, 1.0f);
+		}
 	}
 }

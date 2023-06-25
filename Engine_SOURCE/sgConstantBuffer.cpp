@@ -20,7 +20,7 @@ namespace sg::graphics
 
 		sg::graphics::GetDevice()->CreateBuffer(buffer.GetAddressOf(), &desc, nullptr);
 
-		return true;
+		return false;
 	}
 	void ConstantBuffer::SetData(void* data)
 	{

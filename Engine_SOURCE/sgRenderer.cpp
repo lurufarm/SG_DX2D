@@ -41,7 +41,7 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
-		Shader* shader = sg::Resources::Find<Shader>(L"TriangleShader");
+		std::shared_ptr<Shader> shader = sg::Resources::Find<Shader>(L"TriangleShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -64,14 +64,12 @@ namespace renderer
 		GetDevice()->CreateSampler(&desc, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 		GetDevice()->BindSampler(eShaderStage::PS, 1, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 
-
-
 	}
 	
 	void LoadBuffer()
 	{
 		// Vertex Buffer 설정
-		Mesh* mesh = new sg::Mesh();
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 
 		mesh->CreateVertexBuffer(vertexes, 4);
@@ -88,33 +86,41 @@ namespace renderer
 
 		// Constant Buffer 설정
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
-		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
-
-		//constantBuffer->SetData(&MovePos);
-		//constantBuffer->Bind(eShaderStage::VS);
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
 	}
 	
 	void LoadShader()
 	{
-		Shader* shader = new sg::Shader();
+		std::shared_ptr<Shader>shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 		sg::Resources::Insert(L"TriangleShader", shader);
 
-		Shader* spriteShader = new sg::Shader();
+		std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
 		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		sg::Resources::Insert(L"SpriteShader", spriteShader);
 
-		Texture* texture
-			= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+		{ // Test
+			std::shared_ptr<Texture> texture
+				= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
 
-		Material* spriteMaterial = new sg::graphics::Material();
-		spriteMaterial->SetShader(spriteShader);
-		spriteMaterial->SetTexture(texture);
-		Resources::Insert(L"SpriteMaterial", spriteMaterial);
+			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
+			spriteMaterial->SetShader(spriteShader);
+			spriteMaterial->SetTexture(texture);
+			Resources::Insert(L"SpriteMaterial", spriteMaterial);
+		}
 
+		{ // BGImg
+			std::shared_ptr<Texture> texture
+				= Resources::Load<Texture>(L"Title", L"..\\Resources\\Title\\title.png");
+
+			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
+			spriteMaterial->SetShader(spriteShader);
+			spriteMaterial->SetTexture(texture);
+			Resources::Insert(L"BGImgTItle01", spriteMaterial);
+		}
 	}
 
 	void Initialize()
@@ -138,11 +144,6 @@ namespace renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
-
-		Texture* texture
-			= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
-
-		texture->BindShader(eShaderStage::PS, 0);
 
 	}
 	void Update()

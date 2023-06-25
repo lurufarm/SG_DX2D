@@ -1,6 +1,7 @@
 #pragma once
 #include "sgEntity.h"
 #include "sgComponent.h"
+#include "sgScript.h"
 
 namespace sg
 {
@@ -33,6 +34,14 @@ namespace sg
 					return component;
 			}
 			
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				
+				if (component != nullptr)
+					return component;
+			}
+
 			return nullptr;
 		}
 
@@ -43,11 +52,17 @@ namespace sg
 
 			Component* buff
 				= dynamic_cast<Component*>(comp);
+			Script* script
+				= dynamic_cast<Script*>(buff);
 
 			if (buff == nullptr)
 				return nullptr;
 
-			mComponents.push_back(buff);
+			if (script == nullptr)
+				mComponents.push_back(buff);
+			else
+				mScripts.push_back(script);
+		
 			comp->SetOwner(this);
 
 			return comp;
@@ -56,5 +71,6 @@ namespace sg
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		std::vector<Script*> mScripts;
 	};
 }

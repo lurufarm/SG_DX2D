@@ -28,11 +28,21 @@ namespace sg
 		Vector3 GetRotation() { return mRotation; }
 		Vector3 GetScale() { return mScale; }
 
+		Vector3 Forward() { return mForward; }
+		Vector3 Right() { return mRight; }
+		Vector3 Up() { return mUp; }
+
 
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;
 		Vector3 mScale;
+
+		Vector3 mUp;
+		Vector3 mForward;
+		Vector3 mRight;
+
+		Matrix mWorld;
 	};
 }
 

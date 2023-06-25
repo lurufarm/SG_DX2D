@@ -11,11 +11,13 @@ namespace sg::enums
 		Particle,
 		MeshRenderer,
 		Script,
+		Camera,
 		End,
 	};
 
 	enum class eLayerType
 	{
+		BGImg,
 		Player,
 		Monster,
 		UI,

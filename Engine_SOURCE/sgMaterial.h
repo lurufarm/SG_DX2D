@@ -14,12 +14,15 @@ namespace sg::graphics
 		virtual HRESULT Load(const std::wstring& path) override;
 
 		void Binds();
+		void Clear();
 
-		void SetShader(Shader* shader) { mShader = shader; }
-		void SetTexture(Texture* texture) { mTexture = texture; }
+		void SetShader(std::shared_ptr<Shader> shader) { mShader = shader; }
+		void SetTexture(std::shared_ptr<Texture> texture) { mTexture = texture; }
+
+		std::shared_ptr<Texture> GetTexture() { return mTexture; }
 
 	private:
-		Shader* mShader;
-		Texture* mTexture;
+		std::shared_ptr<Shader> mShader;
+		std::shared_ptr<Texture> mTexture;
 	};
 }

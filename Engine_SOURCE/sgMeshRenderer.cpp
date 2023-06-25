@@ -24,6 +24,8 @@ namespace sg
 	void MeshRenderer::Render()
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
+		Vector3 scale = mMaterial->GetTexture()->GetRatio();
+		tr->SetScale(scale);
 		tr->BindConstantBuffer();
 
 		// Input assembler 정점 데이터 정보 지정
@@ -32,5 +34,7 @@ namespace sg
 		mMaterial->Binds();
 		// Draw Render Target
 		mMesh->Render();
+
+		mMaterial->Clear();
 	}
 }

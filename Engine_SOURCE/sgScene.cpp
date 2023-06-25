@@ -11,12 +11,16 @@ namespace sg
 	}
 	void Scene::Initialize()
 	{
+		//for (Layer& layer : mLayers)
+		//{
+		//	layer.Initialize(); // Å×½ºÆ®2
+		//}
 	}
 	void Scene::Update()
 	{
 		for (Layer& layer : mLayers)
 		{
-			layer.Update();
+			layer.Update(); 
 		}
 	}
 	void Scene::LateUpdate()
