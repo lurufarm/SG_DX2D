@@ -30,14 +30,6 @@ namespace sg
 
 		TitleImg01* title01 = new TitleImg01();
 		AddGameObj(eLayerType::Player, title01);
-		//title01->AddComp<CameraScript>();
-		//title01->Initialize();
-		//MeshRenderer* mr2 = title01->AddComp<MeshRenderer>();
-		//mr2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//mr2->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-		//title01->GetComp<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-		//Transform* tr2 = title01->GetComp<Transform>();
-
 
 
 		GameObject* camera = new GameObject();
@@ -45,7 +37,7 @@ namespace sg
 		camera->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComp<Camera>();
 		camera->AddComp<CameraScript>();
-		//Scene::Initialize();
+
 	}
 	void TitleScene::Update()
 	{

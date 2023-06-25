@@ -7,6 +7,7 @@ namespace sg
 	{
 		SetName(L"Gobj_BGImg");
 		AddComp<MeshRenderer>(); 
+		// 여기에 셋메쉬를 넣는건 어땠을지
 	}
 	Gobj_BGImg::~Gobj_BGImg()
 	{
