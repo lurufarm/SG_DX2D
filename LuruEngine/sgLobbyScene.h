@@ -1,20 +1,20 @@
 #pragma once
-#include "sgScene.h"
+#include "..\Engine_SOURCE\sgScene.h"
 
 namespace sg
 {
-	class TitleScene : public Scene
+	class LobbyScene : public Scene
 	{
 	public:
-		TitleScene();
-		virtual ~TitleScene();
+		LobbyScene();
+		virtual ~LobbyScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-	private:
-		
+		virtual void OnEnter();
+		virtual void OnExit();
 	};
 }

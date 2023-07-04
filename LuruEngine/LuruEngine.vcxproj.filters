@@ -2,19 +2,151 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="LuruEngine.cpp" />
+    <ClCompile Include="sgSelectScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sgTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sgCameraScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="sgLobbyScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_LobbyMap.cpp">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Space1.cpp">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Space2.cpp">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Logo.cpp">
+      <Filter>Contents\Obj\Gobj_Img\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_TitleImg01.cpp">
+      <Filter>Contents\Obj\Gobj_Img\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Img.cpp">
+      <Filter>Contents\Obj\Gobj_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_CatPattern.cpp">
+      <Filter>Contents\Obj\Gobj_Img\SelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_UI.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Exit.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Menu.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_FocusBoxes.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_FocusBox.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="sgSelectScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Select.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScenes.h">
+      <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="sgSelectScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sgTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sgCameraScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="sgLobbyScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_LobbyMap.h">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Space1.h">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Space2.h">
+      <Filter>Contents\Obj\Gobj_Img\LobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Logo.h">
+      <Filter>Contents\Obj\Gobj_Img\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_TitleImg01.h">
+      <Filter>Contents\Obj\Gobj_Img\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Img.h">
+      <Filter>Contents\Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_CatPattern.h">
+      <Filter>Contents\Obj\Gobj_Img\SelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_UI.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Exit.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Menu.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_FocusBoxes.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_FocusBox.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="sgSelectScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Select.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Load">
+    <Filter Include="Contents">
+      <UniqueIdentifier>{543f544b-7cf4-470c-ac2b-6bbaf61d9190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Load">
       <UniqueIdentifier>{a79c56fb-2fc3-4902-b6d0-024541fb2aec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene">
+    <Filter Include="Contents\Scene">
       <UniqueIdentifier>{e64a6c36-4045-4b74-8df4-adb4e3513c5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script">
+    <Filter Include="Contents\Script">
       <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj">
+      <UniqueIdentifier>{8a4a42e5-757f-4a3e-9d9b-c8eba17f1ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Img">
+      <UniqueIdentifier>{947194aa-13b9-4cf3-80fa-33355f965b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Img\LobbyScene">
+      <UniqueIdentifier>{012bccaf-7351-4983-8ab7-0de373d606ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Img\TitleScene">
+      <UniqueIdentifier>{8d13e38e-c2fa-414b-832c-88fcc724606d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Img\SelectScene">
+      <UniqueIdentifier>{801ae3f3-221f-4edd-8e8e-196fa94d4287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_UI">
+      <UniqueIdentifier>{62c4b42f-2839-4726-a3bc-0c1495223547}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 
 #define CBSLOT_TRANSFORM		0
 //#define CBSLOT_PARTICLE			1
+#define CBSLOT_TIME				1
 
 namespace sg::graphics
 {
@@ -28,6 +29,7 @@ namespace sg::graphics
 	enum class eCBType
 	{
 		Transform,
+		Time,
 		Material,
 		End,
 	};
@@ -36,6 +38,40 @@ namespace sg::graphics
 	{
 		Point,
 		Anisotropic,
+		End,
+	};
+
+	enum class eRSType
+	{
+		SolidBack,
+		SolidFront,
+		SolidNone,
+		WireframeNone,
+		End,
+	};
+
+	enum class eDSType
+	{
+		Less,
+		Greater,
+		NoWrite,
+		None,
+		End,
+	};
+
+	enum class eBSType
+	{
+		Default,
+		AlphaBlend,
+		OneOne,
+		End,
+	};
+
+	enum class eRenderingMode
+	{
+		Opaque,
+		CutOut,
+		Transparent,
 		End,
 	};
 

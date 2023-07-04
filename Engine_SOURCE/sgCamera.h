@@ -1,6 +1,7 @@
 #pragma once
 #include "sgComponent.h"
 #include "sgGraphics.h"
+
 namespace sg
 {
 	class Camera : public Component
@@ -13,8 +14,8 @@ namespace sg
 			None,
 		};
 		
-		static Matrix GetViewMatrix() { return mView; }
-		static Matrix GetProjectionMatrix() { return mProjection; }
+		static Matrix GetViewMatrix() { return View; }
+		static Matrix GetProjectionMatrix() { return Projection; }
 
 		Camera();
 		~Camera();
@@ -26,15 +27,38 @@ namespace sg
 
 		bool CreateViewMatrix();
 		bool CreateProjectionMatrix(eProjectionType type);
+		void RegisterCameraInRenderer();
+
+		void TurnLayerMask(eLayerType type, bool enable = true);
+		void EnableLayerMask() { mLayerMask.set(); }
+		void DisableLayerMask() { mLayerMask.reset(); }
+
+		void AlphaSortGameObjects();
+		void ZSortTransparencyGameObjects();
+		void DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs);
+		void RenderOpaque();
+		void RenderCutOut();
+		void RenderTransparent();
+
+		void EnableDepthStencilState();
+		void DisableDepthStencilState();
 
 	private:
-		static Matrix mView;
-		static Matrix mProjection;
+		static Matrix View;
+		static Matrix Projection;
+
+		Matrix mView;
+		Matrix mProjection;
 
 		eProjectionType mType;
 		float mAspectRatio;
 		float mNear;
 		float mFar;
 		float mSize;
+
+		std::bitset<(UINT)eLayerType::End> mLayerMask;
+		std::vector<GameObject*> mOpaqueGameObjects;
+		std::vector<GameObject*> mCutOutGameObjects;
+		std::vector<GameObject*> mTransparentGameObjects;
 	};
 }

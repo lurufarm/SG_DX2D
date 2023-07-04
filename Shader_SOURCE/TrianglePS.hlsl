@@ -13,16 +13,15 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-Texture2D catTexture : register(t0);
+Texture2D albedoTexture : register(t0);
 
-SamplerState pointSampler : register(s0);
+SamplerState Sampler : register(s0);
 SamplerState anisotropicSampler : register(s1);
 
 float4 main(VSOut In) : SV_TARGET
 {
-	//return In.Color;
     float4 color = (float) 0.0f;
-    color = catTexture.Sample(anisotropicSampler, In.UV);
+    color = albedoTexture.Sample(Sampler, In.UV);
 	
     return color;
 }

@@ -31,13 +31,15 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -48,10 +50,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -151,9 +154,46 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Gobj_Img.h" />
+    <ClInclude Include="Gobj_UI.h" />
+    <ClInclude Include="Img_CatPattern.h" />
+    <ClInclude Include="Img_LobbyMap.h" />
+    <ClInclude Include="Img_Logo.h" />
+    <ClInclude Include="UI_Select.h" />
+    <ClInclude Include="Img_Space1.h" />
+    <ClInclude Include="Img_Space2.h" />
+    <ClInclude Include="Img_TitleImg01.h" />
+    <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="sgCameraScript.h" />
+    <ClInclude Include="sgLobbyScene.h" />
+    <ClInclude Include="sgSelectScene.h" />
+    <ClInclude Include="sgSelectScript.h" />
+    <ClInclude Include="sgTitleScene.h" />
+    <ClInclude Include="UI_Exit.h" />
+    <ClInclude Include="UI_FocusBox.h" />
+    <ClInclude Include="UI_FocusBoxes.h" />
+    <ClInclude Include="UI_Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Gobj_Img.cpp" />
+    <ClCompile Include="Gobj_UI.cpp" />
+    <ClCompile Include="Img_CatPattern.cpp" />
+    <ClCompile Include="Img_LobbyMap.cpp" />
+    <ClCompile Include="Img_Logo.cpp" />
+    <ClCompile Include="UI_Select.cpp" />
+    <ClCompile Include="Img_Space1.cpp" />
+    <ClCompile Include="Img_Space2.cpp" />
+    <ClCompile Include="Img_TitleImg01.cpp" />
     <ClCompile Include="LuruEngine.cpp" />
+    <ClCompile Include="sgCameraScript.cpp" />
+    <ClCompile Include="sgLobbyScene.cpp" />
+    <ClCompile Include="sgSelectScene.cpp" />
+    <ClCompile Include="sgSelectScript.cpp" />
+    <ClCompile Include="sgTitleScene.cpp" />
+    <ClCompile Include="UI_Exit.cpp" />
+    <ClCompile Include="UI_FocusBox.cpp" />
+    <ClCompile Include="UI_FocusBoxes.cpp" />
+    <ClCompile Include="UI_Menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

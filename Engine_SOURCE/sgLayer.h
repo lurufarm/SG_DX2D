@@ -15,6 +15,10 @@ namespace sg
 		virtual void Render();
 
 		void AddGameObj(GameObject* gameObj);
+		const std::vector<GameObject*> GetGameObjects()
+		{
+			return mGameObjects;
+		}
 
 	private:
 		std::vector<GameObject*> mGameObjects;

@@ -28,8 +28,7 @@ namespace sg
 			
 			delete script;
 			script = nullptr;
-		}		
-
+		}
 	}
 	void GameObject::Initialize()
 	{

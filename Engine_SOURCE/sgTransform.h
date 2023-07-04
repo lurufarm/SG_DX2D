@@ -17,7 +17,13 @@ namespace sg
 		void BindConstantBuffer();
 
 		void SetPosition(Vector3 pos) { mPosition = pos; }
-		void SetRotation(Vector3 rot) { mRotation = rot; }
+		void SetRotation(Vector3 rot) 
+		{ 
+			const float PI = 3.141592;
+			mRotation.x = rot.x * PI / 180;
+			mRotation.y = rot.y * PI / 180;
+			mRotation.z = rot.z * PI / 180;
+		}
 		void SetScale(Vector3 scale) { mScale = scale; }
 
 		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
@@ -32,6 +38,9 @@ namespace sg
 		Vector3 Right() { return mRight; }
 		Vector3 Up() { return mUp; }
 
+		void SetParent(Transform* transform) { mParent = transform; }
+		Transform* GetParent() { return mParent; }
+
 
 	private:
 		Vector3 mPosition;
@@ -43,6 +52,8 @@ namespace sg
 		Vector3 mRight;
 
 		Matrix mWorld;
+
+		Transform* mParent;
 	};
 }
 

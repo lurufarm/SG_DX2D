@@ -1,18 +1,18 @@
 #pragma once
-#include "sgGameObject.h"
-#include "sgTransform.h"
-#include "sgResources.h"
-#include "sgMeshRenderer.h"
-#include "sgMesh.h"
-#include "sgMaterial.h"
+#include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgResources.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgMeshRenderer.h"
+#include "..\Engine_SOURCE\sgMesh.h"
+#include "..\Engine_SOURCE\sgMaterial.h"
 
 namespace sg
 {
-	class Gobj_BGImg : public GameObject
+	class Gobj_UI : public GameObject
 	{
 	public:
-		Gobj_BGImg();
-		~Gobj_BGImg();
+		Gobj_UI();
+		~Gobj_UI();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -33,10 +33,13 @@ namespace sg
 		template <typename T>
 		std::shared_ptr<T> GetMaterial() { return this->GetComp<MeshRenderer>()->GetMaterial(); }
 
+		void SetOrder(int value) { mOrder = value; }
+		int GetOrder() { return mOrder; }
+
 	protected:
-		eLayerType mLayer;
 		Transform* mTr;
 		MeshRenderer* mMr;
+		int mOrder;
 
 	private:
 	};

@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{923e1c9b-486f-4ed9-8448-75a58e324604}</ItemsProjectGuid>
+    <ItemsProjectGuid>{d577a696-9968-4fa3-8ee3-686a7e204af1}</ItemsProjectGuid>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,13 +14,10 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LuruEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEntity.h" />
@@ -43,15 +40,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTime.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgTitleScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTransform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.cpp" />
+    <None Include="$(MSBuildThisFileDirectory)sgMath.inl" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp" />
@@ -72,10 +68,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTime.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgTitleScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTransform.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)sgMath.inl" />
   </ItemGroup>
 </Project>
