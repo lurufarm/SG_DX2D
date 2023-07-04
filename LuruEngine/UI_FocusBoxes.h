@@ -28,5 +28,7 @@ namespace sg
 		UI_FocusBox* mThird;
 		UI_FocusBox* mFourth;
 
+		Transform* mTr;
+
 	};
 }

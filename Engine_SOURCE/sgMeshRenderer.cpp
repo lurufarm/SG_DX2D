@@ -29,6 +29,7 @@ namespace sg
 	void MeshRenderer::Render()
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
+		mScale = Vector3(200.0f, 200.0f, 1.0f);
 		tr->SetScale(mScale);
 		tr->BindConstantBuffer();
 		Time::BindConstantBuffer();

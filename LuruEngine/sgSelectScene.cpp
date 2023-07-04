@@ -26,15 +26,19 @@ namespace sg
 		float BgColor[3] = { 0.13f, 0.37f, 0.59f };
 		GetDevice()->SetBgColor(BgColor);
 
-		UI_Select* story = new UI_Select(true);
-		AddGameObj(eLayerType::UI, story);
-		//mSelectObj.push_back(story);
+		//UI_Select* story = new UI_Select(true);
+		//AddGameObj(eLayerType::UI, story);
+		////mSelectObj.push_back(story);
 
-		mFocus = new UI_FocusBoxes();
-		mFocus->SetSelectObj(story);
-		AddGameObj(eLayerType::UI, mFocus);
+		UI_FocusBoxes* Focus = new UI_FocusBoxes();
+		//Focus->SetSelectObj(story);
+		AddGameObj(eLayerType::UI, Focus);
 
-		UI_Select* party = new UI_Select(false);
+		//UI_FocusBox* test = new UI_FocusBox(0);
+		//AddGameObj(eLayerType::UI, test);
+
+
+		/*UI_Select* party = new UI_Select(false);
 		AddGameObj(eLayerType::UI, party);
 
 		UI_Exit* exit = new UI_Exit();
@@ -42,7 +46,7 @@ namespace sg
 
 		Img_CatPattern* catpattern0 = new Img_CatPattern();
 		AddGameObj(eLayerType::BGImg, catpattern0);
-		Transform* cptr0 = catpattern0->GetComp<Transform>();
+		Transform* cptr0 = catpattern0->GetComp<Transform>();*/
 
 		GameObject* SelectSceneMaincamera = new GameObject();
 		AddGameObj(eLayerType::BGImg, SelectSceneMaincamera);
