@@ -1,8 +1,8 @@
-#include "sgCameraScript.h"
-#include "sgGameObject.h"
-#include "sgTransform.h"
-#include "sgTime.h"
-#include "sgInput.h"
+#include "SCRIPT_CameraScript.h"
+#include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgInput.h"
 
 namespace sg
 {

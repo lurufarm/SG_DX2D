@@ -17,8 +17,18 @@ namespace sg
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 originscale = tr->GetScale();
-		Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth() / 65, mMaterial->GetTexture()->GetHeight() / 65, 1.0f);
-		mScale = originscale * imagescale;
+		if (mMaterial != nullptr)
+		{
+			Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth() / 65, mMaterial->GetTexture()->GetHeight() / 65, 1.0f);
+			mScale = originscale * imagescale;
+		}
+		else
+		{
+			mScale = originscale;
+		}
+
+		tr->SetScale(mScale);
+
 	}
 	void MeshRenderer::Update()
 	{
@@ -29,8 +39,7 @@ namespace sg
 	void MeshRenderer::Render()
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
-		mScale = Vector3(200.0f, 200.0f, 1.0f);
-		tr->SetScale(mScale);
+
 		tr->BindConstantBuffer();
 		Time::BindConstantBuffer();
 

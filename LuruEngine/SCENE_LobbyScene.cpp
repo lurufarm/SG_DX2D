@@ -1,23 +1,28 @@
-#include "sgLobbyScene.h"
-#include "sgSceneManager.h"
-#include "sgInput.h"
-#include "sgTime.h"
-#include "sgGraphicDevice_Dx11.h"
-#include "sgApplication.h"
+#include "SCENE_LobbyScene.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgGraphicDevice_Dx11.h"
+#include "..\Engine_SOURCE\sgApplication.h"
 
-#include "sgTransform.h"
-#include "sgCamera.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgCamera.h"
 
-#include "sgCameraScript.h"
+#include "SCRIPT_CameraScript.h"
 
 #include "Img_Space1.h"
 #include "Img_Space2.h"
 #include "Img_LobbyMap.h"
+#include "Img_LobbyMolding.h"
+
+#include "Interact_LobbyUpgrade.h"
+
 
 namespace sg
 {
 	LobbyScene::LobbyScene()
 	{
+		SetName(L"LobbyScene");
 	}
 	LobbyScene::~LobbyScene()
 	{
@@ -35,6 +40,17 @@ namespace sg
 
 		Img_LobbyMap* lobby = new Img_LobbyMap();
 		AddGameObj(eLayerType::BGImg, lobby);
+
+		Img_LobbyMolding* molding0 = new Img_LobbyMolding();
+		AddGameObj(eLayerType::BGImg, molding0);
+		molding0->GetComp<Transform>()->SetPosition(-1.1f, 0.85f, 0.0f);
+
+		Img_LobbyMolding* molding1 = new Img_LobbyMolding();
+		AddGameObj(eLayerType::BGImg, molding1);
+		molding1->GetComp<Transform>()->SetPosition(1.1f, 0.85f, 0.0f);
+
+		Interact_LobbyUpgrade* upgradetotem = new Interact_LobbyUpgrade();
+		AddGameObj(eLayerType::BGImg, upgradetotem);
 
 		GameObject* LobbyScenecamera = new GameObject();
 		AddGameObj(eLayerType::BGImg, LobbyScenecamera);

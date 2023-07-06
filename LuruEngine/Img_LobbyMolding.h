@@ -1,13 +1,13 @@
 #pragma once
-#include "Gobj_UI.h"
+#include "Gobj_Img.h"
 
 namespace sg
 {
-	class UI_FocusBox : public Gobj_UI
+	class Img_LobbyMolding : public Gobj_Img
 	{
 	public:
-		UI_FocusBox(int num);
-		~UI_FocusBox();
+		Img_LobbyMolding();
+		~Img_LobbyMolding();
 
 		void Initialize();
 		void Update();
@@ -15,9 +15,5 @@ namespace sg
 		void Render();
 
 	private:
-
-		int mNum;
-
-
 	};
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "sgScript.h"
+#include "..\Engine_SOURCE\sgScript.h"
 
 namespace sg
 {

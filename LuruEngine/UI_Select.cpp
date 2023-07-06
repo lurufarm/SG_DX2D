@@ -1,5 +1,5 @@
 #include "UI_Select.h"
-#include "sgSelectScript.h"
+#include "SCRIPT_SelectScript.h"
 
 namespace sg
 {
@@ -38,6 +38,7 @@ namespace sg
 
 			mTr->SetPosition(Vector3(-0.9f, 0.0f, 0.0f));
 			SetMaterial(L"ImgStory");
+			SetOrder(2);
 		}
 		else
 		{
@@ -45,6 +46,7 @@ namespace sg
 
 			mTr->SetPosition(Vector3(0.9f, 0.0f, 0.0f));
 			SetMaterial(L"ImgParty");
+			SetOrder(3);
 		}
 
 		mMr->Initialize();

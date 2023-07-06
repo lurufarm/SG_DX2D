@@ -165,27 +165,28 @@ namespace sg
 			
 			if (mr == nullptr)
 				continue;
-
-			std::shared_ptr<Material> mt = mr->GetMaterial();
-			eRenderingMode mode = mt->GetRenderingMode();
-
-			switch (mode)
+			else
 			{
-			case sg::graphics::eRenderingMode::Opaque:
-				mOpaqueGameObjects.push_back(obj);
-				break;
-			case sg::graphics::eRenderingMode::CutOut:
-				mCutOutGameObjects.push_back(obj);
-				break;
-			case sg::graphics::eRenderingMode::Transparent:
-				mTransparentGameObjects.push_back(obj);
-				break;
-			case sg::graphics::eRenderingMode::End:
-				break;
-			default:
-				break;
+				std::shared_ptr<Material> mt = mr->GetMaterial();
+				eRenderingMode mode = mt->GetRenderingMode();
+
+				switch (mode)
+				{
+				case sg::graphics::eRenderingMode::Opaque:
+					mOpaqueGameObjects.push_back(obj);
+					break;
+				case sg::graphics::eRenderingMode::CutOut:
+					mCutOutGameObjects.push_back(obj);
+					break;
+				case sg::graphics::eRenderingMode::Transparent:
+					mTransparentGameObjects.push_back(obj);
+					break;
+				case sg::graphics::eRenderingMode::End:
+					break;
+				default:
+					break;
+				}
 			}
-				
 		}
 	}
 	void Camera::RenderOpaque()

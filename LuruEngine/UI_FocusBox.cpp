@@ -1,5 +1,5 @@
 #include "UI_FocusBox.h"
-#include "sgTime.h"
+#include "..\Engine_SOURCE\sgTime.h"
 
 namespace sg
 {
@@ -45,12 +45,6 @@ namespace sg
 	void UI_FocusBox::Update()
 	{
 
-		//float moverange = 0.2f;
-		//float frequency = 0.1f;
-		//float x = this->GetComp<Transform>()->GetPosition().x + moverange * sin(frequency * Time::DeltaTime());
-		//float y = this->GetComp<Transform>()->GetPosition().y + moverange * cos(frequency * Time::DeltaTime());
-
-		//mTr->SetPosition(Vector3(x, y, -2.0f));
 
 		Gobj_UI::Update();
 	}

@@ -1,5 +1,5 @@
 #include "UI_Exit.h"
-#include "sgSelectScript.h"
+#include "SCRIPT_SelectScript.h"
 
 namespace sg
 {
@@ -22,6 +22,8 @@ namespace sg
 		SetMaterial(L"UIExitButton");
 		mTr->SetPosition(-2.9f, 1.5f, -1.0f);
 		mMr->Initialize();
+
+		SetOrder(1);
 
 		Gobj_UI::Initialize();
 	}

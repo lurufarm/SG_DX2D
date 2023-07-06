@@ -1,23 +1,24 @@
-#include "sgTitleScene.h"
-#include "sgSceneManager.h"
-#include "sgInput.h"
-#include "sgTime.h"
+#include "SCENE_TitleScene.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgTime.h"
 		 
-#include "sgTransform.h"
-#include "sgCamera.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgCamera.h"
 
-#include "sgCameraScript.h"
+#include "SCRIPT_CameraScript.h"
 
 #include "Img_TitleImg01.h"
 #include "Img_Logo.h"
-#include "UI_Select.h"
 
+#include "UI_Select.h"
 #include "UI_FocusBox.h"
 
 namespace sg
 {
 	TitleScene::TitleScene()
 	{
+		SetName(L"TitleScene");
 	}
 	TitleScene::~TitleScene()
 	{
@@ -32,12 +33,7 @@ namespace sg
 
 		Img_Logo* logo01 = new Img_Logo();
 		AddGameObj(eLayerType::BGImg, logo01);
-
-		//logo01->GetComp<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
-
-		//UI_FocusBox* test = new UI_FocusBox(0);
-		//AddGameObj(eLayerType::UI, test);
-
+		
 		GameObject* camera = new GameObject();
 		AddGameObj(eLayerType::BGImg, camera);
 		camera->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));

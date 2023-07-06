@@ -27,6 +27,12 @@ namespace renderer
 	{
 		Vector4 mTime;
 	};
+	CBUFFER(GridCB, CBSLOT_GRID)
+	{
+		Vector4 CameraPosition;
+		Vector2 CameraScale;
+		Vector2 Resolution;
+	};
 
 
 

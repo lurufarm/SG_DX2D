@@ -17,18 +17,20 @@ namespace sg
 		virtual void Render();
 
 		void SetSelectObj(GameObject* obj);
+		void AddSelectObj(GameObject* obj) { mObjs.insert(std::make_pair(obj->GetOrder(), obj)); }
 		GameObject* GetSelectObj() { return mObj; }
+		
+
+		UI_FocusBox* mBoxes[4];
 
 	private:
 
 		GameObject* mObj;
-
-		UI_FocusBox* mFirst;
-		UI_FocusBox* mSecond;
-		UI_FocusBox* mThird;
-		UI_FocusBox* mFourth;
-
+		std::map<UINT, GameObject*>mObjs;
 		Transform* mTr;
+
+		float mAccDeltaTime = 0;
+		float mDir = 1.0f;
 
 	};
 }

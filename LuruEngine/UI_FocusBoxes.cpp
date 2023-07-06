@@ -1,10 +1,14 @@
 #include "UI_FocusBoxes.h"
-#include "Gobj_UI.h"
+#include "../Engine_SOURCE/sgInput.h"
+#include "../Engine_SOURCE/sgTime.h"
+
 
 
 namespace sg
 {
 	UI_FocusBoxes::UI_FocusBoxes()
+		: mObjs{}
+		, mObj(nullptr)
 	{
 		SetName(L"Gobj_FocusBoxes");
 
@@ -17,21 +21,73 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mTr->SetPosition(Vector3(0.0f, 0.0f, -2.0f));
+		mBoxes[0] = new UI_FocusBox(0);
+		mBoxes[1] = new UI_FocusBox(1);
+		mBoxes[2] = new UI_FocusBox(2);
+		mBoxes[3] = new UI_FocusBox(3);
 
-		mFirst = new UI_FocusBox(0);
-		mSecond = new UI_FocusBox(1);
-		mThird = new UI_FocusBox(2);
-		mFourth = new UI_FocusBox(3);
-
-		mFirst->GetComp<Transform>()->SetPosition(Vector3(-0.5f, 0.5f, -2.0f));
-		mSecond->GetComp<Transform>()->SetPosition(Vector3(0.5f, 0.5f, -2.0f));
-		mThird->GetComp<Transform>()->SetPosition(Vector3(-0.5f, -0.5f, -2.0f));
-		mFourth->GetComp<Transform>()->SetPosition(Vector3(0.5f, -0.5f, -2.0f));
+		mObjs.clear();
 
 		GameObject::Initialize();
 	}
 	void UI_FocusBoxes::Update()
 	{
+		mAccDeltaTime += Time::DeltaTime() * mDir;
+
+		if (fabs(mAccDeltaTime) > 0.1f)
+		{
+			mDir *= -1.0f;
+		}
+
+		Vector3 objpos = mObj->GetComp<Transform>()->GetPosition();
+		Vector3 objscale = mObj->GetComp<MeshRenderer>()->GetImgScale();
+
+		Vector3 p0 = Vector3(objpos.x - objscale.x * 0.5f - 0.05, objpos.y + objscale.y * 0.5f, -2.0f);
+		Vector3 p1 = Vector3(objpos.x + objscale.x * 0.5f + 0.05, objpos.y + objscale.y * 0.5f, -2.0f);
+		Vector3 p2 = Vector3(objpos.x - objscale.x * 0.5f - 0.05, objpos.y - objscale.y * 0.5f, -2.0f);
+		Vector3 p3 = Vector3(objpos.x + objscale.x * 0.5f + 0.05, objpos.y - objscale.y * 0.5f, -2.0f);
+
+		Vector3 pp0 = p0 - objpos;
+		Vector3 pp1 = p1 - objpos;
+		Vector3 pp2 = p2 - objpos;
+		Vector3 pp3 = p3 - objpos;
+
+		pp0.Normalize();
+		pp1.Normalize();
+		pp2.Normalize();
+		pp3.Normalize();
+		
+		mBoxes[0]->GetComp<Transform>()->SetPosition(p0 + pp0 * mAccDeltaTime);
+		mBoxes[1]->GetComp<Transform>()->SetPosition(p1 + pp1 * mAccDeltaTime);
+		mBoxes[2]->GetComp<Transform>()->SetPosition(p2 + pp2 * mAccDeltaTime);
+		mBoxes[3]->GetComp<Transform>()->SetPosition(p3 + pp3 * mAccDeltaTime);
+
+		UINT now = mObj->GetOrder();
+
+		if (Input::KeyD(eKeyCode::A))
+		{
+			if (now >= 2)
+			{
+				now--;
+				std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
+				mObj = iter->second;
+			}
+
+		}
+		else if (Input::KeyD(eKeyCode::D))
+		{
+			std::map<UINT, GameObject*>::iterator upperBoundIter = mObjs.upper_bound(now);
+			if (upperBoundIter != mObjs.end())
+			{
+				now = upperBoundIter->first;
+				std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
+				if (iter != mObjs.end())
+				{
+					mObj = iter->second;
+				}
+			}
+		}
+
 		GameObject::Update();
 	}
 	void UI_FocusBoxes::LateUpdate()
@@ -40,25 +96,19 @@ namespace sg
 	}
 	void UI_FocusBoxes::Render()
 	{
-		GameObject::Render();
+		GameObject::Render();	
 	}
 	void UI_FocusBoxes::SetSelectObj(GameObject* obj)
 	{
 		mObj = obj;
 
-		//Vector3 objpos = obj->GetComp<Transform>()->GetPosition();
-		//Vector3 objscale = obj->GetComp<MeshRenderer>()->GetImgScale();
+		Vector3 objpos = obj->GetComp<Transform>()->GetPosition();
+		Vector3 objscale = obj->GetComp<MeshRenderer>()->GetImgScale();
 
-		//mFirst->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f - 0.2f, objpos.y + objscale.y * 0.5f + 0.2f, -2.0f));
-		//mSecond->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f + 0.2f, objpos.y + objscale.y * 0.5f + 0.2f, -2.0f));
-		//mThird->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f - 0.2f, objpos.y - objscale.y * 0.5f - 0.2f, -2.0f));
-		//mFourth->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f + 0.2f, objpos.y - objscale.y * 0.5f - 0.2f, -2.0f));
-
-		mFirst->GetComp<Transform>()->SetPosition(Vector3(-1.0f, 1.0f, -2.0f));
-		mSecond->GetComp<Transform>()->SetPosition(Vector3(1.0f, 1.0f, -2.0f));
-		mThird->GetComp<Transform>()->SetPosition(Vector3(-1.0f, -1.0f, -2.0f));
-		mFourth->GetComp<Transform>()->SetPosition(Vector3(1.0f, -1.0f, -2.0f));
-
+		mBoxes[0]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f, objpos.y + objscale.y * 0.5f, -2.0f));
+		mBoxes[1]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f, objpos.y + objscale.y * 0.5f, -2.0f));
+		mBoxes[2]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f, objpos.y - objscale.y * 0.5f, -2.0f));
+		mBoxes[3]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f, objpos.y - objscale.y * 0.5f, -2.0f));
 
 	}
 }

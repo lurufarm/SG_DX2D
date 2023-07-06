@@ -1,3 +1,4 @@
+#include "globals.hlsli"
 
 struct VSIn
 {
@@ -13,16 +14,6 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-Texture2D albedoTexture : register(t0);
-
-SamplerState pointSampler : register(s0);
-SamplerState anisotropicSampler : register(s1);
-
-cbuffer Time : register(b1)
-{
-    float4 mTime;
-}
-
 float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float) 0.0f;
@@ -35,7 +26,7 @@ float4 Select_catpattern(VSOut In) : SV_TARGET
 {        
     float4 color = (float) 0.0f;
     float2 uv = In.UV;
-    uv.y += mTime.y / 5.0;
+    uv.y += Time.y / 5.0;
     color = albedoTexture.Sample(pointSampler, uv);
     
     return color;
@@ -46,8 +37,8 @@ float4 lobby_space1(VSOut In) : SV_TARGET
 {
     float4 color = (float) 0.0f;
     float2 uv = In.UV;
-    uv.x += mTime.y / 8.0; 
-    uv.y += -mTime.y / 8.0;
+    uv.x += Time.y / 8.0;
+    uv.y += -Time.y / 8.0;
     color = albedoTexture.Sample(pointSampler, uv);
     
     return color;
@@ -58,8 +49,8 @@ float4 lobby_space2(VSOut In) : SV_TARGET
 {
     float4 color = (float) 0.0f;
     float2 uv = In.UV;
-    uv.x += mTime.y / 10.0;
-    uv.y += -mTime.y / 10.0;
+    uv.x += Time.y / 10.0;
+    uv.y += -Time.y / 10.0;
     color = albedoTexture.Sample(pointSampler, uv);
     
     return color;

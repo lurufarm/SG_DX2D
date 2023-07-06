@@ -17,7 +17,7 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
-		mTr->SetPosition(0.0f, 0.0f, 2.0f);
+		mTr->SetPosition(0.0f, 0.0f, 10.0f);
 		SetMesh();
 		SetMaterial(L"ImgSpace1");
 		mMr->Initialize();

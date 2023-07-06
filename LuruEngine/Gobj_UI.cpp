@@ -3,10 +3,12 @@
 namespace sg
 {
 	Gobj_UI::Gobj_UI()
-		: mOrder(0)
+		: mTr(nullptr)
+		, mMr(nullptr)
 	{
 		SetName(L"Gobj_UI");
 		AddComp<MeshRenderer>();
+		SetOrder(0);
 	}
 	Gobj_UI::~Gobj_UI()
 	{

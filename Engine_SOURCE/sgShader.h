@@ -16,7 +16,10 @@ namespace sg
 		bool Create(const eShaderStage stage, const std::wstring& filename, const std::string& funcname);
 		void Binds();
 
-		ID3DBlob* GetVSCode() { return mVSBlob.Get(); }
+		ID3DBlob* GetVSCode() 
+		{ 
+			return mVSBlob.Get(); 
+		}
 		ID3D11InputLayout* GetInputLayout() { return mInputLayout; }
 		ID3D11InputLayout** GetInputLayoutAddressOf() { return &mInputLayout; }
 

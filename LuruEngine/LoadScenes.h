@@ -1,8 +1,8 @@
 #pragma once
 #include "..\Engine_SOURCE\sgSceneManager.h"
-#include "sgTitleScene.h"
-#include "sgSelectScene.h"
-#include "sgLobbyScene.h"
+#include "SCENE_TitleScene.h"
+#include "SCENE_SelectScene.h"
+#include "SCENE_LobbyScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\LuruEngine.lib")

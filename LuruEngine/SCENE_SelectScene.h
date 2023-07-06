@@ -19,7 +19,6 @@ namespace sg
 		virtual void OnExit();
 
 	private:
-		//std::vector<GameObject*> mSelectObj;
 		UI_FocusBoxes* mFocus;
 	};
 }

@@ -12,6 +12,7 @@
 #define CBSLOT_TRANSFORM		0
 //#define CBSLOT_PARTICLE			1
 #define CBSLOT_TIME				1
+#define CBSLOT_GRID				2
 
 namespace sg::graphics
 {
@@ -30,6 +31,7 @@ namespace sg::graphics
 	{
 		Transform,
 		Time,
+		Grid,
 		Material,
 		End,
 	};

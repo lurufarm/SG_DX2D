@@ -63,5 +63,7 @@ namespace sg
 		cb->SetData(&tmCB);
 		cb->Bind(eShaderStage::PS);
 
+
+
 	}
 }

@@ -14,8 +14,6 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
-
-
 	private:
 	};
 }

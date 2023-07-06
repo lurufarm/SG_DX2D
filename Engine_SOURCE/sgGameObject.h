@@ -72,12 +72,13 @@ namespace sg
 			return comp;
 		}
 
+		void SetOrder(int value) { mOrder = value; }
+		int GetOrder() { return mOrder; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
-
-		//bool mFocused;
-
+		int mOrder;
 	};
 }

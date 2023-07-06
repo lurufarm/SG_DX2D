@@ -1,5 +1,5 @@
 #include "Img_CatPattern.h"
-#include "sgTime.h"
+#include "..\Engine_SOURCE\sgTime.h"
 
 namespace sg
 {

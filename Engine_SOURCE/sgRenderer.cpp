@@ -12,9 +12,10 @@ namespace renderer
 	using namespace sg::graphics;
 
 	Vertex vertexes[4] = {};
-	sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
-	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
+	sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
+
+	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
@@ -58,11 +59,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
-		shader = sg::Resources::Find<Shader>(L"CatPatternShader");
+		shader = sg::Resources::Find<Shader>(L"GridShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
-
+		
 		shader = sg::Resources::Find<Shader>(L"CatPatternShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
@@ -184,6 +185,26 @@ namespace renderer
 #pragma endregion
 	}
 	
+	void LoadMesh()
+	{
+		// RECT
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
+	}
+
 	void LoadBuffer()
 	{
 		// Vertex Buffer ¼³Á¤
@@ -206,8 +227,14 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
+		// Constant Buffer - Time
 		constantBuffer[(UINT)eCBType::Time] = new ConstantBuffer(eCBType::Time);
 		constantBuffer[(UINT)eCBType::Time]->Create(sizeof(TimeCB));
+
+		// Constant Buffer - Grid
+		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
+		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
+
 
 
 	}
@@ -224,6 +251,11 @@ namespace renderer
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		sg::Resources::Insert(L"SpriteShader", spriteShader);
 
+		std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
+		gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
+		gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
+		sg::Resources::Insert(L"GridShader", gridShader);
+
 		std::shared_ptr<Shader> catPatternShader = std::make_shared<Shader>();
 		catPatternShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		catPatternShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "Select_catpattern");
@@ -239,192 +271,193 @@ namespace renderer
 		SpaceShader2->Create(eShaderStage::PS, L"SpritePS.hlsl", "lobby_space2");
 		sg::Resources::Insert(L"lobby_spaceShader2", SpaceShader2);
 
+	}
 
+	void LoadMaterial()
+	{
+#pragma region Find Shader
+		std::shared_ptr<Shader> spriteShader
+			= Resources::Find<Shader>(L"SpriteShader");
 
-		{ // Test
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+		std::shared_ptr<Shader> catPatternShader
+			= Resources::Find<Shader>(L"CatPatternShader");
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			Resources::Insert(L"SpriteMaterial", spriteMaterial);
-		}
+		std::shared_ptr<Shader> SpaceShader1
+			= Resources::Find<Shader>(L"lobby_spaceShader1");
 
-		{ // BGImg
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Title", L"..\\Resources\\Title\\title.png");
+		std::shared_ptr<Shader> SpaceShader2
+			= Resources::Find<Shader>(L"lobby_spaceShader2");
+#pragma endregion
+#pragma region Texture and Material declaration 
+		std::shared_ptr<Texture> texture;
+		std::shared_ptr<Material> material;
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			Resources::Insert(L"ImgTitle01", spriteMaterial);
-		}
-		{ // TItle logo
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Logo", L"..\\Resources\\Title\\Logo01.png");
+		// Test
+		texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"SpriteMaterial", material);
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgLogo01", spriteMaterial);
-		}
-		{ // Select - Story
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Story", L"..\\Resources\\Title\\ModeIllust_Story.png");
+#pragma endregion
+#pragma region Title Scene Material
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgStory", spriteMaterial);
-		}
-		{ // Select - Party
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Party", L"..\\Resources\\Title\\ModeIllust_Party.png");
+		 // BGImg
+		texture = Resources::Load<Texture>(L"Title", L"..\\Resources\\Title\\title.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Opaque);
+		Resources::Insert(L"ImgTitle01", material);
+		
+		 // TItle logo
+		texture = Resources::Load<Texture>(L"Logo", L"..\\Resources\\Title\\Logo01.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgLogo01", material);
+		
+#pragma endregion
+#pragma region Select Scene Material
+		 // Select - Story
+		texture	= Resources::Load<Texture>(L"Story", L"..\\Resources\\Title\\ModeIllust_Story.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgStory", material);
+		
+		 // Select - Party
+		texture = Resources::Load<Texture>(L"Party", L"..\\Resources\\Title\\ModeIllust_Party.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgParty", material);
+		
+		 // Select - CatPattern
+		texture = Resources::Load<Texture>(L"CatPattern", L"..\\Resources\\Title\\CatPattern.png");
+		material = std::make_shared<Material>();
+		material->SetShader(catPatternShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgCatPattern", material);
+		
+#pragma endregion
+#pragma region Lobby Scene Material
+		 // Lobby - BG1
+		texture = Resources::Load<Texture>(L"Space1", L"..\\Resources\\Lobby\\SvSpace.png");
+		material = std::make_shared<Material>();
+		material->SetShader(SpaceShader1);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgSpace1", material);
+		
+		 // Lobby - BG2
+		texture	= Resources::Load<Texture>(L"Space2", L"..\\Resources\\Lobby\\SvSpace2.png");
+		material = std::make_shared<Material>();
+		material->SetShader(SpaceShader2);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgSpace2", material);
+		
+		 // Lobby_map
+		texture = Resources::Load<Texture>(L"Lobby", L"..\\Resources\\Lobby\\Lobby.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgLobbyMap", material);
+		
+		 // Lobby_Character
+		texture = Resources::Load<Texture>(L"Lobby_Character", L"..\\Resources\\Lobby\\SurvivalCharacter_01.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"InteractableLobbyCharacter", material);
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgParty", spriteMaterial);
-		}
-		{ // Select - CatPattern
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"CatPattern", L"..\\Resources\\Title\\CatPattern.png");
+		
+		 // Lobby_Upgrade
+		texture = Resources::Load<Texture>(L"Lobby_Upgrade", L"..\\Resources\\Lobby\\SurvivalUpgrade_01.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"InteractableLobbyUpgrade", material);
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(catPatternShader);
-			spriteMaterial->SetTexture(texture);
-			//spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgCatPattern", spriteMaterial);
-		}
-		{ // Lobby - BG1
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Space1", L"..\\Resources\\Lobby\\SvSpace.png");
+		
+		 // Lobby_Gate
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(SpaceShader1);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgSpace1", spriteMaterial);
-		}
-		{ // Lobby - BG2
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Space2", L"..\\Resources\\Lobby\\SvSpace2.png");
+		
+		 // Lobby_Molding
+		texture = Resources::Load<Texture>(L"Lobby_Molding", L"..\\Resources\\Lobby\\SvMolding.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgMolding", material);
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(SpaceShader2);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgSpace2", spriteMaterial);
-		}
-		{ // Lobby_map
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Lobby", L"..\\Resources\\Lobby\\Lobby.png");
+		
+#pragma endregion
+#pragma region UI Material
+		 // UI_Exit Button
+		texture = Resources::Load<Texture>(L"ExitButton", L"..\\Resources\\UI\\NavButton_12.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UIExitButton", material);
+		
+		 // UI_SelectBox 0 (top left)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_tl", L"..\\Resources\\UI\\selectbox_tl.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISBox_tl", material);
+		
+		 // UI_SelectBox 1 (top right)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_tr", L"..\\Resources\\UI\\selectbox_tr.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISBox_tr", material);
+		
+		 // UI_SelectBox 2 (bottom left)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_bl", L"..\\Resources\\UI\\selectbox_bl.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISBox_bl", material);
+		
+		 // UI_SelectBox 3 (bottom right)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_br", L"..\\Resources\\UI\\selectbox_br.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISBox_br", material);
+		
+#pragma endregion
 
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"ImgLobbyMap", spriteMaterial);
-		}
-		{ // UI_Exit Button
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"ExitButton", L"..\\Resources\\UI\\NavButton_12.png");
-
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::CutOut);
-			Resources::Insert(L"UIExitButton", spriteMaterial);
-		}
-		{ // UI_SelectBox 0 (top left)
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"UI_SelectBox_tl", L"..\\Resources\\UI\\selectbox_tl.png");
-
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::Transparent);
-			Resources::Insert(L"UISBox_tl", spriteMaterial);
-		}
-		{ // UI_SelectBox 1 (top right)
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"UI_SelectBox_tr", L"..\\Resources\\UI\\selectbox_tr.png");
-
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::Transparent);
-			Resources::Insert(L"UISBox_tr", spriteMaterial);
-		}
-		{ // UI_SelectBox 2 (bottom left)
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"UI_SelectBox_bl", L"..\\Resources\\UI\\selectbox_bl.png");
-
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::Transparent);
-			Resources::Insert(L"UISBox_bl", spriteMaterial);
-		}
-		{ // UI_SelectBox 3 (bottom right)
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"UI_SelectBox_br", L"..\\Resources\\UI\\selectbox_br.png");
-
-			std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-			spriteMaterial->SetShader(spriteShader);
-			spriteMaterial->SetTexture(texture);
-			spriteMaterial->SetRendereringMode(eRenderingMode::Transparent);
-			Resources::Insert(L"UISBox_br", spriteMaterial);
-		}
 	}
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.0f, 1.0f);
-
+		LoadMesh();
 		LoadBuffer();
 		LoadShader();
 		SetupState();
-
+		LoadMaterial();
 	}
+
 	void Update()
 	{
-		//if (Input::KeyP(eKeyCode::W) || Input::KeyD(eKeyCode::W))
-		//{
-		//	MovePos.y += 0.5 * Time::DeltaTime();
-		//}
-		//else if (Input::KeyP(eKeyCode::S) || Input::KeyD(eKeyCode::S))
-		//{
-		//	MovePos.y -= 0.5 * Time::DeltaTime();
-		//}
-		//if (Input::KeyP(eKeyCode::A) || Input::KeyD(eKeyCode::A))
-		//{
-		//	MovePos.x -= 0.5 * Time::DeltaTime();
-		//}
-		//else if (Input::KeyP(eKeyCode::D) || Input::KeyD(eKeyCode::D))
-		//{
-		//	MovePos.x += 0.5 * Time::DeltaTime();
-		//}
-
-		//constantBuffer->SetData(&MovePos);
 	}
 
 	void Render()

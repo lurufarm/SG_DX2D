@@ -17,7 +17,9 @@ namespace sg::enums
 
 	enum class eLayerType
 	{
+		Grid,
 		BGImg,
+		InteractableObject,
 		Player,
 		Monster,
 		UI,

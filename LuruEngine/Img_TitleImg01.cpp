@@ -1,5 +1,4 @@
 #include "Img_TitleImg01.h"
-#include "sgResources.h"
 
 namespace sg
 {

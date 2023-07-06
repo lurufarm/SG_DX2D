@@ -1,3 +1,4 @@
+#include "globals.hlsli"
 
 struct VSIn
 {
@@ -12,16 +13,6 @@ struct VSOut
 	float4 Color : COLOR;
     float2 UV : TEXCOORD;
 };
-
-cbuffer Transform : register(b0)
-{
-	float4 Pos;
-}
-
-cbuffer Time : register(b1)
-{
-    float Time;
-}
 
 VSOut main(VSIn In)
 {

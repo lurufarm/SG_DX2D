@@ -1,10 +1,10 @@
 #pragma once
-#include "sgGameObject.h"
-#include "sgResources.h"
-#include "sgTransform.h"
-#include "sgMeshRenderer.h"
-#include "sgMesh.h"
-#include "sgMaterial.h"
+#include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgResources.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgMeshRenderer.h"
+#include "..\Engine_SOURCE\sgMesh.h"
+#include "..\Engine_SOURCE\sgMaterial.h"
 
 namespace sg
 {
