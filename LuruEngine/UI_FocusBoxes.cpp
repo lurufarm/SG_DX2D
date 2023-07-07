@@ -1,6 +1,7 @@
 #include "UI_FocusBoxes.h"
-#include "../Engine_SOURCE/sgInput.h"
-#include "../Engine_SOURCE/sgTime.h"
+#include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgObject.h"
 
 
 
@@ -21,10 +22,10 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mTr->SetPosition(Vector3(0.0f, 0.0f, -2.0f));
-		mBoxes[0] = new UI_FocusBox(0);
-		mBoxes[1] = new UI_FocusBox(1);
-		mBoxes[2] = new UI_FocusBox(2);
-		mBoxes[3] = new UI_FocusBox(3);
+		mBoxes[0] = object::Instantiate<UI_FocusBox>(0, eLayerType::UI);
+		mBoxes[1] = object::Instantiate<UI_FocusBox>(1, eLayerType::UI);
+		mBoxes[2] = object::Instantiate<UI_FocusBox>(2, eLayerType::UI);
+		mBoxes[3] = object::Instantiate<UI_FocusBox>(3, eLayerType::UI);
 
 		mObjs.clear();
 

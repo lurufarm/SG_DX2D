@@ -71,6 +71,9 @@
     <ClCompile Include="Img_LobbyMolding.cpp">
       <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
+    <ClCompile Include="SCRIPT_GridScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Img_LobbyMolding.h">
       <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_GridScript.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

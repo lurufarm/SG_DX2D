@@ -13,6 +13,7 @@ namespace sg
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		virtual void Destroy();
 
 		void AddGameObj(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects()

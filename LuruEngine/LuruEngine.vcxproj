@@ -43,7 +43,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -162,6 +162,7 @@
     <ClInclude Include="Interact_LobbyCharacter.h" />
     <ClInclude Include="Interact_LobbyGate.h" />
     <ClInclude Include="Interact_LobbyUpgrade.h" />
+    <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="UI_Select.h" />
     <ClInclude Include="Img_Space1.h" />
     <ClInclude Include="Img_Space2.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="Interact_LobbyCharacter.cpp" />
     <ClCompile Include="Interact_LobbyGate.cpp" />
     <ClCompile Include="Interact_LobbyUpgrade.cpp" />
+    <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="UI_Select.cpp" />
     <ClCompile Include="Img_Space1.cpp" />
     <ClCompile Include="Img_Space2.cpp" />

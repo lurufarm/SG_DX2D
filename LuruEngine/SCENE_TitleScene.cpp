@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgObject.h"
 		 
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
@@ -27,23 +28,13 @@ namespace sg
 	{
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		GetDevice()->SetBgColor(BgColor);
+		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
-		Img_Title* title01 = new Img_Title();
-		AddGameObj(eLayerType::BGImg, title01);
+		object::Instantiate<Img_Title>(eLayerType::BGImg);
+		object::Instantiate<Img_Logo>(eLayerType::BGImg);
 
-		Img_Logo* logo01 = new Img_Logo();
-		AddGameObj(eLayerType::BGImg, logo01);
-		
-		GameObject* camera = new GameObject();
-		AddGameObj(eLayerType::BGImg, camera);
-		camera->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg);
 		Camera* cameraComp = camera->AddComp<Camera>();
-		//camera->AddComp<CameraScript>();
-
-		GameObject* UIcamera = new GameObject();
-		AddGameObj(eLayerType::UI, UIcamera);
-		UIcamera->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* UIcameraComp = UIcamera->AddComp<Camera>();
 	}
 	void TitleScene::Update()
 	{

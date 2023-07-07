@@ -43,6 +43,9 @@ namespace sg
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
 
+		float GetSize() { return mSize; }
+
+
 	private:
 		static Matrix View;
 		static Matrix Projection;

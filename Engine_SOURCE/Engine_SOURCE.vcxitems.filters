@@ -13,9 +13,6 @@
     <Filter Include="Resource">
       <UniqueIdentifier>{bb2ba7d1-94a1-41b5-8503-663309728a3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{925847f9-c026-4ede-9f42-6266bc4f1ddb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Entity">
       <UniqueIdentifier>{e0a1d59f-faf5-4173-8336-391b3a76518f}</UniqueIdentifier>
     </Filter>
@@ -79,8 +76,14 @@
     <Filter Include="GameObject\Component\MeshRenderer">
       <UniqueIdentifier>{91ea0221-9db1-4dec-97d8-8e711bdb7a25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Time">
+    <Filter Include="Common\Time">
       <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Input">
+      <UniqueIdentifier>{925847f9-c026-4ede-9f42-6266bc4f1ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Object">
+      <UniqueIdentifier>{97cfa5d2-9bcb-4a7e-81ef-46d0b981a6d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -106,10 +109,10 @@
       <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTime.h">
-      <Filter>Time</Filter>
+      <Filter>Common\Time</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h">
       <Filter>Resource</Filter>
@@ -165,6 +168,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTransform.h">
       <Filter>GameObject\Component\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h">
+      <Filter>Common\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -177,10 +183,10 @@
       <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTime.cpp">
-      <Filter>Time</Filter>
+      <Filter>Common\Time</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResources.cpp">
       <Filter>Resource\Resources</Filter>

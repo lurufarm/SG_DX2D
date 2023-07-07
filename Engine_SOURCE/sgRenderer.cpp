@@ -288,7 +288,7 @@ namespace renderer
 		std::shared_ptr<Shader> SpaceShader2
 			= Resources::Find<Shader>(L"lobby_spaceShader2");
 #pragma endregion
-#pragma region Texture and Material declaration 
+#pragma region Basic Texture and Basic Material declaration 
 		std::shared_ptr<Texture> texture;
 		std::shared_ptr<Material> material;
 
@@ -299,6 +299,14 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"SpriteMaterial", material);
+
+		// Grid
+
+		std::shared_ptr<Shader>gridShader
+			= Resources::Find<Shader>(L"GridShader");
+		material = std::make_shared<Material>();
+		material->SetShader(gridShader);
+		Resources::Insert(L"GridMaterial", material);
 
 #pragma endregion
 #pragma region Title Scene Material

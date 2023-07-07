@@ -72,6 +72,9 @@ namespace sg
 			return comp;
 		}
 
+		void SetState(eState state) { mState = state; }
+		eState GetState() { return mState; }
+
 		void SetOrder(int value) { mOrder = value; }
 		int GetOrder() { return mOrder; }
 

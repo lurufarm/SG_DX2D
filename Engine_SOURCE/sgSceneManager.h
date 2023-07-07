@@ -10,8 +10,9 @@ namespace sg
 		static void Update();
 		static void LateUpdate();
 		static void Render();
+		static void Destroy();
 		static void Release();
-
+		
 		template <typename T>
 		static bool CreateScene(std::wstring name)
 		{

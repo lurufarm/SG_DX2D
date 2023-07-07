@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResources.h" />

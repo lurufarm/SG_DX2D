@@ -1,5 +1,6 @@
 #include "SCENE_LobbyScene.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgTime.h"
 #include "..\Engine_SOURCE\sgGraphicDevice_Dx11.h"
@@ -9,6 +10,7 @@
 #include "..\Engine_SOURCE\sgCamera.h"
 
 #include "SCRIPT_CameraScript.h"
+#include "SCRIPT_GridScript.h"
 
 #include "Img_Space1.h"
 #include "Img_Space2.h"
@@ -56,6 +58,16 @@ namespace sg
 		AddGameObj(eLayerType::BGImg, LobbyScenecamera);
 		LobbyScenecamera->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();
+
+		GameObject* grid = new GameObject();
+		grid->SetName(L"Grid");
+		AddGameObj(eLayerType::Grid, grid);
+		MeshRenderer* mr = grid->AddComp<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
+		SCRIPT_GridScript* script_grid = grid->AddComp<SCRIPT_GridScript>();
+		script_grid->SetCamera(cameraComp);
+
 
 	}
 	void LobbyScene::Update()
