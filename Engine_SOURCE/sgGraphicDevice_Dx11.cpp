@@ -7,6 +7,7 @@ extern sg::Application application;
 namespace sg::graphics
 {
 	GraphicDevice_Dx11::GraphicDevice_Dx11()
+		: mBgcolor{0.2f, 0.2f, 0.2f, 1.0f}
 	{
 		// Device, Context »ý¼º
 		HWND hWnd = application.GetHwnd();
@@ -28,11 +29,12 @@ namespace sg::graphics
 		if (!CreateSwapChain(&swapChainDesc, hWnd))
 			return;
 
-		// get rendertarget by swapchain
+		// set rendertarget by swapchain
+
 		if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D)
 			, (void**)mRenderTarget.GetAddressOf())))
 			return;
-
+			
 		// create rendertarget view
 
 		mDevice->CreateRenderTargetView((ID3D11Resource*)mRenderTarget.Get()
@@ -71,7 +73,8 @@ namespace sg::graphics
 
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
-	}
+		
+	}	
 
 	GraphicDevice_Dx11::~GraphicDevice_Dx11()
 	{
@@ -85,7 +88,7 @@ namespace sg::graphics
 		dxgiDesc.OutputWindow = hWnd;
 		dxgiDesc.Windowed = true;
 		dxgiDesc.BufferCount = desc->BufferCount;
-		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
+		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;
 
 		dxgiDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 		dxgiDesc.BufferDesc.Width = desc->BufferDesc.Width;
@@ -136,8 +139,9 @@ namespace sg::graphics
 		dxgiDesc.MipLevels = desc->MipLevels;
 		dxgiDesc.MiscFlags = desc->MiscFlags;
 
-		if (FAILED(mDevice->CreateTexture2D(&dxgiDesc, nullptr, mDepthStencilBuffer.ReleaseAndGetAddressOf())))
+		if (FAILED(mDevice->CreateTexture2D(&dxgiDesc, nullptr, mDepthStencilBuffer.GetAddressOf())))
 			return false;
+
 
 		if (FAILED(mDevice->CreateDepthStencilView(mDepthStencilBuffer.Get(), nullptr, mDepthStencilView.GetAddressOf())))
 			return false;
@@ -205,6 +209,30 @@ namespace sg::graphics
 	bool GraphicDevice_Dx11::CreateSampler(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState)
 	{
 		if (FAILED(mDevice->CreateSamplerState(pSamplerDesc, ppSamplerState)))
+			return false;
+
+		return true;
+	}
+
+	bool GraphicDevice_Dx11::CreateRasterizerState(const D3D11_RASTERIZER_DESC* pRasterizerDesc, ID3D11RasterizerState** ppRasterizerState)
+	{
+		if (FAILED(mDevice->CreateRasterizerState(pRasterizerDesc, ppRasterizerState)))
+			return false;
+
+		return true;
+	}
+
+	bool GraphicDevice_Dx11::CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC* pDepthStencilDesc, ID3D11DepthStencilState** ppDepthStencilState)
+	{
+		if (FAILED(mDevice->CreateDepthStencilState(pDepthStencilDesc, ppDepthStencilState)))
+			return false;
+
+		return true;
+	}
+
+	bool GraphicDevice_Dx11::CreateBlendState(const D3D11_BLEND_DESC* pBlendStateDesc, ID3D11BlendState** ppBlendState)
+	{
+		if (FAILED(mDevice->CreateBlendState(pBlendStateDesc, ppBlendState)))
 			return false;
 
 		return true;
@@ -355,6 +383,21 @@ namespace sg::graphics
 		mContext->RSSetViewports(1, viewport);
 	}
 
+	void GraphicDevice_Dx11::BindRasterizerState(ID3D11RasterizerState* pRasterizerState)
+	{
+		mContext->RSSetState(pRasterizerState);
+	}
+
+	void GraphicDevice_Dx11::BindDepthStencilState(ID3D11DepthStencilState* pDepthStencilState)
+	{
+		mContext->OMSetDepthStencilState(pDepthStencilState, 0);
+	}
+
+	void GraphicDevice_Dx11::BindBlendState(ID3D11BlendState* pBlendState)
+	{
+		mContext->OMSetBlendState(pBlendState, nullptr, 0xffffffff);
+	}
+
 	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
 	{
 		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
@@ -363,8 +406,8 @@ namespace sg::graphics
 	void GraphicDevice_Dx11::ClearTarget()
 	{
 		// render target clear
-		FLOAT bgColor[4] = { 0.2f, 0.2f, 0.2f, 1.0f };
-		mContext->ClearRenderTargetView(mRenderTargetView.Get(), bgColor);
+		//FLOAT bgColor[4] = { 0.2f, 0.2f, 0.2f, 1.0f };
+		mContext->ClearRenderTargetView(mRenderTargetView.Get(), mBgcolor);
 		mContext->ClearDepthStencilView(mDepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0.0f);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 	}

@@ -7,6 +7,7 @@ namespace sg
 {
 	GameObject::GameObject()
 		: mState(eState::Active)
+		, mOrder(0)
 	{
 		AddComp<Transform>();
 	}
@@ -28,8 +29,7 @@ namespace sg
 			
 			delete script;
 			script = nullptr;
-		}		
-
+		}
 	}
 	void GameObject::Initialize()
 	{

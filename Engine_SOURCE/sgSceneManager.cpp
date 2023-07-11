@@ -1,5 +1,5 @@
 #include "sgSceneManager.h"
-#include "sgTitleScene.h"
+
 
 namespace sg
 {
@@ -8,10 +8,6 @@ namespace sg
 
 	void SceneManager::Initialize()
 	{
-		mActiveScene = new TitleScene();
-		mScenes.insert(std::make_pair(L"TitleScene", mActiveScene));
-
-		mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
 	{
@@ -24,6 +20,10 @@ namespace sg
 	void SceneManager::Render()
 	{
 		mActiveScene->Render();
+	}
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
 	}
 	void SceneManager::Release()
 	{

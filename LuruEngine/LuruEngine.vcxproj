@@ -28,30 +28,30 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -117,8 +117,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>(AdditionalIncludeDirectories);C:\Users\sg\DX_D2\LuRuEngine\Engine_SOURCE;$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -126,7 +127,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,9 +152,72 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Gobj_Character.h" />
+    <ClInclude Include="Gobj_Img.h" />
+    <ClInclude Include="Gobj_Interactable.h" />
+    <ClInclude Include="Gobj_Player.h" />
+    <ClInclude Include="Gobj_UI.h" />
+    <ClInclude Include="Img_CatPattern.h" />
+    <ClInclude Include="Img_LobbyMap.h" />
+    <ClInclude Include="Img_LobbyMolding.h" />
+    <ClInclude Include="Img_Logo.h" />
+    <ClInclude Include="Img_SelectText.h" />
+    <ClInclude Include="Img_Stage0_Forest01_Map.h" />
+    <ClInclude Include="Interact_LobbyCharacter.h" />
+    <ClInclude Include="Interact_LobbyGate.h" />
+    <ClInclude Include="Interact_LobbyUpgrade.h" />
+    <ClInclude Include="SCENE_PlayScene.h" />
+    <ClInclude Include="SCENE_Stage0.h" />
+    <ClInclude Include="SCRIPT_GridScript.h" />
+    <ClInclude Include="Stage0_Forest01.h" />
+    <ClInclude Include="UI_Select.h" />
+    <ClInclude Include="Img_Space1.h" />
+    <ClInclude Include="Img_Space2.h" />
+    <ClInclude Include="Img_TitleImg01.h" />
+    <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="SCRIPT_CameraScript.h" />
+    <ClInclude Include="SCENE_LobbyScene.h" />
+    <ClInclude Include="SCENE_SelectScene.h" />
+    <ClInclude Include="SCRIPT_SelectScript.h" />
+    <ClInclude Include="SCENE_TitleScene.h" />
+    <ClInclude Include="UI_Exit.h" />
+    <ClInclude Include="UI_FocusBox.h" />
+    <ClInclude Include="UI_FocusBoxes.h" />
+    <ClInclude Include="UI_Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Gobj_Character.cpp" />
+    <ClCompile Include="Gobj_Img.cpp" />
+    <ClCompile Include="Gobj_Interactable.cpp" />
+    <ClCompile Include="Gobj_Player.cpp" />
+    <ClCompile Include="Gobj_UI.cpp" />
+    <ClCompile Include="Img_CatPattern.cpp" />
+    <ClCompile Include="Img_LobbyMap.cpp" />
+    <ClCompile Include="Img_LobbyMolding.cpp" />
+    <ClCompile Include="Img_Logo.cpp" />
+    <ClCompile Include="Img_SelectText.cpp" />
+    <ClCompile Include="Img_Stage0_Forest01_Map.cpp" />
+    <ClCompile Include="Interact_LobbyCharacter.cpp" />
+    <ClCompile Include="Interact_LobbyGate.cpp" />
+    <ClCompile Include="Interact_LobbyUpgrade.cpp" />
+    <ClCompile Include="SCENE_PlayScene.cpp" />
+    <ClCompile Include="SCENE_Stage0.cpp" />
+    <ClCompile Include="SCRIPT_GridScript.cpp" />
+    <ClCompile Include="Stage0_Forest01.cpp" />
+    <ClCompile Include="UI_Select.cpp" />
+    <ClCompile Include="Img_Space1.cpp" />
+    <ClCompile Include="Img_Space2.cpp" />
+    <ClCompile Include="Img_TitleImg01.cpp" />
     <ClCompile Include="LuruEngine.cpp" />
+    <ClCompile Include="SCRIPT_CameraScript.cpp" />
+    <ClCompile Include="SCENE_LobbyScene.cpp" />
+    <ClCompile Include="SCENE_SelectScene.cpp" />
+    <ClCompile Include="SCRIPT_SelectScript.cpp" />
+    <ClCompile Include="SCENE_TitleScene.cpp" />
+    <ClCompile Include="UI_Exit.cpp" />
+    <ClCompile Include="UI_FocusBox.cpp" />
+    <ClCompile Include="UI_FocusBoxes.cpp" />
+    <ClCompile Include="UI_Menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

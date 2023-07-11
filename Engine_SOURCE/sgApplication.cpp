@@ -25,7 +25,7 @@ namespace sg
 	}
 	void Application::Initialize()
 	{
-		Time::Initialize();
+		Time::Initialize(); 
 		Input::Initialize();
 
 		renderer::Initialize();
@@ -47,11 +47,19 @@ namespace sg
 
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
-		SceneManager::Render();
+
+		//SceneManager::Render();
+		renderer::Render();
 		//graphicDevice->Draw();
 
+	}
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
+	}
+	void Application::Present()
+	{
 		graphicDevice->Present();
-
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
 	{

@@ -6,11 +6,16 @@
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "d3dcompiler.lib")
 
+#include "sgEnums.h"
+#include "sgMath.h"
+
 #define CB_GETBINDSLOT(name) __CBUFFERBINDSLOT__##name##__
 #define CBUFFER(name, slot) static const int CB_GETBINDSLOT(name) = slot; struct alignas(16) name
 
 #define CBSLOT_TRANSFORM		0
 //#define CBSLOT_PARTICLE			1
+#define CBSLOT_TIME				1
+#define CBSLOT_GRID				2
 
 namespace sg::graphics
 {
@@ -28,6 +33,8 @@ namespace sg::graphics
 	enum class eCBType
 	{
 		Transform,
+		Time,
+		Grid,
 		Material,
 		End,
 	};
@@ -36,6 +43,40 @@ namespace sg::graphics
 	{
 		Point,
 		Anisotropic,
+		End,
+	};
+
+	enum class eRSType
+	{
+		SolidBack,
+		SolidFront,
+		SolidNone,
+		WireframeNone,
+		End,
+	};
+
+	enum class eDSType
+	{
+		Less,
+		Greater,
+		NoWrite,
+		None,
+		End,
+	};
+
+	enum class eBSType
+	{
+		Default,
+		AlphaBlend,
+		OneOne,
+		End,
+	};
+
+	enum class eRenderingMode
+	{
+		Opaque,
+		CutOut,
+		Transparent,
 		End,
 	};
 
@@ -52,4 +93,17 @@ namespace sg::graphics
 		}
 		virtual ~GpuBuffer() = default;
 	};
+	
+	struct DebugMesh
+	{
+		enums::eColliderType type;
+		math::Vector3 position;
+		math::Vector3 rotation;
+		math::Vector3 scale;
+
+		float radius;
+		float duration;
+		float time;
+	};
+
 }

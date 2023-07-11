@@ -10,11 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_Window", "Editor_Win
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_SOURCE", "Editor_SOURCE\Editor_SOURCE.vcxitems", "{1D26E77A-6B61-4E20-A415-044E11CCD40A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_SOURCE", "Engine_SOURCE\Engine_SOURCE.vcxitems", "{923E1C9B-486F-4ED9-8448-75A58E324604}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader_SOURCE", "Shader_SOURCE\Shader_SOURCE.vcxitems", "{7F9C613C-910B-479D-B576-7A1DFDB32E50}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuruEngine", "LuruEngine\LuruEngine.vcxproj", "{AB641758-63D2-4EC4-8A31-8032188DF535}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_SOURCE", "Engine_SOURCE\Engine_SOURCE.vcxitems", "{D577A696-9968-4FA3-8EE3-686A7E204AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +51,7 @@ Global
 		Editor_SOURCE\Editor_SOURCE.vcxitems*{1d26e77a-6b61-4e20-a415-044e11ccd40a}*SharedItemsImports = 9
 		Shader_SOURCE\Shader_SOURCE.vcxitems*{7f9c613c-910b-479d-b576-7a1dfdb32e50}*SharedItemsImports = 9
 		Editor_SOURCE\Editor_SOURCE.vcxitems*{7fa29af8-1ede-43c2-82a7-d9112be9d36e}*SharedItemsImports = 4
-		Engine_SOURCE\Engine_SOURCE.vcxitems*{7fa29af8-1ede-43c2-82a7-d9112be9d36e}*SharedItemsImports = 4
-		Engine_SOURCE\Engine_SOURCE.vcxitems*{923e1c9b-486f-4ed9-8448-75a58e324604}*SharedItemsImports = 9
 		Engine_SOURCE\Engine_SOURCE.vcxitems*{ab641758-63d2-4ec4-8a31-8032188df535}*SharedItemsImports = 4
+		Engine_SOURCE\Engine_SOURCE.vcxitems*{d577a696-9968-4fa3-8ee3-686a7e204af1}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

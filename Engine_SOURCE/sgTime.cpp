@@ -1,5 +1,6 @@
 #include "sgTime.h"
 #include "sgApplication.h"
+#include "sgRenderer.h"
 
 extern sg::Application application;
 
@@ -7,6 +8,7 @@ namespace sg
 {
 	double Time::mDeltaTime = 0.0l;
 	double Time::mSecond = 0.0f;
+	float Time::mTime = 0.0f;
 	LARGE_INTEGER Time::mCpuFrequency = {};
 	LARGE_INTEGER Time::mPrevFrequency = {};
 	LARGE_INTEGER Time::mCurFrequency = {};
@@ -29,6 +31,8 @@ namespace sg
 		mDeltaTime = differenceFrequency / mCpuFrequency.QuadPart;
 		
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
+
+		mTime += mDeltaTime;
 	}
 
 	void Time::Render()
@@ -48,6 +52,18 @@ namespace sg
 			//TextOut(hdc, 0, 0, szFloat, 20);
 			mSecond = 0.0;
 		}
+
+	}
+	void Time::BindConstantBuffer()
+	{
+		renderer::TimeCB tmCB = {};
+		tmCB.mTime.y = mTime;
+
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Time];
+		cb->SetData(&tmCB);
+		cb->Bind(eShaderStage::PS);
+
+
 
 	}
 }

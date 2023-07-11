@@ -1,6 +1,7 @@
 #pragma once
 #include "LuruEngine.h"
 #include "sgGraphicDevice_Dx11.h"
+#include "sgScene.h"
 
 namespace sg
 {
@@ -17,6 +18,8 @@ namespace sg
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Destroy();
+		void Present();
 
 		void SetWindow(HWND hwnd, UINT width, UINT height);
 

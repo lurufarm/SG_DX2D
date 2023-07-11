@@ -50,6 +50,7 @@ namespace sg::graphics
 		
 		mWidth = mImage.GetMetadata().width;
 		mHeight = mImage.GetMetadata().height;
+
 		return S_OK;
 	}
 	void Texture::BindShader(eShaderStage stage, UINT startSlot)
@@ -69,17 +70,20 @@ namespace sg::graphics
 	}
 	Vector3 Texture::GetRatio()
 	{
+		Vector3 Ratio = Vector3::One;
 		if (mWidth > mHeight)
 		{
-			return Vector3(mWidth / mHeight, 1.0f, 1.0f);
+			Ratio = Vector3(mWidth / mHeight, 1.0f, 1.0f);
 		}
 		else if (mWidth < mHeight)
 		{
-			return Vector3(1.0f, mHeight / mWidth, 1.0f);
+			Ratio = Vector3(1.0f, mHeight / mWidth, 1.0f);
 		}
 		else if (mWidth == mHeight)
 		{
-			return Vector3(1.0f, 1.0f, 1.0f);
+			Ratio =  Vector3(1.0f, 1.0f, 1.0f);
 		}
+
+		return Ratio;
 	}
 }

@@ -9,7 +9,7 @@ namespace sg
 		static void Initialize();
 		static void Update();
 		static void Render();
-
+		static void BindConstantBuffer();
 		__forceinline static double DeltaTime() { return mDeltaTime; }
 
 	private:
@@ -18,6 +18,8 @@ namespace sg
 		static LARGE_INTEGER mCpuFrequency;
 		static LARGE_INTEGER mPrevFrequency;
 		static LARGE_INTEGER mCurFrequency;
+
+		static float mTime;
 	};
 };
 

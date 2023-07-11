@@ -3,10 +3,18 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "sgApplication.h"
-#include "sgRenderer.h"
-#include "sgResources.h"
-#include "sgSceneManager.h"
+
+#include "..\Engine_SOURCE\sgApplication.h"
+#include "..\Engine_SOURCE\sgRenderer.h"
+#include "..\Engine_SOURCE\sgResources.h"
+#include "LoadScenes.h"
+#include "GUI_Editor.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\LuruEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\LuruEngine.lib")
+#endif
 
 sg::Application application;
 
@@ -30,6 +38,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     // TODO: 여기에 코드를 입력합니다.
 
@@ -65,10 +74,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // 게임 로직 실행
             application.Run();
+            gui::GUI_Editor::Run();
+            application.Present();
         }
     }
     renderer::Release();
     sg::SceneManager::Release();
+    gui::GUI_Editor::Release();
 
     return (int)msg.wParam;
 }
@@ -141,6 +153,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
+   sg::InitializeScenes();
+   gui::GUI_Editor::Initialize();
 
    return TRUE;
 }

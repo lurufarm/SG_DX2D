@@ -18,11 +18,15 @@ namespace sg::graphics
 
 		void SetShader(std::shared_ptr<Shader> shader) { mShader = shader; }
 		void SetTexture(std::shared_ptr<Texture> texture) { mTexture = texture; }
+		void SetRendereringMode(eRenderingMode mode) { mMode = mode; }
+		eRenderingMode GetRenderingMode() { return mMode; }
 
 		std::shared_ptr<Texture> GetTexture() { return mTexture; }
 
 	private:
 		std::shared_ptr<Shader> mShader;
 		std::shared_ptr<Texture> mTexture;
+
+		eRenderingMode mMode;
 	};
 }

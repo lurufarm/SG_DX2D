@@ -13,17 +13,11 @@
     <Filter Include="Resource">
       <UniqueIdentifier>{bb2ba7d1-94a1-41b5-8503-663309728a3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{925847f9-c026-4ede-9f42-6266bc4f1ddb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Entity">
       <UniqueIdentifier>{e0a1d59f-faf5-4173-8336-391b3a76518f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Common\Math">
       <UniqueIdentifier>{b465ce8e-42fc-4817-b543-0ea6de3ce6b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Time">
-      <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource\Resources">
       <UniqueIdentifier>{a9803acc-1cce-4d47-8824-ffffb90512e0}</UniqueIdentifier>
@@ -46,14 +40,53 @@
     <Filter Include="GameObject\Component">
       <UniqueIdentifier>{95dd6b84-732f-45f0-a147-5a7fc65d7558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Texture">
-      <UniqueIdentifier>{488113d9-214b-47d0-97f1-9401b40c89b8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{07042f10-664d-400f-9816-677c75d93429}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gobj_BG">
-      <UniqueIdentifier>{1d006c0a-9e72-4704-bb9f-694f85ee916d}</UniqueIdentifier>
+    <Filter Include="Graphics\ConstantBuffer">
+      <UniqueIdentifier>{8091a115-22dc-4226-9cfa-1ed6a88fdc87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GraphicDevice">
+      <UniqueIdentifier>{76019be9-98ad-4336-bee7-cb58ea56bccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Renderer">
+      <UniqueIdentifier>{bd31ca4b-8cc0-493f-8124-57dac7c8e83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{b425ddae-d07a-453a-bbdf-8a71fd78235d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{a3376f0c-6578-49a5-8615-e0a7cb1a1a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{2a4acc7c-447b-4002-9b81-44c98f59aacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{b316611d-1258-46c7-bf4c-1e1bf68569bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Base">
+      <UniqueIdentifier>{45df18cd-5866-4450-85c1-7cc59c615854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Camera">
+      <UniqueIdentifier>{338fcbd9-28cb-4cb4-8c25-32cb68da34be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Transform">
+      <UniqueIdentifier>{a6245483-c69e-4f04-a41e-052e55dd63ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\MeshRenderer">
+      <UniqueIdentifier>{91ea0221-9db1-4dec-97d8-8e711bdb7a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Time">
+      <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Input">
+      <UniqueIdentifier>{925847f9-c026-4ede-9f42-6266bc4f1ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Object">
+      <UniqueIdentifier>{97cfa5d2-9bcb-4a7e-81ef-46d0b981a6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Collider">
+      <UniqueIdentifier>{46e483e0-7d11-4b72-aee4-44c423a499c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,9 +105,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEntity.h">
       <Filter>Common\Entity</Filter>
     </ClInclude>
@@ -85,25 +115,13 @@
       <Filter>Common\Time</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResources.h">
       <Filter>Resource\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgShader.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgScene.h">
       <Filter>Scene\Base</Filter>
@@ -114,47 +132,58 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgComponent.h">
-      <Filter>GameObject\Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgSceneManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgTitleScene.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgTransform.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h">
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.h">
+      <Filter>Graphics\GraphicDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h">
+      <Filter>Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h">
+      <Filter>Resource\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h">
+      <Filter>Resource\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgShader.h">
+      <Filter>Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTexture.h">
-      <Filter>Texture</Filter>
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgComponent.h">
+      <Filter>GameObject\Component\Base</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgCameraScript.h">
-      <Filter>GameObject\Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h">
-      <Filter>GameObject\Component</Filter>
+      <Filter>GameObject\Component\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.h">
-      <Filter>Gobj_BG</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.h">
-      <Filter>Gobj_BG</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgTransform.h">
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h">
+      <Filter>Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h">
+      <Filter>GameObject\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCollisionManager.h">
+      <Filter>Scene\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
       <Filter>High Level Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp">
-      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp">
       <Filter>Common\Entity</Filter>
@@ -166,25 +195,13 @@
       <Filter>Common\Time</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResource.cpp">
       <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgShader.cpp">
-      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgScene.cpp">
       <Filter>Scene\Base</Filter>
@@ -195,39 +212,50 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgComponent.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgSceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgTitleScene.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgTransform.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp">
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgMeshRenderer.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp">
+      <Filter>Graphics\GraphicDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp">
+      <Filter>Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp">
+      <Filter>Resource\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp">
+      <Filter>Resource\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgShader.cpp">
+      <Filter>Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTexture.cpp">
-      <Filter>Texture</Filter>
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgComponent.cpp">
+      <Filter>GameObject\Component\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp">
+      <Filter>GameObject\Component\Camera</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgCameraScript.cpp">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgMeshRenderer.cpp">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp">
-      <Filter>Graphics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgTransform.cpp">
+      <Filter>GameObject\Component\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp">
+      <Filter>GameObject\Component\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\BGImg_TitleImg01.cpp">
-      <Filter>Gobj_BG</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\LuruEngine\Gobj_BGImg.cpp">
-      <Filter>Gobj_BG</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCollisionManager.cpp">
+      <Filter>Scene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

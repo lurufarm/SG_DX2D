@@ -23,6 +23,10 @@ namespace sg
 		virtual void LateUpdate();
 		virtual void Render();
 
+		//void SetFocused(bool value) { mFocused = value; }
+		//bool GetFocused() { return mFocused; }
+
+
 		template <typename T>
 		T* GetComp()
 		{
@@ -68,9 +72,16 @@ namespace sg
 			return comp;
 		}
 
+		void SetState(eState state) { mState = state; }
+		eState GetState() { return mState; }
+
+		void SetOrder(int value) { mOrder = value; }
+		int GetOrder() { return mOrder; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
+		int mOrder;
 	};
 }

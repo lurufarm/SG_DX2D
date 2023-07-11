@@ -11,10 +11,7 @@ namespace sg
 	}
 	void Scene::Initialize()
 	{
-		//for (Layer& layer : mLayers)
-		//{
-		//	layer.Initialize(); // Å×½ºÆ®2
-		//}
+	
 	}
 	void Scene::Update()
 	{
@@ -35,6 +32,13 @@ namespace sg
 		for (Layer& layer : mLayers)
 		{
 			layer.Render();
+		}
+	}
+	void Scene::Destroy()
+	{
+		for (Layer& layer : mLayers)
+		{
+			layer.Destroy();
 		}
 	}
 	void Scene::OnEnter()

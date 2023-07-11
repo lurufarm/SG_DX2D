@@ -4,6 +4,7 @@
 #include "sgMesh.h"
 #include "sgShader.h"
 #include "sgConstantBuffer.h"
+#include "sgCamera.h"
 
 using namespace sg::math;
 using namespace sg::graphics;
@@ -22,13 +23,33 @@ namespace renderer
 		Matrix mView;
 		Matrix mProjection;
 	};
+	CBUFFER(TimeCB, CBSLOT_TIME)
+	{
+		Vector4 mTime;
+	};
+	CBUFFER(GridCB, CBSLOT_GRID)
+	{
+		Vector4 CameraPosition;
+		Vector2 CameraScale;
+		Vector2 Resolution;
+	};
 
 
-	extern Vertex vertexes[];
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
+
+	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
+	extern Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
+	
+	extern std::vector<sg::Camera*> cameras;
+	extern std::vector<DebugMesh> debugMeshs;
 
 	void Initialize();
 	void Update();
+	void Render();
 	void Release();
+
+	void PushDebugMeshAttribute(DebugMesh& mesh);
 
 }
