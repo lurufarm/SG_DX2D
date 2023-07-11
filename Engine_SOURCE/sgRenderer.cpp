@@ -336,6 +336,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgStory", material);
+
+		texture = Resources::Load<Texture>(L"Story_text", L"..\\Resources\\Title\\Title_StoryMode.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgStory_text", material);
 		
 		 // Select - Party
 		texture = Resources::Load<Texture>(L"Party", L"..\\Resources\\Title\\ModeIllust_Party.png");
@@ -344,6 +351,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgParty", material);
+
+		texture = Resources::Load<Texture>(L"Party_text", L"..\\Resources\\Title\\Title_PartyMode.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgParty_text", material);
 		
 		 // Select - CatPattern
 		texture = Resources::Load<Texture>(L"CatPattern", L"..\\Resources\\Title\\CatPattern.png");
@@ -352,6 +366,7 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgCatPattern", material);
+
 		
 #pragma endregion
 #pragma region Lobby Scene Material

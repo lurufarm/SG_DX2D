@@ -10,6 +10,8 @@
 #include "SCRIPT_CameraScript.h"
 
 #include "Img_CatPattern.h"
+#include "Img_SelectText.h"
+
 #include "UI_Select.h"
 #include "UI_Exit.h"
 
@@ -30,7 +32,9 @@ namespace sg
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		UI_Select* story = object::Instantiate<UI_Select>(true, eLayerType::UI);
+		Img_SelectText* story_text = object::Instantiate<Img_SelectText>(true, eLayerType::BGImg);
 		UI_Select* party = object::Instantiate<UI_Select>(false, eLayerType::UI);
+		Img_SelectText* party_text = object::Instantiate<Img_SelectText>(false, eLayerType::BGImg);
 		UI_Exit* exit = object::Instantiate<UI_Exit>(eLayerType::UI);
 
 		Img_CatPattern* pattern = object::Instantiate<Img_CatPattern>(eLayerType::BGImg);

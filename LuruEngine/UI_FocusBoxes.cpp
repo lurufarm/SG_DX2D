@@ -13,6 +13,13 @@ namespace sg
 	{
 		SetName(L"Gobj_FocusBoxes");
 
+		mObjs.clear();
+
+		mBoxes[0] = object::Instantiate<UI_FocusBox>(0, eLayerType::UI);
+		mBoxes[1] = object::Instantiate<UI_FocusBox>(1, eLayerType::UI);
+		mBoxes[2] = object::Instantiate<UI_FocusBox>(2, eLayerType::UI);
+		mBoxes[3] = object::Instantiate<UI_FocusBox>(3, eLayerType::UI);
+
 		UI_FocusBoxes::Initialize();
 	}
 	UI_FocusBoxes::~UI_FocusBoxes()
@@ -22,12 +29,7 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mTr->SetPosition(Vector3(0.0f, 0.0f, -2.0f));
-		mBoxes[0] = object::Instantiate<UI_FocusBox>(0, eLayerType::UI);
-		mBoxes[1] = object::Instantiate<UI_FocusBox>(1, eLayerType::UI);
-		mBoxes[2] = object::Instantiate<UI_FocusBox>(2, eLayerType::UI);
-		mBoxes[3] = object::Instantiate<UI_FocusBox>(3, eLayerType::UI);
-
-		mObjs.clear();
+		mAccDeltaTime = 0.0f;
 
 		GameObject::Initialize();
 	}
@@ -69,6 +71,7 @@ namespace sg
 		{
 			if (now >= 2)
 			{
+				this->Initialize();
 				now--;
 				std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 				mObj = iter->second;
@@ -80,6 +83,7 @@ namespace sg
 			std::map<UINT, GameObject*>::iterator upperBoundIter = mObjs.upper_bound(now);
 			if (upperBoundIter != mObjs.end())
 			{
+				this->Initialize();
 				now = upperBoundIter->first;
 				std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 				if (iter != mObjs.end())

@@ -33,6 +33,7 @@ namespace sg
 		object::Instantiate<Img_Title>(eLayerType::BGImg);
 		object::Instantiate<Img_Logo>(eLayerType::BGImg);
 
+
 		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg);
 		Camera* cameraComp = camera->AddComp<Camera>();
 	}

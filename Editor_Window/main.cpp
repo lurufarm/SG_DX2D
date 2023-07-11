@@ -8,6 +8,7 @@
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgResources.h"
 #include "LoadScenes.h"
+#include "GUI_Editor.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\LuruEngine.lib")
@@ -73,10 +74,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // 게임 로직 실행
             application.Run();
+            gui::GUI_Editor::Run();
+            application.Present();
         }
     }
     renderer::Release();
     sg::SceneManager::Release();
+    gui::GUI_Editor::Release();
 
     return (int)msg.wParam;
 }

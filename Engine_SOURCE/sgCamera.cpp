@@ -36,6 +36,8 @@ namespace sg
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}
 		, mTransparentGameObjects{}
+		, mView(Matrix::Identity)
+		, mProjection(Matrix::Identity)
 	{
 		EnableLayerMask();
 	}
@@ -132,7 +134,6 @@ namespace sg
 
 		// Alpha Sorting
 		Scene* scene = SceneManager::GetActiveScene();
-
 		for (size_t i = 0; i < (UINT)eLayerType::End; i++)
 		{
 			if (mLayerMask[i])
@@ -195,6 +196,9 @@ namespace sg
 		{
 			if (gameObj == nullptr)
 				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
 
 			gameObj->Render();
 		}
@@ -205,6 +209,9 @@ namespace sg
 		{
 			if (gameObj == nullptr)
 				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
 
 			gameObj->Render();
 		}
@@ -214,6 +221,9 @@ namespace sg
 		for (GameObject* gameObj : mTransparentGameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
 				continue;
 
 			gameObj->Render();

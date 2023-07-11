@@ -18,6 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)LuruEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEntity.h" />
@@ -49,6 +50,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp" />

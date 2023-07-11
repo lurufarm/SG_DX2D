@@ -30,11 +30,11 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
+		SetMesh();
 
 
-		if (mType == true)
+		if (mType)
 		{
-			SetMesh();
 
 			mTr->SetPosition(Vector3(-0.9f, 0.0f, 0.0f));
 			SetMaterial(L"ImgStory");

@@ -152,13 +152,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Gobj_Grid.h" />
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
+    <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Gobj_UI.h" />
     <ClInclude Include="Img_CatPattern.h" />
     <ClInclude Include="Img_LobbyMap.h" />
     <ClInclude Include="Img_LobbyMolding.h" />
     <ClInclude Include="Img_Logo.h" />
+    <ClInclude Include="Img_SelectText.h" />
     <ClInclude Include="Interact_LobbyCharacter.h" />
     <ClInclude Include="Interact_LobbyGate.h" />
     <ClInclude Include="Interact_LobbyUpgrade.h" />
@@ -179,13 +182,16 @@
     <ClInclude Include="UI_Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Gobj_Grid.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
+    <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />
     <ClCompile Include="Img_CatPattern.cpp" />
     <ClCompile Include="Img_LobbyMap.cpp" />
     <ClCompile Include="Img_LobbyMolding.cpp" />
     <ClCompile Include="Img_Logo.cpp" />
+    <ClCompile Include="Img_SelectText.cpp" />
     <ClCompile Include="Interact_LobbyCharacter.cpp" />
     <ClCompile Include="Interact_LobbyGate.cpp" />
     <ClCompile Include="Interact_LobbyUpgrade.cpp" />

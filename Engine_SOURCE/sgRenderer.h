@@ -46,10 +46,13 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 	
 	extern std::vector<sg::Camera*> cameras;
+	extern std::vector<DebugMesh> debugMeshs;
 
 	void Initialize();
 	void Update();
 	void Render();
 	void Release();
+
+	void PushDebugMeshAttribute(DebugMesh& mesh);
 
 }

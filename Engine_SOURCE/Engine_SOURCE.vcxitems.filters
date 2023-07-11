@@ -85,6 +85,9 @@
     <Filter Include="Common\Object">
       <UniqueIdentifier>{97cfa5d2-9bcb-4a7e-81ef-46d0b981a6d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Collider">
+      <UniqueIdentifier>{46e483e0-7d11-4b72-aee4-44c423a499c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -171,6 +174,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h">
       <Filter>Common\Object</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h">
+      <Filter>GameObject\Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -241,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTransform.cpp">
       <Filter>GameObject\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp">
+      <Filter>GameObject\Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

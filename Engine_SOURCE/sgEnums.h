@@ -7,9 +7,10 @@ namespace sg::enums
 	{
 		None,
 		Transform,
+		MeshRenderer,
+		Collider2D,
 		Mesh,
 		Particle,
-		MeshRenderer,
 		Script,
 		Camera,
 		End,
@@ -32,6 +33,15 @@ namespace sg::enums
 		Mesh,
 		Shader,
 		Material,
+		End,
+	};
+
+	enum class eColliderType
+	{
+		Rect,
+		Circle,
+		Sphere,
+		Cube,
 		End,
 	};
 }

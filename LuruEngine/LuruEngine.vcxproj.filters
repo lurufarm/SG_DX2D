@@ -74,6 +74,15 @@
     <ClCompile Include="SCRIPT_GridScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="Img_SelectText.cpp">
+      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Grid.cpp">
+      <Filter>Contents\Obj\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Player.cpp">
+      <Filter>Contents\Obj</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -152,6 +161,15 @@
     <ClInclude Include="SCRIPT_GridScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
+    <ClInclude Include="Img_SelectText.h">
+      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Grid.h">
+      <Filter>Contents\Obj\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Player.h">
+      <Filter>Contents\Obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -186,6 +204,12 @@
     </Filter>
     <Filter Include="Contents\Obj\Gobj_Img\TitleSceneImg">
       <UniqueIdentifier>{8d13e38e-c2fa-414b-832c-88fcc724606d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Etc">
+      <UniqueIdentifier>{d1f49e93-8bfb-49a7-83a6-bf8c2487eb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Character">
+      <UniqueIdentifier>{0ea5f5ae-b540-44a1-8484-1c87c02611a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
