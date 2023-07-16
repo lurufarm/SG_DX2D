@@ -143,6 +143,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
+   HWND hWnd2 = CreateWindowW(L"AtlasWindow", szTitle, WS_OVERLAPPEDWINDOW,
+       1600, 0, 300, 300, nullptr, nullptr, hInstance, nullptr);
+
    if (!hWnd)
    {
       return FALSE;
@@ -152,7 +155,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
+   ShowWindow(hWnd2, nCmdShow);
+   UpdateWindow(hWnd2);
+
+
    application.Initialize();
+   application.SetToolHwnd(hWnd2);
    sg::InitializeScenes();
    gui::GUI_Editor::Initialize();
 

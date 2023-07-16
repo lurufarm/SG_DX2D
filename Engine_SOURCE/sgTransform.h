@@ -32,6 +32,18 @@ namespace sg
 
 		Vector3 GetPosition() { return mPosition; }
 		Vector3 GetRotation() { return mRotation; }
+		Vector3 GetRotaitioAsDegree() 
+		{
+			Vector3 degree;
+
+			const float PI = 3.141592;
+
+			degree.x = mRotation.x / PI * 180;
+			degree.y = mRotation.x / PI * 180;
+			degree.z = mRotation.x / PI * 180;
+			
+			return degree;
+		}
 		Vector3 GetScale() { return mScale; }
 
 		Vector3 Forward() { return mForward; }

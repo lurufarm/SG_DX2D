@@ -19,7 +19,7 @@ namespace sg
 		Vector3 originscale = tr->GetScale();
 		if (mMaterial != nullptr)
 		{
-			Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth() / 65, mMaterial->GetTexture()->GetHeight() / 65, 1.0f);
+			Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth(), mMaterial->GetTexture()->GetHeight(), 1.0f);
 			mScale = originscale * imagescale;
 		}
 		else

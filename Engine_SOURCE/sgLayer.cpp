@@ -30,7 +30,8 @@ namespace sg
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->LateUpdate();
+			if (gameObj->GetState() == GameObject::eState::Active)
+				gameObj->LateUpdate();
 		}
 	}
 	void Layer::Render()

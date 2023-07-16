@@ -20,7 +20,7 @@ namespace sg
 		mMr = GetComp<MeshRenderer>();
 		SetMesh();
 		SetMaterial(L"UIExitButton");
-		mTr->SetPosition(-2.9f, 1.5f, -1.0f);
+		mTr->SetPosition(-188.5f, 97.5f, -0.1f);
 		mMr->Initialize();
 
 		SetOrder(1);

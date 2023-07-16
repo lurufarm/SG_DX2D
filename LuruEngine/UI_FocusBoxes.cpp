@@ -41,7 +41,7 @@ namespace sg
 
 			mAccDeltaTime += Time::DeltaTime() * mDir;
 
-			if (fabs(mAccDeltaTime) > 0.1f)
+			if (fabs(mAccDeltaTime) > 5.0f)
 			{
 				mDir *= -1.0f;
 			}
@@ -49,10 +49,10 @@ namespace sg
 			Vector3 objpos = mObj->GetComp<Transform>()->GetPosition();
 			Vector3 objscale = mObj->GetComp<MeshRenderer>()->GetImgScale();
 
-			Vector3 p0 = Vector3(objpos.x - objscale.x * 0.5f - 0.05, objpos.y + objscale.y * 0.5f, -2.0f);
-			Vector3 p1 = Vector3(objpos.x + objscale.x * 0.5f + 0.05, objpos.y + objscale.y * 0.5f, -2.0f);
-			Vector3 p2 = Vector3(objpos.x - objscale.x * 0.5f - 0.05, objpos.y - objscale.y * 0.5f, -2.0f);
-			Vector3 p3 = Vector3(objpos.x + objscale.x * 0.5f + 0.05, objpos.y - objscale.y * 0.5f, -2.0f);
+			Vector3 p0 = Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);
+			Vector3 p1 = Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);
+			Vector3 p2 = Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y - objscale.y * 0.5f, -2.0f);
+			Vector3 p3 = Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y - objscale.y * 0.5f, -2.0f);
 
 			Vector3 pp0 = p0 - objpos;
 			Vector3 pp1 = p1 - objpos;
@@ -115,10 +115,10 @@ namespace sg
 		Vector3 objpos = obj->GetComp<Transform>()->GetPosition();
 		Vector3 objscale = obj->GetComp<MeshRenderer>()->GetImgScale();
 
-		mBoxes[0]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f, objpos.y + objscale.y * 0.5f, -2.0f));
-		mBoxes[1]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f, objpos.y + objscale.y * 0.5f, -2.0f));
-		mBoxes[2]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f, objpos.y - objscale.y * 0.5f, -2.0f));
-		mBoxes[3]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f, objpos.y - objscale.y * 0.5f, -2.0f));
-
+		mBoxes[0]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y + objscale.y * 0.5f, -2.0f));
+		mBoxes[1]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y + objscale.y * 0.5f, -2.0f));
+		mBoxes[2]->GetComp<Transform>()->SetPosition(Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y - objscale.y * 0.5f, -2.0f));
+		mBoxes[3]->GetComp<Transform>()->SetPosition(Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y - objscale.y * 0.5f, -2.0f));
+																							
 	}
 }

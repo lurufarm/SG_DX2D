@@ -31,7 +31,7 @@ namespace sg
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
 		, mFar(1000.0f)
-		, mSize(4.0f)
+		, mSize(260.0f)
 		, mLayerMask{}
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}

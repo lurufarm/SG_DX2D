@@ -36,7 +36,7 @@ namespace sg
 		if (mType)
 		{
 
-			mTr->SetPosition(Vector3(-0.9f, 0.0f, 0.0f));
+			mTr->SetPosition(Vector3(-58.5, 0.0f, 0.0f));
 			SetMaterial(L"ImgStory");
 			SetOrder(2);
 		}
@@ -44,7 +44,7 @@ namespace sg
 		{
 			SetMesh();
 
-			mTr->SetPosition(Vector3(0.9f, 0.0f, 0.0f));
+			mTr->SetPosition(Vector3(58.5, 0.0f, 0.0f));
 			SetMaterial(L"ImgParty");
 			SetOrder(3);
 		}

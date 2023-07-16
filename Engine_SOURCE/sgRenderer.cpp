@@ -20,6 +20,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 	
+	sg::Camera* mainCamera = nullptr;
 	std::vector<sg::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshs = {};
 
@@ -123,7 +124,7 @@ namespace renderer
 			, rasterizerStates[(UINT)eRSType::SolidNone].GetAddressOf());
 
 		rasterizerDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_WIREFRAME;
-		rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_FRONT;
+		rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
 		GetDevice()->CreateRasterizerState(&rasterizerDesc
 			, rasterizerStates[(UINT)eRSType::WireframeNone].GetAddressOf());
 #pragma endregion
@@ -301,8 +302,8 @@ namespace renderer
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
-		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
-		debugShader->SetRSState(eRSType::SolidNone);
+		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		debugShader->SetRSState(eRSType::WireframeNone);
 		sg::Resources::Insert(L"DebugShader", debugShader);
 
 		std::shared_ptr<Shader> catPatternShader = std::make_shared<Shader>();

@@ -156,6 +156,8 @@
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
     <ClInclude Include="Gobj_Player.h" />
+    <ClInclude Include="SCENE_ToolScene.h" />
+    <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
     <ClInclude Include="Img_CatPattern.h" />
     <ClInclude Include="Img_LobbyMap.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="SCENE_Stage0.h" />
     <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="Stage0_Forest01.h" />
+    <ClInclude Include="Tile_TilePalette.h" />
     <ClInclude Include="UI_Select.h" />
     <ClInclude Include="Img_Space1.h" />
     <ClInclude Include="Img_Space2.h" />
@@ -190,6 +193,8 @@
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
+    <ClCompile Include="SCENE_ToolScene.cpp" />
+    <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />
     <ClCompile Include="Img_CatPattern.cpp" />
     <ClCompile Include="Img_LobbyMap.cpp" />
@@ -204,6 +209,7 @@
     <ClCompile Include="SCENE_Stage0.cpp" />
     <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="Stage0_Forest01.cpp" />
+    <ClCompile Include="Tile_TilePalette.cpp" />
     <ClCompile Include="UI_Select.cpp" />
     <ClCompile Include="Img_Space1.cpp" />
     <ClCompile Include="Img_Space2.cpp" />

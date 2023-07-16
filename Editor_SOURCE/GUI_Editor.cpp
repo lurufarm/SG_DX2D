@@ -21,7 +21,7 @@ namespace gui
 	{
 		mDebugObjects.resize((UINT)eColliderType::End);
 
-		std::shared_ptr<sg::Mesh> mesh
+		std::shared_ptr <sg::Mesh> mesh
 			= sg::Resources::Find<sg::Mesh>(L"DebugRect");
 		std::shared_ptr<sg::Material> material
 			= sg::Resources::Find<sg::Material>(L"DebugMaterial");
@@ -78,9 +78,27 @@ namespace gui
 		{
 			DebugRender(mesh);
 		}
+		renderer::debugMeshs.clear();
 	}
 	void GUI_Editor::Release()
 	{
+		for (auto widget : mWidgets)
+		{
+			delete widget;
+			widget = nullptr;
+		}
+		for (auto editorObj : mEditorObjects)
+		{
+			delete editorObj;
+			editorObj = nullptr;
+		}
+		for (auto debugObj : mDebugObjects)
+		{
+			delete debugObj;
+			debugObj = nullptr;
+		}
+
+
 	}
 	void GUI_Editor::DebugRender(const sg::graphics::DebugMesh& mesh)
 	{
@@ -88,7 +106,22 @@ namespace gui
 
 		// 위치, 크기, 회전 정보를 받아와서
 		// 해당 게임 오브젝트 위에 그려준다.
+		sg::Transform* tr = debugObj->GetComp<sg::Transform>();
 		
+		Vector3 pos = mesh.position;
+		pos.z -= 0.01;
+
+		tr->SetPosition(pos);
+		tr->SetScale(mesh.scale);
+		tr->SetRotation(mesh.rotation);
+
+		tr->LateUpdate();
+		
+		sg::Camera* mainCamera = renderer::mainCamera;
+
+		sg::Camera::SetGpuViewMatrix(mainCamera->GetViewMatrix());
+		sg::Camera::SetGpuProjectionMatrix(mainCamera->GetProjectionMatrix());
+
 		debugObj->Render();
 	}
 }

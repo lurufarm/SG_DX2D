@@ -16,7 +16,7 @@ namespace sg
 	void Img_Logo::Initialize()
 	{
 		mTr = GetComp<Transform>();
-		mTr->SetPosition(Vector3(-2.0f, -1.0f, -0.1f));
+		mTr->SetPosition(Vector3(-130.0f, -65.0f, -0.1f));
 		mMr = GetComp<MeshRenderer>();
 		SetMesh();
 		SetMaterial(L"ImgLogo01");

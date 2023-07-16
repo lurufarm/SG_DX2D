@@ -1,5 +1,6 @@
 #pragma once
 #include "sgComponent.h"
+#include "sgCollider2D.h"
 
 namespace sg
 {
@@ -13,6 +14,10 @@ namespace sg
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		virtual void OnCollisionEnter(Collider2D* other) {};
+		virtual void OnCollisionStay(Collider2D* other) {};
+		virtual void OnCollisionExit(Collider2D* other) {};
 
 	private:
 

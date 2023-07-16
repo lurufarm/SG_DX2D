@@ -22,10 +22,9 @@ namespace sg
 		Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
 
 		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
-		Camera* cameraComp = Forest01camera->AddComp<Camera>();
+		mCamera = Forest01camera->AddComp<Camera>();
 		SCRIPT_CameraScript* cameracomp1 = Forest01camera->AddComp<SCRIPT_CameraScript>();
-		//cameraComp->EnableLayerMask();
-		renderer::cameras.push_back(cameraComp);
+		//renderer::mainCamera = cameraComp;
 
 		SCENE_Stage0::Initialize();
 	}
@@ -45,6 +44,9 @@ namespace sg
 	{
 		float BgColor[3] = { 0.5f, 0.5f, 0.5f };
 		GetDevice()->SetBgColor(BgColor);
+		renderer::mainCamera = mCamera;
+		renderer::cameras.push_back(mCamera);
+
 	}
 	void Stage0_Forest01::OnExit()
 	{

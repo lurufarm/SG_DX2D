@@ -30,7 +30,7 @@ namespace sg
 		Transform* mTr;
 
 		float mAccDeltaTime = 0;
-		float mDir = 1.0f;
+		float mDir = 65.0f;
 
 		class Scene* mMyScene;
 

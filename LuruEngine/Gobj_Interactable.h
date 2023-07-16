@@ -1,8 +1,8 @@
 #pragma once
-#include "../Engine_SOURCE/sgGameObject.h"
-#include "../Engine_SOURCE/sgResources.h"
-#include "../Engine_SOURCE/sgTransform.h"
-#include "../Engine_SOURCE/sgMeshRenderer.h"
+#include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgResources.h"
+#include "..\Engine_SOURCE\sgTransform.h"
+#include "..\Engine_SOURCE\sgMeshRenderer.h"
 #include "..\Engine_SOURCE\sgMesh.h"
 #include "..\Engine_SOURCE\sgMaterial.h"
 

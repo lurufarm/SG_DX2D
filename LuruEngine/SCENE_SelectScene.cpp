@@ -46,10 +46,13 @@ namespace sg
 		GameObject* SelectSceneMaincamera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		SelectSceneMaincamera->SetName(L"SelectSceneMaincamera");
 		Camera* MaincameraComp = SelectSceneMaincamera->AddComp<Camera>();
+		MaincameraComp->TurnLayerMask(eLayerType::UI, false);
 
 		GameObject* SelectSceneUIcamera = object::Instantiate<GameObject>(Vector3(cameraPos.x, cameraPos.y, -20.0f), eLayerType::UI, this);
 		SelectSceneUIcamera->SetName(L"SelectSceneUIcamera");
 		Camera* UIcameraComp = SelectSceneUIcamera->AddComp<Camera>();
+		UIcameraComp->DisableLayerMask();
+		UIcameraComp->TurnLayerMask(eLayerType::UI, true);
 	}
 	void SelectScene::Update()
 	{

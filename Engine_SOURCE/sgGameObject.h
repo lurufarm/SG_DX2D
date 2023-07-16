@@ -50,6 +50,29 @@ namespace sg
 		}
 
 		template <typename T>
+		std::vector<T*>& GetComps()
+		{
+			std::vector<T*> comps;
+
+			T* component;
+			for (Component* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component != nullptr)
+					comps.push_back(component);
+			}
+
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				if (component != nullptr)
+					comps.push_back(component);
+			}
+
+			return comps;
+		}
+		
+		template <typename T>
 		T* AddComp()
 		{
 			T* comp = new T();
@@ -77,6 +100,8 @@ namespace sg
 
 		void SetOrder(int value) { mOrder = value; }
 		int GetOrder() { return mOrder; }
+
+		std::vector<Component*> GetVector() { return mComponents; }
 
 	private:
 		eState mState;

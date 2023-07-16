@@ -1,14 +1,18 @@
 #include "sgCollider2D.h"
 #include "sgGameObject.h"
+#include "sgRenderer.h"
 
 namespace sg
 {
+	UINT Collider2D::mColliderNumber = 0;
 	Collider2D::Collider2D()
 		: Component(eComponentType::Collider2D)
 		, mCTr(nullptr)
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
 	{
+		mColliderNumber++;
+		mColliderID = mColliderNumber;
 	}
 	Collider2D::~Collider2D()
 	{
@@ -22,8 +26,59 @@ namespace sg
 	}
 	void Collider2D::LateUpdate()
 	{
+		Transform* tr = GetOwner()->GetComp<Transform>();
+
+		Vector3 scale = tr->GetScale();
+		scale.x *= mSize.x;
+		scale.y *= mSize.y;
+
+		Vector3 pos = tr->GetPosition();
+		pos.x += mCenter.x;
+		pos.y += mCenter.y;
+		
+		mPosition = pos;
+
+		graphics::DebugMesh mesh = {};
+		mesh.position = pos;
+		mesh.scale = scale;
+		mesh.rotation = tr->GetRotation();
+		mesh.type = eColliderType::Rect;
+
+		renderer::PushDebugMeshAttribute(mesh);
 	}
 	void Collider2D::Render()
 	{
+	}
+	void Collider2D::OnCollisionEnter(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetComps<Script>();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionEnter(other);
+		}
+	}
+	void Collider2D::OnCollisionStay(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetComps<Script>();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionStay(other);
+
+		}
+	}
+	void Collider2D::OnCollisionExit(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetComps<Script>();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionExit(other);
+
+		}
 	}
 }

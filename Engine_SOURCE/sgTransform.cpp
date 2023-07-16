@@ -29,6 +29,7 @@ namespace sg
 	void Transform::LateUpdate()
 	{
 		mWorld = Matrix::Identity;
+
 		Matrix scale = Matrix::CreateScale(mScale);
 
 		Matrix rotation;
@@ -58,8 +59,8 @@ namespace sg
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;
-		trCB.mView = Camera::GetViewMatrix();
-		trCB.mProjection = Camera::GetProjectionMatrix();
+		trCB.mView = Camera::GetGpuViewMatrix();
+		trCB.mProjection = Camera::GetGpuProjectionMatrix();
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 		cb->SetData(&trCB);

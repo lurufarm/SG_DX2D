@@ -22,7 +22,8 @@ namespace sg
 	private:
 		eColliderType mType;
 		Transform* mCTr;
-
+		
+		Vector3 mPosition;
 		Vector2 mSize;
 		Vector2 mCenter;
 

@@ -10,6 +10,7 @@
 
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
+#include "..\Engine_SOURCE\sgCollider2D.h"
 
 #include "SCRIPT_CameraScript.h"
 #include "SCRIPT_GridScript.h"
@@ -40,15 +41,18 @@ namespace sg
 		object::Instantiate<Img_Space1>(eLayerType::BGImg, this);
 		object::Instantiate<Img_Space2>(eLayerType::BGImg, this);
 		object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
-		object::Instantiate<Img_LobbyMolding>(Vector3(-1.1f, 0.85f, 0.0f), eLayerType::BGImg, this);
-		object::Instantiate<Img_LobbyMolding>(Vector3(1.1f, 0.85f, 0.0f), eLayerType::BGImg, this);
+		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::BGImg, this);
+		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
 
-		object::Instantiate<Interact_LobbyCharacter>(Vector3(-0.55, 0.1f, -0.1f), eLayerType::InteractableObject, this);
-		object::Instantiate<Interact_LobbyUpgrade>(Vector3(0.55, 0.1f, -0.1f), eLayerType::InteractableObject, this);
+		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+		object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+
+		Collider2D* cd = character->AddComp<Collider2D>();
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();
 		renderer::cameras.push_back(cameraComp);
+		renderer::mainCamera = cameraComp;
 
 	}
 	void LobbyScene::Update()
@@ -76,5 +80,6 @@ namespace sg
 	void LobbyScene::OnExit()
 	{
 		renderer::cameras.clear();
+		//renderer::mainCamera = nullptr;
 	}
 }

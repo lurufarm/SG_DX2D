@@ -53,7 +53,9 @@ namespace sg
 			return nullptr;
 		}
 
-	private:
+	protected:
 		std::vector<Layer> mLayers;
+
+	private:
 	};
 }

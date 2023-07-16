@@ -17,7 +17,7 @@ namespace sg
 	void Img_CatPattern::Initialize()
 	{
 		mTr = GetComp<Transform>();
-		mTr->SetPosition(0.0f, 0.0f, 3.0f);
+		mTr->SetPosition(0.0f, 0.0f, 0.1f);
 		mMr = GetComp<MeshRenderer>();
 		SetMesh();
 		SetMaterial(L"ImgCatPattern");

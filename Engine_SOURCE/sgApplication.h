@@ -27,6 +27,9 @@ namespace sg
 		UINT GetHeight() { return mHeight; }
 		HWND GetHwnd() { return mHwnd; }
 
+		void SetToolHwnd(HWND hwnd) { mToolHwnd = hwnd; }
+		HWND GetToolHwnd() { return mToolHwnd; }
+
 	private:
 
 		bool mbInitialize = false;
@@ -37,6 +40,8 @@ namespace sg
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
+		HWND mToolHwnd;
 
 	};
 

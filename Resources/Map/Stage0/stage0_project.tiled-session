@@ -1,0 +1,217 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "console.history": [
+        "asd"
+    ],
+    "expandedProjectPaths": [
+        "Source/ForestDg",
+        "Source",
+        "Source/ForestFd",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ObstacleAct1Dg1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestBossBluffEdge1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestDgFloor1.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestDgGrass1.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestDgWall2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestDgWaterDeep1.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestDgWaterEdge1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ForestFdWaterDeep1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDg/ObstacleAct1Dg1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestDgFloor1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFd/ForestFdFloor1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFd/ForestFdGrass2.tsx": {
+            "scaleInDock": 1
+        },
+        "Source/ForestFd/ForestFdTree1.tsx": {
+            "scaleInDock": 1
+        },
+        "Source/ForestFd/ForestFdWaterDeep1.tsx": {
+            "scaleInDock": 1
+        },
+        "Source/ForestFd/ForestFdWaterEdge1.tsx": {
+            "scaleInDock": 1
+        },
+        "Source/ForestFd/ObstacleAct1Fd1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFdFloor1.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFdGrass2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFdTree1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFdWaterDeep1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestFdWaterEdge1.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Source/ObstacleAct1Fd1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/SvGateBattle.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "stage0_forestdg_1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 407.33333333333326,
+                "y": 631.3333333333333
+            }
+        },
+        "stage0_forestdg_1.tmx#ObstacleAct1Dg1": {
+            "scaleInDock": 1
+        },
+        "stage0_forestdg_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 427.33333333333326,
+                "y": 498.3333333333333
+            }
+        },
+        "stage0_forestdg_3.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 374,
+                "y": 544.5
+            }
+        },
+        "stage0_forestdg_4.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 472,
+                "y": 599
+            }
+        },
+        "stage0_forestfd_1.tmx": {
+            "scale": 0.73,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 589.0410958904109,
+                "y": 527.3972602739726
+            }
+        },
+        "stage0_forestfd_2.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1286,
+                "y": 655
+            }
+        },
+        "stage0_forestfd_2.tmx#ForestFdFloor1": {
+            "scaleInDock": 1
+        },
+        "stage0_forestfd_3.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 666.6666666666665,
+                "y": 521.3333333333334
+            }
+        },
+        "stage0_forestfd_4.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 518,
+                "y": 978
+            }
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
+    "last.imagePath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
+    "map.height": 50,
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 50,
+    "openFiles": [
+    ],
+    "project": "stage0_project.tiled-project",
+    "recentFiles": [
+        "stage0_forestdg_1.tmx",
+        "stage0_forestfd_4.tmx",
+        "Source/ForestDg/ForestDgWaterEdge1.tsx",
+        "Source/ForestDg/ForestDgFloor1.tsx",
+        "Source/ForestDg/ForestDgWall2.tsx",
+        "Source/ForestDg/ForestDgWaterDeep1.tsx",
+        "Source/ForestDg/ObstacleAct1Dg1.tsx",
+        "stage0_forestfd_1.tmx",
+        "stage0_forestfd_2.tmx",
+        "stage0_forestfd_3.tmx",
+        "stage0_forestdg_4.tmx",
+        "Source/ForestDg/ForestFdWaterDeep1.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    }
+}

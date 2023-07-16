@@ -33,6 +33,8 @@ namespace sg
 			return nullptr;
 		}
 
+		std::vector<GameObject*> GetVector() { return mGameObjects; }
+
 	private:
 		std::vector<GameObject*> mGameObjects;
 	};

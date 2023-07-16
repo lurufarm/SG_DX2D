@@ -20,11 +20,12 @@ namespace sg::enums
 	{
 		Grid,
 		BGImg,
+		Tile,
 		InteractableObject,
 		Player,
 		Monster,
 		UI,
-		End,
+		End = 16,
 	};
 
 	enum class eResourceType

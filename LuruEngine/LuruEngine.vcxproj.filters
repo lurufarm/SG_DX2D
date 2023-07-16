@@ -74,9 +74,6 @@
     <ClCompile Include="Gobj_Player.cpp">
       <Filter>Contents\Obj\Gobj_Character</Filter>
     </ClCompile>
-    <ClCompile Include="SCENE_LobbyScene.cpp">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
-    </ClCompile>
     <ClCompile Include="SCENE_SelectScene.cpp">
       <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
     </ClCompile>
@@ -94,6 +91,18 @@
     </ClCompile>
     <ClCompile Include="Img_Stage0_Forest01_Map.cpp">
       <Filter>Contents\Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE_LobbyScene.cpp">
+      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile_Tile.cpp">
+      <Filter>Contents\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile_TilePalette.cpp">
+      <Filter>Contents\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE_ToolScene.cpp">
+      <Filter>Contents\Scene\SCENE_ToolScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +182,6 @@
     <ClInclude Include="Gobj_Player.h">
       <Filter>Contents\Obj\Gobj_Character</Filter>
     </ClInclude>
-    <ClInclude Include="SCENE_LobbyScene.h">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="SCENE_SelectScene.h">
       <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
     </ClInclude>
@@ -193,6 +199,18 @@
     </ClInclude>
     <ClInclude Include="Img_Stage0_Forest01_Map.h">
       <Filter>Contents\Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE_LobbyScene.h">
+      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile_Tile.h">
+      <Filter>Contents\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile_TilePalette.h">
+      <Filter>Contents\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE_ToolScene.h">
+      <Filter>Contents\Scene\SCENE_ToolScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +273,12 @@
     </Filter>
     <Filter Include="Contents\Scene\SCENE_PlayScene\Stage1">
       <UniqueIdentifier>{1fd3505d-f312-4f65-9c4a-97d6c9466140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Tile">
+      <UniqueIdentifier>{aaac7fa7-0a6b-4091-9385-90d98e9bdd26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\SCENE_ToolScene">
+      <UniqueIdentifier>{7bea3e31-f377-45d3-95fa-669cf425eec8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

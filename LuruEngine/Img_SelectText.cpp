@@ -32,12 +32,12 @@ namespace sg
 		if (mType)
 		{
 			SetMaterial(L"ImgStory_text");
-			mTr->SetPosition(Vector3(-0.9, 0.9, -0.1f));
+			mTr->SetPosition(Vector3(-58.5, 58.5, -0.1f));
 		}
 		else
 		{
 			SetMaterial(L"ImgParty_text");
-			mTr->SetPosition(Vector3(0.9, 0.9f, -0.1f));
+			mTr->SetPosition(Vector3(58.5, 58.5, -0.1f));
 
 		}
 		

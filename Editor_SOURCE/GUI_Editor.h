@@ -1,12 +1,12 @@
 #pragma once
 #include "..\Engine_SOURCE\CommonInclude.h"
 #include "..\Engine_SOURCE\LuruEngine.h"
+#include "..\Engine_SOURCE\sgGraphics.h"
 
 #include "GUI_Widget.h"
 #include "GUI_EditorObject.h"
 #include "GUI_DebugObject.h"
 
-#include "..\Engine_SOURCE\sgGraphics.h"
 
 namespace gui
 {
