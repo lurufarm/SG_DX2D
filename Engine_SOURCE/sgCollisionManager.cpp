@@ -21,7 +21,7 @@ namespace sg
 		{
 			for (UINT row = 0; row < (UINT)eLayerType::End; row++)
 			{
-				if (mMatrix[row] == true)
+				if (mMatrix[column][row] == true)
 				{
 					LayerCollision((eLayerType)column, (eLayerType)row);
 				}
@@ -87,11 +87,13 @@ namespace sg
 			{
 				left->OnCollisionEnter(right);
 				right->OnCollisionEnter(left);
+				iter->second = true;
 			}
 			else // 충돌 중이었을 때
 			{
 				left->OnCollisionStay(right);
 				right->OnCollisionEnter(left);
+				iter->second = true;
 			}
 		}
 		else
@@ -102,6 +104,7 @@ namespace sg
 				// 충돌하다가 나갈 때
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
+				iter->second = false;
 			}
 		}
 
@@ -109,58 +112,22 @@ namespace sg
 
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{
-		struct verticePos
-		{
-			Vector2 verticePos[4];
-		};
 
-		Transform* leftTr = left->GetOwner()->GetComp<Transform>();
-		Transform* rightTr = right->GetOwner()->GetComp<Transform>();
+		VertexPos leftvertexes = MakeVertexPos(left);
+		VertexPos rightvertexes = MakeVertexPos(right);
 
-		Vector3 leftPos = leftTr->GetPosition();
-		Vector3 rightPos = rightTr->GetPosition();
-		Vector3 leftScale = leftTr->GetScale();
-		Vector3 rightScale = rightTr->GetScale();
-		float leftRot = leftTr->GetRotation().z;
-		float rightRot = rightTr->GetRotation().z;
+		Vector2 axis[4];
 
+		//axis[0] = leftvertexes.vertexPos[3] - leftvertexes.vertexPos[2];
+		//axis[1] = leftvertexes.vertexPos[3] - leftvertexes.vertexPos[0];
+		//axis[2] = rightvertexes.vertexPos[3] - rightvertexes.vertexPos[2];
+		//axis[3] = rightvertexes.vertexPos[3] - rightvertexes.vertexPos[0];
 
-		verticePos leftvertices;
-		verticePos rightvertices;
+		axis[0] = MakeAxis(leftvertexes)[0];
+		axis[1] = MakeAxis(leftvertexes)[1];
+		axis[2] = MakeAxis(rightvertexes)[0];
+		axis[3] = MakeAxis(rightvertexes)[1];
 
-		leftvertices.verticePos[0]
-			= Vector2((leftPos.x - leftScale.x / 2) * cos(leftRot) - (leftPos.y + leftScale.y / 2) * sin(leftRot)
-				, (leftPos.x - leftScale.x / 2) * sin(leftRot) + (leftPos.y + leftScale.y / 2) * cos(leftRot));
-		leftvertices.verticePos[1]
-			= Vector2((leftPos.x + leftScale.x / 2) * cos(leftRot) - (leftPos.y + leftScale.y / 2) * sin(leftRot)
-				, (leftPos.x + leftScale.x / 2) * sin(leftRot) + (leftPos.y + leftScale.y / 2) * cos(leftRot));
-		leftvertices.verticePos[2]
-			= Vector2((leftPos.x + leftScale.x / 2) * cos(leftRot) - (leftPos.y - leftScale.y / 2) * sin(leftRot)
-				, (leftPos.x + leftScale.x / 2) * sin(leftRot) + (leftPos.y - leftScale.y / 2) * cos(leftRot));
-		leftvertices.verticePos[3]
-			= Vector2((leftPos.x - leftScale.x / 2) * cos(leftRot) - (leftPos.y - leftScale.y / 2) * sin(leftRot)
-				, (leftPos.x - leftScale.x / 2) * sin(leftRot) + (leftPos.y - leftScale.y / 2) * cos(leftRot));
-
-
-		rightvertices.verticePos[0]
-			= Vector2((rightPos.x - rightScale.x / 2) * cos(rightRot) - (rightPos.y + rightScale.y / 2) * sin(rightRot)
-				, (rightPos.x - rightScale.x / 2) * sin(rightRot) + (rightPos.y + rightScale.y / 2) * cos(rightRot));
-		rightvertices.verticePos[1]
-			= Vector2((rightPos.x + rightScale.x / 2) * cos(rightRot) - (rightPos.y + rightScale.y / 2) * sin(rightRot)
-				, (rightPos.x + rightScale.x / 2) * sin(rightRot) + (rightPos.y + rightScale.y / 2) * cos(rightRot));
-		rightvertices.verticePos[2]
-			= Vector2((rightPos.x + rightScale.x / 2) * cos(rightRot) - (rightPos.y - rightScale.y / 2) * sin(rightRot)
-				, (rightPos.x + rightScale.x / 2) * sin(rightRot) + (rightPos.y - rightScale.y / 2) * cos(rightRot));
-		rightvertices.verticePos[3]
-			= Vector2((rightPos.x - rightScale.x / 2) * cos(rightRot) - (rightPos.y - rightScale.y / 2) * sin(rightRot)
-				, (rightPos.x - rightScale.x / 2) * sin(rightRot) + (rightPos.y - rightScale.y / 2) * cos(rightRot));
-
-
-		Vector2 axis[4] = {};
-		axis[0] = leftvertices.verticePos[3] - leftvertices.verticePos[2];
-		axis[1] = leftvertices.verticePos[3] - leftvertices.verticePos[0];
-		axis[2] = rightvertices.verticePos[3] - rightvertices.verticePos[2];
-		axis[3] = rightvertices.verticePos[3] - rightvertices.verticePos[0];
 
 		float leftmin = 0;
 		float leftmax = 0;
@@ -177,12 +144,8 @@ namespace sg
 			rightv.clear();
 			for (size_t j = 0; j < 4; j++)
 			{
-				float a = axis[i].Dot(leftvertices.verticePos[j]);
-				float b = axis[i].Dot(rightvertices.verticePos[j]);
-				//leftv.push_back(axis[i].Dot(leftvertices.verticePos[j]));
-				//rightv.push_back(axis[i].Dot(rightvertices.verticePos[j]));
-				leftv.push_back(a);
-				rightv.push_back(b);
+				leftv.push_back(axis[i].Dot(leftvertexes.vertexPos[j]));
+				rightv.push_back(axis[i].Dot(rightvertexes.vertexPos[j]));
 			}
 
 			leftmin = leftv[0];

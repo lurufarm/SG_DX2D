@@ -4,6 +4,7 @@
 #include "sgTime.h"
 #include "sgRenderer.h"
 #include "sgSceneManager.h"
+#include "sgCollisionManager.h"
 
 namespace sg
 {
@@ -36,6 +37,7 @@ namespace sg
 		Time::Update();
 		Input::Update();
 		SceneManager::Update();
+		CollisionManager::Update();
 	}
 	void Application::LateUpdate()
 	{

@@ -3,6 +3,7 @@
 #include "..\Engine_SOURCE\sgGraphicDevice_Dx11.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgTime.h"
@@ -44,10 +45,16 @@ namespace sg
 		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::BGImg, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
 
-		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
-		object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::Player, this);
+		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+
+		character->AddComp<SCRIPT_CameraScript>();
 
 		Collider2D* cd = character->AddComp<Collider2D>();
+		Collider2D* cd2 = upgrade->AddComp<Collider2D>();
+
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
+
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();

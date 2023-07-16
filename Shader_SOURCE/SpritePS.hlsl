@@ -19,8 +19,10 @@ float4 main(VSOut In) : SV_TARGET
     float4 color = (float) 0.0f;
     color = albedoTexture.Sample(pointSampler, In.UV);
 	
-    if (color.a <= 0,0f)
+    if (color.a <= 0.0f)
+    {
         discard;
+    }
     
     return color;
 }
