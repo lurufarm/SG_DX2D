@@ -1,4 +1,6 @@
 #include "sgScene.h"
+#include "sgInput.h"
+#include "sgSceneManager.h"
 
 namespace sg
 {
@@ -19,6 +21,11 @@ namespace sg
 		{
 			layer.Update(); 
 		}
+		if (Input::KeyD(eKeyCode::T))
+		{
+			SceneManager::LoadScene(L"ToolScene");
+		}
+
 	}
 	void Scene::LateUpdate()
 	{

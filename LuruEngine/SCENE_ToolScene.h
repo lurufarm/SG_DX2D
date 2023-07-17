@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class SCENE_ToolScene : public Scene
+	class ToolScene : public Scene
 	{
 	public:
-		SCENE_ToolScene();
-		~SCENE_ToolScene();
+		ToolScene();
+		~ToolScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

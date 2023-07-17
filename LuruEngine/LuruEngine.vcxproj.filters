@@ -107,6 +107,12 @@
     <ClCompile Include="Interact_LobbyCardBook.cpp">
       <Filter>Contents\Obj\Gobj_Interactable</Filter>
     </ClCompile>
+    <ClCompile Include="Tile_Image.cpp">
+      <Filter>Contents\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Char_Cheese.cpp">
+      <Filter>Contents\Obj\Gobj_Character\Char</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -218,6 +224,12 @@
     <ClInclude Include="Interact_LobbyCardBook.h">
       <Filter>Contents\Obj\Gobj_Interactable</Filter>
     </ClInclude>
+    <ClInclude Include="Tile_Image.h">
+      <Filter>Contents\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Char_Cheese.h">
+      <Filter>Contents\Obj\Gobj_Character\Char</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -285,6 +297,9 @@
     </Filter>
     <Filter Include="Contents\Scene\SCENE_ToolScene">
       <UniqueIdentifier>{7bea3e31-f377-45d3-95fa-669cf425eec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Obj\Gobj_Character\Char">
+      <UniqueIdentifier>{d9f1a95b-502d-43a1-b2d5-d7b36a056824}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"InteractableLobbyCardBook");
 		mMr->Initialize();
+		SetOrder(3);
 	}
 	void Interact_LobbyCardBook::Update()
 	{

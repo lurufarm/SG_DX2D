@@ -5,6 +5,7 @@
 #include "..\Engine_SOURCE\sgCollider2D.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgTime.h"
+#include "Gobj_Player.h"
 
 namespace sg
 {
@@ -27,6 +28,7 @@ namespace sg
 			float mRange;
 			float mSpeed;
 			int mHP;
+			float mExp;
 		};
 
 		BasicStat GetStat() { return mStat; }
@@ -38,13 +40,12 @@ namespace sg
 		void SetSpeed(float speed) { mStat.mSpeed = speed; }
 		void SetHP(int HP) { mStat.mHP = HP; }
 
-	private:
 
+	protected:
 		BasicStat mStat;
 		Transform* mTr;
 		MeshRenderer* mMr;
 		Collider2D* mCol;
-
 	};
 }
 

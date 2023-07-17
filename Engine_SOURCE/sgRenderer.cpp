@@ -590,6 +590,15 @@ namespace renderer
 
 #pragma endregion
 
+#pragma region Character
+		// 임시 치즈
+		texture = Resources::Load<Texture>(L"Cheese_t", L"..\\Resources\\Character\\Cheese\\HeroBody_08.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Cheese_temp", material);
+#pragma endregion
 #pragma region Stage0_ForestFd
 
 		// Stage0_ForestFd01 Map

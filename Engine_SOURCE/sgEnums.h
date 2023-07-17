@@ -34,6 +34,7 @@ namespace sg::enums
 		Mesh,
 		Shader,
 		Material,
+		Tile_Image,
 		End,
 	};
 

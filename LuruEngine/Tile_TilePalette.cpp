@@ -5,13 +5,13 @@
 
 namespace sg
 {
-	std::shared_ptr<Material> TilePalette::mMaterial = nullptr;
+	std::shared_ptr<Tile_Image> TilePalette::mImage = nullptr;
 	std::unordered_map<UINT64, Tile*> TilePalette::mTiles = {};
 	UINT TilePalette::mIndex = -1;
 
 	void TilePalette::Initialize()
 	{
-		mMaterial = Resources::Find<Material>(L"");
+		mImage = sg::Resources::Find<Tile_Image>(L"catt");
 	}
 	void TilePalette::Update()
 	{
@@ -31,7 +31,7 @@ namespace sg
 			return;
 
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, SceneManager::GetActiveScene());
-		tile->InitializeTile(mMaterial, index);
+		tile->InitializeTile(mImage, index);
 
 		Vector3 tilePos(pos.x * TILE_SIZE_X, pos.y * TILE_SIZE_Y, TILE_SIZE_X);
 		tile->GetComp<Transform>()->SetPosition(tilePos);

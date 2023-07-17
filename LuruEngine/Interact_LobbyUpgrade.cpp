@@ -21,6 +21,8 @@ namespace sg
 		SetMaterial(L"InteractableLobbyUpgrade");
 		mMr->Initialize();
 
+		SetOrder(2);
+		
 		Gobj_Interactable::Initialize();
 	}
 	void Interact_LobbyUpgrade::Update()

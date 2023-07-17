@@ -2,32 +2,32 @@
 
 namespace sg
 {
-	SCENE_PlayScene::SCENE_PlayScene()
+	PlayScene::PlayScene()
 	{
 	}
-	SCENE_PlayScene::~SCENE_PlayScene()
+	PlayScene::~PlayScene()
 	{
 	}
-	void SCENE_PlayScene::Initialize()
+	void PlayScene::Initialize()
 	{
 		Scene::Initialize();
 	}
-	void SCENE_PlayScene::Update()
+	void PlayScene::Update()
 	{
 		Scene::Update();
 	}
-	void SCENE_PlayScene::LateUpdate()
+	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 	}
-	void SCENE_PlayScene::Render()
+	void PlayScene::Render()
 	{
 		Scene::Render();
 	}
-	void SCENE_PlayScene::OnEnter()
+	void PlayScene::OnEnter()
 	{
 	}
-	void SCENE_PlayScene::OnExit()
+	void PlayScene::OnExit()
 	{
 	}
 }

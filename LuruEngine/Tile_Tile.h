@@ -1,6 +1,7 @@
 #pragma once
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgMaterial.h"
+#include "Tile_Image.h"
 #define TILE_SIZE_X 18
 #define TILE_SIZE_Y 18
 #define TILE_SIZE_Z 0
@@ -16,7 +17,7 @@ namespace sg
 		Tile(Vector3 pos);
 		~Tile();
 
-		void InitializeTile(std::shared_ptr<Material> atlas, int index);
+		void InitializeTile(std::shared_ptr<Tile_Image> atlas, int index);
 		void SetIndex(int index);
 
 		virtual void Update() override;
@@ -31,7 +32,7 @@ namespace sg
 
 	private:
 
-		std::shared_ptr<Material> mAtlas;
+		std::shared_ptr<Tile_Image> mAtlas;
 		UINT mIndex;
 		UINT mX;
 		UINT mY;

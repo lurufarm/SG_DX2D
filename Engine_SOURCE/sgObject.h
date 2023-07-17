@@ -8,6 +8,18 @@
 namespace sg::object
 {
 #pragma region Create Objects basically in game
+
+	template <typename T>
+	static __forceinline T* Instantiate(enums::eLayerType layer)
+	{
+		T* Gobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		//Scene* scene = sname;
+		scene->AddGameObj(layer, Gobj);
+
+		return Gobj;
+	}
+
 	template <typename T>
 	static __forceinline T* Instantiate(enums::eLayerType layer, Scene* sname)
 	{

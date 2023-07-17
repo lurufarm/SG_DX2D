@@ -18,6 +18,6 @@ namespace sg
 		virtual void OnExit();
 
 	private:
-		UI_FocusBoxes* mFocus;
+		class UI_FocusBoxes* mFocus;
 	};
 }

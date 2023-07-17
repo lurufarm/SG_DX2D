@@ -13,22 +13,22 @@ namespace sg
 
 		if (Input::KeyP(eKeyCode::W))
 		{
-			pos.y += 300 * Time::DeltaTime();
+			pos.y += 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::KeyP(eKeyCode::S))
 		{
-			pos.y -= 300 * Time::DeltaTime();
+			pos.y -= 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::KeyP(eKeyCode::A))
 		{
-			pos.x -= 300 * Time::DeltaTime();
+			pos.x -= 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::KeyP(eKeyCode::D))
 		{
-			pos.x += 300 * Time::DeltaTime();
+			pos.x += 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::KeyP(eKeyCode::Q))

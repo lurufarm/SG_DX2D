@@ -3,7 +3,7 @@
 
 namespace sg
 {
-	class SCENE_Stage0 : public SCENE_PlayScene
+	class SCENE_Stage0 : public PlayScene
 	{
 	public:
 		SCENE_Stage0();

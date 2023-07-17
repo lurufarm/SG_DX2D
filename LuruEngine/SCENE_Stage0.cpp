@@ -10,19 +10,19 @@ namespace sg
 	}
 	void SCENE_Stage0::Initialize()
 	{
-		SCENE_PlayScene::Initialize();
+		PlayScene::Initialize();
 	}
 	void SCENE_Stage0::Update()
 	{
-		SCENE_PlayScene::Update();
+		PlayScene::Update();
 	}
 	void SCENE_Stage0::LateUpdate()
 	{
-		SCENE_PlayScene::LateUpdate();
+		PlayScene::LateUpdate();
 	}
 	void SCENE_Stage0::Render()
 	{
-		SCENE_PlayScene::Render();
+		PlayScene::Render();
 	}
 	void SCENE_Stage0::OnEnter()
 	{

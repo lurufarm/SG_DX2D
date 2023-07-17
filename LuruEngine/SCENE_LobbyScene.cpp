@@ -28,6 +28,8 @@
 #include "Interact_LobbyUpgrade.h"
 #include "Interact_LobbyCardBook.h"
 
+#include "Gobj_Player.h"
+#include "Char_Cheese.h"
 
 
 namespace sg
@@ -53,6 +55,7 @@ namespace sg
 		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 
+		Gobj_Player* player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
 
 		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
 		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
@@ -63,10 +66,7 @@ namespace sg
 		mFocus->AddSelectObj(cardbook);
 		mFocus->SetSelectObj(character);
 
-		//character->AddComp<SCRIPT_CameraScript>();
-		//Collider2D* cd = character->AddComp<Collider2D>();
-		//Collider2D* cd2 = upgrade->AddComp<Collider2D>();
-		//CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);

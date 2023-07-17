@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class SCENE_PlayScene : public Scene
+	class PlayScene : public Scene
 	{
 	public:
-		SCENE_PlayScene();
-		~SCENE_PlayScene();
+		PlayScene();
+		~PlayScene();
 
 		virtual void Initialize();
 		virtual void Update();

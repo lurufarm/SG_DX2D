@@ -27,7 +27,7 @@ namespace sg
 	Tile::~Tile()
 	{
 	}
-	void Tile::InitializeTile(std::shared_ptr<Material> atlas, int index)
+	void Tile::InitializeTile(std::shared_ptr<Tile_Image> atlas, int index)
 	{
 		mIndex = index;
 		if (atlas == nullptr || index < 0)
@@ -37,10 +37,10 @@ namespace sg
 		SetIndex(index);
 	}
 	void Tile::SetIndex(int index)
-	{	
-		int maxCol = mAtlas->GetTexture()->GetWidth() / TILE_SIZE_X;
-		int maxRow = mAtlas->GetTexture()->GetHeight() / TILE_SIZE_Y;
-	
+	{
+		int maxCol = mAtlas->GetWidth() / TILE_SIZE_X;
+		int maxRow = mAtlas->GetHeight() / TILE_SIZE_Y;
+
 		mY = index / maxCol;
 		mX = index % maxCol;
 	}
@@ -52,6 +52,6 @@ namespace sg
 	}
 	void Tile::Render()
 	{
-		
+
 	}
 }

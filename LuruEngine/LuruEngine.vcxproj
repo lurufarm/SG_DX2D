@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gobj_Character.h" />
     <ClInclude Include="Gobj_Img.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
+    <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
     <ClInclude Include="Img_CatPattern.h" />
@@ -190,12 +192,14 @@
     <ClInclude Include="UI_FocusBoxes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
+    <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />
     <ClCompile Include="Img_CatPattern.cpp" />

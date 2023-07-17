@@ -34,7 +34,7 @@ namespace sg
 
 	private:
 		static std::unordered_map<UINT64, Tile*> mTiles;
-		static std::shared_ptr<Material> mMaterial;
+		static std::shared_ptr<Tile_Image> mImage;
 		static UINT mIndex;
 	};
 }

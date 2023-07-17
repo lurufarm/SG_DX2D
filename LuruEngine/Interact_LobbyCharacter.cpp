@@ -23,6 +23,8 @@ namespace sg
 		SetMaterial(L"InteractableLobbyCharacter");
 		mMr->Initialize();
 
+		SetOrder(1);
+
 		Gobj_Interactable::Initialize();
 	}
 	void Interact_LobbyCharacter::Update()

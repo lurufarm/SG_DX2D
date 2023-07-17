@@ -1,4 +1,5 @@
 #include "Stage0_Forest01.h"
+#include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "..\Engine_SOURCE\sgCamera.h"
