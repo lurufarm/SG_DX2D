@@ -80,7 +80,6 @@ namespace sg
 					std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 					mObj = iter->second;
 				}
-
 			}
 			else if (Input::KeyD(eKeyCode::D))
 			{

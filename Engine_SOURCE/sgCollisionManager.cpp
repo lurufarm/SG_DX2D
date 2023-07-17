@@ -118,11 +118,6 @@ namespace sg
 
 		Vector2 axis[4];
 
-		//axis[0] = leftvertexes.vertexPos[3] - leftvertexes.vertexPos[2];
-		//axis[1] = leftvertexes.vertexPos[3] - leftvertexes.vertexPos[0];
-		//axis[2] = rightvertexes.vertexPos[3] - rightvertexes.vertexPos[2];
-		//axis[3] = rightvertexes.vertexPos[3] - rightvertexes.vertexPos[0];
-
 		axis[0] = MakeAxis(leftvertexes)[0];
 		axis[1] = MakeAxis(leftvertexes)[1];
 		axis[2] = MakeAxis(rightvertexes)[0];

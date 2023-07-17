@@ -32,9 +32,6 @@
     <ClCompile Include="UI_Exit.cpp">
       <Filter>Contents\Obj\Gobj_UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI_Menu.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
-    </ClCompile>
     <ClCompile Include="UI_FocusBoxes.cpp">
       <Filter>Contents\Obj\Gobj_UI</Filter>
     </ClCompile>
@@ -104,6 +101,12 @@
     <ClCompile Include="SCENE_ToolScene.cpp">
       <Filter>Contents\Scene\SCENE_ToolScene</Filter>
     </ClCompile>
+    <ClCompile Include="UI_Icons.cpp">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Interact_LobbyCardBook.cpp">
+      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -138,9 +141,6 @@
       <Filter>Contents\Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="UI_Exit.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI_Menu.h">
       <Filter>Contents\Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="UI_FocusBoxes.h">
@@ -211,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="SCENE_ToolScene.h">
       <Filter>Contents\Scene\SCENE_ToolScene</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Icons.h">
+      <Filter>Contents\Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Interact_LobbyCardBook.h">
+      <Filter>Contents\Obj\Gobj_Interactable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

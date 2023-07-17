@@ -5,11 +5,11 @@ namespace sg
 	Gobj_Interactable::Gobj_Interactable()
 		: mTr(nullptr)
 		, mMr(nullptr)
-		//, mCol(nullptr)
+		, mCol(nullptr)
 	{
 		SetName(L"Gobj_Interactable");
 		AddComp<MeshRenderer>();
-		//AddComp<Collider>();
+		AddComp<Collider2D>();
 	}
 	Gobj_Interactable::~Gobj_Interactable()
 	{

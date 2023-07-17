@@ -3,6 +3,7 @@
 #include "..\Engine_SOURCE\sgResources.h"
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgMeshRenderer.h"
+#include "..\Engine_SOURCE\sgCollider2D.h"
 #include "..\Engine_SOURCE\sgMesh.h"
 #include "..\Engine_SOURCE\sgMaterial.h"
 
@@ -37,7 +38,7 @@ namespace sg
 	protected:
 		Transform* mTr;
 		MeshRenderer* mMr;
-		//Collider* mCol;
+		Collider2D* mCol;
 	private:
 	};
 }

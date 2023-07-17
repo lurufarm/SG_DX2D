@@ -21,8 +21,12 @@
 #include "Img_LobbyMap.h"
 #include "Img_LobbyMolding.h"
 
+#include "UI_Icons.h"
+#include "UI_FocusBoxes.h"
+
 #include "Interact_LobbyCharacter.h"
 #include "Interact_LobbyUpgrade.h"
+#include "Interact_LobbyCardBook.h"
 
 
 
@@ -45,15 +49,24 @@ namespace sg
 		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::BGImg, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
 
-		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::Player, this);
+		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 
-		character->AddComp<SCRIPT_CameraScript>();
 
-		Collider2D* cd = character->AddComp<Collider2D>();
-		Collider2D* cd2 = upgrade->AddComp<Collider2D>();
+		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
+		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
 
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
+		mFocus = object::Instantiate<UI_FocusBoxes>(this, eLayerType::UI, this);
+		mFocus->AddSelectObj(character);
+		mFocus->AddSelectObj(upgrade);
+		mFocus->AddSelectObj(cardbook);
+		mFocus->SetSelectObj(character);
+
+		//character->AddComp<SCRIPT_CameraScript>();
+		//Collider2D* cd = character->AddComp<Collider2D>();
+		//Collider2D* cd2 = upgrade->AddComp<Collider2D>();
+		//CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);

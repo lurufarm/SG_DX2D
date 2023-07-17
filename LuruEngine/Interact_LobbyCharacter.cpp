@@ -18,6 +18,7 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
+		mCol = GetComp <Collider2D>();
 		SetMesh();
 		SetMaterial(L"InteractableLobbyCharacter");
 		mMr->Initialize();

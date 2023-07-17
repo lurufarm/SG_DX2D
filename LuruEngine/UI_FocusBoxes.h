@@ -17,7 +17,13 @@ namespace sg
 		virtual void Render();
 
 		void SetSelectObj(GameObject* obj);
-		void AddSelectObj(GameObject* obj) { mObjs.insert(std::make_pair(obj->GetOrder(), obj)); }
+		void AddSelectObj(GameObject* obj) 
+		{ 
+			static int a = 0;
+			obj->SetOrder(a);
+			a++;
+			mObjs.insert(std::make_pair(obj->GetOrder(), obj)); 
+		}
 		GameObject* GetSelectObj() { return mObj; }
 		
 
