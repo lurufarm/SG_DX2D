@@ -280,6 +280,11 @@ namespace renderer
 		// Constant Buffer - Grid
 		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
+	
+		// Constant Buffer - Colliding
+		constantBuffer[(UINT)eCBType::Colliding] = new ConstantBuffer(eCBType::Colliding);
+		constantBuffer[(UINT)eCBType::Colliding]->Create(sizeof(CollidingCB));
+
 	}
 	
 	void LoadShader()

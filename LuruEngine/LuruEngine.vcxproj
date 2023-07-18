@@ -159,6 +159,7 @@
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
+    <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
+    <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

@@ -117,6 +117,13 @@ namespace gui
 
 		tr->LateUpdate();
 		
+		renderer::CollidingCB colliderColor = {};
+		colliderColor.ColliderColor = mesh.Colliding;
+		
+		ConstantBuffer* ColCB = renderer::constantBuffer[(UINT)eCBType::Colliding];
+		ColCB->SetData(&colliderColor);
+		ColCB->Bind(eShaderStage::PS);
+		
 		sg::Camera* mainCamera = renderer::mainCamera;
 
 		sg::Camera::SetGpuViewMatrix(mainCamera->GetViewMatrix());

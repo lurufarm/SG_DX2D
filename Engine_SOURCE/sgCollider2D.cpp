@@ -28,9 +28,9 @@ namespace sg
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
 
-		Vector3 scale = tr->GetScale();
-		scale.x *= mSize.x;
-		scale.y *= mSize.y;
+		mScale = tr->GetScale();
+		mScale.x *= mSize.x;
+		mScale.y *= mSize.y;
 
 		Vector3 pos = tr->GetPosition();
 		pos.x += mCenter.x;
@@ -40,9 +40,10 @@ namespace sg
 
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;
-		mesh.scale = scale;
+		mesh.scale = mScale;
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
+		mesh.Colliding = mCB.ColliderColor;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}
@@ -51,12 +52,16 @@ namespace sg
 	}
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
+		mCB.ColliderColor = true;
+		other->mCB.ColliderColor = true;
+
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetComps<Script>();
 
 		for (Script* script : scripts)
 		{
 			script->OnCollisionEnter(other);
+
 		}
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
@@ -67,11 +72,13 @@ namespace sg
 		for (Script* script : scripts)
 		{
 			script->OnCollisionStay(other);
-
 		}
 	}
 	void Collider2D::OnCollisionExit(Collider2D* other)
 	{
+		mCB.ColliderColor = false;
+		other->mCB.ColliderColor = false;
+
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetComps<Script>();
 

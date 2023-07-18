@@ -38,8 +38,8 @@ namespace sg
 		};
 		static VertexPos MakeVertexPos(Collider2D* col)
 		{
-			Vector3 colPos = col->GetCPosition();
-			Vector2 colScale = col->GetOwner()->GetComp<Transform>()->GetScale() * col->GetCSize();
+			Vector3 colPos = col->GetOwner()->GetComp<Transform>()->GetPosition()/*GetCPosition()*/;
+			Vector3 colScale = col->GetCScale();
 			float colRotation = col->GetOwner()->GetComp<Transform>()->GetRotation().z;
 
 			VertexPos vertexpos = {};

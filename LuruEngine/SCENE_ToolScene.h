@@ -18,5 +18,7 @@ namespace sg
 		virtual void OnExit() override;
 
 	private:
+
+		GameObject* mToolSceneCamera;
 	};
 }

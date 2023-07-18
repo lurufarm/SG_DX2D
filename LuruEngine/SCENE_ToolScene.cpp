@@ -24,18 +24,22 @@ namespace sg
 	{
 		Scene::Initialize();
 		TilePalette::Initialize();
+
+		mToolSceneCamera = object::Instantiate<GameObject>(eLayerType::Tile, this);
+		mToolSceneCamera->AddComp<Camera>();
+
 	}
 	void ToolScene::Update()
 	{
 		Scene::Update();
 
-		Vector2 temp = Input::GetMousePos();
+		Vector3 temp = Input::GetMousePos();
 
 		if (Input::KeyD(eKeyCode::LBUTTON))
 		{
-			Vector2 mousePos = Input::GetMousePos();
+			Vector3 mousePos = Input::GetMousePos();
 			Vector3 pos = Vector3(mousePos.x, mousePos.y, 0.0f);
-			pos = TilePalette::GetTilePos(Vector3(pos.x, pos.y, 0.0f));
+			//pos = TilePalette::GetTilePos(Vector3(pos.x, pos.y, 0.0f));
 
 			UINT tileIndex = TilePalette::GetIndex();
 			TilePalette::CreateTile(tileIndex, pos);
@@ -60,6 +64,7 @@ namespace sg
 	}
 	void ToolScene::OnEnter()
 	{
+		renderer::mainCamera = mToolSceneCamera->GetComp<Camera>();
 	}
 	void ToolScene::OnExit()
 	{

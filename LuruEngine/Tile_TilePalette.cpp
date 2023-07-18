@@ -5,13 +5,13 @@
 
 namespace sg
 {
-	std::shared_ptr<Tile_Image> TilePalette::mImage = nullptr;
+	std::shared_ptr<Texture> TilePalette::mImage = nullptr;
 	std::unordered_map<UINT64, Tile*> TilePalette::mTiles = {};
 	UINT TilePalette::mIndex = -1;
 
 	void TilePalette::Initialize()
 	{
-		mImage = sg::Resources::Find<Tile_Image>(L"catt");
+		mImage = sg::Resources::Find<Texture>(L"catt");
 	}
 	void TilePalette::Update()
 	{
@@ -24,16 +24,17 @@ namespace sg
 	}
 	void TilePalette::CreateTile(int index, Vector3 pos)
 	{
-		Vector2 mousePos = Input::GetMousePos();
+		Vector3 mousePos = Input::GetMousePos();
 		if (mousePos.x >= 1600.0f || mousePos.x <= 0.0f)
 			return;
 		if (mousePos.y >= 900.0f || mousePos.y <= 0.0f)
 			return;
 
-		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, SceneManager::GetActiveScene());
+		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
 
-		Vector3 tilePos(pos.x * TILE_SIZE_X, pos.y * TILE_SIZE_Y, TILE_SIZE_X);
+		//Vector3 tilePos(pos.x * TILE_SIZE_X, pos.y * TILE_SIZE_Y, TILE_SIZE_X);
+		Vector3 tilePos(0.0f, 0.0f, 0.0f);
 		tile->GetComp<Transform>()->SetPosition(tilePos);
 
 		TileID id;
@@ -136,8 +137,8 @@ namespace sg
 	}
 	Vector3 TilePalette::GetTilePos(Vector3 mousePos)
 	{
-		int indexY = mousePos.y / TILE_SIZE_Y;
-		int indexX = mousePos.x / TILE_SIZE_X;
+		int indexY = (int)mousePos.y / TILE_SIZE_Y;
+		int indexX = (int)mousePos.x / TILE_SIZE_X;
 
 		return Vector3(indexX, indexY, 0);
 	}

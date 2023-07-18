@@ -11,22 +11,22 @@ namespace sg
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
 
-		if (Input::KeyP(eKeyCode::W))
+		if (Input::KeyP(eKeyCode::UP))
 		{
 			pos.y += 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		if (Input::KeyP(eKeyCode::S))
+		if (Input::KeyP(eKeyCode::DOWN))
 		{
 			pos.y -= 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		if (Input::KeyP(eKeyCode::A))
+		if (Input::KeyP(eKeyCode::LEFT))
 		{
 			pos.x -= 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		if (Input::KeyP(eKeyCode::D))
+		if (Input::KeyP(eKeyCode::RIGHT))
 		{
 			pos.x += 150 * Time::DeltaTime();
 			tr->SetPosition(pos);

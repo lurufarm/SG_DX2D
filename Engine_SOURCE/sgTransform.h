@@ -52,6 +52,7 @@ namespace sg
 
 		void SetParent(Transform* transform) { mParent = transform; }
 		Transform* GetParent() { return mParent; }
+		Matrix& GetMatrix() { return mWorld; }
 
 
 	private:

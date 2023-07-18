@@ -5,6 +5,8 @@ extern sg::Application application;
 
 namespace sg
 {
+	using namespace sg::math;
+
 	int ASCII[(UINT)eKeyCode::END] =
 	{
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
@@ -16,10 +18,11 @@ namespace sg
 	};
 
 	std::vector<Input::Key> Input::mKeys;
-	Vector2 Input::mMousePos = Vector2::Zero;
+	Vector3 Input::mMousePos = Vector3::Zero;
 
 	void Input::Initialize()
 	{
+
 		for (UINT i = 0; i < (UINT)eKeyCode::END; i++)
 		{
 			Key keyInfo;
@@ -61,10 +64,26 @@ namespace sg
 
 			POINT mousePos = {};
 			GetCursorPos(&mousePos);
-
 			ScreenToClient(application.GetHwnd(), &mousePos);
-			mMousePos.x = mousePos.x;
-			mMousePos.y = mousePos.y;
+			
+			Vector3 tempPos = {};
+
+			tempPos.x = mousePos.x;
+			tempPos.y = mousePos.y;
+			tempPos.z = 0.0f;
+
+			Viewport viewport = {};
+
+			viewport.width = 1600.0f;
+			viewport.height = 900.0f;
+			viewport.x = 0;
+			viewport.y = 0;
+			viewport.minDepth = 0.0f;
+			viewport.maxDepth = 1.0f;
+
+			mMousePos = viewport.Unproject(tempPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+			//mMousePos.x = mousePos.x;
+			//mMousePos.y = mousePos.y;
 		}
 		else
 		{

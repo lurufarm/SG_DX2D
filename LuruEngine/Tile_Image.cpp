@@ -34,7 +34,7 @@ namespace sg
 		// Setting Tile_Image Color
 		HBRUSH brush = CreateSolidBrush(rgb);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(image->GetHdc(), brush);
-		//Rectangle(image->GetHdc(), -1, -1, image->mWidth + 1, image->mHeight + 1);
+		::Rectangle(image->GetHdc(), -1, -1, image->mWidth + 1, image->mHeight + 1);
 		SelectObject(image->GetHdc(), oldBrush);
 		DeleteObject(oldBrush);
 

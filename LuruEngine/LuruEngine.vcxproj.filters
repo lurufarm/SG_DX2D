@@ -113,6 +113,9 @@
     <ClCompile Include="Char_Cheese.cpp">
       <Filter>Contents\Obj\Gobj_Character\Char</Filter>
     </ClCompile>
+    <ClCompile Include="SCRIPT_Player.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -229,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Char_Cheese.h">
       <Filter>Contents\Obj\Gobj_Character\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Player.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

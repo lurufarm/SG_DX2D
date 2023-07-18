@@ -33,6 +33,13 @@ namespace renderer
 		Vector2 CameraScale;
 		Vector2 Resolution;
 	};
+	CBUFFER(CollidingCB, CBSLOT_COLLIDING)
+	{
+		int ColliderColor;
+		int none0;
+		int none1;
+		int none2;
+	};
 
 
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];

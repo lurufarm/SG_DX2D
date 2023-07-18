@@ -18,6 +18,14 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
+cbuffer Colliding : register(b3)
+{
+    int CollidingColor;
+    int none0;
+    int none1;
+    int none2;
+}
+
 Texture2D albedoTexture : register(t0);
 
 SamplerState pointSampler : register(s0);

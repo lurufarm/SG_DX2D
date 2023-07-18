@@ -1,6 +1,7 @@
 #pragma once
 #include "sgComponent.h"
 #include "sgTransform.h"
+#include "sgRenderer.h"
 
 namespace sg
 {
@@ -26,6 +27,7 @@ namespace sg
 
 		Vector3 GetCPosition() { return mPosition; }
 		Vector2 GetCSize() { return mSize; }
+		Vector3 GetCScale() { return mScale; }
 
 
 	private:
@@ -37,6 +39,8 @@ namespace sg
 		Vector3 mPosition;
 		Vector2 mSize;
 		Vector2 mCenter;
+		Vector3 mScale;
 
+		renderer::CollidingCB mCB;
 	};
 }

@@ -1,6 +1,7 @@
 #include "Tile_Tile.h"
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
+#include "..\Engine_SOURCE\sgResources.h"
 #include "..\Engine_SOURCE\sgTexture.h"
 
 
@@ -13,7 +14,8 @@ namespace sg
 		, mX(0)
 		, mY(0)
 		, mZ(0)
-	{
+	{		
+
 	}
 	Tile::Tile(Vector3 pos)
 		: mAtlas(nullptr)
@@ -27,14 +29,22 @@ namespace sg
 	Tile::~Tile()
 	{
 	}
-	void Tile::InitializeTile(std::shared_ptr<Tile_Image> atlas, int index)
+	void Tile::InitializeTile(std::shared_ptr<Texture> atlas, int index)
 	{
+		mMr = AddComp<MeshRenderer>();
+		std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"Cat");
+		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		std::shared_ptr<Material> material = Resources::Find<Material>(L"SpriteMaterial");
+		mMr->SetMaterial(material);
+		mMr->Initialize();
+		
 		mIndex = index;
 		if (atlas == nullptr || index < 0)
 			return;
 
-		mAtlas = atlas;
+		mAtlas = texture;
 		SetIndex(index);
+
 	}
 	void Tile::SetIndex(int index)
 	{
@@ -46,12 +56,14 @@ namespace sg
 	}
 	void Tile::Update()
 	{
+		GameObject::Update();
 	}
 	void Tile::LateUpdate()
 	{
+		GameObject::LateUpdate();
 	}
 	void Tile::Render()
 	{
-
+		GameObject::Render();
 	}
 }

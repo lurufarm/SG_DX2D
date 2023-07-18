@@ -1,5 +1,6 @@
 #pragma once
 #include "LuruEngine.h"
+#include "sgMath.h"
 
 namespace sg
 {
@@ -60,13 +61,13 @@ namespace sg
 			return mKeys[static_cast<UINT>(keyCode)].state == eKeyState::Up;
 		}
 
-		static __forceinline Vector2 GetMousePos() { return mMousePos; }
+		static __forceinline Vector3 GetMousePos() { return mMousePos; }
 
 
 	private:
 
 		static std::vector<Key> mKeys;
-		static Vector2 mMousePos;
+		static Vector3 mMousePos;
 
 	};
 

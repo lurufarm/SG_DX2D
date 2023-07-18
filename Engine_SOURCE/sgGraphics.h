@@ -16,6 +16,8 @@
 //#define CBSLOT_PARTICLE			1
 #define CBSLOT_TIME				1
 #define CBSLOT_GRID				2
+#define CBSLOT_COLLIDING		3
+
 
 namespace sg::graphics
 {
@@ -35,6 +37,7 @@ namespace sg::graphics
 		Transform,
 		Time,
 		Grid,
+		Colliding,
 		Material,
 		End,
 	};
@@ -104,6 +107,7 @@ namespace sg::graphics
 		float radius;
 		float duration;
 		float time;
+		bool Colliding;
 	};
 
 }
