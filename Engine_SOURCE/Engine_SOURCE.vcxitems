@@ -16,6 +16,8 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LuruEngine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h" />
@@ -49,6 +51,8 @@
     <None Include="$(MSBuildThisFileDirectory)sgMath.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp" />

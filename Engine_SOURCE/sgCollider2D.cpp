@@ -43,7 +43,7 @@ namespace sg
 		mesh.scale = mScale;
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
-		mesh.Colliding = mCB.ColliderColor;
+		mesh.MyCBType = mCB.ColliderColor;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}
@@ -61,7 +61,6 @@ namespace sg
 		for (Script* script : scripts)
 		{
 			script->OnCollisionEnter(other);
-
 		}
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)

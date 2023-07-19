@@ -41,6 +41,6 @@ namespace sg
 		Vector2 mCenter;
 		Vector3 mScale;
 
-		renderer::CollidingCB mCB;
+		renderer::MyCB mCB;
 	};
 }

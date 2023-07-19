@@ -19,6 +19,7 @@ namespace sg
 
 	std::vector<Input::Key> Input::mKeys;
 	Vector3 Input::mMousePos = Vector3::Zero;
+	Vector3 Input::mFinalMousePos = Vector3::Zero;
 
 	void Input::Initialize()
 	{
@@ -65,25 +66,12 @@ namespace sg
 			POINT mousePos = {};
 			GetCursorPos(&mousePos);
 			ScreenToClient(application.GetHwnd(), &mousePos);
-			
-			Vector3 tempPos = {};
 
-			tempPos.x = mousePos.x;
-			tempPos.y = mousePos.y;
-			tempPos.z = 0.0f;
+			mMousePos.x = mousePos.x;
+			mMousePos.y = mousePos.y;
+			mMousePos.z = 0.0f;
 
-			Viewport viewport = {};
-
-			viewport.width = 1600.0f;
-			viewport.height = 900.0f;
-			viewport.x = 0;
-			viewport.y = 0;
-			viewport.minDepth = 0.0f;
-			viewport.maxDepth = 1.0f;
-
-			mMousePos = viewport.Unproject(tempPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
-			//mMousePos.x = mousePos.x;
-			//mMousePos.y = mousePos.y;
+			MousePosUnProject();
 		}
 		else
 		{
@@ -101,5 +89,30 @@ namespace sg
 	}
 	void Input::Render()
 	{
+	}
+	Vector3 Input::MousePosUnProject()
+	{
+		POINT mousePos = {};
+		GetCursorPos(&mousePos);
+		ScreenToClient(application.GetHwnd(), &mousePos);
+
+		Vector3 tempPos = {};
+
+		tempPos.x = mousePos.x;
+		tempPos.y = mousePos.y;
+		tempPos.z = 0.0f;
+
+		Viewport viewport = {};
+
+		viewport.width = 1600.0f;
+		viewport.height = 900.0f;
+		viewport.x = 0;
+		viewport.y = 0;
+		viewport.minDepth = 0.0f;
+		viewport.maxDepth = 1.0f;
+
+		mFinalMousePos = viewport.Unproject(tempPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+
+		return mFinalMousePos;
 	}
 }

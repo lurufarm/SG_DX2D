@@ -23,6 +23,7 @@ namespace sg
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 	void Application::Initialize()
 	{

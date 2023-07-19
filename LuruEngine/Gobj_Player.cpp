@@ -65,4 +65,14 @@ namespace sg
 
 		GameObject::Render();
 	}
+	void Gobj_Player::OnCollisionEnter(Collider2D* other)
+	{
+		int a = 0;
+	}
+	void Gobj_Player::OnCollisionStay(Collider2D* other)
+	{
+	}
+	void Gobj_Player::OnCollisionExit(Collider2D* other)
+	{
+	}
 }

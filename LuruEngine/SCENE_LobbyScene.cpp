@@ -31,6 +31,8 @@
 #include "Gobj_Player.h"
 #include "Char_Cheese.h"
 
+#include "Tile_TilePalette.h"
+
 
 namespace sg
 {
@@ -67,6 +69,7 @@ namespace sg
 		mFocus->SetSelectObj(character);
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
@@ -96,6 +99,12 @@ namespace sg
 	{
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
+
+		const std::wstring path = { L"..\\Resources\\Tile\\test" };
+
+		TilePalette::AutoLoad(path);
+
+
 	}
 	void LobbyScene::OnExit()
 	{

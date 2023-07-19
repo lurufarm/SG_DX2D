@@ -7,6 +7,8 @@
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgMeshRenderer.h"
 
+#include "..\LuruEngine\Tile_TilePalette.h"
+
 #include "SCRIPT_GridScript.h"
 
 namespace gui
@@ -117,12 +119,13 @@ namespace gui
 
 		tr->LateUpdate();
 		
-		renderer::CollidingCB colliderColor = {};
-		colliderColor.ColliderColor = mesh.Colliding;
-		
-		ConstantBuffer* ColCB = renderer::constantBuffer[(UINT)eCBType::Colliding];
-		ColCB->SetData(&colliderColor);
-		ColCB->Bind(eShaderStage::PS);
+		renderer::MyCB mycb = {};
+		mycb.ColliderColor = mesh.MyCBType;
+		mycb.TileIndex = sg::TilePalette::GetIndex();
+
+		ConstantBuffer* MyCB = renderer::constantBuffer[(UINT)eCBType::MyCBType];
+		MyCB->SetData(&mycb);
+		MyCB->Bind(eShaderStage::PS);
 		
 		sg::Camera* mainCamera = renderer::mainCamera;
 

@@ -3,7 +3,8 @@
 #include "..\Engine_SOURCE\sgCamera.h"
 #include "..\Engine_SOURCE\sgResources.h"
 #include "..\Engine_SOURCE\sgTexture.h"
-
+#include "Tile_TilePalette.h"
+#include "SCRIPT_Tile0.h"
 
 
 namespace sg
@@ -14,8 +15,12 @@ namespace sg
 		, mX(0)
 		, mY(0)
 		, mZ(0)
+		, mCB{}
+		, mTr(nullptr)
+		, mMr(nullptr)
+		, mCol(nullptr)
 	{		
-
+		SetName(L"Tile");
 	}
 	Tile::Tile(Vector3 pos)
 		: mAtlas(nullptr)
@@ -23,7 +28,14 @@ namespace sg
 		, mX(0)
 		, mY(0)
 		, mZ(0)
+		, mCB{}
+		, mTr(nullptr)
+		, mMr(nullptr)
+		, mCol(nullptr)
 	{
+
+		SetName(L"Tile");
+
 		GetComp<Transform>()->SetPosition(pos);
 	}
 	Tile::~Tile()
@@ -31,25 +43,36 @@ namespace sg
 	}
 	void Tile::InitializeTile(std::shared_ptr<Texture> atlas, int index)
 	{
+		mIndex = index;
+		if (atlas == nullptr || index < 0)
+			return;
+
+
+		mAtlas = atlas;
+		SetIndex(index);
+
 		mMr = AddComp<MeshRenderer>();
 		std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"Cat");
 		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		std::shared_ptr<Material> material = Resources::Find<Material>(L"SpriteMaterial");
 		mMr->SetMaterial(material);
 		mMr->Initialize();
-		
-		mIndex = index;
-		if (atlas == nullptr || index < 0)
-			return;
+		mTr = GetComp<Transform>();
+		mTr->SetScale(18.0f, 18.0f, 1.0f);
+		mCB = {};
+		mCB.TileIndex = mIndex;
 
-		mAtlas = texture;
-		SetIndex(index);
+		if (mIndex == 0)
+		{
+			mCol = AddComp<Collider2D>();
+			this->AddComp<SCRIPT_Tile0>();
+		}
 
 	}
 	void Tile::SetIndex(int index)
 	{
-		int maxCol = mAtlas->GetWidth() / TILE_SIZE_X;
-		int maxRow = mAtlas->GetHeight() / TILE_SIZE_Y;
+		int maxCol = (int)mAtlas->GetWidth() / TILE_SIZE_X;
+		int maxRow = (int)mAtlas->GetHeight() / TILE_SIZE_Y;
 
 		mY = index / maxCol;
 		mX = index % maxCol;
@@ -64,6 +87,22 @@ namespace sg
 	}
 	void Tile::Render()
 	{
+		ConstantBuffer* MyCB = renderer::constantBuffer[(UINT)eCBType::MyCBType];
+		MyCB->SetData(&mCB);
+		MyCB->Bind(eShaderStage::PS);
+
 		GameObject::Render();
+	}
+	void Tile::OnCollisionEnter(Collider2D* other)
+	{
+		GetComp<SCRIPT_Tile0>()->OnCollisionEnter(other);
+	}
+	void Tile::OnCollisionStay(Collider2D* other)
+	{
+		GetComp<SCRIPT_Tile0>()->OnCollisionStay(other);
+	}
+	void Tile::OnCollisionExit(Collider2D* other)
+	{
+		GetComp<SCRIPT_Tile0>()->OnCollisionExit(other);
 	}
 }

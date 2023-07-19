@@ -6,10 +6,6 @@ cbuffer Transform : register(b0)
     row_major matrix ProjectionMatrix;
 }
 
-cbuffer Time : register(b1)
-{
-    float4 Time;
-}
 
 cbuffer Grid : register(b2)
 {
@@ -18,13 +14,19 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
-cbuffer Colliding : register(b3)
+cbuffer MyCB : register(b4)
 {
     int CollidingColor;
-    int none0;
+    int TileIndex;
     int none1;
     int none2;
 }
+
+cbuffer Time : register(b5)
+{
+    float4 Time;
+}
+
 
 Texture2D albedoTexture : register(t0);
 

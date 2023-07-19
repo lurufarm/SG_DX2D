@@ -86,6 +86,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = sg::Resources::Find<Shader>(L"TileShader");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -281,9 +286,14 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
 	
-		// Constant Buffer - Colliding
-		constantBuffer[(UINT)eCBType::Colliding] = new ConstantBuffer(eCBType::Colliding);
-		constantBuffer[(UINT)eCBType::Colliding]->Create(sizeof(CollidingCB));
+		// Constant Buffer - Animator
+		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
+		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
+
+
+		// Constant Buffer - MyCBType
+		constantBuffer[(UINT)eCBType::MyCBType] = new ConstantBuffer(eCBType::MyCBType);
+		constantBuffer[(UINT)eCBType::MyCBType]->Create(sizeof(MyCB));
 
 	}
 	
@@ -326,6 +336,12 @@ namespace renderer
 		SpaceShader2->Create(eShaderStage::PS, L"SpritePS.hlsl", "lobby_space2");
 		sg::Resources::Insert(L"lobby_spaceShader2", SpaceShader2);
 
+		std::shared_ptr<Shader> TileShader = std::make_shared<Shader>();
+		TileShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		TileShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "Tile");
+		sg::Resources::Insert(L"TileShader", TileShader);
+
+
 	}
 
 	void LoadMaterial()
@@ -342,6 +358,10 @@ namespace renderer
 
 		std::shared_ptr<Shader> SpaceShader2
 			= Resources::Find<Shader>(L"lobby_spaceShader2");
+
+		std::shared_ptr<Shader> TileShader
+			= Resources::Find<Shader>(L"TileShader");
+
 #pragma endregion
 #pragma region Basic Texture and Basic Material declaration 
 		std::shared_ptr<Texture> texture;
@@ -350,7 +370,7 @@ namespace renderer
 		// Test
 		texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(TileShader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"SpriteMaterial", material);

@@ -31,9 +31,17 @@ namespace sg
 
 		UINT Index() { return mIndex; }
 
+		renderer::MyCB mCB;
+
+		virtual void OnCollisionEnter(Collider2D* other);
+		virtual void OnCollisionStay(Collider2D* other);
+		virtual void OnCollisionExit(Collider2D* other);
+
 	private:
 
+		class Transform* mTr;
 		class MeshRenderer* mMr;
+		class Collider2D* mCol;
 
 		std::shared_ptr<Texture> mAtlas;
 		UINT mIndex;

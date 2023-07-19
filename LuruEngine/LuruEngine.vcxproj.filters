@@ -1,311 +1,324 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="LuruEngine.cpp" />
     <ClCompile Include="SCRIPT_CameraScript.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="Img_LobbyMap.cpp">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Img_Space1.cpp">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Img_Space2.cpp">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Img_Logo.cpp">
-      <Filter>Contents\Obj\Gobj_Img\TitleSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\TitleSceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Img_TitleImg01.cpp">
-      <Filter>Contents\Obj\Gobj_Img\TitleSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\TitleSceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_Img.cpp">
-      <Filter>Contents\Obj\Gobj_Img</Filter>
+      <Filter>Obj\Gobj_Img</Filter>
     </ClCompile>
     <ClCompile Include="Img_CatPattern.cpp">
-      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_UI.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="UI_Exit.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="UI_FocusBoxes.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="UI_FocusBox.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_SelectScript.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="UI_Select.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_Interactable.cpp">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Interact_LobbyCharacter.cpp">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Interact_LobbyUpgrade.cpp">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Interact_LobbyGate.cpp">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Img_LobbyMolding.cpp">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_GridScript.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="Img_SelectText.cpp">
-      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_Character.cpp">
-      <Filter>Contents\Obj\Gobj_Character</Filter>
+      <Filter>Obj\Gobj_Character</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_Player.cpp">
-      <Filter>Contents\Obj\Gobj_Character</Filter>
+      <Filter>Obj\Gobj_Character</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_SelectScene.cpp">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
+      <Filter>Scene\SCENE_NonPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_TitleScene.cpp">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
+      <Filter>Scene\SCENE_NonPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_PlayScene.cpp">
-      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+      <Filter>Scene\SCENE_PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_Stage0.cpp">
-      <Filter>Contents\Scene\SCENE_PlayScene\Stage0</Filter>
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClCompile>
     <ClCompile Include="Stage0_Forest01.cpp">
-      <Filter>Contents\Scene\SCENE_PlayScene\Stage0</Filter>
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClCompile>
     <ClCompile Include="Img_Stage0_Forest01_Map.cpp">
-      <Filter>Contents\Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
+      <Filter>Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_LobbyScene.cpp">
-      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+      <Filter>Scene\SCENE_PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Tile_Tile.cpp">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClCompile>
     <ClCompile Include="Tile_TilePalette.cpp">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClCompile>
     <ClCompile Include="SCENE_ToolScene.cpp">
-      <Filter>Contents\Scene\SCENE_ToolScene</Filter>
+      <Filter>Scene\SCENE_ToolScene</Filter>
     </ClCompile>
     <ClCompile Include="UI_Icons.cpp">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
     <ClCompile Include="Interact_LobbyCardBook.cpp">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Tile_Image.cpp">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClCompile>
     <ClCompile Include="Char_Cheese.cpp">
-      <Filter>Contents\Obj\Gobj_Character\Char</Filter>
+      <Filter>Obj\Gobj_Character\Char</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_Player.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="LuruEngine.cpp">
+      <Filter>x</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Tile0.cpp">
+      <Filter>Script\SCRIPT_Tiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h">
-      <Filter>Contents\Load</Filter>
+      <Filter>Load</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_CameraScript.h">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="Img_LobbyMap.h">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Img_Space1.h">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Img_Space2.h">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Img_Logo.h">
-      <Filter>Contents\Obj\Gobj_Img\TitleSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\TitleSceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Img_TitleImg01.h">
-      <Filter>Contents\Obj\Gobj_Img\TitleSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\TitleSceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Img.h">
-      <Filter>Contents\Obj\Gobj_Img</Filter>
+      <Filter>Obj\Gobj_Img</Filter>
     </ClInclude>
     <ClInclude Include="Img_CatPattern.h">
-      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_UI.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="UI_Exit.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="UI_FocusBoxes.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="UI_FocusBox.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_SelectScript.h">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="UI_Select.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Interactable.h">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Interact_LobbyCharacter.h">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Interact_LobbyUpgrade.h">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Interact_LobbyGate.h">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Img_LobbyMolding.h">
-      <Filter>Contents\Obj\Gobj_Img\LobbySceneImg</Filter>
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_GridScript.h">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="Img_SelectText.h">
-      <Filter>Contents\Obj\Gobj_Img\SelectSceneImg</Filter>
+      <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Character.h">
-      <Filter>Contents\Obj\Gobj_Character</Filter>
+      <Filter>Obj\Gobj_Character</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Player.h">
-      <Filter>Contents\Obj\Gobj_Character</Filter>
+      <Filter>Obj\Gobj_Character</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_SelectScene.h">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
+      <Filter>Scene\SCENE_NonPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_TitleScene.h">
-      <Filter>Contents\Scene\SCENE_NonPlayScene</Filter>
+      <Filter>Scene\SCENE_NonPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_PlayScene.h">
-      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+      <Filter>Scene\SCENE_PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_Stage0.h">
-      <Filter>Contents\Scene\SCENE_PlayScene\Stage0</Filter>
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClInclude>
     <ClInclude Include="Stage0_Forest01.h">
-      <Filter>Contents\Scene\SCENE_PlayScene\Stage0</Filter>
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClInclude>
     <ClInclude Include="Img_Stage0_Forest01_Map.h">
-      <Filter>Contents\Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
+      <Filter>Obj\Gobj_Img\PlaySceneImg\Stage0</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_LobbyScene.h">
-      <Filter>Contents\Scene\SCENE_PlayScene</Filter>
+      <Filter>Scene\SCENE_PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Tile_Tile.h">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="Tile_TilePalette.h">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_ToolScene.h">
-      <Filter>Contents\Scene\SCENE_ToolScene</Filter>
+      <Filter>Scene\SCENE_ToolScene</Filter>
     </ClInclude>
     <ClInclude Include="UI_Icons.h">
-      <Filter>Contents\Obj\Gobj_UI</Filter>
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
     <ClInclude Include="Interact_LobbyCardBook.h">
-      <Filter>Contents\Obj\Gobj_Interactable</Filter>
+      <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Tile_Image.h">
-      <Filter>Contents\Tile</Filter>
+      <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="Char_Cheese.h">
-      <Filter>Contents\Obj\Gobj_Character\Char</Filter>
+      <Filter>Obj\Gobj_Character\Char</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_Player.h">
-      <Filter>Contents\Script</Filter>
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>x</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Tile0.h">
+      <Filter>Script\SCRIPT_Tiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Contents">
-      <UniqueIdentifier>{543f544b-7cf4-470c-ac2b-6bbaf61d9190}</UniqueIdentifier>
+    <Filter Include="x">
+      <UniqueIdentifier>{8332cbe9-325f-4cda-b2bb-c5920119465f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Load">
-      <UniqueIdentifier>{a79c56fb-2fc3-4902-b6d0-024541fb2aec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene">
-      <UniqueIdentifier>{e64a6c36-4045-4b74-8df4-adb4e3513c5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script">
-      <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj">
-      <UniqueIdentifier>{8a4a42e5-757f-4a3e-9d9b-c8eba17f1ca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img">
-      <UniqueIdentifier>{947194aa-13b9-4cf3-80fa-33355f965b70}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_UI">
-      <UniqueIdentifier>{62c4b42f-2839-4726-a3bc-0c1495223547}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Interactable">
-      <UniqueIdentifier>{020dffdd-001a-4678-9e71-b2e4cce7e6af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img\LobbySceneImg">
-      <UniqueIdentifier>{012bccaf-7351-4983-8ab7-0de373d606ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img\SelectSceneImg">
-      <UniqueIdentifier>{801ae3f3-221f-4edd-8e8e-196fa94d4287}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img\TitleSceneImg">
-      <UniqueIdentifier>{8d13e38e-c2fa-414b-832c-88fcc724606d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Etc">
-      <UniqueIdentifier>{d1f49e93-8bfb-49a7-83a6-bf8c2487eb8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Character">
-      <UniqueIdentifier>{0ea5f5ae-b540-44a1-8484-1c87c02611a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\SCENE_PlayScene">
-      <UniqueIdentifier>{c872b486-5749-4dc6-8bb8-a78d0507536a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\SCENE_NonPlayScene">
-      <UniqueIdentifier>{7c4db7b2-988e-477a-97b3-fe7728d50c97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\SCENE_PlayScene\Stage2">
-      <UniqueIdentifier>{bdec0300-6564-43c5-be33-0da759e64a15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img\PlaySceneImg">
-      <UniqueIdentifier>{3bc6b1bf-2625-48b9-8fa4-3e94803ae3fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Obj\Gobj_Img\PlaySceneImg\Stage0">
-      <UniqueIdentifier>{955f68d5-70e8-4be7-80d7-ee599ee08130}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\SCENE_PlayScene\Stage0">
-      <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\SCENE_PlayScene\Stage1">
-      <UniqueIdentifier>{1fd3505d-f312-4f65-9c4a-97d6c9466140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Tile">
+    <Filter Include="Tile">
       <UniqueIdentifier>{aaac7fa7-0a6b-4091-9385-90d98e9bdd26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\SCENE_ToolScene">
+    <Filter Include="Load">
+      <UniqueIdentifier>{a79c56fb-2fc3-4902-b6d0-024541fb2aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj">
+      <UniqueIdentifier>{8a4a42e5-757f-4a3e-9d9b-c8eba17f1ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img">
+      <UniqueIdentifier>{947194aa-13b9-4cf3-80fa-33355f965b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img\LobbySceneImg">
+      <UniqueIdentifier>{012bccaf-7351-4983-8ab7-0de373d606ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img\SelectSceneImg">
+      <UniqueIdentifier>{801ae3f3-221f-4edd-8e8e-196fa94d4287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img\TitleSceneImg">
+      <UniqueIdentifier>{8d13e38e-c2fa-414b-832c-88fcc724606d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img\PlaySceneImg">
+      <UniqueIdentifier>{3bc6b1bf-2625-48b9-8fa4-3e94803ae3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Img\PlaySceneImg\Stage0">
+      <UniqueIdentifier>{955f68d5-70e8-4be7-80d7-ee599ee08130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_UI">
+      <UniqueIdentifier>{62c4b42f-2839-4726-a3bc-0c1495223547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Interactable">
+      <UniqueIdentifier>{020dffdd-001a-4678-9e71-b2e4cce7e6af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Etc">
+      <UniqueIdentifier>{d1f49e93-8bfb-49a7-83a6-bf8c2487eb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Character">
+      <UniqueIdentifier>{0ea5f5ae-b540-44a1-8484-1c87c02611a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Character\Char">
+      <UniqueIdentifier>{d9f1a95b-502d-43a1-b2d5-d7b36a056824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{e64a6c36-4045-4b74-8df4-adb4e3513c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_PlayScene">
+      <UniqueIdentifier>{c872b486-5749-4dc6-8bb8-a78d0507536a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_PlayScene\Stage2">
+      <UniqueIdentifier>{bdec0300-6564-43c5-be33-0da759e64a15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_PlayScene\Stage0">
+      <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_PlayScene\Stage1">
+      <UniqueIdentifier>{1fd3505d-f312-4f65-9c4a-97d6c9466140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_NonPlayScene">
+      <UniqueIdentifier>{7c4db7b2-988e-477a-97b3-fe7728d50c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_ToolScene">
       <UniqueIdentifier>{7bea3e31-f377-45d3-95fa-669cf425eec8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Obj\Gobj_Character\Char">
-      <UniqueIdentifier>{d9f1a95b-502d-43a1-b2d5-d7b36a056824}</UniqueIdentifier>
+    <Filter Include="Script">
+      <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Tiles">
+      <UniqueIdentifier>{daad8024-d157-4a04-bab0-e30f14b20ebf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

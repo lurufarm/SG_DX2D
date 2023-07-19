@@ -23,24 +23,33 @@ namespace renderer
 		Matrix mView;
 		Matrix mProjection;
 	};
-	CBUFFER(TimeCB, CBSLOT_TIME)
-	{
-		Vector4 mTime;
-	};
 	CBUFFER(GridCB, CBSLOT_GRID)
 	{
 		Vector4 CameraPosition;
 		Vector2 CameraScale;
 		Vector2 Resolution;
 	};
-	CBUFFER(CollidingCB, CBSLOT_COLLIDING)
+
+	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)
+	{
+		Vector2 spriteLeftTop;
+		Vector2 spriteSize;
+		Vector2 spriteOffset;
+		Vector2 atlasSize;
+	};
+
+	CBUFFER(MyCB, CBSLOT_MYCB)
 	{
 		int ColliderColor;
-		int none0;
+		int TileIndex;
 		int none1;
 		int none2;
 	};
 
+	CBUFFER(TimeCB, CBSLOT_TIME)
+	{
+		Vector4 mTime;
+	};
 
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 

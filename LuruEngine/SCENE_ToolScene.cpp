@@ -5,10 +5,13 @@
 #include "..\Engine_SOURCE\sgMaterial.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "..\Engine_SOURCE\sgCamera.h"
+#include "SCRIPT_CameraScript.h"
 
 #include "Tile_Tile.h"
 #include "Tile_Image.h"
 #include "Tile_TilePalette.h"
+
+//#include "Img_Stage0_Forest01_Map.h"
 
 extern sg::Application application;
 
@@ -25,8 +28,13 @@ namespace sg
 		Scene::Initialize();
 		TilePalette::Initialize();
 
+		//Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
+
 		mToolSceneCamera = object::Instantiate<GameObject>(eLayerType::Tile, this);
 		mToolSceneCamera->AddComp<Camera>();
+		mToolSceneCamera->AddComp<SCRIPT_CameraScript>();
+
+
 
 	}
 	void ToolScene::Update()
@@ -39,18 +47,23 @@ namespace sg
 		{
 			Vector3 mousePos = Input::GetMousePos();
 			Vector3 pos = Vector3(mousePos.x, mousePos.y, 0.0f);
-			//pos = TilePalette::GetTilePos(Vector3(pos.x, pos.y, 0.0f));
 
 			UINT tileIndex = TilePalette::GetIndex();
-			TilePalette::CreateTile(tileIndex, pos);
+			Vector3 tilePos = Vector3::Zero;
+			tilePos.x = (int)(Input::GetFinalMousePos().x) - (int)Input::GetFinalMousePos().x % TILE_SIZE_X;
+			tilePos.y = (int)(Input::GetFinalMousePos().y) - (int)Input::GetFinalMousePos().y % TILE_SIZE_Y;
+			tilePos.z = 0.0f;
+			TilePalette::CreateTile(tileIndex, tilePos);
+			//TilePalette::CreateTile(tileIndex);
 		}
 
-		if (Input::KeyD(eKeyCode::S))
+		if (Input::KeyD(eKeyCode::Z))
 		{
 			TilePalette::Save();
 		}
-		if (Input::KeyD(eKeyCode::D))
+		if (Input::KeyD(eKeyCode::L))
 		{
+			TilePalette::Clear();
 			TilePalette::Load();
 		}
 	}
@@ -60,6 +73,7 @@ namespace sg
 	}
 	void ToolScene::Render()
 	{
+		
 		Scene::Render();
 	}
 	void ToolScene::OnEnter()
@@ -73,6 +87,9 @@ namespace sg
 
 #include "..\Editor_Window\Resource.h"
 #include "..\Engine_SOURCE\sgResources.h"
+#include "..\Engine_SOURCE\sgInput.h"
+
+std::shared_ptr<sg::Tile_Image> tileAtlas = std::make_shared<sg::Tile_Image>();
 
 LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -80,8 +97,9 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	{
 	case WM_CREATE:
 	{
-		std::shared_ptr<sg::Tile_Image> tile = sg::Resources::Load<sg::Tile_Image>(L"catt", L"..\\Resources\\catt.bmp");
-		RECT rect = { 0, 0, tile->GetWidth(), tile->GetHeight() };
+		tileAtlas = sg::Resources::Load<sg::Tile_Image>(L"catt", L"..\\Resources\\catt.bmp");
+
+		RECT rect = { 0, 0, tileAtlas->GetWidth(), tileAtlas->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		SetWindowPos(hWnd
@@ -99,10 +117,18 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			::GetCursorPos(&mousePos);
 			::ScreenToClient(application.GetToolHwnd(), &mousePos);
 
+			//int x = (int)mousePos.x / TILE_SIZE_X;
+			//int y = (int)mousePos.y / TILE_SIZE_Y;
+
+			//int index = (y * 10) + (x % 10);
+
 			int x = mousePos.x / TILE_SIZE_X;
 			int y = mousePos.y / TILE_SIZE_Y;
 
-			int index = (y * 8) + (x % 8);
+			int MAX_X = tileAtlas->GetWidth() / TILE_SIZE_X;
+			int MAX_Y = tileAtlas->GetHeight() / TILE_SIZE_Y;
+
+			int index = (y * MAX_X) + (x % MAX_X);
 
 			sg::TilePalette::SetIndex(index);
 		}

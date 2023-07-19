@@ -11,13 +11,17 @@ namespace sg
 
 	void TilePalette::Initialize()
 	{
-		mImage = sg::Resources::Find<Texture>(L"catt");
+		mImage = sg::Resources::Find<Texture>(L"Cat");
 	}
 	void TilePalette::Update()
 	{
 	}
 	void TilePalette::LateUpdate()
 	{
+		//ConstantBuffer* MyCB = renderer::constantBuffer[(UINT)eCBType::MyCBType];
+		//MyCB->SetData(mCB);
+		//MyCB->Bind(eShaderStage::PS);
+
 	}
 	void TilePalette::Render()
 	{
@@ -25,21 +29,19 @@ namespace sg
 	void TilePalette::CreateTile(int index, Vector3 pos)
 	{
 		Vector3 mousePos = Input::GetMousePos();
-		if (mousePos.x >= 1600.0f || mousePos.x <= 0.0f)
+
+		if (mousePos.x >= 1600 || mousePos.x <= 0.0f)
 			return;
 		if (mousePos.y >= 900.0f || mousePos.y <= 0.0f)
 			return;
 
-		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
-		tile->InitializeTile(mImage, index);
-
-		//Vector3 tilePos(pos.x * TILE_SIZE_X, pos.y * TILE_SIZE_Y, TILE_SIZE_X);
-		Vector3 tilePos(0.0f, 0.0f, 0.0f);
-		tile->GetComp<Transform>()->SetPosition(tilePos);
-
 		TileID id;
-		id.x = (UINT32)pos.x;
-		id.y = (UINT32)pos.y;
+		id.x = (INT32)pos.x;
+		id.y = (INT32)pos.y;
+
+		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, SceneManager::GetActiveScene());
+		tile->InitializeTile(mImage, index);
+		tile->GetComp<Transform>()->SetPosition(pos);
 
 		mTiles.insert(std::make_pair(id.id, tile));
 	}
@@ -127,13 +129,63 @@ namespace sg
 			if (fread(&index, sizeof(int), 1, file) == NULL)
 				break;
 
+
 			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
 				break;
+			
 
-			CreateTile(index, Vector3(id.x, id.y, 0));
+			CreateTile(index, Vector3(id.x, id.y, 0.0f));
+			//CreateTile(index);
 		}
 
 		fclose(file);
+	}
+	void TilePalette::AutoLoad(std::wstring name)
+	{
+		// LPWSTR 변수 선언 및 초기화
+		LPWSTR lpwstr = new WCHAR[name.size() + 1];
+
+		// std::wstring 내용을 LPWSTR로 복사
+		wcscpy_s(lpwstr, name.size() + 1, name.c_str());
+
+		FILE* file = nullptr;
+		_wfopen_s(&file, lpwstr, L"rb");
+
+		if (file == nullptr)
+			return;
+
+		while (true)
+		{
+			int index = -1;
+			TileID id = {};
+
+			if (fread(&index, sizeof(int), 1, file) == NULL)
+				break;
+
+			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
+				break;
+
+			//CreateTile(index);
+			CreateTile(index, Vector3(id.x, id.y, 0.0f));
+		}
+
+		fclose(file);
+
+		delete[] lpwstr;
+	}
+	void TilePalette::Clear()
+	{
+
+		
+		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.begin();
+
+		for (; iter != mTiles.end(); iter++)
+		{
+			iter->second->SetState(GameObject::eState::Dead);
+		}
+
+		mTiles.clear();
+
 	}
 	Vector3 TilePalette::GetTilePos(Vector3 mousePos)
 	{

@@ -75,7 +75,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            // 게임 로직 실행
+            // 게임 로직 실행 
             application.Run();
             gui::GUI_Editor::Run();
             application.Present();

@@ -9,10 +9,10 @@ namespace sg
 	{
 		struct
 		{
-			UINT32 x;
-			UINT32 y;
+			INT32 x;
+			INT32 y;
 		};
-		UINT64 id;
+		INT64 id;
 	};
 
 	class TilePalette
@@ -27,6 +27,8 @@ namespace sg
 		static void CreateTiles(int index, UINT width, UINT height);
 		static void Save();
 		static void Load();
+		static void AutoLoad(std::wstring path);
+		static void Clear();
 
 		static Vector3 GetTilePos(Vector3 mousPos);
 		static void SetIndex(UINT index) { mIndex = index; }

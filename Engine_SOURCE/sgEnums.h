@@ -9,6 +9,7 @@ namespace sg::enums
 		Transform,
 		MeshRenderer,
 		Collider2D,
+		Animator,
 		Mesh,
 		Particle,
 		Script,
@@ -35,6 +36,7 @@ namespace sg::enums
 		Shader,
 		Material,
 		Tile_Image,
+		Animation,
 		End,
 	};
 

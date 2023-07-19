@@ -60,3 +60,20 @@ float4 lobby_space2(VSOut In) : SV_TARGET
     
     return color;
 }
+
+float4 Tile(VSOut In) : SV_TARGET
+{
+    float4 color = (0.0f, 0.0f, 0.0f, 1.0f);
+    float2 startuv;
+    float2 enduv;
+    startuv.x = (float) (TileIndex % 10) / 10.0f;
+    startuv.y = (float) (TileIndex / 10) / 10.0f;
+    enduv = startuv + 0.1f;
+    
+    float2 finaluv = In.UV * (enduv - startuv) + startuv;
+    
+    color = albedoTexture.Sample(pointSampler, finaluv);
+    
+    
+    return color;
+}

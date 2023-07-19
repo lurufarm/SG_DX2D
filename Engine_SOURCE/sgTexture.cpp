@@ -48,8 +48,8 @@ namespace sg::graphics
 		);
 		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 		
-		mWidth = mImage.GetMetadata().width;
-		mHeight = mImage.GetMetadata().height;
+		mWidth = (float)mImage.GetMetadata().width;
+		mHeight = (float)mImage.GetMetadata().height;
 
 		return S_OK;
 	}

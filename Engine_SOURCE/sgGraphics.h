@@ -14,9 +14,10 @@
 
 #define CBSLOT_TRANSFORM		0
 //#define CBSLOT_PARTICLE			1
-#define CBSLOT_TIME				1
 #define CBSLOT_GRID				2
-#define CBSLOT_COLLIDING		3
+#define CBSLOT_ANIMATION2D		3
+#define CBSLOT_MYCB				4
+#define CBSLOT_TIME				5
 
 
 namespace sg::graphics
@@ -35,10 +36,11 @@ namespace sg::graphics
 	enum class eCBType
 	{
 		Transform,
-		Time,
+		Particle,
 		Grid,
-		Colliding,
-		Material,
+		Animator,
+		MyCBType,
+		Time,
 		End,
 	};
 
@@ -107,7 +109,7 @@ namespace sg::graphics
 		float radius;
 		float duration;
 		float time;
-		bool Colliding;
+		bool MyCBType;
 	};
 
 }
