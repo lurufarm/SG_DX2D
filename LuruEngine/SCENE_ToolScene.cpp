@@ -97,7 +97,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	{
 	case WM_CREATE:
 	{
-		tileAtlas = sg::Resources::Load<sg::Tile_Image>(L"catt", L"..\\Resources\\catt.bmp");
+		tileAtlas = sg::Resources::Load<sg::Tile_Image>(L"TilePalette", L"..\\Resources\\Tile\\tilepalette.bmp");
 
 		RECT rect = { 0, 0, tileAtlas->GetWidth(), tileAtlas->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -150,7 +150,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
 
-		std::shared_ptr <sg::Tile_Image> tile = sg::Resources::Find<sg::Tile_Image>(L"catt");
+		std::shared_ptr <sg::Tile_Image> tile = sg::Resources::Find<sg::Tile_Image>(L"TilePalette");
 		BitBlt(hdc, 0, 0, tile->GetWidth(), tile->GetHeight(),
 			tile->GetHdc(), 0, 0, SRCCOPY);
 

@@ -55,8 +55,11 @@ namespace sg
 		mCB.ColliderColor = true;
 		other->mCB.ColliderColor = true;
 
-		const std::vector<Script*>& scripts
+		//const std::vector<Script*>& scripts
+		//	= GetOwner()->GetComps<Script>();
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComps<Script>();
+
 
 		for (Script* script : scripts)
 		{
@@ -65,7 +68,7 @@ namespace sg
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComps<Script>();
 
 		for (Script* script : scripts)
@@ -78,7 +81,7 @@ namespace sg
 		mCB.ColliderColor = false;
 		other->mCB.ColliderColor = false;
 
-		const std::vector<Script*>& scripts
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComps<Script>();
 
 		for (Script* script : scripts)

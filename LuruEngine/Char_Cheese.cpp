@@ -20,8 +20,10 @@ namespace sg
 	}
 	void Char_Cheese::Initialize()
 	{
-		//mTr = GetComp<Transform>();
-		//mTr->SetPosition(0.0f, 0.0f, -1.0f);
+		mMr = GetComp<MeshRenderer>();
+		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mMr->SetMaterial(Resources::Find<Material>(L"Cheese_temp"));
+		mMr->Initialize();
 	}
 	void Char_Cheese::Update()
 	{

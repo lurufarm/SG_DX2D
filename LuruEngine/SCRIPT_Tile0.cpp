@@ -19,13 +19,14 @@ namespace sg
 	}
 	void SCRIPT_Tile0::OnCollisionEnter(Collider2D* other)
 	{
+		mTr = GetOwner()->GetComp<Transform>();
+
 		Vector3 otherpos = other->GetOwner()->GetComp<Transform>()->GetPosition();
 		Vector3 mypos = mTr->GetPosition();
 		if (otherpos.x < mypos.x)
 			otherpos.x++;
 		else if (otherpos.x > mypos.x)
 			otherpos.x--;
-
 		if (otherpos.y < mypos.y)
 			otherpos.y--;
 		else if (otherpos.y > mypos.y)

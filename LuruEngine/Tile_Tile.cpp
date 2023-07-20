@@ -52,9 +52,9 @@ namespace sg
 		SetIndex(index);
 
 		mMr = AddComp<MeshRenderer>();
-		std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"Cat");
+		std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"TilePalette");
+		std::shared_ptr<Material> material = Resources::Find<Material>(L"TilePaletteMaterial");
 		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		std::shared_ptr<Material> material = Resources::Find<Material>(L"SpriteMaterial");
 		mMr->SetMaterial(material);
 		mMr->Initialize();
 		mTr = GetComp<Transform>();
@@ -93,16 +93,5 @@ namespace sg
 
 		GameObject::Render();
 	}
-	void Tile::OnCollisionEnter(Collider2D* other)
-	{
-		GetComp<SCRIPT_Tile0>()->OnCollisionEnter(other);
-	}
-	void Tile::OnCollisionStay(Collider2D* other)
-	{
-		GetComp<SCRIPT_Tile0>()->OnCollisionStay(other);
-	}
-	void Tile::OnCollisionExit(Collider2D* other)
-	{
-		GetComp<SCRIPT_Tile0>()->OnCollisionExit(other);
-	}
+
 }

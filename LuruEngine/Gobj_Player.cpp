@@ -7,72 +7,52 @@
 #include "..\Engine_SOURCE\sgResources.h"
 
 #include "SCRIPT_CameraScript.h"
+#include "SCRIPT_Player.h"
 #include "Char_Cheese.h"
-
-
 
 
 namespace sg
 {
-	//Gobj_Character* Gobj_Player::mChar = nullptr;
-	//std::vector<Gobj_Character*> Gobj_Player::mCompanies = {};
+	Gobj_Character* Gobj_Player::mpChar = nullptr;
+	//Gobj_Character::BasicStat Gobj_Player::mpStat = {};
+	std::vector<Gobj_Character*> Gobj_Player::mCompanies = {};
+	bool Gobj_Player::mEnemyNearby = false;
 
 	Gobj_Player::Gobj_Player()
+		: mMr(nullptr)
+		, mTr(nullptr)
+		, mCol(nullptr)
 	{
-		Gobj_Player::Initialize();
+		SetName(L"ME");
+		AddComp<SCRIPT_Player>();
 	}
 	Gobj_Player::~Gobj_Player()
 	{
 	}
 	void Gobj_Player::Initialize()
 	{
-		AddComp<SCRIPT_CameraScript>();
-		mTr = GetComp<Transform>();
-		mMr = AddComp<MeshRenderer>();
-		mCol = AddComp<Collider2D>();
-		mTr->SetPosition(0.0f, 0.0f, -1.0f);
-		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mMr->SetMaterial(Resources::Find<Material>(L"Cheese_temp"));
-
-		mMr->Initialize();
-
+		mMr = mpChar->GetComp<MeshRenderer>();
 	}
 	void Gobj_Player::Update()
 	{
-		//mMr = mChar->GetComp<MeshRenderer>();
-		//if (mChar != nullptr)
-		//{
-		//	mChar->Update();
-		//	mMr = mChar->GetComp<MeshRenderer>();
-		//}
-
+		if (mpChar != nullptr)
+		{
+			mMr = mpChar->GetComp<MeshRenderer>();
+			//mCol = mpChar->GetComp<Collider2D>();
+			//mpStat = mpChar->GetStat();
+		}
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()
 	{
-		//if (mChar != nullptr)
-		//	mChar->LateUpdate();
+		mMr = mpChar->GetComp<MeshRenderer>();
 
 		GameObject::LateUpdate();
 	}
 	void Gobj_Player::Render()
 	{
-		//if (mChar != nullptr)
-		//{
-		//	mMr = mChar->GetComp<MeshRenderer>();
-		//	mChar->Render();
-		//}
+		mMr = mpChar->GetComp<MeshRenderer>();
 
 		GameObject::Render();
-	}
-	void Gobj_Player::OnCollisionEnter(Collider2D* other)
-	{
-		int a = 0;
-	}
-	void Gobj_Player::OnCollisionStay(Collider2D* other)
-	{
-	}
-	void Gobj_Player::OnCollisionExit(Collider2D* other)
-	{
 	}
 }

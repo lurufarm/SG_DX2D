@@ -50,7 +50,8 @@ namespace sg
 		}
 
 		template <typename T>
-		std::vector<T*>& GetComps()
+		//std::vector<T*>& GetComps()
+		std::vector<T*> GetComps()
 		{
 			std::vector<T*> comps;
 
@@ -71,6 +72,32 @@ namespace sg
 
 			return comps;
 		}
+
+		template <typename T>
+		std::vector<T*> GetComps2(std::vector<T*> comps)
+		{
+			//std::vector<T*> comps;
+
+			T* component;
+			for (Component* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component != nullptr)
+					//comps.push_back(component);
+					comps.push_back(component);
+			}
+
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				if (component != nullptr)
+					//comps.push_back(component);
+					comps.push_back(component);
+			}
+
+			return comps;
+		}
+
 		
 		template <typename T>
 		T* AddComp()

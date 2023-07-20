@@ -5,6 +5,7 @@
 
 namespace sg
 {
+	class Gobj_Character;
 	class Gobj_Player : public GameObject
 	{
 	public:
@@ -16,22 +17,25 @@ namespace sg
 		virtual void LateUpdate();
 		virtual void Render();
 
-		//void SetChar(Gobj_Character* character) 
-		//{ 
-		//	mChar = character; 
-		//}
+		static void SetChar(Gobj_Character* character)
+		{ 
+			mpChar = character;
+		}
+		Gobj_Character* GetChar() { return mpChar; }
 
-		virtual void OnCollisionEnter(Collider2D* other);
-		virtual void OnCollisionStay(Collider2D* other);
-		virtual void OnCollisionExit(Collider2D* other);
+		static void SetEnemyNearby(bool value) { mEnemyNearby = value; }
+		static bool GetEnemyNearby() { return mEnemyNearby; }
 
 	private:
 
-		//static Gobj_Character* mChar;
-		//static std::vector<Gobj_Character*> mCompanies;
 		class Transform* mTr;
 		class MeshRenderer* mMr;
 		class Collider2D* mCol;
+
+		static Gobj_Character* mpChar;
+		//static Gobj_Character::BasicStat mpStat;
+		static std::vector<Gobj_Character*> mCompanies;
+		static bool mEnemyNearby;
 
 	};
 }

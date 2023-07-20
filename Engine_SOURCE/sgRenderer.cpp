@@ -375,6 +375,14 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"SpriteMaterial", material);
 
+		// Test
+		texture = Resources::Load<Texture>(L"TilePalette", L"..\\Resources\\Tile\\tilepalette.bmp");
+		material = std::make_shared<Material>();
+		material->SetShader(TileShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Opaque);
+		Resources::Insert(L"TilePaletteMaterial", material);
+
 		// Grid
 
 		std::shared_ptr<Shader>gridShader

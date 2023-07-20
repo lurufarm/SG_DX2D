@@ -58,6 +58,9 @@ namespace sg
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 
 		Gobj_Player* player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
+		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(eLayerType::Player, this);
+		
+		player->SetChar(cheese);
 
 		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
 		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
@@ -70,7 +73,6 @@ namespace sg
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
-
 
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();
@@ -100,7 +102,7 @@ namespace sg
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
 
-		const std::wstring path = { L"..\\Resources\\Tile\\test" };
+		const std::wstring path = { L"..\\Resources\\Tile\\realtest" };
 
 		TilePalette::AutoLoad(path);
 

@@ -175,8 +175,6 @@ namespace sg
 	}
 	void TilePalette::Clear()
 	{
-
-		
 		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.begin();
 
 		for (; iter != mTiles.end(); iter++)
@@ -185,7 +183,6 @@ namespace sg
 		}
 
 		mTiles.clear();
-
 	}
 	Vector3 TilePalette::GetTilePos(Vector3 mousePos)
 	{
