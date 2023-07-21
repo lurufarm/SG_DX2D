@@ -161,6 +161,7 @@
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
+    <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="Stage0_Forest01.h" />
     <ClInclude Include="Tile_TilePalette.h" />
+    <ClInclude Include="UI_FocusBoxes2.h" />
     <ClInclude Include="UI_Icons.h" />
     <ClInclude Include="UI_Select.h" />
     <ClInclude Include="Img_Space1.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
+    <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />
@@ -220,6 +223,7 @@
     <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="Stage0_Forest01.cpp" />
     <ClCompile Include="Tile_TilePalette.cpp" />
+    <ClCompile Include="UI_FocusBoxes2.cpp" />
     <ClCompile Include="UI_Icons.cpp" />
     <ClCompile Include="UI_Select.cpp" />
     <ClCompile Include="Img_Space1.cpp" />

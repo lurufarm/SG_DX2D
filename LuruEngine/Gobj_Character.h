@@ -5,7 +5,7 @@
 #include "..\Engine_SOURCE\sgCollider2D.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgTime.h"
-#include "Gobj_Player.h"
+#include "SCENE_LobbyScene.h"
 
 namespace sg
 {
@@ -15,12 +15,7 @@ namespace sg
 		Gobj_Character();
 		~Gobj_Character();
 
-		virtual void Initialize() override;
-		virtual void Update() override;
-		virtual void LateUpdate() override;
-		virtual void Render() override;
-
-		struct BasicStat
+		struct CharStat
 		{
 			int mLev;
 			float mStrength;
@@ -31,7 +26,12 @@ namespace sg
 			float mExp;
 		};
 
-		BasicStat GetStat() { return mStat; }
+		virtual void Initialize() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void Render() override;
+
+		CharStat GetStat() { return mStat; }
 
 		void SetLev(int lev) { mStat.mLev = lev; }
 		void SetStrength(float strength) { mStat.mStrength = strength; }
@@ -42,7 +42,7 @@ namespace sg
 
 
 	protected:
-		BasicStat mStat;
+		CharStat mStat;
 		Transform* mTr;
 		MeshRenderer* mMr;
 		Collider2D* mCol;

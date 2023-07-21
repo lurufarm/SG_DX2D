@@ -400,6 +400,104 @@ namespace renderer
 		Resources::Insert(L"DebugMaterial", material);
 
 #pragma endregion
+#pragma region UI Material
+		 // UI_Exit Button
+		texture = Resources::Load<Texture>(L"ExitButton", L"..\\Resources\\UI\\NavButton_12.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UIExitButton", material);
+		
+		 // UI_SelectBox 0 (top left)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_tl", L"..\\Resources\\UI\\selectbox_tl.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UISBox_tl", material);
+		
+		 // UI_SelectBox 1 (top right)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_tr", L"..\\Resources\\UI\\selectbox_tr.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UISBox_tr", material);
+		
+		 // UI_SelectBox 2 (bottom left)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_bl", L"..\\Resources\\UI\\selectbox_bl.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UISBox_bl", material);
+		
+		 // UI_SelectBox 3 (bottom right)
+		texture = Resources::Load<Texture>(L"UI_SelectBox_br", L"..\\Resources\\UI\\selectbox_br.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UISBox_br", material);
+
+		// UI_Coin
+		texture = Resources::Load<Texture>(L"UI_Coin", L"..\\Resources\\UI\\UI_coin.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UICoin", material);
+		
+		// UI_Option
+		texture = Resources::Load<Texture>(L"UI_Option", L"..\\Resources\\UI\\UI_option.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIOption", material);
+
+		// UI_Tokki
+		texture = Resources::Load<Texture>(L"UI_Tokki", L"..\\Resources\\UI\\UI_tokki.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UITokki", material);
+
+		// UI_Plus
+		texture = Resources::Load<Texture>(L"UI_Plus", L"..\\Resources\\UI\\UI_plus.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIPlus", material);
+
+		// UI_I
+		texture = Resources::Load<Texture>(L"UI_I", L"..\\Resources\\UI\\UI_I.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIIbutton", material);
+
+		// UI_J
+		texture = Resources::Load<Texture>(L"UI_J", L"..\\Resources\\UI\\UI_J.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIJbutton", material);
+
+		// UI_K
+		texture = Resources::Load<Texture>(L"UI_K", L"..\\Resources\\UI\\UI_K.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIKbutton", material);
+
+#pragma endregion
 #pragma region Title Scene Material
 
 		 // BGImg
@@ -524,114 +622,6 @@ namespace renderer
 
 		
 #pragma endregion
-#pragma region UI Material
-		 // UI_Exit Button
-		texture = Resources::Load<Texture>(L"ExitButton", L"..\\Resources\\UI\\NavButton_12.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UIExitButton", material);
-		
-		 // UI_SelectBox 0 (top left)
-		texture = Resources::Load<Texture>(L"UI_SelectBox_tl", L"..\\Resources\\UI\\selectbox_tl.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UISBox_tl", material);
-		
-		 // UI_SelectBox 1 (top right)
-		texture = Resources::Load<Texture>(L"UI_SelectBox_tr", L"..\\Resources\\UI\\selectbox_tr.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UISBox_tr", material);
-		
-		 // UI_SelectBox 2 (bottom left)
-		texture = Resources::Load<Texture>(L"UI_SelectBox_bl", L"..\\Resources\\UI\\selectbox_bl.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UISBox_bl", material);
-		
-		 // UI_SelectBox 3 (bottom right)
-		texture = Resources::Load<Texture>(L"UI_SelectBox_br", L"..\\Resources\\UI\\selectbox_br.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UISBox_br", material);
-
-		// UI_Coin
-		texture = Resources::Load<Texture>(L"UI_Coin", L"..\\Resources\\UI\\UI_coin.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UICoin", material);
-		
-		// UI_Option
-		texture = Resources::Load<Texture>(L"UI_Option", L"..\\Resources\\UI\\UI_option.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UIOption", material);
-
-		// UI_Tokki
-		texture = Resources::Load<Texture>(L"UI_Tokki", L"..\\Resources\\UI\\UI_tokki.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UITokki", material);
-
-		// UI_Plus
-		texture = Resources::Load<Texture>(L"UI_Plus", L"..\\Resources\\UI\\UI_plus.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UIPlus", material);
-
-		// UI_I
-		texture = Resources::Load<Texture>(L"UI_I", L"..\\Resources\\UI\\UI_I.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UIIbutton", material);
-
-		// UI_J
-		texture = Resources::Load<Texture>(L"UI_J", L"..\\Resources\\UI\\UI_J.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UIJbutton", material);
-
-		// UI_K
-		texture = Resources::Load<Texture>(L"UI_K", L"..\\Resources\\UI\\UI_K.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"UIKbutton", material);
-
-#pragma endregion
-
-#pragma region Character
-		// 임시 치즈
-		texture = Resources::Load<Texture>(L"Cheese_t", L"..\\Resources\\Character\\Cheese\\HeroBody_08.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"Cheese_temp", material);
-#pragma endregion
 #pragma region Stage0_ForestFd
 
 		// Stage0_ForestFd01 Map
@@ -644,6 +634,26 @@ namespace renderer
 
 #pragma endregion
 
+#pragma region Character
+		// 임시 치즈
+		texture = Resources::Load<Texture>(L"Cheese_t", L"..\\Resources\\Character\\Cheese\\HeroBody_08.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Cheese_temp", material);
+#pragma endregion
+#pragma region Bullet
+
+		// Cheese Bullet
+		texture = Resources::Load<Texture>(L"Cheese_Arrow", L"..\\Resources\\Character\\Cheese\\arrow.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Arrow", material);
+
+#pragma endregion
 	}
 
 	void Initialize()

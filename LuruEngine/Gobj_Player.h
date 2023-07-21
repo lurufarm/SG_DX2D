@@ -5,7 +5,6 @@
 
 namespace sg
 {
-	class Gobj_Character;
 	class Gobj_Player : public GameObject
 	{
 	public:
@@ -18,10 +17,10 @@ namespace sg
 		virtual void Render();
 
 		static void SetChar(Gobj_Character* character)
-		{ 
+		{
 			mpChar = character;
 		}
-		Gobj_Character* GetChar() { return mpChar; }
+		static Gobj_Character* GetChar() { return mpChar; }
 
 		static void SetEnemyNearby(bool value) { mEnemyNearby = value; }
 		static bool GetEnemyNearby() { return mEnemyNearby; }
@@ -33,9 +32,10 @@ namespace sg
 		class Collider2D* mCol;
 
 		static Gobj_Character* mpChar;
-		//static Gobj_Character::BasicStat mpStat;
+		static Gobj_Character::CharStat mpStat;
 		static std::vector<Gobj_Character*> mCompanies;
 		static bool mEnemyNearby;
 
 	};
 }
+

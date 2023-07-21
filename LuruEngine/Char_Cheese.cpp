@@ -8,7 +8,7 @@ namespace sg
 		mStat.mStrength = 15.0f;
 		mStat.mCoolDown = 0.7f;
 		mStat.mRange = 30.0f;
-		mStat.mSpeed = 200.0f;
+		mStat.mSpeed = 50.0f;
 		mStat.mHP = 100;
 		mStat.mExp = 0.0;
 

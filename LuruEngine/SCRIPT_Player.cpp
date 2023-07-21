@@ -16,25 +16,21 @@ namespace sg
 		if (Input::KeyD(eKeyCode::A))
 		{
 			mKey = eKeyCode::A;
-			mKeyState = eKeyState::Down;
 			mFSMState = ePlayerFSM::Move;
 		}
 		else if (Input::KeyD(eKeyCode::D))
 		{
 			mKey = eKeyCode::D;
-			mKeyState = eKeyState::Down;
 			mFSMState = ePlayerFSM::Move;
 		}
 		if (Input::KeyD(eKeyCode::W))
 		{
 			mKey = eKeyCode::W;
-			mKeyState = eKeyState::Down;
 			mFSMState = ePlayerFSM::Move;
 		}
 		else if (Input::KeyD(eKeyCode::S))
 		{
 			mKey = eKeyCode::S;
-			mKeyState = eKeyState::Down;
 			mFSMState = ePlayerFSM::Move;
 		}
 		if (Input::KeyU(mKey))

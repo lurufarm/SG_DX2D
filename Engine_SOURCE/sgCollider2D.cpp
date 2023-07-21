@@ -55,8 +55,6 @@ namespace sg
 		mCB.ColliderColor = true;
 		other->mCB.ColliderColor = true;
 
-		//const std::vector<Script*>& scripts
-		//	= GetOwner()->GetComps<Script>();
 		const std::vector<Script*> scripts
 			= GetOwner()->GetComps<Script>();
 

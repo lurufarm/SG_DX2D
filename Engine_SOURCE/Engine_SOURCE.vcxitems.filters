@@ -91,7 +91,7 @@
     <Filter Include="GameObject\Component\Animator">
       <UniqueIdentifier>{eb1dee26-ede8-47eb-aaa0-d10074669235}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\Object\Time">
+    <Filter Include="Common\Time">
       <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -118,7 +118,7 @@
       <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTime.h">
-      <Filter>Common\Object\Time</Filter>
+      <Filter>Common\Time</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h">
       <Filter>Common\Input</Filter>
@@ -204,7 +204,7 @@
       <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTime.cpp">
-      <Filter>Common\Object\Time</Filter>
+      <Filter>Common\Time</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp">
       <Filter>Common\Input</Filter>

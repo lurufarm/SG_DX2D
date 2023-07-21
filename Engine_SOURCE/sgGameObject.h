@@ -1,6 +1,8 @@
 #pragma once
 #include "sgEntity.h"
+#include "sgResources.h"
 #include "sgComponent.h"
+#include "sgMeshRenderer.h"
 #include "sgScript.h"
 
 namespace sg
@@ -124,6 +126,16 @@ namespace sg
 
 		void SetState(eState state) { mState = state; }
 		eState GetState() { return mState; }
+
+		virtual void SetMesh()
+		{
+			this->GetComp<MeshRenderer>()->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		}
+		virtual void SetMaterial(const std::wstring& key)
+		{
+			this->GetComp<MeshRenderer>()->SetMaterial(Resources::Find<Material>(key));
+		}
+
 
 		void SetOrder(int value) { mOrder = value; }
 		int GetOrder() { return mOrder; }

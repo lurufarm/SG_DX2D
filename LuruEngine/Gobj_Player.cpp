@@ -14,7 +14,7 @@
 namespace sg
 {
 	Gobj_Character* Gobj_Player::mpChar = nullptr;
-	//Gobj_Character::BasicStat Gobj_Player::mpStat = {};
+	Gobj_Character::CharStat Gobj_Player::mpStat = {};
 	std::vector<Gobj_Character*> Gobj_Player::mCompanies = {};
 	bool Gobj_Player::mEnemyNearby = false;
 
@@ -31,28 +31,23 @@ namespace sg
 	}
 	void Gobj_Player::Initialize()
 	{
-		mMr = mpChar->GetComp<MeshRenderer>();
+		mMr = AddComp<MeshRenderer>();
+		mMr->SetMesh(mpChar->GetComp<MeshRenderer>()->GetMesh());
+		mMr->SetMaterial(mpChar->GetComp<MeshRenderer>()->GetMaterial());
+		mMr->Initialize();
+		mpStat = mpChar->GetStat();
+		mCol = AddComp<Collider2D>();
 	}
 	void Gobj_Player::Update()
 	{
-		if (mpChar != nullptr)
-		{
-			mMr = mpChar->GetComp<MeshRenderer>();
-			//mCol = mpChar->GetComp<Collider2D>();
-			//mpStat = mpChar->GetStat();
-		}
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()
 	{
-		mMr = mpChar->GetComp<MeshRenderer>();
-
 		GameObject::LateUpdate();
 	}
 	void Gobj_Player::Render()
 	{
-		mMr = mpChar->GetComp<MeshRenderer>();
-
 		GameObject::Render();
 	}
 }

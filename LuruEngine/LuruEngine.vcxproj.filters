@@ -121,6 +121,12 @@
     <ClCompile Include="SCRIPT_Tile0.cpp">
       <Filter>Script\SCRIPT_Tiles</Filter>
     </ClCompile>
+    <ClCompile Include="UI_FocusBoxes2.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Tile1.cpp">
+      <Filter>Script\SCRIPT_Tiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -244,6 +250,12 @@
       <Filter>x</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_Tile0.h">
+      <Filter>Script\SCRIPT_Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_FocusBoxes2.h">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Tile1.h">
       <Filter>Script\SCRIPT_Tiles</Filter>
     </ClInclude>
   </ItemGroup>

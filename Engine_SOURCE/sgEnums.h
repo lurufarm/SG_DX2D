@@ -48,4 +48,10 @@ namespace sg::enums
 		Cube,
 		End,
 	};
+
+	enum class eBulletType
+	{
+		Basic,
+		End,
+	};
 }

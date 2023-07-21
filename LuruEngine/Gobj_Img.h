@@ -19,14 +19,6 @@ namespace sg
 		virtual void LateUpdate();
 		virtual void Render();
 
-		virtual void SetMesh()
-		{
-			this->GetComp<MeshRenderer>()->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		}
-		virtual void SetMaterial(const std::wstring& key)
-		{
-			this->GetComp<MeshRenderer>()->SetMaterial(Resources::Find<Material>(key));
-		}
 
 		template <typename T>
 		std::shared_ptr<T> GetMesh() { return this->GetComp<MeshRenderer>()->GetMesh(); }

@@ -1,12 +1,12 @@
 #include "SCENE_LobbyScene.h"
 #include "..\Engine_SOURCE\sgApplication.h"
 #include "..\Engine_SOURCE\sgGraphicDevice_Dx11.h"
+#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
-#include "..\Engine_SOURCE\sgInput.h"
-#include "..\Engine_SOURCE\sgTime.h"
 #include "..\Engine_SOURCE\sgObject.h"
 
 #include "..\Engine_SOURCE\sgTransform.h"
@@ -23,6 +23,7 @@
 
 #include "UI_Icons.h"
 #include "UI_FocusBoxes.h"
+#include "UI_FocusBoxes2.h"
 
 #include "Interact_LobbyCharacter.h"
 #include "Interact_LobbyUpgrade.h"
@@ -33,10 +34,13 @@
 
 #include "Tile_TilePalette.h"
 
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
+
 	LobbyScene::LobbyScene()
+		: mFocus(nullptr)
 	{
 		SetName(L"LobbyScene");
 	}
@@ -57,19 +61,20 @@ namespace sg
 		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 
-		Gobj_Player* player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
 		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(eLayerType::Player, this);
 		
-		player->SetChar(cheese);
+
+		Player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
+		Player->SetChar(cheese);
+		Player->Initialize();
 
 		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
 		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
 
-		mFocus = object::Instantiate<UI_FocusBoxes>(this, eLayerType::UI, this);
+		mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
 		mFocus->AddSelectObj(character);
 		mFocus->AddSelectObj(upgrade);
 		mFocus->AddSelectObj(cardbook);
-		mFocus->SetSelectObj(character);
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
@@ -102,9 +107,9 @@ namespace sg
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
 
-		const std::wstring path = { L"..\\Resources\\Tile\\realtest" };
+		//const std::wstring path = { L"..\\Resources\\Tile\\realtest" };
 
-		TilePalette::AutoLoad(path);
+		//TilePalette::AutoLoad(path);
 
 
 	}
