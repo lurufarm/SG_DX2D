@@ -127,6 +127,15 @@
     <ClCompile Include="SCRIPT_Tile1.cpp">
       <Filter>Script\SCRIPT_Tiles</Filter>
     </ClCompile>
+    <ClCompile Include="Gobj_Bullet.cpp">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_CheeseArrow.cpp">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Bullet.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -258,6 +267,15 @@
     <ClInclude Include="SCRIPT_Tile1.h">
       <Filter>Script\SCRIPT_Tiles</Filter>
     </ClInclude>
+    <ClInclude Include="Gobj_Bullet.h">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_CheeseArrow.h">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Bullet.h">
+      <Filter>Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -331,6 +349,9 @@
     </Filter>
     <Filter Include="Script\SCRIPT_Tiles">
       <UniqueIdentifier>{daad8024-d157-4a04-bab0-e30f14b20ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Bullet">
+      <UniqueIdentifier>{1ca6a035-b3cd-4f37-8359-95b468e44247}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

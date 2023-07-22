@@ -13,6 +13,8 @@ namespace sg
 		mType = eBulletType::Basic;
 		SetMesh();
 		SetMaterial(L"Arrow");
+		mMr->Initialize();
+		
 	}
 	void Bullet_CheeseArrow::Update()
 	{

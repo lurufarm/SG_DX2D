@@ -7,9 +7,6 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{a92c161c-8a82-49dc-83af-69ea0a533dd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="High Level Interface">
-      <UniqueIdentifier>{f5154b5d-391d-45ad-a5e1-e8b283fac23d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{bb2ba7d1-94a1-41b5-8503-663309728a3f}</UniqueIdentifier>
     </Filter>
@@ -94,6 +91,9 @@
     <Filter Include="Common\Time">
       <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\High Level Interface">
+      <UniqueIdentifier>{f5154b5d-391d-45ad-a5e1-e8b283fac23d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -106,7 +106,7 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h">
-      <Filter>High Level Interface</Filter>
+      <Filter>Graphics\High Level Interface</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h">
       <Filter>Graphics</Filter>
@@ -195,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
-      <Filter>High Level Interface</Filter>
+      <Filter>Graphics\High Level Interface</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp">
       <Filter>Common\Entity</Filter>

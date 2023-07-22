@@ -1,7 +1,5 @@
 #include "SCRIPT_Player.h"
 
-#include "..\Engine_SOURCE\sgTime.h"
-#include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgTransform.h"
 
@@ -9,6 +7,7 @@
 
 namespace sg
 {
+
 	void SCRIPT_Player::Update()
 	{
 		mOwner = dynamic_cast<Gobj_Player*>(GetOwner());
@@ -61,29 +60,29 @@ namespace sg
 	void SCRIPT_Player::Idle()
 	{
 	}
-	void SCRIPT_Player::Move(eKeyCode Key, eKeyState state, float speed)
+	void SCRIPT_Player::Move(eKeyCode key, eKeyState state, float speed)
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
-	
+
 		if (state == eKeyState::Down || state == eKeyState::Pressed)
 		{
-			if (Key == eKeyCode::A)
+			if (key == eKeyCode::A)
 			{
 				pos.x -= speed * Time::DeltaTime();
 				tr->SetPosition(pos);
 			}
-			else if (Key == eKeyCode::D)
+			else if (key == eKeyCode::D)
 			{
 				pos.x += speed * Time::DeltaTime();
 				tr->SetPosition(pos);
 			}
-			if (Key == eKeyCode::W)
+			if (key == eKeyCode::W)
 			{
 				pos.y += speed * Time::DeltaTime();
 				tr->SetPosition(pos);
 			}
-			else if (Key == eKeyCode::S)
+			else if (key == eKeyCode::S)
 			{
 				pos.y -= speed * Time::DeltaTime();
 				tr->SetPosition(pos);

@@ -1,5 +1,8 @@
 #pragma once
 #include "..\Engine_SOURCE\sgScript.h"
+#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgInput.h"
+
 
 namespace sg
 {
@@ -18,7 +21,7 @@ namespace sg
 		virtual void Update() override;
 
 		void Idle();
-		void Move(eKeyCode Key, eKeyState state, float speed);
+		void Move(eKeyCode key, eKeyState state, float speed);
 		void Attack();
 		void Attacked();
 

@@ -151,14 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Gobj_Bullet.h" />
     <ClInclude Include="Gobj_Character.h" />
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
+    <ClInclude Include="SCRIPT_Bullet.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
@@ -196,13 +199,16 @@
     <ClInclude Include="UI_FocusBoxes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
+    <ClCompile Include="Gobj_Bullet.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
+    <ClCompile Include="SCRIPT_Bullet.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
