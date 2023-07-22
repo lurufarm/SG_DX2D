@@ -107,11 +107,11 @@ namespace sg
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
 
-		const std::wstring path = { L"..\\Resources\\Tile\\testtesetsete" };
+		//const std::wstring path = { L"..\\Resources\\Tile\\testtesetsete" };
 
 		//const std::wstring path = { L"..\\Resources\\Tile\\realtest" };
 
-		TilePalette::AutoLoad(path);
+		//TilePalette::AutoLoad(path);
 
 
 	}

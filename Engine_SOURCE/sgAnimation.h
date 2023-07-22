@@ -48,6 +48,8 @@ namespace sg
 		void Binds();
 		void Reset();
 
+		bool IsComplete() { return mbComplete; }
+
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
 		Animator* mAnimator;
