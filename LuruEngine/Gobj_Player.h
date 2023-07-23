@@ -1,5 +1,6 @@
 #pragma once
 #include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgAnimator.h"
 #include "Gobj_Character.h"
 #include "SCRIPT_CameraScript.h"
 
@@ -19,17 +20,23 @@ namespace sg
 		static void SetChar(Gobj_Character* character)
 		{
 			mpChar = character;
+			//std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
+			//mAni->SetAnimations(charAnis);
+			mpStat = mpChar->GetStat();			
 		}
 		static Gobj_Character* GetChar() { return mpChar; }
 
 		static void SetEnemyNearby(bool value) { mEnemyNearby = value; }
 		static bool GetEnemyNearby() { return mEnemyNearby; }
 
+		Gobj_Character::CharStat GetStat() { return mpStat; }
+
 	private:
 
-		class Transform* mTr;
-		class MeshRenderer* mMr;
-		class Collider2D* mCol;
+		static Transform* mTr;
+		static MeshRenderer* mMr;
+		static Collider2D* mCol;
+		static Animator* mAni;
 
 		static Gobj_Character* mpChar;
 		static Gobj_Character::CharStat mpStat;

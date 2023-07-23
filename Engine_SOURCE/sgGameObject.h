@@ -120,6 +120,7 @@ namespace sg
 				mScripts.push_back(script);
 		
 			comp->SetOwner(this);
+			comp->Initialize();
 
 			return comp;
 		}
@@ -129,11 +130,13 @@ namespace sg
 
 		virtual void SetMesh()
 		{
-			this->GetComp<MeshRenderer>()->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			if (GetComp<MeshRenderer>() != nullptr)
+				this->GetComp<MeshRenderer>()->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		}
 		virtual void SetMaterial(const std::wstring& key)
 		{
-			this->GetComp<MeshRenderer>()->SetMaterial(Resources::Find<Material>(key));
+			if (GetComp<MeshRenderer>() != nullptr)
+				this->GetComp<MeshRenderer>()->SetMaterial(Resources::Find<Material>(key));
 		}
 
 

@@ -61,6 +61,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = sg::Resources::Find<Shader>(L"SpriteAniShader");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 		shader = sg::Resources::Find<Shader>(L"GridShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
@@ -278,10 +283,6 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
-		// Constant Buffer - Time
-		constantBuffer[(UINT)eCBType::Time] = new ConstantBuffer(eCBType::Time);
-		constantBuffer[(UINT)eCBType::Time]->Create(sizeof(TimeCB));
-
 		// Constant Buffer - Grid
 		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
@@ -290,11 +291,13 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 
-
 		// Constant Buffer - MyCBType
 		constantBuffer[(UINT)eCBType::MyCBType] = new ConstantBuffer(eCBType::MyCBType);
 		constantBuffer[(UINT)eCBType::MyCBType]->Create(sizeof(MyCB));
 
+		// Constant Buffer - Time
+		constantBuffer[(UINT)eCBType::Time] = new ConstantBuffer(eCBType::Time);
+		constantBuffer[(UINT)eCBType::Time]->Create(sizeof(TimeCB));
 	}
 	
 	void LoadShader()
@@ -308,6 +311,12 @@ namespace renderer
 		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		sg::Resources::Insert(L"SpriteShader", spriteShader);
+
+		std::shared_ptr<Shader> spriteAniShader = std::make_shared<Shader>();
+		spriteAniShader->Create(eShaderStage::VS, L"SpriteAnimationVS.hlsl", "main");
+		spriteAniShader->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
+		sg::Resources::Insert(L"SpriteAniShader", spriteAniShader);
+
 
 		std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
 		gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
@@ -349,6 +358,9 @@ namespace renderer
 #pragma region Find Shader
 		std::shared_ptr<Shader> spriteShader
 			= Resources::Find<Shader>(L"SpriteShader");
+
+		std::shared_ptr<Shader> spriteAniShader
+			= Resources::Find<Shader>(L"SpriteAniShader");
 
 		std::shared_ptr<Shader> catPatternShader
 			= Resources::Find<Shader>(L"CatPatternShader");
@@ -642,6 +654,14 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Cheese_temp", material);
+
+			//texture = Resources::Load<Texture>(L"Ani_Cheese", L"..\\Resources\\Character\\Cheese\\cheese.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteAniShader);
+		//material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Animationmaterial", material);
+
 #pragma endregion
 #pragma region Bullet
 

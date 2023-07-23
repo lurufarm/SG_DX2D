@@ -1,10 +1,11 @@
 #pragma once
 #include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgTime.h"
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgMeshRenderer.h"
 #include "..\Engine_SOURCE\sgCollider2D.h"
-#include "..\Engine_SOURCE\sgInput.h"
-#include "..\Engine_SOURCE\sgTime.h"
+#include "..\Engine_SOURCE\sgAnimator.h"
 #include "SCENE_LobbyScene.h"
 
 namespace sg
@@ -45,7 +46,10 @@ namespace sg
 		CharStat mStat;
 		Transform* mTr;
 		MeshRenderer* mMr;
-		Collider2D* mCol;
+		Animator* mAni;
+
+		std::shared_ptr<Texture> mAtlas;
+
 	};
 }
 

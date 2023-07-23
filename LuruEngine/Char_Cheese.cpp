@@ -12,7 +12,7 @@ namespace sg
 		mStat.mHP = 100;
 		mStat.mExp = 0.0;
 
-		SetName(L"IamCheese");
+		SetName(L"Cheese");
 		Char_Cheese::Initialize();
 	}
 	Char_Cheese::~Char_Cheese()
@@ -22,8 +22,14 @@ namespace sg
 	{
 		mMr = GetComp<MeshRenderer>();
 		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mMr->SetMaterial(Resources::Find<Material>(L"Cheese_temp"));
-		mMr->Initialize();
+		mMr->SetMaterial(Resources::Find<Material>(L"Animationmaterial"));
+		//mMr->Initialize();
+		mAni = GetComp<Animator>();
+		mAtlas = Resources::Load<Texture>(L"Ani_Cheese", L"..\\Resources\\Character\\Cheese\\cheese.png");
+		mAni->Create(L"Ani_Cheese_Idle", mAtlas, Vector2(0.0f, 20.0f), Vector2(24.0f, 20.0f), 9, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_Cheese_Move", mAtlas, Vector2(0.0f, 0.0f), Vector2(24.0f, 20.0f), 8, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_Cheese_Attack", mAtlas, Vector2(0.0f, 40.0f), Vector2(24.0f, 20.0f), 4, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_Cheese_Death", mAtlas, Vector2(0.0f, 60.0f), Vector2(24.0f, 20.0f), 18, Vector2::Zero, 0.1f);
 	}
 	void Char_Cheese::Update()
 	{

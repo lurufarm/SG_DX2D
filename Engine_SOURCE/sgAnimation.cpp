@@ -1,5 +1,7 @@
 #include "sgAnimation.h"
 #include "sgTime.h"
+#include "sgRenderer.h"
+#include "sgConstantBuffer.h"
 #include "sgAnimator.h"
 
 namespace sg
@@ -61,8 +63,10 @@ namespace sg
 			Sprite sprite = {};
 			sprite.leftTop.x = leftTop.x + (i * size.x) / width;
 			sprite.leftTop.y = leftTop.y / height;
-			sprite.size = size;
+			sprite.size.x = size.x / width;
+			sprite.size.y = size.y / height;
 			sprite.offset = offset;
+			sprite.atlasSize = Vector2(200.0f / width, 200.0f / height);
 			sprite.duration = duration;
 
 			mSprites.push_back(sprite);
@@ -70,7 +74,24 @@ namespace sg
 	}
 	void Animation::Binds()
 	{
+		// Texture Bind
 		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
+
+		// Animation CB
+		renderer::AnimatorCB data = {};
+
+		data.spriteLeftTop = mSprites[mIndex].leftTop;
+		data.spriteSize = mSprites[mIndex].size;
+		data.spriteOffset = mSprites[mIndex].offset;
+		data.atlasSize = mSprites[mIndex].atlasSize;
+		data.animationType = mDirection;
+		data.dummydata = Vector3::Zero;
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
+		cb->SetData(&data);
+
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::PS);
+
 	}
 	void Animation::Reset()
 	{

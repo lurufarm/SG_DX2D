@@ -49,6 +49,9 @@ namespace sg
 	}
 	void LobbyScene::Initialize()
 	{
+		Player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
+		Player->Initialize();
+
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		object::Instantiate<Img_Space1>(eLayerType::BGImg, this);
@@ -62,11 +65,7 @@ namespace sg
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 
 		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(eLayerType::Player, this);
-		
-
-		Player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
 		Player->SetChar(cheese);
-		Player->Initialize();
 
 		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
 		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);

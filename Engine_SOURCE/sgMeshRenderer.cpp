@@ -3,6 +3,7 @@
 #include "sgTransform.h"
 #include "sgRenderer.h"
 #include "sgTime.h"
+#include "sgAnimator.h"
 
 namespace sg
 {
@@ -48,6 +49,13 @@ namespace sg
 		mMesh->BindBuffer();
 		// Bind VS, PS
 		mMaterial->Binds();
+
+		Animator* animator = GetOwner()->GetComp<Animator>();
+		if (animator)
+		{
+			animator->Binds();
+		}
+
 		// Draw Render Target
 		mMesh->Render();
 

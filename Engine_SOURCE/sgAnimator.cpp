@@ -39,6 +39,8 @@ namespace sg
 	}
 	void Animator::LateUpdate()
 	{
+		if (mActiveAnimation != nullptr)
+			mActiveAnimation->LateUpdate();
 	}
 	void Animator::Render()
 	{
@@ -52,7 +54,7 @@ namespace sg
 		, float duration)
 	{
 		Animation* animation = FindAnimation(name);
-		if (nullptr == animation)
+		if (nullptr != animation)
 			return;
 
 		animation = new Animation();
@@ -77,7 +79,13 @@ namespace sg
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)
 	{
-		return nullptr;
+		std::map<std::wstring, Animation*>::iterator iter
+			= mAnimations.find(name);
+
+		if (iter == mAnimations.end())
+			return nullptr;
+
+		return iter->second;
 	}
 	Animator::Events* Animator::FindEvents(const std::wstring& name)
 	{
@@ -89,22 +97,66 @@ namespace sg
 
 		return iter->second;
 	}
-	void Animator::PlayAnimation(const std::wstring& name, bool loop)
+	void Animator::PlayAnimation(const std::wstring& name, bool loop, bool direction)
 	{
+		Animation* preAnimation = nullptr;
+		Events* events;
+
+		if (mActiveAnimation != nullptr)
+			preAnimation = mActiveAnimation;
+	
+		if (preAnimation != nullptr)
+		{
+			events = FindEvents(preAnimation->GetKey());
+			if (events)
+				events->endEvent();
+		}
+
+		Animation* animation = FindAnimation(name);
+		if (animation)
+		{
+			mActiveAnimation = animation;
+			if (direction)
+			{
+				mActiveAnimation->SetAniDirection(true);
+			}
+			else
+			{
+				mActiveAnimation->SetAniDirection(false);
+			}
+		}
+
+		events = FindEvents(mActiveAnimation->GetKey());
+		if (events)
+			events->startEvent();
+
+		mbLoop = loop;
+		//if (mbLoop && mActiveAnimation->IsComplete())
+		mActiveAnimation->Reset();
 	}
 	void Animator::Binds()
 	{
+		if (mActiveAnimation == nullptr)
+			return;
+
+		mActiveAnimation->Binds();
 	}
 	std::function<void()>& Animator::StartEvent(const std::wstring key)
 	{
-		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(key);
+
+		return events->startEvent.mEvent;
 	}
 	std::function<void()>& Animator::CompleteEvent(const std::wstring key)
 	{
-		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(key);
+
+		return events->completeEvent.mEvent;
 	}
 	std::function<void()>& Animator::EndEvent(const std::wstring key)
 	{
-		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(key);
+
+		return events->endEvent.mEvent;
 	}
 }
