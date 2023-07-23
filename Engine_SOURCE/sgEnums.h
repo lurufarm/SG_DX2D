@@ -23,8 +23,9 @@ namespace sg::enums
 		BGImg,
 		Tile,
 		InteractableObject,
-		Player,
 		Monster,
+		Player,
+		Player_Bullet,
 		UI,
 		End = 16,
 	};

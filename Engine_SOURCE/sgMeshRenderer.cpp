@@ -44,17 +44,17 @@ namespace sg
 		tr->BindConstantBuffer();
 		Time::BindConstantBuffer();
 
+		Animator* animator = GetOwner()->GetComp<Animator>();
+		if (animator)
+		{
+			animator->Binds();
+		}
 
 		// Input assembler 정점 데이터 정보 지정
 		mMesh->BindBuffer();
 		// Bind VS, PS
 		mMaterial->Binds();
 
-		Animator* animator = GetOwner()->GetComp<Animator>();
-		if (animator)
-		{
-			animator->Binds();
-		}
 
 		// Draw Render Target
 		mMesh->Render();

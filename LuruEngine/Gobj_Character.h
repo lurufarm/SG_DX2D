@@ -49,6 +49,7 @@ namespace sg
 		Animator* mAni;
 
 		std::shared_ptr<Texture> mAtlas;
+		class Gobj_Bullet* mMyBullet;
 
 	};
 }

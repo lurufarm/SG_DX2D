@@ -67,6 +67,33 @@ namespace sg
 
 		static __forceinline Vector3 GetFinalMousePos() { return mFinalMousePos; }
 
+		static __forceinline Key GetInputKeyA() { return mKeys[(UINT)eKeyCode::A]; }
+		static __forceinline Key GetInputKeyD() { return mKeys[(UINT)eKeyCode::D]; }
+		static __forceinline Key GetInputKeyW() { return mKeys[(UINT)eKeyCode::W]; }
+		static __forceinline Key GetInputKeyS() { return mKeys[(UINT)eKeyCode::S]; }
+
+		static __forceinline bool GetAnyKey()
+		{
+			for (UINT i = 0; i < (UINT)eKeyCode::END; i++)
+			{
+				if (mKeys[i].state == eKeyState::Down || mKeys[i].state == eKeyState::Pressed)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		static __forceinline Key GetAnyKeyInfo()
+		{
+			for (UINT i = 0; i < (UINT)eKeyCode::END; i++)
+			{
+				if (mKeys[i].state == eKeyState::Down || mKeys[i].state == eKeyState::Pressed)
+				{
+					return mKeys[i];
+				}
+			}
+			return mKeys[(UINT)eKeyCode::END];
+		}
 
 	private:
 

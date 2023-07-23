@@ -20,6 +20,5 @@ namespace sg
 		MeshRenderer* mMr = GetComp<MeshRenderer>();
 		Collider2D* mCol = GetComp<Collider2D>();
 
-		GameObject* mTarget;
 	};
 }

@@ -39,20 +39,13 @@ namespace sg
 		mCol = AddComp<Collider2D>();
 		mAni = AddComp<Animator>();
 
+		mTr->SetScale(24.0f, 20.0f, 1.0f);
 		SetMesh();
 		mMr->SetMaterial(Resources::Find<Material>(L"Animationmaterial"));
-		//mMr->SetMaterial(mpChar->GetComp<MeshRenderer>()->GetMaterial());
-		//mMr->Initialize();
-		//mMr->Initialize();
-		mTr->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+		mCol->SetCenter(Vector2(0.0f, -2.0f));
+		mCol->SetSize(Vector2(0.4f, 0.7f));
 
-		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"test", L"..\\Resources\\Character\\Cheese\\cheese.png");
-		mAni->Create(L"Ani_Cheese_Idle", atlas, Vector2(0.0f, 20.0f), Vector2(24.0f, 20.0f), 9, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_Cheese_Move", atlas, Vector2(0.0f, 0.0f), Vector2(24.0f, 20.0f), 8, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_Cheese_Attack", atlas, Vector2(0.0f, 40.0f), Vector2(24.0f, 20.0f), 4, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_Cheese_Death", atlas, Vector2(0.0f, 60.0f), Vector2(24.0f, 20.0f), 18, Vector2::Zero, 0.05f);
 
-		//mAni->PlayAnimation(L"Ani_Cheese_Idle", true, 1);
 		AddComp<SCRIPT_Player>();
 	}
 	void Gobj_Player::Update()
@@ -65,7 +58,6 @@ namespace sg
 	}
 	void Gobj_Player::Render()
 	{
-		//if (mMr->GetMaterial() != nullptr)
 		GameObject::Render();
 	}
 }

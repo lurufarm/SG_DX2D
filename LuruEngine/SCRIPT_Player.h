@@ -20,7 +20,7 @@ namespace sg
 		virtual void Update() override;
 
 		void Idle();
-		void Move(eKeyCode key, eKeyState state, float speed);
+		void Move(Input::Key key, float speed);
 		void Attack();
 		void Attacked();
 		
@@ -29,12 +29,13 @@ namespace sg
 		virtual void OnCollisionExit(Collider2D* other);
 	private:
 		ePlayerFSM mFSMState;
-		eKeyCode mKey;
-		eKeyState mKeyState;
+		Input::Key mKey;
 		class Gobj_Player* mOwner;
 
 		std::wstring mAniname;
 		bool mDirection;
 		bool isPlayed = false;
+
+		float mTime;
 	};
 }

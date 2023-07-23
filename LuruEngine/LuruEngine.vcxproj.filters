@@ -136,6 +136,9 @@
     <ClCompile Include="SCRIPT_Bullet.cpp">
       <Filter>Script</Filter>
     </ClCompile>
+    <ClCompile Include="Gobj_Monster.cpp">
+      <Filter>Obj\Gobj_Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -276,6 +279,9 @@
     <ClInclude Include="SCRIPT_Bullet.h">
       <Filter>Script</Filter>
     </ClInclude>
+    <ClInclude Include="Gobj_Monster.h">
+      <Filter>Obj\Gobj_Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -352,6 +358,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Bullet">
       <UniqueIdentifier>{1ca6a035-b3cd-4f37-8359-95b468e44247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster">
+      <UniqueIdentifier>{4b73aad8-2239-4188-ad83-9a06494fd633}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

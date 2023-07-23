@@ -411,6 +411,14 @@ namespace renderer
 		material->SetShader(debugShader);
 		Resources::Insert(L"DebugMaterial", material);
 
+		// Animation
+
+		material = std::make_shared<Material>();
+		material->SetShader(spriteAniShader);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Animationmaterial", material);
+
+
 #pragma endregion
 #pragma region UI Material
 		 // UI_Exit Button
@@ -654,13 +662,6 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Cheese_temp", material);
-
-			//texture = Resources::Load<Texture>(L"Ani_Cheese", L"..\\Resources\\Character\\Cheese\\cheese.png");
-		material = std::make_shared<Material>();
-		material->SetShader(spriteAniShader);
-		//material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"Animationmaterial", material);
 
 #pragma endregion
 #pragma region Bullet

@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
 #include "Gobj_Character.h"
+#include "Gobj_Monster.h"
 #include "SCRIPT_CameraScript.h"
 
 namespace sg
@@ -20,8 +21,8 @@ namespace sg
 		static void SetChar(Gobj_Character* character)
 		{
 			mpChar = character;
-			//std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
-			//mAni->SetAnimations(charAnis);
+			std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
+			mAni->SetAnimations(charAnis);
 			mpStat = mpChar->GetStat();			
 		}
 		static Gobj_Character* GetChar() { return mpChar; }
@@ -30,6 +31,9 @@ namespace sg
 		static bool GetEnemyNearby() { return mEnemyNearby; }
 
 		Gobj_Character::CharStat GetStat() { return mpStat; }
+
+		void SetTarget(GameObject* mob) { mTarget = mob; }
+		GameObject* GetTarget() { return mTarget; }
 
 	private:
 
@@ -42,6 +46,8 @@ namespace sg
 		static Gobj_Character::CharStat mpStat;
 		static std::vector<Gobj_Character*> mCompanies;
 		static bool mEnemyNearby;
+
+		GameObject* mTarget;
 
 	};
 }

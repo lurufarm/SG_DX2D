@@ -23,6 +23,7 @@ namespace sg
 		void SetType(eColliderType type) { mType = type; }
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetCenter(Vector2 centerpos) { mCenter = centerpos; }
+		void SetRot(float rot) { mRotation = rot; }
 		UINT GetColliderID() { return mColliderID; }
 
 		Vector3 GetCPosition() { return mPosition; }
@@ -40,6 +41,7 @@ namespace sg
 		Vector2 mSize;
 		Vector2 mCenter;
 		Vector3 mScale;
+		float mRotation;
 
 		renderer::MyCB mCB;
 	};
