@@ -13,11 +13,13 @@ namespace sg
 			delete iter.second;
 			iter.second = nullptr;
 		}
+		mAnimations.clear();
 		for (auto& iter : mEvents)
 		{
 			delete iter.second;
 			iter.second = nullptr;
 		}
+		mEvents.clear();
 	}
 	void Animator::Initialize()
 	{
@@ -103,8 +105,12 @@ namespace sg
 		Events* events;
 
 		if (mActiveAnimation != nullptr)
+		{
 			preAnimation = mActiveAnimation;
-	
+			if (mActiveAnimation->GetKey() == name && mActiveAnimation->GetAniDirection() == direction)
+				return;
+		}
+
 		if (preAnimation != nullptr)
 		{
 			events = FindEvents(preAnimation->GetKey());

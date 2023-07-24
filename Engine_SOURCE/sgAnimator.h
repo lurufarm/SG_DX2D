@@ -54,29 +54,54 @@ namespace sg
 		std::function<void()>& CompleteEvent(const std::wstring key);
 		std::function<void()>& EndEvent(const std::wstring key);
 
-		std::map<std::wstring, Animation*> GetAnimations() 
-		{ 
-			std::map<std::wstring, Animation*> charanis;
+		//std::map<std::wstring, std::reference_wrapper<Animation>> GetAnimations()
+		//{ 
+		//	std::map<std::wstring, std::reference_wrapper<Animation>> charanis;
 
-			std::map<std::wstring, Animation*>::iterator iter = this->mAnimations.begin();
+		//	std::map<std::wstring, Animation*>::iterator iter = mAnimations.begin();
 
-			for (; iter != mAnimations.end(); iter++)
-			{
-				charanis.insert(std::make_pair(iter->first, iter->second));
-			}
-			return charanis;
+		//	for (; iter != mAnimations.end(); iter++)
+		//	{
+		//		charanis.insert(std::make_pair(iter->first, std::ref(*(iter->second))));
+		//	}
+		//	return charanis;
+		//}
+
+		//void SetAnimations(std::map<std::wstring, std::reference_wrapper<Animation>> anis)
+		//{ 
+		//	std::map<std::wstring, std::reference_wrapper<Animation>>::iterator iter = anis.begin();
+		//	for (; iter != anis.end(); iter++)
+		//	{
+		//		std::wstring first = iter->first;
+		//		Animation& second = iter->second.get();
+		//		mAnimations.insert(std::make_pair(first, &second));
+		//	}
+		//}
+
+		std::map<std::wstring, Animation*> GetAnimations()
+		{
+			return mAnimations; // map 복사 생성자가 호출되어 mAnimations의 애니메이션들을 복사하여 반환합니다.
 		}
 
-		void SetAnimations(std::map<std::wstring, Animation*> anis) 
-		{ 
-			std::map<std::wstring, Animation*>::iterator iter = anis.begin();
-			for (; iter != anis.end(); iter++)
+		void SetAnimations(const std::map<std::wstring, Animation*>& anis)
+		{
+			// 기존 mAnimations의 애니메이션들을 삭제합니다.
+			for (auto& iter : mAnimations)
 			{
-				std::wstring first = iter->first;
-				Animation* second = iter->second;
-				this->mAnimations.insert(std::make_pair(first, second));
+				delete iter.second;
+			}
+			mAnimations.clear(); // 맵의 모든 항목을 제거합니다.
+
+			// 새로운 애니메이션들을 복사하여 mAnimations에 추가합니다.
+			for (auto& iter : anis)
+			{
+				std::wstring first = iter.first;
+				Animation* second = new Animation(*(iter.second)); // 새로운 애니메이션을 생성하여 복사합니다.
+				mAnimations.insert(std::make_pair(first, second));
 			}
 		}
+
+		Vector2 GetAnimationScale() { return mAnimations.begin()->second->GetSpriteSize(); }
 
 
 	private:

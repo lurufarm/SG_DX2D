@@ -52,6 +52,9 @@ namespace sg
 
 		bool IsComplete() { return mbComplete; }
 		void SetAniDirection(bool direction) { mDirection = direction; }
+		bool GetAniDirection() { return mDirection; }
+
+		Vector2 GetSpriteSize() { return mSpriteSize; }
 
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
@@ -62,6 +65,8 @@ namespace sg
 		bool mbComplete;
 
 		bool mDirection;
+
+		Vector2 mSpriteSize;
 
 	};
 }

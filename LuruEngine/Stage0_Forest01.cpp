@@ -7,6 +7,9 @@
 #include "SCRIPT_CameraScript.h"
 
 #include "Img_Stage0_Forest01_Map.h"
+#include "Gobj_Player.h"
+
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
@@ -43,6 +46,7 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
+		AddGameObj(eLayerType::Player, Player);
 		float BgColor[3] = { 0.5f, 0.5f, 0.5f };
 		GetDevice()->SetBgColor(BgColor);
 		renderer::mainCamera = mCamera;

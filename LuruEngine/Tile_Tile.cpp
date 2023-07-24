@@ -51,12 +51,12 @@ namespace sg
 		mAtlas = atlas;
 		SetIndex(index);
 
-		mMr = AddComp<MeshRenderer>();
-		std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"TilePalette");
-		std::shared_ptr<Material> material = Resources::Find<Material>(L"TilePaletteMaterial");
-		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mMr->SetMaterial(material);
-		mMr->Initialize();
+		//std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"TilePalette");
+		//std::shared_ptr<Material> material = Resources::Find<Material>(L"TilePaletteMaterial");
+		//mMr = AddComp<MeshRenderer>();
+		//mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//mMr->SetMaterial(material);
+		//mMr->Initialize();
 		mTr = GetComp<Transform>();
 		mTr->SetScale(18.0f, 18.0f, 1.0f);
 		mCB = {};

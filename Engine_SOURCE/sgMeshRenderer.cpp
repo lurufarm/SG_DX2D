@@ -18,17 +18,30 @@ namespace sg
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 originscale = tr->GetScale();
-		if (mMaterial != nullptr)
+
+		if (mMaterial == Resources::Find<Material>(L"Animationmaterial"))
 		{
-			Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth(), mMaterial->GetTexture()->GetHeight(), 1.0f);
-			mScale = originscale * imagescale;
+			Animator* at = GetOwner()->GetComp<Animator>();
+			Vector2 spritescale = at->GetAnimationScale();
+			mScale = Vector3(spritescale.x, spritescale.y, 1.0f) * originscale;
+
+			tr->SetScale(mScale);
 		}
 		else
 		{
-			mScale = originscale;
-		}
 
-		tr->SetScale(mScale);
+			if (mMaterial != nullptr)
+			{
+				Vector3 imagescale = Vector3(mMaterial->GetTexture()->GetWidth(), mMaterial->GetTexture()->GetHeight(), 1.0f);
+				mScale = originscale * imagescale;
+			}
+			else
+			{
+				mScale = originscale;
+			}
+
+			tr->SetScale(mScale);
+		}
 
 	}
 	void MeshRenderer::Update()

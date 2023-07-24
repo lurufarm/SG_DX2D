@@ -18,7 +18,6 @@ namespace sg
 		mFSMState = ePlayerFSM::Idle;
 		mOwner = (Gobj_Player*)GetOwner();
 		mDirection = true;
-		isPlayed = false;
 		mTime = 0.0f;
 	}
 
@@ -76,61 +75,37 @@ namespace sg
 			{
 				mOwner->SetEnemyNearby(true);
 				if (mOwner->GetTarget()->GetComp<Transform>()->GetPosition().x > ownerpos.x)
-				{
 					mDirection = true;
-				}
 				else
-				{
 					mDirection = false;
-				}
 			}
 			else
-			{
 				mOwner->SetEnemyNearby(false);
-			}
-
 		}
 		else if (SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects().size() == 0)
 		{
 			mOwner->SetEnemyNearby(false);
 		}
-
 	};
 
 	void SCRIPT_Player::Idle()
 	{
 		Animator* mAni = GetOwner()->GetComp<Animator>();
-		std::wstring aniname = L"Ani_";
-		aniname += mOwner->GetChar()->GetName();
-		aniname += L"_Idle";
-		if (isPlayed == false)
-		{
-			mAni->PlayAnimation(aniname, true, mDirection);
-			isPlayed = true;
-		}
+
+		mAni->PlayAnimation(AnimationName(idle), true, mDirection);
+
 		if (Input::GetAnyKey())
-		{
-			isPlayed = false;
 			mFSMState = ePlayerFSM::Move;
-		}
 	}
 	void SCRIPT_Player::Move(Input::Key key, float speed)
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
 		Animator* mAni = GetOwner()->GetComp<Animator>();
-		std::wstring aniname = L"Ani_";
-		aniname += mOwner->GetChar()->GetName();
 
 		if (Input::GetAnyKey())
 		{
-			aniname += L"_Move";
 			mKey = Input::GetAnyKeyInfo();
-
-			if (Input::GetAnyKeyInfo().state == eKeyState::Down)
-			{
-				isPlayed = false;
-			}
 
 			if (mKey.key == eKeyCode::A 
 				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None 
@@ -139,11 +114,7 @@ namespace sg
 				mDirection = false;
 				pos.x -= speed * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (mKey.key == eKeyCode::D 
 				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None 
@@ -152,11 +123,7 @@ namespace sg
 				mDirection = true;
 				pos.x += speed * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (mKey.key == eKeyCode::W 
 				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None 
@@ -164,11 +131,7 @@ namespace sg
 			{
 				pos.y += speed * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (mKey.key == eKeyCode::S 
 				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None 
@@ -176,11 +139,7 @@ namespace sg
 			{
 				pos.y -= speed * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			
 			if (Input::KeyP(eKeyCode::A) 
@@ -190,11 +149,7 @@ namespace sg
 				pos.x -= (speed / 1.5f) * Time::DeltaTime();
 				pos.y += (speed / 1.5f) * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (Input::KeyP(eKeyCode::A) 
 				&& Input::KeyP(eKeyCode::S))
@@ -203,11 +158,7 @@ namespace sg
 				pos.x -= (speed / 1.5f) * Time::DeltaTime();
 				pos.y -= (speed / 1.5f) * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (Input::KeyP(eKeyCode::D) 
 				&& Input::KeyP(eKeyCode::W))
@@ -216,11 +167,7 @@ namespace sg
 				pos.x += (speed / 1.5f) * Time::DeltaTime();
 				pos.y += (speed / 1.5f) * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 			else if (Input::KeyP(eKeyCode::D) 
 				&& Input::KeyP(eKeyCode::S))
@@ -229,17 +176,11 @@ namespace sg
 				pos.x += (speed / 1.5f) * Time::DeltaTime();
 				pos.y -= (speed / 1.5f) * Time::DeltaTime();
 				tr->SetPosition(pos);
-				if (isPlayed == false)
-				{
-					mAni->PlayAnimation(aniname, true, mDirection);
-					isPlayed = true;
-				}
+				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 		}
 		else
 		{
-			isPlayed = false;
-
 			if (mOwner->GetEnemyNearby())
 				mFSMState = ePlayerFSM::Attack;
 			else
@@ -249,29 +190,17 @@ namespace sg
 	void SCRIPT_Player::Attack()
 	{
 		Animator* mAni = GetOwner()->GetComp<Animator>();
-		std::wstring aniname = L"Ani_";
-		aniname += mOwner->GetChar()->GetName();
-		aniname += L"_Attack";
 		if (mTime >= mOwner->GetChar()->GetStat().mCoolDown)
 		{
 			object::Instantiate<Bullet_CheeseArrow>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			mTime = 0.0f;
 		}
-		if (isPlayed == false)
-		{
-			mAni->PlayAnimation(aniname, true, mDirection);
-			isPlayed = true;
-		}
+		mAni->PlayAnimation(AnimationName(attack), true, mDirection);
+
 		if (mOwner->GetEnemyNearby() == false)
-		{
-			isPlayed = false;
 			mFSMState = ePlayerFSM::Idle;
-		}
 		if (Input::GetAnyKey())
-		{
-			isPlayed = false;
 			mFSMState = ePlayerFSM::Move;
-		}
 	}
 	void SCRIPT_Player::Attacked()
 	{

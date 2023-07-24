@@ -39,7 +39,7 @@ namespace sg
 		mCol = AddComp<Collider2D>();
 		mAni = AddComp<Animator>();
 
-		mTr->SetScale(24.0f, 20.0f, 1.0f);
+		//mTr->SetScale(24.0f, 20.0f, 1.0f);
 		SetMesh();
 		mMr->SetMaterial(Resources::Find<Material>(L"Animationmaterial"));
 		mCol->SetCenter(Vector2(0.0f, -2.0f));

@@ -11,7 +11,12 @@
 #include "Tile_Image.h"
 #include "Tile_TilePalette.h"
 
-//#include "Img_Stage0_Forest01_Map.h"
+#include "Img_Stage0_Forest01_Map.h"
+#include "Img_LobbyMap.h"
+#include "Interact_LobbyCharacter.h"
+#include "Interact_LobbyUpgrade.h"
+#include "Interact_LobbyCardBook.h"
+#include "Interact_LobbyGate.h"
 
 extern sg::Application application;
 
@@ -28,7 +33,15 @@ namespace sg
 		Scene::Initialize();
 		TilePalette::Initialize();
 
+		// lobby
 		//Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
+		//object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
+
+		//Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+		//Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
+		//Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
+		//Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
+
 
 		mToolSceneCamera = object::Instantiate<GameObject>(eLayerType::Tile, this);
 		mToolSceneCamera->AddComp<Camera>();
@@ -56,6 +69,20 @@ namespace sg
 			TilePalette::CreateTile(tileIndex, tilePos);
 			//TilePalette::CreateTile(tileIndex);
 		}
+		if (Input::KeyD(eKeyCode::RBUTTON))
+		{
+			Vector3 mousePos = Input::GetMousePos();
+			Vector3 pos = Vector3(mousePos.x, mousePos.y, 0.0f);
+
+			Vector3 tilePos = Vector3::Zero;
+			tilePos.x = (int)(Input::GetFinalMousePos().x) - (int)Input::GetFinalMousePos().x % TILE_SIZE_X;
+			tilePos.y = (int)(Input::GetFinalMousePos().y) - (int)Input::GetFinalMousePos().y % TILE_SIZE_Y;
+			tilePos.z = 0.0f;
+
+			TilePalette::DeleteTile(tilePos);
+
+		}
+
 
 		if (Input::KeyD(eKeyCode::Z))
 		{

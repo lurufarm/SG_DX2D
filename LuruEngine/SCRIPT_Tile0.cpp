@@ -23,11 +23,11 @@ namespace sg
 
 		Vector3 otherpos = other->GetOwner()->GetComp<Transform>()->GetPosition();
 		Vector3 mypos = mTr->GetPosition();
-		if (otherpos.x < mypos.x)
-			otherpos.x++;
-		else if (otherpos.x > mypos.x)
+		if (otherpos.x <= mypos.x)
 			otherpos.x--;
-		if (otherpos.y < mypos.y)
+		else if (otherpos.x > mypos.x)
+			otherpos.x++;
+		if (otherpos.y <= mypos.y)
 			otherpos.y--;
 		else if (otherpos.y > mypos.y)
 			otherpos.y++;
@@ -42,7 +42,6 @@ namespace sg
 			otherpos.x++;
 		else if (otherpos.x > mypos.x)
 			otherpos.x--;
-
 		if (otherpos.y < mypos.y)
 			otherpos.y--;
 		else if (otherpos.y > mypos.y)

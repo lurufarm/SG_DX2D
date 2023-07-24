@@ -35,16 +35,16 @@ namespace gui
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
 
-		GUI_EditorObject* grid = new GUI_EditorObject();
-		grid->SetName(L"Grid");
+		//GUI_EditorObject* grid = new GUI_EditorObject();
+		//grid->SetName(L"Grid");
 
-		mr = grid->AddComp<sg::MeshRenderer>();
-		mr->SetMesh(sg::Resources::Find<sg::Mesh>(L"RectMesh"));
-		mr->SetMaterial(sg::Resources::Find<sg::Material>(L"GridMaterial"));
-		sg::SCRIPT_GridScript* gridscript = grid->AddComp<sg::SCRIPT_GridScript>();
-		gridscript->SetCamera(renderer::cameras[0]);
+		//mr = grid->AddComp<sg::MeshRenderer>();
+		//mr->SetMesh(sg::Resources::Find<sg::Mesh>(L"RectMesh"));
+		//mr->SetMaterial(sg::Resources::Find<sg::Material>(L"GridMaterial"));
+		//sg::SCRIPT_GridScript* gridscript = grid->AddComp<sg::SCRIPT_GridScript>();
+		//gridscript->SetCamera(renderer::cameras[0]);
 
-		mEditorObjects.push_back(grid);
+		//mEditorObjects.push_back(grid);
 	}
 
 	void GUI_Editor::Run()

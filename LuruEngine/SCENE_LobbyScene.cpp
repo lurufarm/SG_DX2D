@@ -28,11 +28,15 @@
 #include "Interact_LobbyCharacter.h"
 #include "Interact_LobbyUpgrade.h"
 #include "Interact_LobbyCardBook.h"
+#include "Interact_LobbyGate.h"
 
 #include "Gobj_Player.h"
 #include "Char_Cheese.h"
 
 #include "Tile_TilePalette.h"
+
+#include "SCRIPT_MainCamera.h"
+#include "SCRIPT_UICamera.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -49,8 +53,9 @@ namespace sg
 	}
 	void LobbyScene::Initialize()
 	{
-		Player = object::Instantiate<Gobj_Player>(eLayerType::Player, this);
+		Player = object::Instantiate<Gobj_Player>(Vector3(0.0f, 0.0f, -2.0f),eLayerType::Player, this);
 		Player->Initialize();
+		
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
@@ -59,29 +64,43 @@ namespace sg
 		object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::Monster, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
-
+		
 		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
+		Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
 
 		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(eLayerType::Player, this);
 		Player->SetChar(cheese);
 
-		object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
-		object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
+		UI_Icons* ui0 = object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
+		UI_Icons* ui1 = object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
 
 		mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
 		mFocus->AddSelectObj(character);
 		mFocus->AddSelectObj(upgrade);
 		mFocus->AddSelectObj(cardbook);
+		mFocus->AddSelectObj(gate);
+
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 
+		// LobbyScene_MainCamera
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();
-		renderer::cameras.push_back(cameraComp);
+		cameraComp->TurnLayerMask(eLayerType::UI, false);
+		LobbyScenecamera->AddComp<SCRIPT_MainCamera>();
+		//renderer::cameras.push_back(cameraComp);
 		renderer::mainCamera = cameraComp;
+
+		// LobbyScene_UICamera
+		GameObject* LobbySceneUIcamera = object::Instantiate<GameObject>(cameraPos, eLayerType::UI, this);
+		Camera* UIcameraComp = LobbySceneUIcamera->AddComp<Camera>();
+		UIcameraComp->DisableLayerMask();
+		UIcameraComp->TurnLayerMask(eLayerType::UI, true);
+		LobbySceneUIcamera->AddComp<SCRIPT_UICamera>();
+		
 
 	}
 	void LobbyScene::Update()
@@ -106,11 +125,8 @@ namespace sg
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
 
-		//const std::wstring path = { L"..\\Resources\\Tile\\testtesetsete" };
-
-		//const std::wstring path = { L"..\\Resources\\Tile\\realtest" };
-
-		//TilePalette::AutoLoad(path);
+		const std::wstring path = { L"..\\Resources\\Tile\\lobbyscene_tile" };
+		TilePalette::AutoLoad(path);
 
 
 	}

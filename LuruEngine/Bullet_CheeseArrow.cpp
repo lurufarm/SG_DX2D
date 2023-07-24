@@ -24,16 +24,6 @@ namespace sg
 		mFirstPos = Player->GetComp<Transform>()->GetPosition();
 		mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
 
-		Vector3 direction = mTargetPos - mFirstPos;
-		direction.Normalize();
-		float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
-		if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
-		{
-			angleRad = -angleRad;
-		}
-		float angleDegree = (angleRad * 180.0f / 3.1415926535f) - 90.0f;
-		mTr = GetComp<Transform>();
-		mTr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 		AddComp<SCRIPT_Bullet>();
 	}
 	void Bullet_CheeseArrow::Update()

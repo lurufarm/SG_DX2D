@@ -112,9 +112,6 @@
     <ClCompile Include="Char_Cheese.cpp">
       <Filter>Obj\Gobj_Character\Char</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_Player.cpp">
-      <Filter>Script</Filter>
-    </ClCompile>
     <ClCompile Include="LuruEngine.cpp">
       <Filter>x</Filter>
     </ClCompile>
@@ -133,12 +130,25 @@
     <ClCompile Include="Bullet_CheeseArrow.cpp">
       <Filter>Obj\Gobj_Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_Bullet.cpp">
-      <Filter>Script</Filter>
-    </ClCompile>
     <ClCompile Include="Gobj_Monster.cpp">
       <Filter>Obj\Gobj_Monster</Filter>
     </ClCompile>
+    <ClCompile Include="SCRIPT_Player.cpp">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_MainCamera.cpp">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Bullet.cpp">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_UI.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_UICamera.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Gate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -255,9 +265,6 @@
     <ClInclude Include="Char_Cheese.h">
       <Filter>Obj\Gobj_Character\Char</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_Player.h">
-      <Filter>Script</Filter>
-    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>x</Filter>
     </ClInclude>
@@ -276,12 +283,25 @@
     <ClInclude Include="Bullet_CheeseArrow.h">
       <Filter>Obj\Gobj_Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_Bullet.h">
-      <Filter>Script</Filter>
-    </ClInclude>
     <ClInclude Include="Gobj_Monster.h">
       <Filter>Obj\Gobj_Monster</Filter>
     </ClInclude>
+    <ClInclude Include="SCRIPT_Player.h">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_MainCamera.h">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Bullet.h">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_UI.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_UICamera.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Gate.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -361,6 +381,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster">
       <UniqueIdentifier>{4b73aad8-2239-4188-ad83-9a06494fd633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Player">
+      <UniqueIdentifier>{e8c88b70-abaa-4102-9633-49023bee7978}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

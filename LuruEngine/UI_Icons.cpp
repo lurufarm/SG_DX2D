@@ -1,4 +1,5 @@
 #include "UI_Icons.h"
+#include "SCRIPT_UI.h"
 
 namespace sg
 {
@@ -54,9 +55,8 @@ namespace sg
 		default:
 			break;
 		}
-
+		AddComp<SCRIPT_UI>();
 		mMr->Initialize();
-		
 	}
 	void UI_Icons::Update()
 	{

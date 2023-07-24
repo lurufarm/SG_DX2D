@@ -25,9 +25,14 @@ namespace sg
 
 	protected:
 		eBulletType mType;
+		GameObject* mTarget;
+
+		Transform* mTr = GetComp<Transform>();
+		MeshRenderer* mMr = GetComp<MeshRenderer>();
+		Collider2D* mCol = GetComp<Collider2D>();
+
 		Vector3 mTargetPos;
 		Vector3 mFirstPos;
-		GameObject* mTarget;
 		Gobj_Player* mOwner;
 
 

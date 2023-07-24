@@ -163,9 +163,13 @@
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
+    <ClInclude Include="SCRIPT_Gate.h" />
     <ClInclude Include="SCRIPT_Player.h" />
+    <ClInclude Include="SCRIPT_MainCamera.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
+    <ClInclude Include="SCRIPT_UI.h" />
+    <ClInclude Include="SCRIPT_UICamera.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -211,9 +215,13 @@
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
+    <ClCompile Include="SCRIPT_Gate.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
+    <ClCompile Include="SCRIPT_MainCamera.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
+    <ClCompile Include="SCRIPT_UI.cpp" />
+    <ClCompile Include="SCRIPT_UICamera.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

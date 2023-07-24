@@ -54,7 +54,7 @@ namespace sg
 	{
 		SetKey(name);
 		mAtlas = atlas;
-
+		mSpriteSize = size;
 		float width = atlas->GetWidth();
 		float height = atlas->GetHeight();
 
@@ -63,8 +63,8 @@ namespace sg
 			Sprite sprite = {};
 			sprite.leftTop.x = leftTop.x + (i * size.x) / width;
 			sprite.leftTop.y = leftTop.y / height;
-			sprite.size.x = size.x / width;
-			sprite.size.y = size.y / height;
+			sprite.size.x = mSpriteSize.x / width;
+			sprite.size.y = mSpriteSize.y / height;
 			sprite.offset = offset;
 			sprite.atlasSize = Vector2(size.x / width, size.y / height);
 			sprite.duration = duration;

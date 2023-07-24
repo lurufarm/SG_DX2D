@@ -1,6 +1,6 @@
 #include "UI_FocusBox.h"
 #include "..\Engine_SOURCE\sgTime.h"
-
+#include "SCRIPT_UI.h"
 namespace sg
 {
 	UI_FocusBox::UI_FocusBox(int num)
@@ -44,8 +44,6 @@ namespace sg
 	}
 	void UI_FocusBox::Update()
 	{
-
-
 		Gobj_UI::Update();
 	}
 	void UI_FocusBox::LateUpdate()

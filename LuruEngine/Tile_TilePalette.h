@@ -24,6 +24,7 @@ namespace sg
 		static void Render();
 
 		static void CreateTile(int index, Vector3 pos);
+		static void DeleteTile(Vector3 pos);
 		static void CreateTiles(int index, UINT width, UINT height);
 		static void Save();
 		static void Load();

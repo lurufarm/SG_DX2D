@@ -24,6 +24,7 @@ namespace sg
 			std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
 			mAni->SetAnimations(charAnis);
 			mpStat = mpChar->GetStat();			
+			mMr->Initialize();
 		}
 		static Gobj_Character* GetChar() { return mpChar; }
 

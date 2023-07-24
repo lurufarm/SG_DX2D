@@ -6,6 +6,7 @@
 #include "..\Engine_SOURCE\sgObject.h"
 
 #include "Gobj_Player.h"
+#include "SCRIPT_Ui.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -36,6 +37,8 @@ namespace sg
 		mTr->SetPosition(Vector3(0.0f, 0.0f, -2.0f));
 		mAccDeltaTime = 0.0f;
 
+		AddComp<SCRIPT_UI>();
+
 		GameObject::Initialize();
 	}
 	void UI_FocusBoxes2::Update()
@@ -65,7 +68,8 @@ namespace sg
 		}
 
 		Vector3 objpos = mObj->GetComp<Transform>()->GetPosition();
-		Vector3 objscale = mObj->GetComp<MeshRenderer>()->GetImgScale();
+		Vector3 objscale = mObj->GetComp<Transform>()->GetScale();
+		//Vector3 objscale = mObj->GetComp<MeshRenderer>()->GetImgScale();
 
 		Vector3 p0 = Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);
 		Vector3 p1 = Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);

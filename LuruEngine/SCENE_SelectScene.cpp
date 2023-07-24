@@ -30,9 +30,9 @@ namespace sg
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		UI_Select* story = object::Instantiate<UI_Select>(true, eLayerType::UI, this);
-		Img_SelectText* story_text = object::Instantiate<Img_SelectText>(true, eLayerType::BGImg, this);
 		UI_Select* party = object::Instantiate<UI_Select>(false, eLayerType::UI, this);
-		Img_SelectText* party_text = object::Instantiate<Img_SelectText>(false, eLayerType::BGImg, this);
+		Img_SelectText* story_text = object::Instantiate<Img_SelectText>(true, eLayerType::UI, this);
+		Img_SelectText* party_text = object::Instantiate<Img_SelectText>(false, eLayerType::UI, this);
 		UI_Exit* exit = object::Instantiate<UI_Exit>(eLayerType::UI, this);
 
 		Img_CatPattern* pattern = object::Instantiate<Img_CatPattern>(eLayerType::BGImg, this);
