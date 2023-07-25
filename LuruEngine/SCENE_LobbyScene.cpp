@@ -8,6 +8,7 @@
 #include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgObject.h"
+#include "..\Engine_SOURCE\sgLayer.h"
 
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
@@ -37,6 +38,7 @@
 
 #include "SCRIPT_MainCamera.h"
 #include "SCRIPT_UICamera.h"
+#include "SCRIPT_BGCamera.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -59,8 +61,8 @@ namespace sg
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
-		object::Instantiate<Img_Space1>(eLayerType::BGImg, this);
-		object::Instantiate<Img_Space2>(eLayerType::BGImg, this);
+		object::Instantiate<Img_Space1>(eLayerType::BGImg, this)->AddComp<SCRIPT_BGCamera>();
+		object::Instantiate<Img_Space2>(eLayerType::BGImg, this)->AddComp<SCRIPT_BGCamera>();
 		object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::Monster, this);
 		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
@@ -91,7 +93,6 @@ namespace sg
 		Camera* cameraComp = LobbyScenecamera->AddComp<Camera>();
 		cameraComp->TurnLayerMask(eLayerType::UI, false);
 		LobbyScenecamera->AddComp<SCRIPT_MainCamera>();
-		//renderer::cameras.push_back(cameraComp);
 		renderer::mainCamera = cameraComp;
 
 		// LobbyScene_UICamera
@@ -100,8 +101,6 @@ namespace sg
 		UIcameraComp->DisableLayerMask();
 		UIcameraComp->TurnLayerMask(eLayerType::UI, true);
 		LobbySceneUIcamera->AddComp<SCRIPT_UICamera>();
-		
-
 	}
 	void LobbyScene::Update()
 	{
@@ -127,12 +126,10 @@ namespace sg
 
 		const std::wstring path = { L"..\\Resources\\Tile\\lobbyscene_tile" };
 		TilePalette::AutoLoad(path);
-
-
 	}
 	void LobbyScene::OnExit()
 	{
 		renderer::cameras.clear();
-		//renderer::mainCamera = nullptr;
+		DeleteGameObj(eLayerType::Player, Player);
 	}
 }

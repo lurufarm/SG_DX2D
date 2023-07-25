@@ -1,5 +1,4 @@
 #include "UI_Select.h"
-#include "SCRIPT_SelectScript.h"
 
 namespace sg
 {

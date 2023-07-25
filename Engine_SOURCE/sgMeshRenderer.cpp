@@ -19,7 +19,7 @@ namespace sg
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 originscale = tr->GetScale();
 
-		if (mMaterial == Resources::Find<Material>(L"Animationmaterial"))
+		if (mMaterial == Resources::Find<Material>(L"AnimationMaterial"))
 		{
 			Animator* at = GetOwner()->GetComp<Animator>();
 			Vector2 spritescale = at->GetAnimationScale();

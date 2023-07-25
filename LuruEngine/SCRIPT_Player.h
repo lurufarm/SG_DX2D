@@ -23,15 +23,6 @@ namespace sg
 		void Move(Input::Key key, float speed);
 		void Attack();
 		void Attacked();
-
-		//std::wstring& SetAniName(std::wstring charname, std::wstring behavier)
-		//{
-		//	std::wstring aniname = L"Ani_";
-		//	aniname += charname;
-		//	aniname += behavier;
-
-		//	return aniname;
-		//}
 		
 		std::wstring AnimationName(const std::wstring& animation)
 		{

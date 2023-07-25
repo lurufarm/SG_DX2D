@@ -416,7 +416,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(spriteAniShader);
 		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"Animationmaterial", material);
+		Resources::Insert(L"AnimationMaterial", material);
 
 
 #pragma endregion
@@ -673,6 +673,17 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Arrow", material);
+
+#pragma endregion
+
+#pragma region Monster
+
+		texture = Resources::Load<Texture>(L"Monster_SlimeA", L"..\\Resources\\Monster\\SlimeA.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteAniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobSlimeA", material);
 
 #pragma endregion
 	}

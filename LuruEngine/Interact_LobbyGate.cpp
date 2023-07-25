@@ -29,7 +29,7 @@ namespace sg
 		mAni->PlayAnimation(L"LobbyGate", true, true);
 
 		SetMesh();
-		SetMaterial(L"Animationmaterial");
+		SetMaterial(L"AnimationMaterial");
 		mMr->Initialize();
 
 		mCol = GetComp<Collider2D>();

@@ -41,7 +41,7 @@ namespace sg
 
 		//mTr->SetScale(24.0f, 20.0f, 1.0f);
 		SetMesh();
-		mMr->SetMaterial(Resources::Find<Material>(L"Animationmaterial"));
+		mMr->SetMaterial(Resources::Find<Material>(L"AnimationMaterial"));
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
 		mCol->SetSize(Vector2(0.4f, 0.7f));
 

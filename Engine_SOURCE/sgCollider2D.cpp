@@ -28,6 +28,15 @@ namespace sg
 	{
 		Transform* tr = GetOwner()->GetComp<Transform>();
 
+		if (GetOwner()->GetName() != L"CheeseArrow")
+		{
+			int a = 0;
+		}
+		else
+		{
+			int a = 0;
+		}
+
 		mScale = tr->GetScale();
 		mScale.x *= mSize.x;
 		mScale.y *= mSize.y;
@@ -37,6 +46,7 @@ namespace sg
 		pos.y += mCenter.y;
 		
 		mPosition = pos;
+
 
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;

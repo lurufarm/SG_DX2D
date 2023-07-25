@@ -16,10 +16,13 @@ namespace sg
 		virtual void Destroy();
 
 		void AddGameObj(GameObject* gameObj);
+		void DeleteGameObj(GameObject* gameObj);
+
 		const std::vector<GameObject*> GetGameObjects()
 		{
 			return mGameObjects;
 		}
+
 		
 		Layer* GetMyLayer(GameObject* obj)
 		{

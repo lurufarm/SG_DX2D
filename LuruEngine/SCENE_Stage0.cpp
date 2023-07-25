@@ -1,4 +1,7 @@
 #include "SCENE_Stage0.h"
+#include "Gobj_Player.h"
+
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
@@ -26,6 +29,10 @@ namespace sg
 	}
 	void SCENE_Stage0::OnEnter()
 	{
+		float BgColor[3] = { 0.5f, 0.5f, 0.5f };
+		GetDevice()->SetBgColor(BgColor);
+		renderer::mainCamera = mCamera;
+		AddGameObj(eLayerType::Player, Player);
 	}
 	void SCENE_Stage0::OnExit()
 	{

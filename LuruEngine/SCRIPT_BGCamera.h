@@ -1,15 +1,15 @@
 #pragma once
 #include "..\Engine_SOURCE\sgScript.h"
-#include "UI_FocusBoxes.h"
+#include "Gobj_Player.h"
 
 namespace sg
 {
-	class SelectScript : public Script
+	class SCRIPT_BGCamera : public Script
 	{
 	public:
+		virtual void Initialize();
 		virtual void Update();
-
 	private:
+		Gobj_Player* mPlayer;
 	};
 }
-

@@ -1,13 +1,14 @@
 #include "Stage0_Forest01.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
+#include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "..\Engine_SOURCE\sgCamera.h"
-
-#include "SCRIPT_CameraScript.h"
+#include "SCRIPT_MainCamera.h"
 
 #include "Img_Stage0_Forest01_Map.h"
 #include "Gobj_Player.h"
+#include "Melee_SlimeA.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -24,11 +25,10 @@ namespace sg
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
-
+		Melee_SlimeA* slimea = object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest01camera->AddComp<Camera>();
-		SCRIPT_CameraScript* cameracomp1 = Forest01camera->AddComp<SCRIPT_CameraScript>();
-		//renderer::mainCamera = cameraComp;
+		Forest01camera->AddComp<SCRIPT_MainCamera>();
 
 		SCENE_Stage0::Initialize();
 	}
@@ -46,12 +46,10 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
-		AddGameObj(eLayerType::Player, Player);
-		float BgColor[3] = { 0.5f, 0.5f, 0.5f };
-		GetDevice()->SetBgColor(BgColor);
 		renderer::mainCamera = mCamera;
-		renderer::cameras.push_back(mCamera);
+		AddGameObj(eLayerType::Player, Player);
 
+		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
 	}
 	void Stage0_Forest01::OnExit()
 	{

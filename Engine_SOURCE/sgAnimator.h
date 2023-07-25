@@ -54,30 +54,6 @@ namespace sg
 		std::function<void()>& CompleteEvent(const std::wstring key);
 		std::function<void()>& EndEvent(const std::wstring key);
 
-		//std::map<std::wstring, std::reference_wrapper<Animation>> GetAnimations()
-		//{ 
-		//	std::map<std::wstring, std::reference_wrapper<Animation>> charanis;
-
-		//	std::map<std::wstring, Animation*>::iterator iter = mAnimations.begin();
-
-		//	for (; iter != mAnimations.end(); iter++)
-		//	{
-		//		charanis.insert(std::make_pair(iter->first, std::ref(*(iter->second))));
-		//	}
-		//	return charanis;
-		//}
-
-		//void SetAnimations(std::map<std::wstring, std::reference_wrapper<Animation>> anis)
-		//{ 
-		//	std::map<std::wstring, std::reference_wrapper<Animation>>::iterator iter = anis.begin();
-		//	for (; iter != anis.end(); iter++)
-		//	{
-		//		std::wstring first = iter->first;
-		//		Animation& second = iter->second.get();
-		//		mAnimations.insert(std::make_pair(first, &second));
-		//	}
-		//}
-
 		std::map<std::wstring, Animation*> GetAnimations()
 		{
 			return mAnimations; // map 복사 생성자가 호출되어 mAnimations의 애니메이션들을 복사하여 반환합니다.
@@ -102,7 +78,7 @@ namespace sg
 		}
 
 		Vector2 GetAnimationScale() { return mAnimations.begin()->second->GetSpriteSize(); }
-
+		Animation* GetActiveAni() { return mActiveAnimation; }
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;

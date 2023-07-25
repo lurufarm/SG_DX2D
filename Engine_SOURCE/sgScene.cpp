@@ -58,4 +58,8 @@ namespace sg
 	{
 		mLayers[(int)type].AddGameObj(gameObj);
 	}
+	void Scene::DeleteGameObj(eLayerType type, GameObject* gameObj)
+	{
+		mLayers[(int)type].DeleteGameObj(gameObj);
+	}
 }

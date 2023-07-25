@@ -22,7 +22,7 @@ namespace sg
 	{
 		mMr = GetComp<MeshRenderer>();
 		mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mMr->SetMaterial(Resources::Find<Material>(L"Animationmaterial"));
+		mMr->SetMaterial(Resources::Find<Material>(L"AnimationMaterial"));
 		//mMr->Initialize();
 		mAni = GetComp<Animator>();
 		mAtlas = Resources::Load<Texture>(L"Ani_Cheese", L"..\\Resources\\Character\\Cheese\\cheese.png");

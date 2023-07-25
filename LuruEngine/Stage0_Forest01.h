@@ -16,8 +16,6 @@ namespace sg
 
 		void OnEnter();
 		void OnExit();
-	private:
 
-		Camera* mCamera;
 	};
 }

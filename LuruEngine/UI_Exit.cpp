@@ -1,5 +1,4 @@
 #include "UI_Exit.h"
-#include "SCRIPT_SelectScript.h"
 
 namespace sg
 {

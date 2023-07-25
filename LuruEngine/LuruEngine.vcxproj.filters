@@ -37,9 +37,6 @@
     <ClCompile Include="UI_FocusBox.cpp">
       <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_SelectScript.cpp">
-      <Filter>Script</Filter>
-    </ClCompile>
     <ClCompile Include="UI_Select.cpp">
       <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
@@ -142,13 +139,30 @@
     <ClCompile Include="SCRIPT_Bullet.cpp">
       <Filter>Script\SCRIPT_Player</Filter>
     </ClCompile>
+    <ClCompile Include="SCRIPT_MeleeMob.cpp">
+      <Filter>Script\SCRIPT_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_RangedMob.cpp">
+      <Filter>Script\SCRIPT_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Gate.cpp">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClCompile>
     <ClCompile Include="SCRIPT_UI.cpp">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_UICamera.cpp">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_Gate.cpp" />
+    <ClCompile Include="Monster_Melee.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_SlimeA.cpp">
+      <Filter>Obj\Gobj_Monster\Melee</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_BGCamera.cpp">
+      <Filter>Script\SCRIPT_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -189,9 +203,6 @@
     </ClInclude>
     <ClInclude Include="UI_FocusBox.h">
       <Filter>Obj\Gobj_UI</Filter>
-    </ClInclude>
-    <ClInclude Include="SCRIPT_SelectScript.h">
-      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="UI_Select.h">
       <Filter>Obj\Gobj_UI</Filter>
@@ -295,13 +306,30 @@
     <ClInclude Include="SCRIPT_Bullet.h">
       <Filter>Script\SCRIPT_Player</Filter>
     </ClInclude>
+    <ClInclude Include="SCRIPT_MeleeMob.h">
+      <Filter>Script\SCRIPT_Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_RangedMob.h">
+      <Filter>Script\SCRIPT_Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Gate.h">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClInclude>
     <ClInclude Include="SCRIPT_UI.h">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_UICamera.h">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_Gate.h" />
+    <ClInclude Include="Monster_Melee.h">
+      <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_SlimeA.h">
+      <Filter>Obj\Gobj_Monster\Melee</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_BGCamera.h">
+      <Filter>Script\SCRIPT_UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -384,6 +412,21 @@
     </Filter>
     <Filter Include="Script\SCRIPT_Player">
       <UniqueIdentifier>{e8c88b70-abaa-4102-9633-49023bee7978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee">
+      <UniqueIdentifier>{5d9ed76a-43b4-49ae-addb-2ec406ede695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Monster">
+      <UniqueIdentifier>{4894e1b7-b0f7-4f71-9c3b-8da8e8b532fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Interactable">
+      <UniqueIdentifier>{fd006f1b-ae2f-464c-837d-fc41f51a3679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_UI">
+      <UniqueIdentifier>{2c85d1cd-a732-40f4-89e6-4de5ff736b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee\Base">
+      <UniqueIdentifier>{abeda809-17fb-40a6-b67e-02818dc4b644}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

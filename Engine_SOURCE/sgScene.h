@@ -20,6 +20,7 @@ namespace sg
 		virtual void OnExit();
 
 		void AddGameObj(eLayerType type, GameObject* gameObj);
+		void DeleteGameObj(eLayerType type, GameObject* gameObj);
 
 		template <typename T>
 		std::vector <T*> FindObjectsOfType()

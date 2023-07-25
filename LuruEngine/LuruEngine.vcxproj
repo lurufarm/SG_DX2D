@@ -120,6 +120,9 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinFilesInUnityFile>2</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>0</MaxFilesInUnityFile>
+      <MinUnityFiles>1</MinUnityFiles>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -161,11 +164,16 @@
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
+    <ClInclude Include="Melee_SlimeA.h" />
+    <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
+    <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
     <ClInclude Include="SCRIPT_Gate.h" />
+    <ClInclude Include="SCRIPT_MeleeMob.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
+    <ClInclude Include="SCRIPT_RangedMob.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
@@ -197,7 +205,6 @@
     <ClInclude Include="SCRIPT_CameraScript.h" />
     <ClInclude Include="SCENE_LobbyScene.h" />
     <ClInclude Include="SCENE_SelectScene.h" />
-    <ClInclude Include="SCRIPT_SelectScript.h" />
     <ClInclude Include="SCENE_TitleScene.h" />
     <ClInclude Include="UI_Exit.h" />
     <ClInclude Include="UI_FocusBox.h" />
@@ -213,11 +220,16 @@
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
+    <ClCompile Include="Melee_SlimeA.cpp" />
+    <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
+    <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
     <ClCompile Include="SCRIPT_Gate.cpp" />
+    <ClCompile Include="SCRIPT_MeleeMob.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
+    <ClCompile Include="SCRIPT_RangedMob.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
@@ -249,7 +261,6 @@
     <ClCompile Include="SCRIPT_CameraScript.cpp" />
     <ClCompile Include="SCENE_LobbyScene.cpp" />
     <ClCompile Include="SCENE_SelectScene.cpp" />
-    <ClCompile Include="SCRIPT_SelectScript.cpp" />
     <ClCompile Include="SCENE_TitleScene.cpp" />
     <ClCompile Include="UI_Exit.cpp" />
     <ClCompile Include="UI_FocusBox.cpp" />

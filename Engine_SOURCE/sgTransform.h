@@ -19,10 +19,16 @@ namespace sg
 		void SetPosition(Vector3 pos) { mPosition = pos; }
 		void SetRotation(Vector3 rot) 
 		{ 
-			const float PI = 3.141592;
-			mRotation.x = rot.x * PI / 180;
-			mRotation.y = rot.y * PI / 180;
-			mRotation.z = rot.z * PI / 180;
+			if (rot.z <= 1.0f && rot.z >= 0.0f)
+			{
+				mRotation = rot;
+
+			}
+			else
+			{
+				const float PI = 3.141592;
+				mRotation.z = rot.z * PI / 180;
+			}
 		}
 		void SetScale(Vector3 scale) { mScale = scale; }
 

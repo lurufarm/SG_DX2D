@@ -79,4 +79,16 @@ namespace sg
 	{
 		mGameObjects.push_back(gameObj);
 	}
+	void Layer::DeleteGameObj(GameObject* gameObj)
+	{
+		std::vector<GameObject*>::iterator iter = mGameObjects.begin();
+		for (; iter != mGameObjects.end(); iter++)
+		{
+			if (gameObj == *iter)
+			{
+				mGameObjects.erase(iter);
+				return;
+			}
+		}
+	}
 }
