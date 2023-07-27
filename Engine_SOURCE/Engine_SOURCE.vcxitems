@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgLight.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgTransform.h" />
@@ -64,6 +66,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp" />
@@ -75,6 +78,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgTransform.cpp" />

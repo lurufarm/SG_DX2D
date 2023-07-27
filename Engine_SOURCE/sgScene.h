@@ -58,5 +58,8 @@ namespace sg
 		std::vector<Layer> mLayers;
 
 	private:
+		GameObject* light;
+		float mTime;
+
 	};
 }

@@ -91,7 +91,13 @@
     <Filter Include="Common\Time">
       <UniqueIdentifier>{2b0820cc-f241-47c9-8d8d-a590947bcddf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\High Level Interface">
+    <Filter Include="GameObject\Component\Light">
+      <UniqueIdentifier>{b8f76038-503c-42b9-862b-365ab107a052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\StructuredBuffer">
+      <UniqueIdentifier>{8d825174-743c-47df-9881-8dfd0d738872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="High Level Interface">
       <UniqueIdentifier>{f5154b5d-391d-45ad-a5e1-e8b283fac23d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -106,7 +112,7 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h">
-      <Filter>Graphics\High Level Interface</Filter>
+      <Filter>High Level Interface</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphics.h">
       <Filter>Graphics</Filter>
@@ -192,10 +198,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgAnimator.h">
       <Filter>GameObject\Component\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgLight.h">
+      <Filter>GameObject\Component\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.h">
+      <Filter>Graphics\StructuredBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
-      <Filter>Graphics\High Level Interface</Filter>
+      <Filter>High Level Interface</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp">
       <Filter>Common\Entity</Filter>
@@ -274,6 +286,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgAnimator.cpp">
       <Filter>GameObject\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgLight.cpp">
+      <Filter>GameObject\Component\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.cpp">
+      <Filter>Graphics\StructuredBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

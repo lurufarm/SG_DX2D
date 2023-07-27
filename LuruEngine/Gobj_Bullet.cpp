@@ -23,15 +23,18 @@ namespace sg
 	}
 	void Gobj_Bullet::initialize()
 	{
-		if (mBulletOwner->GetIsPlayer())
+		if (Player->GetTarget()->GetState() == Active)
 		{
-			mFirstPos = Player->GetComp<Transform>()->GetPosition();
-			mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
-		}
-		else
-		{
-			mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
-			mTargetPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+			if (mBulletOwner->GetIsPlayer())
+			{
+				mFirstPos = Player->GetComp<Transform>()->GetPosition();
+				mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
+			}
+			else
+			{
+				mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
+				mTargetPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+			}
 		}
 	}
 	void Gobj_Bullet::Update()

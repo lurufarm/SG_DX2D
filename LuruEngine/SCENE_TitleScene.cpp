@@ -26,6 +26,7 @@ namespace sg
 	}
 	void TitleScene::Initialize()
 	{
+
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		GetDevice()->SetBgColor(BgColor);
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
@@ -33,9 +34,15 @@ namespace sg
 		object::Instantiate<Img_Title>(eLayerType::BGImg, this);
 		object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
 
-
 		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		Camera* cameraComp = camera->AddComp<Camera>();
+
+		GameObject* light = new GameObject();
+		AddGameObj(eLayerType::Light, light);
+		Light* lightcomp = light->AddComp<Light>();
+		Vector4 lightcolor = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
+		lightcomp->SetType(eLightType::Directional);
+		lightcomp->SetColor(lightcolor);
 	}
 	void TitleScene::Update()
 	{
@@ -56,6 +63,7 @@ namespace sg
 	}
 	void TitleScene::OnEnter()
 	{
+
 	}
 	void TitleScene::OnExit()
 	{

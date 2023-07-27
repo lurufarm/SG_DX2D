@@ -103,6 +103,14 @@ namespace sg
 		UIcameraComp->DisableLayerMask();
 		UIcameraComp->TurnLayerMask(eLayerType::UI, true);
 		LobbySceneUIcamera->AddComp<SCRIPT_UICamera>();
+
+		GameObject* light = new GameObject();
+		AddGameObj(eLayerType::Light, light);
+		Light* lightcomp = light->AddComp<Light>();
+		Vector4 lightcolor = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
+		lightcomp->SetType(eLightType::Directional);
+		lightcomp->SetColor(lightcolor);
+
 	}
 	void LobbyScene::Update()
 	{

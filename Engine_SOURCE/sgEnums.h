@@ -13,6 +13,7 @@ namespace sg::enums
 		Mesh,
 		Particle,
 		Script,
+		Light,
 		Camera,
 		End,
 	};
@@ -27,6 +28,7 @@ namespace sg::enums
 		Player,
 		Player_Bullet,
 		Effect,
+		Light,
 		UI,
 		End = 16,
 	};
@@ -55,6 +57,14 @@ namespace sg::enums
 	{
 		Basic,
 		Curved,
+		End,
+	};
+
+	enum class eLightType
+	{
+		Directional,
+		Point,
+		Spot,
 		End,
 	};
 }
