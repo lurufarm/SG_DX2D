@@ -1,5 +1,5 @@
 #include "Interact_LobbyCharacter.h"
-
+#include "SCRIPT_CharSelect.h"
 namespace sg
 {
 	Interact_LobbyCharacter::Interact_LobbyCharacter()
@@ -24,6 +24,8 @@ namespace sg
 		mMr->Initialize();
 
 		SetOrder(1);
+
+		AddComp<SCRIPT_CharSelect>();
 
 		Gobj_Interactable::Initialize();
 	}

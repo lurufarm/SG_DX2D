@@ -20,8 +20,10 @@ namespace sg
 		Vector3 GetTargetPos() { return mTargetPos; }
 		Vector3 GetFirstPos() { return mFirstPos; }
 
-		virtual void SetOwner(Gobj_Player* owner) { mOwner = owner; }
-		GameObject* GetOwner() { return mOwner; }
+		void SetBulletOwner(Gobj_Character* owner) { mBulletOwner = owner; }
+		Gobj_Character* GetBulletOwner() { return mBulletOwner; }
+
+		eBulletType GetBulletType() { return mType; }
 
 	protected:
 		eBulletType mType;
@@ -33,7 +35,7 @@ namespace sg
 
 		Vector3 mTargetPos;
 		Vector3 mFirstPos;
-		Gobj_Player* mOwner;
+		Gobj_Character* mBulletOwner;
 
 
 	private:

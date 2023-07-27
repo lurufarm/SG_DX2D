@@ -68,7 +68,6 @@ namespace sg
 		const std::vector<Script*> scripts
 			= GetOwner()->GetComps<Script>();
 
-
 		for (Script* script : scripts)
 		{
 			script->OnCollisionEnter(other);

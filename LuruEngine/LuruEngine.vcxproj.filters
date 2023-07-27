@@ -61,12 +61,6 @@
     <ClCompile Include="Img_SelectText.cpp">
       <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
     </ClCompile>
-    <ClCompile Include="Gobj_Character.cpp">
-      <Filter>Obj\Gobj_Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Gobj_Player.cpp">
-      <Filter>Obj\Gobj_Character</Filter>
-    </ClCompile>
     <ClCompile Include="SCENE_SelectScene.cpp">
       <Filter>Scene\SCENE_NonPlayScene</Filter>
     </ClCompile>
@@ -163,6 +157,36 @@
     <ClCompile Include="SCRIPT_BGCamera.cpp">
       <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
+    <ClCompile Include="Char_Lucy.cpp">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_LucyBomb.cpp">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Company.cpp">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Effect.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Character.cpp">
+      <Filter>Obj\Gobj_Character\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Player.cpp">
+      <Filter>Obj\Gobj_Character\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_Hit.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_FirePlate.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_CharSelect.cpp">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_CharSelect.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -227,12 +251,6 @@
     </ClInclude>
     <ClInclude Include="Img_SelectText.h">
       <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
-    </ClInclude>
-    <ClInclude Include="Gobj_Character.h">
-      <Filter>Obj\Gobj_Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Gobj_Player.h">
-      <Filter>Obj\Gobj_Character</Filter>
     </ClInclude>
     <ClInclude Include="SCENE_SelectScene.h">
       <Filter>Scene\SCENE_NonPlayScene</Filter>
@@ -329,6 +347,36 @@
     </ClInclude>
     <ClInclude Include="SCRIPT_BGCamera.h">
       <Filter>Script\SCRIPT_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Char_Lucy.h">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_LucyBomb.h">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Company.h">
+      <Filter>Script\SCRIPT_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Effect.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Character.h">
+      <Filter>Obj\Gobj_Character\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Player.h">
+      <Filter>Obj\Gobj_Character\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_Hit.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_FirePlate.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_CharSelect.h">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_CharSelect.h">
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +475,12 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Melee\Base">
       <UniqueIdentifier>{abeda809-17fb-40a6-b67e-02818dc4b644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Effect">
+      <UniqueIdentifier>{76562c19-dd0c-4553-998f-300a072c7bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Character\Base">
+      <UniqueIdentifier>{6522034b-e846-4de8-ae27-602fbd4798e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

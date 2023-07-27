@@ -143,12 +143,16 @@ namespace sg
 		void SetOrder(int value) { mOrder = value; }
 		int GetOrder() { return mOrder; }
 
-		std::vector<Component*> GetVector() { return mComponents; }
+		std::vector<Component*> GetComponenetsVector() { return mComponents; }
+
+		void SetSelected(bool value) { mbSelected = value; }
+		bool GetSelected() { return mbSelected; }
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		int mOrder;
+		bool mbSelected;
 	};
 }

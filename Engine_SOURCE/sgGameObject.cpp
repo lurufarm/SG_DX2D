@@ -8,6 +8,7 @@ namespace sg
 	GameObject::GameObject()
 		: mState(eState::Active)
 		, mOrder(0)
+		, mbSelected(false)
 	{
 		AddComp<Transform>();
 	}

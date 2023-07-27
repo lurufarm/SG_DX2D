@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class SCRIPT_Gate : public Script
+	class SCRIPT_CharSelect : public Script
 	{
 	public:
-		SCRIPT_Gate();
-		~SCRIPT_Gate();
+		SCRIPT_CharSelect();
+		~SCRIPT_CharSelect();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -18,5 +18,6 @@ namespace sg
 
 	private:
 		class GameObject* mOwner;
+		static class UI_CharSelect* mObject;
 	};
 }

@@ -21,7 +21,10 @@ namespace sg
 		{
 			mObjs.push_back(obj);
 		}
-		GameObject* GetSelectObj() { return mObj; }
+		GameObject* GetSelectObj() 
+		{ 
+			return mObj; 
+		}
 
 
 		UI_FocusBox* mBoxes[4];

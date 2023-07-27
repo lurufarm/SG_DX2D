@@ -26,6 +26,7 @@ namespace sg::enums
 		Monster,
 		Player,
 		Player_Bullet,
+		Effect,
 		UI,
 		End = 16,
 	};
@@ -53,6 +54,7 @@ namespace sg::enums
 	enum class eBulletType
 	{
 		Basic,
+		Curved,
 		End,
 	};
 }

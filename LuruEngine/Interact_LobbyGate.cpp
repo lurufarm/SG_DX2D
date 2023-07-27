@@ -1,5 +1,6 @@
 #include "Interact_LobbyGate.h"
 #include "sgAnimator.h"
+#include "SCRIPT_Gate.h"
 
 namespace sg
 {
@@ -34,6 +35,8 @@ namespace sg
 
 		mCol = GetComp<Collider2D>();
 		//mCol->SetSize(Vector2(0.5f, 0.3f));
+
+		AddComp<SCRIPT_Gate>();
 
 	}
 	void Interact_LobbyGate::Update()

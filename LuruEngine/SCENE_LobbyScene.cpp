@@ -33,6 +33,7 @@
 
 #include "Gobj_Player.h"
 #include "Char_Cheese.h"
+#include "Char_Lucy.h"
 
 #include "Tile_TilePalette.h"
 
@@ -72,7 +73,8 @@ namespace sg
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
 
-		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(eLayerType::Player, this);
+		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
+		Char_Lucy* lucy = object::Instantiate<Char_Lucy>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
 		Player->SetChar(cheese);
 
 		UI_Icons* ui0 = object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
@@ -104,10 +106,10 @@ namespace sg
 	}
 	void LobbyScene::Update()
 	{
-		if (Input::KeyD(eKeyCode::ENTER))
-		{
-			SceneManager::LoadScene(L"Stage0_Forest01");
-		}
+		//if (Input::KeyD(eKeyCode::N))
+		//{
+		//	SceneManager::LoadScene(L"Stage0_Forest01");
+		//}
 
 		Scene::Update();
 	}

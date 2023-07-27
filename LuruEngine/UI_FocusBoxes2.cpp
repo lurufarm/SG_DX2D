@@ -56,10 +56,11 @@ namespace sg
 
 			distanceMap.insert(std::make_pair(answer, obj));
 		}
-
-		mObj = distanceMap.begin()->second;
-
-
+			GameObject* prevobj = mObj;
+			if (prevobj)
+				prevobj->SetSelected(false);
+			mObj = distanceMap.begin()->second;
+			mObj->SetSelected(true);
 		mAccDeltaTime += Time::DeltaTime() * mDir;
 
 		if (fabs(mAccDeltaTime) > 5.0f)
@@ -103,7 +104,10 @@ namespace sg
 	}
 	void UI_FocusBoxes2::SetSelectObj(GameObject* obj)
 	{
+		GameObject* prevobj = mObj;
 		mObj = obj;
+		prevobj->SetSelected(false);
+		mObj->SetSelected(true);
 
 		Vector3 objpos = obj->GetComp<Transform>()->GetPosition();
 		Vector3 objscale = obj->GetComp<MeshRenderer>()->GetImgScale();

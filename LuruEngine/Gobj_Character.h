@@ -6,10 +6,10 @@
 #include "..\Engine_SOURCE\sgMeshRenderer.h"
 #include "..\Engine_SOURCE\sgCollider2D.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
-#include "SCENE_LobbyScene.h"
 
 namespace sg
 {
+	class Gobj_Monster;
 	class Gobj_Character : public GameObject
 	{
 	public:
@@ -41,15 +41,36 @@ namespace sg
 		void SetSpeed(float speed) { mStat.mSpeed = speed; }
 		void SetHP(int HP) { mStat.mHP = HP; }
 
+		void SetIsPlayer(bool value) { mIsPlayer = value; }
+		bool GetIsPlayer() { return mIsPlayer; }
+
+		void SetTarget(Gobj_Monster* mob) { mTarget = mob; }
+		Gobj_Monster* GetTarget() { return mTarget; }
+
+		static void AddChar(std::wstring key, Gobj_Character* character)
+		{
+			mAllChars.insert(std::make_pair(key, character));
+		}
+		static Gobj_Character* GetChar(std::wstring key)
+		{
+			std::map<std::wstring, Gobj_Character*>::iterator iter = mAllChars.find(key);
+
+			return iter->second;
+		}
 
 	protected:
 		CharStat mStat;
 		Transform* mTr;
 		MeshRenderer* mMr;
 		Animator* mAni;
+		bool mIsPlayer;
+		Gobj_Monster* mTarget;
 
 		std::shared_ptr<Texture> mAtlas;
 		class Gobj_Bullet* mMyBullet;
+
+	private:
+		static std::map<std::wstring, Gobj_Character*>mAllChars;
 
 	};
 }

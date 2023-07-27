@@ -5,16 +5,20 @@ extern sg::Gobj_Player* Player;
 
 namespace sg
 {
+	std::map<std::wstring, Gobj_Character*> Gobj_Character::mAllChars = {};
+
 	Gobj_Character::Gobj_Character()
 	{
 		AddComp<MeshRenderer>();
 		AddComp<Animator>();
+		mIsPlayer = false;
 	}
 	Gobj_Character::~Gobj_Character()
 	{
 	}
 	void Gobj_Character::Initialize()
 	{
+		AddChar(this->GetName(), this);
 	}
 	void Gobj_Character::Update()
 	{

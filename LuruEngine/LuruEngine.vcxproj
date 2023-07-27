@@ -155,10 +155,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bullet_CheeseArrow.h" />
+    <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Char_Cheese.h" />
+    <ClInclude Include="Char_Lucy.h" />
+    <ClInclude Include="Effect_FirePlate.h" />
+    <ClInclude Include="Effect_Hit.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gobj_Bullet.h" />
     <ClInclude Include="Gobj_Character.h" />
+    <ClInclude Include="Gobj_Effect.h" />
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
     <ClInclude Include="Gobj_Monster.h" />
@@ -169,7 +174,9 @@
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
+    <ClInclude Include="SCRIPT_Company.h" />
     <ClInclude Include="SCRIPT_Gate.h" />
+    <ClInclude Include="SCRIPT_CharSelect.h" />
     <ClInclude Include="SCRIPT_MeleeMob.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
@@ -195,6 +202,7 @@
     <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="Stage0_Forest01.h" />
     <ClInclude Include="Tile_TilePalette.h" />
+    <ClInclude Include="UI_CharSelect.h" />
     <ClInclude Include="UI_FocusBoxes2.h" />
     <ClInclude Include="UI_Icons.h" />
     <ClInclude Include="UI_Select.h" />
@@ -212,9 +220,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
+    <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
+    <ClCompile Include="Char_Lucy.cpp" />
+    <ClCompile Include="Effect_FirePlate.cpp" />
+    <ClCompile Include="Effect_Hit.cpp" />
     <ClCompile Include="Gobj_Bullet.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />
+    <ClCompile Include="Gobj_Effect.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Monster.cpp" />
@@ -225,7 +238,9 @@
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
+    <ClCompile Include="SCRIPT_Company.cpp" />
     <ClCompile Include="SCRIPT_Gate.cpp" />
+    <ClCompile Include="SCRIPT_CharSelect.cpp" />
     <ClCompile Include="SCRIPT_MeleeMob.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
@@ -251,6 +266,7 @@
     <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="Stage0_Forest01.cpp" />
     <ClCompile Include="Tile_TilePalette.cpp" />
+    <ClCompile Include="UI_CharSelect.cpp" />
     <ClCompile Include="UI_FocusBoxes2.cpp" />
     <ClCompile Include="UI_Icons.cpp" />
     <ClCompile Include="UI_Select.cpp" />

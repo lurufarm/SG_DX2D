@@ -25,7 +25,7 @@ namespace sg
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
-		Melee_SlimeA* slimea = object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		Melee_SlimeA* slimea = object::Instantiate<Melee_SlimeA>(Vector3(50.0f, 50.0f, -0.1f), eLayerType::Monster, this);
 		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest01camera->AddComp<Camera>();
 		Forest01camera->AddComp<SCRIPT_MainCamera>();

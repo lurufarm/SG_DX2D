@@ -18,7 +18,10 @@ namespace sg
 
 	private:
 
-		Gobj_Bullet* mOwner;
+
+		Gobj_Bullet* mBullet;
+		eBulletType mBulletType;
+		Gobj_Character* mBulletOwner;
 		Gobj_Player* mPlayer;
 		float mTime;
 		float mTotalDuration;

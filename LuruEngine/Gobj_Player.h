@@ -25,6 +25,7 @@ namespace sg
 			mAni->SetAnimations(charAnis);
 			mpStat = mpChar->GetStat();			
 			mMr->Initialize();
+			GetChar()->SetIsPlayer(true);
 		}
 		static Gobj_Character* GetChar() { return mpChar; }
 

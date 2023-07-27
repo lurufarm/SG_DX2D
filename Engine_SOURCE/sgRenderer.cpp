@@ -517,6 +517,14 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIKbutton", material);
 
+		// UI_CharSelect
+		texture = Resources::Load<Texture>(L"UI_CharSelect", L"..\\Resources\\UI\\characterselect.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Opaque);
+		Resources::Insert(L"UICharSelect", material);
+
 #pragma endregion
 #pragma region Title Scene Material
 

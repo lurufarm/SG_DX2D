@@ -2,27 +2,37 @@
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "Gobj_Player.h"
 #include "SCRIPT_Bullet.h"
+#include "SCRIPT_Player.h"
+#include "SCRIPT_Company.h"
 
 extern sg::Gobj_Player* Player;
 
 namespace sg
 {
+	class SCRIPT_Player;
+
 	Gobj_Bullet::Gobj_Bullet()
 	{
 		mType = eBulletType::Basic;
 		AddComp<MeshRenderer>();
 		AddComp<Collider2D>();
-		mOwner = Player;
-		//AddComp<SCRIPT_Bullet>();
+		mBulletOwner = nullptr;
 	}
 	Gobj_Bullet::~Gobj_Bullet()
 	{
 	}
 	void Gobj_Bullet::initialize()
 	{
-		mFirstPos = Player->GetComp<Transform>()->GetPosition();
-		mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
-		GameObject::Initialize();
+		if (mBulletOwner->GetIsPlayer())
+		{
+			mFirstPos = Player->GetComp<Transform>()->GetPosition();
+			mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
+		}
+		else
+		{
+			mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
+			mTargetPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+		}
 	}
 	void Gobj_Bullet::Update()
 	{

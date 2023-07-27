@@ -7,7 +7,9 @@
 #include "..\Engine_SOURCE\sgAnimator.h"
 
 #include "Gobj_Player.h"
+#include "Gobj_Bullet.h"
 #include "Bullet_CheeseArrow.h"
+#include "Bullet_LucyBomb.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -192,10 +194,17 @@ namespace sg
 		Animator* mAni = GetOwner()->GetComp<Animator>();
 		if (mTime >= mOwner->GetChar()->GetStat().mCoolDown)
 		{
-			object::Instantiate<Bullet_CheeseArrow>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
-			mTime = 0.0f;
+			if (mOwner->GetChar()->GetName() == L"Cheese")
+				object::Instantiate<Bullet_CheeseArrow>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+			else if (mOwner->GetChar()->GetName() == L"Lucy")
+				object::Instantiate<Bullet_LucyBomb>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+
+				mAni->PlayAnimation(AnimationName(attack), true, mDirection);
+				mTime = 0.0f;
+
+			if (mAni->GetActiveAni()->IsComplete())
+				mAni->PlayAnimation(AnimationName(idle), true, mDirection);
 		}
-		mAni->PlayAnimation(AnimationName(attack), true, mDirection);
 
 		if (mOwner->GetEnemyNearby() == false)
 			mFSMState = ePlayerFSM::Idle;

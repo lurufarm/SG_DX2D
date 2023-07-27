@@ -6,6 +6,13 @@ namespace sg
 	Melee_SlimeA::Melee_SlimeA()
 	{
 		SetName(L"SlimeA");
+
+		mStat.mHP = 15;
+		mStat.mStrength = 2;
+		mStat.mSpeed = 20.0f;
+		mStat.mRange = 30.0f;
+		mStat.dropEXP = 10.0f;
+
 		Melee_SlimeA::Initialize();
 	}
 	Melee_SlimeA::~Melee_SlimeA()
@@ -13,11 +20,7 @@ namespace sg
 	}
 	void Melee_SlimeA::Initialize()
 	{
-		mStat.mHP = 15;
-		mStat.mStrength = 2;
-		mStat.mSpeed = 30.0f;
-		mStat.mRange = 30.0f;
-		mStat.dropEXP = 10.0f;
+
 
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
@@ -37,7 +40,7 @@ namespace sg
 		mAni->Create(L"Ani_SlimeA_Spawn", mAtlas->GetTexture(), Vector2(0.0f, 110.0f), Vector2(24.0f, 22.0f), 10, Vector2::Zero, 0.05f);
 
 		mMr->Initialize();
-
+		mCol->SetSize(Vector2(0.5f, 0.5f));
 		AddComp<SCRIPT_MeleeMob>();
 	}
 	void Melee_SlimeA::Update()
