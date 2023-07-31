@@ -16,6 +16,7 @@ namespace sg
 {
 	Stage0_Forest01::Stage0_Forest01()
 	{
+		SetName(L"Forest01");
 	}
 	Stage0_Forest01::~Stage0_Forest01()
 	{
@@ -25,7 +26,6 @@ namespace sg
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
-		Melee_SlimeA* slimea = object::Instantiate<Melee_SlimeA>(Vector3(50.0f, 50.0f, -0.1f), eLayerType::Monster, this);
 		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest01camera->AddComp<Camera>();
 		Forest01camera->AddComp<SCRIPT_MainCamera>();
@@ -46,12 +46,16 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
+		PlayScene::OnEnter();
 		renderer::mainCamera = mCamera;
-		AddGameObj(eLayerType::Player, Player);
+
+		Melee_SlimeA* slimea0 = object::Instantiate<Melee_SlimeA>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
+		Melee_SlimeA* slimea1 = object::Instantiate<Melee_SlimeA>(Vector3(-100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
 
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
 	}
 	void Stage0_Forest01::OnExit()
 	{
+		PlayScene::OnExit();
 	}
 }

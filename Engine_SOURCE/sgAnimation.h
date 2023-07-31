@@ -55,6 +55,8 @@ namespace sg
 		bool GetAniDirection() { return mDirection; }
 
 		Vector2 GetSpriteSize() { return mSpriteSize; }
+		std::shared_ptr<graphics::Texture> GetAtlas() { return mAtlas; }
+		void SetAtlas(std::shared_ptr<graphics::Texture> atlas) { mAtlas = atlas; }
 
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;

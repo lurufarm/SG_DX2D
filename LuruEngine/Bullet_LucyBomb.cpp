@@ -18,7 +18,7 @@ namespace sg
 	{
 		mMr = GetComp<MeshRenderer>();
 		mAni = AddComp<Animator>();
-		mType = eBulletType::Curved;
+		mType = eBulletType::Lucy;
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 

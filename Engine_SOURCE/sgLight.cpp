@@ -5,9 +5,12 @@
 
 namespace sg
 {
+	int Light::mNum = 0;
+
 	Light::Light()
-		:Component(eComponentType::Light)
+		: Component(eComponentType::Light)
 	{
+		mNum++;
 	}
 	Light::~Light()
 	{
@@ -26,6 +29,7 @@ namespace sg
 		Vector3 pos = tr->GetPosition();
 		mAttribute.position = Vector4(pos.x, pos.y, pos.z, 1.0f);
 		mAttribute.direction = Vector4(tr->Forward().x, tr->Forward().y, tr->Forward().z, 1.0f);
+		mAttribute.pad = mNum;
 	}
 	void Light::Render()
 	{

@@ -17,7 +17,11 @@ namespace sg
 		virtual void OnEnter();
 		virtual void OnExit();
 
+		static void FocusBoxesPaused();
+		static void FocusBoxesActive();
+
 	private:
-		class UI_FocusBoxes2* mFocus;
+		static class UI_FocusBoxes2* mFocus;
+		class Camera* mCamera;
 	};
 }

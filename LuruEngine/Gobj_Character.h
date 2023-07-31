@@ -54,9 +54,12 @@ namespace sg
 		static Gobj_Character* GetChar(std::wstring key)
 		{
 			std::map<std::wstring, Gobj_Character*>::iterator iter = mAllChars.find(key);
-
-			return iter->second;
+			if (iter != mAllChars.end())
+				return iter->second;
+			else
+				return nullptr;
 		}
+		std::shared_ptr<Texture> GetAtlas() {return mAtlas;}
 
 	protected:
 		CharStat mStat;

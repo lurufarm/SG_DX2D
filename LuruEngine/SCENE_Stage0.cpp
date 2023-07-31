@@ -31,8 +31,6 @@ namespace sg
 	{
 		float BgColor[3] = { 0.5f, 0.5f, 0.5f };
 		GetDevice()->SetBgColor(BgColor);
-		renderer::mainCamera = mCamera;
-		AddGameObj(eLayerType::Player, Player);
 	}
 	void SCENE_Stage0::OnExit()
 	{

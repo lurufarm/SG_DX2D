@@ -25,6 +25,10 @@ namespace sg
 	}
 	UI_FocusBoxes::~UI_FocusBoxes()
 	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			mBoxes[i]->SetState(Dead);
+		}
 	}
 	void UI_FocusBoxes::Initialize()
 	{
@@ -36,6 +40,12 @@ namespace sg
 	}
 	void UI_FocusBoxes::Update()
 	{
+		mBoxes[0]->SetState(this->GetState());
+		mBoxes[1]->SetState(this->GetState());
+		mBoxes[2]->SetState(this->GetState());
+		mBoxes[3]->SetState(this->GetState());
+
+
 		if (mObj != nullptr)
 		{
 
@@ -75,10 +85,15 @@ namespace sg
 			{
 				if (now >= 2)
 				{
+					GameObject* prevobj = mObj;
+					if (prevobj)
+						prevobj->SetSelected(false);
+
 					this->Initialize();
 					now--;
 					std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 					mObj = iter->second;
+					mObj->SetSelected(true);
 				}
 			}
 			else if (Input::KeyD(eKeyCode::D))
@@ -86,12 +101,16 @@ namespace sg
 				std::map<UINT, GameObject*>::iterator upperBoundIter = mObjs.upper_bound(now);
 				if (upperBoundIter != mObjs.end())
 				{
+					GameObject* prevobj = mObj;
+					if (prevobj)
+						prevobj->SetSelected(false);
 					this->Initialize();
 					now = upperBoundIter->first;
 					std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 					if (iter != mObjs.end())
 					{
 						mObj = iter->second;
+						mObj->SetSelected(true);
 					}
 				}
 			}

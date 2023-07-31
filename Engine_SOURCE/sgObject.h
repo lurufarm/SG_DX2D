@@ -4,6 +4,7 @@
 #include "sgLayer.h"
 #include "sgGameObject.h"
 #include "sgTransform.h"
+#include "..\LuruEngine\Gobj_Player.h"
 
 namespace sg::object
 {
@@ -18,6 +19,14 @@ namespace sg::object
 		scene->AddGameObj(layer, Gobj);
 
 		return Gobj;
+	}
+
+	static __forceinline Gobj_Player* MakePlayer()
+	{
+		Gobj_Player* player = new Gobj_Player();
+		Scene* scene = SceneManager::GetActiveScene();
+		
+		return player;
 	}
 
 	template <typename T>

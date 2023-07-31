@@ -28,5 +28,6 @@ namespace sg
 
 	private:
 		LightAttribute mAttribute;
+		static int mNum;
 	};
 }

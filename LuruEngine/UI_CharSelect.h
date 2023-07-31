@@ -14,6 +14,11 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
+		UI_CharBox* GetBoxes(int a, int b) { return mBoxes[a][b]; }
+
 	private:
+
+		class UI_CharBox* mBoxes[2][5];
+		class UI_FocusBoxes* mFocus;
 	};
 }

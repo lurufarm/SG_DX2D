@@ -19,7 +19,7 @@ namespace sg
 	void Bullet_CheeseArrow::Initialize()
 	{
 		mMr = GetComp<MeshRenderer>();
-		mType = eBulletType::Basic;
+		mType = eBulletType::Cheese;
 		SetMesh();
 		SetMaterial(L"Arrow");
 		mMr->Initialize();

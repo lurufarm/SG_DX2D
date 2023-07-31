@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="SCRIPT_CameraScript.cpp">
-      <Filter>Script</Filter>
-    </ClCompile>
     <ClCompile Include="Img_LobbyMap.cpp">
       <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="Img_LobbyMolding.cpp">
       <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
-    </ClCompile>
-    <ClCompile Include="SCRIPT_GridScript.cpp">
-      <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="Img_SelectText.cpp">
       <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
@@ -187,13 +181,25 @@
     <ClCompile Include="UI_CharSelect.cpp">
       <Filter>Obj\Gobj_UI</Filter>
     </ClCompile>
+    <ClCompile Include="Img_LobbyTorch.cpp">
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_CharBox.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_CameraScript.cpp">
+      <Filter>Script\SCRIPT_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_GridScript.cpp">
+      <Filter>Script\SCRIPT_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_Explosion.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
       <Filter>Load</Filter>
-    </ClInclude>
-    <ClInclude Include="SCRIPT_CameraScript.h">
-      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="Img_LobbyMap.h">
       <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
@@ -245,9 +251,6 @@
     </ClInclude>
     <ClInclude Include="Img_LobbyMolding.h">
       <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
-    </ClInclude>
-    <ClInclude Include="SCRIPT_GridScript.h">
-      <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="Img_SelectText.h">
       <Filter>Obj\Gobj_Img\SelectSceneImg</Filter>
@@ -378,6 +381,21 @@
     <ClInclude Include="UI_CharSelect.h">
       <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
+    <ClInclude Include="Img_LobbyTorch.h">
+      <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_CharBox.h">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_CameraScript.h">
+      <Filter>Script\SCRIPT_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_GridScript.h">
+      <Filter>Script\SCRIPT_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_Explosion.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -481,6 +499,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Character\Base">
       <UniqueIdentifier>{6522034b-e846-4de8-ae27-602fbd4798e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_etc">
+      <UniqueIdentifier>{28d7141e-d96f-4114-893c-73eafd7a6812}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

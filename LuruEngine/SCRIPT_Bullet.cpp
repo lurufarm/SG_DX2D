@@ -3,6 +3,8 @@
 #include "Gobj_Character.h"
 #include "Gobj_Player.h"
 #include "Effect_Hit.h"
+#include "Effect_Explosion.h"
+#include "Effect_FirePlate.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -21,16 +23,18 @@ namespace sg
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
 
-		Vector3 direction = mBullet->GetTargetPos() - mBullet->GetFirstPos();
-		direction.Normalize();
-		float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
-		if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
+		if (mBullet->GetBulletType() == eBulletType::Cheese)
 		{
-			angleRad = -angleRad;
+			Vector3 direction = mBullet->GetTargetPos() - mBullet->GetFirstPos();
+			direction.Normalize();
+			float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
+			if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
+			{
+				angleRad = -angleRad;
+			}
+			float angleDegree = (angleRad * 180.0f / 3.1415926535f) - 90.0f;
+			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 		}
-		float angleDegree = (angleRad * 180.0f / 3.1415926535f) - 90.0f;
-		tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
-
 
 
 	}
@@ -39,14 +43,14 @@ namespace sg
 		mTime += Time::DeltaTime();
 		float t = mTime / mTotalDuration;
 		Vector3 curPos;
-		if (mBulletType == eBulletType::Basic)
+		if (mBulletType == eBulletType::Cheese)
 		{
 			curPos = mBullet->GetFirstPos() + t * (mBullet->GetTargetPos() - mBullet->GetFirstPos());
 			curPos.z = -1.0f;
 			mBullet->GetComp<Transform>()->SetPosition(curPos);
 		}
 
-		if (mBulletType == eBulletType::Curved)
+		if (mBulletType == eBulletType::Lucy)
 		{
 			float curveHeight = 20.0f; // 곡선의 높이
 			float curveDuration = mTotalDuration * 2.0f; // 곡선 운동 시간
@@ -90,6 +94,12 @@ namespace sg
 	{
 		Vector3 pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
 		object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+
+		if (mBullet->GetBulletType() == eBulletType::Lucy)
+		{
+			object::Instantiate<Effect_FirePlate>(Vector3(pos.x, pos.y, pos.z + 0.01f), eLayerType::Effect, SceneManager::GetActiveScene());
+			object::Instantiate<Effect_Explosion>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+		}
 		GetOwner()->SetState(GameObject::eState::Dead);
 	}
 	void SCRIPT_Bullet::OnCollisionStay(Collider2D* other)

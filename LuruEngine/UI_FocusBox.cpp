@@ -44,14 +44,17 @@ namespace sg
 	}
 	void UI_FocusBox::Update()
 	{
-		Gobj_UI::Update();
+		if (this->GetState() == Active)
+			Gobj_UI::Update();
 	}
 	void UI_FocusBox::LateUpdate()
 	{
-		Gobj_UI::LateUpdate();
+		if (this->GetState() == Active)
+			Gobj_UI::LateUpdate();
 	}
 	void UI_FocusBox::Render()
 	{
-		Gobj_UI::Render();
+		if (this->GetState() == Active)
+			Gobj_UI::Render();
 	}
 }

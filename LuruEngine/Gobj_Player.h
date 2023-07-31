@@ -1,6 +1,7 @@
 #pragma once
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
+#include "..\Engine_SOURCE\sgLight.h"
 #include "Gobj_Character.h"
 #include "Gobj_Monster.h"
 #include "SCRIPT_CameraScript.h"
@@ -20,12 +21,16 @@ namespace sg
 
 		static void SetChar(Gobj_Character* character)
 		{
+			if (mpChar != nullptr)
+				mpChar->SetIsPlayer(false);
 			mpChar = character;
 			std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
 			mAni->SetAnimations(charAnis);
+			//mAni->SetAniTexture(mAni->GetAnimations().begin()->second->GetAtlas());
 			mpStat = mpChar->GetStat();			
-			mMr->Initialize();
+			//mMr->Initialize();
 			GetChar()->SetIsPlayer(true);
+			mAni->PlayAnimation(mAni->GetAnimations().begin()->second->GetKey(), true, true);
 		}
 		static Gobj_Character* GetChar() { return mpChar; }
 
@@ -43,6 +48,7 @@ namespace sg
 		static MeshRenderer* mMr;
 		static Collider2D* mCol;
 		static Animator* mAni;
+		static Light* mLg;
 
 		static Gobj_Character* mpChar;
 		static Gobj_Character::CharStat mpStat;

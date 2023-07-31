@@ -27,7 +27,11 @@ namespace sg::graphics
 
 		float GetWidth() { return mWidth; }
 		float GetHeight() { return mHeight; }
+		
 		Vector3 GetRatio();
+
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> GetSRV() { return mSRV; }
+		void SetSRV(Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> srv) { mSRV = srv; }
 
 	private:
 		ScratchImage mImage;

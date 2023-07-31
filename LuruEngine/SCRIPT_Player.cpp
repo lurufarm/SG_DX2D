@@ -6,6 +6,7 @@
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
 
+#include "SCENE_PlayScene.h"
 #include "Gobj_Player.h"
 #include "Gobj_Bullet.h"
 #include "Bullet_CheeseArrow.h"

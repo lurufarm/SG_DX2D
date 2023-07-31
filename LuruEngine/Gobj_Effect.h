@@ -16,10 +16,10 @@ namespace sg
 		virtual void Render() override;	
 
 	protected:
-		Transform* mTr;
-		MeshRenderer* mMr;
-		Collider2D* mCol;
-		Animator* mAni;
+		Transform*		mTr;
+		MeshRenderer*	mMr;
+		Collider2D*		mCol;
+		Animator*		mAni;
 
 		std::shared_ptr<Texture>mAtlas;
 	};

@@ -1,13 +1,8 @@
 #include "sgRenderer.h"
-#include "sgInput.h"
-#include "sgTime.h"
-
 #include "sgResources.h"
 #include "sgTexture.h"
 #include "sgMaterial.h"
 #include "sgStructuredBuffer.h"
-
-#include "sgGameObject.h"
 
 namespace renderer
 {
@@ -708,7 +703,6 @@ namespace renderer
 
 	void Initialize()
 	{
-
 		LoadMesh();
 		LoadBuffer();
 		LoadShader();
@@ -733,7 +727,6 @@ namespace renderer
 
 	void Render()
 	{
-
 		BindLights();
 
 		for (Camera* cam : cameras)

@@ -22,7 +22,7 @@ float4 main(VSOut In) : SV_TARGET
 	
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -41,7 +41,7 @@ float4 Select_catpattern(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -62,7 +62,7 @@ float4 lobby_space1(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -83,7 +83,7 @@ float4 lobby_space2(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -107,12 +107,10 @@ float4 Tile(VSOut In) : SV_TARGET
     color = albedoTexture.Sample(pointSampler, finaluv);
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
-       
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
-    
     color *= lightColor;
 
     return color;

@@ -9,6 +9,7 @@
 #include "SCRIPT_CameraScript.h"
 #include "SCRIPT_Player.h"
 #include "Char_Cheese.h"
+#include "SCENE_PlayScene.h"
 
 
 namespace sg
@@ -19,6 +20,7 @@ namespace sg
 	MeshRenderer* Gobj_Player::mMr = nullptr;
 	Collider2D* Gobj_Player::mCol = nullptr;
 	Animator* Gobj_Player::mAni = nullptr;
+	Light* Gobj_Player::mLg = nullptr;
 
 	Gobj_Character::CharStat Gobj_Player::mpStat = {};
 	std::vector<Gobj_Character*> Gobj_Player::mCompanies = {};
@@ -39,21 +41,45 @@ namespace sg
 		mCol = AddComp<Collider2D>();
 		mAni = AddComp<Animator>();
 
-		//mTr->SetScale(24.0f, 20.0f, 1.0f);
+
 		SetMesh();
 		mMr->SetMaterial(Resources::Find<Material>(L"AnimationMaterial"));
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
 		mCol->SetSize(Vector2(0.4f, 0.7f));
 
+		mLg = AddComp<Light>();
+		mLg->SetType(eLightType::Point);
+		mLg->SetRadius(50.0f);
+		//mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
+		mpChar = Gobj_Character::GetChar(L"Cheese");
+		SetChar(Gobj_Character::GetChar(L"Cheese"));
+		mMr->Initialize();
+
 
 		AddComp<SCRIPT_Player>();
+
+
 	}
 	void Gobj_Player::Update()
 	{
+		if (SceneManager::GetActiveScene()->GetName() != L"LobbyScene")
+		{
+			if (PlayScene::GetTime())
+			{
+				mLg->SetColor(Vector4(0.0f));
+			}
+			else
+			{
+				mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
+			}
+		}
+		mLg->SetColor(Vector4(0.0f));
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()
 	{
+		mTr;
+		mCol;
 		GameObject::LateUpdate();
 	}
 	void Gobj_Player::Render()

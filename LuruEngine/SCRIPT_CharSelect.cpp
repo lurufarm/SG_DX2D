@@ -3,7 +3,12 @@
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgObject.h"
 
+#include "SCENE_LobbyScene.h"
+
+#include "UI_CharBox.h"
 #include "UI_CharSelect.h"
+
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
@@ -20,20 +25,46 @@ namespace sg
 	}
 	void SCRIPT_CharSelect::Update()
 	{
+		if (mObject == nullptr)
+		{
+			mObject = object::Instantiate<UI_CharSelect>(eLayerType::UI, SceneManager::GetActiveScene());
+			mObject->SetState(GameObject::eState::Paused);
+		}
+
+
 		if (Input::KeyD(eKeyCode::ENTER))
 		{
-			if (mOwner->GetSelected())
+			if (mObject->GetState() == GameObject::eState::Paused)
 			{
-				mObject = object::Instantiate<UI_CharSelect>(eLayerType::UI, SceneManager::GetActiveScene());
+				if (mOwner->GetSelected())
+				{
+					mObject->SetState(GameObject::eState::Active);
+					LobbyScene::FocusBoxesPaused();
+				}
+			}
+			else if (mObject->GetState() == GameObject::eState::Active)
+			{
+				if (mObject->GetBoxes(0, 0)->GetSelected())
+				{
+					Player->SetChar(Gobj_Character::GetChar(L"Cheese"));
+					mObject->SetState(GameObject::eState::Paused);
+					LobbyScene::FocusBoxesActive();
+				}
+				else if (mObject->GetBoxes(0, 1)->GetSelected())
+				{
+					Player->SetChar(Gobj_Character::GetChar(L"Lucy"));
+					mObject->SetState(GameObject::eState::Paused);
+					LobbyScene::FocusBoxesActive();
+				}
 			}
 		}
+
 		if (Input::KeyD(eKeyCode::X))
 		{
-			if (mObject)
+			if (mObject->GetState() == GameObject::eState::Active)
 			{
-				SceneManager::GetActiveScene()->DeleteGameObj(eLayerType::UI, mObject);
-				delete mObject;
-				mObject = nullptr;
+				mObject->SetState(GameObject::eState::Paused);
+				LobbyScene::FocusBoxesActive();
 			}
 		}
 	}

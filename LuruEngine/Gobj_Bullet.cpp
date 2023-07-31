@@ -13,7 +13,7 @@ namespace sg
 
 	Gobj_Bullet::Gobj_Bullet()
 	{
-		mType = eBulletType::Basic;
+		mType = eBulletType::Cheese;
 		AddComp<MeshRenderer>();
 		AddComp<Collider2D>();
 		mBulletOwner = nullptr;

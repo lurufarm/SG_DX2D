@@ -61,24 +61,31 @@ namespace sg
 
 		void SetAnimations(const std::map<std::wstring, Animation*>& anis)
 		{
-			// 기존 mAnimations의 애니메이션들을 삭제합니다.
 			for (auto& iter : mAnimations)
 			{
 				delete iter.second;
 			}
-			mAnimations.clear(); // 맵의 모든 항목을 제거합니다.
+			mAnimations.clear(); 
 
-			// 새로운 애니메이션들을 복사하여 mAnimations에 추가합니다.
 			for (auto& iter : anis)
 			{
 				std::wstring first = iter.first;
-				Animation* second = new Animation(*(iter.second)); // 새로운 애니메이션을 생성하여 복사합니다.
+				Animation* second = new Animation(*(iter.second));
 				mAnimations.insert(std::make_pair(first, second));
 			}
 		}
 
 		Vector2 GetAnimationScale() { return mAnimations.begin()->second->GetSpriteSize(); }
 		Animation* GetActiveAni() { return mActiveAnimation; }
+
+		std::shared_ptr<Texture> GetAniTexture() { return mAnimations.begin()->second->GetAtlas(); }
+		void SetAniTexture(std::shared_ptr<Texture> atlas)
+		{
+			for (auto& iter : mAnimations)
+			{
+				iter.second->SetAtlas(atlas);
+			}
+		}
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;

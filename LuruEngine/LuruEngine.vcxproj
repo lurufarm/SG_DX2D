@@ -158,6 +158,7 @@
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
+    <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
     <ClInclude Include="framework.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Gobj_Interactable.h" />
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
+    <ClInclude Include="Img_LobbyTorch.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Monster_Melee.h" />
@@ -202,6 +204,7 @@
     <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="Stage0_Forest01.h" />
     <ClInclude Include="Tile_TilePalette.h" />
+    <ClInclude Include="UI_CharBox.h" />
     <ClInclude Include="UI_CharSelect.h" />
     <ClInclude Include="UI_FocusBoxes2.h" />
     <ClInclude Include="UI_Icons.h" />
@@ -223,6 +226,7 @@
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
+    <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />
     <ClCompile Include="Gobj_Bullet.cpp" />
@@ -232,6 +236,7 @@
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
+    <ClCompile Include="Img_LobbyTorch.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
@@ -266,6 +271,7 @@
     <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="Stage0_Forest01.cpp" />
     <ClCompile Include="Tile_TilePalette.cpp" />
+    <ClCompile Include="UI_CharBox.cpp" />
     <ClCompile Include="UI_CharSelect.cpp" />
     <ClCompile Include="UI_FocusBoxes2.cpp" />
     <ClCompile Include="UI_Icons.cpp" />

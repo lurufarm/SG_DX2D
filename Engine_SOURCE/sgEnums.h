@@ -30,6 +30,7 @@ namespace sg::enums
 		Effect,
 		Light,
 		UI,
+		UI_Box,
 		End = 16,
 	};
 
@@ -55,8 +56,8 @@ namespace sg::enums
 
 	enum class eBulletType
 	{
-		Basic,
-		Curved,
+		Cheese,
+		Lucy,
 		End,
 	};
 

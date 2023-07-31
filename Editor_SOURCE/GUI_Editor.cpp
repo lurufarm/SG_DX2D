@@ -79,10 +79,10 @@ namespace gui
 			: renderer::debugMeshs)
 		{
 			DebugRender(mesh);
-			int a = 0;
 		}
 		renderer::debugMeshs.clear();
 	}
+
 	void GUI_Editor::Release()
 	{
 		for (auto widget : mWidgets)
@@ -100,20 +100,19 @@ namespace gui
 			delete debugObj;
 			debugObj = nullptr;
 		}
-
-
 	}
+
 	void GUI_Editor::DebugRender(const sg::graphics::DebugMesh& mesh)
 	{
 		GUI_DebugObject* debugObj = mDebugObjects[(UINT)mesh.type];
-		//GUI_DebugObject* debugObj = mDebugObjects[(UINT)mesh.type];
 
 		// 위치, 크기, 회전 정보를 받아와서
 		// 해당 게임 오브젝트 위에 그려준다.
+
 		sg::Transform* tr = debugObj->GetComp<sg::Transform>();
-		
+
 		Vector3 pos = mesh.position;
-		pos.z -= 0.01;
+		pos.z -= 0.01f;
 
 		tr->SetPosition(pos);
 		tr->SetScale(mesh.scale);
@@ -135,5 +134,10 @@ namespace gui
 		sg::Camera::SetGpuProjectionMatrix(mainCamera->GetProjectionMatrix());
 
 		debugObj->Render();
+	}
+	void GUI_Editor::DebugUpdate(const sg::graphics::DebugMesh& mesh)
+	{
+		GUI_DebugObject* debugObj = mDebugObjects[(UINT)mesh.type];
+		debugObj->LateUpdate();
 	}
 }

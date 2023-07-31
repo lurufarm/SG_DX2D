@@ -30,6 +30,10 @@ namespace sg
 	}
 	UI_FocusBoxes2::~UI_FocusBoxes2()
 	{
+		mBoxes[0]->SetState(Dead);
+		mBoxes[1]->SetState(Dead);
+		mBoxes[2]->SetState(Dead);
+		mBoxes[3]->SetState(Dead);
 	}
 	void UI_FocusBoxes2::Initialize()
 	{
@@ -43,6 +47,11 @@ namespace sg
 	}
 	void UI_FocusBoxes2::Update()
 	{
+		mBoxes[0]->SetState(this->GetState());
+		mBoxes[1]->SetState(this->GetState());
+		mBoxes[2]->SetState(this->GetState());
+		mBoxes[3]->SetState(this->GetState());
+
 		Vector3 ppos = Player->GetComp<Transform>()->GetPosition();
 
 		std::map<float, GameObject*> distanceMap = {};
@@ -56,11 +65,12 @@ namespace sg
 
 			distanceMap.insert(std::make_pair(answer, obj));
 		}
-			GameObject* prevobj = mObj;
-			if (prevobj)
-				prevobj->SetSelected(false);
-			mObj = distanceMap.begin()->second;
-			mObj->SetSelected(true);
+		GameObject* prevobj = mObj;
+		if (prevobj)
+			prevobj->SetSelected(false);
+		mObj = distanceMap.begin()->second;
+		mObj->SetSelected(true);
+
 		mAccDeltaTime += Time::DeltaTime() * mDir;
 
 		if (fabs(mAccDeltaTime) > 5.0f)

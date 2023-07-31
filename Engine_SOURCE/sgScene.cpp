@@ -7,7 +7,6 @@
 namespace sg
 {
 	Scene::Scene()
-		: mTime(0.0f)
 	{
 		mLayers.resize((int)sg::enums::eLayerType::End);
 		Scene::Initialize();
@@ -17,13 +16,9 @@ namespace sg
 	}
 	void Scene::Initialize()
 	{
-		light = new GameObject();
-		AddGameObj(eLayerType::Light, light);
-		light->AddComp<Light>();
 	}
 	void Scene::Update()
 	{
-		mTime += Time::DeltaTime();
 
 		for (Layer& layer : mLayers)
 		{

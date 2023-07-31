@@ -18,7 +18,6 @@ namespace sg
 		void OnExit();
 
 	protected:
-		Camera* mCamera;
 
 	};
 }

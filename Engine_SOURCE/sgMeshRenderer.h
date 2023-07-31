@@ -23,6 +23,7 @@ namespace sg
 		std::shared_ptr<Material> GetMaterial() { return mMaterial; }
 
 		Vector3 GetImgScale() { return mScale; }
+		void SetImgScale(Vector3 sc) { mScale = sc; }
 
 	private:
 		std::shared_ptr<Mesh> mMesh;

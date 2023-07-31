@@ -55,15 +55,14 @@ namespace renderer
 	};
 
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
-	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
 
+	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
 	extern Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 	
 	// Light
 	extern std::vector<sg::Light*> lights;
-
 	extern sg::Camera* mainCamera;
 	extern std::vector<sg::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;
