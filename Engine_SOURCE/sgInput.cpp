@@ -19,6 +19,7 @@ namespace sg
 
 	std::vector<Input::Key> Input::mKeys;
 	Vector3 Input::mMousePos = Vector3::Zero;
+	Vector3 Input::mMousePos2 = Vector3::Zero;
 	Vector3 Input::mFinalMousePos = Vector3::Zero;
 
 	void Input::Initialize()
@@ -66,10 +67,17 @@ namespace sg
 			POINT mousePos = {};
 			GetCursorPos(&mousePos);
 			ScreenToClient(application.GetHwnd(), &mousePos);
-
 			mMousePos.x = mousePos.x;
 			mMousePos.y = mousePos.y;
 			mMousePos.z = 0.0f;
+
+			POINT mousePos2 = {};
+			GetCursorPos(&mousePos2);
+			ScreenToClient(application.GetToolHwnd(), &mousePos2);
+
+			mMousePos2.x = mousePos2.x;
+			mMousePos2.y = mousePos2.y;
+			mMousePos2.z = 0.0f;
 
 			MousePosUnProject();
 		}

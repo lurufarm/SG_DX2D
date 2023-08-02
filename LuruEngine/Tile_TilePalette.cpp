@@ -11,17 +11,13 @@ namespace sg
 
 	void TilePalette::Initialize()
 	{
-		mImage = sg::Resources::Find<Texture>(L"Cat");
+		mImage = sg::Resources::Load<Texture>(L"TilePalette", L"..\\Resources\\Tile\\tilepalette.bmp");
 	}
 	void TilePalette::Update()
 	{
 	}
 	void TilePalette::LateUpdate()
 	{
-		//ConstantBuffer* MyCB = renderer::constantBuffer[(UINT)eCBType::MyCBType];
-		//MyCB->SetData(mCB);
-		//MyCB->Bind(eShaderStage::PS);
-
 	}
 	void TilePalette::Render()
 	{

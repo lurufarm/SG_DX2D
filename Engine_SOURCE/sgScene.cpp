@@ -2,7 +2,6 @@
 #include "sgTime.h"
 #include "sgInput.h"
 #include "sgSceneManager.h"
-#include "sgLight.h"
 
 namespace sg
 {
@@ -19,14 +18,14 @@ namespace sg
 	}
 	void Scene::Update()
 	{
+		if (Input::KeyD(eKeyCode::T))
+		{
+			SceneManager::LoadScene(L"99_ToolScene");
+		}
 
 		for (Layer& layer : mLayers)
 		{
 			layer.Update(); 
-		}
-		if (Input::KeyD(eKeyCode::T))
-		{
-			SceneManager::LoadScene(L"ToolScene");
 		}
 
 	}

@@ -204,6 +204,7 @@ namespace renderer
 	void LoadMesh()
 	{
 		std::vector<Vertex> vertexes = {};
+		std::vector<Vertex> transparent_vertexes = {};
 		std::vector<UINT> indexes = {};
 
 		// RECT
@@ -229,6 +230,28 @@ namespace renderer
 		Resources::Insert(L"RectMesh", mesh);
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
+		transparent_vertexes.resize(4);
+		transparent_vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		transparent_vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 0.6f);
+		transparent_vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		transparent_vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		transparent_vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 0.6f);
+		transparent_vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		transparent_vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		transparent_vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 0.6f);
+		transparent_vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		transparent_vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		transparent_vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 0.6f);
+		transparent_vertexes[3].uv = Vector2(0.0f, 1.0f);
+
+		std::shared_ptr<Mesh> transparent_mesh = std::make_shared<Mesh>();
+		Resources::Insert(L"RectTMesh", transparent_mesh);
+		transparent_mesh->CreateVertexBuffer(transparent_vertexes.data(), transparent_vertexes.size());
+
+
 		// Index Buffer ¼³Á¤
 		indexes.push_back(0);
 		indexes.push_back(1);
@@ -237,7 +260,9 @@ namespace renderer
 		indexes.push_back(2);
 		indexes.push_back(3);
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		transparent_mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
+#pragma region Debug Mesh
 		// Rect Debug Mesh
 		std::shared_ptr<Mesh> rectDebug = std::make_shared<Mesh>();
 		Resources::Insert(L"DebugRect", rectDebug);
@@ -275,6 +300,9 @@ namespace renderer
 		Resources::Insert(L"DebugCircle", circleDebug);
 		circleDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
 		circleDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+#pragma endregion
+
+
 
 	}
 
@@ -300,6 +328,10 @@ namespace renderer
 		// Constant Buffer - Time
 		constantBuffer[(UINT)eCBType::Time] = new ConstantBuffer(eCBType::Time);
 		constantBuffer[(UINT)eCBType::Time]->Create(sizeof(TimeCB));
+
+		// Constant Buffer - Transparent
+		constantBuffer[(UINT)eCBType::Transparent] = new ConstantBuffer(eCBType::Transparent);
+		constantBuffer[(UINT)eCBType::Transparent]->Create(sizeof(TransparentCB));
 
 		// light structured buffer
 		lightsBuffer = new StructuredBuffer();
@@ -662,8 +694,65 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(spriteShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Opaque);
+		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestFd01_Map", material);
+
+		// Stage0_ForestFd02 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestFd02_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_2.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestFd02_Map", material);
+		
+		// Stage0_ForestFd03 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestFd03_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_3.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestFd03_Map", material);
+
+		// Stage0_ForestFd04 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestFd04_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_4.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestFd04_Map", material);
+
+		// Stage0_ForestDg01 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestDg01_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_1.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestDg01_Map", material);
+
+		// Stage0_ForestDg02 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestDg02_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_2.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestDg02_Map", material);
+
+		// Stage0_ForestDg03 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestDg03_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_3.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestDg03_Map", material);
+
+		// Stage0_ForestDg04 Map
+		texture = Resources::Load<Texture>(L"Stage0_ForestDg04_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_4.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage0ForestDg04_Map", material);
+
 
 #pragma endregion
 
@@ -697,6 +786,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"MobSlimeA", material);
+
+		texture = Resources::Load<Texture>(L"Monster_SlimeB", L"..\\Resources\\Monster\\SlimeB.png");
+		material = std::make_shared<Material>();
+		material->SetShader(spriteAniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobSlimeB", material);
 
 #pragma endregion
 	}

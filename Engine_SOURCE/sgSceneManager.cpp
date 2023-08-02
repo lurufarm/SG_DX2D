@@ -47,4 +47,19 @@ namespace sg
 
 		return iter->second;
 	}
+
+	Scene* SceneManager::LoadNextScene()
+	{
+		std::map<std::wstring, Scene*>::iterator iter = mScenes.find(GetActiveScene()->GetName());
+		iter++;
+
+		if (iter == mScenes.end())
+			return nullptr;
+
+		mActiveScene->OnExit();
+		mActiveScene = iter->second;
+		mActiveScene->OnEnter();
+
+		return iter->second;
+	}
 }

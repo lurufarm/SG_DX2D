@@ -54,6 +54,12 @@ namespace renderer
 		Vector4 mTime;
 	};
 
+	CBUFFER(TransparentCB, CBSLOT_TPCB)
+	{
+		int alphaValue;
+		Vector3 pad;
+	};
+
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];

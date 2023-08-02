@@ -19,7 +19,8 @@ namespace sg
 	{
 		if (mOwner->GetSelected() && Input::KeyD(eKeyCode::ENTER))
 		{
-			SceneManager::LoadScene(L"Stage0_Forest01");
+			SceneManager::LoadNextScene();
+			
 		}
 	}
 	void SCRIPT_Gate::OnCollisionEnter(Collider2D* other)

@@ -17,6 +17,7 @@
 #include "Interact_LobbyUpgrade.h"
 #include "Interact_LobbyCardBook.h"
 #include "Interact_LobbyGate.h"
+#include "Img_LobbyTorch.h"
 
 extern sg::Application application;
 
@@ -24,6 +25,7 @@ namespace sg
 {
 	ToolScene::ToolScene()
 	{
+		SetName(L"99_ToolScene");
 	}
 	ToolScene::~ToolScene()
 	{
@@ -33,21 +35,33 @@ namespace sg
 		Scene::Initialize();
 		TilePalette::Initialize();
 
-		// lobby
-		//Img_Stage0_Forest01_Map* map = object::Instantiate<Img_Stage0_Forest01_Map>(Img_Stage0_Forest01_Map::ForestFd::forest01, eLayerType::BGImg, this);
-		//object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
+#pragma region LobbyScene Making
 
+		//object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
 		//Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		//Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		//Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 		//Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
 
+		//Img_LobbyTorch* torch0 = object::Instantiate<Img_LobbyTorch>(Vector3(30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
+		//Img_LobbyTorch* torch1 = object::Instantiate<Img_LobbyTorch>(Vector3(-30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
+
+
+#pragma endregion
+#pragma region Forest01
+		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd01, pos, eLayerType::BGImg, this);
+#pragma endregion
 
 		mToolSceneCamera = object::Instantiate<GameObject>(eLayerType::Tile, this);
 		mToolSceneCamera->AddComp<Camera>();
 		mToolSceneCamera->AddComp<SCRIPT_CameraScript>();
 
-
+		GameObject* light = new GameObject();
+		AddGameObj(eLayerType::Light, light);
+		Light* lg = light->AddComp<Light>();
+		lg->SetType(eLightType::Directional);
+		lg->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
 
 	}
 	void ToolScene::Update()
@@ -55,6 +69,12 @@ namespace sg
 		Scene::Update();
 
 		Vector3 temp = Input::GetMousePos();
+
+		if (Input::KeyD(eKeyCode::B))
+		{
+			SceneManager::LoadScene(L"02_LobbyScene");
+		}
+
 
 		if (Input::KeyD(eKeyCode::LBUTTON))
 		{
@@ -67,7 +87,6 @@ namespace sg
 			tilePos.y = (int)(Input::GetFinalMousePos().y) - (int)Input::GetFinalMousePos().y % TILE_SIZE_Y;
 			tilePos.z = 0.0f;
 			TilePalette::CreateTile(tileIndex, tilePos);
-			//TilePalette::CreateTile(tileIndex);
 		}
 		if (Input::KeyD(eKeyCode::RBUTTON))
 		{
@@ -80,7 +99,6 @@ namespace sg
 			tilePos.z = 0.0f;
 
 			TilePalette::DeleteTile(tilePos);
-
 		}
 
 
@@ -149,11 +167,11 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 
 			//int index = (y * 10) + (x % 10);
 
-			int x = mousePos.x / TILE_SIZE_X;
-			int y = mousePos.y / TILE_SIZE_Y;
+			int x = mousePos.x / 18;
+			int y = mousePos.y / 18;
 
-			int MAX_X = tileAtlas->GetWidth() / TILE_SIZE_X;
-			int MAX_Y = tileAtlas->GetHeight() / TILE_SIZE_Y;
+			int MAX_X = tileAtlas->GetWidth() / 18;
+			int MAX_Y = tileAtlas->GetHeight() / 18;
 
 			int index = (y * MAX_X) + (x % MAX_X);
 

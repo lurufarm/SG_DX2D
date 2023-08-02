@@ -27,6 +27,9 @@ namespace sg
 		float mTotalDuration;
 		bool IsLaunched;
 
+		Vector3 mFirstPos;
+		Vector3 mLastPos;
+
 
 	};
 }

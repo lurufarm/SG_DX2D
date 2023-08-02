@@ -17,14 +17,12 @@ namespace sg
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		static bool GetTime() { return mDay; }
+		//static bool GetTime() { return mDay; }
 
 	protected:
 		bool mClear;
-		GameObject* mLight;
-		Light* mLg;
 
-		Vector4 mDayLight = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
+		const Vector4 mDayLight = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
 		Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
 		Vector4 mEveningLight = Vector4(0.1f, 0.2f, 0.4f, 1.0f);
 		Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
@@ -32,9 +30,12 @@ namespace sg
 		float mTime = 0.0f;
 		float mTime2 = 0.0f;
 
-		static bool mDay;
+		//static bool mDay;
 		Camera* mCamera;
 
 	private:
+		GameObject* mLight;
+		Light* mLg;
+
 	};
 }

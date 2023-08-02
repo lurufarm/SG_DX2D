@@ -37,6 +37,12 @@ cbuffer Time : register(b5)
     float4 Time;
 }
 
+cbuffer TransParent : register(b6)
+{
+    int alphaValue;
+    float3 pad;
+}
+
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);
 

@@ -52,7 +52,7 @@ namespace sg
 	LobbyScene::LobbyScene()
 		//: mFocus(nullptr)
 	{
-		SetName(L"LobbyScene");
+		SetName(L"02_LobbyScene");
 	}
 	LobbyScene::~LobbyScene()
 	{
@@ -92,6 +92,8 @@ namespace sg
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 
 		// LobbyScene_MainCamera
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
@@ -138,6 +140,11 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
+		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
+		TilePalette::AutoLoad(path0);
+		const std::wstring path1 = { L"..\\Resources\\Tile\\LobbyScene_01" };
+		TilePalette::AutoLoad(path1);
+
 		if (renderer::mainCamera != mCamera && renderer::mainCamera != nullptr)
 			renderer::mainCamera = mCamera;
 
@@ -145,8 +152,6 @@ namespace sg
 		graphics::GetDevice()->SetBgColor(BgColor);
 		AddGameObj(eLayerType::Player, Player);
 		Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, -2.0f);
-		const std::wstring path = { L"..\\Resources\\Tile\\lobbyscene_tile" };
-		TilePalette::AutoLoad(path);
 	}
 	void LobbyScene::OnExit()
 	{

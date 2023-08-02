@@ -172,6 +172,7 @@
     <ClInclude Include="Img_LobbyTorch.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Melee_SlimeA.h" />
+    <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
@@ -239,6 +240,7 @@
     <ClCompile Include="Img_LobbyTorch.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
+    <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />

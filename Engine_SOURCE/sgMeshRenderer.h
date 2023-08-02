@@ -16,6 +16,8 @@ namespace sg
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void BindConstantBuffer();
+
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 

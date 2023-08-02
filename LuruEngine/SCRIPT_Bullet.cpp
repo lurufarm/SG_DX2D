@@ -23,9 +23,12 @@ namespace sg
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
 
+		mFirstPos = mBullet->GetFirstPos();
+		mLastPos = mBullet->GetTargetPos();
+
 		if (mBullet->GetBulletType() == eBulletType::Cheese)
 		{
-			Vector3 direction = mBullet->GetTargetPos() - mBullet->GetFirstPos();
+			Vector3 direction = mLastPos - mFirstPos;
 			direction.Normalize();
 			float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
 			if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
@@ -45,7 +48,7 @@ namespace sg
 		Vector3 curPos;
 		if (mBulletType == eBulletType::Cheese)
 		{
-			curPos = mBullet->GetFirstPos() + t * (mBullet->GetTargetPos() - mBullet->GetFirstPos());
+			curPos = mBullet->GetFirstPos() + t * (mLastPos - mFirstPos);
 			curPos.z = -1.0f;
 			mBullet->GetComp<Transform>()->SetPosition(curPos);
 		}
@@ -55,8 +58,8 @@ namespace sg
 			float curveHeight = 20.0f; // 곡선의 높이
 			float curveDuration = mTotalDuration * 2.0f; // 곡선 운동 시간
 
-			Vector3 targetPos = mBullet->GetTargetPos();
-			Vector3 startPos = mBullet->GetFirstPos();
+			//Vector3 targetPos = mBullet->GetTargetPos();
+			//Vector3 startPos = mBullet->GetFirstPos();
 
 			// 시간의 변화량을 계산
 			float deltaTime = Time::DeltaTime();
@@ -64,10 +67,10 @@ namespace sg
 			mTime += deltaTime;
 
 			// 포물선 곡선을 따르도록 x, y, z 좌표 계산
-			float xDist = targetPos.x - startPos.x; // x 좌표의 이동 거리
-			float yDist = targetPos.y - startPos.y; // y 좌표의 이동 거리
-			float x = startPos.x + t * xDist;
-			float y = startPos.y + t * yDist + curveHeight * 4.0f * t * (1.0f - t);
+			float xDist = mLastPos.x - mFirstPos.x; // x 좌표의 이동 거리
+			float yDist = mLastPos.y - mFirstPos.y; // y 좌표의 이동 거리
+			float x = mFirstPos.x + t * xDist;
+			float y = mFirstPos.y + t * yDist + curveHeight * 4.0f * t * (1.0f - t);
 
 			float z = -1.0f; // Assuming the z-position remains constant
 

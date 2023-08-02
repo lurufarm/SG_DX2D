@@ -28,6 +28,7 @@ namespace sg
 		MobStat GetStat() { return mStat; }
 		void SetStatHP(int hp) { mStat.mHP = hp; }
 
+
 	protected:
 
 		MobStat mStat;

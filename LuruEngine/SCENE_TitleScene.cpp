@@ -19,7 +19,7 @@ namespace sg
 {
 	TitleScene::TitleScene()
 	{
-		SetName(L"TitleScene");
+		SetName(L"00_TitleScene");
 	}
 	TitleScene::~TitleScene()
 	{
@@ -48,7 +48,7 @@ namespace sg
 	{
 		if (Input::KeyD(eKeyCode::ENTER))
 		{
-			SceneManager::LoadScene(L"SelectScene");
+			SceneManager::LoadNextScene();
 		}
 
 		Scene::Update();

@@ -47,9 +47,9 @@ namespace sg
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
 		mCol->SetSize(Vector2(0.4f, 0.7f));
 
-		mLg = AddComp<Light>();
-		mLg->SetType(eLightType::Point);
-		mLg->SetRadius(50.0f);
+		//mLg = AddComp<Light>();
+		//mLg->SetType(eLightType::Point);
+		//mLg->SetRadius(50.0f);
 		//mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
 		mpChar = Gobj_Character::GetChar(L"Cheese");
 		SetChar(Gobj_Character::GetChar(L"Cheese"));
@@ -62,24 +62,22 @@ namespace sg
 	}
 	void Gobj_Player::Update()
 	{
-		if (SceneManager::GetActiveScene()->GetName() != L"LobbyScene")
-		{
-			if (PlayScene::GetTime())
-			{
-				mLg->SetColor(Vector4(0.0f));
-			}
-			else
-			{
-				mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
-			}
-		}
-		mLg->SetColor(Vector4(0.0f));
+		//if (SceneManager::GetActiveScene()->GetName() != L"LobbyScene")
+		//{
+		//	if (PlayScene::GetTime())
+		//	{
+		//		mLg->SetColor(Vector4(0.0f));
+		//	}
+		//	else
+		//	{
+		//		mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
+		//	}
+		//}
+		//mLg->SetColor(Vector4(0.0f));
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()
 	{
-		mTr;
-		mCol;
 		GameObject::LateUpdate();
 	}
 	void Gobj_Player::Render()

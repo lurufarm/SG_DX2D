@@ -145,9 +145,6 @@
     <ClCompile Include="Monster_Melee.cpp">
       <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Melee_SlimeA.cpp">
-      <Filter>Obj\Gobj_Monster\Melee</Filter>
-    </ClCompile>
     <ClCompile Include="SCRIPT_BGCamera.cpp">
       <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
@@ -195,6 +192,12 @@
     </ClCompile>
     <ClCompile Include="Effect_Explosion.cpp">
       <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_SlimeA.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_SlimeB.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -345,9 +348,6 @@
     <ClInclude Include="Monster_Melee.h">
       <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Melee_SlimeA.h">
-      <Filter>Obj\Gobj_Monster\Melee</Filter>
-    </ClInclude>
     <ClInclude Include="SCRIPT_BGCamera.h">
       <Filter>Script\SCRIPT_UI</Filter>
     </ClInclude>
@@ -395,6 +395,12 @@
     </ClInclude>
     <ClInclude Include="Effect_Explosion.h">
       <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_SlimeA.h">
+      <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_SlimeB.h">
+      <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -502,6 +508,9 @@
     </Filter>
     <Filter Include="Script\SCRIPT_etc">
       <UniqueIdentifier>{28d7141e-d96f-4114-893c-73eafd7a6812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee\Slime">
+      <UniqueIdentifier>{c46f5ee5-3f32-4b4a-8eab-5c74d4cbd128}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

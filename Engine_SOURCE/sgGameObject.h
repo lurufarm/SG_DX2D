@@ -148,11 +148,15 @@ namespace sg
 		void SetSelected(bool value) { mbSelected = value; }
 		bool GetSelected() { return mbSelected; }
 
+		void SetTransParent(bool value) { mTransParent = value; }
+		bool GetTransparent() { return mTransParent; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		int mOrder;
 		bool mbSelected;
+		bool mTransParent;
 	};
 }

@@ -5,7 +5,7 @@
 #include "..\Engine_SOURCE\sgTexture.h"
 #include "Tile_TilePalette.h"
 #include "SCRIPT_Tile0.h"
-
+#include "SCRIPT_Tile1.h"
 
 namespace sg
 {
@@ -51,14 +51,8 @@ namespace sg
 		mAtlas = atlas;
 		SetIndex(index);
 
-		//std::shared_ptr<Texture> texture = Resources::Find<Texture>(L"TilePalette");
-		//std::shared_ptr<Material> material = Resources::Find<Material>(L"TilePaletteMaterial");
-		//mMr = AddComp<MeshRenderer>();
-		//mMr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//mMr->SetMaterial(material);
-		//mMr->Initialize();
 		mTr = GetComp<Transform>();
-		mTr->SetScale(18.0f, 18.0f, 1.0f);
+		mTr->SetScale(9.0f, 9.0f, 1.0f);
 		mCB = {};
 		mCB.TileIndex = mIndex;
 
@@ -66,6 +60,12 @@ namespace sg
 		{
 			mCol = AddComp<Collider2D>();
 			this->AddComp<SCRIPT_Tile0>();
+		}
+
+		if (mIndex == 1)
+		{
+			mCol = AddComp<Collider2D>();
+			this->AddComp<SCRIPT_Tile1>();
 		}
 
 	}

@@ -61,6 +61,7 @@ namespace sg
 		}
 		std::shared_ptr<Texture> GetAtlas() {return mAtlas;}
 
+
 	protected:
 		CharStat mStat;
 		Transform* mTr;
@@ -71,6 +72,7 @@ namespace sg
 
 		std::shared_ptr<Texture> mAtlas;
 		class Gobj_Bullet* mMyBullet;
+
 
 	private:
 		static std::map<std::wstring, Gobj_Character*>mAllChars;

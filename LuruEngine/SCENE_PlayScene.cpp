@@ -8,7 +8,7 @@ extern sg::Gobj_Player* Player;
 
 namespace sg
 {
-	bool PlayScene::mDay = true;
+	//bool PlayScene::mDay = true;
 
 	PlayScene::PlayScene()
 	{
@@ -19,11 +19,11 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
-		mLight = new GameObject();
-		mLg = mLight->AddComp<Light>();
-		AddGameObj(eLayerType::Light, mLight);
-		mLg->SetType(eLightType::Directional);
-		mLg->SetColor(mDayLight);
+		//GameObject* mLight = new GameObject();
+		//mLg = mLight->AddComp<Light>();
+		//AddGameObj(eLayerType::Light, mLight);
+		//mLg->SetType(eLightType::Directional);
+		//mLg->SetColor(mDayLight);
 
 		Scene::Initialize();
 	}
@@ -31,9 +31,8 @@ namespace sg
 	{
 		if (Input::KeyD(eKeyCode::B))
 		{
-			SceneManager::LoadScene(L"LobbyScene");
+			SceneManager::LoadScene(L"02_LobbyScene");
 		}
-
 		Scene::Update();
 	}
 	void PlayScene::LateUpdate()
@@ -46,7 +45,7 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		renderer::mainCamera = mCamera;
+		//renderer::mainCamera = mCamera;
 
 		AddGameObj(eLayerType::Player, Player);
 

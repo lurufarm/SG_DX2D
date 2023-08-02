@@ -62,6 +62,7 @@ namespace sg
 		}
 
 		static __forceinline Vector3 GetMousePos() { return mMousePos; }
+		static __forceinline Vector3 GetMousePos2() { return mMousePos2; }
 
 		static __forceinline Vector3 MousePosUnProject();
 
@@ -99,6 +100,7 @@ namespace sg
 
 		static std::vector<Key> mKeys;
 		static Vector3 mMousePos;
+		static Vector3 mMousePos2;
 		static Vector3 mFinalMousePos;
 
 	};

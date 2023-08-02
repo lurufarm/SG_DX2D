@@ -17,10 +17,8 @@ struct VSOut
 
 float4 main(VSOut In) : SV_TARGET
 {
-    float4 color = (float4) 0.0f;
-    
-    color = albedoTexture.Sample(pointSampler, In.UV);
-       
+    float4 color = (float4) 0.0f;    
+
     if (animationType == 1)
     {
         float2 diff = (AtlasSize - SpriteSize) / 2.0f;
@@ -44,14 +42,19 @@ float4 main(VSOut In) : SV_TARGET
 
         color = atlasTexture.Sample(pointSampler, UV);
     }
-    
+
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
-    
     color *= lightColor;
 
+    if (alphaValue == 1)
+    {
+        if (color.a >= 1.0f)
+            color.a = 0.5f;
+    }
+    
     return color;
 }

@@ -18,6 +18,7 @@
 #define CBSLOT_ANIMATION2D		3
 #define CBSLOT_MYCB				4
 #define CBSLOT_TIME				5
+#define CBSLOT_TPCB				6
 
 
 namespace sg::graphics
@@ -41,6 +42,7 @@ namespace sg::graphics
 		Animator,
 		MyCBType,
 		Time,
+		Transparent,
 		End,
 	};
 

@@ -18,6 +18,7 @@ namespace sg
 	{
 		mMr = GetComp<MeshRenderer>();
 		mAni = AddComp<Animator>();
+		mCol = GetComp<Collider2D>();
 		mType = eBulletType::Lucy;
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
@@ -26,6 +27,8 @@ namespace sg
 		mAni->Create(L"Ani_LucyBomb", atlas, Vector2::Zero, Vector2(15.0f, 15.0f), 4, Vector2::Zero, 0.1f);
 		mMr->Initialize();
 		mAni->PlayAnimation(L"Ani_LucyBomb", true, true);
+
+		mCol->SetSize(Vector2(0.7f, 0.7f));
 
 		mBulletOwner = Gobj_Character::GetChar(L"Lucy");
 		Gobj_Bullet::initialize();

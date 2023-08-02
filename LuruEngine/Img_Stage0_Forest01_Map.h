@@ -3,23 +3,27 @@
 
 namespace sg
 {
-	class Img_Stage0_Forest01_Map : public Gobj_Img
+	class Img_Stage0_Map : public Gobj_Img
 	{
 	public:
 		
-		enum class ForestFd
+		enum class Stage0
 		{
-			forest01,
-			forest02,
-			forest03,
-			forest04,
-			forest05,
-			forest06,
+			forestfd01,
+			forestfd02,
+			forestfd03,
+			forestfd04,
+			forestdg01,
+			forestdg02,
+			forestdg03,
+			forestdg04,
+			forestboss01,
+			forestboss02,
 			end,
 		};
 
-		Img_Stage0_Forest01_Map(ForestFd num);
-		~Img_Stage0_Forest01_Map();
+		Img_Stage0_Map(Stage0 num);
+		~Img_Stage0_Map();
 
 
 		void Initialize();
@@ -28,7 +32,7 @@ namespace sg
 		void Render();
 
 	private:
-		ForestFd mNum;
+		Stage0 mNum;
 
 	};
 }

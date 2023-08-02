@@ -41,6 +41,8 @@ namespace sg
 				mActiveScene = iter->second;
 		}
 
+		static Scene* LoadNextScene();
+
 	private:
 		static Scene* mActiveScene;
 		static std::map<std::wstring, Scene*> mScenes;

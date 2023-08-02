@@ -9,6 +9,7 @@ namespace sg
 		: mState(eState::Active)
 		, mOrder(0)
 		, mbSelected(false)
+		, mTransParent(false)
 	{
 		AddComp<Transform>();
 	}

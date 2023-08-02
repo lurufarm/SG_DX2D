@@ -30,6 +30,8 @@ namespace sg
 		Vector2 GetCSize() { return mSize; }
 		Vector3 GetCScale() { return mScale; }
 
+		renderer::MyCB GetMyCB() { return mCB; }
+
 
 	private:
 		static UINT mColliderNumber;

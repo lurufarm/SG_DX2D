@@ -4,6 +4,8 @@
 #include "sgRenderer.h"
 #include "sgTime.h"
 #include "sgAnimator.h"
+#include "sgConstantBuffer.h"
+#include "..\LuruEngine\Tile_TilePalette.h"
 
 namespace sg
 {
@@ -56,6 +58,7 @@ namespace sg
 
 		tr->BindConstantBuffer();
 		Time::BindConstantBuffer();
+		BindConstantBuffer();
 
 		Animator* animator = GetOwner()->GetComp<Animator>();
 		if (animator)
@@ -73,5 +76,16 @@ namespace sg
 		mMesh->Render();
 
 		mMaterial->Clear();
+	}
+
+	void MeshRenderer::BindConstantBuffer()
+	{
+		renderer::TransparentCB TpCB = {};
+		TpCB.alphaValue = GetOwner()->GetTransparent();
+		//TpCB.TileIndex = sg::TilePalette::GetIndex();
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transparent];
+		cb->SetData(&TpCB);
+		cb->Bind(eShaderStage::PS);
+
 	}
 }

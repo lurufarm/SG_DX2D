@@ -21,13 +21,13 @@ namespace sg
 
 	void InitializeScenes()
 	{
-		SceneManager::CreateScene<TitleScene>(L"TitleScene");
-		SceneManager::CreateScene<SelectScene>(L"SelectScene");
-		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
-		SceneManager::CreateScene<Stage0_Forest01>(L"Stage0_Forest01");
-		SceneManager::CreateScene<ToolScene>(L"ToolScene");
+		SceneManager::CreateScene<TitleScene>(L"00_TitleScene");
+		SceneManager::CreateScene<SelectScene>(L"01_SelectScene");
+		SceneManager::CreateScene<LobbyScene>(L"02_LobbyScene");
+		SceneManager::CreateScene<Stage0_Forest01>(L"03_Stage0_Forest01");
+		SceneManager::CreateScene<ToolScene>(L"99_ToolScene");
 
-		SceneManager::SetActiveScene(L"TitleScene");
+		SceneManager::SetActiveScene(L"00_TitleScene");
 
 
 	}

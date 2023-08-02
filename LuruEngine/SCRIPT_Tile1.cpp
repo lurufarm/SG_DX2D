@@ -2,6 +2,8 @@
 
 #include "..\Engine_SOURCE\sgGameObject.h"
 
+#include "Gobj_Player.h"
+
 namespace sg
 {
 	void SCRIPT_Tile1::Initialize()
@@ -20,38 +22,13 @@ namespace sg
 	}
 	void SCRIPT_Tile1::OnCollisionEnter(Collider2D* other)
 	{
-		mTr = GetOwner()->GetComp<Transform>();
-
-		Vector3 otherpos = other->GetOwner()->GetComp<Transform>()->GetPosition();
-		Vector3 mypos = mTr->GetPosition();
-		if (otherpos.x < mypos.x)
-			otherpos.x++;
-		else if (otherpos.x > mypos.x)
-			otherpos.x--;
-		if (otherpos.y < mypos.y)
-			otherpos.y--;
-		else if (otherpos.y > mypos.y)
-			otherpos.y++;
-
-		other->GetOwner()->GetComp<Transform>()->SetPosition(otherpos);
+		other->GetOwner()->SetTransParent(true);
 	}
 	void SCRIPT_Tile1::OnCollisionStay(Collider2D* other)
 	{
-		Vector3 otherpos = other->GetOwner()->GetComp<Transform>()->GetPosition();
-		Vector3 mypos = mTr->GetPosition();
-		if (otherpos.x < mypos.x)
-			otherpos.x++;
-		else if (otherpos.x > mypos.x)
-			otherpos.x--;
-
-		if (otherpos.y < mypos.y)
-			otherpos.y--;
-		else if (otherpos.y > mypos.y)
-			otherpos.y++;
-
-		other->GetOwner()->GetComp<Transform>()->SetPosition(otherpos);
 	}
 	void SCRIPT_Tile1::OnCollisionExit(Collider2D* other)
 	{
+		other->GetOwner()->SetTransParent(false);
 	}
 }

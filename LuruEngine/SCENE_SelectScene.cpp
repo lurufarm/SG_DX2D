@@ -20,7 +20,7 @@ namespace sg
 {
 	SelectScene::SelectScene()
 	{
-		SetName(L"SelectScene");
+		SetName(L"01_SelectScene");
 	}
 	SelectScene::~SelectScene()
 	{
@@ -67,7 +67,7 @@ namespace sg
 	{
 		if (Input::KeyD(eKeyCode::ENTER))
 		{
-			SceneManager::LoadScene(L"LobbyScene");
+			SceneManager::LoadNextScene();
 		}
 		Scene::Update();
 	}

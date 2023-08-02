@@ -3,8 +3,8 @@
 #include "..\Engine_SOURCE\sgMaterial.h"
 #include "..\Engine_SOURCE\sgMeshRenderer.h"
 #include "Tile_Image.h"
-#define TILE_SIZE_X 18
-#define TILE_SIZE_Y 18
+#define TILE_SIZE_X 9
+#define TILE_SIZE_Y 9
 #define TILE_SIZE_Z 1
 
 namespace sg
