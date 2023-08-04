@@ -44,7 +44,7 @@ namespace sg::graphics
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindBuffer(ID3D11Buffer* buffer, void* data, UINT size);
 		void BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV);
-		void BindUnorderdAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts);
+		void BindUnorderedAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts);
 
 		void BindSampler(eShaderStage stage, UINT StartSlot, ID3D11SamplerState** ppSamplers);
 		void BindViewPort(D3D11_VIEWPORT* viewport);

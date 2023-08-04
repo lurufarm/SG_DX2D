@@ -58,8 +58,8 @@ namespace sg
 	void ParticleSystem::Render()
 	{
 		GetOwner()->GetComp<Transform>()->BindConstantBuffer();
-		mBuffer->Bind(eShaderStage::VS, 14);
-		mBuffer->Bind(eShaderStage::PS, 14);
+		mBuffer->BindSRV(eShaderStage::VS, 14);
+		mBuffer->BindSRV(eShaderStage::PS, 14);
 
 		GetMaterial()->Binds();
 		GetMesh()->RenderInstanced(1000);

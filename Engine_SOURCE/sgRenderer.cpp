@@ -832,6 +832,13 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"MobSlimeB", material);
 
+		texture = Resources::Load<Texture>(L"Monster_CannibalFlowerA", L"..\\Resources\\Monster\\CannibalFlowerA.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobCannibalFlowerA", material);
+
 #pragma endregion
 	}
 
@@ -853,8 +860,8 @@ namespace renderer
 			lightsAttributes.push_back(attribute);
 		}
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
-		lightsBuffer->Bind(eShaderStage::VS, 13);
-		lightsBuffer->Bind(eShaderStage::PS, 13);
+		lightsBuffer->BindSRV(eShaderStage::VS, 13);
+		lightsBuffer->BindSRV(eShaderStage::PS, 13);
 	}
 
 	void Render()

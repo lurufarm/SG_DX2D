@@ -46,16 +46,30 @@ namespace sg::graphics
 		if (buffer.Get() != nullptr)
 			GetDevice()->BindBuffer(buffer.Get(), data, mSize * stride);
 	}
-	void StructuredBuffer::Bind(eShaderStage stage, UINT slot)
+	void StructuredBuffer::BindSRV(eShaderStage stage, UINT slot)
 	{
+		mSRVSlot = slot;
 		GetDevice()->BindShaderResource(stage, slot, mSRV.GetAddressOf());
+	}
+	void StructuredBuffer::BindUAV(UINT slot)
+	{
+		mUAVslot = slot;
+		UINT i = -1;
+		GetDevice()->BindUnorderedAccess(slot, mUAV.GetAddressOf(), &i);
+
 	}
 	void StructuredBuffer::Clear()
 	{
-		mSRV = nullptr;
-		mType = eSRVType::None;
-		mSize = 0;
-		mStride = 0;
-		Create(mSize, mStride, mType);
+		ID3D11ShaderResourceView* srv = nullptr;
+		GetDevice()->BindShaderResource(eShaderStage::VS, mSRVSlot, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::HS, mSRVSlot, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::DS, mSRVSlot, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::GS, mSRVSlot, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::PS, mSRVSlot, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::CS, mSRVSlot, &srv);
+
+		ID3D11UnorderedAccessView* uav = nullptr;
+		UINT i = -1;
+		GetDevice()->BindUnorderedAccess(mUAVslot, &uav, &i);
 	}
 }

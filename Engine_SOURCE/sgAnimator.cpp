@@ -29,6 +29,12 @@ namespace sg
 		if (mActiveAnimation == nullptr)
 			return;
 
+		if (mPrevAni != nullptr
+			&& mPrevAni != mActiveAnimation)
+		{
+			mPrevAni->Reset();
+		}
+
 		if (mActiveAnimation->IsComplete() && mbLoop)
 		{
 			Events* events
@@ -38,6 +44,11 @@ namespace sg
 
 			mActiveAnimation->Reset();
 		}
+		else if (mbLoop == false)
+		{	
+			mPrevAni = mActiveAnimation;
+		}
+
 	}
 	void Animator::LateUpdate()
 	{
@@ -137,7 +148,6 @@ namespace sg
 			events->startEvent();
 
 		mbLoop = loop;
-		//if (mbLoop && mActiveAnimation->IsComplete())
 		mActiveAnimation->Reset();
 	}
 	void Animator::Binds()

@@ -91,6 +91,7 @@ namespace sg
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
 		Animation* mActiveAnimation;
+		Animation* mPrevAni;
 
 		bool mDirection;
 		bool mbLoop;

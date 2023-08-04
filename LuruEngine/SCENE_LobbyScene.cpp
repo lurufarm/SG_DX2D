@@ -144,6 +144,8 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
+		renderer::lightsBuffer->Clear();
+
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
 		TilePalette::AutoLoad(path0);
 		const std::wstring path1 = { L"..\\Resources\\Tile\\LobbyScene_01" };

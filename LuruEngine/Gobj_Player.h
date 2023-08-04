@@ -26,9 +26,7 @@ namespace sg
 			mpChar = character;
 			std::map<std::wstring, Animation*> charAnis = mpChar->GetComp<Animator>()->GetAnimations();
 			mAni->SetAnimations(charAnis);
-			//mAni->SetAniTexture(mAni->GetAnimations().begin()->second->GetAtlas());
 			mpStat = mpChar->GetStat();			
-			//mMr->Initialize();
 			GetChar()->SetIsPlayer(true);
 			mAni->PlayAnimation(mAni->GetAnimations().begin()->second->GetKey(), true, true);
 		}
@@ -37,8 +35,9 @@ namespace sg
 		static void SetEnemyNearby(bool value) { mEnemyNearby = value; }
 		static bool GetEnemyNearby() { return mEnemyNearby; }
 
+		void SetStat(Gobj_Character::CharStat stat) { mpStat = stat; }
 		Gobj_Character::CharStat GetStat() { return mpStat; }
-
+		
 		void SetTarget(GameObject* mob) { mTarget = mob; }
 		GameObject* GetTarget() { return mTarget; }
 

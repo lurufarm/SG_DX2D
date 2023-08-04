@@ -11,6 +11,7 @@ namespace sg
 		mStat.mStrength = 2;
 		mStat.mSpeed = 20.0f;
 		mStat.mRange = 30.0f;
+		mStat.mCoolDown = 1.0f;
 		mStat.dropEXP = 10.0f;
 
 		Melee_SlimeA::Initialize();

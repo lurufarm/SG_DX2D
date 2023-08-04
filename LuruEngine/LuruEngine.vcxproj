@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet_CannibalFlowerA.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Char_Cheese.h" />
@@ -174,6 +175,8 @@
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Monster_Melee.h" />
+    <ClInclude Include="Monster_Ranged.h" />
+    <ClInclude Include="Ranged_CannibalFlowerA.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="UI_FocusBoxes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet_CannibalFlowerA.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
@@ -242,6 +246,8 @@
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
+    <ClCompile Include="Monster_Ranged.cpp" />
+    <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />

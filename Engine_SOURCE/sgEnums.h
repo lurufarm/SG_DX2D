@@ -59,6 +59,7 @@ namespace sg::enums
 	{
 		Cheese,
 		Lucy,
+		CannibalFlowerA,
 		End,
 	};
 

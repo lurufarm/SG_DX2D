@@ -26,8 +26,6 @@ namespace sg
 
 	void SCRIPT_Player::Update()
 	{
-		mTime += Time::DeltaTime();
-
 		switch (mFSMState)
 		{
 		case sg::SCRIPT_Player::ePlayerFSM::Idle:
@@ -51,10 +49,9 @@ namespace sg
 		}
 		else
 		{
+			mFSMState = ePlayerFSM::Idle;
 			if (mOwner->GetEnemyNearby())
 				mFSMState = ePlayerFSM::Attack;
-			else
-				mFSMState = ePlayerFSM::Idle;
 		}
 
 		std::vector<GameObject*> monsters = SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects();
@@ -97,7 +94,9 @@ namespace sg
 
 		mAni->PlayAnimation(AnimationName(idle), true, mDirection);
 
-		if (Input::GetAnyKey())
+		if (mOwner->GetEnemyNearby())
+			mFSMState = ePlayerFSM::Attack;
+		else if (Input::GetAnyKey())
 			mFSMState = ePlayerFSM::Move;
 	}
 	void SCRIPT_Player::Move(Input::Key key, float speed)
@@ -182,8 +181,10 @@ namespace sg
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
 		}
-		else
+		if (Input::GetAnyKey() == false)
 		{
+			mAni->PlayAnimation(AnimationName(idle), true, mDirection);
+
 			if (mOwner->GetEnemyNearby())
 				mFSMState = ePlayerFSM::Attack;
 			else
@@ -193,24 +194,28 @@ namespace sg
 	void SCRIPT_Player::Attack()
 	{
 		Animator* mAni = GetOwner()->GetComp<Animator>();
+		mTime += Time::DeltaTime();
+		if (mOwner->GetEnemyNearby() == false)
+		{
+			mFSMState = ePlayerFSM::Idle;
+		}
 		if (mTime >= mOwner->GetChar()->GetStat().mCoolDown)
 		{
+			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
 			if (mOwner->GetChar()->GetName() == L"Cheese")
 				object::Instantiate<Bullet_CheeseArrow>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			else if (mOwner->GetChar()->GetName() == L"Lucy")
 				object::Instantiate<Bullet_LucyBomb>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+			mTime = 0.0f;
 
-				mAni->PlayAnimation(AnimationName(attack), true, mDirection);
-				mTime = 0.0f;
-
-			if (mAni->GetActiveAni()->IsComplete())
-				mAni->PlayAnimation(AnimationName(idle), true, mDirection);
 		}
-
-		if (mOwner->GetEnemyNearby() == false)
-			mFSMState = ePlayerFSM::Idle;
 		if (Input::GetAnyKey())
 			mFSMState = ePlayerFSM::Move;
+		else if (Input::GetAnyKey() == false && mAni->GetActiveAni()->IsComplete())
+		{
+			mFSMState = ePlayerFSM ::Idle;
+			mAni->PlayAnimation(AnimationName(idle), true, mDirection);
+		}
 	}
 	void SCRIPT_Player::Attacked()
 	{

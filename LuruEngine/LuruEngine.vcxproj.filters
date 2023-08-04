@@ -115,9 +115,6 @@
     <ClCompile Include="Bullet_CheeseArrow.cpp">
       <Filter>Obj\Gobj_Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Gobj_Monster.cpp">
-      <Filter>Obj\Gobj_Monster</Filter>
-    </ClCompile>
     <ClCompile Include="SCRIPT_Player.cpp">
       <Filter>Script\SCRIPT_Player</Filter>
     </ClCompile>
@@ -141,9 +138,6 @@
     </ClCompile>
     <ClCompile Include="SCRIPT_UICamera.cpp">
       <Filter>Script\SCRIPT_UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster_Melee.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_BGCamera.cpp">
       <Filter>Script\SCRIPT_UI</Filter>
@@ -198,6 +192,21 @@
     </ClCompile>
     <ClCompile Include="Melee_SlimeB.cpp">
       <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_CannibalFlowerA.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Monster.cpp">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_Melee.cpp">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_Ranged.cpp">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_CannibalFlowerA.cpp">
+      <Filter>Obj\Gobj_Monster\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -318,9 +327,6 @@
     <ClInclude Include="Bullet_CheeseArrow.h">
       <Filter>Obj\Gobj_Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Gobj_Monster.h">
-      <Filter>Obj\Gobj_Monster</Filter>
-    </ClInclude>
     <ClInclude Include="SCRIPT_Player.h">
       <Filter>Script\SCRIPT_Player</Filter>
     </ClInclude>
@@ -344,9 +350,6 @@
     </ClInclude>
     <ClInclude Include="SCRIPT_UICamera.h">
       <Filter>Script\SCRIPT_UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster_Melee.h">
-      <Filter>Obj\Gobj_Monster\Melee\Base</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_BGCamera.h">
       <Filter>Script\SCRIPT_UI</Filter>
@@ -401,6 +404,21 @@
     </ClInclude>
     <ClInclude Include="Melee_SlimeB.h">
       <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_CannibalFlowerA.h">
+      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Monster.h">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster_Melee.h">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster_Ranged.h">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_CannibalFlowerA.h">
+      <Filter>Obj\Gobj_Monster\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -497,9 +515,6 @@
     <Filter Include="Script\SCRIPT_UI">
       <UniqueIdentifier>{2c85d1cd-a732-40f4-89e6-4de5ff736b0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Base">
-      <UniqueIdentifier>{abeda809-17fb-40a6-b67e-02818dc4b644}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj\Gobj_Effect">
       <UniqueIdentifier>{76562c19-dd0c-4553-998f-300a072c7bbe}</UniqueIdentifier>
     </Filter>
@@ -511,6 +526,18 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Melee\Slime">
       <UniqueIdentifier>{c46f5ee5-3f32-4b4a-8eab-5c74d4cbd128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Ranged">
+      <UniqueIdentifier>{895ef6ff-3297-44f3-ba8c-3a7ef2cc8630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Ranged\CannibalFlower">
+      <UniqueIdentifier>{bed02df0-e594-4a19-8a80-09bc58017bda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Base">
+      <UniqueIdentifier>{b40d41e0-e642-4fe9-8007-f6ec99addd57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Bullet">
+      <UniqueIdentifier>{f7690201-0c4e-4f74-8577-0be67664f949}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

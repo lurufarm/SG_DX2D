@@ -177,7 +177,7 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		renderer::lightsBuffer->Create(sizeof(LightAttribute), 100, eSRVType::None);
+		renderer::lightsBuffer->Clear();
 		AddGameObj(eLayerType::Player, Player);
 	}
 	void PlayScene::OnExit()

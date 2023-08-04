@@ -39,6 +39,9 @@ namespace sg
 
 		std::wstring AnimationName(const std::wstring& animation);
 
+		float GetDistance();
+		Vector3 GetDirection();
+
 	private:
 		eFSMState mFSMState;
 		class Gobj_Monster* mOwner;
@@ -46,6 +49,7 @@ namespace sg
 		bool mDirection;
 		bool mAttacked;
 		bool mDeath;
+		float mTime;
 
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";

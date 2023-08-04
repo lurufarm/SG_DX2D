@@ -51,10 +51,12 @@ namespace sg
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }
+		int GetAniIndex() { return mIndex; }
 		void SetAniDirection(bool direction) { mDirection = direction; }
 		bool GetAniDirection() { return mDirection; }
 
 		Vector2 GetSpriteSize() { return mSpriteSize; }
+		int GetmSpritesSize() { return mSprites.size(); }
 		std::shared_ptr<graphics::Texture> GetAtlas() { return mAtlas; }
 		void SetAtlas(std::shared_ptr<graphics::Texture> atlas) { mAtlas = atlas; }
 

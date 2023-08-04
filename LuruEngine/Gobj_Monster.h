@@ -14,6 +14,7 @@ namespace sg
 			float mStrength;
 			float mSpeed;
 			float mRange;
+			float mCoolDown;
 			int dropEXP;
 		};
 

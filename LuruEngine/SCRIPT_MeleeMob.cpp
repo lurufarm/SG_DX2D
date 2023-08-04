@@ -26,6 +26,8 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Update()
 	{
+		mTime += Time::DeltaTime();
+
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
 
@@ -82,6 +84,18 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
+
+		if (mFSMState == eFSMState::Attack)
+		{
+			if (other->GetOwner() == mTarget)
+			{
+				Gobj_Character::CharStat stat = mTarget->GetStat();
+
+				stat.mHP -= mOwner->GetStat().mStrength;
+
+				mTarget->SetStat(stat);
+			}
+		}
 	}
 	void SCRIPT_MeleeMob::OnCollisionStay(Collider2D* other)
 	{
@@ -96,19 +110,15 @@ namespace sg
 	void SCRIPT_MeleeMob::Spawn()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(spawn), false, mDirection);
-		mFSMState = eFSMState::Idle;
+		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
+			mFSMState = eFSMState::Idle;
 	}
 	void SCRIPT_MeleeMob::Idle()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
 
-		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
-		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
-		Vector3 direction = ppos - pos;
-		if (direction.Length() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -122,13 +132,11 @@ namespace sg
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(move), true, mDirection);
 
 		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
 
-		float distance = (ppos - pos).Length();
+		float distance = GetDistance();
 		float distanceToMove = mOwner->GetStat().mSpeed * Time::DeltaTime();
-		Vector3 direction = ppos - pos;
+		Vector3 direction = GetDirection();
 		direction.Normalize();
 		pos += direction * distanceToMove;
 		tr->SetPosition(pos);
@@ -138,16 +146,12 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Attack()
 	{
-		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attack), true, mDirection);
-
-		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
-		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
-
-		Vector3 direction = ppos - pos;
-		
-		if (direction.Length() > mOwner->GetStat().mRange)
+		if (mTime >= mOwner->GetStat().mCoolDown)
+		{
+			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attack), true, mDirection);
+			mTime = 0.0f;
+		}
+		if (GetDistance() > mOwner->GetStat().mRange)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -185,5 +189,23 @@ namespace sg
 		}
 		else
 			return L"";
+	}
+	float SCRIPT_MeleeMob::GetDistance()
+	{
+		Transform* tr = mOwner->GetComp<Transform>();
+		Transform* ptr = mTarget->GetComp<Transform>();
+		Vector3 pos = tr->GetPosition();
+		Vector3 ppos = ptr->GetPosition();
+
+		return (ppos - pos).Length();
+	}
+	Vector3 SCRIPT_MeleeMob::GetDirection()
+	{
+		Transform* tr = mOwner->GetComp<Transform>();
+		Transform* ptr = mTarget->GetComp<Transform>();
+		Vector3 pos = tr->GetPosition();
+		Vector3 ppos = ptr->GetPosition();
+
+		return ppos - pos;
 	}
 }

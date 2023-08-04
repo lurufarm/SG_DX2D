@@ -52,13 +52,10 @@ namespace sg
 		mLg->SetRadius(50.0f);
 		mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
 
-		mpChar = Gobj_Character::GetChar(L"Cheese");
+		//mpChar = Gobj_Character::GetChar(L"Cheese");
 		SetChar(Gobj_Character::GetChar(L"Cheese"));
 		mMr->Initialize();
-
-
 		AddComp<SCRIPT_Player>();
-
 
 	}
 	void Gobj_Player::Update()

@@ -127,14 +127,14 @@ namespace sg::graphics
 	void sg::graphics::Texture::BindUnorderedAccessViews(UINT slot)
 	{
 		UINT i = -1;
-		GetDevice()->BindUnorderdAccess(slot, mUAV.GetAddressOf(), &i);
+		GetDevice()->BindUnorderedAccess(slot, mUAV.GetAddressOf(), &i);
 
 	}
 	void sg::graphics::Texture::ClearUnorderedAccessViews(UINT slot)
 	{
 		ID3D11UnorderedAccessView* p = nullptr;
 		UINT i = -1;
-		GetDevice()->BindUnorderdAccess(slot, &p, &i);
+		GetDevice()->BindUnorderedAccess(slot, &p, &i);
 	}
 
 

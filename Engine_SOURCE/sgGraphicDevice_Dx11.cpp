@@ -396,7 +396,7 @@ namespace sg::graphics
 		}
 	}
 
-	void sg::graphics::GraphicDevice_Dx11::BindUnorderdAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts)
+	void sg::graphics::GraphicDevice_Dx11::BindUnorderedAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts)
 	{
 		mContext->CSSetUnorderedAccessViews(slot, 1, ppUnorderedAccessViews, pUAVInitialCounts);
 	}
