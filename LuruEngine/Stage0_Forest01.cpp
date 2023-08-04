@@ -34,11 +34,11 @@ namespace sg
 		mCamera = Forest01camera->AddComp<Camera>();
 		Forest01camera->AddComp<SCRIPT_MainCamera>();
 
-		GameObject* mLight = new GameObject();
-		Light* mLg = mLight->AddComp<Light>();
-		AddGameObj(eLayerType::Light, mLight);
-		mLg->SetType(eLightType::Directional);
-		mLg->SetColor(mDayLight);
+		//GameObject* mLight = new GameObject();
+		//Light* mLg = mLight->AddComp<Light>();
+		//AddGameObj(eLayerType::Light, mLight);
+		//mLg->SetType(eLightType::Directional);
+		//mLg->SetColor(mDayLight);
 
 
 		SCENE_Stage0::Initialize();
@@ -57,7 +57,6 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
-		PlayScene::OnEnter();
 		renderer::mainCamera = mCamera;
 
 		Melee_SlimeA* slimea0 = object::Instantiate<Melee_SlimeA>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
@@ -70,6 +69,8 @@ namespace sg
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd01_01" };
 		TilePalette::AutoLoad(path0);
+
+		PlayScene::OnEnter();
 
 	}
 	void Stage0_Forest01::OnExit()

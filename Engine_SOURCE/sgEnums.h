@@ -42,6 +42,7 @@ namespace sg::enums
 		Material,
 		Tile_Image,
 		Animation,
+		ComputeShader,
 		End,
 	};
 

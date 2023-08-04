@@ -17,7 +17,7 @@ namespace sg
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		//static bool GetTime() { return mDay; }
+		static bool GetTime() { return mDay; }
 
 	protected:
 		bool mClear;
@@ -30,7 +30,7 @@ namespace sg
 		float mTime = 0.0f;
 		float mTime2 = 0.0f;
 
-		//static bool mDay;
+		static bool mDay;
 		Camera* mCamera;
 
 	private:

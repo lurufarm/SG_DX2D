@@ -13,6 +13,7 @@
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
 #include "..\Engine_SOURCE\sgCollider2D.h"
+#include "..\Engine_SOURCE\sgParticleSystem.h"
 
 #include "SCRIPT_CameraScript.h"
 #include "SCRIPT_GridScript.h"
@@ -63,6 +64,13 @@ namespace sg
 		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
 		Char_Lucy* lucy = object::Instantiate<Char_Lucy>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
 		Player->Initialize();
+
+		//GameObject* obj = new GameObject();
+		//obj->SetName(L"Particle");
+		//AddGameObj(eLayerType::Monster, obj);
+		//ParticleSystem* ps = obj->AddComp<ParticleSystem>();
+		//obj->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.50f));
+		//obj->GetComp<Transform>()->SetScale(0.2f, 0.2f, 0.2f);
 		
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
@@ -108,6 +116,7 @@ namespace sg
 		Camera* UIcameraComp = LobbySceneUIcamera->AddComp<Camera>();
 		UIcameraComp->DisableLayerMask();
 		UIcameraComp->TurnLayerMask(eLayerType::UI, true);
+
 		LobbySceneUIcamera->AddComp<SCRIPT_UICamera>();
 
 
@@ -123,11 +132,6 @@ namespace sg
 	}
 	void LobbyScene::Update()
 	{
-		//if (Input::KeyD(eKeyCode::N))
-		//{
-		//	SceneManager::LoadScene(L"Stage0_Forest01");
-		//}
-
 		Scene::Update();
 	}
 	void LobbyScene::LateUpdate()

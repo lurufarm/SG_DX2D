@@ -52,7 +52,7 @@ namespace sg
 		GetDevice()->BindInputLayout(mInputLayout);
 
 		GetDevice()->BindVertexShader(mVS.Get());
-		GetDevice()->BIndPixelShader(mPS.Get());
+		GetDevice()->BindPixelShader(mPS.Get());
 
 		Microsoft::WRL::ComPtr<ID3D11RasterizerState> rsState = renderer::rasterizerStates[(UINT)mRSType];
 		//Microsoft::WRL::ComPtr<ID3D11DepthStencilState> dsState = renderer::depthStencilStates[(UINT)mDSType];

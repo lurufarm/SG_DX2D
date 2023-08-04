@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEnums.h" />
@@ -37,6 +38,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgPaintShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResources.h" />
@@ -60,6 +63,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGameObject.cpp" />
@@ -71,6 +75,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgPaintShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResources.cpp" />

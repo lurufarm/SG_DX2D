@@ -75,7 +75,7 @@ namespace sg
 	void Animation::Binds()
 	{
 		// Texture Bind
-		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
+		mAtlas->BindShaderResource(graphics::eShaderStage::PS, 12);
 
 		// Animation CB
 		renderer::AnimatorCB data = {};

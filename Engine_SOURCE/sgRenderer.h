@@ -4,6 +4,7 @@
 #include "sgMesh.h"
 #include "sgShader.h"
 #include "sgConstantBuffer.h"
+#include "sgStructuredBuffer.h"
 #include "sgCamera.h"
 #include "sgLight.h"
 
@@ -68,7 +69,9 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 	
 	// Light
+	extern sg::graphics::StructuredBuffer* lightsBuffer;
 	extern std::vector<sg::Light*> lights;
+
 	extern sg::Camera* mainCamera;
 	extern std::vector<sg::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;

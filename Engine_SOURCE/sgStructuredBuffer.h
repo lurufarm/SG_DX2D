@@ -14,6 +14,8 @@ namespace sg::graphics
 		void SetData(void* data, UINT stride);
 		void Bind(eShaderStage stage, UINT slot);
 
+		void Clear();
+
 		UINT GetSize() { return mSize; }
 		UINT GetStride() { return mStride; }
 

@@ -100,6 +100,12 @@
     <Filter Include="High Level Interface">
       <UniqueIdentifier>{f5154b5d-391d-45ad-a5e1-e8b283fac23d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Shader\CS">
+      <UniqueIdentifier>{4988e743-5d0e-4a99-a0ff-f424ba8139b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Particle">
+      <UniqueIdentifier>{2f2c94cf-9a7c-4a05-aaef-db9a87c8740f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -204,6 +210,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.h">
       <Filter>Graphics\StructuredBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgComputeShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgPaintShader.h">
+      <Filter>Resource\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleSystem.h">
+      <Filter>GameObject\Component\Particle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -292,6 +307,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgStructuredBuffer.cpp">
       <Filter>Graphics\StructuredBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgComputeShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgPaintShader.cpp">
+      <Filter>Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleSystem.cpp">
+      <Filter>GameObject\Component\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

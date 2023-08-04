@@ -2,6 +2,7 @@
 
 #include "LuruEngine.h"
 #include "sgGraphics.h"
+#include "sgTexture.h"
 
 namespace sg::graphics
 {
@@ -12,29 +13,39 @@ namespace sg::graphics
 		~GraphicDevice_Dx11();
 
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
-		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
+		bool CreateTexture2D(const D3D11_TEXTURE2D_DESC* desc, void* data, ID3D11Texture2D** ppTexture2D);
 		bool CreateInputLayout(const D3D11_INPUT_ELEMENT_DESC* pInputElementDescs, UINT , ID3DBlob* bytecode, ID3D11InputLayout** ppInputLayout);
 		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data);
 		bool CompileFromfile(const std::wstring& filename, const std::string& funcname, const std::string& version, ID3DBlob** ppCode);
 		bool CreateVertexShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11VertexShader** ppVertexShader);
 		bool CreatePixelShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader);
-		bool CreateSampler(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState);
+		bool CreateComputeShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11ComputeShader** ppComputeShader);
+		bool CreateSamplerState(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState);
 		bool CreateRasterizerState(const D3D11_RASTERIZER_DESC* pRasterizerDesc, ID3D11RasterizerState** ppRasterizerState);
 		bool CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC* pDepthStencilDesc, ID3D11DepthStencilState** ppDepthStencilState);
 		bool CreateBlendState(const D3D11_BLEND_DESC* pBlendStateDesc, ID3D11BlendState** ppBlendState);
+		bool CreateDepthStencilView(ID3D11Resource* pResource, const D3D11_DEPTH_STENCIL_VIEW_DESC* pDesc, ID3D11DepthStencilView** ppDepthStencilView);
 		bool CreateShaderResourceView(ID3D11Resource* pResource, const D3D11_SHADER_RESOURCE_VIEW_DESC* pDesc, ID3D11ShaderResourceView** ppSRView);
+		bool CreateRenderTargetView(ID3D11Resource* pResource, const D3D11_RENDER_TARGET_VIEW_DESC* pDesc, ID3D11RenderTargetView** ppRTView);
+		bool CreateUnorderedAccessView(ID3D11Resource* pResource, const D3D11_UNORDERED_ACCESS_VIEW_DESC* pDesc, ID3D11UnorderedAccessView** ppUAView);
+
 
 		void BindInputLayout(ID3D11InputLayout* pInputLayout);
 		void BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY topology);
 		void BindVertexBuffer(UINT startslot, ID3D11Buffer* const* ppVertexBuffers, const UINT* pStrides, const UINT* pOffsets);
 		void BindIndexBuffer(ID3D11Buffer* pIndexBuffer, DXGI_FORMAT format, UINT offset);
 		void BindVertexShader(ID3D11VertexShader* pVertexShader);
-		void BIndPixelShader(ID3D11PixelShader* pPixelShader);
+		void BindPixelShader(ID3D11PixelShader* pPixelShader);
+		void BindComputeShader(ID3D11ComputeShader* pComputeShader);
+		void Dispatch(UINT ThreadGroupCountX, UINT Y, UINT Z);
+
 		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size);
 		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindBuffer(ID3D11Buffer* buffer, void* data, UINT size);
 		void BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV);
+		void BindUnorderdAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts);
+
 		void BindSampler(eShaderStage stage, UINT StartSlot, ID3D11SamplerState** ppSamplers);
 		void BindViewPort(D3D11_VIEWPORT* viewport);
 		void BindRasterizerState(ID3D11RasterizerState* pRasterizerState);
@@ -43,6 +54,8 @@ namespace sg::graphics
 
 		
 		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+		void DrawIndexedInstanced(UINT IndexCountPerInstance, UINT InstanceCount
+			, UINT StartIndexLocation, INT BaseVertexLocation, UINT StartInstanceLocation);
 		void ClearTarget();
 		void UpdateViewPort();
 		void Draw();
@@ -60,7 +73,6 @@ namespace sg::graphics
 
 		ID3D11Device* GetID3D11Device() { return mDevice.Get(); }
 
-
 	private:
 
 		float mBgcolor[4];
@@ -73,17 +85,9 @@ namespace sg::graphics
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> mContext;
 
 		// 최종적으로 그려질 텍스쳐(도화지)
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> mRenderTarget;
-
-		// 렌더타겟에 직접 접근하지 않고 레더타겟 뷰를 통해 접근한다.
-		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> mRenderTargetView;
-
+		std::shared_ptr<sg::graphics::Texture> mRenderTarget;
 		// 깊이 버퍼
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> mDepthStencilBuffer;
-
-		// 깊이 버퍼에 접근할 수 있는 뷰
-		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> mDepthStencilView;
-
+		std::shared_ptr<sg::graphics::Texture> mDepthStencil;
 		// 더블버퍼링 작업을 진행해주는 Swap Chain
 		Microsoft::WRL::ComPtr<IDXGISwapChain> mSwapChain;
 

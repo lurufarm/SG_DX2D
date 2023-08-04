@@ -58,13 +58,28 @@ struct LightAttribute
     int pad;
 };
 
+struct Particle
+{
+    float4 position;
+    float4 direction;
+    
+    float endTime;
+    float time;
+    float speed;
+    uint active;
+};
+
 StructuredBuffer<LightAttribute> lightsAttribute : register(t13);
+StructuredBuffer<Particle> particles : register(t14);
 
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);
 
 void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
 {
+//    if (1 == lightsAttribute[idx].pad)
+//        return;
+        
     if (0 == lightsAttribute[idx].type)
     {
         lightColor += lightsAttribute[idx].color;

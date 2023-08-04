@@ -2,7 +2,8 @@
 #include "sgResources.h"
 #include "sgTexture.h"
 #include "sgMaterial.h"
-#include "sgStructuredBuffer.h"
+#include "sgPaintShader.h"
+
 
 namespace renderer
 {
@@ -77,6 +78,11 @@ namespace renderer
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
+
+		shader = sg::Resources::Find<Shader>(L"ParticleShader");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
 		
 		shader = sg::Resources::Find<Shader>(L"CatPatternShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
@@ -106,7 +112,7 @@ namespace renderer
 		pdesc.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
 		pdesc.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
 		pdesc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
-		GetDevice()->CreateSampler(&pdesc, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
+		GetDevice()->CreateSamplerState(&pdesc, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
 		GetDevice()->BindSampler(eShaderStage::PS, 0, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
 
 		D3D11_SAMPLER_DESC adesc = {};
@@ -115,7 +121,7 @@ namespace renderer
 		adesc.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
 		adesc.MaxAnisotropy = 4;
 		adesc.Filter = D3D11_FILTER_ANISOTROPIC;
-		GetDevice()->CreateSampler(&adesc, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
+		GetDevice()->CreateSamplerState(&adesc, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 		GetDevice()->BindSampler(eShaderStage::PS, 1, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 #pragma endregion
 #pragma region Rasterizer State
@@ -335,7 +341,7 @@ namespace renderer
 
 		// light structured buffer
 		lightsBuffer = new StructuredBuffer();
-		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);		
+		lightsBuffer->Create(sizeof(LightAttribute), 100, eSRVType::None);		
 	}
 	
 	void LoadShader()
@@ -367,6 +373,21 @@ namespace renderer
 		debugShader->SetRSState(eRSType::WireframeNone);
 		sg::Resources::Insert(L"DebugShader", debugShader);
 
+		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
+		paintShader->Create(L"PaintCS.hlsl", "main");
+		sg::Resources::Insert(L"PaintShader", paintShader);
+
+		std::shared_ptr<Shader> particleShader = std::make_shared<Shader>();
+		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
+		particleShader->SetRSState(eRSType::SolidNone);
+		particleShader->SetDSState(eDSType::NoWrite);
+		particleShader->SetBSState(eBSType::AlphaBlend);
+		sg::Resources::Insert(L"ParticleShader", particleShader);
+
+
+		// 이하로 직접 만든거
+
 		std::shared_ptr<Shader> catPatternShader = std::make_shared<Shader>();
 		catPatternShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		catPatternShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "Select_catpattern");
@@ -393,19 +414,28 @@ namespace renderer
 	void LoadMaterial()
 	{
 #pragma region Find Shader
-		std::shared_ptr<Shader> spriteShader
+		std::shared_ptr<Shader> shader
 			= Resources::Find<Shader>(L"SpriteShader");
 
-		std::shared_ptr<Shader> spriteAniShader
+		std::shared_ptr<Shader>gridShader
+			= Resources::Find<Shader>(L"GridShader");
+
+		std::shared_ptr<Shader>debugShader
+			= Resources::Find<Shader>(L"DebugShader");
+
+		std::shared_ptr<Shader> AniShader
 			= Resources::Find<Shader>(L"SpriteAniShader");
 
-		std::shared_ptr<Shader> catPatternShader
+		std::shared_ptr<Shader> ParticleShader
+			= Resources::Find<Shader>(L"ParticleShader");
+
+		std::shared_ptr<Shader> SelectSceneShader
 			= Resources::Find<Shader>(L"CatPatternShader");
 
-		std::shared_ptr<Shader> SpaceShader1
+		std::shared_ptr<Shader> LobbySpaceShader1
 			= Resources::Find<Shader>(L"lobby_spaceShader1");
 
-		std::shared_ptr<Shader> SpaceShader2
+		std::shared_ptr<Shader> LobbySpaceShader2
 			= Resources::Find<Shader>(L"lobby_spaceShader2");
 
 		std::shared_ptr<Shader> TileShader
@@ -417,14 +447,29 @@ namespace renderer
 		std::shared_ptr<Material> material;
 
 		// Test
-		texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
-		material = std::make_shared<Material>();
-		material->SetShader(TileShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"SpriteMaterial", material);
+		//texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
+		//material = std::make_shared<Material>();
+		//material->SetShader(TileShader);
+		//material->SetTexture(texture);
+		//material->SetRendereringMode(eRenderingMode::CutOut);
+		//Resources::Insert(L"SpriteMaterial", material);
 
-		// Test
+		// PaintMaterial
+		texture = Resources::Find<Texture>(L"PaintTexture");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"PaintMaterial", material);
+
+		// particle Material
+		
+		material = std::make_shared<Material>();
+		material->SetShader(ParticleShader);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ParticleMaterial", material);
+
+		// Tile
 		texture = Resources::Load<Texture>(L"TilePalette", L"..\\Resources\\Tile\\tilepalette.bmp");
 		material = std::make_shared<Material>();
 		material->SetShader(TileShader);
@@ -433,25 +478,18 @@ namespace renderer
 		Resources::Insert(L"TilePaletteMaterial", material);
 
 		// Grid
-
-		std::shared_ptr<Shader>gridShader
-			= Resources::Find<Shader>(L"GridShader");
 		material = std::make_shared<Material>();
 		material->SetShader(gridShader);
 		Resources::Insert(L"GridMaterial", material);
 
 		// Debug
-
-		std::shared_ptr<Shader>debugShader
-			= Resources::Find<Shader>(L"DebugShader");
 		material = std::make_shared<Material>();
 		material->SetShader(debugShader);
 		Resources::Insert(L"DebugMaterial", material);
 
 		// Animation
-
 		material = std::make_shared<Material>();
-		material->SetShader(spriteAniShader);
+		material->SetShader(AniShader);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"AnimationMaterial", material);
 
@@ -461,7 +499,7 @@ namespace renderer
 		 // UI_Exit Button
 		texture = Resources::Load<Texture>(L"ExitButton", L"..\\Resources\\UI\\NavButton_12.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UIExitButton", material);
@@ -469,7 +507,7 @@ namespace renderer
 		 // UI_SelectBox 0 (top left)
 		texture = Resources::Load<Texture>(L"UI_SelectBox_tl", L"..\\Resources\\UI\\selectbox_tl.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UISBox_tl", material);
@@ -477,7 +515,7 @@ namespace renderer
 		 // UI_SelectBox 1 (top right)
 		texture = Resources::Load<Texture>(L"UI_SelectBox_tr", L"..\\Resources\\UI\\selectbox_tr.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UISBox_tr", material);
@@ -485,7 +523,7 @@ namespace renderer
 		 // UI_SelectBox 2 (bottom left)
 		texture = Resources::Load<Texture>(L"UI_SelectBox_bl", L"..\\Resources\\UI\\selectbox_bl.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UISBox_bl", material);
@@ -493,7 +531,7 @@ namespace renderer
 		 // UI_SelectBox 3 (bottom right)
 		texture = Resources::Load<Texture>(L"UI_SelectBox_br", L"..\\Resources\\UI\\selectbox_br.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UISBox_br", material);
@@ -501,7 +539,7 @@ namespace renderer
 		// UI_Coin
 		texture = Resources::Load<Texture>(L"UI_Coin", L"..\\Resources\\UI\\UI_coin.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"UICoin", material);
@@ -509,7 +547,7 @@ namespace renderer
 		// UI_Option
 		texture = Resources::Load<Texture>(L"UI_Option", L"..\\Resources\\UI\\UI_option.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIOption", material);
@@ -517,7 +555,7 @@ namespace renderer
 		// UI_Tokki
 		texture = Resources::Load<Texture>(L"UI_Tokki", L"..\\Resources\\UI\\UI_tokki.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UITokki", material);
@@ -525,7 +563,7 @@ namespace renderer
 		// UI_Plus
 		texture = Resources::Load<Texture>(L"UI_Plus", L"..\\Resources\\UI\\UI_plus.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIPlus", material);
@@ -533,7 +571,7 @@ namespace renderer
 		// UI_I
 		texture = Resources::Load<Texture>(L"UI_I", L"..\\Resources\\UI\\UI_I.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIIbutton", material);
@@ -541,7 +579,7 @@ namespace renderer
 		// UI_J
 		texture = Resources::Load<Texture>(L"UI_J", L"..\\Resources\\UI\\UI_J.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIJbutton", material);
@@ -549,7 +587,7 @@ namespace renderer
 		// UI_K
 		texture = Resources::Load<Texture>(L"UI_K", L"..\\Resources\\UI\\UI_K.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIKbutton", material);
@@ -557,7 +595,7 @@ namespace renderer
 		// UI_CharSelect
 		texture = Resources::Load<Texture>(L"UI_CharSelect", L"..\\Resources\\UI\\characterselect.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Opaque);
 		Resources::Insert(L"UICharSelect", material);
@@ -568,7 +606,7 @@ namespace renderer
 		 // BGImg
 		texture = Resources::Load<Texture>(L"Title", L"..\\Resources\\Title\\title.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Opaque);
 		Resources::Insert(L"ImgTitle01", material);
@@ -576,7 +614,7 @@ namespace renderer
 		 // TItle logo
 		texture = Resources::Load<Texture>(L"Logo", L"..\\Resources\\Title\\Logo01.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgLogo01", material);
@@ -586,14 +624,14 @@ namespace renderer
 		 // Select - Story
 		texture	= Resources::Load<Texture>(L"Story", L"..\\Resources\\Title\\ModeIllust_Story.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgStory", material);
 
 		texture = Resources::Load<Texture>(L"Story_text", L"..\\Resources\\Title\\Title_StoryMode.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgStory_text", material);
@@ -601,14 +639,14 @@ namespace renderer
 		 // Select - Party
 		texture = Resources::Load<Texture>(L"Party", L"..\\Resources\\Title\\ModeIllust_Party.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgParty", material);
 
 		texture = Resources::Load<Texture>(L"Party_text", L"..\\Resources\\Title\\Title_PartyMode.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgParty_text", material);
@@ -616,7 +654,7 @@ namespace renderer
 		 // Select - CatPattern
 		texture = Resources::Load<Texture>(L"CatPattern", L"..\\Resources\\Title\\CatPattern.png");
 		material = std::make_shared<Material>();
-		material->SetShader(catPatternShader);
+		material->SetShader(SelectSceneShader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgCatPattern", material);
@@ -627,7 +665,7 @@ namespace renderer
 		 // Lobby - BG1
 		texture = Resources::Load<Texture>(L"Space1", L"..\\Resources\\Lobby\\SvSpace.png");
 		material = std::make_shared<Material>();
-		material->SetShader(SpaceShader1);
+		material->SetShader(LobbySpaceShader1);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgSpace1", material);
@@ -635,7 +673,7 @@ namespace renderer
 		 // Lobby - BG2
 		texture	= Resources::Load<Texture>(L"Space2", L"..\\Resources\\Lobby\\SvSpace2.png");
 		material = std::make_shared<Material>();
-		material->SetShader(SpaceShader2);
+		material->SetShader(LobbySpaceShader2);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgSpace2", material);
@@ -643,7 +681,7 @@ namespace renderer
 		 // Lobby_map
 		texture = Resources::Load<Texture>(L"Lobby", L"..\\Resources\\Lobby\\Lobby.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgLobbyMap", material);
@@ -651,7 +689,7 @@ namespace renderer
 		 // Lobby_Character
 		texture = Resources::Load<Texture>(L"Lobby_Character", L"..\\Resources\\Lobby\\SurvivalCharacter_01.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"InteractableLobbyCharacter", material);
@@ -660,7 +698,7 @@ namespace renderer
 		 // Lobby_Upgrade
 		texture = Resources::Load<Texture>(L"Lobby_Upgrade", L"..\\Resources\\Lobby\\SurvivalUpgrade_01.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"InteractableLobbyUpgrade", material);
@@ -672,7 +710,7 @@ namespace renderer
 		 // Lobby_Molding
 		texture = Resources::Load<Texture>(L"Lobby_Molding", L"..\\Resources\\Lobby\\SvMolding.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgMolding", material);
@@ -680,7 +718,7 @@ namespace renderer
 		// Lobby_CardBook
 		texture = Resources::Load<Texture>(L"Lobby_CardBook", L"..\\Resources\\Lobby\\SurvivalCardBook.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"InteractableLobbyCardBook", material);
@@ -692,7 +730,7 @@ namespace renderer
 		// Stage0_ForestFd01 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestFd01_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_1.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestFd01_Map", material);
@@ -700,7 +738,7 @@ namespace renderer
 		// Stage0_ForestFd02 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestFd02_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_2.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestFd02_Map", material);
@@ -708,7 +746,7 @@ namespace renderer
 		// Stage0_ForestFd03 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestFd03_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_3.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestFd03_Map", material);
@@ -716,7 +754,7 @@ namespace renderer
 		// Stage0_ForestFd04 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestFd04_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_4.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestFd04_Map", material);
@@ -724,7 +762,7 @@ namespace renderer
 		// Stage0_ForestDg01 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestDg01_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_1.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestDg01_Map", material);
@@ -732,7 +770,7 @@ namespace renderer
 		// Stage0_ForestDg02 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestDg02_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_2.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestDg02_Map", material);
@@ -740,7 +778,7 @@ namespace renderer
 		// Stage0_ForestDg03 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestDg03_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_3.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestDg03_Map", material);
@@ -748,7 +786,7 @@ namespace renderer
 		// Stage0_ForestDg04 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestDg04_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestdg_4.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestDg04_Map", material);
@@ -760,7 +798,7 @@ namespace renderer
 		// 임시 치즈
 		texture = Resources::Load<Texture>(L"Cheese_t", L"..\\Resources\\Character\\Cheese\\HeroBody_08.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Cheese_temp", material);
@@ -771,7 +809,7 @@ namespace renderer
 		// Cheese Bullet
 		texture = Resources::Load<Texture>(L"Cheese_Arrow", L"..\\Resources\\Character\\Cheese\\arrow.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Arrow", material);
@@ -782,14 +820,14 @@ namespace renderer
 
 		texture = Resources::Load<Texture>(L"Monster_SlimeA", L"..\\Resources\\Monster\\SlimeA.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteAniShader);
+		material->SetShader(AniShader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"MobSlimeA", material);
 
 		texture = Resources::Load<Texture>(L"Monster_SlimeB", L"..\\Resources\\Monster\\SlimeB.png");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteAniShader);
+		material->SetShader(AniShader);
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"MobSlimeB", material);
@@ -814,11 +852,9 @@ namespace renderer
 			LightAttribute attribute = light->GetAttribute();
 			lightsAttributes.push_back(attribute);
 		}
-
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->Bind(eShaderStage::VS, 13);
 		lightsBuffer->Bind(eShaderStage::PS, 13);
-
 	}
 
 	void Render()
