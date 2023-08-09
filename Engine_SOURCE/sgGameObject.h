@@ -3,6 +3,7 @@
 #include "sgResources.h"
 #include "sgComponent.h"
 #include "sgMeshRenderer.h"
+#include "..\Engine_SOURCE\sgMaterial.h"
 #include "sgScript.h"
 
 namespace sg

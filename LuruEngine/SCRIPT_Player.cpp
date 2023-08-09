@@ -9,8 +9,14 @@
 #include "SCENE_PlayScene.h"
 #include "Gobj_Player.h"
 #include "Gobj_Bullet.h"
+#include "Gobj_Monster.h"
+#include "Monster_Melee.h"
+#include "Monster_Ranged.h"
 #include "Bullet_CheeseArrow.h"
 #include "Bullet_LucyBomb.h"
+
+#include "SCRIPT_MeleeMob.h"
+#include "SCRIPT_MobProjectile.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -22,10 +28,57 @@ namespace sg
 		mOwner = (Gobj_Player*)GetOwner();
 		mDirection = true;
 		mTime = 0.0f;
+		mAttacked = false;
+		mDeath = false;
 	}
 
 	void SCRIPT_Player::Update()
 	{
+
+		if (mOwner->GetStat().mHP <= 0)
+		{
+			mDeath = true;
+			mFSMState = ePlayerFSM::Death;
+		}
+		if (mAttacked)
+		{
+			mFSMState = ePlayerFSM::Attacked;
+		}
+		else
+		{
+			std::vector<GameObject*> monsters = SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects();
+			std::map<float, GameObject*> distanceOfMob;
+			Transform* tr = mOwner->GetComp<Transform>();
+			Vector3 ownerpos = tr->GetPosition();
+			if (monsters.size() > 0)
+			{
+				for (GameObject* mob : monsters)
+				{
+					Vector3 mobpos = mob->GetComp<Transform>()->GetPosition();
+
+					float distance = sqrt(pow(mobpos.x - ownerpos.x, 2)
+						+ pow(mobpos.y - ownerpos.y, 2));
+
+					distanceOfMob.insert(std::make_pair(distance, mob));
+				}
+
+				mOwner->SetTarget(distanceOfMob.begin()->second);
+				if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange)
+				{
+					mOwner->SetEnemyNearby(true);
+					if (mOwner->GetTarget()->GetComp<Transform>()->GetPosition().x > ownerpos.x)
+						mDirection = true;
+					else
+						mDirection = false;
+				}
+				else
+					mOwner->SetEnemyNearby(false);
+			}
+			else if (SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects().size() == 0)
+			{
+				mOwner->SetEnemyNearby(false);
+			}
+		}
 		switch (mFSMState)
 		{
 		case sg::SCRIPT_Player::ePlayerFSM::Idle:
@@ -40,6 +93,9 @@ namespace sg
 		case sg::SCRIPT_Player::ePlayerFSM::Attacked:
 			Attacked();
 			break;
+		case sg::SCRIPT_Player::ePlayerFSM::Death:
+			Death();
+			break;
 		}
 
 		if (Input::GetAnyKey())
@@ -50,48 +106,14 @@ namespace sg
 		else
 		{
 			mFSMState = ePlayerFSM::Idle;
-			if (mOwner->GetEnemyNearby())
+			if (mOwner->GetEnemyNearby() && mAttacked == false && mDeath == false)
 				mFSMState = ePlayerFSM::Attack;
-		}
-
-		std::vector<GameObject*> monsters = SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects();
-		std::map<float, GameObject*> distanceOfMob;
-		Transform* tr = mOwner->GetComp<Transform>();
-		Vector3 ownerpos = tr->GetPosition();
-		if (monsters.size() > 0)
-		{
-			for (GameObject* mob : monsters)
-			{
-				Vector3 mobpos = mob->GetComp<Transform>()->GetPosition();
-
-				float distance = sqrt(pow(mobpos.x - ownerpos.x, 2)
-					+ pow(mobpos.y - ownerpos.y, 2));
-
-				distanceOfMob.insert(std::make_pair(distance, mob));
-			}
-			
-			mOwner->SetTarget(distanceOfMob.begin()->second);
-			if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange)
-			{
-				mOwner->SetEnemyNearby(true);
-				if (mOwner->GetTarget()->GetComp<Transform>()->GetPosition().x > ownerpos.x)
-					mDirection = true;
-				else
-					mDirection = false;
-			}
-			else
-				mOwner->SetEnemyNearby(false);
-		}
-		else if (SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects().size() == 0)
-		{
-			mOwner->SetEnemyNearby(false);
 		}
 	};
 
 	void SCRIPT_Player::Idle()
 	{
 		Animator* mAni = GetOwner()->GetComp<Animator>();
-
 		mAni->PlayAnimation(AnimationName(idle), true, mDirection);
 
 		if (mOwner->GetEnemyNearby())
@@ -193,8 +215,8 @@ namespace sg
 	}
 	void SCRIPT_Player::Attack()
 	{
-		Animator* mAni = GetOwner()->GetComp<Animator>();
 		mTime += Time::DeltaTime();
+		Animator* mAni = GetOwner()->GetComp<Animator>();
 		if (mOwner->GetEnemyNearby() == false)
 		{
 			mFSMState = ePlayerFSM::Idle;
@@ -219,14 +241,81 @@ namespace sg
 	}
 	void SCRIPT_Player::Attacked()
 	{
+		mAttacked = true;
+		Animator* mAni = mOwner->GetComp<Animator>();
+		mAni->PlayAnimation(AnimationName(attacked), false, mDirection);
+		mTime = 0.0f;
+
+		if (mAni->GetActiveAni()->IsComplete() && mAni->GetActiveAni()->GetKey() == AnimationName(attacked))
+		{
+			mAttacked = false;
+			mFSMState = ePlayerFSM::Idle;
+		}
+		if (Input::GetAnyKey() && mAni->GetActiveAni()->IsComplete() && mAni->GetActiveAni()->GetKey() == AnimationName(attacked))
+		{
+			mAttacked = false;
+			mFSMState = ePlayerFSM::Move;
+		}
+		if (mOwner->GetStat().mHP <= 0)
+		{
+			mAttacked = false;
+			mFSMState = ePlayerFSM::Death;
+		}
+
+	}
+	void SCRIPT_Player::Death()
+	{
+		Animator* mAni = mOwner->GetComp<Animator>();
+		mAni->PlayAnimation(AnimationName(death), false, mDirection);
+
+		if (mAni->GetActiveAni()->GetKey() == AnimationName(death) && mAni->GetActiveAni()->IsComplete())
+			SceneManager::LoadScene(L"02_LobbyScene");
+
 	}
 	void SCRIPT_Player::OnCollisionEnter(Collider2D* other)
 	{
+		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
+		SCRIPT_MobProjectile* sp = other->GetOwner()->GetComp<SCRIPT_MobProjectile>();
+		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
+		{
+			mAttacked = true;
+			Gobj_Character::CharStat pStat = mOwner->GetStat();
+			Gobj_Monster::MobStat mStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
+			pStat.mHP -= mStat.mStrength;
+			mOwner->SetStat(pStat);
+		}
+		else if (sp != nullptr && mAttacked == false && mDeath == false)
+		{
+			mAttacked = true;
+			Gobj_Character::CharStat pStat = mOwner->GetStat();
+			Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
+			pStat.mHP -= mStat.mStrength;
+			mOwner->SetStat(pStat);
+		}
 	}
 	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
 	{
+		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
+		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
+		{
+			mAttacked = true;
+			Gobj_Character::CharStat pStat = mOwner->GetStat();
+			Gobj_Monster::MobStat mStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
+			pStat.mHP -= mStat.mStrength;
+			mOwner->SetStat(pStat);
+		}
 	}
 	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
 	{
+		mAttacked = false;
+		mFSMState = ePlayerFSM::Idle;
+	}
+	std::wstring SCRIPT_Player::AnimationName(const std::wstring& animation)
+	{
+		std::wstring animationName = L"Ani_";
+		animationName += mOwner->GetChar()->GetName();
+		animationName += L"_";
+		animationName += animation;
+		return animationName;
 	}
 }

@@ -21,7 +21,7 @@ namespace sg
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 originscale = tr->GetScale();
 
-		if (mMaterial == Resources::Find<Material>(L"AnimationMaterial"))
+		if (mMaterial == Resources::Find<Material>(L"AnimationMaterial") || mMaterial == Resources::Find<Material>(L"AnimationMaterial2"))
 		{
 			Animator* at = GetOwner()->GetComp<Animator>();
 			Vector2 spritescale = at->GetAnimationScale();
@@ -86,6 +86,6 @@ namespace sg
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transparent];
 		cb->SetData(&TpCB);
 		cb->Bind(eShaderStage::PS);
-
+		
 	}
 }

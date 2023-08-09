@@ -14,7 +14,7 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
-		UI_CharBox* GetBoxes(int a, int b) { return mBoxes[a][b]; }
+		class UI_CharBox* GetBoxes(int a, int b) { return mBoxes[a][b]; }
 
 	private:
 

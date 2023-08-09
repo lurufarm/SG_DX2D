@@ -22,7 +22,8 @@ float4 main(VSOut In) : SV_TARGET
 	
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+ //   for (int i = 0; i < lightsattribute[0].pad; i++)
+    for (int i = 0; i < 10; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -107,6 +108,7 @@ float4 Tile(VSOut In) : SV_TARGET
     color = albedoTexture.Sample(pointSampler, finaluv);
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
+    
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);

@@ -1,6 +1,5 @@
 #pragma once
 #include "Gobj_Monster.h"
-//#include "SCRIPT_MeleeMob.h"
 
 namespace sg
 {

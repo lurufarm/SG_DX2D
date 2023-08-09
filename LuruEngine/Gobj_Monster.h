@@ -11,7 +11,7 @@ namespace sg
 		struct MobStat
 		{
 			int mHP;
-			float mStrength;
+			int mStrength;
 			float mSpeed;
 			float mRange;
 			float mCoolDown;
@@ -29,6 +29,19 @@ namespace sg
 		MobStat GetStat() { return mStat; }
 		void SetStatHP(int hp) { mStat.mHP = hp; }
 
+		static void AddMob(std::wstring key, Gobj_Monster* character)
+		{
+			mAllMobs.insert(std::make_pair(key, character));
+		}
+		static Gobj_Monster* GetMob(std::wstring key)
+		{
+			std::map<std::wstring, Gobj_Monster*>::iterator iter = mAllMobs.find(key);
+			if (iter != mAllMobs.end())
+				return iter->second;
+			else
+				return nullptr;
+		}
+
 
 	protected:
 
@@ -42,9 +55,8 @@ namespace sg
 		class Animator* mAni;
 		std::shared_ptr<Material> mAtlas;
 
-
-
 	private:
+		static std::map<std::wstring, Gobj_Monster*>mAllMobs;
 
 	};
 }

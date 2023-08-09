@@ -127,9 +127,6 @@
     <ClCompile Include="SCRIPT_MeleeMob.cpp">
       <Filter>Script\SCRIPT_Monster</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_RangedMob.cpp">
-      <Filter>Script\SCRIPT_Monster</Filter>
-    </ClCompile>
     <ClCompile Include="SCRIPT_Gate.cpp">
       <Filter>Script\SCRIPT_Interactable</Filter>
     </ClCompile>
@@ -205,8 +202,41 @@
     <ClCompile Include="Monster_Ranged.cpp">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet_CannibalFlowerA.cpp">
+    <ClCompile Include="Bullet_PoisonOrb.cpp">
       <Filter>Obj\Gobj_Monster\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_MobProjectile.cpp">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_Ent.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_EntRock.cpp">
+      <Filter>Obj\Gobj_Monster\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_ProjectileDest.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_MobProjectile.cpp">
+      <Filter>Script\SCRIPT_Monster\Ranged</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_RangedMob.cpp">
+      <Filter>Script\SCRIPT_Monster\Ranged</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_RockDust.cpp">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_Larva.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_EliteLarva.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_Cannibals.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_EliteCannibals.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,9 +369,6 @@
     <ClInclude Include="SCRIPT_MeleeMob.h">
       <Filter>Script\SCRIPT_Monster</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_RangedMob.h">
-      <Filter>Script\SCRIPT_Monster</Filter>
-    </ClInclude>
     <ClInclude Include="SCRIPT_Gate.h">
       <Filter>Script\SCRIPT_Interactable</Filter>
     </ClInclude>
@@ -417,8 +444,41 @@
     <ClInclude Include="Monster_Ranged.h">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet_CannibalFlowerA.h">
+    <ClInclude Include="Bullet_PoisonOrb.h">
       <Filter>Obj\Gobj_Monster\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_MobProjectile.h">
+      <Filter>Obj\Gobj_Monster\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_Ent.h">
+      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_EntRock.h">
+      <Filter>Obj\Gobj_Monster\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_ProjectileDest.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_MobProjectile.h">
+      <Filter>Script\SCRIPT_Monster\Ranged</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_RangedMob.h">
+      <Filter>Script\SCRIPT_Monster\Ranged</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_RockDust.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Larva.h">
+      <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_EliteLarva.h">
+      <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Cannibals.h">
+      <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_EliteCannibals.h">
+      <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -476,9 +536,6 @@
     <Filter Include="Scene\SCENE_PlayScene\Stage2">
       <UniqueIdentifier>{bdec0300-6564-43c5-be33-0da759e64a15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\SCENE_PlayScene\Stage0">
-      <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\SCENE_PlayScene\Stage1">
       <UniqueIdentifier>{1fd3505d-f312-4f65-9c4a-97d6c9466140}</UniqueIdentifier>
     </Filter>
@@ -488,41 +545,20 @@
     <Filter Include="Scene\SCENE_ToolScene">
       <UniqueIdentifier>{7bea3e31-f377-45d3-95fa-669cf425eec8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script">
-      <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\SCRIPT_Tiles">
-      <UniqueIdentifier>{daad8024-d157-4a04-bab0-e30f14b20ebf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj\Gobj_Bullet">
       <UniqueIdentifier>{1ca6a035-b3cd-4f37-8359-95b468e44247}</UniqueIdentifier>
     </Filter>
     <Filter Include="Obj\Gobj_Monster">
       <UniqueIdentifier>{4b73aad8-2239-4188-ad83-9a06494fd633}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script\SCRIPT_Player">
-      <UniqueIdentifier>{e8c88b70-abaa-4102-9633-49023bee7978}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj\Gobj_Monster\Melee">
       <UniqueIdentifier>{5d9ed76a-43b4-49ae-addb-2ec406ede695}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\SCRIPT_Monster">
-      <UniqueIdentifier>{4894e1b7-b0f7-4f71-9c3b-8da8e8b532fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\SCRIPT_Interactable">
-      <UniqueIdentifier>{fd006f1b-ae2f-464c-837d-fc41f51a3679}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\SCRIPT_UI">
-      <UniqueIdentifier>{2c85d1cd-a732-40f4-89e6-4de5ff736b0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Obj\Gobj_Effect">
       <UniqueIdentifier>{76562c19-dd0c-4553-998f-300a072c7bbe}</UniqueIdentifier>
     </Filter>
     <Filter Include="Obj\Gobj_Character\Base">
       <UniqueIdentifier>{6522034b-e846-4de8-ae27-602fbd4798e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\SCRIPT_etc">
-      <UniqueIdentifier>{28d7141e-d96f-4114-893c-73eafd7a6812}</UniqueIdentifier>
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Melee\Slime">
       <UniqueIdentifier>{c46f5ee5-3f32-4b4a-8eab-5c74d4cbd128}</UniqueIdentifier>
@@ -538,6 +574,42 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Bullet">
       <UniqueIdentifier>{f7690201-0c4e-4f74-8577-0be67664f949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SCENE_PlayScene\Stage0">
+      <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Ranged\Ent">
+      <UniqueIdentifier>{21cb6722-2c79-4387-ac9d-09477e499564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Tiles">
+      <UniqueIdentifier>{daad8024-d157-4a04-bab0-e30f14b20ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Player">
+      <UniqueIdentifier>{e8c88b70-abaa-4102-9633-49023bee7978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Monster">
+      <UniqueIdentifier>{4894e1b7-b0f7-4f71-9c3b-8da8e8b532fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Monster\Ranged">
+      <UniqueIdentifier>{8fb8ebd8-fdd4-488b-92ac-5f747a1a7b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Interactable">
+      <UniqueIdentifier>{fd006f1b-ae2f-464c-837d-fc41f51a3679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_UI">
+      <UniqueIdentifier>{2c85d1cd-a732-40f4-89e6-4de5ff736b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_etc">
+      <UniqueIdentifier>{28d7141e-d96f-4114-893c-73eafd7a6812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee\Larva">
+      <UniqueIdentifier>{5d27284b-2256-499f-bd0f-4d87b667c2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee\Cannibals">
+      <UniqueIdentifier>{eac19ce0-a3f9-4a5b-bb3a-5261fa7bece0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

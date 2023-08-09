@@ -5,6 +5,8 @@
 #include "sgGameObject.h"
 #include "sgTransform.h"
 #include "..\LuruEngine\Gobj_Player.h"
+#include "..\LuruEngine\Gobj_MobProjectile.h"
+#include "..\LuruEngine\SCRIPT_MobProjectile.h"
 
 namespace sg::object
 {
@@ -28,7 +30,7 @@ namespace sg::object
 		
 		return player;
 	}
-
+	
 	template <typename T>
 	static __forceinline T* Instantiate(enums::eLayerType layer, Scene* sname)
 	{
@@ -98,7 +100,6 @@ namespace sg::object
 	static __forceinline T* Instantiate(auto parameter, enums::eLayerType layer, Scene* sname)
 	{
 		T* Gobj = new T(parameter);
-		//Scene* scene = SceneManager::GetActiveScene();
 		Scene* scene = sname;
 		scene->AddGameObj(layer, Gobj);
 

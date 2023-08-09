@@ -9,9 +9,9 @@ namespace sg
 
 		mStat.mHP = 15;
 		mStat.mStrength = 2;
-		mStat.mSpeed = 20.0f;
-		mStat.mRange = 30.0f;
-		mStat.mCoolDown = 1.0f;
+		mStat.mSpeed = 10.0f;
+		mStat.mRange = 10.0f;
+		mStat.mCoolDown = 2.0f;
 		mStat.dropEXP = 10.0f;
 
 		Melee_SlimeA::Initialize();
@@ -21,8 +21,6 @@ namespace sg
 	}
 	void Melee_SlimeA::Initialize()
 	{
-
-
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
 		mCol = GetComp<Collider2D>();
@@ -41,8 +39,11 @@ namespace sg
 		mAni->Create(L"Ani_SlimeA_Spawn", mAtlas->GetTexture(), Vector2(0.0f, 110.0f), Vector2(24.0f, 22.0f), 10, Vector2::Zero, 0.05f);
 
 		mMr->Initialize();
-		mCol->SetSize(Vector2(0.5f, 0.5f));
+		mCol->SetSize(Vector2(0.8f, 0.8f));
+		mCol->SetCenter(Vector2(0.0f, -5.0f));
 		AddComp<SCRIPT_MeleeMob>();
+
+		Monster_Melee::Initialize();
 	}
 	void Melee_SlimeA::Update()
 	{

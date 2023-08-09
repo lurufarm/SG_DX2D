@@ -31,6 +31,7 @@ namespace sg
 		mAni->Create(L"Ani_Lucy_Move", mAtlas, Vector2(0.0f, 21.0f), Vector2(22.0f, 21.0f), 9, Vector2::Zero, 0.08f);
 		mAni->Create(L"Ani_Lucy_Attack", mAtlas, Vector2(0.0f, 42.0f), Vector2(22.0f, 21.0f), 10, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_Lucy_Death", mAtlas, Vector2(0.0f, 63.0f), Vector2(22.0f, 21.0f), 18, Vector2::Zero, 0.05f);
+		mAni->Create(L"Ani_Lucy_Attacked", mAtlas, Vector2(0.0f, 84.0f), Vector2(22.0f, 21.0f), 7, Vector2::Zero, 0.05f);
 		mMr->Initialize();
 
 		Gobj_Character::Initialize();

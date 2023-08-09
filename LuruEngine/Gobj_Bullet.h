@@ -12,7 +12,7 @@ namespace sg
 		Gobj_Bullet();
 		~Gobj_Bullet();
 
-		virtual void initialize();
+		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();

@@ -16,7 +16,7 @@ namespace sg::graphics
 	Texture::~Texture()
 	{
 	}
-	bool sg::graphics::Texture::Create(UINT width, UINT height, DXGI_FORMAT format, UINT bindFlag)
+	bool Texture::Create(UINT width, UINT height, DXGI_FORMAT format, UINT bindFlag)
 	{
 		if (mTexture == nullptr)
 		{
@@ -130,7 +130,7 @@ namespace sg::graphics
 		GetDevice()->BindUnorderedAccess(slot, mUAV.GetAddressOf(), &i);
 
 	}
-	void sg::graphics::Texture::ClearUnorderedAccessViews(UINT slot)
+	void Texture::ClearUnorderedAccessViews(UINT slot)
 	{
 		ID3D11UnorderedAccessView* p = nullptr;
 		UINT i = -1;

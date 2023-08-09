@@ -1,13 +1,13 @@
 #pragma once
-#include "Gobj_Bullet.h"
+#include "Monster_Melee.h"
 
 namespace sg
 {
-	class Bullet_CannibalFlowerA : public Gobj_Bullet
+	class Melee_EliteCannibals : public Monster_Melee
 	{
 	public:
-		Bullet_CannibalFlowerA();
-		~Bullet_CannibalFlowerA();
+		Melee_EliteCannibals();
+		~Melee_EliteCannibals();
 
 		void Initialize();
 		void Update();

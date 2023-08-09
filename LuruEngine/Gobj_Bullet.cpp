@@ -21,7 +21,7 @@ namespace sg
 	Gobj_Bullet::~Gobj_Bullet()
 	{
 	}
-	void Gobj_Bullet::initialize()
+	void Gobj_Bullet::Initialize()
 	{
 		if (Player->GetTarget()->GetState() == Active)
 		{

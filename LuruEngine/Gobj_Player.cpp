@@ -41,7 +41,6 @@ namespace sg
 		mCol = AddComp<Collider2D>();
 		mAni = AddComp<Animator>();
 
-
 		SetMesh();
 		mMr->SetMaterial(Resources::Find<Material>(L"AnimationMaterial"));
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
@@ -52,7 +51,6 @@ namespace sg
 		mLg->SetRadius(50.0f);
 		mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
 
-		//mpChar = Gobj_Character::GetChar(L"Cheese");
 		SetChar(Gobj_Character::GetChar(L"Cheese"));
 		mMr->Initialize();
 		AddComp<SCRIPT_Player>();
@@ -77,5 +75,12 @@ namespace sg
 	void Gobj_Player::Render()
 	{
 		GameObject::Render();
+	}
+	void Gobj_Player::Initialize2()
+	{
+		mpStat = mpChar->GetStat();
+		mTr->SetPosition(0.0f, 0.0f, -2.0f);
+		std::wstring idle = GetComp<SCRIPT_Player>()->AnimationName(L"Idle");
+		mAni->PlayAnimation(idle, true, true);
 	}
 }

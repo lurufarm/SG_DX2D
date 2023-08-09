@@ -38,7 +38,6 @@ namespace sg
 		
 		mPosition = pos;
 
-
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;
 		mesh.scale = mScale;

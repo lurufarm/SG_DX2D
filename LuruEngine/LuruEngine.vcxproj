@@ -154,29 +154,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bullet_CannibalFlowerA.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
+    <ClInclude Include="Bullet_EntRock.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
+    <ClInclude Include="Bullet_PoisonOrb.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
     <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
+    <ClInclude Include="Effect_ProjectileDest.h" />
+    <ClInclude Include="Effect_RockDust.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gobj_Bullet.h" />
     <ClInclude Include="Gobj_Character.h" />
     <ClInclude Include="Gobj_Effect.h" />
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
+    <ClInclude Include="Gobj_MobProjectile.h" />
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Img_LobbyTorch.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
+    <ClInclude Include="Melee_Cannibals.h" />
+    <ClInclude Include="Melee_EliteCannibals.h" />
+    <ClInclude Include="Melee_EliteLarva.h" />
+    <ClInclude Include="Melee_Larva.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="Monster_Ranged.h" />
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
+    <ClInclude Include="Ranged_Ent.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
@@ -184,6 +193,7 @@
     <ClInclude Include="SCRIPT_Gate.h" />
     <ClInclude Include="SCRIPT_CharSelect.h" />
     <ClInclude Include="SCRIPT_MeleeMob.h" />
+    <ClInclude Include="SCRIPT_MobProjectile.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
     <ClInclude Include="SCRIPT_RangedMob.h" />
@@ -226,28 +236,37 @@
     <ClInclude Include="UI_FocusBoxes.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet_CannibalFlowerA.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
+    <ClCompile Include="Bullet_EntRock.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
+    <ClCompile Include="Bullet_PoisonOrb.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
     <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />
+    <ClCompile Include="Effect_ProjectileDest.cpp" />
+    <ClCompile Include="Effect_RockDust.cpp" />
     <ClCompile Include="Gobj_Bullet.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />
     <ClCompile Include="Gobj_Effect.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
+    <ClCompile Include="Gobj_MobProjectile.cpp" />
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Img_LobbyTorch.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
+    <ClCompile Include="Melee_Cannibals.cpp" />
+    <ClCompile Include="Melee_EliteCannibals.cpp" />
+    <ClCompile Include="Melee_EliteLarva.cpp" />
+    <ClCompile Include="Melee_Larva.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="Monster_Ranged.cpp" />
     <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
+    <ClCompile Include="Ranged_Ent.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
@@ -255,6 +274,7 @@
     <ClCompile Include="SCRIPT_Gate.cpp" />
     <ClCompile Include="SCRIPT_CharSelect.cpp" />
     <ClCompile Include="SCRIPT_MeleeMob.cpp" />
+    <ClCompile Include="SCRIPT_MobProjectile.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
     <ClCompile Include="SCRIPT_RangedMob.cpp" />

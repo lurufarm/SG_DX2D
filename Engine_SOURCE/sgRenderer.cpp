@@ -69,6 +69,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = sg::Resources::Find<Shader>(L"SpriteAniShader2");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 		shader = sg::Resources::Find<Shader>(L"GridShader");
 		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
@@ -361,6 +366,11 @@ namespace renderer
 		spriteAniShader->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
 		sg::Resources::Insert(L"SpriteAniShader", spriteAniShader);
 
+		std::shared_ptr<Shader> spriteAniShader2 = std::make_shared<Shader>();
+		spriteAniShader2->Create(eShaderStage::VS, L"SpriteAnimationVS.hlsl", "main");
+		spriteAniShader2->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main2");
+		sg::Resources::Insert(L"SpriteAniShader2", spriteAniShader2);
+
 		std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
 		gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
 		gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
@@ -425,6 +435,10 @@ namespace renderer
 
 		std::shared_ptr<Shader> AniShader
 			= Resources::Find<Shader>(L"SpriteAniShader");
+
+		std::shared_ptr<Shader> AniShader2
+			= Resources::Find<Shader>(L"SpriteAniShader2");
+
 
 		std::shared_ptr<Shader> ParticleShader
 			= Resources::Find<Shader>(L"ParticleShader");
@@ -492,6 +506,13 @@ namespace renderer
 		material->SetShader(AniShader);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"AnimationMaterial", material);
+
+		// Animation2
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader2);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"AnimationMaterial2", material);
+
 
 
 #pragma endregion
@@ -839,6 +860,42 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"MobCannibalFlowerA", material);
 
+
+		texture = Resources::Load<Texture>(L"Monster_Ent", L"..\\Resources\\Monster\\Ent.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobEnt", material);
+
+		texture = Resources::Load<Texture>(L"Monster_Larva", L"..\\Resources\\Monster\\Larva.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobLarva", material);
+
+		texture = Resources::Load<Texture>(L"Monster_EliteLarva", L"..\\Resources\\Monster\\EliteLarva.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobEliteLarva", material);
+
+		texture = Resources::Load<Texture>(L"Monster_Cannibals", L"..\\Resources\\Monster\\Cannibals.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobCannibals", material);
+
+		texture = Resources::Load<Texture>(L"Monster_EliteCannibals", L"..\\Resources\\Monster\\EliteCannibals.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"MobEliteCannibals", material);
+
 #pragma endregion
 	}
 
@@ -862,12 +919,12 @@ namespace renderer
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);
 		lightsBuffer->BindSRV(eShaderStage::PS, 13);
+
 	}
 
 	void Render()
 	{
 		BindLights();
-
 		for (Camera* cam : cameras)
 		{
 			if (cam == nullptr)

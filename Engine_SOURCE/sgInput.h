@@ -4,7 +4,7 @@
 
 namespace sg
 {
-	using namespace sg::math;
+	using namespace math;
 
 	enum class eKeyCode
 	{

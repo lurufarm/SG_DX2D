@@ -1,8 +1,9 @@
 #include "SCENE_PlayScene.h"
 #include "..\Engine_SOURCE\sgTime.h"
 #include "..\Engine_SOURCE\sgInput.h"
-#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "Gobj_Player.h"
 
 extern sg::Gobj_Player* Player;
@@ -28,6 +29,18 @@ namespace sg
 		mLg->SetType(eLightType::Directional);
 		mLg->SetColor(mDayLight);
 
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
+		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
+		//CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Player, true);
+
+
+
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
@@ -42,13 +55,12 @@ namespace sg
 		if (mTime > 5.0f)
 			mTime2 += Time::DeltaTime();
 
-
 		if (mTime > 5.0f && mTime <= 7.0f)
 		{
 			if (mTime2 >= 2.0f)
 				mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 1.99f);
+			Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 2.0f);
 			mLg->SetColor(changecolor);
 		}
 		else if (mTime > 7.0f && mTime <= 10.0f)
@@ -62,7 +74,7 @@ namespace sg
 			if (mTime2 >= 2.0f)
 				mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 1.99f);
+			Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 2.0f);
 			mLg->SetColor(changecolor);
 
 		}
@@ -76,7 +88,7 @@ namespace sg
 			if (mTime2 >= 2.0f)
 				mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 1.99f);
+			Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 2.0f);
 			mLg->SetColor(changecolor);
 
 		}
@@ -90,7 +102,7 @@ namespace sg
 			if (mTime2 >= 2.0f)
 				mTime2 = 0.0f;
 			mDay = true;
-			Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 1.99f);
+			Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 2.0f);
 			mLg->SetColor(changecolor);
 		}
 		else if (mTime > 22.0f)
@@ -177,7 +189,7 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		renderer::lightsBuffer->Clear();
+		//renderer::lightsBuffer->Clear();
 		AddGameObj(eLayerType::Player, Player);
 	}
 	void PlayScene::OnExit()

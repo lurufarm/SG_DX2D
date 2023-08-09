@@ -11,9 +11,9 @@
 #pragma comment(lib, "..\\External\\DirectXTex\\Lib\\Release\\DirectXTex.lib")
 #endif
 
+	using namespace sg::math;
 namespace sg::graphics
 {
-	//using namespace sg::math;
 
 	class Texture : public Resource
 	{

@@ -39,6 +39,9 @@ namespace sg
 
 		std::wstring AnimationName(const std::wstring& animation);
 
+		float GetDistance();
+		Vector3 GetDirection();
+
 	private:
 
 		eFSMState mFSMState;
@@ -48,6 +51,8 @@ namespace sg
 		bool mAttacked;
 		bool mDeath;
 		float mTime;
+
+		bool mLaunched;
 
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";

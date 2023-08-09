@@ -76,15 +76,12 @@ SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);
 
 void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
-{
-//    if (1 == lightsAttribute[idx].pad)
-//        return;
-        
+{        
     if (0 == lightsAttribute[idx].type)
     {
         lightColor += lightsAttribute[idx].color;
     }
-    if (1 == lightsAttribute[idx].type)
+    else if (1 == lightsAttribute[idx].type)
     {
         float length = distance(position.xy, lightsAttribute[idx].position.xy);
         

@@ -10,6 +10,7 @@
 
 using namespace sg::math;
 using namespace sg::graphics;
+
 namespace renderer
 {
 	struct Vertex

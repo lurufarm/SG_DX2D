@@ -1,8 +1,12 @@
 #include "SCRIPT_RangedMob.h"
+#include "..\Engine_SOURCE\sgObject.h"
 #include "Monster_Ranged.h"
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
+#include "Bullet_PoisonOrb.h"
+#include "Bullet_EntRock.h"
+#include "Effect_ProjectileDest.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -22,11 +26,10 @@ namespace sg
 		mFSMState = eFSMState::Spwan;
 		mDirection = false;
 		mDeath = false;
+		mLaunched = false;
 	}
 	void SCRIPT_RangedMob::Update()
 	{
-		mTime += Time::DeltaTime();
-
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
 
@@ -113,15 +116,9 @@ namespace sg
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
+		mLaunched = false;
 
-		//if (mTime >= mOwner->GetStat().)
-
-		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
-		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
-		Vector3 direction = ppos - pos;
-		if (direction.Length() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -135,13 +132,11 @@ namespace sg
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(move), true, mDirection);
 
 		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
 
-		float distance = (ppos - pos).Length();
+		float distance = GetDistance();
 		float distanceToMove = mOwner->GetStat().mSpeed * Time::DeltaTime();
-		Vector3 direction = ppos - pos;
+		Vector3 direction = GetDirection();
 		direction.Normalize();
 		pos += direction * distanceToMove;
 		tr->SetPosition(pos);
@@ -151,18 +146,56 @@ namespace sg
 	}
 	void SCRIPT_RangedMob::Attack()
 	{
-		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attack), true, mDirection);
-
-		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
-		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
-
-		Vector3 direction = ppos - pos;
-
-		if (direction.Length() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange)
 		{
 			mFSMState = eFSMState::Move;
+		}
+
+		mTime += Time::DeltaTime();
+
+		Animator* at = mOwner->GetComp<Animator>();
+		if (mTime >= mOwner->GetStat().mCoolDown)
+		{
+			at->PlayAnimation(AnimationName(attack), false, mDirection);
+			mTime = 0.0f;
+		}
+		
+		if (at->GetActiveAni()->GetKey() == AnimationName(attack)
+			&& at->GetActiveAni()->IsComplete())
+		{
+			
+		}
+		
+
+		if (mOwner->GetName() == L"CannibalFlowerA")
+		{
+			if (at->GetActiveAni()->GetAniIndex() == 3 
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
+				&& mLaunched == false)
+			{
+				Bullet_PoisonOrb* pob = object::Instantiate<Bullet_PoisonOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+				mLaunched = true;
+				//mTime = 0.0f;
+			}
+		}
+		else if (mOwner->GetName() == L"Ent")
+		{
+			if (at->GetActiveAni()->GetAniIndex() == 7 
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack) 
+				&& mLaunched == false)
+			{
+				Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
+				pos.z += 0.1f;
+				Effect_ProjectileDest* epd = object::Instantiate<Effect_ProjectileDest>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+				Bullet_EntRock* erk = object::Instantiate<Bullet_EntRock>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+				mLaunched = true;
+			}
+		}
+
+		if (mLaunched && at->GetActiveAni()->IsComplete())
+		{
+			at->PlayAnimation(AnimationName(idle), true, mDirection);
+			mFSMState = eFSMState::Idle;
 		}
 	}
 	void SCRIPT_RangedMob::Attacked()
@@ -198,5 +231,23 @@ namespace sg
 		}
 		else
 			return L"";
+	}
+	float SCRIPT_RangedMob::GetDistance()
+	{
+		Transform* tr = mOwner->GetComp<Transform>();
+		Transform* ptr = mTarget->GetComp<Transform>();
+		Vector3 pos = tr->GetPosition();
+		Vector3 ppos = ptr->GetPosition();
+
+		return (ppos - pos).Length();
+	}
+	Vector3 SCRIPT_RangedMob::GetDirection()
+	{
+		Transform* tr = mOwner->GetComp<Transform>();
+		Transform* ptr = mTarget->GetComp<Transform>();
+		Vector3 pos = tr->GetPosition();
+		Vector3 ppos = ptr->GetPosition();
+
+		return ppos - pos;
 	}
 }

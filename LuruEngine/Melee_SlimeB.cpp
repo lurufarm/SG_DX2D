@@ -21,7 +21,6 @@ namespace sg
 	}
 	void Melee_SlimeB::Initialize()
 	{
-
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
 		mCol = GetComp<Collider2D>();
@@ -42,6 +41,7 @@ namespace sg
 		mMr->Initialize();
 		mCol->SetSize(Vector2(0.5f, 0.5f));
 		AddComp<SCRIPT_MeleeMob>();
+		Monster_Melee::Initialize();
 	}
 	void Melee_SlimeB::Update()
 	{

@@ -53,26 +53,22 @@ namespace sg
 			mBullet->GetComp<Transform>()->SetPosition(curPos);
 		}
 
-		if (mBulletType == eBulletType::Lucy)
+		if (mBulletType == eBulletType::Lucy) // 포물선을 그리는 Projectile
 		{
 			float curveHeight = 20.0f; // 곡선의 높이
-			float curveDuration = mTotalDuration * 2.0f; // 곡선 운동 시간
-
-			//Vector3 targetPos = mBullet->GetTargetPos();
-			//Vector3 startPos = mBullet->GetFirstPos();
+			float curveDuration = mTotalDuration * 1.5f; // 곡선 운동 시간
 
 			// 시간의 변화량을 계산
-			float deltaTime = Time::DeltaTime();
+			//float deltaTime = Time::DeltaTime();
 			float t = mTime / curveDuration;
-			mTime += deltaTime;
+			//mTime += deltaTime;
 
 			// 포물선 곡선을 따르도록 x, y, z 좌표 계산
 			float xDist = mLastPos.x - mFirstPos.x; // x 좌표의 이동 거리
 			float yDist = mLastPos.y - mFirstPos.y; // y 좌표의 이동 거리
 			float x = mFirstPos.x + t * xDist;
 			float y = mFirstPos.y + t * yDist + curveHeight * 4.0f * t * (1.0f - t);
-
-			float z = -1.0f; // Assuming the z-position remains constant
+			float z = -1.0f;
 
 			curPos = Vector3(x, y, z);
 			mBullet->GetComp<Transform>()->SetPosition(curPos);
@@ -85,7 +81,7 @@ namespace sg
 		}
 
 
-		// Bullet State Changing
+		// Bullet State Changing : 사정거리 이상이 되면 사라진다
 			Vector2 distance = Vector2(curPos.x - mBullet->GetFirstPos().x, curPos.y - mBullet->GetFirstPos().y);
 			float dislength = distance.Length();
 		if (dislength >= mPlayer->GetChar()->GetStat().mRange)
@@ -110,5 +106,6 @@ namespace sg
 	}
 	void SCRIPT_Bullet::OnCollisionExit(Collider2D* other)
 	{
+
 	}
 }

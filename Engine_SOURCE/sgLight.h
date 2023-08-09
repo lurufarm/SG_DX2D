@@ -26,7 +26,11 @@ namespace sg
 		float GetRadius()				{ return mAttribute.radius; }
 		float GetAngle()				{ return mAttribute.angle; }
 
+		static void ClearNum() { mNum = 0; }
+
 	private:
+		bool mOn;
+		bool mPlus;
 		LightAttribute mAttribute;
 		static int mNum;
 	};

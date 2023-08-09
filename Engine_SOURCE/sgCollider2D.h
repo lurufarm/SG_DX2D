@@ -27,6 +27,7 @@ namespace sg
 		UINT GetColliderID() { return mColliderID; }
 
 		Vector3 GetCPosition() { return mPosition; }
+		Vector2 GetCenter() { return mCenter; }
 		Vector2 GetCSize() { return mSize; }
 		Vector3 GetCScale() { return mScale; }
 

@@ -8,9 +8,10 @@ namespace sg
 		SetName(L"CannibalFlowerA");
 
 		mStat.mHP = 18;
-		mStat.mStrength = 3;
+		mStat.mStrength = 4;
 		mStat.mSpeed = 10.0f;
-		mStat.mRange = 60.0f;
+		mStat.mRange = 100.0f;
+		mStat.mCoolDown = 2.0f;
 		mStat.dropEXP = 10.0f;
 
 		Ranged_CannibalFlowerA::Initialize();
@@ -30,15 +31,15 @@ namespace sg
 
 		mAtlas = Resources::Find<Material>(L"MobCannibalFlowerA");
 
-		mAni->Create(L"Ani_CannibalFlowerA_Idle", mAtlas->GetTexture(), Vector2::Zero, Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_CannibalFlowerA_Move", mAtlas->GetTexture(), Vector2(0.0f, 25.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_CannibalFlowerA_Attack", mAtlas->GetTexture(), Vector2(0.0f, 50.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.05f);
-		mAni->Create(L"Ani_CannibalFlowerA_Death", mAtlas->GetTexture(), Vector2(0.0f, 75.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.055f);
-		mAni->Create(L"Ani_CannibalFlowerA_Attacked", mAtlas->GetTexture(), Vector2(0.0f, 100.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.055f);
-		mAni->Create(L"Ani_CannibalFlowerA_Spawn", mAtlas->GetTexture(), Vector2(0.0f, 125.0f), Vector2(23.0f, 25.0f), 10, Vector2::Zero, 0.05f);
+		mAni->Create(L"Ani_CannibalFlowerA_Idle", mAtlas->GetTexture(), Vector2::Zero, Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_CannibalFlowerA_Move", mAtlas->GetTexture(), Vector2(0.0f, 25.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_CannibalFlowerA_Attack", mAtlas->GetTexture(), Vector2(0.0f, 50.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.15f);
+		mAni->Create(L"Ani_CannibalFlowerA_Death", mAtlas->GetTexture(), Vector2(0.0f, 75.0f), Vector2(23.0f, 25.0f), 7, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_CannibalFlowerA_Attacked", mAtlas->GetTexture(), Vector2(0.0f, 100.0f), Vector2(23.0f, 25.0f), 5, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_CannibalFlowerA_Spawn", mAtlas->GetTexture(), Vector2(0.0f, 125.0f), Vector2(23.0f, 25.0f), 10, Vector2::Zero, 0.1f);
 
 		mMr->Initialize();
-		//mCol->SetSize(Vector2(0.5f, 0.5f));
+		Monster_Ranged::Initialize();
 		AddComp<SCRIPT_RangedMob>();
 	}
 	void Ranged_CannibalFlowerA::Update()

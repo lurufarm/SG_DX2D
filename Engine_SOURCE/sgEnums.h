@@ -25,6 +25,7 @@ namespace sg::enums
 		Tile,
 		InteractableObject,
 		Monster,
+		Monster_Bullet,
 		Player,
 		Player_Bullet,
 		Effect,
@@ -59,7 +60,13 @@ namespace sg::enums
 	{
 		Cheese,
 		Lucy,
-		CannibalFlowerA,
+		End,
+	};
+	
+	enum class eMProjType
+	{
+		PoisonOrb,
+		EntRock,
 		End,
 	};
 

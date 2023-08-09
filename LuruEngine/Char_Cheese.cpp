@@ -29,6 +29,7 @@ namespace sg
 		mAni->Create(L"Ani_Cheese_Move", mAtlas, Vector2(0.0f, 0.0f), Vector2(24.0f, 20.0f), 8, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_Cheese_Attack", mAtlas, Vector2(0.0f, 40.0f), Vector2(24.0f, 20.0f), 4, Vector2::Zero, 0.1f);
 		mAni->Create(L"Ani_Cheese_Death", mAtlas, Vector2(0.0f, 60.0f), Vector2(24.0f, 20.0f), 18, Vector2::Zero, 0.05f);
+		mAni->Create(L"Ani_Cheese_Attacked", mAtlas, Vector2(0.0f, 80.0f), Vector2(24.0f, 20.0f), 7	, Vector2::Zero, 0.05f);
 		mMr->Initialize();
 
 		Gobj_Character::Initialize();

@@ -12,7 +12,6 @@ namespace sg
 		AddComp<MeshRenderer>();
 		AddComp<Animator>();
 		mIsPlayer = false;
-		//mTransParent = false;
 	}
 	Gobj_Character::~Gobj_Character()
 	{

@@ -42,9 +42,15 @@ namespace sg::graphics
 	{
 		if (mStride < stride)
 			Create(mSize, stride, eSRVType::None);
-		
+
 		if (buffer.Get() != nullptr)
+		{
 			GetDevice()->BindBuffer(buffer.Get(), data, mSize * stride);
+		}
+
+		//D3D11_BUFFER_DESC newdesc = {};
+		//GetDevice()->CreateBuffer(buffer.GetAddressOf(), &newdesc, nullptr);
+
 	}
 	void StructuredBuffer::BindSRV(eShaderStage stage, UINT slot)
 	{

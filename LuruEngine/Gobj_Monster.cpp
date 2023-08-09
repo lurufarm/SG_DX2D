@@ -4,8 +4,11 @@
 
 extern sg::Gobj_Player* Player;
 
+
 namespace sg
 {
+	std::map<std::wstring, Gobj_Monster*> Gobj_Monster::mAllMobs = {};
+
 	Gobj_Monster::Gobj_Monster()
 	{
 		AddComp<MeshRenderer>();
@@ -19,6 +22,7 @@ namespace sg
 	}
 	void Gobj_Monster::Initialize()
 	{
+		AddMob(this->GetName(), this);
 	}
 	void Gobj_Monster::Update()
 	{

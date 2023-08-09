@@ -25,11 +25,9 @@ namespace sg
 		mMr->Initialize();
 
 		mBulletOwner = Gobj_Character::GetChar(L"Cheese");
-		Gobj_Bullet::initialize();
+		Gobj_Bullet::Initialize();
 
 		AddComp<SCRIPT_Bullet>();
-
-
 	}
 	void Bullet_CheeseArrow::Update()
 	{

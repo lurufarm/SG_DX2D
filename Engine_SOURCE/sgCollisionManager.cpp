@@ -189,9 +189,21 @@ namespace sg
 
 		Transform* leftTr = left->GetOwner()->GetComp<Transform>();
 		Transform* rightTr = right->GetOwner()->GetComp<Transform>();
-
+		
 		Matrix leftMatrix = leftTr->GetMatrix();
 		Matrix rightMatrix = rightTr->GetMatrix();
+
+		//Vector3 leftcolpos = Vector3(left->GetCenter().x, left->GetCenter().y, 0.0f);
+		//Vector3 rightcolpos = Vector3(right->GetCenter().x, right->GetCenter().y, 0.0f);
+
+		//Matrix lm;
+		//Matrix rm;
+
+		//lm.Translation(leftcolpos);
+		//rm.Translation(rightcolpos);
+		
+		//leftMatrix += lm;
+		//rightMatrix += rm;
 
 		Vector3 Axis[4] = {};
 
@@ -218,7 +230,8 @@ namespace sg
 			Axis[i].z = 0.0f;
 		}
 
-		Vector3 vc = leftTr->GetPosition() - rightTr->GetPosition();
+		Vector3 vc = (leftTr->GetPosition()) - (rightTr->GetPosition());
+		//Vector3 vc = (leftTr->GetPosition() + leftcolpos) - (rightTr->GetPosition() + rightcolpos);
 		vc.z = 0.0f;
 
 		Vector3 centerDir = vc;

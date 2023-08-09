@@ -19,6 +19,8 @@ namespace sg
 		virtual void LateUpdate();
 		virtual void Render();
 
+		void Initialize2();
+
 		static void SetChar(Gobj_Character* character)
 		{
 			if (mpChar != nullptr)
@@ -40,6 +42,7 @@ namespace sg
 		
 		void SetTarget(GameObject* mob) { mTarget = mob; }
 		GameObject* GetTarget() { return mTarget; }
+
 
 	private:
 

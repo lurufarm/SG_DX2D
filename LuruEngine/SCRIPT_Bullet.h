@@ -21,7 +21,7 @@ namespace sg
 
 		Gobj_Bullet* mBullet;
 		eBulletType mBulletType;
-		Gobj_Character* mBulletOwner;
+		GameObject* mBulletOwner;
 		Gobj_Player* mPlayer;
 		float mTime;
 		float mTotalDuration;

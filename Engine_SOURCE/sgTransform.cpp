@@ -6,7 +6,7 @@
 
 namespace sg
 {
-	using namespace sg::graphics;
+	using namespace graphics;
 
 	Transform::Transform()
 		: Component(eComponentType::Transform)

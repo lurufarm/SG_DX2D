@@ -26,7 +26,7 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Update()
 	{
-		mTime += Time::DeltaTime();
+		//mTime += Time::DeltaTime();
 
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -84,18 +84,6 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
-
-		if (mFSMState == eFSMState::Attack)
-		{
-			if (other->GetOwner() == mTarget)
-			{
-				Gobj_Character::CharStat stat = mTarget->GetStat();
-
-				stat.mHP -= mOwner->GetStat().mStrength;
-
-				mTarget->SetStat(stat);
-			}
-		}
 	}
 	void SCRIPT_MeleeMob::OnCollisionStay(Collider2D* other)
 	{
@@ -146,15 +134,58 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Attack()
 	{
+		mTime += Time::DeltaTime();
+
+		Animator* at = mOwner->GetComp<Animator>();
+
 		if (mTime >= mOwner->GetStat().mCoolDown)
 		{
-			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attack), true, mDirection);
+			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
 		}
 		if (GetDistance() > mOwner->GetStat().mRange)
 		{
 			mFSMState = eFSMState::Move;
 		}
+		else if (at->GetActiveAni()->IsComplete())
+		{
+			mFSMState = eFSMState::Idle;
+			at->PlayAnimation(AnimationName(idle), true, mDirection);
+		}
+		if (mOwner->GetName() == L"SlimeA" || mOwner->GetName() == L"SlimeB" || mOwner->GetName() == L"EliteCannibals")
+		{
+			if (at->GetActiveAni()->GetAniIndex() == 4 || at->GetActiveAni()->GetAniIndex() == 5)
+			{
+				mAttack = true;
+			}
+			else
+			{
+				mAttack = false;
+			}
+		}
+		else if (mOwner->GetName() == L"Larva" || mOwner->GetName() == L"EliteLarva")
+		{
+			if (at->GetActiveAni()->GetAniIndex() == 2 || at->GetActiveAni()->GetAniIndex() == 3)
+			{
+				mAttack = true;
+			}
+			else
+			{
+				mAttack = false;
+			}
+		}
+		else if (mOwner->GetName() == L"Cannibals")
+		{
+			if (at->GetActiveAni()->GetAniIndex() == 3 || at->GetActiveAni()->GetAniIndex() == 4)
+			{
+				mAttack = true;
+			}
+			else
+			{
+				mAttack = false;
+			}
+		}		
+
 	}
 	void SCRIPT_MeleeMob::Attacked()
 	{

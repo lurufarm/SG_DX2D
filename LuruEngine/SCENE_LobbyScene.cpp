@@ -97,12 +97,6 @@ namespace sg
 		mFocus->AddSelectObj(cardbook);
 		mFocus->AddSelectObj(gate);
 
-
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
-
 		// LobbyScene_MainCamera
 		GameObject* LobbyScenecamera = object::Instantiate<GameObject>(cameraPos, eLayerType::Player, this);
 		mCamera = LobbyScenecamera->AddComp<Camera>();
@@ -144,7 +138,7 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
-		renderer::lightsBuffer->Clear();
+		//renderer::lightsBuffer->Clear();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
 		TilePalette::AutoLoad(path0);
@@ -157,7 +151,8 @@ namespace sg
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		graphics::GetDevice()->SetBgColor(BgColor);
 		AddGameObj(eLayerType::Player, Player);
-		Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, -2.0f);
+		Player->Initialize2();
+		//Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, -2.0f);
 	}
 	void LobbyScene::OnExit()
 	{

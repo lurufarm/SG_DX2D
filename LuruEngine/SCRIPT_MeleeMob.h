@@ -41,6 +41,9 @@ namespace sg
 
 		float GetDistance();
 		Vector3 GetDirection();
+		eFSMState GetMeleeState() { return mFSMState; }
+
+		bool mAttack;
 
 	private:
 		eFSMState mFSMState;
