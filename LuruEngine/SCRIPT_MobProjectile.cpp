@@ -31,7 +31,7 @@ namespace sg
 		{
 			mFirstPos = mProj->GetFirstPos();
 			mLastPos = mProj->GetLastPos();
-			mTotalDuration = GetDistance();
+			mTotalDuration = GetDistance() / 100.0f;
 		}
 
 		IsLaunched = false;
@@ -77,19 +77,17 @@ namespace sg
 			curPos = Vector3(x, y, z);
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 
-			if (GetDistance() <= 30.0f)
+			if (GetDistance() <= 10.0f)
 				IsActivated = true;
 		}
 		else if (mProjType == eMProjType::Basic)
 		{
-			Vector2 dir = GetDirection();
-			Vector2 velocity = dir;
-
-			curPos = mProj->GetComp<Transform>()->GetPosition() + velocity * Time::DeltaTime();
+			curPos = mProj->GetFirstPos() + t * 5.0f * GetDirection();
+			curPos.z = -1.0f;
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 		}
 
-		// 사정거리 이상이 되면 사라진다
+		 // 사정거리 이상이 되면 사라짐
 		if (GetDistance() >= GetRange() * 2.0f)
 		{
 			mProj->SetState(GameObject::eState::Dead);
@@ -97,7 +95,7 @@ namespace sg
 	}
 	void SCRIPT_MobProjectile::OnCollisionEnter(Collider2D* other)
 	{
-		Vector3 pos = mProj->GetComp<Transform>()->GetPosition();
+		Vector3 pos;
 
 		if (mProjOwner != nullptr)
 		{
@@ -106,31 +104,23 @@ namespace sg
 				if (other->GetOwner() != mTarget)
 				{
 					mProj->SetState(GameObject::eState::Dead);
-					object::Instantiate<Effect_RockDust>(Vector3(mLastPos.x, mLastPos.y + 10.0f, mLastPos.z), eLayerType::Effect, SceneManager::GetActiveScene());
+					object::Instantiate<Effect_RockDust>(Vector3(mLastPos.x, mLastPos.y + 10.0f, mLastPos.z), eLayerType::Monster_Effect, SceneManager::GetActiveScene());
 				}
 			}
-			else if (mProjOwner->GetName() == L"OldEnt")
+			else if (mProjOwner->GetName() == L"OldEnt" && IsLaunched == false)
 			{
-				if (other->GetOwner() != mTarget && IsLaunched == false)
-				{
-					IsLaunched = true;
-					Vector3 left = Vector3(-1.0f, 0.0f, 0.0f);
-					Vector3 right = Vector3(1.0f, 0.0f, 0.0f);
-					Vector3 up = Vector3(0.0f, 1.0f, 0.0f);
-					Vector3 down = Vector3(0.0f, -1.0f, 0.0f);
-
-					object::SlicedApple(pos, 0);
-					object::SlicedApple(pos, 1);
-					object::SlicedApple(pos, 2);
-					object::SlicedApple(pos, 3);
-					object::Instantiate<Effect_RockDust>(Vector3(mLastPos.x, mLastPos.y + 10.0f, mLastPos.z), eLayerType::Effect, SceneManager::GetActiveScene());
-					mProj->SetState(GameObject::eState::Dead);
-
-				}
+				//Vector3 test = Vector3(100.0f, 100.0f, -5.0f);
+				pos = mProj->GetComp<Transform>()->GetPosition();
+				object::SlicedApple(pos, 0);
+				object::SlicedApple(pos, 1);
+				object::SlicedApple(pos, 2);
+				object::SlicedApple(pos, 3);
+				object::Instantiate<Effect_RockDust>(Vector3(pos.x, pos.y + 10, pos.z - 1.0f), eLayerType::Effect, SceneManager::GetActiveScene());
+				mProj->SetState(GameObject::eState::Dead);
 			}
 			else
 			{
-				Vector3 pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
+				pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
 				object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
 				mProj->SetState(GameObject::eState::Dead);
 			}
@@ -148,7 +138,6 @@ namespace sg
 	}
 	void SCRIPT_MobProjectile::OnCollisionExit(Collider2D* other)
 	{
-		//IsLaunched = false;
 	}
 	float SCRIPT_MobProjectile::GetSpeed()
 	{

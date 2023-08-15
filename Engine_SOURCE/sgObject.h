@@ -35,7 +35,7 @@ namespace sg::object
 	{
 		Bullet_SlicedApple* sa = new Bullet_SlicedApple(pos, a);
 		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObj(eLayerType::Monster_Bullet, sa);
+		scene->AddGameObj(eLayerType::Monster_Bullet2, sa);
 
 		return sa;
 	}
