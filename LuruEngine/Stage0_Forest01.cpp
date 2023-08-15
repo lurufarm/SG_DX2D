@@ -17,6 +17,7 @@
 #include "Melee_EliteCannibals.h"
 #include "Ranged_CannibalFlowerA.h"
 #include "Ranged_Ent.h"
+#include "Boss_OldEnt.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -73,23 +74,24 @@ namespace sg
 		//Melee_SlimeB* slimeb0 = object::Instantiate<Melee_SlimeB>(Vector3(200.0f, 200.0f, -0.1f), eLayerType::Monster, this);
 		//Melee_SlimeB* slimeb1 = object::Instantiate<Melee_SlimeB>(Vector3(-200.0f, 200.0f, -0.1f), eLayerType::Monster, this);
 
-		Melee_Larva* larva0 = object::Instantiate<Melee_Larva>(Vector3(100.0f, 50.0f, -0.1f), eLayerType::Monster, this);
-		Melee_Larva* larva1 = object::Instantiate<Melee_Larva>(Vector3(-100.0f, 50.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_Larva* larva0 = object::Instantiate<Melee_Larva>(Vector3(100.0f, 50.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_Larva* larva1 = object::Instantiate<Melee_Larva>(Vector3(-100.0f, 50.0f, -0.1f), eLayerType::Monster, this);
 
-		Melee_EliteLarva* Elarva0 = object::Instantiate<Melee_EliteLarva>(Vector3(80.0f, 50.0f, -0.1f), eLayerType::Monster, this);
-		Melee_EliteLarva* Elarva1 = object::Instantiate<Melee_EliteLarva>(Vector3(-80.0f, 50.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_EliteLarva* Elarva0 = object::Instantiate<Melee_EliteLarva>(Vector3(80.0f, 50.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_EliteLarva* Elarva1 = object::Instantiate<Melee_EliteLarva>(Vector3(-80.0f, 50.0f, -0.1f), eLayerType::Monster, this);
 
-		Melee_Cannibals* cannibals0 = object::Instantiate<Melee_Cannibals>(Vector3(100.0f, 80.0f, -0.1f), eLayerType::Monster, this);
-		Melee_Cannibals* cannibals1 = object::Instantiate<Melee_Cannibals>(Vector3(-100.0f, 80.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_Cannibals* cannibals0 = object::Instantiate<Melee_Cannibals>(Vector3(100.0f, 80.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_Cannibals* cannibals1 = object::Instantiate<Melee_Cannibals>(Vector3(-100.0f, 80.0f, -0.1f), eLayerType::Monster, this);
 
-		Melee_EliteCannibals* Ecannibals0 = object::Instantiate<Melee_EliteCannibals>(Vector3(80.0f, 80.0f, -0.1f), eLayerType::Monster, this);
-		Melee_EliteCannibals* Ecannibals1 = object::Instantiate<Melee_EliteCannibals>(Vector3(-80.0f, 80.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_EliteCannibals* Ecannibals0 = object::Instantiate<Melee_EliteCannibals>(Vector3(80.0f, 80.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_EliteCannibals* Ecannibals1 = object::Instantiate<Melee_EliteCannibals>(Vector3(-80.0f, 80.0f, -0.1f), eLayerType::Monster, this);
 
 
 		//Ranged_CannibalFlowerA* Cflowera0 = object::Instantiate<Ranged_CannibalFlowerA>(Vector3(50.0f, 80.0f, -0.1f), eLayerType::Monster, this);
 		//Ranged_CannibalFlowerA* Cflowera1 = object::Instantiate<Ranged_CannibalFlowerA>(Vector3(-50.0f, 80.0f, -0.1f), eLayerType::Monster, this);
 
 		//Ranged_Ent* ent0 = object::Instantiate<Ranged_Ent>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
+		Boss_OldEnt* bent = object::Instantiate<Boss_OldEnt>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
 
 
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);

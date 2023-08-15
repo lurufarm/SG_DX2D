@@ -7,6 +7,7 @@
 #include "..\LuruEngine\Gobj_Player.h"
 #include "..\LuruEngine\Gobj_MobProjectile.h"
 #include "..\LuruEngine\SCRIPT_MobProjectile.h"
+#include "..\LuruEngine\Bullet_SlicedApple.h"
 
 namespace sg::object
 {
@@ -29,6 +30,14 @@ namespace sg::object
 		Scene* scene = SceneManager::GetActiveScene();
 		
 		return player;
+	}
+	static __forceinline Bullet_SlicedApple* SlicedApple(Vector3 pos, int a)
+	{
+		Bullet_SlicedApple* sa = new Bullet_SlicedApple(pos, a);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObj(eLayerType::Monster_Bullet, sa);
+
+		return sa;
 	}
 	
 	template <typename T>

@@ -67,6 +67,7 @@ namespace sg::enums
 	{
 		PoisonOrb,
 		EntRock,
+		Basic,
 		End,
 	};
 

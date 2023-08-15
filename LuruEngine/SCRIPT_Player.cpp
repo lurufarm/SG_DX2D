@@ -284,13 +284,16 @@ namespace sg
 			pStat.mHP -= mStat.mStrength;
 			mOwner->SetStat(pStat);
 		}
-		else if (sp != nullptr && mAttacked == false && mDeath == false)
+		else if (sp != nullptr)
 		{
-			mAttacked = true;
-			Gobj_Character::CharStat pStat = mOwner->GetStat();
-			Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
-			pStat.mHP -= mStat.mStrength;
-			mOwner->SetStat(pStat);
+			if (mAttacked == false && mDeath == false && sp->GetProjActivated())
+			{
+				mAttacked = true;
+				Gobj_Character::CharStat pStat = mOwner->GetStat();
+				Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
+				pStat.mHP -= mStat.mStrength;
+				mOwner->SetStat(pStat);
+			}
 		}
 	}
 	void SCRIPT_Player::OnCollisionStay(Collider2D* other)

@@ -15,27 +15,25 @@ namespace sg
 		mTime = 0.0f;
 		mBullet = (Gobj_Bullet*)GetOwner();
 		mBulletType = mBullet->GetBulletType();
-		Transform* tr = mBullet->GetComp<Transform>();
+		mFirstPos = mBullet->GetFirstPos();
+		mLastPos = mBullet->GetLastPos();
 		IsLaunched = false;
-		Vector2 distance = Vector2(mBullet->GetTargetPos().x - mBullet->GetFirstPos().x, mBullet->GetTargetPos().y - mBullet->GetFirstPos().y);
-		mTotalDuration = distance.Length() / 100.0f;
+		mTotalDuration = GetDistance() / 100.0f;
 
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
 
-		mFirstPos = mBullet->GetFirstPos();
-		mLastPos = mBullet->GetTargetPos();
-
 		if (mBullet->GetBulletType() == eBulletType::Cheese)
 		{
-			Vector3 direction = mLastPos - mFirstPos;
-			direction.Normalize();
+			Vector2 direction = GetDirection();
 			float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
 			if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
 			{
 				angleRad = -angleRad;
 			}
 			float angleDegree = (angleRad * 180.0f / 3.1415926535f) - 90.0f;
+			
+			Transform* tr = mBullet->GetComp<Transform>();
 			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 		}
 

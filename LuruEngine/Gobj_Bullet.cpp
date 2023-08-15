@@ -28,12 +28,12 @@ namespace sg
 			if (mBulletOwner->GetIsPlayer())
 			{
 				mFirstPos = Player->GetComp<Transform>()->GetPosition();
-				mTargetPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
+				mLastPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
 			}
 			else
 			{
 				mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
-				mTargetPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+				mLastPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
 			}
 		}
 	}

@@ -30,6 +30,10 @@ namespace sg
 			return direction;
 		}
 
+		bool GetProjActivated() { return IsActivated; }
+		float GetSpeed();
+		float GetRange();
+
 	private:
 
 
@@ -40,6 +44,7 @@ namespace sg
 		float mTime;
 		float mTotalDuration;
 		bool IsLaunched;
+		bool IsActivated;
 
 		Vector3 mFirstPos;
 		Vector3 mLastPos;

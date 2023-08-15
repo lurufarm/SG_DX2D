@@ -202,17 +202,11 @@
     <ClCompile Include="Monster_Ranged.cpp">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet_PoisonOrb.cpp">
-      <Filter>Obj\Gobj_Monster\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Gobj_MobProjectile.cpp">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClCompile>
     <ClCompile Include="Ranged_Ent.cpp">
       <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet_EntRock.cpp">
-      <Filter>Obj\Gobj_Monster\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Effect_ProjectileDest.cpp">
       <Filter>Obj\Gobj_Effect</Filter>
@@ -237,6 +231,24 @@
     </ClCompile>
     <ClCompile Include="Melee_EliteCannibals.cpp">
       <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_OldEnt.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Boss.cpp">
+      <Filter>Script\SCRIPT_Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_SlicedApple.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_Apple.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_EntRock.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_PoisonOrb.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -444,17 +456,11 @@
     <ClInclude Include="Monster_Ranged.h">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet_PoisonOrb.h">
-      <Filter>Obj\Gobj_Monster\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Gobj_MobProjectile.h">
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClInclude>
     <ClInclude Include="Ranged_Ent.h">
       <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet_EntRock.h">
-      <Filter>Obj\Gobj_Monster\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Effect_ProjectileDest.h">
       <Filter>Obj\Gobj_Effect</Filter>
@@ -479,6 +485,24 @@
     </ClInclude>
     <ClInclude Include="Melee_EliteCannibals.h">
       <Filter>Obj\Gobj_Monster\Melee\Cannibals</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_OldEnt.h">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Boss.h">
+      <Filter>Script\SCRIPT_Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_SlicedApple.h">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_Apple.h">
+      <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_EntRock.h">
+      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_PoisonOrb.h">
+      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -572,9 +596,6 @@
     <Filter Include="Obj\Gobj_Monster\Base">
       <UniqueIdentifier>{b40d41e0-e642-4fe9-8007-f6ec99addd57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Bullet">
-      <UniqueIdentifier>{f7690201-0c4e-4f74-8577-0be67664f949}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\SCENE_PlayScene\Stage0">
       <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
     </Filter>
@@ -610,6 +631,15 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Melee\Cannibals">
       <UniqueIdentifier>{eac19ce0-a3f9-4a5b-bb3a-5261fa7bece0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\SCRIPT_Monster\Boss">
+      <UniqueIdentifier>{dbbdedf8-8afc-48af-9919-2ba2bdd4bf78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Boss">
+      <UniqueIdentifier>{abc0c1f5-3a68-49ef-9e29-5a71476dc500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Boss\Old Ent">
+      <UniqueIdentifier>{531a12da-33ac-457a-ba87-032f3cd317f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

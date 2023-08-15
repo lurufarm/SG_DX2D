@@ -85,15 +85,14 @@ namespace sg
 			// 충돌 O
 			if (iter->second == false) // 최초 충돌일 때
 			{
+				iter->second = true;
 				left->OnCollisionEnter(right);
 				right->OnCollisionEnter(left);
-				iter->second = true;
 			}
 			else // 충돌 중이었을 때
 			{
 				left->OnCollisionStay(right);
 				right->OnCollisionEnter(left);
-				iter->second = true;
 			}
 		}
 		else
@@ -102,9 +101,9 @@ namespace sg
 			if (iter->second == true)
 			{
 				// 충돌하다가 나갈 때
+				iter->second = false;
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
-				iter->second = false;
 			}
 		}
 

@@ -154,10 +154,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boss_OldEnt.h" />
+    <ClInclude Include="Bullet_Apple.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Bullet_PoisonOrb.h" />
+    <ClInclude Include="Bullet_SlicedApple.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
     <ClInclude Include="Effect_Explosion.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="Ranged_Ent.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
+    <ClInclude Include="SCRIPT_Boss.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
     <ClInclude Include="SCRIPT_Company.h" />
     <ClInclude Include="SCRIPT_Gate.h" />
@@ -236,10 +240,13 @@
     <ClInclude Include="UI_FocusBoxes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boss_OldEnt.cpp" />
+    <ClCompile Include="Bullet_Apple.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Bullet_PoisonOrb.cpp" />
+    <ClCompile Include="Bullet_SlicedApple.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
     <ClCompile Include="Effect_Explosion.cpp" />
@@ -269,6 +276,7 @@
     <ClCompile Include="Ranged_Ent.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
+    <ClCompile Include="SCRIPT_Boss.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
     <ClCompile Include="SCRIPT_Company.cpp" />
     <ClCompile Include="SCRIPT_Gate.cpp" />

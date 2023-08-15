@@ -1,25 +1,28 @@
-#include "SCRIPT_RangedMob.h"
+#include "SCRIPT_Boss.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "Monster_Ranged.h"
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
-#include "Bullet_PoisonOrb.h"
-#include "Bullet_EntRock.h"
+
+#include <random>
+
 #include "Effect_ProjectileDest.h"
+#include "Bullet_Apple.h"
+#include "Bullet_SlicedApple.h"
 
 extern sg::Gobj_Player* Player;
 
 namespace sg
 {
-	SCRIPT_RangedMob::SCRIPT_RangedMob()
+	SCRIPT_Boss::SCRIPT_Boss()
 		: mOwner(nullptr)
 	{
 	}
-	SCRIPT_RangedMob::~SCRIPT_RangedMob()
+	SCRIPT_Boss::~SCRIPT_Boss()
 	{
 	}
-	void SCRIPT_RangedMob::Initialize()
+	void SCRIPT_Boss::Initialize()
 	{
 		mOwner = (Monster_Ranged*)GetOwner();
 		mTarget = Player;
@@ -27,8 +30,9 @@ namespace sg
 		mDirection = false;
 		mDeath = false;
 		mLaunched = false;
+		mAttackNum = false;
 	}
-	void SCRIPT_RangedMob::Update()
+	void SCRIPT_Boss::Update()
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -49,33 +53,33 @@ namespace sg
 
 		switch (mFSMState)
 		{
-		case sg::SCRIPT_RangedMob::eFSMState::Spwan:
+		case sg::SCRIPT_Boss::eFSMState::Spwan:
 			Spawn();
 			break;
-		case sg::SCRIPT_RangedMob::eFSMState::Idle:
+		case sg::SCRIPT_Boss::eFSMState::Idle:
 			Idle();
 			break;
-		case sg::SCRIPT_RangedMob::eFSMState::Move:
+		case sg::SCRIPT_Boss::eFSMState::Move:
 			Move();
 			break;
-		case sg::SCRIPT_RangedMob::eFSMState::Attack:
+		case sg::SCRIPT_Boss::eFSMState::Attack:
 			Attack();
 			break;
-		case sg::SCRIPT_RangedMob::eFSMState::Attacked:
+		case sg::SCRIPT_Boss::eFSMState::Attacked:
 			Attacked();
 			break;
-		case sg::SCRIPT_RangedMob::eFSMState::Death:
+		case sg::SCRIPT_Boss::eFSMState::Death:
 			Death();
 			break;
 		}
 	}
-	void SCRIPT_RangedMob::LateUpdate()
+	void SCRIPT_Boss::LateUpdate()
 	{
 	}
-	void SCRIPT_RangedMob::Render()
+	void SCRIPT_Boss::Render()
 	{
 	}
-	void SCRIPT_RangedMob::OnCollisionEnter(Collider2D* other)
+	void SCRIPT_Boss::OnCollisionEnter(Collider2D* other)
 	{
 		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner()))
 		{
@@ -96,23 +100,23 @@ namespace sg
 			}
 		}
 	}
-	void SCRIPT_RangedMob::OnCollisionStay(Collider2D* other)
+	void SCRIPT_Boss::OnCollisionStay(Collider2D* other)
 	{
 	}
-	void SCRIPT_RangedMob::OnCollisionExit(Collider2D* other)
+	void SCRIPT_Boss::OnCollisionExit(Collider2D* other)
 	{
 		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner()))
 		{
 			mAttacked = false;
 		}
 	}
-	void SCRIPT_RangedMob::Spawn()
+	void SCRIPT_Boss::Spawn()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(spawn), false, mDirection);
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
 			mFSMState = eFSMState::Idle;
 	}
-	void SCRIPT_RangedMob::Idle()
+	void SCRIPT_Boss::Idle()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
@@ -127,7 +131,7 @@ namespace sg
 			mFSMState = eFSMState::Attack;
 		}
 	}
-	void SCRIPT_RangedMob::Move()
+	void SCRIPT_Boss::Move()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(move), true, mDirection);
 
@@ -144,53 +148,40 @@ namespace sg
 		if (distance <= mOwner->GetStat().mRange)
 			mFSMState = eFSMState::Attack;
 	}
-	void SCRIPT_RangedMob::Attack()
+	void SCRIPT_Boss::Attack()
 	{
 		if (GetDistance() > mOwner->GetStat().mRange)
-		{
 			mFSMState = eFSMState::Move;
-		}
-
+		SelectAttack();
 		mTime += Time::DeltaTime();
-
 		Animator* at = mOwner->GetComp<Animator>();
-		if (mTime >= mOwner->GetStat().mCoolDown)
-		{
-			at->PlayAnimation(AnimationName(attack), false, mDirection);
-			mTime = 0.0f;
-		}		
 
-		if (mOwner->GetName() == L"CannibalFlowerA")
+		if (mAttackNum == 0) // 사과 던지기 공격일 때
 		{
-			if (at->GetActiveAni()->GetAniIndex() == 3 
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
-				&& mLaunched == false)
+			if (mTime >= mOwner->GetStat().mCoolDown)
 			{
-				Bullet_PoisonOrb* pob = object::Instantiate<Bullet_PoisonOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
-				mLaunched = true;
+				at->PlayAnimation(AnimationName(attack), false, mDirection);
+				mTime = 0.0f;
 			}
-		}
-		else if (mOwner->GetName() == L"Ent")
-		{
-			if (at->GetActiveAni()->GetAniIndex() == 7 
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack) 
+
+			if (at->GetActiveAni()->GetAniIndex() == 6
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
 				&& mLaunched == false)
 			{
 				Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
 				pos.z += 0.1f;
 				Effect_ProjectileDest* epd = object::Instantiate<Effect_ProjectileDest>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
-				Bullet_EntRock* erk = object::Instantiate<Bullet_EntRock>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+				Bullet_Apple* app = object::Instantiate<Bullet_Apple>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 				mLaunched = true;
 			}
 		}
-
 		if (mLaunched && at->GetActiveAni()->IsComplete())
 		{
 			at->PlayAnimation(AnimationName(idle), true, mDirection);
 			mFSMState = eFSMState::Idle;
 		}
 	}
-	void SCRIPT_RangedMob::Attacked()
+	void SCRIPT_Boss::Attacked()
 	{
 		if (mAttacked == false)
 		{
@@ -205,13 +196,13 @@ namespace sg
 			mFSMState = eFSMState::Idle;
 		}
 	}
-	void SCRIPT_RangedMob::Death()
+	void SCRIPT_Boss::Death()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(death), false, mDirection);
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
 			mOwner->SetState(GameObject::eState::Dead);
 	}
-	std::wstring SCRIPT_RangedMob::AnimationName(const std::wstring& animation)
+	std::wstring SCRIPT_Boss::AnimationName(const std::wstring& animation)
 	{
 		if (mOwner)
 		{
@@ -224,7 +215,7 @@ namespace sg
 		else
 			return L"";
 	}
-	float SCRIPT_RangedMob::GetDistance()
+	float SCRIPT_Boss::GetDistance()
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -233,7 +224,7 @@ namespace sg
 
 		return (ppos - pos).Length();
 	}
-	Vector3 SCRIPT_RangedMob::GetDirection()
+	Vector3 SCRIPT_Boss::GetDirection()
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -241,5 +232,13 @@ namespace sg
 		Vector3 ppos = ptr->GetPosition();
 
 		return ppos - pos;
+	}
+	void SCRIPT_Boss::SelectAttack()
+	{
+		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
+		std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
+		std::uniform_int_distribution<> dist(0, 1);  // 0과 1 사이의 균등 분포
+
+		mAttackNum = dist(gen);
 	}
 }

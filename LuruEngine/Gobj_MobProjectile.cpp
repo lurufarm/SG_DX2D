@@ -12,20 +12,11 @@ namespace sg
 	class SCRIPT_Player;
 	class SCRIPT_RangedMob;
 
-	//Gobj_MobProjectile::Gobj_MobProjectile()
-	//{
-	//	mType = eMProjType::PoisonOrb;
-	//	AddComp<MeshRenderer>();
-	//	AddComp<Collider2D>();
-	//}
-
 	Gobj_MobProjectile::Gobj_MobProjectile()
 	{
 		mType = eMProjType::PoisonOrb;
 		AddComp<MeshRenderer>();
 		AddComp<Collider2D>();
-		//mFirstPos = BulletOwner->GetComp<Transform>()->GetPosition();
-		//mTargetPos = Player->GetComp<Transform>()->GetPosition();
 	}
 	Gobj_MobProjectile::~Gobj_MobProjectile()
 	{

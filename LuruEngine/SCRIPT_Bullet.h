@@ -16,6 +16,20 @@ namespace sg
 		virtual void OnCollisionStay(Collider2D* other);
 		virtual void OnCollisionExit(Collider2D* other);
 
+		float GetDistance()
+		{
+			Vector3 currentPos = mBullet->GetComp<Transform>()->GetPosition();
+			Vector2 distance = Vector2(currentPos.x - mLastPos.x, currentPos.y - mLastPos.y);
+			return distance.Length();
+		}
+
+		Vector2 GetDirection()
+		{
+			Vector2 direction = Vector2(mLastPos.x - mFirstPos.x, mLastPos.y - mFirstPos.y);
+			direction.Normalize();
+			return direction;
+		}
+
 	private:
 
 

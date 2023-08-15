@@ -17,7 +17,7 @@ namespace sg
 		virtual void LateUpdate();
 		virtual void Render();
 
-		Vector3 GetTargetPos() { return mTargetPos; }
+		Vector3 GetLastPos() { return mLastPos; }
 		Vector3 GetFirstPos() { return mFirstPos; }
 
 		void SetProjOwner(Gobj_Monster* owner) { mProjOwner = owner; }
@@ -26,6 +26,7 @@ namespace sg
 		eMProjType GetProjType() { return mType; }
 
 		void SetFirstPos(Vector3 pos) { mFirstPos = pos; }
+		void SetLastPos(Vector3 pos) { mLastPos = pos; }
 
 	protected:
 		eMProjType mType;
@@ -34,7 +35,7 @@ namespace sg
 		MeshRenderer* mMr = GetComp<MeshRenderer>();
 		Collider2D* mCol = GetComp<Collider2D>();
 
-		Vector3 mTargetPos;
+		Vector3 mLastPos;
 		Vector3 mFirstPos;
 		Gobj_Monster* mProjOwner;
 

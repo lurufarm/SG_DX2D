@@ -16,14 +16,12 @@ namespace sg
 		mMr = GetComp<MeshRenderer>();
 		mAni = GetComp<Animator>();
 
-
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 		mAtlas = Resources::Load<Texture>(L"Effect_RockDust", L"..\\Resources\\Effect\\RockDust.png");
 		mAni->Create(L"Ani_Effect_RockDust", mAtlas, Vector2::Zero, Vector2(50.0f, 51.0f), 6, Vector2::Zero, 0.1f);
 		mAni->PlayAnimation(L"Ani_Effect_RockDust", false, false);
 
-		//mTr->SetScale(0.5f, 0.5f, 1.0f);
 		mMr->Initialize();
 
 		//Light* mLight = AddComp<Light>();
@@ -34,11 +32,11 @@ namespace sg
 	}
 	void Effect_RockDust::Update()
 	{
+		Gobj_Effect::Update();
 		if (mAni->GetActiveAni()->IsComplete())
 		{
 			SetState(eState::Dead);
 		}
-		Gobj_Effect::Update();
 	}
 	void Effect_RockDust::LateUpdate()
 	{
