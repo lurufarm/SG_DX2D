@@ -208,17 +208,11 @@
     <ClCompile Include="Ranged_Ent.cpp">
       <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
     </ClCompile>
-    <ClCompile Include="Effect_ProjectileDest.cpp">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClCompile>
     <ClCompile Include="SCRIPT_MobProjectile.cpp">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_RangedMob.cpp">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect_RockDust.cpp">
-      <Filter>Obj\Gobj_Effect</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Larva.cpp">
       <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
@@ -249,6 +243,18 @@
     </ClCompile>
     <ClCompile Include="Bullet_PoisonOrb.cpp">
       <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_OldEntStem.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_ProjectileDest.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_RockDust.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_ProjectileDest2.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -462,17 +468,11 @@
     <ClInclude Include="Ranged_Ent.h">
       <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
     </ClInclude>
-    <ClInclude Include="Effect_ProjectileDest.h">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClInclude>
     <ClInclude Include="SCRIPT_MobProjectile.h">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_RangedMob.h">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect_RockDust.h">
-      <Filter>Obj\Gobj_Effect</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Larva.h">
       <Filter>Obj\Gobj_Monster\Melee\Larva</Filter>
@@ -503,6 +503,18 @@
     </ClInclude>
     <ClInclude Include="Bullet_PoisonOrb.h">
       <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_OldEntStem.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_ProjectileDest.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_RockDust.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_ProjectileDest2.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -640,6 +652,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Boss\Old Ent">
       <UniqueIdentifier>{531a12da-33ac-457a-ba87-032f3cd317f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Effect\Monster">
+      <UniqueIdentifier>{ab3d3de3-0ae5-4175-abda-7f413c33e43f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

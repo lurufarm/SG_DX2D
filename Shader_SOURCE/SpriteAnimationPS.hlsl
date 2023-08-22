@@ -50,12 +50,17 @@ float4 main(VSOut In) : SV_TARGET
     }
     color *= lightColor;
 
+    if (In.Color.a < 1.0f)
+    {
+        color.a = In.Color.a;
+    }
+    
     if (alphaValue == 1)
     {
         if (color.a >= 1.0f)
             color.a = 0.5f;
     }
-    
+        
     return color;
 }
 

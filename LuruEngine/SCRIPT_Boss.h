@@ -42,6 +42,7 @@ namespace sg
 		float GetDistance();
 		Vector3 GetDirection();
 		void SelectAttack();
+		Vector3 StemPos(Vector3 pos);
 
 	private:
 
@@ -51,7 +52,9 @@ namespace sg
 		bool mDirection;
 		bool mAttacked;
 		bool mDeath;
+
 		float mTime;
+		float mTime2;
 
 		bool mLaunched;
 		bool mAttackNum;

@@ -42,6 +42,8 @@ namespace sg
 		mAni->PlayAnimation(L"Ani_EntSlicedApple", true, true);
 		mMr->Initialize();
 
+		mCol->SetSize(Vector2(0.5f, 0.5f));
+
 		AddComp<SCRIPT_MobProjectile>();
 	}
 	void Bullet_SlicedApple::Update()

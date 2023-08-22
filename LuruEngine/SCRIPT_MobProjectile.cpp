@@ -82,6 +82,7 @@ namespace sg
 		}
 		else if (mProjType == eMProjType::Basic)
 		{
+			IsActivated = true;
 			curPos = mProj->GetFirstPos() + t * 5.0f * GetDirection();
 			curPos.z = -1.0f;
 			mProj->GetComp<Transform>()->SetPosition(curPos);

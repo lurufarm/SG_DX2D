@@ -17,6 +17,8 @@
 
 #include "SCRIPT_MeleeMob.h"
 #include "SCRIPT_MobProjectile.h"
+#include "Effect_OldEntStem.h"
+
 
 extern sg::Gobj_Player* Player;
 
@@ -241,7 +243,6 @@ namespace sg
 	}
 	void SCRIPT_Player::Attacked()
 	{
-		mAttacked = true;
 		Animator* mAni = mOwner->GetComp<Animator>();
 		mAni->PlayAnimation(AnimationName(attacked), false, mDirection);
 		mTime = 0.0f;
@@ -276,6 +277,8 @@ namespace sg
 	{
 		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
 		SCRIPT_MobProjectile* sp = other->GetOwner()->GetComp<SCRIPT_MobProjectile>();
+		Effect_OldEntStem* oes = (Effect_OldEntStem*)other->GetOwner();
+		
 		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
 		{
 			mAttacked = true;
@@ -290,8 +293,23 @@ namespace sg
 			{
 				mAttacked = true;
 				Gobj_Character::CharStat pStat = mOwner->GetStat();
-				Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
-				pStat.mHP -= mStat.mStrength;
+				if (((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner() != nullptr)
+				{
+					Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
+					pStat.mHP -= mStat.mStrength;
+				}
+				else
+					pStat.mHP -= 5.0f;
+				mOwner->SetStat(pStat);
+			}
+		}
+		else if (oes != nullptr)
+		{
+			if (mAttacked == false && mDeath == false)
+			{
+				mAttacked = true;
+				Gobj_Character::CharStat pStat = mOwner->GetStat();
+				pStat.mHP -= 5.0f;
 				mOwner->SetStat(pStat);
 			}
 		}
@@ -311,7 +329,7 @@ namespace sg
 	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
 	{
 		mAttacked = false;
-		mFSMState = ePlayerFSM::Idle;
+		//mFSMState = ePlayerFSM::Idle;
 	}
 	std::wstring SCRIPT_Player::AnimationName(const std::wstring& animation)
 	{

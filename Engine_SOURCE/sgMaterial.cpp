@@ -6,7 +6,7 @@ namespace sg::graphics
 		: Resource(sg::enums::eResourceType::Material)
 		, mShader(nullptr)
 		, mTexture(nullptr)
-		, mMode(eRenderingMode::Opaque)
+		, mMode(eRenderingMode::CutOut)
 	{
 	}
 	Material::~Material()

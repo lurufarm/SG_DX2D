@@ -19,7 +19,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 		mAtlas = Resources::Load<Texture>(L"Effect_Hit", L"..\\Resources\\Effect\\Hit1.png");
-		mAni->Create(L"Ani_Effect_Hit", mAtlas, Vector2::Zero, Vector2(16.0f, 16.0f), 5, Vector2::Zero, 0.1f);
+		mAni->Create(L"Ani_Effect_Hit", mAtlas, Vector2::Zero, Vector2(16.0f, 16.0f), 5, Vector2::Zero, 0.08f);
 		mAni->PlayAnimation(L"Ani_Effect_Hit", false, false);
 
 		mMr->Initialize();

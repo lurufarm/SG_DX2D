@@ -8,6 +8,8 @@
 #include <random>
 
 #include "Effect_ProjectileDest.h"
+#include "Effect_ProjectileDest2.h"
+#include "Effect_OldEntStem.h"
 #include "Bullet_Apple.h"
 #include "Bullet_SlicedApple.h"
 
@@ -31,9 +33,12 @@ namespace sg
 		mDeath = false;
 		mLaunched = false;
 		mAttackNum = false;
+		mTime = 0.0f;
+		mTime2 = 0.0f;
 	}
 	void SCRIPT_Boss::Update()
 	{
+
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
 
@@ -81,7 +86,7 @@ namespace sg
 	}
 	void SCRIPT_Boss::OnCollisionEnter(Collider2D* other)
 	{
-		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner()))
+		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner())&& mFSMState != eFSMState::Attack)
 		{
 			if (mAttacked == false)
 			{
@@ -152,8 +157,14 @@ namespace sg
 	{
 		if (GetDistance() > mOwner->GetStat().mRange)
 			mFSMState = eFSMState::Move;
+		int stemnum = 0;
+
 		SelectAttack();
+
+		Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
+
 		mTime += Time::DeltaTime();
+
 		Animator* at = mOwner->GetComp<Animator>();
 
 		if (mAttackNum == 0) // 사과 던지기 공격일 때
@@ -168,11 +179,41 @@ namespace sg
 				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
 				&& mLaunched == false)
 			{
-				Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
 				pos.z += 0.1f;
 				Effect_ProjectileDest* epd = object::Instantiate<Effect_ProjectileDest>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
 				Bullet_Apple* app = object::Instantiate<Bullet_Apple>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 				mLaunched = true;
+			}
+		}
+		else
+		{
+			mTime2 += Time::DeltaTime();
+			std::map<int, Vector3> stempos = {};
+
+			if (mTime >= mOwner->GetStat().mCoolDown)
+			{
+				at->PlayAnimation(AnimationName(attack2), false, mDirection);
+				mTime = 0.0f;
+				mLaunched = false;
+				stemnum = 0;
+			}
+
+			if (at->GetActiveAni()->GetAniIndex() > 4 && at->GetActiveAni()->GetAniIndex() < 13
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack2)
+				&& mLaunched == false)
+			{
+				if (mTime2 >= 0.1f)
+				{
+					Vector3 destPos = StemPos(pos);
+					Effect_ProjectileDest2* epd = object::Instantiate<Effect_ProjectileDest2>(destPos, eLayerType::Effect, SceneManager::GetActiveScene());
+
+					mTime2 = 0.0f;
+					stemnum++;
+				}
+				if (stemnum >= 5)
+				{
+					mLaunched = true;
+				}
 			}
 		}
 		if (mLaunched && at->GetActiveAni()->IsComplete())
@@ -240,5 +281,30 @@ namespace sg
 		std::uniform_int_distribution<> dist(0, 1);  // 0과 1 사이의 균등 분포
 
 		mAttackNum = dist(gen);
+	}
+	Vector3 SCRIPT_Boss::StemPos(Vector3 pos)
+	{
+		static bool isSeeded = false;
+
+		if (!isSeeded) {
+			srand(static_cast<unsigned int>(time(nullptr)));
+			isSeeded = true;
+		}
+
+		// random angle
+		const float PI = 3.141592;
+		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
+
+		// random distance
+		float distance = 50.0f;
+		float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * distance);
+
+		// angle + distance
+		Vector3 randomPos;
+		randomPos.x = pos.x + randomDistance * cos(angle);
+		randomPos.y = pos.y + randomDistance * sin(angle);
+		randomPos.z = pos.z + 0.01f;
+
+		return randomPos;
 	}
 }

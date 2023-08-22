@@ -54,7 +54,7 @@ namespace sg
 		if (mBulletType == eBulletType::Lucy) // 포물선을 그리는 Projectile
 		{
 			float curveHeight = 20.0f; // 곡선의 높이
-			float curveDuration = mTotalDuration * 1.5f; // 곡선 운동 시간
+			float curveDuration = mTotalDuration * 0.7; // 곡선 운동 시간
 
 			// 시간의 변화량을 계산
 			//float deltaTime = Time::DeltaTime();
@@ -74,6 +74,8 @@ namespace sg
 			// 운동이 끝나면 총알을 삭제하거나 비활성화 처리 등을 수행
 			if (t >= 1.0f)
 			{
+				object::Instantiate<Effect_FirePlate>(curPos, eLayerType::Effect, SceneManager::GetActiveScene());
+				object::Instantiate<Effect_Explosion>(curPos, eLayerType::Effect, SceneManager::GetActiveScene());
 				mBullet->SetState(GameObject::eState::Dead);
 			}
 		}

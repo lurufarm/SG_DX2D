@@ -241,27 +241,6 @@ namespace renderer
 		Resources::Insert(L"RectMesh", mesh);
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
-		transparent_vertexes.resize(4);
-		transparent_vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		transparent_vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 0.6f);
-		transparent_vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		transparent_vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		transparent_vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 0.6f);
-		transparent_vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		transparent_vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		transparent_vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 0.6f);
-		transparent_vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		transparent_vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		transparent_vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 0.6f);
-		transparent_vertexes[3].uv = Vector2(0.0f, 1.0f);
-
-		std::shared_ptr<Mesh> transparent_mesh = std::make_shared<Mesh>();
-		Resources::Insert(L"RectTMesh", transparent_mesh);
-		transparent_mesh->CreateVertexBuffer(transparent_vertexes.data(), transparent_vertexes.size());
-
 
 		// Index Buffer ¼³Á¤
 		indexes.push_back(0);
@@ -271,7 +250,6 @@ namespace renderer
 		indexes.push_back(2);
 		indexes.push_back(3);
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
-		transparent_mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 #pragma region Debug Mesh
 		// Rect Debug Mesh

@@ -32,6 +32,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Effect, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet2, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
@@ -40,7 +41,13 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
+		for (GameObject* mob : this->GetLayer(eLayerType::Monster).GetGameObjects())
+		{
+			Gobj_Monster* monster = dynamic_cast<Gobj_Monster*>(mob);
+			mSceneMob.push_back(monster);
+		}
 
+		mSceneMob = (this->GetLayer(eLayerType::Monster).GetGameObjects());
 
 		Scene::Initialize();
 	}
@@ -50,6 +57,24 @@ namespace sg
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
+
+		for (Gobj_Monster* mob : mSceneMob)
+		{
+			if (mob->GetState() == GameObject::eState::Dead || mob == nullptr)
+			{
+				std::vector<Gobj_Monster*>::iterator iter =
+					mSceneMob.begin();
+				for (;iter != mSceneMob.end();iter++)
+				{
+					if (mob == *iter)
+					{
+						mSceneMob.erase(iter);
+					}
+				}
+			}
+		}
+
+
 #pragma region test
 
 		mTime += Time::DeltaTime();
@@ -191,6 +216,8 @@ namespace sg
 	void PlayScene::OnEnter()
 	{
 		//renderer::lightsBuffer->Clear();
+		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+		GetDevice()->SetBgColor(bgcolor);
 		AddGameObj(eLayerType::Player, Player);
 	}
 	void PlayScene::OnExit()

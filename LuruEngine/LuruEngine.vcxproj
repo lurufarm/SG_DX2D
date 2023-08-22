@@ -166,7 +166,9 @@
     <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
+    <ClInclude Include="Effect_OldEntStem.h" />
     <ClInclude Include="Effect_ProjectileDest.h" />
+    <ClInclude Include="Effect_ProjectileDest2.h" />
     <ClInclude Include="Effect_RockDust.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gobj_Bullet.h" />
@@ -252,7 +254,9 @@
     <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />
+    <ClCompile Include="Effect_OldEntStem.cpp" />
     <ClCompile Include="Effect_ProjectileDest.cpp" />
+    <ClCompile Include="Effect_ProjectileDest2.cpp" />
     <ClCompile Include="Effect_RockDust.cpp" />
     <ClCompile Include="Gobj_Bullet.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />

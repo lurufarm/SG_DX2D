@@ -13,7 +13,7 @@ namespace sg
 		mStat.mCoolDown = 1.0f;
 		mStat.dropEXP = 20.0f;
 
-		Melee_EliteCannibals::Initialize();
+		//Melee_EliteCannibals::Initialize();
 	}
 	Melee_EliteCannibals::~Melee_EliteCannibals()
 	{
