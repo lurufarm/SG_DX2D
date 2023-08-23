@@ -256,6 +256,9 @@
     <ClCompile Include="Effect_ProjectileDest2.cpp">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="Img_Crack.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -515,6 +518,9 @@
     </ClInclude>
     <ClInclude Include="Effect_ProjectileDest2.h">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Crack.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

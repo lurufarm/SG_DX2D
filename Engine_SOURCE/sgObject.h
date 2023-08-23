@@ -39,7 +39,7 @@ namespace sg::object
 		mob->GetComp<Transform>()->SetPosition(pos);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObj(eLayerType::Monster, mob);
-
+		
 		return mob;
 	}
 	static __forceinline Bullet_SlicedApple* SlicedApple(Vector3 pos, int a)

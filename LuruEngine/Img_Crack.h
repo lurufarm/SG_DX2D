@@ -15,5 +15,8 @@ namespace sg
 		void Render();
 
 	private:
+		class Animator* mAni;
+		class Light* mLg;
+
 	};
 }

@@ -47,8 +47,6 @@ namespace sg
 			mSceneMob.push_back(monster);
 		}
 
-		mSceneMob = (this->GetLayer(eLayerType::Monster).GetGameObjects());
-
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
