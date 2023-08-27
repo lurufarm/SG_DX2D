@@ -14,9 +14,12 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
+		void AniNum(int num) { mAniNum = num; }
+
 	private:
 		class Animator* mAni;
 		class Light* mLg;
+		int mAniNum;
 
 	};
 }

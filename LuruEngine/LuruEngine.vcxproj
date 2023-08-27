@@ -213,6 +213,7 @@
     <ClInclude Include="SCRIPT_UICamera.h" />
     <ClInclude Include="Stage0_Forest02.h" />
     <ClInclude Include="Stage0_Forest03.h" />
+    <ClInclude Include="Stage0_Forest04.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -305,6 +306,7 @@
     <ClCompile Include="SCRIPT_UICamera.cpp" />
     <ClCompile Include="Stage0_Forest02.cpp" />
     <ClCompile Include="Stage0_Forest03.cpp" />
+    <ClCompile Include="Stage0_Forest04.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

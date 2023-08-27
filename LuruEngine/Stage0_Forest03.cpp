@@ -10,6 +10,8 @@
 #include "Img_Stage0_Forest01_Map.h"
 #include "Gobj_Player.h"
 #include "Monsters.h"
+#include "Interact_Gate.h"
+#include "UI_FocusBoxes2.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -32,6 +34,17 @@ namespace sg
 		GameObject* Forest03camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest03camera->AddComp<Camera>();
 		Forest03camera->AddComp<SCRIPT_MainCamera>();
+
+		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(170.0f, 375.0f, -0.1f), eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(207.0f, 375.0f, -0.1f), eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, Vector3(244.0f, 375.0f, -0.1f), eLayerType::InteractableObject, this);
+
+		mGate0->SetNextScene(L"05_Stage0_Forest04");
+		mGate1->SetNextScene(L"05_Stage0_Forest04");
+		mGate2->SetNextScene(L"05_Stage0_Forest04");
+
+
+
 
 		//GameObject* mLight = new GameObject();
 		//Light* mLg = mLight->AddComp<Light>();
@@ -96,5 +109,9 @@ namespace sg
 	void Stage0_Forest03::OnExit()
 	{
 		PlayScene::OnExit();
+		mFocus->DeleteSelectobj(mGate0);
+		mFocus->DeleteSelectobj(mGate1);
+		mFocus->DeleteSelectobj(mGate2);
+
 	}
 }

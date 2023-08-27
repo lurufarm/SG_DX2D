@@ -1,4 +1,4 @@
-#include "Stage0_Forest01.h"
+#include "Stage0_Forest04.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
@@ -8,79 +8,69 @@
 #include "Tile_TilePalette.h"
 #include "SCRIPT_MainCamera.h"
 #include "Img_Stage0_Forest01_Map.h"
-#include "Img_Crack.h"
 #include "Gobj_Player.h"
 #include "Monsters.h"
-#include "UI_FocusBoxes2.h"
 #include "Interact_Gate.h"
+#include "UI_FocusBoxes2.h"
 
 extern sg::Gobj_Player* Player;
 
 namespace sg
 {
-	Stage0_Forest01::Stage0_Forest01()
+	Stage0_Forest04::Stage0_Forest04()
 	{
-		SetName(L"03_Stage0_Forest01");
+		SetName(L"06_Stage0_Forest04");
 	}
-	Stage0_Forest01::~Stage0_Forest01()
+	Stage0_Forest04::~Stage0_Forest04()
 	{
 	}
-	void Stage0_Forest01::Initialize()
+	void Stage0_Forest04::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-
 		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd01, pos, eLayerType::BGImg, this);
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
 
-		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
-		mCamera = Forest01camera->AddComp<Camera>();
-		Forest01camera->AddComp<SCRIPT_MainCamera>();
+		GameObject* Forest04camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		mCamera = Forest04camera->AddComp<Camera>();
+		Forest04camera->AddComp<SCRIPT_MainCamera>();
 
-		Vector3 crackpos0 = Vector3(-300.0f, 200.0f, -0.1f);
-		Vector3 crackpos1 = Vector3(-100.0f, -20.0f, -0.1f);
-		Vector3 crackpos3 = Vector3(50.0f, 100.0f, -0.1f);
+		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(-82.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(-45.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, Vector3(8.0, 430.0f, -0.1f), eLayerType::InteractableObject, this);
 
-		Img_Crack* crack0 = object::Instantiate<Img_Crack>(crackpos0, eLayerType::BGImg, this);
-		Img_Crack* crack1 = object::Instantiate<Img_Crack>(crackpos1, eLayerType::BGImg, this);
-		Img_Crack* crack2 = object::Instantiate<Img_Crack>(crackpos3, eLayerType::BGImg, this);
-
-		//Melee_SlimeA* slimea0 = object::Instantiate<Melee_SlimeA>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
-		//Melee_SlimeA* slimea1 = object::Instantiate<Melee_SlimeA>(Vector3(-100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
-
-		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(-210.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(-173.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate2 = object::Instantiate<Interact_Gate>(0, Vector3(-136.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
-
-		mGate0->SetNextScene(L"04_Stage0_Forest02");
-		mGate1->SetNextScene(L"04_Stage0_Forest02");
-		mGate2->SetNextScene(L"04_Stage0_Forest02");
-		
+		mGate0->SetNextScene(L"02_LobbyScene");
+		mGate1->SetNextScene(L"02_LobbyScene");
+		mGate2->SetNextScene(L"02_LobbyScene");
 		
 		//GameObject* mLight = new GameObject();
 		//Light* mLg = mLight->AddComp<Light>();
 		//AddGameObj(eLayerType::Light, mLight);
 		//mLg->SetType(eLightType::Directional);
 		//mLg->SetColor(mDayLight);
-		SCENE_Stage0::Initialize();
 
+
+		SCENE_Stage0::Initialize();
 	}
-	void Stage0_Forest01::Update()
+	void Stage0_Forest04::Update()
 	{
 		SCENE_Stage0::Update();
 	}
-	void Stage0_Forest01::LateUpdate()
+	void Stage0_Forest04::LateUpdate()
 	{
 		SCENE_Stage0::LateUpdate();
 	}
-	void Stage0_Forest01::Render()
+	void Stage0_Forest04::Render()
 	{
 		SCENE_Stage0::Render();
 	}
-	void Stage0_Forest01::OnEnter()
+	void Stage0_Forest04::OnEnter()
 	{
 		renderer::mainCamera = mCamera;
 
 		PlayScene::OnEnter();
+
+		//Melee_SlimeA* slimea0 = object::Instantiate<Melee_SlimeA>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
+		//Melee_SlimeA* slimea1 = object::Instantiate<Melee_SlimeA>(Vector3(-100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
 
 		//Melee_SlimeB* slimeb0 = object::Instantiate<Melee_SlimeB>(Vector3(200.0f, 200.0f, -0.1f), eLayerType::Monster, this);
 		//Melee_SlimeB* slimeb1 = object::Instantiate<Melee_SlimeB>(Vector3(-200.0f, 200.0f, -0.1f), eLayerType::Monster, this);
@@ -105,20 +95,19 @@ namespace sg
 		//Boss_OldEnt* bent = object::Instantiate<Boss_OldEnt>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
 
 
-		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
 
-		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd01_01" };
+		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd04_00" };
 		TilePalette::AutoLoad(path0);
 
-		//Player->GetComp<Collider2D>()->SetCenter(Vector2(100.0f, 100.0f));
-
+		Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, 0.0f);
 
 	}
-	void Stage0_Forest01::OnExit()
+	void Stage0_Forest04::OnExit()
 	{
+		PlayScene::OnExit();
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);
-		PlayScene::OnExit();
+
 	}
 }

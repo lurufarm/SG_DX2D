@@ -7,6 +7,7 @@
 #include "Stage0_Forest01.h"
 #include "Stage0_Forest02.h"
 #include "Stage0_Forest03.h"
+#include "Stage0_Forest04.h"
 #include "SCENE_ToolScene.h"
 #include "Gobj_Player.h"
 
@@ -29,6 +30,7 @@ namespace sg
 		SceneManager::CreateScene<Stage0_Forest01>(L"03_Stage0_Forest01");
 		SceneManager::CreateScene<Stage0_Forest02>(L"04_Stage0_Forest02");
 		SceneManager::CreateScene<Stage0_Forest03>(L"05_Stage0_Forest03");
+		SceneManager::CreateScene<Stage0_Forest04>(L"06_Stage0_Forest04");
 		SceneManager::CreateScene<ToolScene>(L"99_ToolScene");
 
 		SceneManager::SetActiveScene(L"00_TitleScene");
