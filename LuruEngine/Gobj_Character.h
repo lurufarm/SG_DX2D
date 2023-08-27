@@ -47,18 +47,6 @@ namespace sg
 		void SetTarget(Gobj_Monster* mob) { mTarget = mob; }
 		Gobj_Monster* GetTarget() { return mTarget; }
 
-		static void AddChar(std::wstring key, Gobj_Character* character)
-		{
-			mAllChars.insert(std::make_pair(key, character));
-		}
-		static Gobj_Character* GetChar(std::wstring key)
-		{
-			std::map<std::wstring, Gobj_Character*>::iterator iter = mAllChars.find(key);
-			if (iter != mAllChars.end())
-				return iter->second;
-			else
-				return nullptr;
-		}
 		std::shared_ptr<Texture> GetAtlas() {return mAtlas;}
 
 

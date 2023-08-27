@@ -8,7 +8,6 @@
 #include "..\LuruEngine\Gobj_MobProjectile.h"
 #include "..\LuruEngine\SCRIPT_MobProjectile.h"
 #include "..\LuruEngine\Bullet_SlicedApple.h"
-#include "..\LuruEngine\scene_pl"
 
 namespace sg::object
 {

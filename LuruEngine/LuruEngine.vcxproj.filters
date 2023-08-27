@@ -259,6 +259,18 @@
     <ClCompile Include="Img_Crack.cpp">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
+    <ClCompile Include="Stage0_Forest02.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Interact_Gate.cpp">
+      <Filter>Obj\Gobj_Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_PlaySceneGate.cpp">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_Forest03.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -521,6 +533,21 @@
     </ClInclude>
     <ClInclude Include="Img_Crack.h">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest02.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Monsters.h">
+      <Filter>Obj\Gobj_Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Interact_Gate.h">
+      <Filter>Obj\Gobj_Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_PlaySceneGate.h">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest03.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

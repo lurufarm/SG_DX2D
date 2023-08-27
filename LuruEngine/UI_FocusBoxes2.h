@@ -21,11 +21,15 @@ namespace sg
 		{
 			mObjs.push_back(obj);
 		}
+		void clearObjs()
+		{
+			mObjs.clear();
+		}
+		void DeleteSelectobj(GameObject* obj);
 		GameObject* GetSelectObj() 
 		{ 
 			return mObj; 
 		}
-
 
 		UI_FocusBox* mBoxes[4];
 

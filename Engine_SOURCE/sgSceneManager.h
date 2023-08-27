@@ -3,6 +3,7 @@
 
 namespace sg
 {
+	class Gobj_Character;
 	class SceneManager
 	{
 	public:
@@ -43,10 +44,37 @@ namespace sg
 
 		static Scene* LoadNextScene();
 
+		static void AddChar(std::wstring key, Gobj_Character* character)
+		{
+			mAllChars.insert(std::make_pair(key, character));
+		}
+
+		static Scene* FindScene(std::wstring scene)
+		{
+			std::map<std::wstring, Scene*>::iterator iter
+				= mScenes.find(scene);
+
+			if (iter != mScenes.end())
+				return iter->second;
+
+			return nullptr;
+		}
+
+		static Gobj_Character* GetChar(std::wstring key)
+		{
+			std::map<std::wstring, Gobj_Character*>::iterator iter = mAllChars.find(key);
+			if (iter != mAllChars.end())
+				return iter->second;
+			else
+				return nullptr;
+		}
+
+
 	private:
 		static Scene* mActiveScene;
 		static std::map<std::wstring, Scene*> mScenes;
 
+		static std::map<std::wstring, Gobj_Character*> mAllChars;
 	};
 }
 

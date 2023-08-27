@@ -181,6 +181,7 @@
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Img_Crack.h" />
     <ClInclude Include="Img_LobbyTorch.h" />
+    <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Melee_Cannibals.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Melee_Larva.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
+    <ClInclude Include="Monsters.h" />
     <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="Monster_Ranged.h" />
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
@@ -203,11 +205,14 @@
     <ClInclude Include="SCRIPT_MobProjectile.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
+    <ClInclude Include="SCRIPT_PlaySceneGate.h" />
     <ClInclude Include="SCRIPT_RangedMob.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
     <ClInclude Include="SCRIPT_UICamera.h" />
+    <ClInclude Include="Stage0_Forest02.h" />
+    <ClInclude Include="Stage0_Forest03.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -269,6 +274,7 @@
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Img_Crack.cpp" />
     <ClCompile Include="Img_LobbyTorch.cpp" />
+    <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
@@ -291,11 +297,14 @@
     <ClCompile Include="SCRIPT_MobProjectile.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
+    <ClCompile Include="SCRIPT_PlaySceneGate.cpp" />
     <ClCompile Include="SCRIPT_RangedMob.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
     <ClCompile Include="SCRIPT_UICamera.cpp" />
+    <ClCompile Include="Stage0_Forest02.cpp" />
+    <ClCompile Include="Stage0_Forest03.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

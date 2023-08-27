@@ -21,24 +21,26 @@ namespace sg
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		void Idle();
-		void Move(Input::Key key, float speed);
-		void Attack();
-		void Attacked();
-		void Death();
-		
-
 		virtual void OnCollisionEnter(Collider2D* other);
 		virtual void OnCollisionStay(Collider2D* other);
 		virtual void OnCollisionExit(Collider2D* other);
 
 		std::wstring AnimationName(const std::wstring& animation);
+		
+		ePlayerFSM GetState() { return mFSMState; }
+
 	private:
+
+		void Idle();
+		void Move(Input::Key key, float speed);
+		void Attack();
+		void Attacked();
+		void Death();
+
 		ePlayerFSM mFSMState;
 		Input::Key mKey;
 		class Gobj_Player* mOwner;
 
-		std::wstring mAniname;
 		bool mDirection;
 		bool mAttacked = false;
 		bool mDeath = false;

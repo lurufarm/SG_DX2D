@@ -4,13 +4,18 @@
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
+#include "..\Engine_SOURCE\sgObject.h"
 #include "Gobj_Player.h"
+#include "SCRIPT_Company.h"
+#include "UI_FocusBoxes2.h"
+#include "Gobj_Interactable.h"
 
 extern sg::Gobj_Player* Player;
 
 namespace sg
 {
 	bool PlayScene::mDay = true;
+	UI_FocusBoxes2* PlayScene::mFocus = nullptr;
 
 	PlayScene::PlayScene()
 	{
@@ -29,6 +34,9 @@ namespace sg
 		mLg->SetType(eLightType::Directional);
 		mLg->SetColor(mDayLight);
 
+		if (mFocus == nullptr)
+			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
+		
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
@@ -36,17 +44,25 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet2, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
+
 		for (GameObject* mob : this->GetLayer(eLayerType::Monster).GetGameObjects())
 		{
 			Gobj_Monster* monster = dynamic_cast<Gobj_Monster*>(mob);
 			mSceneMob.push_back(monster);
+			mFocus->AddSelectObj(monster);
 		}
 
+		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
+		{
+			Gobj_Interactable* interactable = dynamic_cast<Gobj_Interactable*>(interact);
+			mFocus->AddSelectObj(interactable);
+		}
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
@@ -55,23 +71,27 @@ namespace sg
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
-
-		for (Gobj_Monster* mob : mSceneMob)
+		if (Input::KeyD(eKeyCode::P))
 		{
-			if (mob->GetState() == GameObject::eState::Dead || mob == nullptr)
-			{
-				std::vector<Gobj_Monster*>::iterator iter =
-					mSceneMob.begin();
-				for (;iter != mSceneMob.end();iter++)
-				{
-					if (mob == *iter)
-					{
-						mSceneMob.erase(iter);
-					}
-				}
-			}
+			Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
+			Lucy->AddComp<SCRIPT_Company>();
+			AddGameObj(eLayerType::Player, Lucy);
 		}
 
+		std::vector<Gobj_Monster*>::iterator iter = mSceneMob.begin();
+		while (iter != mSceneMob.end())
+		{
+			Gobj_Monster* mob = *iter;
+			if (mob == nullptr || mob->GetState() != GameObject::eState::Active)
+			{
+				mFocus->DeleteSelectobj(mob);
+				iter = mSceneMob.erase(iter); // erase returns the iterator following the last removed element
+			}
+			else
+			{
+				++iter;
+			}
+		}
 
 #pragma region test
 
@@ -213,13 +233,23 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		//renderer::lightsBuffer->Clear();
+		renderer::lightsBuffer->Clear();
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
 		AddGameObj(eLayerType::Player, Player);
+		AddGameObj(eLayerType::UI, mFocus);
+		AddGameObj(eLayerType::UI, mFocus->mBoxes[0]);
+		AddGameObj(eLayerType::UI, mFocus->mBoxes[1]);
+		AddGameObj(eLayerType::UI, mFocus->mBoxes[2]);
+		AddGameObj(eLayerType::UI, mFocus->mBoxes[3]);
 	}
 	void PlayScene::OnExit()
 	{
 		DeleteGameObj(eLayerType::Player, Player);
+		DeleteGameObj(eLayerType::UI, mFocus);
+		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[0]);
+		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[1]);
+		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[2]);
+		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[3]);
 	}
 }

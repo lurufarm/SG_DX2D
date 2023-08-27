@@ -1,4 +1,5 @@
 #include "Bullet_CheeseArrow.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "Gobj_Player.h"
 #include "SCRIPT_Bullet.h"
 #include "SCRIPT_Player.h"
@@ -24,7 +25,7 @@ namespace sg
 		SetMaterial(L"Arrow");
 		mMr->Initialize();
 
-		mBulletOwner = Gobj_Character::GetChar(L"Cheese");
+		mBulletOwner = SceneManager::GetChar(L"Cheese");
 		Gobj_Bullet::Initialize();
 
 		AddComp<SCRIPT_Bullet>();

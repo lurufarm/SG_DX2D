@@ -46,13 +46,13 @@ namespace sg
 			{
 				if (mObject->GetBoxes(0, 0)->GetSelected())
 				{
-					Player->SetChar(Gobj_Character::GetChar(L"Cheese"));
+					Player->SetChar(SceneManager::GetChar(L"Cheese"));
 					mObject->SetState(GameObject::eState::Paused);
 					LobbyScene::FocusBoxesActive();
 				}
 				else if (mObject->GetBoxes(0, 1)->GetSelected())
 				{
-					Player->SetChar(Gobj_Character::GetChar(L"Lucy"));
+					Player->SetChar(SceneManager::GetChar(L"Lucy"));
 					mObject->SetState(GameObject::eState::Paused);
 					LobbyScene::FocusBoxesActive();
 				}

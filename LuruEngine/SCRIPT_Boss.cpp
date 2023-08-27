@@ -78,19 +78,19 @@ namespace sg
 			break;
 		}
 	}
-	void SCRIPT_Boss::LateUpdate()
-	{
-	}
-	void SCRIPT_Boss::Render()
-	{
-	}
+
 	void SCRIPT_Boss::OnCollisionEnter(Collider2D* other)
 	{
-		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner())&& mFSMState != eFSMState::Attack)
+		Gobj_Bullet* bullet = dynamic_cast<Gobj_Bullet*>(other->GetOwner());
+
+		if (other->GetOwner() == bullet)
 		{
 			if (mAttacked == false)
 			{
 				mFSMState = eFSMState::Attacked;
+				int hp = mOwner->GetStat().mHP;
+				hp -= bullet->GetBulletOwner()->GetStat().mStrength;
+				mOwner->SetStatHP(hp);
 			}
 		}
 		if (mFSMState == eFSMState::Attack)
@@ -228,9 +228,6 @@ namespace sg
 		{
 			mAttacked = true;
 			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attacked), false, mDirection);
-			int hp = mOwner->GetStat().mHP;
-			hp -= mTarget->GetStat().mStrength;
-			mOwner->SetStatHP(hp);
 		}
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
 		{

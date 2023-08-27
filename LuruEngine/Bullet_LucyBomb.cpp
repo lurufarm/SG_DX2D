@@ -1,4 +1,5 @@
 #include "Bullet_LucyBomb.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "Gobj_Player.h"
 #include "SCRIPT_Bullet.h"
 
@@ -30,7 +31,7 @@ namespace sg
 
 		mCol->SetSize(Vector2(0.7f, 0.7f));
 
-		mBulletOwner = Gobj_Character::GetChar(L"Lucy");
+		mBulletOwner = SceneManager::GetChar(L"Lucy");
 		Gobj_Bullet::Initialize();
 
 		AddComp<SCRIPT_Bullet>();

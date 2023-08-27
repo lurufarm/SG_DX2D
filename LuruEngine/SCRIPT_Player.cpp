@@ -76,7 +76,7 @@ namespace sg
 				else
 					mOwner->SetEnemyNearby(false);
 			}
-			else if (SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects().size() == 0)
+			else
 			{
 				mOwner->SetEnemyNearby(false);
 			}
@@ -231,7 +231,6 @@ namespace sg
 			else if (mOwner->GetChar()->GetName() == L"Lucy")
 				object::Instantiate<Bullet_LucyBomb>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			mTime = 0.0f;
-
 		}
 		if (Input::GetAnyKey())
 			mFSMState = ePlayerFSM::Move;
@@ -277,7 +276,7 @@ namespace sg
 	{
 		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
 		SCRIPT_MobProjectile* sp = other->GetOwner()->GetComp<SCRIPT_MobProjectile>();
-		Effect_OldEntStem* oes = (Effect_OldEntStem*)other->GetOwner();
+		Effect_OldEntStem* oes = dynamic_cast<Effect_OldEntStem*>(other->GetOwner());
 		
 		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
 		{

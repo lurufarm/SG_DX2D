@@ -29,7 +29,7 @@ namespace sg
 
 	protected:
 		
-		std::vector<Gobj_Monster*> mSceneMob;
+		std::vector<class Gobj_Monster*> mSceneMob;
 
 		const Vector4 mDayLight = Vector4(0.6f, 0.6f, 0.6f, 1.0f);
 		const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
@@ -41,6 +41,8 @@ namespace sg
 
 		static bool mDay;
 		Camera* mCamera;
+
+		static class UI_FocusBoxes2* mFocus;
 
 	private:
 		GameObject* mLight;

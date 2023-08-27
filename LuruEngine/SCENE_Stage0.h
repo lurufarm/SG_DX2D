@@ -18,6 +18,8 @@ namespace sg
 		void OnExit();
 
 	protected:
-
+		class Interact_Gate* mGate0;
+		class Interact_Gate* mGate1;
+		class Interact_Gate* mGate2;
 	};
 }

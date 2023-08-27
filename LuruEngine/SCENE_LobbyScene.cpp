@@ -61,8 +61,7 @@ namespace sg
 	void LobbyScene::Initialize()
 	{
 		Player = object::MakePlayer();
-		Char_Cheese* cheese = object::Instantiate<Char_Cheese>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
-		Char_Lucy* lucy = object::Instantiate<Char_Lucy>(Vector3(-9999.0f, -9999.0f, 1000.0f), eLayerType::Player, this);
+
 		Player->Initialize();
 
 		//GameObject* obj = new GameObject();

@@ -17,6 +17,7 @@
 #include "Interact_LobbyUpgrade.h"
 #include "Interact_LobbyCardBook.h"
 #include "Interact_LobbyGate.h"
+#include "Interact_Gate.h"
 #include "Img_LobbyTorch.h"
 
 extern sg::Application application;
@@ -50,7 +51,18 @@ namespace sg
 #pragma endregion
 #pragma region Forest01
 		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd01, pos, eLayerType::BGImg, this);
+		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd01, pos, eLayerType::BGImg, this);
+#pragma endregion
+#pragma region Forest02
+
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd02, pos, eLayerType::BGImg, this);
+		object::Instantiate<Interact_Gate>(0, Vector3(98.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
+		object::Instantiate<Interact_Gate>(0, Vector3(128.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
+		object::Instantiate<Interact_Gate>(0, Vector3(158.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
+
+		//		Vector3 pos = Vector3(-11.0f, -15.0f, 0.0f);
+		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd03, pos, eLayerType::BGImg, this);
+
 #pragma endregion
 
 		mToolSceneCamera = object::Instantiate<GameObject>(eLayerType::Tile, this);

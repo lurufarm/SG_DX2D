@@ -1,5 +1,6 @@
 #include "SCENE_Stage0.h"
 #include "Gobj_Player.h"
+#include "Interact_Gate.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -17,6 +18,13 @@ namespace sg
 	}
 	void SCENE_Stage0::Update()
 	{
+		if (mSceneMob.empty())
+		{
+			mGate0->Open();
+			mGate1->Open();
+			mGate2->Open();
+		}
+
 		PlayScene::Update();
 	}
 	void SCENE_Stage0::LateUpdate()

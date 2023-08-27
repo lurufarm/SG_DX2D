@@ -1,12 +1,11 @@
 #include "Gobj_Character.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "Gobj_Player.h"
 
 extern sg::Gobj_Player* Player;
 
 namespace sg
 {
-	std::map<std::wstring, Gobj_Character*> Gobj_Character::mAllChars = {};
-
 	Gobj_Character::Gobj_Character()
 	{
 		AddComp<MeshRenderer>();
@@ -18,7 +17,7 @@ namespace sg
 	}
 	void Gobj_Character::Initialize()
 	{
-		AddChar(this->GetName(), this);
+		SceneManager::AddChar(this->GetName(), this);
 	}
 	void Gobj_Character::Update()
 	{

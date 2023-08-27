@@ -1,5 +1,7 @@
 #include "Gobj_Bullet.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgTransform.h"
+
 #include "Gobj_Player.h"
 #include "SCRIPT_Bullet.h"
 #include "SCRIPT_Player.h"
@@ -23,7 +25,7 @@ namespace sg
 	}
 	void Gobj_Bullet::Initialize()
 	{
-		if (Player->GetTarget()->GetState() == Active)
+		if (SceneManager::GetActiveScene()->GetLayer(eLayerType::Monster).GetGameObjects().size() > 0)
 		{
 			if (mBulletOwner->GetIsPlayer())
 			{
@@ -33,7 +35,7 @@ namespace sg
 			else
 			{
 				mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
-				mLastPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+				mLastPos = mBulletOwner->GetComp<SCRIPT_Company>()->GetTarget()->GetComp<Transform>()->GetPosition();
 			}
 		}
 	}
