@@ -43,7 +43,7 @@ namespace sg
 
 		Vector3 mFirstPos;
 		Vector3 mLastPos;
-
+		Vector3 mCurPos;
 
 	};
 }

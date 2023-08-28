@@ -47,6 +47,8 @@ namespace sg
 	}
 	void UI_FocusBoxes2::Update()
 	{
+		Vector3 ppos = Player->GetComp<Transform>()->GetPosition();
+
 		if (mObjs.empty())
 		{
 			mBoxes[0]->SetState(GameObject::eState::Paused);
@@ -54,8 +56,14 @@ namespace sg
 			mBoxes[2]->SetState(GameObject::eState::Paused);
 			mBoxes[3]->SetState(GameObject::eState::Paused);
 		}
+		else
+		{
+			mBoxes[0]->SetState(this->GetState());
+			mBoxes[1]->SetState(this->GetState());
+			mBoxes[2]->SetState(this->GetState());
+			mBoxes[3]->SetState(this->GetState());
+		}
 
-		Vector3 ppos = Player->GetComp<Transform>()->GetPosition();
 
 		std::map<float, GameObject*> distanceMap = {};
 		for (GameObject* obj : mObjs)

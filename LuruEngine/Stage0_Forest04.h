@@ -1,9 +1,9 @@
 #pragma once
-#include "SCENE_Stage0.h"
+#include "SCENE_PlayScene.h"
 
 namespace sg
 {
-	class Stage0_Forest04 : public SCENE_Stage0
+	class Stage0_Forest04 : public PlayScene
 	{
 	public:
 		Stage0_Forest04();

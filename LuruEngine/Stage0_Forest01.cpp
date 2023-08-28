@@ -36,16 +36,13 @@ namespace sg
 		mCamera = Forest01camera->AddComp<Camera>();
 		Forest01camera->AddComp<SCRIPT_MainCamera>();
 
-		Vector3 crackpos0 = Vector3(-300.0f, 200.0f, -0.1f);
-		Vector3 crackpos1 = Vector3(-100.0f, -20.0f, -0.1f);
-		Vector3 crackpos3 = Vector3(50.0f, 100.0f, -0.1f);
+		mCrackPos[0] = Vector3(-300.0f, 200.0f, -0.1f);
+		mCrackPos[1] = Vector3(-100.0f, -20.0f, -0.1f);
+		mCrackPos[2] = Vector3(50.0f, 100.0f, -0.1f);
 
-		Img_Crack* crack0 = object::Instantiate<Img_Crack>(crackpos0, eLayerType::BGImg, this);
-		Img_Crack* crack1 = object::Instantiate<Img_Crack>(crackpos1, eLayerType::BGImg, this);
-		Img_Crack* crack2 = object::Instantiate<Img_Crack>(crackpos3, eLayerType::BGImg, this);
-
-		//Melee_SlimeA* slimea0 = object::Instantiate<Melee_SlimeA>(Vector3(100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
-		//Melee_SlimeA* slimea1 = object::Instantiate<Melee_SlimeA>(Vector3(-100.0f, 100.0f, -0.1f), eLayerType::Monster, this);
+		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
+		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
+		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(-210.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(-173.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
@@ -54,27 +51,55 @@ namespace sg
 		mGate0->SetNextScene(L"04_Stage0_Forest02");
 		mGate1->SetNextScene(L"04_Stage0_Forest02");
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
-		
-		
+
+#pragma region Monsters
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+#pragma endregion
+
 		//GameObject* mLight = new GameObject();
 		//Light* mLg = mLight->AddComp<Light>();
 		//AddGameObj(eLayerType::Light, mLight);
 		//mLg->SetType(eLightType::Directional);
 		//mLg->SetColor(mDayLight);
-		SCENE_Stage0::Initialize();
+
+		PlayScene::Initialize();
 
 	}
 	void Stage0_Forest01::Update()
 	{
-		SCENE_Stage0::Update();
+		PlayScene::Update();
 	}
 	void Stage0_Forest01::LateUpdate()
 	{
-		SCENE_Stage0::LateUpdate();
+		PlayScene::LateUpdate();
 	}
 	void Stage0_Forest01::Render()
 	{
-		SCENE_Stage0::Render();
+		PlayScene::Render();
 	}
 	void Stage0_Forest01::OnEnter()
 	{

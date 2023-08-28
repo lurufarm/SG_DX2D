@@ -205,7 +205,6 @@
     <ClInclude Include="SCRIPT_MobProjectile.h" />
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
-    <ClInclude Include="SCRIPT_PlaySceneGate.h" />
     <ClInclude Include="SCRIPT_RangedMob.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
@@ -227,7 +226,6 @@
     <ClInclude Include="Interact_LobbyGate.h" />
     <ClInclude Include="Interact_LobbyUpgrade.h" />
     <ClInclude Include="SCENE_PlayScene.h" />
-    <ClInclude Include="SCENE_Stage0.h" />
     <ClInclude Include="SCRIPT_GridScript.h" />
     <ClInclude Include="Stage0_Forest01.h" />
     <ClInclude Include="Tile_TilePalette.h" />
@@ -298,7 +296,6 @@
     <ClCompile Include="SCRIPT_MobProjectile.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
-    <ClCompile Include="SCRIPT_PlaySceneGate.cpp" />
     <ClCompile Include="SCRIPT_RangedMob.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
@@ -320,7 +317,6 @@
     <ClCompile Include="Interact_LobbyGate.cpp" />
     <ClCompile Include="Interact_LobbyUpgrade.cpp" />
     <ClCompile Include="SCENE_PlayScene.cpp" />
-    <ClCompile Include="SCENE_Stage0.cpp" />
     <ClCompile Include="SCRIPT_GridScript.cpp" />
     <ClCompile Include="Stage0_Forest01.cpp" />
     <ClCompile Include="Tile_TilePalette.cpp" />

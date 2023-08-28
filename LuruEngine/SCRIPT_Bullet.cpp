@@ -16,18 +16,18 @@ namespace sg
 		mBullet = (Gobj_Bullet*)GetOwner();
 		mBulletType = mBullet->GetBulletType();
 		mFirstPos = mBullet->GetFirstPos();
+		mCurPos = mFirstPos;
 		mLastPos = mBullet->GetLastPos();
 		IsLaunched = false;
 		mTotalDuration = GetDistance() / 100.0f;
-
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
 
 		if (mBullet->GetBulletType() == eBulletType::Cheese)
 		{
 			Vector2 direction = GetDirection();
-			float angleRad = std::acos(direction.x); // acos() 함수를 사용하여 x축과의 각도를 구합니다.
-			if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환합니다.
+			float angleRad = std::acos(direction.x); // acos 함수를 사용하여 x축과의 각도를 구한다.
+			if (direction.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환한다.
 			{
 				angleRad = -angleRad;
 			}
@@ -42,13 +42,13 @@ namespace sg
 	void SCRIPT_Bullet::Update()
 	{
 		mTime += Time::DeltaTime();
-		float t = mTime / mTotalDuration;
-		Vector3 curPos;
 		if (mBulletType == eBulletType::Cheese)
 		{
-			curPos = mBullet->GetFirstPos() + t * (mLastPos - mFirstPos);
-			curPos.z = -1.0f;
-			mBullet->GetComp<Transform>()->SetPosition(curPos);
+			Vector3 Direction = mLastPos - mFirstPos;
+			Direction.Normalize();
+			mCurPos += mPlayer->GetStat().mSpeed * Time::DeltaTime() * Direction;
+			mCurPos.z = -1.0f;
+			mBullet->GetComp<Transform>()->SetPosition(mCurPos);
 		}
 
 		if (mBulletType == eBulletType::Lucy) // 포물선을 그리는 Projectile
@@ -57,9 +57,7 @@ namespace sg
 			float curveDuration = mTotalDuration * 0.7; // 곡선 운동 시간
 
 			// 시간의 변화량을 계산
-			//float deltaTime = Time::DeltaTime();
 			float t = mTime / curveDuration;
-			//mTime += deltaTime;
 
 			// 포물선 곡선을 따르도록 x, y, z 좌표 계산
 			float xDist = mLastPos.x - mFirstPos.x; // x 좌표의 이동 거리
@@ -68,23 +66,23 @@ namespace sg
 			float y = mFirstPos.y + t * yDist + curveHeight * 4.0f * t * (1.0f - t);
 			float z = -1.0f;
 
-			curPos = Vector3(x, y, z);
-			mBullet->GetComp<Transform>()->SetPosition(curPos);
+			mCurPos = Vector3(x, y, z);
+			mBullet->GetComp<Transform>()->SetPosition(mCurPos);
 
-			// 운동이 끝나면 총알을 삭제하거나 비활성화 처리 등을 수행
+			// 아무도 맞지 않아도 도착하면 터짐
 			if (t >= 1.0f)
 			{
-				object::Instantiate<Effect_FirePlate>(curPos, eLayerType::Effect, SceneManager::GetActiveScene());
-				object::Instantiate<Effect_Explosion>(curPos, eLayerType::Effect, SceneManager::GetActiveScene());
+				object::Instantiate<Effect_FirePlate>(mCurPos, eLayerType::Effect, SceneManager::GetActiveScene());
+				object::Instantiate<Effect_Explosion>(mCurPos, eLayerType::Effect, SceneManager::GetActiveScene());
 				mBullet->SetState(GameObject::eState::Dead);
 			}
 		}
 
 
-		// Bullet State Changing : 사정거리 이상이 되면 사라진다
-			Vector2 distance = Vector2(curPos.x - mBullet->GetFirstPos().x, curPos.y - mBullet->GetFirstPos().y);
+		// 모든 Bullet은 사정거리 이상이 되면 사라진다.
+			Vector2 distance = Vector2(mCurPos.x - mBullet->GetFirstPos().x, mCurPos.y - mBullet->GetFirstPos().y);
 			float dislength = distance.Length();
-		if (dislength >= mPlayer->GetChar()->GetStat().mRange)
+		if (dislength >= mPlayer->GetChar()->GetStat().mRange * 1.5f)
 		{
 			mBullet->SetState(GameObject::eState::Dead);
 		}

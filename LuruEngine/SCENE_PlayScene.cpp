@@ -9,6 +9,9 @@
 #include "SCRIPT_Company.h"
 #include "UI_FocusBoxes2.h"
 #include "Gobj_Interactable.h"
+#include "Interact_Gate.h"
+#include <algorithm>
+#include <random>
 
 extern sg::Gobj_Player* Player;
 
@@ -54,15 +57,15 @@ namespace sg
 		for (GameObject* mob : this->GetLayer(eLayerType::Monster).GetGameObjects())
 		{
 			Gobj_Monster* monster = dynamic_cast<Gobj_Monster*>(mob);
-			mSceneMob.push_back(monster);
-			mFocus->AddSelectObj(monster);
+			mob->SetState(GameObject::eState::Paused);
+			mPausedMobs.push_back(monster);
 		}
 
-		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
-		{
-			Gobj_Interactable* interactable = dynamic_cast<Gobj_Interactable*>(interact);
-			mFocus->AddSelectObj(interactable);
-		}
+		// ∫§≈Õ ºØ±‚
+		std::random_device rd;
+		std::mt19937 g(rd());
+		std::shuffle(mPausedMobs.begin(), mPausedMobs.end(), g);
+
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
@@ -78,87 +81,83 @@ namespace sg
 			AddGameObj(eLayerType::Player, Lucy);
 		}
 
-		std::vector<Gobj_Monster*>::iterator iter = mSceneMob.begin();
-		while (iter != mSceneMob.end())
+		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0)
 		{
-			Gobj_Monster* mob = *iter;
-			if (mob == nullptr || mob->GetState() != GameObject::eState::Active)
-			{
-				mFocus->DeleteSelectobj(mob);
-				iter = mSceneMob.erase(iter); // erase returns the iterator following the last removed element
-			}
-			else
-			{
-				++iter;
-			}
+			mGate0->Open();
+			mGate1->Open();
+			mGate2->Open();
 		}
+
+		if (mActiveMobs.size() < 5)
+			SpawnMob();
+		PurgeDeadMobs();
 
 #pragma region test
 
-		mTime += Time::DeltaTime();
-		if (mTime > 5.0f)
-			mTime2 += Time::DeltaTime();
+		//mTime += Time::DeltaTime();
+		//if (mTime > 5.0f)
+		//	mTime2 += Time::DeltaTime();
 
-		if (mTime > 5.0f && mTime <= 7.0f)
-		{
-			if (mTime2 >= 2.0f)
-				mTime2 = 0.0f;
+		//if (mTime > 5.0f && mTime <= 7.0f)
+		//{
+		//	if (mTime2 >= 2.0f)
+		//		mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 2.0f);
-			mLg->SetColor(changecolor);
-		}
-		else if (mTime > 7.0f && mTime <= 10.0f)
-		{
-			mDay = false;
-			mTime2 = 0.0f;
-			mLg->SetColor(mAfternoonLight);
-		}
-		else if (mTime > 10.0f && mTime <= 12.0f)
-		{
-			if (mTime2 >= 2.0f)
-				mTime2 = 0.0f;
+		//	Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 2.0f);
+		//	mLg->SetColor(changecolor);
+		//}
+		//else if (mTime > 7.0f && mTime <= 10.0f)
+		//{
+		//	mDay = false;
+		//	mTime2 = 0.0f;
+		//	mLg->SetColor(mAfternoonLight);
+		//}
+		//else if (mTime > 10.0f && mTime <= 12.0f)
+		//{
+		//	if (mTime2 >= 2.0f)
+		//		mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 2.0f);
-			mLg->SetColor(changecolor);
+		//	Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 2.0f);
+		//	mLg->SetColor(changecolor);
 
-		}
-		else if (mTime > 12.0f && mTime <= 15.0f)
-		{
-			mTime2 = 0.0f;
-			mLg->SetColor(mEveningLight);
-		}
-		else if (mTime > 15.0f && mTime <= 17.0f)
-		{
-			if (mTime2 >= 2.0f)
-				mTime2 = 0.0f;
+		//}
+		//else if (mTime > 12.0f && mTime <= 15.0f)
+		//{
+		//	mTime2 = 0.0f;
+		//	mLg->SetColor(mEveningLight);
+		//}
+		//else if (mTime > 15.0f && mTime <= 17.0f)
+		//{
+		//	if (mTime2 >= 2.0f)
+		//		mTime2 = 0.0f;
 
-			Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 2.0f);
-			mLg->SetColor(changecolor);
+		//	Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 2.0f);
+		//	mLg->SetColor(changecolor);
 
-		}
-		else if (mTime > 17.0f && mTime <= 20.0f)
-		{
-			mTime2 = 0.0f;
-			mLg->SetColor(mDawnLight);
-		}
-		else if (mTime > 20.0f && mTime <= 22.0f)
-		{
-			if (mTime2 >= 2.0f)
-				mTime2 = 0.0f;
-			mDay = true;
-			Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 2.0f);
-			mLg->SetColor(changecolor);
-		}
-		else if (mTime > 22.0f)
-		{
-			mTime = 0.0f;
-			mLg->SetColor(mDayLight);
-		}
+		//}
+		//else if (mTime > 17.0f && mTime <= 20.0f)
+		//{
+		//	mTime2 = 0.0f;
+		//	mLg->SetColor(mDawnLight);
+		//}
+		//else if (mTime > 20.0f && mTime <= 22.0f)
+		//{
+		//	if (mTime2 >= 2.0f)
+		//		mTime2 = 0.0f;
+		//	mDay = true;
+		//	Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 2.0f);
+		//	mLg->SetColor(changecolor);
+		//}
+		//else if (mTime > 22.0f)
+		//{
+		//	mTime = 0.0f;
+		//	mLg->SetColor(mDayLight);
+		//}
 
 #pragma endregion
 
 #pragma region realtime
-		/*mTime += Time::DeltaTime();
+		mTime += Time::DeltaTime();
 		if (mTime > 500.0f)
 			mTime2 += Time::DeltaTime();
 
@@ -218,7 +217,7 @@ namespace sg
 		{
 			mTime = 0.0f;
 			mLg->SetColor(mDayLight);
-		}*/
+		}
 #pragma endregion
 
 		Scene::Update();
@@ -242,6 +241,11 @@ namespace sg
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[3]);
+		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
+		{
+			Gobj_Interactable* interactable = dynamic_cast<Gobj_Interactable*>(interact);
+			mFocus->AddSelectObj(interactable);
+		}
 	}
 	void PlayScene::OnExit()
 	{
@@ -251,5 +255,6 @@ namespace sg
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[3]);
+		//mFocus->clearObjs();
 	}
 }
