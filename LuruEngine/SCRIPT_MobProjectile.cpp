@@ -49,6 +49,7 @@ namespace sg
 
 		if (mProjType == eMProjType::PoisonOrb)
 		{
+			IsActivated = true;
 			// Set the amplitude of the sine wave
 			float amplitude = 5.0f;
 			// Set the frequency of the sine wave

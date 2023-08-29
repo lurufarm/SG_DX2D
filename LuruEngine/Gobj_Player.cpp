@@ -95,11 +95,9 @@ namespace sg
 	void Gobj_Player::LevelUp()
 	{
 		Vector3 pos0 = mTr->GetPosition();
-		Vector3 pos1 = mTr->GetPosition();
 		pos0.y += 10.0f;
-		//pos1.y -= 10.0f;
 		object::Instantiate<Img_LevUP>(pos0, eLayerType::UI, SceneManager::GetActiveScene());
-		object::Instantiate<Img_LevUP2>(pos1, eLayerType::Effect, SceneManager::GetActiveScene());
+		object::Instantiate<Img_LevUP2>(eLayerType::Effect, SceneManager::GetActiveScene());
 		mpStat.mLev++;
 		mpStat.mStrength += mpStat.mStrength * 0.1f;
 		mpStat.mCoolDown -= mpStat.mCoolDown * 0.1f;
