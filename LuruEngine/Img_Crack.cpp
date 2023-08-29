@@ -9,7 +9,6 @@ namespace sg
 		std::wstring name = Gobj_Img::GetName();
 		name += L"_Crack";
 		SetName(name);
-		//mAniNum = 0;
 		Img_Crack::Initialize();
 	}
 	Img_Crack::~Img_Crack()

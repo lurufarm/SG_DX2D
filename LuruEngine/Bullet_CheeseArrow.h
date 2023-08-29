@@ -7,6 +7,7 @@ namespace sg
 	{
 	public:
 		Bullet_CheeseArrow();
+		Bullet_CheeseArrow(int num);
 		~Bullet_CheeseArrow();
 
 		void Initialize();

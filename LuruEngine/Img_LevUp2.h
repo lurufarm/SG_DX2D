@@ -1,14 +1,13 @@
 #pragma once
-#include "Gobj_Bullet.h"
+#include "Gobj_Img.h"
 
 namespace sg
 {
-	class Bullet_LucyBomb : public Gobj_Bullet
+	class Img_LevUP2 : public Gobj_Img
 	{
 	public:
-		Bullet_LucyBomb();
-		Bullet_LucyBomb(int num);
-		~Bullet_LucyBomb();
+		Img_LevUP2();
+		~Img_LevUP2();
 
 		void Initialize();
 		void Update();
@@ -16,8 +15,7 @@ namespace sg
 		void Render();
 
 	private:
-
 		class Animator* mAni;
-
+		class Light* mLg;
 	};
 }

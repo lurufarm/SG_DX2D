@@ -658,7 +658,22 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgCatPattern", material);
 
-		
+		// PlayScene - Starting Plate
+
+		texture = Resources::Load<Texture>(L"Img_StartPlate", L"..\\Resources\\Map\\Common\\StartingPlate.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgStartingPlate", material);
+
+		texture = Resources::Load<Texture>(L"Img_LevUp", L"..\\Resources\\UI\\LevelUp.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgLevUp", material);
+
 #pragma endregion
 #pragma region Lobby Scene Material
 		 // Lobby - BG1

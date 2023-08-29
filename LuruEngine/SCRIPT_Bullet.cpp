@@ -12,16 +12,20 @@ namespace sg
 {
 	void SCRIPT_Bullet::Initialize()
 	{
+
 		mTime = 0.0f;
 		mBullet = (Gobj_Bullet*)GetOwner();
 		mBulletType = mBullet->GetBulletType();
-		mFirstPos = mBullet->GetFirstPos();
-		mCurPos = mFirstPos;
-		mLastPos = mBullet->GetLastPos();
 		IsLaunched = false;
-		mTotalDuration = GetDistance() / 100.0f;
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
+
+		mTotalProjs = mBulletOwner->GetStat().mProjectiles;
+		mThisNum = mBullet->GetThisNum();
+		mFirstPos = mBullet->GetFirstPos();
+		mCurPos = mFirstPos;
+		GetLastPos(mThisNum);
+		mTotalDuration = GetDistance() / 100.0f;
 
 		if (mBullet->GetBulletType() == eBulletType::Cheese)
 		{
@@ -31,7 +35,7 @@ namespace sg
 			{
 				angleRad = -angleRad;
 			}
-			float angleDegree = (angleRad * 180.0f / 3.1415926535f) - 90.0f;
+			float angleDegree = (angleRad * 180.0f / 3.141592f) - 90.0f;
 			
 			Transform* tr = mBullet->GetComp<Transform>();
 			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
@@ -46,7 +50,7 @@ namespace sg
 		{
 			Vector3 Direction = mLastPos - mFirstPos;
 			Direction.Normalize();
-			mCurPos += mPlayer->GetStat().mSpeed * Time::DeltaTime() * Direction;
+			mCurPos += mPlayer->GetStat().mAttackSpeed * Time::DeltaTime() * Direction;
 			mCurPos.z = -1.0f;
 			mBullet->GetComp<Transform>()->SetPosition(mCurPos);
 		}
@@ -54,7 +58,8 @@ namespace sg
 		if (mBulletType == eBulletType::Lucy) // 포물선을 그리는 Projectile
 		{
 			float curveHeight = 20.0f; // 곡선의 높이
-			float curveDuration = mTotalDuration * 0.7; // 곡선 운동 시간
+			//float curveDuration = mTotalDuration * 0.7; // 곡선 운동 시간
+			float curveDuration = mTotalDuration * (mBulletOwner->GetStat().mAttackSpeed / 100.0f); // 곡선 운동 시간
 
 			// 시간의 변화량을 계산
 			float t = mTime / curveDuration;
@@ -105,5 +110,31 @@ namespace sg
 	void SCRIPT_Bullet::OnCollisionExit(Collider2D* other)
 	{
 
+	}
+	void SCRIPT_Bullet::GetLastPos(int n)
+	{
+		mLastPos = mBullet->GetLastPos();
+
+		if (n >= 2)
+		{
+			if (n % 2 == 0)
+			{
+				float angledegree = 10.0f * n;
+				float angle = angledegree * (3.141592 / 180.0f);
+				Vector2 direction = GetDirection();
+				mLastPos.x = cos(angle) * direction.x - sin(angle) * direction.y;
+				mLastPos.y = sin(angle) * direction.x + cos(angle) * direction.y;
+				mLastPos += mFirstPos;
+			}
+			else
+			{
+				float angledegree = -10.0f * (n - 1.0f);
+				float angle = angledegree * (3.141592 / 180.0f);
+				Vector2 direction = GetDirection();
+				mLastPos.x = cos(angle) * direction.x - sin(angle) * direction.y;
+				mLastPos.y = sin(angle) * direction.x + cos(angle) * direction.y;
+				mLastPos += mFirstPos;
+			}
+		}
 	}
 }

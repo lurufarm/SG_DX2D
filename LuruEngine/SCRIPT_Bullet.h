@@ -30,12 +30,17 @@ namespace sg
 			return direction;
 		}
 
+		void GetLastPos(int n);
+
+
 	private:
 
+		UINT mThisNum;
+		UINT mTotalProjs;
 
 		Gobj_Bullet* mBullet;
 		eBulletType mBulletType;
-		GameObject* mBulletOwner;
+		Gobj_Character* mBulletOwner;
 		Gobj_Player* mPlayer;
 		float mTime;
 		float mTotalDuration;

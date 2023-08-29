@@ -11,6 +11,10 @@
 #include "Char_Cheese.h"
 #include "SCENE_PlayScene.h"
 
+#include "Img_LevUP.h"
+#include "Img_LevUP2.h"
+
+
 
 namespace sg
 {
@@ -58,6 +62,11 @@ namespace sg
 	}
 	void Gobj_Player::Update()
 	{
+		if (mpStat.mLev < 5	&& mpStat.mExp >= nextLevelExp[mpStat.mLev - 1])
+		{
+			LevelUp();
+		}
+
 		if (PlayScene::GetTime())
 		{
 			mLg->SetColor(Vector4(0.0f));
@@ -82,5 +91,24 @@ namespace sg
 		mTr->SetPosition(0.0f, 0.0f, -2.0f);
 		std::wstring idle = GetComp<SCRIPT_Player>()->AnimationName(L"Idle");
 		mAni->PlayAnimation(idle, true, true);
+	}
+	void Gobj_Player::LevelUp()
+	{
+		Vector3 pos0 = mTr->GetPosition();
+		Vector3 pos1 = mTr->GetPosition();
+		pos0.y += 10.0f;
+		//pos1.y -= 10.0f;
+		object::Instantiate<Img_LevUP>(pos0, eLayerType::UI, SceneManager::GetActiveScene());
+		object::Instantiate<Img_LevUP2>(pos1, eLayerType::Effect, SceneManager::GetActiveScene());
+		mpStat.mLev++;
+		mpStat.mStrength += mpStat.mStrength * 0.1f;
+		mpStat.mCoolDown -= mpStat.mCoolDown * 0.1f;
+		mpStat.mRange += mpStat.mRange * 0.05f;
+		mpStat.mSpeed += mpStat.mSpeed * 0.05f;
+		mpStat.mAttackSpeed += mpStat.mAttackSpeed * 0.05f;
+		mpStat.mHP += mpStat.mHP * 0.1f;
+		if (mpStat.mLev % 2 == 1)
+			mpStat.mProjectiles++;
+		mpStat.mExp -= nextLevelExp[mpStat.mLev - 2];
 	}
 }

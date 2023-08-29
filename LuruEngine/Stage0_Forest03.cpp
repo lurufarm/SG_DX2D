@@ -8,6 +8,8 @@
 #include "Tile_TilePalette.h"
 #include "SCRIPT_MainCamera.h"
 #include "Img_Stage0_Forest01_Map.h"
+#include "Img_Crack.h"
+#include "Img_StartingPlate.h"
 #include "Gobj_Player.h"
 #include "Monsters.h"
 #include "Interact_Gate.h"
@@ -27,13 +29,25 @@ namespace sg
 	void Stage0_Forest03::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-
 		Vector3 pos = Vector3(-11.0f, -15.0f, 0.0f);
+		mCrackPos[0] = Vector3(190.0f, 180.0f, -0.5f);
+		mCrackPos[1] = Vector3(-110.0f, 245.0f, -0.5f);
+		mCrackPos[2] = Vector3(-70.0f, -130.0f, -0.5f);
+		mStartPos = Vector3(170.0f, -205.0f, -1.0f);
+
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd03, pos, eLayerType::BGImg, this);
+		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
 
 		GameObject* Forest03camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest03camera->AddComp<Camera>();
 		Forest03camera->AddComp<SCRIPT_MainCamera>();
+
+
+
+		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
+		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
+		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
+
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(170.0f, 375.0f, -0.1f), eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(207.0f, 375.0f, -0.1f), eLayerType::InteractableObject, this);

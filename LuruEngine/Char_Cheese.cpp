@@ -9,7 +9,9 @@ namespace sg
 		mStat.mCoolDown = 1.0f;
 		mStat.mRange = 100.0f;
 		mStat.mSpeed = 40.0f;
+		mStat.mAttackSpeed = 80.0f;
 		mStat.mHP = 90;
+		mStat.mProjectiles = 3;
 		mStat.mExp = 0.0;
 
 		SetName(L"Cheese");

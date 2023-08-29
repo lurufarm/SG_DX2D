@@ -9,7 +9,9 @@ namespace sg
 		mStat.mCoolDown = 1.7f;
 		mStat.mRange = 100.0f;
 		mStat.mSpeed = 40.0f;
+		mStat.mAttackSpeed = 50.0f;
 		mStat.mHP = 90;
+		mStat.mProjectiles = 1;
 		mStat.mExp = 0.0;
 
 		SetName(L"Lucy");

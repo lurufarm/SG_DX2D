@@ -21,10 +21,6 @@ namespace sg
 	}
 	void Gobj_Character::Update()
 	{
-		if (mStat.mExp >= 100.0f)
-		{
-			mStat.mLev++;
-		}
 		GameObject::Update();
 	}
 	void Gobj_Character::LateUpdate()
@@ -35,4 +31,5 @@ namespace sg
 	{
 		GameObject::Render();
 	}
+
 }

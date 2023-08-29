@@ -10,6 +10,13 @@ namespace sg
 	Bullet_LucyBomb::Bullet_LucyBomb()
 	{
 		SetName(L"LucyBomb");
+		mThisNum = 1;
+		Bullet_LucyBomb::Initialize();
+	}
+	Bullet_LucyBomb::Bullet_LucyBomb(int num)
+	{
+		SetName(L"LucyBomb");
+		mThisNum = num;
 		Bullet_LucyBomb::Initialize();
 	}
 	Bullet_LucyBomb::~Bullet_LucyBomb()

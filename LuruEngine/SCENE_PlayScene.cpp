@@ -22,7 +22,6 @@ namespace sg
 
 	PlayScene::PlayScene()
 	{
-		SetName(L"PlayScene");
 	}
 	PlayScene::~PlayScene()
 	{
@@ -52,6 +51,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
+
 
 
 		for (GameObject* mob : this->GetLayer(eLayerType::Monster).GetGameObjects())
@@ -241,11 +241,14 @@ namespace sg
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[3]);
+
 		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
 		{
 			Gobj_Interactable* interactable = dynamic_cast<Gobj_Interactable*>(interact);
 			mFocus->AddSelectObj(interactable);
 		}
+
+		Player->GetComp<Transform>()->SetPosition(mStartPos);
 	}
 	void PlayScene::OnExit()
 	{

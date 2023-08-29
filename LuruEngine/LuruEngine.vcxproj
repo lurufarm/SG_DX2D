@@ -180,7 +180,10 @@
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
     <ClInclude Include="Img_Crack.h" />
+    <ClInclude Include="Img_LevUP.h" />
+    <ClInclude Include="Img_LevUp2.h" />
     <ClInclude Include="Img_LobbyTorch.h" />
+    <ClInclude Include="Img_StartingPlate.h" />
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Melee_Cannibals.h" />
@@ -272,7 +275,10 @@
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
     <ClCompile Include="Img_Crack.cpp" />
+    <ClCompile Include="Img_LevUP.cpp" />
+    <ClCompile Include="Img_LevUp2.cpp" />
     <ClCompile Include="Img_LobbyTorch.cpp" />
+    <ClCompile Include="Img_StartingPlate.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />

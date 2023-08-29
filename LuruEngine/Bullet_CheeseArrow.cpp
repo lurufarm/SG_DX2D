@@ -12,6 +12,13 @@ namespace sg
 	Bullet_CheeseArrow::Bullet_CheeseArrow()
 	{
 		SetName(L"CheeseArrow");
+		mThisNum = 1;
+		Bullet_CheeseArrow::Initialize();
+	}
+	Bullet_CheeseArrow::Bullet_CheeseArrow(int num)
+	{
+		SetName(L"CheeseArrow");
+		mThisNum = num;
 		Bullet_CheeseArrow::Initialize();
 	}
 	Bullet_CheeseArrow::~Bullet_CheeseArrow()

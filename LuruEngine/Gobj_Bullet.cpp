@@ -19,6 +19,7 @@ namespace sg
 		AddComp<MeshRenderer>();
 		AddComp<Collider2D>();
 		mBulletOwner = nullptr;
+		mThisNum = 1;
 	}
 	Gobj_Bullet::~Gobj_Bullet()
 	{

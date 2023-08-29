@@ -1,8 +1,10 @@
 #include "sgTime.h"
 #include "sgApplication.h"
 #include "sgRenderer.h"
+#include "..\LuruEngine\Gobj_Player.h"
 
 extern sg::Application application;
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
@@ -45,7 +47,9 @@ namespace sg
 
 			wchar_t szFloat[50] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
-			swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
+			Vector3 ppos = Player->GetComp<Transform>()->GetPosition();
+			//swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
+			swprintf_s(szFloat, 50, L"X : %f, Y : %f, Z : &f", ppos.x, ppos.y, ppos.z);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hwnd, szFloat);
 

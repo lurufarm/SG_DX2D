@@ -9,7 +9,7 @@ namespace sg
 	class Gobj_Bullet : public GameObject
 	{
 	public:
-		Gobj_Bullet();
+		Gobj_Bullet	();
 		~Gobj_Bullet();
 
 		virtual void Initialize();
@@ -24,6 +24,7 @@ namespace sg
 		Gobj_Character* GetBulletOwner() { return mBulletOwner; }
 
 		eBulletType GetBulletType() { return mType; }
+		int GetThisNum() { return mThisNum; }
 
 	protected:
 		eBulletType mType;
@@ -36,6 +37,8 @@ namespace sg
 		Vector3 mLastPos;
 		Vector3 mFirstPos;
 		Gobj_Character* mBulletOwner;
+
+		int mThisNum;
 
 
 	private:

@@ -19,6 +19,7 @@ namespace sg
 	}
 	Gobj_Monster::~Gobj_Monster()
 	{
+		Player->EXP(this->mStat.dropEXP);
 	}
 	void Gobj_Monster::Initialize()
 	{

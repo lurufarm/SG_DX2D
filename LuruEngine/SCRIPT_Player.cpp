@@ -227,10 +227,20 @@ namespace sg
 		{
 			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
 			if (mOwner->GetChar()->GetName() == L"Cheese")
-				object::Instantiate<Bullet_CheeseArrow>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+			{
+				for (size_t i = 1; i <= mOwner->GetStat().mProjectiles; i++)
+				{
+					object::ShootBullet<Bullet_CheeseArrow>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+				}
+			}
 			else if (mOwner->GetChar()->GetName() == L"Lucy")
-				object::Instantiate<Bullet_LucyBomb>(eLayerType::Player_Bullet, SceneManager::GetActiveScene());
-			mTime = 0.0f;
+			{
+				for (size_t i = 1; i <= mOwner->GetStat().mProjectiles; i++)
+				{
+					object::ShootBullet<Bullet_LucyBomb>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+				}
+			}
+			mTime = 0.0f;	
 		}
 		if (Input::GetAnyKey())
 			mFSMState = ePlayerFSM::Move;
@@ -282,8 +292,8 @@ namespace sg
 		{
 			mAttacked = true;
 			Gobj_Character::CharStat pStat = mOwner->GetStat();
-			Gobj_Monster::MobStat mStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
-			pStat.mHP -= mStat.mStrength;
+			Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
+			pStat.mHP -= mobStat.mStrength;
 			mOwner->SetStat(pStat);
 		}
 		else if (sp != nullptr)

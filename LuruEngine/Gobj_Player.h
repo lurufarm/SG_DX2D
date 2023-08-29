@@ -42,9 +42,14 @@ namespace sg
 		
 		void SetTarget(GameObject* mob) { mTarget = mob; }
 		GameObject* GetTarget() { return mTarget; }
-
+		
+		void EXP(int exp)
+		{
+			mpStat.mExp += exp;
+		}
 
 	private:
+		void LevelUp();
 
 		static Transform* mTr;
 		static MeshRenderer* mMr;
@@ -58,6 +63,8 @@ namespace sg
 		static bool mEnemyNearby;
 
 		GameObject* mTarget;
+
+		UINT nextLevelExp[4] = { 100, 130, 170, 200 };
 
 	};
 }

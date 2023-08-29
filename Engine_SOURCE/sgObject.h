@@ -18,7 +18,7 @@ namespace sg::object
 	{
 		T* Gobj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
-		//Scene* scene = sname;
+		//Scene* scene = sc;
 		scene->AddGameObj(layer, Gobj);
 
 		return Gobj;
@@ -48,6 +48,16 @@ namespace sg::object
 		scene->AddGameObj(eLayerType::Monster_Bullet2, sa);
 
 		return sa;
+	}
+
+	template <typename T>
+	static __forceinline T* ShootBullet(int parameter, enums::eLayerType layer, Scene* sc)
+	{
+		T* Gobj = new T(parameter);
+		Scene* scene = sc;
+		scene->AddGameObj(layer, Gobj);
+
+		return Gobj;
 	}
 	
 	template <typename T>
@@ -116,23 +126,23 @@ namespace sg::object
 #pragma region Create Objects have parameters in Constructor
 
 	template <typename T>
-	static __forceinline T* Instantiate(auto parameter, enums::eLayerType layer, Scene* sname)
+	static __forceinline T* Instantiate(auto parameter, enums::eLayerType layer, Scene* sc)
 	{
 		T* Gobj = new T(parameter);
-		Scene* scene = sname;
+		Scene* scene = sc;
 		scene->AddGameObj(layer, Gobj);
 
 		return Gobj;
 	}
 
 	template <typename T>
-	static __forceinline T* Instantiate(auto parameter, Vector3 pos, enums::eLayerType layer, Scene* sname)
+	static __forceinline T* Instantiate(auto parameter, Vector3 pos, enums::eLayerType layer, Scene* sc)
 	{
 		T* Gobj = new T(parameter);
 		Transform* tr = Gobj->GetComp<Transform>();
 		tr->SetPosition(pos);
 		//Scene* scene = SceneManager::GetActiveScene();
-		Scene* scene = sname;
+		Scene* scene = sc;
 
 		scene->AddGameObj(layer, Gobj);
 

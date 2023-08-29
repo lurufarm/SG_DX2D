@@ -23,7 +23,9 @@ namespace sg
 			float mCoolDown;
 			float mRange;
 			float mSpeed;
+			float mAttackSpeed;
 			int mHP;
+			int mProjectiles;
 			float mExp;
 		};
 
@@ -39,7 +41,9 @@ namespace sg
 		void SetCoolDown(float cooldown) { mStat.mCoolDown = cooldown; }
 		void SetRange(float range) { mStat.mRange = range; }
 		void SetSpeed(float speed) { mStat.mSpeed = speed; }
+		void SetAttackSpeed(float attackspeed) { mStat.mAttackSpeed = attackspeed; }
 		void SetHP(int HP) { mStat.mHP = HP; }
+
 
 		void SetIsPlayer(bool value) { mIsPlayer = value; }
 		bool GetIsPlayer() { return mIsPlayer; }
@@ -60,6 +64,8 @@ namespace sg
 
 		std::shared_ptr<Texture> mAtlas;
 		class Gobj_Bullet* mMyBullet;
+
+		UINT NeedEXP[4] = { 100, 150, 200, 250 };
 
 
 	private:
