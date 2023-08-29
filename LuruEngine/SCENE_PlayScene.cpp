@@ -232,6 +232,8 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
+		renderer::lightsBuffer->Clear();
+
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
 		AddGameObj(eLayerType::Player, Player);
@@ -240,6 +242,7 @@ namespace sg
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[3]);
+		Player->GetComp<Transform>()->SetPosition(mStartPos);
 
 		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
 		{
@@ -247,7 +250,15 @@ namespace sg
 			mFocus->AddSelectObj(interactable);
 		}
 
-		Player->GetComp<Transform>()->SetPosition(mStartPos);
+		Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
+		SCRIPT_Company* lucycom = Lucy->GetComp<SCRIPT_Company>();
+
+		if (lucycom)
+		{
+			Lucy->GetComp<Transform>()->SetPosition(lucycom->RandPos(mStartPos));
+			AddGameObj(eLayerType::Player, Lucy);
+		}
+
 	}
 	void PlayScene::OnExit()
 	{
@@ -259,6 +270,15 @@ namespace sg
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[3]);
+
+		Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
+		SCRIPT_Company* lucycom = Lucy->GetComp<SCRIPT_Company>();
+
+		if (lucycom)
+		{
+			DeleteGameObj(eLayerType::Player, Lucy);
+		}
+
 		//mFocus->clearObjs();
 	}
 }
