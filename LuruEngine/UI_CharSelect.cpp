@@ -26,7 +26,7 @@ namespace sg
 		{
 			for (size_t j = 0; j < 5; j++)
 			{
-				object::Destroy(mBoxes[i][j]);
+				mBoxes[i][j]->SetState(GameObject::eState::Dead);
 			}
 		}
 		//object::Destroy(mFocus);

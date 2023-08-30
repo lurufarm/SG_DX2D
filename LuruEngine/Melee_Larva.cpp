@@ -6,11 +6,11 @@ namespace sg
 	{
 		SetName(L"Larva");
 
-		mStat.mHP = 15;
+		mStat.mCurHP = 15;
 		mStat.mStrength = 3;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 10.0f;
-		mStat.mCoolDown = 1.5f;
+		mStat.mCooldown = 1.5f;
 		mStat.dropEXP = 10.0f;
 
 		Melee_Larva::Initialize();

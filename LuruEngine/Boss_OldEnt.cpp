@@ -8,11 +8,11 @@ namespace sg
 	{
 		SetName(L"OldEnt");
 
-		mStat.mHP = 225;
+		mStat.mCurHP = 225;
 		mStat.mStrength = 4;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;
-		mStat.mCoolDown = 2.3f;
+		mStat.mCooldown = 2.3f;
 		mStat.dropEXP = 15.0f;
 
 		Boss_OldEnt::Initialize();

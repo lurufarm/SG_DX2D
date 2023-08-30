@@ -7,11 +7,11 @@ namespace sg
 	{
 		SetName(L"SlimeB");
 
-		mStat.mHP = 25;
+		mStat.mCurHP = 25;
 		mStat.mStrength = 3;
 		mStat.mSpeed = 20.0f;
 		mStat.mRange = 30.0f;
-		mStat.mCoolDown = 1.0f;
+		mStat.mCooldown = 1.0f;
 		mStat.dropEXP = 15.0f;
 
 		Melee_SlimeB::Initialize();

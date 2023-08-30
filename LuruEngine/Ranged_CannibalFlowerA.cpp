@@ -7,11 +7,11 @@ namespace sg
 	{
 		SetName(L"CannibalFlowerA");
 
-		mStat.mHP = 18;
+		mStat.mCurHP = 18;
 		mStat.mStrength = 4;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 100.0f;
-		mStat.mCoolDown = 2.0f;
+		mStat.mCooldown = 2.0f;
 		mStat.dropEXP = 10.0f;
 
 		Ranged_CannibalFlowerA::Initialize();

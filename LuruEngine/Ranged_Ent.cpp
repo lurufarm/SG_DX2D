@@ -7,12 +7,12 @@ namespace sg
 	{
 		SetName(L"Ent");
 
-		mStat.mHP = 32;
-		//mStat.mHP = 99999999999;
+		mStat.mCurHP = 32;
+		//mStat.mCurHP = 99999999999;
 		mStat.mStrength = 4;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;
-		mStat.mCoolDown = 3.0f;
+		mStat.mCooldown = 3.0f;
 		mStat.dropEXP = 15.0f;
 
 		Ranged_Ent::Initialize();

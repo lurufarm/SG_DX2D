@@ -64,9 +64,6 @@
     <ClCompile Include="SCENE_PlayScene.cpp">
       <Filter>Scene\SCENE_PlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="SCENE_Stage0.cpp">
-      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
-    </ClCompile>
     <ClCompile Include="Stage0_Forest01.cpp">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClCompile>
@@ -265,11 +262,26 @@
     <ClCompile Include="Interact_Gate.cpp">
       <Filter>Obj\Gobj_Interactable</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_PlaySceneGate.cpp">
-      <Filter>Script\SCRIPT_Interactable</Filter>
-    </ClCompile>
     <ClCompile Include="Stage0_Forest03.cpp">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Item.cpp">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_LevUP.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_LevUp2.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_StartingPlate.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_Forest04.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_AbilityEnhancer.cpp">
+      <Filter>Obj\Gobj_Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,9 +350,6 @@
     </ClInclude>
     <ClInclude Include="SCENE_PlayScene.h">
       <Filter>Scene\SCENE_PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SCENE_Stage0.h">
-      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
     </ClInclude>
     <ClInclude Include="Stage0_Forest01.h">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
@@ -543,11 +552,26 @@
     <ClInclude Include="Interact_Gate.h">
       <Filter>Obj\Gobj_Interactable</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_PlaySceneGate.h">
-      <Filter>Script\SCRIPT_Interactable</Filter>
-    </ClInclude>
     <ClInclude Include="Stage0_Forest03.h">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Item.h">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_LevUP.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_LevUp2.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_StartingPlate.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest04.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_AbilityEnhancer.h">
+      <Filter>Obj\Gobj_Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -688,6 +712,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Effect\Monster">
       <UniqueIdentifier>{ab3d3de3-0ae5-4175-abda-7f413c33e43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Item">
+      <UniqueIdentifier>{5f0859a8-8b62-456b-973b-9ba7020c0c15}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

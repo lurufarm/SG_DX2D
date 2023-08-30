@@ -46,7 +46,7 @@ namespace sg
 		Vector3 ppos = ptr->GetPosition();
 
 		// 필수
-		if (mOwner->GetStat().mHP <= 0)
+		if (mOwner->GetStat().mCurHP <= 0)
 			mFSMState = eFSMState::Death;
 		if (mTarget == nullptr || mTarget->GetState() == GameObject::eState::Dead)
 			mFSMState = eFSMState::Idle;
@@ -88,22 +88,23 @@ namespace sg
 			if (mAttacked == false)
 			{
 				mFSMState = eFSMState::Attacked;
-				int hp = mOwner->GetStat().mHP;
-				hp -= bullet->GetBulletOwner()->GetStat().mStrength;
+				int hp = mOwner->GetStat().mCurHP;
+				Gobj_Character::CharStat pStat = bullet->GetBulletOwner()->GetStat();
+				hp -= pStat.mStrength * pStat.mDamageScaling;
 				mOwner->SetStatHP(hp);
 			}
 		}
-		if (mFSMState == eFSMState::Attack)
-		{
-			if (other->GetOwner() == mTarget)
-			{
-				Gobj_Character::CharStat stat = mTarget->GetStat();
+		//if (mFSMState == eFSMState::Attack)
+		//{
+		//	if (other->GetOwner() == mTarget)
+		//	{
+		//		Gobj_Character::CharStat stat = mTarget->GetStat();
 
-				stat.mHP -= mOwner->GetStat().mStrength;
+		//		stat.mCurHP -= mOwner->GetStat().mStrength * mOwner->GetStat().;
 
-				mTarget->SetStat(stat);
-			}
-		}
+		//		mTarget->SetStat(stat);
+		//	}
+		//}
 	}
 	void SCRIPT_Boss::OnCollisionStay(Collider2D* other)
 	{
@@ -169,7 +170,7 @@ namespace sg
 
 		if (mAttackNum == 0) // 사과 던지기 공격일 때
 		{
-			if (mTime >= mOwner->GetStat().mCoolDown)
+			if (mTime >= mOwner->GetStat().mCooldown)
 			{
 				at->PlayAnimation(AnimationName(attack), false, mDirection);
 				mTime = 0.0f;
@@ -190,7 +191,7 @@ namespace sg
 			mTime2 += Time::DeltaTime();
 			std::map<int, Vector3> stempos = {};
 
-			if (mTime >= mOwner->GetStat().mCoolDown)
+			if (mTime >= mOwner->GetStat().mCooldown)
 			{
 				at->PlayAnimation(AnimationName(attack2), false, mDirection);
 				mTime = 0.0f;

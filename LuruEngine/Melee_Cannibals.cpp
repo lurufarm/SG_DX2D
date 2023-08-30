@@ -6,11 +6,11 @@ namespace sg
 	{
 		SetName(L"Cannibals");
 
-		mStat.mHP = 25;
+		mStat.mCurHP = 25;
 		mStat.mStrength = 3;
 		mStat.mSpeed = 20.0f;
 		mStat.mRange = 10.0f;
-		mStat.mCoolDown = 1.0f;
+		mStat.mCooldown = 1.0f;
 		mStat.dropEXP = 10.0f;
 
 		Melee_Cannibals::Initialize();

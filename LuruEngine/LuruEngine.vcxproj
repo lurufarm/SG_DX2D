@@ -176,6 +176,7 @@
     <ClInclude Include="Gobj_Effect.h" />
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
+    <ClInclude Include="Gobj_Item.h" />
     <ClInclude Include="Gobj_MobProjectile.h" />
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Img_StartingPlate.h" />
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
+    <ClInclude Include="Item_AbilityEnhancer.h" />
     <ClInclude Include="Melee_Cannibals.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
     <ClInclude Include="Melee_EliteLarva.h" />
@@ -271,6 +273,7 @@
     <ClCompile Include="Gobj_Effect.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
+    <ClCompile Include="Gobj_Item.cpp" />
     <ClCompile Include="Gobj_MobProjectile.cpp" />
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
@@ -281,6 +284,7 @@
     <ClCompile Include="Img_StartingPlate.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
+    <ClCompile Include="Item_AbilityEnhancer.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
     <ClCompile Include="Melee_EliteLarva.cpp" />

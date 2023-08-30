@@ -18,14 +18,22 @@ namespace sg
 
 		struct CharStat
 		{
-			int mLev;
+			int mLev = 1;
+			int mLife = 0;
 			float mStrength;
-			float mCoolDown;
+			float mDefence = 0;
+			float mCooldown;
 			float mRange;
 			float mSpeed;
-			float mAttackSpeed;
-			int mHP;
-			int mProjectiles;
+			float mAttackSpeed = 1;
+			float mAttackDuration = 0;
+			int mAttackCount;
+			float mCurHP;
+			float mMaxHP;
+			float mHPStealRatio = 0.0f;
+			float mHPHealRatio = 0.05;
+			int mProjectileCount;
+			float mDamageScaling;
 			float mExp;
 		};
 
@@ -36,13 +44,13 @@ namespace sg
 
 		CharStat GetStat() { return mStat; }
 
-		void SetLev(int lev) { mStat.mLev = lev; }
-		void SetStrength(float strength) { mStat.mStrength = strength; }
-		void SetCoolDown(float cooldown) { mStat.mCoolDown = cooldown; }
-		void SetRange(float range) { mStat.mRange = range; }
-		void SetSpeed(float speed) { mStat.mSpeed = speed; }
-		void SetAttackSpeed(float attackspeed) { mStat.mAttackSpeed = attackspeed; }
-		void SetHP(int HP) { mStat.mHP = HP; }
+		//void SetLev(int lev) { mStat.mLev = lev; }
+		//void SetStrength(float strength) { mStat.mStrength = strength; }
+		//void SetCoolDown(float cooldown) { mStat.mCooldown = cooldown; }
+		//void SetRange(float range) { mStat.mRange = range; }
+		//void SetSpeed(float speed) { mStat.mSpeed = speed; }
+		//void SetAttackSpeed(float attackspeed) { mStat.mAttackSpeed = attackspeed; }
+		//void SetHP(int HP) { mStat.mCurHP = HP; }
 
 
 		void SetIsPlayer(bool value) { mIsPlayer = value; }

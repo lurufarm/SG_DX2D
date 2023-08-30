@@ -35,7 +35,7 @@ namespace sg
 	}
 	void SCRIPT_Company::Update()
 	{
-		if (mPlayer->GetStat().mHP <= 0)
+		if (mPlayer->GetStat().mCurHP <= 0)
 		{
 			mDeath = true;
 			mFSMState = eCompanyFSM::Death;
@@ -127,7 +127,7 @@ namespace sg
 
 		//mOat->PlayAnimation(AnimationName(attack), false, mDirection);
 
-		if (mTime >= mOwner->GetStat().mCoolDown)
+		if (mTime >= mOwner->GetStat().mCooldown)
 		{
 			mOat->PlayAnimation(AnimationName(attack), false, mDirection);
 			if (mOwner->GetName() == L"Cheese")

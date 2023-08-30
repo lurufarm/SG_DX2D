@@ -37,7 +37,7 @@ namespace sg
 		Vector3 ppos = ptr->GetPosition();
 
 		// ÇÊ¼ö
-		if (mOwner->GetStat().mHP <= 0)
+		if (mOwner->GetStat().mCurHP <= 0)
 			mFSMState = eFSMState::Death;
 		if (mTarget == nullptr || mTarget->GetState() == GameObject::eState::Dead)
 			mFSMState = eFSMState::Idle;
@@ -90,7 +90,7 @@ namespace sg
 			{
 				Gobj_Character::CharStat stat = mTarget->GetStat();
 
-				stat.mHP -= mOwner->GetStat().mStrength;
+				stat.mCurHP -= mOwner->GetStat().mStrength;
 
 				mTarget->SetStat(stat);
 			}
@@ -154,7 +154,7 @@ namespace sg
 		mTime += Time::DeltaTime();
 
 		Animator* at = mOwner->GetComp<Animator>();
-		if (mTime >= mOwner->GetStat().mCoolDown)
+		if (mTime >= mOwner->GetStat().mCooldown)
 		{
 			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
@@ -196,8 +196,9 @@ namespace sg
 		{
 			mAttacked = true;
 			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attacked), false, mDirection);
-			int hp = mOwner->GetStat().mHP;
-			hp -= mTarget->GetStat().mStrength;
+			Gobj_Character::CharStat pStat = mTarget->GetStat();
+			int hp = mOwner->GetStat().mCurHP;
+			hp -= pStat.mStrength * pStat.mDamageScaling;
 			mOwner->SetStatHP(hp);
 		}
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())

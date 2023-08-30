@@ -5,13 +5,21 @@ namespace sg
 	Char_Lucy::Char_Lucy()
 	{
 		mStat.mLev = 1;
+		mStat.mLife = 0;
 		mStat.mStrength = 36.0f;
-		mStat.mCoolDown = 1.7f;
+		mStat.mDefence = 0.0f;
+		mStat.mCooldown = 1.7f;
 		mStat.mRange = 100.0f;
 		mStat.mSpeed = 40.0f;
 		mStat.mAttackSpeed = 50.0f;
-		mStat.mHP = 90;
-		mStat.mProjectiles = 1;
+		mStat.mAttackDuration = 0.0f;
+		mStat.mAttackCount = 1;
+		mStat.mCurHP = 90;
+		mStat.mMaxHP = 90;
+		mStat.mHPHealRatio = 0.05f;
+		mStat.mHPStealRatio = 0.0f;
+		mStat.mProjectileCount = 1;
+		mStat.mDamageScaling = 1.0f;
 		mStat.mExp = 0.0;
 
 		SetName(L"Lucy");

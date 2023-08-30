@@ -93,7 +93,7 @@ namespace sg
 		}
 		mAccDeltaTime += Time::DeltaTime() * mDir;
 
-		if (fabs(mAccDeltaTime) > 5.0f)
+		if (fabs(mAccDeltaTime) > 8.0f)
 		{
 			mDir *= -1.0f;
 		}
@@ -107,7 +107,6 @@ namespace sg
 
 			Vector3 objpos = mObj->GetComp<Transform>()->GetPosition();
 			Vector3 objscale = mObj->GetComp<Transform>()->GetScale();
-			//Vector3 objscale = mObj->GetComp<MeshRenderer>()->GetImgScale();
 
 			Vector3 p0 = Vector3(objpos.x - objscale.x * 0.5f - 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);
 			Vector3 p1 = Vector3(objpos.x + objscale.x * 0.5f + 1.5f, objpos.y + objscale.y * 0.5f, -2.0f);
@@ -124,10 +123,10 @@ namespace sg
 			pp2.Normalize();
 			pp3.Normalize();
 
-			mBoxes[0]->GetComp<Transform>()->SetPosition(p0 + pp0 * mAccDeltaTime);
-			mBoxes[1]->GetComp<Transform>()->SetPosition(p1 + pp1 * mAccDeltaTime);
-			mBoxes[2]->GetComp<Transform>()->SetPosition(p2 + pp2 * mAccDeltaTime);
-			mBoxes[3]->GetComp<Transform>()->SetPosition(p3 + pp3 * mAccDeltaTime);
+			mBoxes[0]->GetComp<Transform>()->SetPosition(p0 + pp0 * (mAccDeltaTime * 0.3f));
+			mBoxes[1]->GetComp<Transform>()->SetPosition(p1 + pp1 * (mAccDeltaTime * 0.3f));
+			mBoxes[2]->GetComp<Transform>()->SetPosition(p2 + pp2 * (mAccDeltaTime * 0.3f));
+			mBoxes[3]->GetComp<Transform>()->SetPosition(p3 + pp3 * (mAccDeltaTime * 0.3f));
 		}
 		else
 		{

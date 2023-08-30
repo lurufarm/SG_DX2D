@@ -705,7 +705,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"InteractableLobbyCharacter", material);
 
 		
@@ -714,7 +714,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"InteractableLobbyUpgrade", material);
 
 		
@@ -726,7 +726,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"ImgMolding", material);
 
 		// Lobby_CardBook
@@ -734,7 +734,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"InteractableLobbyCardBook", material);
 
 		
@@ -826,7 +826,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"Arrow", material);
 
 #pragma endregion
@@ -837,21 +837,21 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobSlimeA", material);
 
 		texture = Resources::Load<Texture>(L"Monster_SlimeB", L"..\\Resources\\Monster\\SlimeB.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobSlimeB", material);
 
 		texture = Resources::Load<Texture>(L"Monster_CannibalFlowerA", L"..\\Resources\\Monster\\CannibalFlowerA.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobCannibalFlowerA", material);
 
 
@@ -859,42 +859,42 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobEnt", material);
 
 		texture = Resources::Load<Texture>(L"Monster_Larva", L"..\\Resources\\Monster\\Larva.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobLarva", material);
 
 		texture = Resources::Load<Texture>(L"Monster_EliteLarva", L"..\\Resources\\Monster\\EliteLarva.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobEliteLarva", material);
 
 		texture = Resources::Load<Texture>(L"Monster_Cannibals", L"..\\Resources\\Monster\\Cannibals.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobCannibals", material);
 
 		texture = Resources::Load<Texture>(L"Monster_EliteCannibals", L"..\\Resources\\Monster\\EliteCannibals.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobEliteCannibals", material);
 
 		texture = Resources::Load<Texture>(L"Monster_OldEnt", L"..\\Resources\\Monster\\Bosses\\OldEnt.png");
 		material = std::make_shared<Material>();
 		material->SetShader(AniShader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobOldEnt", material);
 
 #pragma endregion

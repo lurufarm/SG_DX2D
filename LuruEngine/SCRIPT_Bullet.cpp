@@ -20,7 +20,7 @@ namespace sg
 		mPlayer = Player;
 		mBulletOwner = mBullet->GetBulletOwner();
 
-		mTotalProjs = mBulletOwner->GetStat().mProjectiles;
+		mTotalProjs = mBulletOwner->GetStat().mProjectileCount;
 		mThisNum = mBullet->GetThisNum();
 		mFirstPos = mBullet->GetFirstPos();
 		mCurPos = mFirstPos;

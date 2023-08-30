@@ -5,13 +5,21 @@ namespace sg
 	Char_Cheese::Char_Cheese()
 	{
 		mStat.mLev = 1;
+		mStat.mLife = 0;
 		mStat.mStrength = 15.0f;
-		mStat.mCoolDown = 1.0f;
+		mStat.mDefence = 0.0f;
+		mStat.mCooldown = 1.0f;
 		mStat.mRange = 100.0f;
 		mStat.mSpeed = 40.0f;
 		mStat.mAttackSpeed = 80.0f;
-		mStat.mHP = 90;
-		mStat.mProjectiles = 3;
+		mStat.mAttackDuration = 0.0f;
+		mStat.mAttackCount = 1;
+		mStat.mCurHP = 90;
+		mStat.mMaxHP = 90;
+		mStat.mHPHealRatio = 0.5f;
+		mStat.mHPStealRatio = 0.0f;
+		mStat.mProjectileCount = 1;
+		mStat.mDamageScaling = 1.0f;
 		mStat.mExp = 0.0;
 
 		SetName(L"Cheese");

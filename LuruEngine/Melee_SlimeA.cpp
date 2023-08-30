@@ -7,11 +7,11 @@ namespace sg
 	{
 		SetName(L"SlimeA");
 
-		mStat.mHP = 15;
+		mStat.mCurHP = 15;
 		mStat.mStrength = 2;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 10.0f;
-		mStat.mCoolDown = 2.0f;
+		mStat.mCooldown = 2.0f;
 		mStat.dropEXP = 10.0f;
 
 		Melee_SlimeA::Initialize();

@@ -10,11 +10,11 @@ namespace sg
 
 		struct MobStat
 		{
-			int mHP;
+			int mCurHP;
 			int mStrength;
 			float mSpeed;
 			float mRange;
-			float mCoolDown;
+			float mCooldown;
 			int dropEXP;
 		};
 
@@ -27,7 +27,7 @@ namespace sg
 		virtual void Render() override;
 
 		MobStat GetStat() { return mStat; }
-		void SetStatHP(int hp) { mStat.mHP = hp; }
+		void SetStatHP(int hp) { mStat.mCurHP = hp; }
 
 		static void AddMob(std::wstring key, Gobj_Monster* character)
 		{

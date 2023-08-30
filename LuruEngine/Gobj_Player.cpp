@@ -67,6 +67,9 @@ namespace sg
 			LevelUp();
 		}
 
+		if (mpStat.mCurHP > mpStat.mMaxHP)
+			mpStat.mCurHP = mpStat.mMaxHP;
+
 		if (PlayScene::GetTime())
 		{
 			mLg->SetColor(Vector4(0.0f));
@@ -98,15 +101,26 @@ namespace sg
 		pos0.y += 10.0f;
 		object::Instantiate<Img_LevUP>(pos0, eLayerType::UI, SceneManager::GetActiveScene());
 		object::Instantiate<Img_LevUP2>(eLayerType::Effect, SceneManager::GetActiveScene());
+
 		mpStat.mLev++;
-		mpStat.mStrength += mpStat.mStrength * 0.1f;
-		mpStat.mCoolDown -= mpStat.mCoolDown * 0.1f;
+		if (mpStat.mStrength > 25)
+			mpStat.mStrength += mpStat.mStrength * 0.25f;
+		else if (mpStat.mStrength < 25)
+			mpStat.mStrength += mpStat.mStrength * 0.1f;
+		mpStat.mDefence += mpStat.mDefence * 0.1f;
+		mpStat.mCooldown -= mpStat.mCooldown * 0.1f;
 		mpStat.mRange += mpStat.mRange * 0.05f;
 		mpStat.mSpeed += mpStat.mSpeed * 0.05f;
-		mpStat.mAttackSpeed += mpStat.mAttackSpeed * 0.05f;
-		mpStat.mHP += mpStat.mHP * 0.1f;
+		mpStat.mAttackSpeed -= mpStat.mAttackSpeed * 0.05f;
+		if (mpStat.mAttackDuration != 0)
+			mpStat.mAttackDuration += 0.3f;
+		mpStat.mMaxHP += mpStat.mMaxHP * 0.1f;
+		mpStat.mCurHP += mpStat.mMaxHP * 0.1f;
 		if (mpStat.mLev % 2 == 1)
-			mpStat.mProjectiles++;
+		{
+			mpStat.mProjectileCount++;
+			mpStat.mDamageScaling = 0.75f;
+		}
 		mpStat.mExp -= nextLevelExp[mpStat.mLev - 2];
 	}
 }

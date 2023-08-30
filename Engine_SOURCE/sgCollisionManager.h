@@ -20,8 +20,6 @@ namespace sg
 			UINT64 id;
 		};
 
-
-
 		static void Initialize();
 		static void Update();
 		static void LayerCollision(eLayerType left, eLayerType right);
@@ -32,43 +30,43 @@ namespace sg
 		static void Clear();
 
 		// ¼º°æ
-		struct VertexPos
-		{
-			Vector2 vertexPos[4];
-		};
-		static VertexPos MakeVertexPos(Collider2D* col)
-		{
-			Vector3 colPos = col->GetOwner()->GetComp<Transform>()->GetPosition()/*GetCPosition()*/;
-			Vector3 colScale = col->GetCScale();
-			float colRotation = col->GetOwner()->GetComp<Transform>()->GetRotation().z;
+		//struct VertexPos
+		//{
+		//	Vector2 vertexPos[4];
+		//};
+		//static VertexPos MakeVertexPos(Collider2D* col)
+		//{
+		//	Vector3 colPos = col->GetOwner()->GetComp<Transform>()->GetPosition()/*GetCPosition()*/;
+		//	Vector3 colScale = col->GetCScale();
+		//	float colRotation = col->GetOwner()->GetComp<Transform>()->GetRotation().z;
 
-			VertexPos vertexpos = {};
+		//	VertexPos vertexpos = {};
 
-			vertexpos.vertexPos[0]
-				= Vector2((colPos.x - colScale.x / 2) * cos(colRotation) - (colPos.y + colScale.y / 2) * sin(colRotation)
-					, (colPos.x - colScale.x / 2) * sin(colRotation) + (colPos.y + colScale.y / 2) * cos(colRotation));
-			vertexpos.vertexPos[1]
-				= Vector2((colPos.x + colScale.x / 2) * cos(colRotation) - (colPos.y + colScale.y / 2) * sin(colRotation)
-					, (colPos.x + colScale.x / 2) * sin(colRotation) + (colPos.y + colScale.y / 2) * cos(colRotation));
-			vertexpos.vertexPos[2]
-				= Vector2((colPos.x + colScale.x / 2) * cos(colRotation) - (colPos.y - colScale.y / 2) * sin(colRotation)
-					, (colPos.x + colScale.x / 2) * sin(colRotation) + (colPos.y - colScale.y / 2) * cos(colRotation));
-			vertexpos.vertexPos[3]
-				= Vector2((colPos.x - colScale.x / 2) * cos(colRotation) - (colPos.y - colScale.y / 2) * sin(colRotation)
-					, (colPos.x - colScale.x / 2) * sin(colRotation) + (colPos.y - colScale.y / 2) * cos(colRotation));
-			
-			return vertexpos;
-		}
+		//	vertexpos.vertexPos[0]
+		//		= Vector2((colPos.x - colScale.x / 2) * cos(colRotation) - (colPos.y + colScale.y / 2) * sin(colRotation)
+		//			, (colPos.x - colScale.x / 2) * sin(colRotation) + (colPos.y + colScale.y / 2) * cos(colRotation));
+		//	vertexpos.vertexPos[1]
+		//		= Vector2((colPos.x + colScale.x / 2) * cos(colRotation) - (colPos.y + colScale.y / 2) * sin(colRotation)
+		//			, (colPos.x + colScale.x / 2) * sin(colRotation) + (colPos.y + colScale.y / 2) * cos(colRotation));
+		//	vertexpos.vertexPos[2]
+		//		= Vector2((colPos.x + colScale.x / 2) * cos(colRotation) - (colPos.y - colScale.y / 2) * sin(colRotation)
+		//			, (colPos.x + colScale.x / 2) * sin(colRotation) + (colPos.y - colScale.y / 2) * cos(colRotation));
+		//	vertexpos.vertexPos[3]
+		//		= Vector2((colPos.x - colScale.x / 2) * cos(colRotation) - (colPos.y - colScale.y / 2) * sin(colRotation)
+		//			, (colPos.x - colScale.x / 2) * sin(colRotation) + (colPos.y - colScale.y / 2) * cos(colRotation));
+		//	
+		//	return vertexpos;
+		//}
 
-		static std::vector<Vector2> MakeAxis(VertexPos vPos)
-		{
-			std::vector<Vector2> axis;
+		//static std::vector<Vector2> MakeAxis(VertexPos vPos)
+		//{
+		//	std::vector<Vector2> axis;
 
-			axis.push_back(vPos.vertexPos[3] - vPos.vertexPos[2]);
-			axis.push_back(vPos.vertexPos[3] - vPos.vertexPos[0]);
+		//	axis.push_back(vPos.vertexPos[3] - vPos.vertexPos[2]);
+		//	axis.push_back(vPos.vertexPos[3] - vPos.vertexPos[0]);
 
-			return axis;
-		}
+		//	return axis;
+		//}
 
 	private:
 		static std::bitset<LAYER_MAX> mMatrix[LAYER_MAX];

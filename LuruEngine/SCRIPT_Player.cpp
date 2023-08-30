@@ -37,7 +37,7 @@ namespace sg
 	void SCRIPT_Player::Update()
 	{
 
-		if (mOwner->GetStat().mHP <= 0)
+		if (mOwner->GetStat().mCurHP <= 0)
 		{
 			mDeath = true;
 			mFSMState = ePlayerFSM::Death;
@@ -223,19 +223,19 @@ namespace sg
 		{
 			mFSMState = ePlayerFSM::Idle;
 		}
-		if (mTime >= mOwner->GetChar()->GetStat().mCoolDown)
+		if (mTime >= mOwner->GetChar()->GetStat().mCooldown)
 		{
 			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
 			if (mOwner->GetChar()->GetName() == L"Cheese")
 			{
-				for (size_t i = 1; i <= mOwner->GetStat().mProjectiles; i++)
+				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
 					object::ShootBullet<Bullet_CheeseArrow>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 				}
 			}
 			else if (mOwner->GetChar()->GetName() == L"Lucy")
 			{
-				for (size_t i = 1; i <= mOwner->GetStat().mProjectiles; i++)
+				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
 					object::ShootBullet<Bullet_LucyBomb>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 				}
@@ -266,7 +266,7 @@ namespace sg
 			mAttacked = false;
 			mFSMState = ePlayerFSM::Move;
 		}
-		if (mOwner->GetStat().mHP <= 0)
+		if (mOwner->GetStat().mCurHP <= 0)
 		{
 			mAttacked = false;
 			mFSMState = ePlayerFSM::Death;
@@ -293,7 +293,7 @@ namespace sg
 			mAttacked = true;
 			Gobj_Character::CharStat pStat = mOwner->GetStat();
 			Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
-			pStat.mHP -= mobStat.mStrength;
+			pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
 			mOwner->SetStat(pStat);
 		}
 		else if (sp != nullptr)
@@ -304,11 +304,11 @@ namespace sg
 				Gobj_Character::CharStat pStat = mOwner->GetStat();
 				if (((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner() != nullptr)
 				{
-					Gobj_Monster::MobStat mStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
-					pStat.mHP -= mStat.mStrength;
+					Gobj_Monster::MobStat mobStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
+					pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
 				}
 				else
-					pStat.mHP -= 5.0f;
+					pStat.mCurHP -= 8.0f - (8.0f * pStat.mDefence);
 				mOwner->SetStat(pStat);
 			}
 		}
@@ -318,22 +318,22 @@ namespace sg
 			{
 				mAttacked = true;
 				Gobj_Character::CharStat pStat = mOwner->GetStat();
-				pStat.mHP -= 5.0f;
+				pStat.mCurHP -= 8.0f - (8.0f * pStat.mDefence);
 				mOwner->SetStat(pStat);
 			}
 		}
 	}
 	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
 	{
-		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
-		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
-		{
-			mAttacked = true;
-			Gobj_Character::CharStat pStat = mOwner->GetStat();
-			Gobj_Monster::MobStat mStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
-			pStat.mHP -= mStat.mStrength;
-			mOwner->SetStat(pStat);
-		}
+		//SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
+		//if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
+		//{
+		//	mAttacked = true;
+		//	Gobj_Character::CharStat pStat = mOwner->GetStat();
+		//	Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
+		//	pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
+		//	mOwner->SetStat(pStat);
+		//}
 	}
 	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
 	{
