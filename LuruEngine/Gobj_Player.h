@@ -44,10 +44,8 @@ namespace sg
 		void BonusLife() { mpStat.mLife = 1; }
 		void Heal(float value) { mpStat.mCurHP += mpStat.mMaxHP * mpStat.mHPHealRatio * value; }
 		void HPSteal() { mpStat.mCurHP += mpStat.mStrength * mpStat.mHPStealRatio; }
-
 		void EnhenceHPHealRatio() { mpStat.mHPHealRatio += 0.05f; }
 		void EnhenceHPStealRatio() { mpStat.mHPStealRatio += 0.02f; }
-
 		void EnhenchMaxHP()
 		{
 			float addhp = mpStat.mMaxHP += mpStat.mMaxHP * 0.1f;
