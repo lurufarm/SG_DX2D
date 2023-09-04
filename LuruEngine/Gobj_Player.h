@@ -39,14 +39,13 @@ namespace sg
 
 		void SetStat(Gobj_Character::CharStat stat) { mpStat = stat; }
 		Gobj_Character::CharStat GetStat() { return mpStat; }
-
 		
 		void BonusLife() { mpStat.mLife = 1; }
 		void Heal(float value) { mpStat.mCurHP += mpStat.mMaxHP * mpStat.mHPHealRatio * value; }
 		void HPSteal() { mpStat.mCurHP += mpStat.mStrength * mpStat.mHPStealRatio; }
 		void EnhenceHPHealRatio() { mpStat.mHPHealRatio += 0.05f; }
 		void EnhenceHPStealRatio() { mpStat.mHPStealRatio += 0.02f; }
-		void EnhenchMaxHP()
+		void EnhenceMaxHP()
 		{
 			float addhp = mpStat.mMaxHP += mpStat.mMaxHP * 0.1f;
 			mpStat.mMaxHP += addhp;
@@ -60,6 +59,11 @@ namespace sg
 		{ 
 			if (mpStat.mAttackDuration != 0.0f)
 				mpStat.mAttackDuration += 0.3f;
+		}
+		void EnhenceAttackCount()
+		{
+			if (mpStat.mAttackCount < 3)
+				mpStat.mAttackCount++;
 		}
 		void EnhenceRange() { mpStat.mRange += mpStat.mRange * 0.05f; }
 		void EnhenceProjectileCount() 

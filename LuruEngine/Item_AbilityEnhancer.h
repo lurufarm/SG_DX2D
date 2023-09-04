@@ -14,6 +14,8 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
+		void DeleteID(int a);
+
 		UINT RandomNumber();
 
 	private:
