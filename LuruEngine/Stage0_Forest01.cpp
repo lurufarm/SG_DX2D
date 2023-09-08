@@ -10,10 +10,13 @@
 #include "Img_Stage0_Forest01_Map.h"
 #include "Img_Crack.h"
 #include "Img_StartingPlate.h"
+#include "Img_RewardPlate.h"
 #include "Gobj_Player.h"
 #include "Monsters.h"
 #include "UI_FocusBoxes2.h"
 #include "Interact_Gate.h"
+#include "Item_AbilityEnhancer.h"
+#include "Item_Selected.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -45,41 +48,61 @@ namespace sg
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
 		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
-		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(-210.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(-173.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate2 = object::Instantiate<Interact_Gate>(0, Vector3(-136.0f, 380.0f, -0.1f), eLayerType::InteractableObject, this);
+		Vector3 gpos0 = Vector3(-210.0f, 380.0f, -0.1f);
+		Vector3 gpos1 = Vector3(-173.0f, 380.0f, -0.1f);
+		Vector3 gpos2 = Vector3(-136.0f, 380.0f, -0.1f);
+		mRewardPos = gpos1;
+
+		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
 
 		mGate0->SetNextScene(L"04_Stage0_Forest02");
 		mGate1->SetNextScene(L"04_Stage0_Forest02");
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
 
+		gpos0.y += 30.0f;
+		gpos1.y += 30.0f;
+		gpos2.y += 30.0f;
+
+		mItem0 = object::Instantiate<Item_AbilityEnhancer>(gpos0, eLayerType::Item, this);
+		mItem1 = object::Instantiate<Item_AbilityEnhancer>(gpos1, eLayerType::Item, this);
+		mItem2 = object::Instantiate<Item_AbilityEnhancer>(gpos2, eLayerType::Item, this);
+
+		mRewardPos.y -= 80.0f;
+
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
+
+
 #pragma region Monsters
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 #pragma endregion
+
+
 
 		//GameObject* mLight = new GameObject();
 		//Light* mLg = mLight->AddComp<Light>();
@@ -104,6 +127,7 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
+	
 		renderer::mainCamera = mCamera;
 
 		PlayScene::OnEnter();

@@ -33,6 +33,7 @@ namespace sg::enums
 		Player_Bullet,
 		Player_Effect,
 		Light,
+		Item,
 		UI,
 		UI_Box,
 		End = 16,

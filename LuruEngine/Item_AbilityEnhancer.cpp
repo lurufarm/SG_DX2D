@@ -4,13 +4,15 @@
 namespace sg
 {
 
-	std::vector<int> Item_AbilityEnhancer::mAbilityIDs = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-	std::vector<int> Item_AbilityEnhancer::mUsingAbilities = {};
+	std::vector<int> Item_AbilityEnhancer::mItemIDs = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+	std::vector<int> Item_AbilityEnhancer::mUsingItems = {};
 	UINT Item_AbilityEnhancer::mItemSpawnCount[12] = {};
 
 	Item_AbilityEnhancer::Item_AbilityEnhancer()
 	{
-		mAbilityID = RandomNumber();
+		mItemID = RandomNumber();
+		mActivate = false;
+		Item_AbilityEnhancer::Initialize();
 	}
 	Item_AbilityEnhancer::~Item_AbilityEnhancer()
 	{
@@ -21,6 +23,9 @@ namespace sg
 		mMr = GetComp<MeshRenderer>();
 		mCol = GetComp<Collider2D>();
 		mAni = GetComp<Animator>();
+
+		SetMesh();
+		SetMaterial(L"AnimationMaterial");
 
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Item_Enhencers", L"..\\Resources\\Item\\Enhencers.png");
 
@@ -36,8 +41,9 @@ namespace sg
 		mAni->Create(L"Ani_EnhenceASpeed", atlas, Vector2(0.0f, 216.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_EnhenceMSpeed", atlas, Vector2(0.0f, 240.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_EnhenceMaxHP", atlas, Vector2(0.0f, 264.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
+		mMr->Initialize();
 
-		switch (mAbilityID)
+		switch (mItemID)
 		{
 		case 0: // 보너스 라이프 mLife
 			mAni->PlayAnimation(L"Ani_BonusLife", false, true);
@@ -76,8 +82,7 @@ namespace sg
 			mAni->PlayAnimation(L"Ani_EnhenceMaxHP", false, true);
 			break;
 		}
-		
-		mMr->Initialize();
+
 
 	}
 	void Item_AbilityEnhancer::Update()
@@ -92,124 +97,111 @@ namespace sg
 
 		if (mActivate)
 		{
-			switch (mAbilityID)
+			switch (mItemID)
 			{
 			case 0: // 보너스 라이프 mLife
-				mPlayer->BonusLife();
 				DeleteinAbilityIDs(0);
 				break;
 			case 1: // 흡혈 ++ mHPStealRatio
-				mPlayer->EnhenceHPStealRatio();
 				if (mItemSpawnCount[1] == 0)
 				{
 					DeleteinAbilityIDs(1);
-					mUsingAbilities.push_back(1);
+					mUsingItems.push_back(1);
 				}
 				if (mItemSpawnCount[1] < 5)
 					mItemSpawnCount[1]++;
 				break;
 			case 2: // 질긴 생명 ++ mHPHealRatio
-				mPlayer->EnhenceHPHealRatio();
 				if (mItemSpawnCount[2] == 0)
 				{
 					DeleteinAbilityIDs(2);
-					mUsingAbilities.push_back(2);
+					mUsingItems.push_back(2);
 				}
 				if (mItemSpawnCount[2] < 5)
 					mItemSpawnCount[2]++;
 				break;
 			case 3: // 공격력 증가 mStrength
-				mPlayer->EnhenceStrength();
 				if (mItemSpawnCount[3] == 0)
 				{
 					DeleteinAbilityIDs(3);
-					mUsingAbilities.push_back(3);
+					mUsingItems.push_back(3);
 				}
 				if (mItemSpawnCount[3] < 5)
 					mItemSpawnCount[3]++;
 				break;
 			case 4: // 방어력 증가 mDefence
-				mPlayer->EnhenceDefence();
 				if (mItemSpawnCount[4] == 0)
 				{
 					DeleteinAbilityIDs(4);
-					mUsingAbilities.push_back(4);
+					mUsingItems.push_back(4);
 				}
 				if (mItemSpawnCount[4] < 5)
 					mItemSpawnCount[4]++;
 				break;
 			case 5: // 공격 범위 증가 mRange
-				mPlayer->EnhenceRange();
 				if (mItemSpawnCount[5] == 0)
 				{
 					DeleteinAbilityIDs(5);
-					mUsingAbilities.push_back(5);
+					mUsingItems.push_back(5);
 				}
 				if (mItemSpawnCount[5] < 5)
 					mItemSpawnCount[5]++;
 				break;
 			case 6: // 공격 지속 시간 증가 mAttackDuration
-				mPlayer->EnhenceAttackDuration();
 				if (mItemSpawnCount[6] == 0)
 				{
 					DeleteinAbilityIDs(6);
-					mUsingAbilities.push_back(6);
+					mUsingItems.push_back(6);
 				}
 				if (mItemSpawnCount[6] < 5)
 					mItemSpawnCount[6]++;
 				break;
 			case 7: // 공격 횟수 증가 (멀티샷) mAttackCount
-				mPlayer->EnhenceAttackCount();
 				if (mItemSpawnCount[7] == 0)
 				{
 					DeleteinAbilityIDs(7);
-					mUsingAbilities.push_back(7);
+					mUsingItems.push_back(7);
 				}
 				if (mItemSpawnCount[7] < 3)
 					mItemSpawnCount[7]++;
 				break;
 			case 8: // 발사체 수 증가 mProjectiles
-				mPlayer->EnhenceProjectileCount();
 				if (mItemSpawnCount[8] == 0)
 				{
 					DeleteinAbilityIDs(8);
-					mUsingAbilities.push_back(8);
+					mUsingItems.push_back(8);
 				}
 				if (mItemSpawnCount[8] < 5)
 					mItemSpawnCount[8]++;
 				break;
 			case 9: // 공격 속도 증가 mAttackSpeed
-				mPlayer->EnhenceAttackSpeed();
 				if (mItemSpawnCount[9] == 0)
 				{
 					DeleteinAbilityIDs(9);
-					mUsingAbilities.push_back(9);
+					mUsingItems.push_back(9);
 				}
 				if (mItemSpawnCount[9] < 5)
 					mItemSpawnCount[9]++;
 				break;
 			case 10: // 이동 속도 증가 mSpeed
-				mPlayer->EnhenceSpeed();
 				if (mItemSpawnCount[10] == 0)
 				{
 					DeleteinAbilityIDs(10);
-					mUsingAbilities.push_back(10);
+					mUsingItems.push_back(10);
 				}
 				if (mItemSpawnCount[10] < 5)
 					mItemSpawnCount[10]++;
 				break;
 			case 11: // 최대 체력 증가 mMaxHP
-				mPlayer->EnhenceMaxHP();
 				if (mItemSpawnCount[11] == 0)
 				{
 					DeleteinAbilityIDs(11);
-					mUsingAbilities.push_back(11);
+					mUsingItems.push_back(11);
 				}
 				if (mItemSpawnCount[11] < 5)
 					mItemSpawnCount[11]++;
 				break;
 			}
-			SetState(GameObject::eState::Dead);
 		}
 
 		Gobj_Item::Update();
@@ -224,42 +216,42 @@ namespace sg
 	}
 	void Item_AbilityEnhancer::DeleteinAbilityIDs(int a)
 	{
-		std::vector<int>::iterator iter = mAbilityIDs.begin();
-		for (; iter != mAbilityIDs.end(); iter++)
+		std::vector<int>::iterator iter = mItemIDs.begin();
+		for (; iter != mItemIDs.end(); iter++)
 		{
 			if (a == *iter)
 			{
-				mAbilityIDs.erase(iter);
+				mItemIDs.erase(iter);
 			}
 		}
 	}
 	void Item_AbilityEnhancer::DeleteinUsingAbilities(int a)
 	{
-		std::vector<int>::iterator iter = mUsingAbilities.begin();
-		for (; iter != mUsingAbilities.end(); iter++)
+		std::vector<int>::iterator iter = mUsingItems.begin();
+		for (; iter != mUsingItems.end(); iter++)
 		{
 			if (a == *iter)
 			{
-				mUsingAbilities.erase(iter);
+				mUsingItems.erase(iter);
 			}
 		}
 	}
-	UINT Item_AbilityEnhancer::RandomNumber()
+	int Item_AbilityEnhancer::RandomNumber()
 	{
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		int a = 0;
 		int b = 0;
 
-		if (mAbilityIDs.size() > 7)
+		if (mItemIDs.size() > 7)
 		{
-			a = mAbilityIDs[0];
-			b = mAbilityIDs[mAbilityIDs.size() - 1];
+			a = mItemIDs[0];
+			b = mItemIDs[mItemIDs.size() - 1];
 		}
 		else
 		{
-			a = mUsingAbilities[0];
-			b = mUsingAbilities[mUsingAbilities.size() - 1];
+			a = mUsingItems[0];
+			b = mUsingItems[mUsingItems.size() - 1];
 		}
 		std::uniform_int_distribution<> dis(a, b);
 

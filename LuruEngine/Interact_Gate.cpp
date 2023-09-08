@@ -1,7 +1,10 @@
 #include "Interact_Gate.h"
 #include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgObject.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
 #include "SCRIPT_Gate.h"
+#include "SCENE_PlayScene.h"
+#include "Item_AbilityEnhancer.h"
 
 namespace sg
 {
@@ -52,10 +55,6 @@ namespace sg
 	}
 	void Interact_Gate::Update()
 	{
-		if (this->GetSelected() && Input::KeyD(eKeyCode::ENTER) && mOpen)
-		{
-			SceneManager::LoadNextScene();
-		}
 		Gobj_Interactable::Update();
 	}
 	void Interact_Gate::LateUpdate()

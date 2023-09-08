@@ -4,6 +4,7 @@
 
 namespace sg
 {
+	class Gobj_Item;
 	class Interact_Gate : public Gobj_Interactable
 	{
 	public:
@@ -21,7 +22,10 @@ namespace sg
 		}
 
 		void Open() { mOpen = true; }
+		bool GetIsOpen() { return mOpen; }
 
+		Gobj_Item* GetItem() { return mItem; }
+		void SetItem(Gobj_Item* item) { mItem = item; }
 
 	private:
 
@@ -29,6 +33,7 @@ namespace sg
 		bool mOpen;
 		class Animator* mAni;
 		class Scene* mNextScene;
+		Gobj_Item* mItem;
 
 	};
 }

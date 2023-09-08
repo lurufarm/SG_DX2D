@@ -2,6 +2,10 @@
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
+#include "SCENE_PlayScene.h"
+#include "Interact_Gate.h"
+#include "Item_AbilityEnhancer.h"
+#include "Gobj_Item.h"
 
 namespace sg
 {
@@ -13,13 +17,22 @@ namespace sg
 	}
 	void SCRIPT_Gate::Initialize()
 	{
-		mOwner = (GameObject*)GetOwner();
+		mOwner = (Interact_Gate*)GetOwner();
 	}
 	void SCRIPT_Gate::Update()
 	{
-		if (mOwner->GetSelected() && Input::KeyD(eKeyCode::ENTER))
+		mItem = mOwner->GetItem();
+
+		if (mOwner->GetIsOpen())
 		{
-			SceneManager::LoadNextScene();
+			mItem->SetState(GameObject::eState::Active);
+
+			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::ENTER))
+			{
+				Scene* sc = SceneManager::LoadNextScene();
+				PlayScene* ps = dynamic_cast<PlayScene*>(sc);
+				ps->SelectedItemID = mItem->GetItemID();
+			}
 		}
 	}
 	void SCRIPT_Gate::OnCollisionEnter(Collider2D* other)

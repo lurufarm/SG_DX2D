@@ -35,10 +35,7 @@ namespace sg
 	}
 	void GameObject::Initialize()
 	{
-		//for (Component* comp : mComponents)
-		//{
-		//	comp->Initialize();        // Å×½ºÆ®
-		//}
+
 	}
 	void GameObject::Update()
 	{

@@ -99,7 +99,7 @@ namespace sg
 
 		GameObject* mTarget;
 
-		UINT nextLevelExp[4] = { 500, 600, 750, 1000 };
+		UINT nextLevelExp[4] = { 200, 250, 300, 400 };
 
 	};
 }

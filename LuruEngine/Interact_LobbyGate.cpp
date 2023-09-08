@@ -1,4 +1,6 @@
 #include "Interact_LobbyGate.h"
+#include "..\Engine_SOURCE\sgInput.h"
+#include "..\Engine_SOURCE\sgSceneManager.h"
 #include "sgAnimator.h"
 #include "SCRIPT_Gate.h"
 
@@ -34,11 +36,14 @@ namespace sg
 
 		mCol = GetComp<Collider2D>();
 
-		AddComp<SCRIPT_Gate>();
-
 	}
 	void Interact_LobbyGate::Update()
 	{
+		if (GetSelected() && Input::KeyD(eKeyCode::ENTER))
+		{
+			SceneManager::LoadNextScene();
+		}
+
 		Gobj_Interactable::Update();
 	}
 	void Interact_LobbyGate::LateUpdate()

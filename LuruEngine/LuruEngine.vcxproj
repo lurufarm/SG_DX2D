@@ -184,10 +184,12 @@
     <ClInclude Include="Img_LevUP.h" />
     <ClInclude Include="Img_LevUp2.h" />
     <ClInclude Include="Img_LobbyTorch.h" />
+    <ClInclude Include="Img_RewardPlate.h" />
     <ClInclude Include="Img_StartingPlate.h" />
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Item_AbilityEnhancer.h" />
+    <ClInclude Include="Item_Selected.h" />
     <ClInclude Include="Melee_Cannibals.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
     <ClInclude Include="Melee_EliteLarva.h" />
@@ -206,6 +208,7 @@
     <ClInclude Include="SCRIPT_Company.h" />
     <ClInclude Include="SCRIPT_Gate.h" />
     <ClInclude Include="SCRIPT_CharSelect.h" />
+    <ClInclude Include="SCRIPT_Item.h" />
     <ClInclude Include="SCRIPT_MeleeMob.h" />
     <ClInclude Include="SCRIPT_MobProjectile.h" />
     <ClInclude Include="SCRIPT_Player.h" />
@@ -281,10 +284,12 @@
     <ClCompile Include="Img_LevUP.cpp" />
     <ClCompile Include="Img_LevUp2.cpp" />
     <ClCompile Include="Img_LobbyTorch.cpp" />
+    <ClCompile Include="Img_RewardPlate.cpp" />
     <ClCompile Include="Img_StartingPlate.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Item_AbilityEnhancer.cpp" />
+    <ClCompile Include="Item_Selected.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
     <ClCompile Include="Melee_EliteLarva.cpp" />
@@ -302,6 +307,7 @@
     <ClCompile Include="SCRIPT_Company.cpp" />
     <ClCompile Include="SCRIPT_Gate.cpp" />
     <ClCompile Include="SCRIPT_CharSelect.cpp" />
+    <ClCompile Include="SCRIPT_Item.cpp" />
     <ClCompile Include="SCRIPT_MeleeMob.cpp" />
     <ClCompile Include="SCRIPT_MobProjectile.cpp" />
     <ClCompile Include="SCRIPT_Player.cpp" />

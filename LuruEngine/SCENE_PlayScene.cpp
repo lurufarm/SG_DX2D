@@ -7,11 +7,14 @@
 #include "..\Engine_SOURCE\sgObject.h"
 #include "Gobj_Player.h"
 #include "SCRIPT_Company.h"
+#include "SCRIPT_Gate.h"
 #include "UI_FocusBoxes2.h"
 #include "Gobj_Interactable.h"
 #include "Interact_Gate.h"
 #include <algorithm>
 #include <random>
+#include "Item_AbilityEnhancer.h"
+#include "Item_Selected.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -45,6 +48,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Effect, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet2, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
@@ -52,6 +56,20 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
+		if (mItem0)
+		{
+			mItem0->SetState(GameObject::eState::Paused);
+			mItem1->SetState(GameObject::eState::Paused);
+			mItem2->SetState(GameObject::eState::Paused);
+
+			mGate0->SetItem(mItem0);
+			mGate1->SetItem(mItem1);
+			mGate2->SetItem(mItem2);
+
+			mGate0->AddComp<SCRIPT_Gate>();
+			mGate1->AddComp<SCRIPT_Gate>();
+			mGate2->AddComp<SCRIPT_Gate>();
+		}
 
 
 		for (GameObject* mob : this->GetLayer(eLayerType::Monster).GetGameObjects())
@@ -81,11 +99,17 @@ namespace sg
 			AddGameObj(eLayerType::Player, Lucy);
 		}
 
-		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0)
+		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)
 		{
 			mGate0->Open();
 			mGate1->Open();
 			mGate2->Open();
+			mClear = true;
+			if (mItem0)
+			{
+				mRewardPos.y += 10.0f;
+				object::Instantiate<Item_Selected>(mRewardPos, eLayerType::Item, SceneManager::GetActiveScene());
+			}
 		}
 
 		if (mActiveMobs.size() < 5)

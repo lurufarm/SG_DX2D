@@ -283,6 +283,15 @@
     <ClCompile Include="Item_AbilityEnhancer.cpp">
       <Filter>Obj\Gobj_Item</Filter>
     </ClCompile>
+    <ClCompile Include="Item_Selected.cpp">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_Item.cpp">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_RewardPlate.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadScenes.h">
@@ -572,6 +581,15 @@
     </ClInclude>
     <ClInclude Include="Item_AbilityEnhancer.h">
       <Filter>Obj\Gobj_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Selected.h">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_Item.h">
+      <Filter>Script\SCRIPT_Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_RewardPlate.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

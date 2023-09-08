@@ -17,6 +17,7 @@ namespace sg
 		virtual void OnCollisionExit(Collider2D* other);
 
 	private:
-		class GameObject* mOwner;
+		class Interact_Gate* mOwner;
+		class Gobj_Item* mItem;
 	};
 }

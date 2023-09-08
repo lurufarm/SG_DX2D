@@ -17,6 +17,9 @@ namespace sg
 	}
 	void Gobj_Item::Initialize()
 	{
+		mTr = GetComp<Transform>();
+		mMr = GetComp<MeshRenderer>();
+		mCol = GetComp<Collider2D>();
 	}
 	void Gobj_Item::Update()
 	{

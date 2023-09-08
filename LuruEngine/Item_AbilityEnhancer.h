@@ -14,19 +14,21 @@ namespace sg
 		void LateUpdate();
 		void Render();
 
-		void DeleteID(int a);
+		void DeleteinAbilityIDs(int a);
+		void DeleteinUsingAbilities(int a);
 
-		UINT RandomNumber();
+		//void SetItemID(int a) { mItemID = a; }
+		//int GetItemID() { return mItemID; }
+
+		int RandomNumber();
+		
 
 	private:
 
-		UINT mAbilityID;
+		//int mItemID;
 		bool mActivate;
 		static UINT mItemSpawnCount[12];
-		static std::vector<int>mAbilityIDs;
-		static std::vector<int>mUsingAbilities;
-
-
-		
+		static std::vector<int>mItemIDs;
+		static std::vector<int>mUsingItems;
 	};
 }

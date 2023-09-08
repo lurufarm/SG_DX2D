@@ -417,7 +417,6 @@ namespace renderer
 		std::shared_ptr<Shader> AniShader2
 			= Resources::Find<Shader>(L"SpriteAniShader2");
 
-
 		std::shared_ptr<Shader> ParticleShader
 			= Resources::Find<Shader>(L"ParticleShader");
 
@@ -667,6 +666,22 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgStartingPlate", material);
 
+		// PlayScene - Reward Plates
+
+		texture = Resources::Load<Texture>(L"Img_RewardPlate0", L"..\\Resources\\Map\\Common\\RewardPlate0.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgRewardPlate0", material);
+
+		texture = Resources::Load<Texture>(L"Img_RewardPlate1", L"..\\Resources\\Map\\Common\\RewardPlate1.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"ImgRewardPlate1", material);
+
 		texture = Resources::Load<Texture>(L"Img_LevUp", L"..\\Resources\\UI\\LevelUp.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
@@ -739,7 +754,7 @@ namespace renderer
 
 		
 #pragma endregion
-#pragma region Stage0_ForestFd
+#pragma region Stage0_Forest
 
 		// Stage0_ForestFd01 Map
 		texture = Resources::Load<Texture>(L"Stage0_ForestFd01_Map", L"..\\Resources\\Map\\Stage0\\stage0_forestfd_1.png");
@@ -808,6 +823,93 @@ namespace renderer
 
 #pragma endregion
 
+
+#pragma region Item Icon
+		texture = Resources::Load<Texture>(L"Item_BonusLife", L"..\\Resources\\Item\\BonusLife.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"BonusLife", material);
+
+		texture = Resources::Load<Texture>(L"Item_StealHP", L"..\\Resources\\Item\\StealHP.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"StealHP", material);
+
+		texture = Resources::Load<Texture>(L"Item_HealHP", L"..\\Resources\\Item\\HealHP.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"HealHP", material);
+
+		texture = Resources::Load<Texture>(L"Item_EStrength", L"..\\Resources\\Item\\enhencestrength.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EStrength", material);
+
+		texture = Resources::Load<Texture>(L"Item_EDefence", L"..\\Resources\\Item\\enhencedefence.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EDefence", material);
+
+		texture = Resources::Load<Texture>(L"Item_ERange", L"..\\Resources\\Item\\enhencerange.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ERange", material);
+
+		texture = Resources::Load<Texture>(L"Item_EAduration", L"..\\Resources\\Item\\enhenceattackduration.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EAduration", material);
+
+		texture = Resources::Load<Texture>(L"Item_EAcount", L"..\\Resources\\Item\\enhenceattackcount.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EAcount", material);
+
+		texture = Resources::Load<Texture>(L"Item_Eprojs", L"..\\Resources\\Item\\enhenceprojs.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Eprojs", material);
+
+		texture = Resources::Load<Texture>(L"Item_EAspeed", L"..\\Resources\\Item\\enhenceattackspeed.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EAspeed", material);
+
+		texture = Resources::Load<Texture>(L"Item_Espeed", L"..\\Resources\\Item\\enhencespeed.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Espeed", material);
+
+		texture = Resources::Load<Texture>(L"Item_EmaxHP", L"..\\Resources\\Item\\enhencemaxhp.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"EmaxHP", material);
+
+#pragma endregion
 
 #pragma region Character
 		// 임시 치즈
