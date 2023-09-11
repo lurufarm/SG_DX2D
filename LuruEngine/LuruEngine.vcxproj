@@ -163,6 +163,7 @@
     <ClInclude Include="Bullet_SlicedApple.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
+    <ClInclude Include="Char_Robo.h" />
     <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
@@ -264,6 +265,7 @@
     <ClCompile Include="Bullet_SlicedApple.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
+    <ClCompile Include="Char_Robo.cpp" />
     <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />

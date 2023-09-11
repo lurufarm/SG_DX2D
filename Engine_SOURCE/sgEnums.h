@@ -64,6 +64,7 @@ namespace sg::enums
 	{
 		Cheese,
 		Lucy,
+		Robo,
 		End,
 	};
 	
