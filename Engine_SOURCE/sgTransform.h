@@ -30,7 +30,10 @@ namespace sg
 				mRotation.z = rot.z * PI / 180;
 			}
 		}
-		void SetScale(Vector3 scale) { mScale = scale; }
+		void SetScale(Vector3 scale) {
+			mScale = scale;
+			int a = 0;
+		}
 
 		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
 		void SetRotation(float x, float y, float z) { mRotation = Vector3(x, y, z); }

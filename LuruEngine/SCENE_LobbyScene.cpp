@@ -37,6 +37,7 @@
 #include "Gobj_Player.h"
 #include "Char_Cheese.h"
 #include "Char_Lucy.h"
+#include "Char_Robo.h"
 
 #include "Tile_TilePalette.h"
 

@@ -160,6 +160,7 @@
     <ClInclude Include="Bullet_EntRock.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Bullet_PoisonOrb.h" />
+    <ClInclude Include="Bullet_RoboBeam.h" />
     <ClInclude Include="Bullet_SlicedApple.h" />
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
@@ -167,6 +168,8 @@
     <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
+    <ClInclude Include="Effect_LaserFiring.h" />
+    <ClInclude Include="Effect_LaserHit.h" />
     <ClInclude Include="Effect_OldEntStem.h" />
     <ClInclude Include="Effect_ProjectileDest.h" />
     <ClInclude Include="Effect_ProjectileDest2.h" />
@@ -262,6 +265,7 @@
     <ClCompile Include="Bullet_EntRock.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Bullet_PoisonOrb.cpp" />
+    <ClCompile Include="Bullet_RoboBeam.cpp" />
     <ClCompile Include="Bullet_SlicedApple.cpp" />
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
@@ -269,6 +273,8 @@
     <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />
+    <ClCompile Include="Effect_LaserFiring.cpp" />
+    <ClCompile Include="Effect_LaserHit.cpp" />
     <ClCompile Include="Effect_OldEntStem.cpp" />
     <ClCompile Include="Effect_ProjectileDest.cpp" />
     <ClCompile Include="Effect_ProjectileDest2.cpp" />

@@ -62,15 +62,17 @@ namespace sg
 		}
 		void EnhenceAttackCount()
 		{
-			if (mpStat.mAttackCount < 3)
+			if (mpStat.mAttackCount < 3 && mpStat.mAttackCount > 0)
 				mpStat.mAttackCount++;
 		}
 		void EnhenceRange() { mpStat.mRange += mpStat.mRange * 0.05f; }
 		void EnhenceProjectileCount() 
 		{
-			if (mpStat.mProjectileCount < 5)
+			if (mpStat.mProjectileCount < 5 && mpStat.mProjectileCount > 0)
+			{
 				mpStat.mProjectileCount++;
-			mpStat.mDamageScaling = 0.75f;
+				mpStat.mDamageScaling = 0.75f;
+			}
 		}
 		void EnhenceSpeed() { mpStat.mSpeed += mpStat.mSpeed *= 0.1f; }		
 		void EXP(int exp)

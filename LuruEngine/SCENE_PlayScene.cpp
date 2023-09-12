@@ -51,6 +51,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player_Beam, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);

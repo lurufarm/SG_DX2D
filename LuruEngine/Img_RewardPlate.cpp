@@ -26,8 +26,11 @@ namespace sg
 	{
 		Scene* sc = SceneManager::GetActiveScene();
 
-		if (dynamic_cast<PlayScene*>(sc)->IsFinished())
-			SetMaterial(L"ImgRewardPlate1");
+		if (dynamic_cast<PlayScene*>(sc))
+		{
+			if (dynamic_cast<PlayScene*>(sc)->IsFinished())
+				SetMaterial(L"ImgRewardPlate1");
+		}
 
 		Gobj_Img::Update();
 	}

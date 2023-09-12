@@ -9,6 +9,12 @@ namespace sg
 		SetName(L"RoboBeam");
 		Bullet_RoboBeam::Initialize();
 	}
+	Bullet_RoboBeam::Bullet_RoboBeam(int num)
+	{
+		SetName(L"RoboBeam");
+		mThisNum = num;
+		Bullet_RoboBeam::Initialize();
+	}
 	Bullet_RoboBeam::~Bullet_RoboBeam()
 	{
 	}
@@ -18,6 +24,7 @@ namespace sg
 		mAni = AddComp<Animator>();
 		mCol = GetComp<Collider2D>();
 		mType = eBulletType::Robo;
+		mBulletOwner = SceneManager::GetChar(L"Robo");
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 
@@ -33,19 +40,54 @@ namespace sg
 		mAni->Create(L"Ani_RoboBeam8", atlas, Vector2(0.0f, 256.0f), Vector2(42.0f, 32.0f), 14, Vector2::Zero, 0.05f);
 		
 		mTr->SetScale(Vector3(1.0f, 10.0f, 1.0f));
-		
 		mMr->Initialize();
-		//mAni->PlayAnimation(L"Ani_RoboBeam0", false, true);
+		//Vector3 BOpos = mBulletOwner->GetComp<Transform>()->GetPosition();
+		//Vector3 BOTpos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+		//mCol->SetSize(Vector2(1.0f, 10.0f));
 
-		mCol->SetSize(Vector2(1.0f, 10.0f));
+		switch (mThisNum)
+		{
+		case 0:
+			mAni->PlayAnimation(L"Ani_RoboBeam0", false, true);
+			break;
+		case 1:
+			mAni->PlayAnimation(L"Ani_RoboBeam1", false, true);
+			break;
+		case 2:
+			mAni->PlayAnimation(L"Ani_RoboBeam2", false, true);
+			break;
+		case 3:
+			mAni->PlayAnimation(L"Ani_RoboBeam3", false, true);
+			break;
+		case 4:
+			mAni->PlayAnimation(L"Ani_RoboBeam4", false, true);
+			break;
+		case 5:
+			mAni->PlayAnimation(L"Ani_RoboBeam5", false, true);
+			break;
+		case 6:
+			mAni->PlayAnimation(L"Ani_RoboBeam6", false, true);
+			break;
+		case 7:
+			mAni->PlayAnimation(L"Ani_RoboBeam7", false, true);
+			break;
+		case 8:
+			mAni->PlayAnimation(L"Ani_RoboBeam8", false, true);
+			break;
+		default:
+			mAni->PlayAnimation(L"Ani_RoboBeam8", false, true);
+			break;
+		}
 
-		mBulletOwner = SceneManager::GetChar(L"Robo");
 		Gobj_Bullet::Initialize();
 
 		AddComp<SCRIPT_Bullet>();
 	}
 	void Bullet_RoboBeam::Update()
 	{
+			if (mAni->GetActiveAni()->IsComplete())
+				SetState(GameObject::eState::Dead);
+
 		Gobj_Bullet::Update();
 	}
 	void Bullet_RoboBeam::LateUpdate()

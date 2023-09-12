@@ -6,19 +6,19 @@ namespace sg
 	{
 		mStat.mLev = 1;
 		mStat.mLife = 0;
-		mStat.mStrength = 36.0f;
+		mStat.mStrength = 19.0f;
 		mStat.mDefence = 0.0f;
-		mStat.mCooldown = 1.7f;
+		mStat.mCooldown = 2.0f;
 		mStat.mRange = 100.0f;
 		mStat.mSpeed = 40.0f;
 		mStat.mAttackSpeed = 50.0f;
 		mStat.mAttackDuration = 0.0f;
-		mStat.mAttackCount = 1;
+		mStat.mAttackCount = 0.0f;
 		mStat.mCurHP = 90;
 		mStat.mMaxHP = 90;
 		mStat.mHPHealRatio = 0.05f;
 		mStat.mHPStealRatio = 0.0f;
-		mStat.mProjectileCount = 1;
+		mStat.mProjectileCount = 0;
 		mStat.mDamageScaling = 1.0f;
 		mStat.mExp = 0.0;
 

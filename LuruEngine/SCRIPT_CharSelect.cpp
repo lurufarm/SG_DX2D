@@ -56,6 +56,12 @@ namespace sg
 					mObject->SetState(GameObject::eState::Paused);
 					LobbyScene::FocusBoxesActive();
 				}
+				else if (mObject->GetBoxes(0, 2)->GetSelected())
+				{
+					Player->SetChar(SceneManager::GetChar(L"Robo"));
+					mObject->SetState(GameObject::eState::Paused);
+					LobbyScene::FocusBoxesActive();
+				}
 			}
 		}
 

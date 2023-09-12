@@ -14,10 +14,12 @@
 #include "Monster_Ranged.h"
 #include "Bullet_CheeseArrow.h"
 #include "Bullet_LucyBomb.h"
+#include "Bullet_RoboBeam.h"
 
 #include "SCRIPT_MeleeMob.h"
 #include "SCRIPT_MobProjectile.h"
 #include "Effect_OldEntStem.h"
+#include "Effect_LaserFiring.h"
 
 
 extern sg::Gobj_Player* Player;
@@ -65,7 +67,7 @@ namespace sg
 				}
 
 				mOwner->SetTarget(distanceOfMob.begin()->second);
-				if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange)
+				if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange * 3.0f)
 				{
 					mOwner->SetEnemyNearby(true);
 					if (mOwner->GetTarget()->GetComp<Transform>()->GetPosition().x > ownerpos.x)
@@ -239,6 +241,14 @@ namespace sg
 				{
 					object::ShootBullet<Bullet_LucyBomb>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 				}
+			}
+			else if (mOwner->GetChar()->GetName() == L"Robo")
+			{
+				int RoboBeamRange = (int)(mOwner->GetStat().mRange - 100.0f) / 100.0f;
+				Vector3 epos = mOwner->GetComp<Transform>()->GetPosition();
+				epos.z -= 2.0f;
+				object::Instantiate<Effect_LaserFiring>(epos, eLayerType::Player_Effect, SceneManager::GetActiveScene());
+				object::ShootBullet<Bullet_RoboBeam>(RoboBeamRange, eLayerType::Player_Beam, SceneManager::GetActiveScene());
 			}
 			mTime = 0.0f;	
 		}

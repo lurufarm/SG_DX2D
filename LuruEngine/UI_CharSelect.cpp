@@ -40,7 +40,6 @@ namespace sg
 		mTr->SetPosition(0.0f, 0.0f, -5.0f);
 		mMr = GetComp<MeshRenderer>();
 		SetMesh();
-		//SetMaterial(L"AnimationMaterial");
 		SetMaterial(L"UICharSelect");
 		mFocus = object::Instantiate<UI_FocusBoxes>(SceneManager::GetActiveScene(), eLayerType::UI, SceneManager::GetActiveScene());
 

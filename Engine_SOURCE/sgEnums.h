@@ -31,6 +31,7 @@ namespace sg::enums
 		Effect,
 		Monster_Effect,
 		Player_Bullet,
+		Player_Beam,
 		Player_Effect,
 		Light,
 		Item,
