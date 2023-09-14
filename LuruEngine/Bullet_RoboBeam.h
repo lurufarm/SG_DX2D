@@ -14,8 +14,15 @@ namespace sg
 		void Update();
 		void LateUpdate();
 		void Render();
+		
+		float CalculatePercent(const float baseValue, const float targetValue)
+		{
+			return targetValue / baseValue;
+		}
 
 	private:
 		class Animator* mAni;
+
+
 	};
 }

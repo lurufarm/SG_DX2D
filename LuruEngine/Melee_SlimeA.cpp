@@ -7,7 +7,7 @@ namespace sg
 	{
 		SetName(L"SlimeA");
 
-		mStat.mCurHP = 999999;
+		mStat.mCurHP = 15;
 		mStat.mStrength = 2;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 10.0f;

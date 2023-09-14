@@ -51,7 +51,10 @@ namespace sg
 		Vector3 gpos0 = Vector3(-210.0f, 380.0f, -0.1f);
 		Vector3 gpos1 = Vector3(-173.0f, 380.0f, -0.1f);
 		Vector3 gpos2 = Vector3(-136.0f, 380.0f, -0.1f);
+
 		mRewardPos = gpos1;
+		mRewardPos.y -= 80.0f;
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
@@ -65,13 +68,10 @@ namespace sg
 		gpos1.y += 30.0f;
 		gpos2.y += 30.0f;
 
-		mItem0 = object::Instantiate<Item_AbilityEnhancer>(gpos0, eLayerType::Item, this);
-		mItem1 = object::Instantiate<Item_AbilityEnhancer>(gpos1, eLayerType::Item, this);
-		mItem2 = object::Instantiate<Item_AbilityEnhancer>(gpos2, eLayerType::Item, this);
+		mItem0 = MakeItem(gpos0);
+		mItem1 = MakeItem(gpos1);
+		mItem2 = MakeItem(gpos2);
 
-		mRewardPos.y -= 80.0f;
-
-		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
 
 #pragma region Monsters
@@ -101,14 +101,6 @@ namespace sg
 		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 #pragma endregion
-
-
-
-		//GameObject* mLight = new GameObject();
-		//Light* mLg = mLight->AddComp<Light>();
-		//AddGameObj(eLayerType::Light, mLight);
-		//mLg->SetType(eLightType::Directional);
-		//mLg->SetColor(mDayLight);
 
 		PlayScene::Initialize();
 

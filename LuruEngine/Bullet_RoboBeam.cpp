@@ -85,8 +85,33 @@ namespace sg
 	}
 	void Bullet_RoboBeam::Update()
 	{
-			if (mAni->GetActiveAni()->IsComplete())
-				SetState(GameObject::eState::Dead);
+		if (mAni->GetActiveAni()->IsComplete())
+			SetState(GameObject::eState::Dead);
+
+		if (mAni->GetActiveAni()->GetAniIndex() > 5 && mAni->GetActiveAni()->GetAniIndex() < 9)
+		{
+		
+			if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam0")
+				mCol->SetSize(Vector2(CalculatePercent(42, 10),1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam1")
+				mCol->SetSize(Vector2(CalculatePercent(42, 14), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam2")
+				mCol->SetSize(Vector2(CalculatePercent(42, 18), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam3")
+				mCol->SetSize(Vector2(CalculatePercent(42, 22), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam4")
+				mCol->SetSize(Vector2(CalculatePercent(42, 26), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam5")
+				mCol->SetSize(Vector2(CalculatePercent(42, 30), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam6")
+				mCol->SetSize(Vector2(CalculatePercent(42, 34), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam7")
+				mCol->SetSize(Vector2(CalculatePercent(42, 38), 1.0f));
+			else if (mAni->GetActiveAni()->GetKey() == L"Ani_RoboBeam8")
+				mCol->SetSize(Vector2(1.0f, 1.0f));
+		}
+		else
+			mCol->SetSize(Vector2(0.0f, 0.0f));
 
 		Gobj_Bullet::Update();
 	}

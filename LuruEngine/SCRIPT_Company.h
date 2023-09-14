@@ -11,6 +11,7 @@ namespace sg
 		{
 			Idle,
 			Move,
+			Move2,
 			Attack,
 			Attacked,
 			Death,
@@ -20,10 +21,17 @@ namespace sg
 		SCRIPT_Company();
 		~SCRIPT_Company();
 
-		void Initialize();
-		void Update();
+		void Initialize() override;
+		void Update() override;
+
+		void OnCollisionEnter(Collider2D* other) override;
+		void OnCollisionStay(Collider2D* other) override;
+		void OnCollisionExit(Collider2D* other) override;
+
 
 		Vector3 RandPos(Vector3 pos);
+		Vector3 RandomDirection();
+
 		std::wstring AnimationName(const std::wstring& animation);
 		float GetDistanceToPlayer()
 		{
@@ -45,6 +53,42 @@ namespace sg
 
 			return direction;
 		}
+		float GetDistanceToOther()
+		{
+			Vector3 opos = mOtr->GetPosition();
+			Vector3 tpos;
+			if (mTarget)
+			{
+				if (mTarget->GetState() == GameObject::eState::Active)
+				{
+					tpos = mTarget->GetComp<Transform>()->GetPosition();
+					float distance =
+						(tpos - opos).Length();
+
+					return distance;
+				}
+				else
+				{
+					IsEnemyNear = false;
+					return mOwner->GetStat().mRange * 2.0f + 1.0f;
+				}
+			}
+			else
+			{
+				IsEnemyNear = false;
+				return mOwner->GetStat().mRange * 2.0f + 1.0f;
+			}
+		}
+		Vector3 GetDirectionToOther(Vector3 pos)
+		{
+			Vector3 opos = mOtr->GetPosition();
+			
+			Vector3 direction = pos - opos;
+			direction.Normalize();
+
+			return direction;
+		}
+
 
 		GameObject* GetTarget() { return mTarget; }
 
@@ -52,6 +96,7 @@ namespace sg
 
 		void Idle();
 		void Move();
+		void Move2();
 		void Attack();
 		void Death();
 
@@ -67,10 +112,12 @@ namespace sg
 		bool IsEnemyNear;
 
 		float mTime;
+		Vector3 mRandomDirection;
 
 		class Transform* mOtr;
 		class Transform* mPtr;
 		class Animator* mOat;
+		class Collider2D* mOcol;
 
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";

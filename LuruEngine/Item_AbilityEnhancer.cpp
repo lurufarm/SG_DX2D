@@ -222,6 +222,7 @@ namespace sg
 			if (a == *iter)
 			{
 				mItemIDs.erase(iter);
+				break;
 			}
 		}
 	}
@@ -233,6 +234,7 @@ namespace sg
 			if (a == *iter)
 			{
 				mUsingItems.erase(iter);
+				break;
 			}
 		}
 	}

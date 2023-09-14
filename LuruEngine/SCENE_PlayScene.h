@@ -24,7 +24,7 @@ namespace sg
 
 		bool IsFinished()
 		{
-			if (mPausedMobs.empty())
+			if (mPausedMobs.empty() && mActiveMobs.empty())
 				return true;
 			else
 				return false;
@@ -38,6 +38,8 @@ namespace sg
 
 			return dist(gen);
 		}
+	
+		class Gobj_Item* MakeItem(Vector3 pos);
 		
 		void SpawnMob()
 		{

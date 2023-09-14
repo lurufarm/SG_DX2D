@@ -27,11 +27,12 @@ namespace sg
 		{
 			mItem->SetState(GameObject::eState::Active);
 
-			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::ENTER))
+			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::N))
 			{
 				Scene* sc = SceneManager::LoadNextScene();
 				PlayScene* ps = dynamic_cast<PlayScene*>(sc);
 				ps->SelectedItemID = mItem->GetItemID();
+				mItem->SetItemActivate(true);
 			}
 		}
 	}

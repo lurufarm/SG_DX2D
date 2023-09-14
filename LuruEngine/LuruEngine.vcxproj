@@ -193,6 +193,7 @@
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Item_AbilityEnhancer.h" />
+    <ClInclude Include="Item_Chars.h" />
     <ClInclude Include="Item_Selected.h" />
     <ClInclude Include="Melee_Cannibals.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
@@ -225,6 +226,7 @@
     <ClInclude Include="Stage0_Forest02.h" />
     <ClInclude Include="Stage0_Forest03.h" />
     <ClInclude Include="Stage0_Forest04.h" />
+    <ClInclude Include="Stage0_Forest05.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -297,6 +299,7 @@
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Item_AbilityEnhancer.cpp" />
+    <ClCompile Include="Item_Chars.cpp" />
     <ClCompile Include="Item_Selected.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
@@ -328,6 +331,7 @@
     <ClCompile Include="Stage0_Forest02.cpp" />
     <ClCompile Include="Stage0_Forest03.cpp" />
     <ClCompile Include="Stage0_Forest04.cpp" />
+    <ClCompile Include="Stage0_Forest05.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

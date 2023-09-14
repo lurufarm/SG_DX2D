@@ -83,7 +83,9 @@ namespace sg
 
 		void SetTarget(GameObject* mob) { mTarget = mob; }
 		GameObject* GetTarget() { return mTarget; }
-		
+
+		void AddCompany(Gobj_Character* company) { mCompanies.push_back(company); }
+		std::vector<Gobj_Character*> GetActiveCompanies() { return mCompanies; }
 
 	private:
 		void LevelUp();

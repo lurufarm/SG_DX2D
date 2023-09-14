@@ -18,16 +18,42 @@ namespace sg
 			Death,
 			End,
 		};
-		virtual void Initialize() override;
-		virtual void Update() override;
+		void Initialize() override;
+		void Update() override;
 
-		virtual void OnCollisionEnter(Collider2D* other);
-		virtual void OnCollisionStay(Collider2D* other);
-		virtual void OnCollisionExit(Collider2D* other);
+		void OnCollisionEnter(Collider2D* other) override;
+		void OnCollisionStay(Collider2D* other) override;
+		void OnCollisionExit(Collider2D* other) override;
 
 		std::wstring AnimationName(const std::wstring& animation);
 		
 		ePlayerFSM GetState() { return mFSMState; }
+		float GetDistanceToEnemy()
+		{
+			Vector3 opos = mOwner->GetComp<Transform>()->GetPosition();
+			Vector3 tpos;
+			if (mOwner->GetTarget())
+			{
+				if (mOwner->GetTarget()->GetState() == GameObject::eState::Active)
+				{
+					tpos = mOwner->GetTarget()->GetComp<Transform>()->GetPosition();
+					float distance =
+						(tpos - opos).Length();
+
+					return distance;
+				}
+				else
+				{
+					mOwner->SetEnemyNearby(false);
+					return mOwner->GetStat().mRange * 2.0f + 1.0f;
+				}
+			}
+			else
+			{
+				mOwner->SetEnemyNearby(false);
+				return mOwner->GetStat().mRange * 2.0f + 1.0f;
+			}
+		}
 
 	private:
 

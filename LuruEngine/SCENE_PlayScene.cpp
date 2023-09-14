@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <random>
 #include "Item_AbilityEnhancer.h"
+#include "Item_Chars.h"
 #include "Item_Selected.h"
 
 extern sg::Gobj_Player* Player;
@@ -42,6 +43,7 @@ namespace sg
 		if (mFocus == nullptr)
 			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
 		
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
@@ -93,12 +95,7 @@ namespace sg
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
-		if (Input::KeyD(eKeyCode::P))
-		{
-			Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
-			Lucy->AddComp<SCRIPT_Company>();
-			AddGameObj(eLayerType::Player, Lucy);
-		}
+
 
 		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)
 		{
@@ -261,27 +258,28 @@ namespace sg
 
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
+
+
 		AddGameObj(eLayerType::Player, Player);
+		Player->GetComp<Transform>()->SetPosition(mStartPos);
+
+		for (Gobj_Character* company : Player->GetActiveCompanies())
+		{
+			AddGameObj(eLayerType::Player, company);
+			Vector3 cpos = company->GetComp<SCRIPT_Company>()->RandPos(mStartPos);
+			company->GetComp<Transform>()->SetPosition(cpos);
+		}
+
 		AddGameObj(eLayerType::UI, mFocus);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[0]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[1]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[2]);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[3]);
-		Player->GetComp<Transform>()->SetPosition(mStartPos);
 
 		for (GameObject* interact : this->GetLayer(eLayerType::InteractableObject).GetGameObjects())
 		{
 			Gobj_Interactable* interactable = dynamic_cast<Gobj_Interactable*>(interact);
 			mFocus->AddSelectObj(interactable);
-		}
-
-		Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
-		SCRIPT_Company* lucycom = Lucy->GetComp<SCRIPT_Company>();
-
-		if (lucycom)
-		{
-			Lucy->GetComp<Transform>()->SetPosition(lucycom->RandPos(mStartPos));
-			AddGameObj(eLayerType::Player, Lucy);
 		}
 
 	}
@@ -290,20 +288,38 @@ namespace sg
 		renderer::lightsBuffer->Clear();
 
 		DeleteGameObj(eLayerType::Player, Player);
-		DeleteGameObj(eLayerType::UI, mFocus);
-		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[0]);
-		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[1]);
-		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[2]);
-		DeleteGameObj(eLayerType::UI, mFocus->mBoxes[3]);
-
-		Gobj_Character* Lucy = SceneManager::GetChar(L"Lucy");
-		SCRIPT_Company* lucycom = Lucy->GetComp<SCRIPT_Company>();
-
-		if (lucycom)
+		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
-			DeleteGameObj(eLayerType::Player, Lucy);
+			DeleteGameObj(eLayerType::Player, company);
 		}
+		for (GameObject* ui : this->GetLayer(eLayerType::UI).GetGameObjects())
+		{
+			DeleteGameObj(eLayerType::UI, ui);
+		}
+		//DeleteGameObj(eLayerType::UI, mFocus);
+		//DeleteGameObj(eLayerType::UI, mFocus->mBoxes[0]);
+		//DeleteGameObj(eLayerType::UI, mFocus->mBoxes[1]);
+		//DeleteGameObj(eLayerType::UI, mFocus->mBoxes[2]);
+		//DeleteGameObj(eLayerType::UI, mFocus->mBoxes[3]);
 
-		//mFocus->clearObjs();
+	}
+	Gobj_Item* PlayScene::MakeItem(Vector3 pos)
+	{
+
+		//std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
+		//std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
+		//std::uniform_int_distribution<> dist(0, 9);  // 0과 1 사이의 균등 분포
+
+		//if (dist(gen) <= 6)
+		//{
+		//	return object::Instantiate<Item_AbilityEnhancer>(pos, eLayerType::Item, this);
+		//}
+		//else
+		//{
+		//	return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
+		//}
+
+		return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
+
 	}
 }

@@ -909,6 +909,27 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"EmaxHP", material);
 
+		texture = Resources::Load<Texture>(L"Item_Cheese", L"..\\Resources\\Item\\item_cheese.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Item_Cheeseicon", material);
+
+		texture = Resources::Load<Texture>(L"Item_Lucy", L"..\\Resources\\Item\\item_lucy.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Item_Lucyicon", material);
+
+		texture = Resources::Load<Texture>(L"Item_Robo", L"..\\Resources\\Item\\item_robo.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Item_Roboicon", material);
+
 #pragma endregion
 
 #pragma region Character

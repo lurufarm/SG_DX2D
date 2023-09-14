@@ -22,6 +22,7 @@ namespace sg
 		void SetItemID(int a) { mItemID = a; }
 		int GetItemID() { return mItemID; }
 
+		void SetItemActivate(bool value) { mActivate = value; }
 
 	protected:
 		Transform* mTr;
@@ -31,6 +32,7 @@ namespace sg
 		Gobj_Player* mPlayer;
 
 		int mItemID;
+		bool mActivate;
 
 	private:
 	};

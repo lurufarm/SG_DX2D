@@ -154,12 +154,6 @@
     <ClCompile Include="Gobj_Player.cpp">
       <Filter>Obj\Gobj_Character\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Effect_Hit.cpp">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect_FirePlate.cpp">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClCompile>
     <ClCompile Include="SCRIPT_CharSelect.cpp">
       <Filter>Script\SCRIPT_Interactable</Filter>
     </ClCompile>
@@ -177,9 +171,6 @@
     </ClCompile>
     <ClCompile Include="SCRIPT_GridScript.cpp">
       <Filter>Script\SCRIPT_etc</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect_Explosion.cpp">
-      <Filter>Obj\Gobj_Effect</Filter>
     </ClCompile>
     <ClCompile Include="Melee_SlimeA.cpp">
       <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
@@ -292,11 +283,35 @@
     <ClCompile Include="Img_RewardPlate.cpp">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
+    <ClCompile Include="Item_Chars.cpp">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_Explosion.cpp">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_FirePlate.cpp">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_Hit.cpp">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_LaserFiring.cpp">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_LaserHit.cpp">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Char_Robo.cpp">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_RoboBeam.cpp">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_Forest05.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LoadScenes.h">
-      <Filter>Load</Filter>
-    </ClInclude>
     <ClInclude Include="Img_LobbyMap.h">
       <Filter>Obj\Gobj_Img\LobbySceneImg</Filter>
     </ClInclude>
@@ -450,12 +465,6 @@
     <ClInclude Include="Gobj_Player.h">
       <Filter>Obj\Gobj_Character\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Effect_Hit.h">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect_FirePlate.h">
-      <Filter>Obj\Gobj_Effect</Filter>
-    </ClInclude>
     <ClInclude Include="SCRIPT_CharSelect.h">
       <Filter>Script\SCRIPT_Interactable</Filter>
     </ClInclude>
@@ -473,9 +482,6 @@
     </ClInclude>
     <ClInclude Include="SCRIPT_GridScript.h">
       <Filter>Script\SCRIPT_etc</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect_Explosion.h">
-      <Filter>Obj\Gobj_Effect</Filter>
     </ClInclude>
     <ClInclude Include="Melee_SlimeA.h">
       <Filter>Obj\Gobj_Monster\Melee\Slime</Filter>
@@ -591,6 +597,36 @@
     <ClInclude Include="Img_RewardPlate.h">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
+    <ClInclude Include="Item_Chars.h">
+      <Filter>Obj\Gobj_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_Explosion.h">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_FirePlate.h">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_Hit.h">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_LaserFiring.h">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_LaserHit.h">
+      <Filter>Obj\Gobj_Effect\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Char_Robo.h">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_RoboBeam.h">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest05.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadScenes.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -643,9 +679,6 @@
     </Filter>
     <Filter Include="Scene\SCENE_PlayScene">
       <UniqueIdentifier>{c872b486-5749-4dc6-8bb8-a78d0507536a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\SCENE_PlayScene\Stage2">
-      <UniqueIdentifier>{bdec0300-6564-43c5-be33-0da759e64a15}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\SCENE_PlayScene\Stage1">
       <UniqueIdentifier>{1fd3505d-f312-4f65-9c4a-97d6c9466140}</UniqueIdentifier>
@@ -733,6 +766,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Item">
       <UniqueIdentifier>{5f0859a8-8b62-456b-973b-9ba7020c0c15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Effect\Player">
+      <UniqueIdentifier>{bfc94023-4a9d-4d7f-b9c5-0cdc5af2f486}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

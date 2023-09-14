@@ -37,7 +37,7 @@ namespace sg::enums
 		Item,
 		UI,
 		UI_Box,
-		End = 16,
+		End,
 	};
 
 	enum class eResourceType

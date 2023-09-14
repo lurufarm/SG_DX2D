@@ -65,6 +65,15 @@ namespace sg
 		case 11: // 최대 체력 증가 mMaxHP
 			SetMaterial(L"EmaxHP");
 			break;
+		case 20: // cheese선택
+			SetMaterial(L"Item_Cheeseicon");
+			break;
+		case 21: // cheese선택
+			SetMaterial(L"Item_Lucyicon");
+			break;
+		case 22: // cheese선택
+			SetMaterial(L"Item_Roboicon");
+			break;
 		}
 		mMr->Initialize();
 

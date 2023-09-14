@@ -17,16 +17,12 @@ namespace sg
 		void DeleteinAbilityIDs(int a);
 		void DeleteinUsingAbilities(int a);
 
-		//void SetItemID(int a) { mItemID = a; }
-		//int GetItemID() { return mItemID; }
-
 		int RandomNumber();
-		
 
+		void SetItemActivate(bool value) { mActivate = value; }
+		
 	private:
 
-		//int mItemID;
-		bool mActivate;
 		static UINT mItemSpawnCount[12];
 		static std::vector<int>mItemIDs;
 		static std::vector<int>mUsingItems;

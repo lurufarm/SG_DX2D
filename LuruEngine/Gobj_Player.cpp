@@ -50,10 +50,10 @@ namespace sg
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
 		mCol->SetSize(Vector2(0.4f, 0.7f));
 
-		mLg = AddComp<Light>();
-		mLg->SetType(eLightType::Point);
-		mLg->SetRadius(50.0f);
-		mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
+		//mLg = AddComp<Light>();
+		//mLg->SetType(eLightType::Point);
+		//mLg->SetRadius(50.0f);
+		//mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
 
 		SetChar(SceneManager::GetChar(L"Cheese"));
 		mMr->Initialize();
@@ -70,14 +70,14 @@ namespace sg
 		if (mpStat.mCurHP > mpStat.mMaxHP)
 			mpStat.mCurHP = mpStat.mMaxHP;
 
-		if (PlayScene::GetTime())
-		{
-			mLg->SetColor(Vector4(0.0f));
-		}
-		else
-		{
-			mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
-		}
+		//if (PlayScene::GetTime())
+		//{
+		//	mLg->SetColor(Vector4(0.0f));
+		//}
+		//else
+		//{
+		//	mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
+		//}
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()
@@ -118,8 +118,11 @@ namespace sg
 		mpStat.mCurHP += mpStat.mMaxHP * 0.1f;
 		if (mpStat.mLev % 2 == 1)
 		{
-			mpStat.mProjectileCount++;
-			mpStat.mDamageScaling = 0.75f;
+			if (mpStat.mProjectileCount > 0)
+			{
+				mpStat.mProjectileCount++;
+				mpStat.mDamageScaling = 0.75f;
+			}
 		}
 		mpStat.mExp -= nextLevelExp[mpStat.mLev - 2];
 	}

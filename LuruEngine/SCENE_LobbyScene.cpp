@@ -156,7 +156,6 @@ namespace sg
 	}
 	void LobbyScene::OnExit()
 	{
-		//renderer::cameras.clear();
 		DeleteGameObj(eLayerType::Player, Player);
 	}
 

@@ -54,10 +54,12 @@ namespace sg
 		Vector3 gpos2 = Vector3(172.0f, 370.0f, -0.1f);
 
 		mRewardPos = gpos1;
+		mRewardPos.y -= 80.0f;
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
-		mGate0 = object::Instantiate<Interact_Gate>(0, Vector3(98.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate1 = object::Instantiate<Interact_Gate>(0, Vector3(135.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
-		mGate2 = object::Instantiate<Interact_Gate>(0, Vector3(172.0f, 370.0f, -0.1f), eLayerType::InteractableObject, this);
+		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
 
 		mGate0->SetNextScene(L"05_Stage0_Forest03");
 		mGate1->SetNextScene(L"05_Stage0_Forest03");
@@ -67,22 +69,13 @@ namespace sg
 		gpos1.y += 20.0f;
 		gpos2.y += 20.0f;
 
-		mItem0 = object::Instantiate<Item_AbilityEnhancer>(gpos0, eLayerType::Item, this);
-		mItem1 = object::Instantiate<Item_AbilityEnhancer>(gpos1, eLayerType::Item, this);
-		mItem2 = object::Instantiate<Item_AbilityEnhancer>(gpos2, eLayerType::Item, this);
+		mItem0 = MakeItem(gpos0);
+		mItem1 = MakeItem(gpos1);
+		mItem2 = MakeItem(gpos2);
 
-		mRewardPos.y -= 80.0f;
-		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
-
-
-		//GameObject* mLight = new GameObject();
-		//Light* mLg = mLight->AddComp<Light>();
-		//AddGameObj(eLayerType::Light, mLight);
-		//mLg->SetType(eLightType::Directional);
-		//mLg->SetColor(mDayLight);
 
 #pragma region Monsters
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
@@ -131,8 +124,6 @@ namespace sg
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd02_00" };
 		TilePalette::AutoLoad(path0);
-
-		Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, 0.0f);
 
 	}
 	void Stage0_Forest02::OnExit()

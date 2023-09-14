@@ -42,15 +42,9 @@ namespace sg
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetStat(CharStat stat) { mStat = stat; }
 		CharStat GetStat() { return mStat; }
 
-		//void SetLev(int lev) { mStat.mLev = lev; }
-		//void SetStrength(float strength) { mStat.mStrength = strength; }
-		//void SetCoolDown(float cooldown) { mStat.mCooldown = cooldown; }
-		//void SetRange(float range) { mStat.mRange = range; }
-		//void SetSpeed(float speed) { mStat.mSpeed = speed; }
-		//void SetAttackSpeed(float attackspeed) { mStat.mAttackSpeed = attackspeed; }
-		//void SetHP(int HP) { mStat.mCurHP = HP; }
 
 
 		void SetIsPlayer(bool value) { mIsPlayer = value; }
@@ -61,6 +55,47 @@ namespace sg
 
 		std::shared_ptr<Texture> GetAtlas() {return mAtlas;}
 
+		void BonusLife() { mStat.mLife = 1; }
+		void Heal(float value) { mStat.mCurHP += mStat.mMaxHP * mStat.mHPHealRatio * value; }
+		void HPSteal() { mStat.mCurHP += mStat.mStrength * mStat.mHPStealRatio; }
+		void EnhenceHPHealRatio() { mStat.mHPHealRatio += 0.05f; }
+		void EnhenceHPStealRatio() { mStat.mHPStealRatio += 0.02f; }
+		void EnhenceMaxHP()
+		{
+			float addhp = mStat.mMaxHP += mStat.mMaxHP * 0.1f;
+			mStat.mMaxHP += addhp;
+			mStat.mCurHP += addhp;
+		}
+
+		void EnhenceStrength() { mStat.mStrength += mStat.mStrength * 0.15f; }
+		void EnhenceDefence() { mStat.mDefence += 0.1f; }
+		void EnhenceAttackSpeed() { mStat.mAttackSpeed -= 0.05f; }
+		void EnhenceAttackDuration()
+		{
+			if (mStat.mAttackDuration != 0.0f)
+				mStat.mAttackDuration += 0.3f;
+		}
+		void EnhenceAttackCount()
+		{
+			if (mStat.mAttackCount < 3 && mStat.mAttackCount > 0)
+				mStat.mAttackCount++;
+		}
+		void EnhenceRange() { mStat.mRange += mStat.mRange * 0.05f; }
+		void EnhenceProjectileCount()
+		{
+			if (mStat.mProjectileCount < 5 && mStat.mProjectileCount > 0)
+			{
+				mStat.mProjectileCount++;
+				mStat.mDamageScaling = 0.75f;
+			}
+		}
+		void EnhenceSpeed() { mStat.mSpeed += mStat.mSpeed *= 0.1f; }
+		void EXP(int exp)
+		{
+			mStat.mExp += exp;
+		}
+
+		void LevelUp();
 
 	protected:
 		CharStat mStat;
@@ -73,7 +108,7 @@ namespace sg
 		std::shared_ptr<Texture> mAtlas;
 		class Gobj_Bullet* mMyBullet;
 
-		UINT NeedEXP[4] = { 100, 150, 200, 250 };
+		UINT nextLevelExp[4] = { 200, 250, 300, 400 };
 
 
 	private:

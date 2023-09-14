@@ -67,7 +67,7 @@ namespace sg
 				}
 
 				mOwner->SetTarget(distanceOfMob.begin()->second);
-				if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange * 3.0f)
+				if (distanceOfMob.begin()->first <= mOwner->GetChar()->GetStat().mRange * 2.0f)
 				{
 					mOwner->SetEnemyNearby(true);
 					if (mOwner->GetTarget()->GetComp<Transform>()->GetPosition().x > ownerpos.x)
@@ -225,7 +225,7 @@ namespace sg
 		{
 			mFSMState = ePlayerFSM::Idle;
 		}
-		if (mTime >= mOwner->GetChar()->GetStat().mCooldown)
+		if (mTime >= mOwner->GetStat().mCooldown && mOwner->GetStat().mRange * 2.0f >= GetDistanceToEnemy())
 		{
 			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
 			if (mOwner->GetChar()->GetName() == L"Cheese")
