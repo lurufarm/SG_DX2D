@@ -5,9 +5,11 @@
 #include "sgGameObject.h"
 #include "sgTransform.h"
 #include "..\LuruEngine\Gobj_Player.h"
+#include "..\LuruEngine\Gobj_Monster.h"
 #include "..\LuruEngine\Gobj_MobProjectile.h"
 #include "..\LuruEngine\SCRIPT_MobProjectile.h"
 #include "..\LuruEngine\Bullet_SlicedApple.h"
+#include "..\LuruEngine\Bullet_SKGroundFire.h"
 
 namespace sg::object
 {
@@ -48,6 +50,15 @@ namespace sg::object
 		scene->AddGameObj(eLayerType::Monster_Bullet2, sa);
 
 		return sa;
+	}
+
+	static __forceinline Bullet_SKGroundFire* SKGroundFire(Vector2 dir, Gobj_Monster* projowner)
+	{
+		Bullet_SKGroundFire* skgf = new Bullet_SKGroundFire(dir, projowner);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObj(eLayerType::Monster_Bullet, skgf);
+
+		return skgf;
 	}
 
 	template <typename T>

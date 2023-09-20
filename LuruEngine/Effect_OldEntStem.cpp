@@ -25,10 +25,6 @@ namespace sg
 		mMr->Initialize();
 		mCol->SetCenter(Vector2(0.0f, -8.0f));
 		mCol->SetSize(Vector2(0.2f, 0.4f));
-		//Light* mLight = AddComp<Light>();
-		//mLight->SetType(eLightType::Point);
-		//mLight->SetRadius(15.0f);
-		//mLight->SetColor(Vector4(1.0f, 1.0f, 1.0f, 1.0f));
 
 	}
 	void Effect_OldEntStem::Update()

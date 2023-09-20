@@ -198,7 +198,7 @@ namespace sg
 			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attacked), false, mDirection);
 			Gobj_Character::CharStat pStat = mTarget->GetStat();
 			int hp = mOwner->GetStat().mCurHP;
-			hp -= pStat.mStrength * pStat.mDamageScaling;
+			hp -= (pStat.mStrength * pStat.mDamageScaling) - (pStat.mStrength * mOwner->GetStat().mDefence);
 			mOwner->SetStatHP(hp);
 		}
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())

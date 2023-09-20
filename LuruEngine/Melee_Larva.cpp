@@ -7,7 +7,9 @@ namespace sg
 		SetName(L"Larva");
 
 		mStat.mCurHP = 15;
+		mStat.mMaxHP = 15;
 		mStat.mStrength = 3;
+		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 10.0f;
 		mStat.mCooldown = 1.5f;

@@ -26,7 +26,6 @@ namespace sg
 		SetMaterial(L"AnimationMaterial");
 
 		mAni = AddComp<Animator>();
-		mLg = AddComp<Light>();
 
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Img_LevUP2", L"..\\Resources\\Effect\\Evolution.png");
 

@@ -1,11 +1,13 @@
 #pragma once
 #include "..\Engine_SOURCE\sgScene.h"
 #include "Gobj_Monster.h"
+#include "Gobj_Light.h"
 #include "UI_FocusBoxes2.h"
 #include <random>
 
 namespace sg
 {
+	class Gobj_Light;
 	class PlayScene : public Scene
 	{
 	public:
@@ -48,7 +50,7 @@ namespace sg
 				for (auto iter = mPausedMobs.begin(); iter < mPausedMobs.begin() + 8; iter++)
 				{
 					(*iter)->SetState(GameObject::eState::Active);
-					(*iter)->GetComp<Transform>()->SetPosition(mCrackPos[SelectPos()]);
+					(*iter)->GetComp<Transform>()->SetPosition(RandPos());
 					mActiveMobs.push_back(*iter);
 					mFocus->AddSelectObj(*iter);
 				}
@@ -65,6 +67,8 @@ namespace sg
 				mPausedMobs.clear();
 			}
 		}
+
+		Vector3 RandPos();
 
 		void PurgeDeadMobs()
 		{
@@ -85,6 +89,11 @@ namespace sg
 
 		int SelectedItemID;
 
+		void ChangeLight();
+
+		void CreateCompanyLight(class Gobj_Character* character);
+
+
 	protected:
 		
 		std::vector<class Gobj_Monster*> mPausedMobs;
@@ -98,17 +107,20 @@ namespace sg
 		class Gobj_Item* mItem1;
 		class Gobj_Item* mItem2;
 
+		Gobj_Light* mPlayerLight[4];
+		int mLightnum = 1;
+
 		Vector3 mCrackPos[3];
 		Vector3 mStartPos;
 		Vector3 mRewardPos;
 
-		const Vector4 mDayLight = Vector4(0.6f, 0.6f, 0.6f, 1.0f);
+		const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 		const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
 		const Vector4 mEveningLight = Vector4(0.1f, 0.2f, 0.4f, 1.0f);
 		const Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
 
-		float mTime = 0.0f;
-		float mTime2 = 0.0f;
+		static float mTime;
+		static float mTime2;
 
 		static bool mDay;
 		Camera* mCamera;

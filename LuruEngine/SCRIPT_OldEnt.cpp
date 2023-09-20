@@ -1,4 +1,4 @@
-#include "SCRIPT_Boss.h"
+#include "SCRIPT_OldEnt.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "Monster_Ranged.h"
 #include "Gobj_Player.h"
@@ -17,14 +17,14 @@ extern sg::Gobj_Player* Player;
 
 namespace sg
 {
-	SCRIPT_Boss::SCRIPT_Boss()
+	SCRIPT_OldEnt::SCRIPT_OldEnt()
 		: mOwner(nullptr)
 	{
 	}
-	SCRIPT_Boss::~SCRIPT_Boss()
+	SCRIPT_OldEnt::~SCRIPT_OldEnt()
 	{
 	}
-	void SCRIPT_Boss::Initialize()
+	void SCRIPT_OldEnt::Initialize()
 	{
 		mOwner = (Monster_Ranged*)GetOwner();
 		mTarget = Player;
@@ -36,7 +36,7 @@ namespace sg
 		mTime = 0.0f;
 		mTime2 = 0.0f;
 	}
-	void SCRIPT_Boss::Update()
+	void SCRIPT_OldEnt::Update()
 	{
 
 		Transform* tr = mOwner->GetComp<Transform>();
@@ -58,28 +58,28 @@ namespace sg
 
 		switch (mFSMState)
 		{
-		case sg::SCRIPT_Boss::eFSMState::Spwan:
+		case sg::SCRIPT_OldEnt::eFSMState::Spwan:
 			Spawn();
 			break;
-		case sg::SCRIPT_Boss::eFSMState::Idle:
+		case sg::SCRIPT_OldEnt::eFSMState::Idle:
 			Idle();
 			break;
-		case sg::SCRIPT_Boss::eFSMState::Move:
+		case sg::SCRIPT_OldEnt::eFSMState::Move:
 			Move();
 			break;
-		case sg::SCRIPT_Boss::eFSMState::Attack:
+		case sg::SCRIPT_OldEnt::eFSMState::Attack:
 			Attack();
 			break;
-		case sg::SCRIPT_Boss::eFSMState::Attacked:
+		case sg::SCRIPT_OldEnt::eFSMState::Attacked:
 			Attacked();
 			break;
-		case sg::SCRIPT_Boss::eFSMState::Death:
+		case sg::SCRIPT_OldEnt::eFSMState::Death:
 			Death();
 			break;
 		}
 	}
 
-	void SCRIPT_Boss::OnCollisionEnter(Collider2D* other)
+	void SCRIPT_OldEnt::OnCollisionEnter(Collider2D* other)
 	{
 		Gobj_Bullet* bullet = dynamic_cast<Gobj_Bullet*>(other->GetOwner());
 
@@ -90,39 +90,28 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 				int hp = mOwner->GetStat().mCurHP;
 				Gobj_Character::CharStat pStat = bullet->GetBulletOwner()->GetStat();
-				hp -= pStat.mStrength * pStat.mDamageScaling;
+				hp -= (pStat.mStrength * pStat.mDamageScaling) - (pStat.mStrength * mOwner->GetStat().mDefence);
 				mOwner->SetStatHP(hp);
 			}
 		}
-		//if (mFSMState == eFSMState::Attack)
-		//{
-		//	if (other->GetOwner() == mTarget)
-		//	{
-		//		Gobj_Character::CharStat stat = mTarget->GetStat();
-
-		//		stat.mCurHP -= mOwner->GetStat().mStrength * mOwner->GetStat().;
-
-		//		mTarget->SetStat(stat);
-		//	}
-		//}
 	}
-	void SCRIPT_Boss::OnCollisionStay(Collider2D* other)
+	void SCRIPT_OldEnt::OnCollisionStay(Collider2D* other)
 	{
 	}
-	void SCRIPT_Boss::OnCollisionExit(Collider2D* other)
+	void SCRIPT_OldEnt::OnCollisionExit(Collider2D* other)
 	{
 		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner()))
 		{
 			mAttacked = false;
 		}
 	}
-	void SCRIPT_Boss::Spawn()
+	void SCRIPT_OldEnt::Spawn()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(spawn), false, mDirection);
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
 			mFSMState = eFSMState::Idle;
 	}
-	void SCRIPT_Boss::Idle()
+	void SCRIPT_OldEnt::Idle()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
@@ -137,7 +126,7 @@ namespace sg
 			mFSMState = eFSMState::Attack;
 		}
 	}
-	void SCRIPT_Boss::Move()
+	void SCRIPT_OldEnt::Move()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(move), true, mDirection);
 
@@ -154,7 +143,7 @@ namespace sg
 		if (distance <= mOwner->GetStat().mRange)
 			mFSMState = eFSMState::Attack;
 	}
-	void SCRIPT_Boss::Attack()
+	void SCRIPT_OldEnt::Attack()
 	{
 		if (GetDistance() > mOwner->GetStat().mRange)
 			mFSMState = eFSMState::Move;
@@ -223,7 +212,7 @@ namespace sg
 			mFSMState = eFSMState::Idle;
 		}
 	}
-	void SCRIPT_Boss::Attacked()
+	void SCRIPT_OldEnt::Attacked()
 	{
 		if (mAttacked == false)
 		{
@@ -235,13 +224,13 @@ namespace sg
 			mFSMState = eFSMState::Idle;
 		}
 	}
-	void SCRIPT_Boss::Death()
+	void SCRIPT_OldEnt::Death()
 	{
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(death), false, mDirection);
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())
 			mOwner->SetState(GameObject::eState::Dead);
 	}
-	std::wstring SCRIPT_Boss::AnimationName(const std::wstring& animation)
+	std::wstring SCRIPT_OldEnt::AnimationName(const std::wstring& animation)
 	{
 		if (mOwner)
 		{
@@ -254,7 +243,7 @@ namespace sg
 		else
 			return L"";
 	}
-	float SCRIPT_Boss::GetDistance()
+	float SCRIPT_OldEnt::GetDistance()
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -263,7 +252,7 @@ namespace sg
 
 		return (ppos - pos).Length();
 	}
-	Vector3 SCRIPT_Boss::GetDirection()
+	Vector3 SCRIPT_OldEnt::GetDirection()
 	{
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
@@ -272,7 +261,7 @@ namespace sg
 
 		return ppos - pos;
 	}
-	void SCRIPT_Boss::SelectAttack()
+	void SCRIPT_OldEnt::SelectAttack()
 	{
 		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
 		std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
@@ -280,7 +269,7 @@ namespace sg
 
 		mAttackNum = dist(gen);
 	}
-	Vector3 SCRIPT_Boss::StemPos(Vector3 pos)
+	Vector3 SCRIPT_OldEnt::StemPos(Vector3 pos)
 	{
 		static bool isSeeded = false;
 

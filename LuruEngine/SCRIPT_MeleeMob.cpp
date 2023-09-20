@@ -19,6 +19,7 @@ namespace sg
 	void SCRIPT_MeleeMob::Initialize()
 	{
 		mOwner = (Monster_Melee*)GetOwner();
+		mOwner->GetComp<Collider2D>()->SetSize(Vector2(1.2f, 1.2f));
 		mTarget = Player;
 		mFSMState = eFSMState::Spwan;
 		mDirection = false;
@@ -84,6 +85,7 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
+
 	}
 	void SCRIPT_MeleeMob::OnCollisionStay(Collider2D* other)
 	{
@@ -106,7 +108,7 @@ namespace sg
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
 
-		if (GetDistance() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange * 1.5f)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -137,13 +139,14 @@ namespace sg
 		mTime += Time::DeltaTime();
 
 		Animator* at = mOwner->GetComp<Animator>();
-
+		int Index = at->GetActiveAni()->GetAniIndex();
+		std::wstring ownerName = mOwner->GetName();
 		if (mTime >= mOwner->GetStat().mCooldown)
 		{
 			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
 		}
-		if (GetDistance() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange * 1.5f)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -152,9 +155,10 @@ namespace sg
 			mFSMState = eFSMState::Idle;
 			at->PlayAnimation(AnimationName(idle), true, mDirection);
 		}
-		if (mOwner->GetName() == L"SlimeA" || mOwner->GetName() == L"SlimeB" || mOwner->GetName() == L"EliteCannibals")
+
+		if (ownerName == L"SlimeA" || ownerName == L"SlimeB" || ownerName == L"EliteCannibals")
 		{
-			if (at->GetActiveAni()->GetAniIndex() == 4 || at->GetActiveAni()->GetAniIndex() == 5)
+			if (Index > 2 && Index <= 6)
 			{
 				mAttack = true;
 			}
@@ -163,9 +167,9 @@ namespace sg
 				mAttack = false;
 			}
 		}
-		else if (mOwner->GetName() == L"Larva" || mOwner->GetName() == L"EliteLarva")
+		else if (ownerName == L"Larva" || ownerName == L"EliteLarva")
 		{
-			if (at->GetActiveAni()->GetAniIndex() == 2 || at->GetActiveAni()->GetAniIndex() == 3)
+			if (Index > 2 && Index <= 6)
 			{
 				mAttack = true;
 			}
@@ -174,9 +178,9 @@ namespace sg
 				mAttack = false;
 			}
 		}
-		else if (mOwner->GetName() == L"Cannibals")
+		else if (ownerName == L"Cannibals")
 		{
-			if (at->GetActiveAni()->GetAniIndex() == 3 || at->GetActiveAni()->GetAniIndex() == 4)
+			if (Index > 2 || Index <= 5)
 			{
 				mAttack = true;
 			}
@@ -195,7 +199,7 @@ namespace sg
 			mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(attacked), false, mDirection);
 			int hp = mOwner->GetStat().mCurHP;
 			Gobj_Character::CharStat pStat = mTarget->GetStat();
-			hp -= pStat.mStrength * pStat.mDamageScaling;
+			hp -= (pStat.mStrength * pStat.mDamageScaling) - (pStat.mStrength * mOwner->GetStat().mDefence);
 			mOwner->SetStatHP(hp);
 		}
 		if (mOwner->GetComp<Animator>()->GetActiveAni()->IsComplete())

@@ -155,9 +155,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Boss_OldEnt.h" />
+    <ClInclude Include="Boss_SkelKnight.h" />
     <ClInclude Include="Bullet_Apple.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
+    <ClInclude Include="Bullet_FireOrb.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Bullet_PoisonOrb.h" />
     <ClInclude Include="Bullet_RoboBeam.h" />
@@ -174,6 +176,8 @@
     <ClInclude Include="Effect_ProjectileDest.h" />
     <ClInclude Include="Effect_ProjectileDest2.h" />
     <ClInclude Include="Effect_RockDust.h" />
+    <ClInclude Include="Bullet_SKGroundFire.h" />
+    <ClInclude Include="Bullet_SKGroundFires.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gobj_Bullet.h" />
     <ClInclude Include="Gobj_Character.h" />
@@ -181,6 +185,7 @@
     <ClInclude Include="Gobj_Img.h" />
     <ClInclude Include="Gobj_Interactable.h" />
     <ClInclude Include="Gobj_Item.h" />
+    <ClInclude Include="Gobj_Light.h" />
     <ClInclude Include="Gobj_MobProjectile.h" />
     <ClInclude Include="Gobj_Monster.h" />
     <ClInclude Include="Gobj_Player.h" />
@@ -208,7 +213,7 @@
     <ClInclude Include="Ranged_Ent.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
-    <ClInclude Include="SCRIPT_Boss.h" />
+    <ClInclude Include="SCRIPT_OldEnt.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
     <ClInclude Include="SCRIPT_Company.h" />
     <ClInclude Include="SCRIPT_Gate.h" />
@@ -219,6 +224,7 @@
     <ClInclude Include="SCRIPT_Player.h" />
     <ClInclude Include="SCRIPT_MainCamera.h" />
     <ClInclude Include="SCRIPT_RangedMob.h" />
+    <ClInclude Include="SCRIPT_SkelKnight.h" />
     <ClInclude Include="SCRIPT_Tile0.h" />
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
@@ -246,6 +252,8 @@
     <ClInclude Include="UI_CharBox.h" />
     <ClInclude Include="UI_CharSelect.h" />
     <ClInclude Include="UI_FocusBoxes2.h" />
+    <ClInclude Include="UI_HpBar.h" />
+    <ClInclude Include="UI_HPBase.h" />
     <ClInclude Include="UI_Icons.h" />
     <ClInclude Include="UI_Select.h" />
     <ClInclude Include="Img_Space1.h" />
@@ -262,9 +270,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boss_OldEnt.cpp" />
+    <ClCompile Include="Boss_SkelKnight.cpp" />
     <ClCompile Include="Bullet_Apple.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
+    <ClCompile Include="Bullet_FireOrb.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Bullet_PoisonOrb.cpp" />
     <ClCompile Include="Bullet_RoboBeam.cpp" />
@@ -281,12 +291,15 @@
     <ClCompile Include="Effect_ProjectileDest.cpp" />
     <ClCompile Include="Effect_ProjectileDest2.cpp" />
     <ClCompile Include="Effect_RockDust.cpp" />
+    <ClCompile Include="Bullet_SKGroundFire.cpp" />
+    <ClCompile Include="Bullet_SKGroundFires.cpp" />
     <ClCompile Include="Gobj_Bullet.cpp" />
     <ClCompile Include="Gobj_Character.cpp" />
     <ClCompile Include="Gobj_Effect.cpp" />
     <ClCompile Include="Gobj_Img.cpp" />
     <ClCompile Include="Gobj_Interactable.cpp" />
     <ClCompile Include="Gobj_Item.cpp" />
+    <ClCompile Include="Gobj_Light.cpp" />
     <ClCompile Include="Gobj_MobProjectile.cpp" />
     <ClCompile Include="Gobj_Monster.cpp" />
     <ClCompile Include="Gobj_Player.cpp" />
@@ -313,7 +326,7 @@
     <ClCompile Include="Ranged_Ent.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
-    <ClCompile Include="SCRIPT_Boss.cpp" />
+    <ClCompile Include="SCRIPT_OldEnt.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
     <ClCompile Include="SCRIPT_Company.cpp" />
     <ClCompile Include="SCRIPT_Gate.cpp" />
@@ -324,6 +337,7 @@
     <ClCompile Include="SCRIPT_Player.cpp" />
     <ClCompile Include="SCRIPT_MainCamera.cpp" />
     <ClCompile Include="SCRIPT_RangedMob.cpp" />
+    <ClCompile Include="SCRIPT_SkelKnight.cpp" />
     <ClCompile Include="SCRIPT_Tile0.cpp" />
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
@@ -351,6 +365,8 @@
     <ClCompile Include="UI_CharBox.cpp" />
     <ClCompile Include="UI_CharSelect.cpp" />
     <ClCompile Include="UI_FocusBoxes2.cpp" />
+    <ClCompile Include="UI_HpBar.cpp" />
+    <ClCompile Include="UI_HPBase.cpp" />
     <ClCompile Include="UI_Icons.cpp" />
     <ClCompile Include="UI_Select.cpp" />
     <ClCompile Include="Img_Space1.cpp" />

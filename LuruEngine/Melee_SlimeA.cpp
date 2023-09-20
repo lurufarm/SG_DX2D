@@ -8,7 +8,9 @@ namespace sg
 		SetName(L"SlimeA");
 
 		mStat.mCurHP = 15;
+		mStat.mMaxHP = 15;
 		mStat.mStrength = 2;
+		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 10.0f;
 		mStat.mCooldown = 2.0f;

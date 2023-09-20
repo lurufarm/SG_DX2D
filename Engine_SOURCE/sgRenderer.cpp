@@ -109,6 +109,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = sg::Resources::Find<Shader>(L"HPBarShader");
+		sg::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -322,6 +327,10 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Transparent] = new ConstantBuffer(eCBType::Transparent);
 		constantBuffer[(UINT)eCBType::Transparent]->Create(sizeof(TransparentCB));
 
+		// Constant Buffer - HPBar
+		constantBuffer[(UINT)eCBType::HPBar] = new ConstantBuffer(eCBType::HPBar);
+		constantBuffer[(UINT)eCBType::HPBar]->Create(sizeof(HPBarCB));
+
 		// light structured buffer
 		lightsBuffer = new StructuredBuffer();
 		lightsBuffer->Create(sizeof(LightAttribute), 100, eSRVType::None);		
@@ -396,6 +405,12 @@ namespace renderer
 		TileShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "Tile");
 		sg::Resources::Insert(L"TileShader", TileShader);
 
+		std::shared_ptr<Shader> HPBarShader = std::make_shared<Shader>();
+		HPBarShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		HPBarShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "HPBar");
+		sg::Resources::Insert(L"HPBarShader", HPBarShader);
+
+
 
 	}
 
@@ -431,6 +446,10 @@ namespace renderer
 
 		std::shared_ptr<Shader> TileShader
 			= Resources::Find<Shader>(L"TileShader");
+
+		std::shared_ptr<Shader> HPBarShader
+			= Resources::Find<Shader>(L"HPBarShader");
+
 
 #pragma endregion
 #pragma region Basic Texture and Basic Material declaration 
@@ -597,6 +616,23 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Opaque);
 		Resources::Insert(L"UICharSelect", material);
+
+		// UI_HPBase
+		texture = Resources::Load<Texture>(L"UI_HPBase", L"..\\Resources\\UI\\hp_base.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UIHPBase", material);
+
+		// UI_HPBar
+		texture = Resources::Load<Texture>(L"UI_HPBar", L"..\\Resources\\UI\\hp_green.png");
+		material = std::make_shared<Material>();
+		material->SetShader(HPBarShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIHPBar", material);
+
 
 #pragma endregion
 #pragma region Title Scene Material
@@ -1019,6 +1055,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"MobOldEnt", material);
+
+		texture = Resources::Load<Texture>(L"Monster_SkelKnight", L"..\\Resources\\Monster\\Bosses\\skeletonknight.png");
+		material = std::make_shared<Material>();
+		material->SetShader(AniShader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"MobSkelKnight", material);
 
 #pragma endregion
 	}

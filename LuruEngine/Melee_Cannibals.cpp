@@ -7,7 +7,9 @@ namespace sg
 		SetName(L"Cannibals");
 
 		mStat.mCurHP = 25;
+		mStat.mMaxHP = 25;
 		mStat.mStrength = 3;
+		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 20.0f;
 		mStat.mRange = 10.0f;
 		mStat.mCooldown = 1.0f;

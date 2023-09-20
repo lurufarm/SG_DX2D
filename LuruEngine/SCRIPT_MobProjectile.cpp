@@ -27,6 +27,20 @@ namespace sg
 			mLastPos = mTarget->GetComp<Transform>()->GetPosition();
 			mTotalDuration = GetDistance() / 200.0f;
 		}
+		else if (mProjType == eMProjType::Basic_RandDir)
+		{
+			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+			mLastPos = mTarget->GetComp<Transform>()->GetPosition();
+			LastPos_RandomDir();
+			mTotalDuration = GetDistance() / 200.0f;
+		}
+		else if (mProjType == eMProjType::Basic_NearCardinalDir)
+		{
+			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+			mLastPos = mProj->GetLastPos();
+			mTotalDuration = GetDistance() / 200.0f;
+
+		}
 		else
 		{
 			mFirstPos = mProj->GetFirstPos();
@@ -45,7 +59,6 @@ namespace sg
 		Vector3 curPos;
 		Vector2 curDir = GetDirection();
 		float speed = GetSpeed() * mTotalDuration * 10.0f;
-		/*float basicspeed = GetSpeed() * mTotalDuration;*/
 
 		if (mProjType == eMProjType::PoisonOrb)
 		{
@@ -78,10 +91,12 @@ namespace sg
 			curPos = Vector3(x, y, z);
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 
-			if (GetDistance() <= 10.0f)
+			if (GetDistance() <= 15.0f)
 				IsActivated = true;
 		}
-		else if (mProjType == eMProjType::Basic)
+		else if (mProjType == eMProjType::Basic 
+			|| mProjType == eMProjType::Basic_RandDir 
+			|| mProjType == eMProjType::Basic_RandDir)
 		{
 			IsActivated = true;
 			curPos = mProj->GetFirstPos() + t * 5.0f * GetDirection();

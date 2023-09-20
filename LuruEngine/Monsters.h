@@ -8,3 +8,4 @@
 #include "Ranged_CannibalFlowerA.h"
 #include "Ranged_Ent.h"
 #include "Boss_OldEnt.h"
+#include "Boss_SkelKnight.h"

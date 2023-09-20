@@ -2,7 +2,7 @@
 
 #include "Boss_OldEnt.h"
 #include "SCRIPT_MobProjectile.h"
-#include "SCRIPT_Boss.h"
+#include "SCRIPT_OldEnt.h"
 
 
 namespace sg

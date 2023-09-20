@@ -122,7 +122,6 @@ namespace sg
 		lightcomp->SetType(eLightType::Directional);
 		lightcomp->SetColor(lightcolor);
 
-
 	}
 	void LobbyScene::Update()
 	{

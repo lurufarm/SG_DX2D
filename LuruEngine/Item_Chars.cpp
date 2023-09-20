@@ -26,7 +26,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 
-		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Item_Enhencers", L"..\\Resources\\Item\\Characters.png");
+		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Item_Characters", L"..\\Resources\\Item\\Characters.png");
 
 		mAni->Create(L"Ani_Item_Cheese", atlas, Vector2::Zero, Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_Item_Lucy", atlas, Vector2(0.0f, 24.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);

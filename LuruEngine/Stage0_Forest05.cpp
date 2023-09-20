@@ -33,10 +33,10 @@ namespace sg
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
-		//mCrackPos[0] = Vector3(165.0f, -180.0f, -0.5f);
-		//mCrackPos[1] = Vector3(0.0f, -55.0f, -0.5f);
-		//mCrackPos[2] = Vector3(-15.0f, 240.0f, -0.5f);
-		//mStartPos = Vector3(-75.0f, -310.0f, -1.0f);
+		mCrackPos[0] = Vector3(165.0f, -180.0f, -0.5f);
+		mCrackPos[1] = Vector3(0.0f, -55.0f, -0.5f);
+		mCrackPos[2] = Vector3(-15.0f, 240.0f, -0.5f);
+		mStartPos = Vector3(-75.0f, -310.0f, -1.0f);
 
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, pos, eLayerType::BGImg, this);
 		//object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
@@ -45,33 +45,33 @@ namespace sg
 		mCamera = Forest04camera->AddComp<Camera>();
 		Forest04camera->AddComp<SCRIPT_MainCamera>();
 
-		//Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
-		//Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
-		//Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
+		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
+		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
+		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
-		//Vector3 gpos0 = Vector3(-82.0f, 430.0f, -0.1f);
-		//Vector3 gpos1 = Vector3(-45.0f, 430.0f, -0.1f);
-		//Vector3 gpos2 = Vector3(8.0, 430.0f, -0.1f);
+		Vector3 gpos0 = Vector3(-82.0f, 430.0f, -0.1f);
+		Vector3 gpos1 = Vector3(-45.0f, 430.0f, -0.1f);
+		Vector3 gpos2 = Vector3(8.0, 430.0f, -0.1f);
 
-		//mRewardPos = gpos1;
-		//mRewardPos.y -= 80.0f;
-		//object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
+		mRewardPos = gpos1;
+		mRewardPos.y -= 80.0f;
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
-		//mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
-		//mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
-		//mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
+		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
 
-		//mGate0->SetNextScene(L"02_LobbyScene");
-		//mGate1->SetNextScene(L"02_LobbyScene");
-		//mGate2->SetNextScene(L"02_LobbyScene");
+		mGate0->SetNextScene(L"02_LobbyScene");
+		mGate1->SetNextScene(L"02_LobbyScene");
+		mGate2->SetNextScene(L"02_LobbyScene");
 
-		//gpos0.y += 20.0;
-		//gpos1.y += 20.0;
-		//gpos2.y += 20.0;
+		gpos0.y += 20.0;
+		gpos1.y += 20.0;
+		gpos2.y += 20.0;
 
-		//mItem0 = MakeItem(gpos0);
-		//mItem1 = MakeItem(gpos1);
-		//mItem2 = MakeItem(gpos2);
+		mItem0 = MakeItem(gpos0);
+		mItem1 = MakeItem(gpos1);
+		mItem2 = MakeItem(gpos2);
 
 #pragma region Monsters
 		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);

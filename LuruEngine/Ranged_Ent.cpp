@@ -8,8 +8,9 @@ namespace sg
 		SetName(L"Ent");
 
 		mStat.mCurHP = 32;
-		//mStat.mCurHP = 99999999999;
+		mStat.mMaxHP = 32;
 		mStat.mStrength = 4;
+		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;
 		mStat.mCooldown = 3.0f;

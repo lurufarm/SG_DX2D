@@ -6,6 +6,7 @@
 #include "sgAnimator.h"
 #include "sgConstantBuffer.h"
 #include "..\LuruEngine\Tile_TilePalette.h"
+#include "..\LuruEngine\UI_HpBar.h"
 
 namespace sg
 {
@@ -86,6 +87,5 @@ namespace sg
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transparent];
 		cb->SetData(&TpCB);
 		cb->Bind(eShaderStage::PS);
-		
 	}
 }

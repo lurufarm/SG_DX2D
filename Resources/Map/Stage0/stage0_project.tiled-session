@@ -95,6 +95,7 @@
             "scaleInEditor": 1
         },
         "Source/ForestFdWaterDeep1.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -149,8 +150,8 @@
             "scale": 0.73,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 589.0410958904109,
-                "y": 527.3972602739726
+                "x": 587.6712328767122,
+                "y": 526.0273972602739
             }
         },
         "stage0_forestfd_2.tmx": {
@@ -181,7 +182,7 @@
             }
         }
     },
-    "last.externalTilesetPath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
+    "last.externalTilesetPath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestFd",
     "last.imagePath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
     "map.height": 50,
     "map.lastUsedFormat": "tmx",

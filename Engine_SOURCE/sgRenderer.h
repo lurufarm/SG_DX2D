@@ -62,6 +62,13 @@ namespace renderer
 		Vector3 pad;
 	};
 
+	CBUFFER(HPBarCB, CBSLOT_HPCB)
+	{
+		float maxHP;
+		float curHP;
+		Vector2 padHP;
+	};
+
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];

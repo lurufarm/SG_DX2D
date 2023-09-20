@@ -1,7 +1,8 @@
 #include "Gobj_Monster.h"
+#include "..\Engine_SOURCE\sgObject.h"
 #include "..\Engine_SOURCE\sgAnimator.h"
 #include "Gobj_Player.h"
-
+#include "UI_HpBar.h"
 extern sg::Gobj_Player* Player;
 
 

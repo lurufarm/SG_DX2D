@@ -11,6 +11,8 @@
 #include "Char_Cheese.h"
 #include "SCENE_PlayScene.h"
 
+#include "UI_HpBar.h"
+#include "UI_HpBase.h"
 #include "Img_LevUP.h"
 #include "Img_LevUP2.h"
 
@@ -24,7 +26,6 @@ namespace sg
 	MeshRenderer* Gobj_Player::mMr = nullptr;
 	Collider2D* Gobj_Player::mCol = nullptr;
 	Animator* Gobj_Player::mAni = nullptr;
-	Light* Gobj_Player::mLg = nullptr;
 
 	Gobj_Character::CharStat Gobj_Player::mpStat = {};
 	std::vector<Gobj_Character*> Gobj_Player::mCompanies = {};
@@ -50,15 +51,9 @@ namespace sg
 		mCol->SetCenter(Vector2(0.0f, -2.0f));
 		mCol->SetSize(Vector2(0.4f, 0.7f));
 
-		//mLg = AddComp<Light>();
-		//mLg->SetType(eLightType::Point);
-		//mLg->SetRadius(50.0f);
-		//mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.0f));
-
 		SetChar(SceneManager::GetChar(L"Cheese"));
 		mMr->Initialize();
 		AddComp<SCRIPT_Player>();
-
 	}
 	void Gobj_Player::Update()
 	{
@@ -70,14 +65,6 @@ namespace sg
 		if (mpStat.mCurHP > mpStat.mMaxHP)
 			mpStat.mCurHP = mpStat.mMaxHP;
 
-		//if (PlayScene::GetTime())
-		//{
-		//	mLg->SetColor(Vector4(0.0f));
-		//}
-		//else
-		//{
-		//	mLg->SetColor(Vector4(0.6f, 0.5f, 0.3f, 0.5f));
-		//}
 		GameObject::Update();
 	}
 	void Gobj_Player::LateUpdate()

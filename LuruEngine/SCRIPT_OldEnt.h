@@ -3,7 +3,7 @@
 
 namespace sg
 {
-	class SCRIPT_Boss : public Script
+	class SCRIPT_OldEnt : public Script
 	{
 	public:
 
@@ -18,8 +18,8 @@ namespace sg
 			End,
 		};
 
-		SCRIPT_Boss();
-		~SCRIPT_Boss();
+		SCRIPT_OldEnt();
+		~SCRIPT_OldEnt();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

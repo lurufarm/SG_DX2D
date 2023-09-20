@@ -30,6 +30,22 @@ namespace sg
 			return direction;
 		}
 
+		void LastPos_RandomDir()
+		{
+			const float PI = 3.141592;
+			float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
+
+			// random distance
+			float distance = 30.0f;
+			float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * distance);
+
+			// angle + distance
+			mLastPos.x += randomDistance * cos(angle);
+			mLastPos.y += randomDistance * sin(angle);
+
+		}
+
+
 		bool GetProjActivated() { return IsActivated; }
 		float GetSpeed();
 		float GetRange();

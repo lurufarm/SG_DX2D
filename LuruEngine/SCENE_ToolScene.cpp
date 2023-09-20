@@ -50,15 +50,18 @@ namespace sg
 
 #pragma endregion
 #pragma region Forest
-		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
+		//Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
+		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, /*pos,*/ eLayerType::BGImg, this);
+
+
 		//Vector3 pos = Vector3(-11.0f, -15.0f, 0.0f);
 		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd03, pos, eLayerType::BGImg, this);
 
 
-		object::Instantiate<Interact_Gate>(0, Vector3(-82.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
-		object::Instantiate<Interact_Gate>(0, Vector3(-45.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
-		object::Instantiate<Interact_Gate>(0, Vector3(8.0, 430.0f, -0.1f), eLayerType::InteractableObject, this);
+		//object::Instantiate<Interact_Gate>(0, Vector3(-82.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
+		//object::Instantiate<Interact_Gate>(0, Vector3(-45.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
+		//object::Instantiate<Interact_Gate>(0, Vector3(8.0, 430.0f, -0.1f), eLayerType::InteractableObject, this);
 
 #pragma endregion
 

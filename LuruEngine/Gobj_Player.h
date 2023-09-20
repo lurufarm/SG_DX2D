@@ -84,7 +84,10 @@ namespace sg
 		void SetTarget(GameObject* mob) { mTarget = mob; }
 		GameObject* GetTarget() { return mTarget; }
 
-		void AddCompany(Gobj_Character* company) { mCompanies.push_back(company); }
+		void AddCompany(Gobj_Character* company) 
+		{ 
+			mCompanies.push_back(company);
+		}
 		std::vector<Gobj_Character*> GetActiveCompanies() { return mCompanies; }
 
 	private:
@@ -94,7 +97,6 @@ namespace sg
 		static MeshRenderer* mMr;
 		static Collider2D* mCol;
 		static Animator* mAni;
-		static Light* mLg;
 
 		static Gobj_Character* mpChar;
 		static Gobj_Character::CharStat mpStat;

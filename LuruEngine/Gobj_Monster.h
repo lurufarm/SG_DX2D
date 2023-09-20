@@ -10,8 +10,10 @@ namespace sg
 
 		struct MobStat
 		{
-			int mCurHP;
+			float mCurHP;
+			float mMaxHP;
 			int mStrength;
+			float mDefence;
 			float mSpeed;
 			float mRange;
 			float mCooldown;

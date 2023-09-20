@@ -217,7 +217,7 @@
     <ClCompile Include="Boss_OldEnt.cpp">
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_Boss.cpp">
+    <ClCompile Include="SCRIPT_OldEnt.cpp">
       <Filter>Script\SCRIPT_Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_SlicedApple.cpp">
@@ -309,6 +309,30 @@
     </ClCompile>
     <ClCompile Include="Stage0_Forest05.cpp">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_HpBar.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_HPBase.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Gobj_Light.cpp">
+      <Filter>Obj\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_SkelKnight.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_SkelKnight.cpp">
+      <Filter>Script\SCRIPT_Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_FireOrb.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_SKGroundFire.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_SKGroundFires.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -528,7 +552,7 @@
     <ClInclude Include="Boss_OldEnt.h">
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_Boss.h">
+    <ClInclude Include="SCRIPT_OldEnt.h">
       <Filter>Script\SCRIPT_Monster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="Bullet_SlicedApple.h">
@@ -626,6 +650,30 @@
     </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_HpBar.h">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_HPBase.h">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Light.h">
+      <Filter>Obj\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_SkelKnight.h">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_SkelKnight.h">
+      <Filter>Script\SCRIPT_Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_FireOrb.h">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_SKGroundFire.h">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_SKGroundFires.h">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -769,6 +817,9 @@
     </Filter>
     <Filter Include="Obj\Gobj_Effect\Player">
       <UniqueIdentifier>{bfc94023-4a9d-4d7f-b9c5-0cdc5af2f486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Boss\SkeletonKnight">
+      <UniqueIdentifier>{4a424a2a-daa1-4deb-bc82-643169fc93cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

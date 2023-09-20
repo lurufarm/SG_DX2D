@@ -114,6 +114,30 @@ float4 Tile(VSOut In) : SV_TARGET
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     color *= lightColor;
-
+    
     return color;
 }
+
+float4 HPBar(VSOut In) : SV_TARGET
+{
+//    float4 color = (0.0f, 0.0f, 0.0f, 1.0f);
+//    float2 UV = In.UV * (curHP / maxHP);  
+//    color = albedoTexture.Sample(pointSampler, UV);  
+//    return color;
+    
+    
+    float4 color = (0.0f, 0.0f, 0.0f, 1.0f);
+    
+    // 여기서 비율을 계산합니다.
+    float ratio = curHP / maxHP;
+    
+    // UV의 x 좌표가 ratio보다 크면 픽셀을 렌더링하지 않습니다.
+    if (In.UV.x > ratio)
+    {
+        discard;
+    }
+
+    color = albedoTexture.Sample(pointSampler, In.UV);
+    
+    return color;
+}   

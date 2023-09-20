@@ -74,6 +74,8 @@ namespace sg::enums
 		PoisonOrb,
 		EntRock,
 		Basic,
+		Basic_RandDir,
+		Basic_NearCardinalDir,
 		End,
 	};
 

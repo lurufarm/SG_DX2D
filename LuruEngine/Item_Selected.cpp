@@ -81,6 +81,61 @@ namespace sg
 	}
 	void Item_Selected::Update()
 	{
+		PlayScene* ps = dynamic_cast<PlayScene*>(SceneManager::GetActiveScene());
+		if (ps)
+			mID = ps->SelectedItemID;
+		else
+			mID = 0;
+
+		switch (mID)
+		{
+		case 0: // 보너스 라이프 mLife
+			SetMaterial(L"BonusLife");
+			break;
+		case 1: // 흡혈 ++ mHPStealRatio
+			SetMaterial(L"StealHP");
+			break;
+		case 2: // 질긴 생명 ++ mHPHealRatio
+			SetMaterial(L"HealHP");
+			break;
+		case 3: // 공격력 증가 mStrength
+			SetMaterial(L"EStrength");
+			break;
+		case 4: // 방어력 증가 mDefence
+			SetMaterial(L"EDefence");
+			break;
+		case 5: // 공격 범위 증가 mRange
+			SetMaterial(L"ERange");
+			break;
+		case 6: // 공격 지속 시간 증가 mAttackDuration
+			SetMaterial(L"EAduration");
+			break;
+		case 7: // 공격 횟수 증가 (멀티샷) mAttackCount
+			SetMaterial(L"EAcount");
+			break;
+		case 8: // 발사체 수 증가 mProjectiles
+			SetMaterial(L"Eprojs");
+			break;
+		case 9: // 공격 속도 증가 mAttackSpeed
+			SetMaterial(L"EAspeed");
+			break;
+		case 10: // 이동 속도 증가 mSpeed
+			SetMaterial(L"Espeed");
+			break;
+		case 11: // 최대 체력 증가 mMaxHP
+			SetMaterial(L"EmaxHP");
+			break;
+		case 20: // cheese선택
+			SetMaterial(L"Item_Cheeseicon");
+			break;
+		case 21: // cheese선택
+			SetMaterial(L"Item_Lucyicon");
+			break;
+		case 22: // cheese선택
+			SetMaterial(L"Item_Roboicon");
+			break;
+		}
+
 		if (mGetFirstPos == false)
 		{
 			mPos = mTr->GetPosition();

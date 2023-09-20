@@ -23,10 +23,6 @@ namespace sg
 		mAtlas = Resources::Load<Texture>(L"Effect_FirePlate", L"..\\Resources\\Effect\\fireplate.png");
 		mAni->Create(L"Ani_Effect_FirePlate", mAtlas, Vector2::Zero, Vector2(23.0f, 11.0f), 7, Vector2::Zero, 0.2f);
 		mAni->PlayAnimation(L"Ani_Effect_FirePlate", false, true);
-		//Light* mLg = AddComp<Light>();
-		//mLg->SetType(eLightType::Point);
-		//mLg->SetColor(Vector4(0.4f, 0.2f, 0.1f, 0.3f));
-		//mLg->SetRadius(15.0f);
 
 		mMr->Initialize();
 

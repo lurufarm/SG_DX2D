@@ -1,6 +1,6 @@
 #include "Boss_OldEnt.h"
 #include "SCRIPT_RangedMob.h"
-#include "SCRIPT_Boss.h"
+#include "SCRIPT_OldEnt.h"
 
 namespace sg
 {
@@ -9,7 +9,9 @@ namespace sg
 		SetName(L"OldEnt");
 
 		mStat.mCurHP = 225;
+		mStat.mMaxHP = 225;
 		mStat.mStrength = 4;
+		mStat.mDefence = 0.3f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;
 		mStat.mCooldown = 2.3f;
@@ -42,7 +44,7 @@ namespace sg
 
 		mMr->Initialize();
 		Monster_Ranged::Initialize();
-		AddComp<SCRIPT_Boss>();
+		AddComp<SCRIPT_OldEnt>();
 	}
 	void Boss_OldEnt::Update()
 	{

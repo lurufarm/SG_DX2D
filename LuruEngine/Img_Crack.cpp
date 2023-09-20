@@ -21,7 +21,6 @@ namespace sg
 		SetMaterial(L"AnimationMaterial");
 
 		mAni = AddComp<Animator>();
-		mLg = AddComp<Light>();
 
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Img_Crack", L"..\\Resources\\Map\\Common\\Crack.png");
 

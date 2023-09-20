@@ -28,11 +28,6 @@ namespace sg
 
 		mTr->SetScale(0.5f, 0.5f, 1.0f);
 		mMr->Initialize();
-
-		//Light* mLight = AddComp<Light>();
-		//mLight->SetType(eLightType::Point);
-		//mLight->SetRadius(15.0f);
-		//mLight->SetColor(Vector4(1.0f, 0.0f, 0.0f, 1.0f));
 		mTime = 0.0f;
 	}
 	void Effect_ProjectileDest2::Update()

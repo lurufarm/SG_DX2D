@@ -19,6 +19,7 @@
 #define CBSLOT_MYCB				4
 #define CBSLOT_TIME				5
 #define CBSLOT_TPCB				6
+#define CBSLOT_HPCB				7
 
 
 namespace sg::graphics
@@ -43,6 +44,7 @@ namespace sg::graphics
 		MyCBType,
 		Time,
 		Transparent,
+		HPBar,
 		End,
 	};
 

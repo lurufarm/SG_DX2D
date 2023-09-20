@@ -18,7 +18,7 @@ namespace sg
 
 	private:
 		class Animator* mAni;
-		class Light* mLg;
+		//class Light* mLg;
 		int mAniNum;
 
 	};

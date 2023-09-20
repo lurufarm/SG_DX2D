@@ -3,6 +3,7 @@
 
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgObject.h"
+#include "SCENE_PlayScene.h"
 #include "Gobj_Player.h"
 #include "Bullet_CheeseArrow.h"
 #include "Bullet_LucyBomb.h"
@@ -24,12 +25,14 @@ namespace sg
 	void SCRIPT_Company::Initialize()
 	{
 
-		mPlayer = Player;
+		//mPlayer = Player;
 		mOwner = (Gobj_Character*)GetOwner();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObj(eLayerType::Player, mOwner);
+		PlayScene* playsc = dynamic_cast<PlayScene*>(scene);
+		playsc->CreateCompanyLight(mOwner);
 		Player->AddCompany(mOwner);
-		mPtr = mPlayer->GetComp<Transform>();
+		mPtr = Player->GetComp<Transform>();
 		mOtr = mOwner->GetComp<Transform>();
 		mOat = mOwner->GetComp<Animator>();
 		mOcol = mOwner->AddComp<Collider2D>();
