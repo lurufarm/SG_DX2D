@@ -188,7 +188,8 @@ namespace sg
 				stemnum = 0;
 			}
 
-			if (at->GetActiveAni()->GetAniIndex() > 4 && at->GetActiveAni()->GetAniIndex() < 13
+			if (at->GetActiveAni()->GetAniIndex() > 4 
+				&& at->GetActiveAni()->GetAniIndex() < 13
 				&& at->GetActiveAni()->GetKey() == AnimationName(attack2)
 				&& mLaunched == false)
 			{

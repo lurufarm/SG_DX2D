@@ -3,7 +3,8 @@
 #include "sgTexture.h"
 #include "sgMaterial.h"
 #include "sgPaintShader.h"
-
+#include "sgStructuredBuffer.h"
+#include "sgParticleShader.h"
 
 namespace renderer
 {
@@ -220,7 +221,7 @@ namespace renderer
 	void LoadMesh()
 	{
 		std::vector<Vertex> vertexes = {};
-		std::vector<Vertex> transparent_vertexes = {};
+		//std::vector<Vertex> transparent_vertexes = {};
 		std::vector<UINT> indexes = {};
 
 		// RECT
@@ -303,39 +304,64 @@ namespace renderer
 	void LoadBuffer()
 	{
 
-		// Constant Buffer ¼³Á¤
+		// Transform
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
-		// Constant Buffer - Grid
+		// Grid
 		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
 	
-		// Constant Buffer - Animator
+		// Animator
 		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 
-		// Constant Buffer - MyCBType
+		// MyCBType
 		constantBuffer[(UINT)eCBType::MyCBType] = new ConstantBuffer(eCBType::MyCBType);
 		constantBuffer[(UINT)eCBType::MyCBType]->Create(sizeof(MyCB));
 
-		// Constant Buffer - Time
+		// Time
 		constantBuffer[(UINT)eCBType::Time] = new ConstantBuffer(eCBType::Time);
 		constantBuffer[(UINT)eCBType::Time]->Create(sizeof(TimeCB));
 
-		// Constant Buffer - Transparent
+		// Transparent
 		constantBuffer[(UINT)eCBType::Transparent] = new ConstantBuffer(eCBType::Transparent);
 		constantBuffer[(UINT)eCBType::Transparent]->Create(sizeof(TransparentCB));
 
-		// Constant Buffer - HPBar
+		// HPBar
 		constantBuffer[(UINT)eCBType::HPBar] = new ConstantBuffer(eCBType::HPBar);
 		constantBuffer[(UINT)eCBType::HPBar]->Create(sizeof(HPBarCB));
+
+		// Particle
+		constantBuffer[(UINT)eCBType::Particle] = new ConstantBuffer(eCBType::Particle);
+		constantBuffer[(UINT)eCBType::Particle]->Create(sizeof(ParticleCB));
+
+		// Noise
+
+		constantBuffer[(UINT)eCBType::Noise] = new ConstantBuffer(eCBType::Particle);
+		constantBuffer[(UINT)eCBType::Noise]->Create(sizeof(NoiseCB));
+
 
 		// light structured buffer
 		lightsBuffer = new StructuredBuffer();
 		lightsBuffer->Create(sizeof(LightAttribute), 100, eSRVType::None);		
 	}
 	
+	void LoadTexture()
+	{
+		// paint texture
+		std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
+		uavTexture->Create(1024, 1024, DXGI_FORMAT_B8G8R8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		sg::Resources::Insert(L"PaintTexture", uavTexture);
+
+		std::shared_ptr<Texture> particle = std::make_shared<Texture>();
+		Resources::Load<Texture>(L"TestP", L"..\\Resources\\Particle\\HardCircle.png");
+
+		Resources::Load<Texture>(L"Noise01", L"..\Resources\\Particle\\noise_01.png");
+		Resources::Load<Texture>(L"Noise02", L"..\Resources\\Particle\\noise_02.png");
+		Resources::Load<Texture>(L"Noise03", L"..\Resources\\Particle\\noise_03.jpg");
+	}
+
 	void LoadShader()
 	{
 		std::shared_ptr<Shader>shader = std::make_shared<Shader>();
@@ -374,12 +400,18 @@ namespace renderer
 		paintShader->Create(L"PaintCS.hlsl", "main");
 		sg::Resources::Insert(L"PaintShader", paintShader);
 
+		std::shared_ptr<ParticleShader> psSystemShader = std::make_shared<ParticleShader>();
+		psSystemShader->Create(L"ParticleCS.hlsl", "main");
+		sg::Resources::Insert(L"ParticleSystemShader", psSystemShader);
+
 		std::shared_ptr<Shader> particleShader = std::make_shared<Shader>();
 		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		particleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
 		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
 		particleShader->SetRSState(eRSType::SolidNone);
 		particleShader->SetDSState(eDSType::NoWrite);
 		particleShader->SetBSState(eBSType::AlphaBlend);
+		particleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 		sg::Resources::Insert(L"ParticleShader", particleShader);
 
 
@@ -724,6 +756,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"ImgLevUp", material);
+
+		texture = Resources::Load<Texture>(L"Img_Shadow", L"..\\Resources\\Effect\\shadow.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ImgShadow", material);
 
 #pragma endregion
 #pragma region Lobby Scene Material
@@ -1072,6 +1111,7 @@ namespace renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+		LoadTexture();
 		LoadMaterial();
 	}
 
@@ -1089,8 +1129,35 @@ namespace renderer
 
 	}
 
+	void BindNoiseTexture()
+	{
+		std::shared_ptr<Texture> texture
+			= Resources::Find<Texture>(L"Noise01");
+
+		texture->BindShaderResource(eShaderStage::VS, 15);
+		texture->BindShaderResource(eShaderStage::HS, 15);
+		texture->BindShaderResource(eShaderStage::DS, 15);
+		texture->BindShaderResource(eShaderStage::GS, 15);
+		texture->BindShaderResource(eShaderStage::PS, 15);
+		texture->BindShaderResource(eShaderStage::CS, 15);
+
+		ConstantBuffer* cb = constantBuffer[(UINT)eCBType::Noise];
+		NoiseCB data = {};
+		data.size.x = texture->GetWidth();
+		data.size.y = texture->GetHeight();
+
+		cb->SetData(&data);
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::GS);
+		cb->Bind(eShaderStage::PS);
+		cb->Bind(eShaderStage::CS);
+
+	}
+
+
 	void Render()
 	{
+		BindNoiseTexture();
 		BindLights();
 		for (Camera* cam : cameras)
 		{

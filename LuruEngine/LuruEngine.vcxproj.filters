@@ -334,6 +334,12 @@
     <ClCompile Include="Bullet_SKGroundFires.cpp">
       <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet_FireOrbs.cpp">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Shadow.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -674,6 +680,12 @@
     </ClInclude>
     <ClInclude Include="Bullet_SKGroundFires.h">
       <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_FireOrbs.h">
+      <Filter>Obj\Gobj_Monster\Boss\SkeletonKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Shadow.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

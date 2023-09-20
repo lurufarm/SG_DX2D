@@ -7,6 +7,7 @@ namespace sg
 	{
 	public:
 		Bullet_FireOrb(Gobj_Monster* BulletOwner);
+		Bullet_FireOrb(Vector2 dir, Gobj_Monster* BulletOwner);
 		~Bullet_FireOrb();
 
 		void Initialize();

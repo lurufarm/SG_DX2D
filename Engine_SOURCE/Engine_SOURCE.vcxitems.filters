@@ -219,6 +219,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleSystem.h">
       <Filter>GameObject\Component\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleShader.h">
+      <Filter>Resource\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -316,6 +319,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleSystem.cpp">
       <Filter>GameObject\Component\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleShader.cpp">
+      <Filter>Resource\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

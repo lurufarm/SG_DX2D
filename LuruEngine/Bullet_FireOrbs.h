@@ -4,12 +4,12 @@
 
 namespace sg
 {
-	class Bullet_SKGroundFire;
-	class Bullet_SKGroundFires : public GameObject
+	class Bullet_FireOrb;
+	class Bullet_FireOrbs : public GameObject
 	{
 	public:
-		Bullet_SKGroundFires(Gobj_Monster* BulletOwner);
-		~Bullet_SKGroundFires();
+		Bullet_FireOrbs(Gobj_Monster* BulletOwner);
+		~Bullet_FireOrbs();
 
 		void Initialize();
 		void Update();
@@ -21,7 +21,8 @@ namespace sg
 	private:
 
 		float mAngle;
-		Bullet_SKGroundFire* mBullets[4];
+		Bullet_FireOrb* mBullets[15];
 		Gobj_Monster* mProjOwner;
+
 	};
 }

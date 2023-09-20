@@ -54,6 +54,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Effect, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet2, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_BulletBehindMonster, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
@@ -61,6 +62,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster_BulletBehindMonster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
 		if (mItem0)

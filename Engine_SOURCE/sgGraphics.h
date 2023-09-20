@@ -20,6 +20,8 @@
 #define CBSLOT_TIME				5
 #define CBSLOT_TPCB				6
 #define CBSLOT_HPCB				7
+#define CBSLOT_PARTICLE			8
+#define CBSLOT_NOISE			9
 
 
 namespace sg::graphics
@@ -38,13 +40,15 @@ namespace sg::graphics
 	enum class eCBType
 	{
 		Transform,
-		Particle,
+		xxx,
 		Grid,
 		Animator,
 		MyCBType,
 		Time,
 		Transparent,
 		HPBar,
+		Particle,
+		Noise,
 		End,
 	};
 
@@ -145,5 +149,9 @@ namespace sg::graphics
 		UINT active;
 	};
 
+	struct ParticleShared
+	{
+		UINT sharedActiveCount;
+	};
 
 }

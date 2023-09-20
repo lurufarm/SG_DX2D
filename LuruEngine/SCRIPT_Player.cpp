@@ -10,6 +10,7 @@
 #include "Gobj_Player.h"
 #include "Gobj_Bullet.h"
 #include "Gobj_Monster.h"
+#include "Monsters.h"
 #include "Monster_Melee.h"
 #include "Monster_Ranged.h"
 #include "Bullet_CheeseArrow.h"
@@ -18,6 +19,7 @@
 
 #include "SCRIPT_MeleeMob.h"
 #include "SCRIPT_MobProjectile.h"
+#include "SCRIPT_SkelKnight.h"
 #include "Effect_OldEntStem.h"
 #include "Effect_LaserFiring.h"
 
@@ -297,8 +299,10 @@ namespace sg
 		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
 		SCRIPT_MobProjectile* sp = other->GetOwner()->GetComp<SCRIPT_MobProjectile>();
 		Effect_OldEntStem* oes = dynamic_cast<Effect_OldEntStem*>(other->GetOwner());
-		
-		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
+		SCRIPT_SkelKnight* ssk = other->GetOwner()->GetComp<SCRIPT_SkelKnight>();
+		//Boss_SkelKnight* bsk = dynamic_cast<Boss_SkelKnight*>(other->GetOwner());
+
+		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false) // 일반 몬스터 근거리 공격에 맞았을 때
 		{
 			mAttacked = true;
 			Gobj_Character::CharStat pStat = mOwner->GetStat();
@@ -306,7 +310,7 @@ namespace sg
 			pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
 			mOwner->SetStat(pStat);
 		}
-		else if (sp != nullptr)
+		else if (sp != nullptr) // 일반 몬스터 Proj에 맞았을 때
 		{
 			if (mAttacked == false && mDeath == false && sp->GetProjActivated())
 			{
@@ -322,13 +326,24 @@ namespace sg
 				mOwner->SetStat(pStat);
 			}
 		}
-		else if (oes != nullptr)
+		else if (oes != nullptr) // OldEnt 뿌리에 맞았을 때
 		{
 			if (mAttacked == false && mDeath == false)
 			{
 				mAttacked = true;
 				Gobj_Character::CharStat pStat = mOwner->GetStat();
 				pStat.mCurHP -= 8.0f - (8.0f * pStat.mDefence);
+				mOwner->SetStat(pStat);
+			}
+		}
+		else if (ssk != nullptr)
+		{
+			if (mAttacked == false && mDeath == false && ssk->mAttackable)
+			{
+				mAttacked = true;
+				Gobj_Character::CharStat pStat = mOwner->GetStat();
+				Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)ssk->GetOwner())->GetStat();
+				pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
 				mOwner->SetStat(pStat);
 			}
 		}

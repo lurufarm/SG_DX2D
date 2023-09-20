@@ -26,20 +26,27 @@ namespace sg
 			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 			mLastPos = mTarget->GetComp<Transform>()->GetPosition();
 			mTotalDuration = GetDistance() / 200.0f;
-		}
-		else if (mProjType == eMProjType::Basic_RandDir)
-		{
-			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
-			mLastPos = mTarget->GetComp<Transform>()->GetPosition();
-			LastPos_RandomDir();
-			mTotalDuration = GetDistance() / 200.0f;
-		}
-		else if (mProjType == eMProjType::Basic_NearCardinalDir)
-		{
-			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
-			mLastPos = mProj->GetLastPos();
-			mTotalDuration = GetDistance() / 200.0f;
-
+			if (mProjType == eMProjType::Basic_RandDir)
+			{
+				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+				mLastPos = mTarget->GetComp<Transform>()->GetPosition();
+				LastPos_RandomDir();
+				mTotalDuration = GetDistance() / 200.0f;
+			}
+			else if (mProjType == eMProjType::Basic_NearCardinalDir)
+			{
+				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+				mLastPos = mProj->GetLastPos();
+				mTotalDuration = GetDistance() / 20.0f;
+				mLastPos += mFirstPos;
+			}
+			else if (mProjType == eMProjType::Basic_Dir)
+			{
+				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+				mLastPos = mProj->GetLastPos();
+				mTotalDuration = GetDistance() / 20.0f;
+				mLastPos += mFirstPos;
+			}
 		}
 		else
 		{
@@ -58,10 +65,10 @@ namespace sg
 		float t = mTime / mTotalDuration;
 		Vector3 curPos;
 		Vector2 curDir = GetDirection();
-		float speed = GetSpeed() * mTotalDuration * 10.0f;
 
 		if (mProjType == eMProjType::PoisonOrb)
 		{
+			float speed = GetSpeed() * mTotalDuration * 7.0f;
 			IsActivated = true;
 			// Set the amplitude of the sine wave
 			float amplitude = 5.0f;
@@ -96,10 +103,11 @@ namespace sg
 		}
 		else if (mProjType == eMProjType::Basic 
 			|| mProjType == eMProjType::Basic_RandDir 
-			|| mProjType == eMProjType::Basic_RandDir)
+			|| mProjType == eMProjType::Basic_NearCardinalDir
+			|| mProjType == eMProjType::Basic_Dir)
 		{
 			IsActivated = true;
-			curPos = mProj->GetFirstPos() + t * 5.0f * GetDirection();
+			curPos = mFirstPos + (t * 5.0f)* GetDirection();
 			curPos.z = -1.0f;
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 		}

@@ -17,15 +17,16 @@ namespace sg
 	void Bullet_SKGroundFires::Initialize()
 	{
 		RandAngle();
+		mAngle *= (3.141592 / 180.0f);
+
 		for (size_t i = 0; i < 4; i++)
 		{
-			float added_angle = (i * 90.0f) * 3.141592 / 180;
-
+			float a = i * 90;
+			float added_angle = a * (3.141592 / 180.0f);
 			float x = cos(mAngle + added_angle);
 			float y = sin(mAngle + added_angle);
 
 			mBullets[i] = object::SKGroundFire(Vector2(x, y), mProjOwner);
-			//mBullets[i]->SetProjOwner(mProjOwner);
 		}
 	}
 	void Bullet_SKGroundFires::Update()
@@ -48,7 +49,7 @@ namespace sg
 	{
 		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
 		std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
-		std::uniform_int_distribution<> dist(0, 360);  // 0과 1 사이의 균등 분포
+		std::uniform_int_distribution<> dist(0, 30);  // 0과 1 사이의 균등 분포
 
 		mAngle = dist(gen);
 	}

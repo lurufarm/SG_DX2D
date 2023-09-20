@@ -160,6 +160,7 @@
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
+    <ClInclude Include="Bullet_FireOrbs.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
     <ClInclude Include="Bullet_PoisonOrb.h" />
     <ClInclude Include="Bullet_RoboBeam.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Img_LevUp2.h" />
     <ClInclude Include="Img_LobbyTorch.h" />
     <ClInclude Include="Img_RewardPlate.h" />
+    <ClInclude Include="Img_Shadow.h" />
     <ClInclude Include="Img_StartingPlate.h" />
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
@@ -275,6 +277,7 @@
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />
+    <ClCompile Include="Bullet_FireOrbs.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
     <ClCompile Include="Bullet_PoisonOrb.cpp" />
     <ClCompile Include="Bullet_RoboBeam.cpp" />
@@ -308,6 +311,7 @@
     <ClCompile Include="Img_LevUp2.cpp" />
     <ClCompile Include="Img_LobbyTorch.cpp" />
     <ClCompile Include="Img_RewardPlate.cpp" />
+    <ClCompile Include="Img_Shadow.cpp" />
     <ClCompile Include="Img_StartingPlate.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />

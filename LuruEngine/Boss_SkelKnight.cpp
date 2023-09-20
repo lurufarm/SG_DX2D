@@ -45,6 +45,8 @@ namespace sg
 		mAni->Create(L"Ani_SkelKnight_Death", mAtlas->GetTexture(), Vector2(0.0f, 504.0f), Vector2(56.0f, 72.0f), 26, Vector2::Zero, 0.08f);
 
 		mMr->Initialize();
+		mCol->SetCenter(Vector2(0.0f, -10.0f));
+		mCol->SetSize(Vector2(0.5f, 0.6f));
 		AddComp<SCRIPT_SkelKnight>();
 		Gobj_Monster::Initialize();
 	}

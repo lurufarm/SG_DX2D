@@ -39,6 +39,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgPaintShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgResource.h" />
@@ -76,6 +77,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgMeshRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgPaintShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgResource.cpp" />

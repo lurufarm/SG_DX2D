@@ -10,6 +10,7 @@
 #include "..\LuruEngine\SCRIPT_MobProjectile.h"
 #include "..\LuruEngine\Bullet_SlicedApple.h"
 #include "..\LuruEngine\Bullet_SKGroundFire.h"
+#include "..\LuruEngine\Bullet_FireOrb.h"
 
 namespace sg::object
 {
@@ -55,6 +56,15 @@ namespace sg::object
 	static __forceinline Bullet_SKGroundFire* SKGroundFire(Vector2 dir, Gobj_Monster* projowner)
 	{
 		Bullet_SKGroundFire* skgf = new Bullet_SKGroundFire(dir, projowner);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObj(eLayerType::Monster_BulletBehindMonster, skgf);
+
+		return skgf;
+	}
+
+	static __forceinline Bullet_FireOrb* FireOrb(Vector2 dir, Gobj_Monster* projowner)
+	{
+		Bullet_FireOrb* skgf = new Bullet_FireOrb(dir, projowner);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObj(eLayerType::Monster_Bullet, skgf);
 

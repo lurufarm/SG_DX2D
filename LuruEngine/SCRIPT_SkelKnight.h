@@ -36,15 +36,15 @@ namespace sg
 		float GetDistance();
 		Vector3 GetDirection();
 		void SelectAttack();
+		float Lerp(float a, float b, float t)
+		{
+			return (1 - t) * a + t * b;
+		}
+
+		bool mAttackable;
 
 	private:
 		
-		void attack_shootorbs();
-		void attack_groundfire();
-		void attack_jump();
-		void attack_shootorbssorted();
-
-
 		eFSMState mFSMState;
 		class Gobj_Monster* mOwner;
 		class Gobj_Player* mTarget;
@@ -58,7 +58,8 @@ namespace sg
 		bool mLaunched;
 		int mAttackNum;
 		int mFireOrbNum;
-
+		Vector3 mAttack3TargetPos;
+		Vector3 mAttack3OwnerPos;
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";
 		std::wstring attack = L"Attack";
@@ -67,6 +68,8 @@ namespace sg
 		std::wstring attack4 = L"Attack4";
 		std::wstring spawn = L"Spawn";
 		std::wstring death = L"Death";
+
+		class Img_Shadow* mShadow;
 
 	};
 }

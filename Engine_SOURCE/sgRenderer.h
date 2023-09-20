@@ -69,6 +69,19 @@ namespace renderer
 		Vector2 padHP;
 	};
 
+	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
+	{
+		UINT elementCount;
+		float elapsedTime;
+		float deltaTime;
+		int ParticlePad;
+	};
+
+	CBUFFER(NoiseCB, CBSLOT_NOISE)
+	{
+		Vector4 size;
+	};
+
 	extern sg::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
