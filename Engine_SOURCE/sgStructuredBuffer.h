@@ -10,8 +10,10 @@ namespace sg::graphics
 		StructuredBuffer();
 		~StructuredBuffer();
 
-		bool Create(UINT size, UINT stride, eSRVType type);
+		bool Create(UINT size, UINT stride, eViewType type, void* data, bool cpuAccess = false);
+		bool CreateRWBuffer();
 		void SetData(void* data, UINT stride);
+		void GetData(void* data, UINT size);
 		void BindSRV(eShaderStage stage, UINT slot);
 		void BindUAV(UINT slot);
 
@@ -21,15 +23,18 @@ namespace sg::graphics
 		UINT GetStride() { return mStride; }
 
 	private:
+		Microsoft::WRL::ComPtr<ID3D11Buffer> mReadBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer> mWriteBuffer;
+
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
 		Microsoft::WRL::ComPtr<ID3D11UnorderedAccessView> mUAV;
-		eSRVType mType;
+		eViewType mType;
 
 		UINT mSize;
 		UINT mStride;
 
 		UINT mSRVSlot;
-		UINT mUAVslot;
+		UINT mUAVSlot;
 
 	};
 }

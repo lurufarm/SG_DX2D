@@ -1,6 +1,7 @@
 #pragma once
 #include "sgMeshRenderer.h"
 #include "sgStructuredBuffer.h"
+#include "sgParticleShader.h"
 
 namespace sg
 {
@@ -17,6 +18,9 @@ namespace sg
 
 	private:
 		graphics::StructuredBuffer* mBuffer;
+		graphics::StructuredBuffer* mSharedBuffer;
+
+		std::shared_ptr<ParticleShader> mCS;
 
 		UINT	mCount;
 		Vector4	mStartSize;
@@ -24,5 +28,8 @@ namespace sg
 		Vector4 mStartColor;
 		Vector4 mEndColor;
 		float mLifeTime;
+		float mFrequancy;
+
+		float mTime;
 	};
 }

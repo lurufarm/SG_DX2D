@@ -2,24 +2,21 @@
 
 struct VSIn
 {
-    float3 pos : POSITION;
+    float3 LocalPos : POSITION;
     uint Instance : SV_InstanceID;
 };
 
 struct VSOut
 {
-    float4 pos : SV_POSITION;
+    float4 LocalPos : POSITION;
+    uint Instance : SV_InstanceID;
 };
 
 VSOut main(VSIn In)
 {
     VSOut Out = (VSOut) 0.0f;
-    
-    float4 worldPos = mul(float4(In.pos, 1.0f), WorldMatrix);
-    worldPos.xyz += particles[In.Instance].position.xyz;
-    
-    float4 viewPos = mul(worldPos, ViewMatrix);
-    Out.pos = mul(viewPos, ProjectionMatrix);
-    
+    Out.LocalPos = float4(In.LocalPos, 1.0f);
+    Out.Instance = In.Instance;
+
     return Out;
 }

@@ -344,7 +344,7 @@ namespace renderer
 
 		// light structured buffer
 		lightsBuffer = new StructuredBuffer();
-		lightsBuffer->Create(sizeof(LightAttribute), 100, eSRVType::None);		
+		lightsBuffer->Create(sizeof(LightAttribute), 100, eViewType::SRV, nullptr, true);		
 	}
 	
 	void LoadTexture()
