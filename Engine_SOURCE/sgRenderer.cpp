@@ -221,8 +221,19 @@ namespace renderer
 	void LoadMesh()
 	{
 		std::vector<Vertex> vertexes = {};
-		//std::vector<Vertex> transparent_vertexes = {};
 		std::vector<UINT> indexes = {};
+		std::vector<Vertex> pointvertexes = {};
+		std::vector<UINT> pointindexes = {};
+
+		//PointMesh
+		Vertex v = {};
+		v.pos = Vector3(0.0f, 0.0f, 0.0f);
+		pointvertexes.push_back(v);
+		pointindexes.push_back(0);
+		std::shared_ptr<Mesh> pointmesh = std::make_shared<Mesh>();
+		pointmesh->CreateVertexBuffer(pointvertexes.data(), pointvertexes.size());
+		pointmesh->CreateIndexBuffer(pointindexes.data(), pointindexes.size());
+		Resources::Insert(L"PointMesh", pointmesh);
 
 		// RECT
 		vertexes.resize(4);
@@ -243,7 +254,7 @@ namespace renderer
 		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		// Vertex Buffer ¼³Á¤
-		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		std::shared_ptr<Mesh>mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
@@ -256,6 +267,9 @@ namespace renderer
 		indexes.push_back(2);
 		indexes.push_back(3);
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+
+
+
 
 #pragma region Debug Mesh
 		// Rect Debug Mesh
@@ -355,7 +369,8 @@ namespace renderer
 		sg::Resources::Insert(L"PaintTexture", uavTexture);
 
 		std::shared_ptr<Texture> particle = std::make_shared<Texture>();
-		Resources::Load<Texture>(L"TestP", L"..\\Resources\\Particle\\HardCircle.png");
+		Resources::Load<Texture>(L"particletest", L"..\\Resources\\particle\\HardCircle.png");
+		sg::Resources::Insert(L"particletest", particle);
 
 		Resources::Load<Texture>(L"Noise01", L"..\Resources\\Particle\\noise_01.png");
 		Resources::Load<Texture>(L"Noise02", L"..\Resources\\Particle\\noise_02.png");
@@ -487,6 +502,15 @@ namespace renderer
 #pragma region Basic Texture and Basic Material declaration 
 		std::shared_ptr<Texture> texture;
 		std::shared_ptr<Material> material;
+
+
+		std::shared_ptr<Texture> particleTexx2
+			= Resources::Find<Texture>(L"particletest");
+		material = std::make_shared<Material>();
+		material->SetShader(ParticleShader);
+		material->SetTexture(particleTexx2);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ParticleMaterial2", material);
 
 		// Test
 		//texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");

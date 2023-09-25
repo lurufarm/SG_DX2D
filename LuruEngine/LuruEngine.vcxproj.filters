@@ -340,6 +340,9 @@
     <ClCompile Include="Img_Shadow.cpp">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
+    <ClCompile Include="particletest.cpp">
+      <Filter>x</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -686,6 +689,9 @@
     </ClInclude>
     <ClInclude Include="Img_Shadow.h">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="particletest.h">
+      <Filter>x</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

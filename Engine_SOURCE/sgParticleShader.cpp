@@ -31,18 +31,18 @@ namespace sg::graphics
 	{
 		mParticleBuffer = particleBuffer;
 
-		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Particle];
+		//ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Particle];
 
-		static float elapsedTime = 0.0f;
-		elapsedTime += Time::DeltaTime();
+		//static float elapsedTime = 0.0f;
+		//elapsedTime += Time::DeltaTime();
 
-		renderer::ParticleCB data = {};
-		data.elementCount = mParticleBuffer->GetStride();
-		data.elapsedTime = elapsedTime;
-		data.deltaTime = Time::DeltaTime();
+		//renderer::ParticleCB data = {};
+		//data.elementCount = mParticleBuffer->GetStride();
+		//data.elapsedTime = elapsedTime;
+		//data.deltaTime = Time::DeltaTime();
 
-		cb->SetData(&data);
-		cb->Bind(eShaderStage::CS);
+		//cb->SetData(&data);
+		//cb->Bind(eShaderStage::CS);
 
 	}
 }

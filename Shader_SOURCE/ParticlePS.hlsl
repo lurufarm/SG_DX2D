@@ -1,20 +1,26 @@
 #include "globals.hlsli"
 
+
+
 struct GSOut
 {
-    float4 pos : SV_Position;
+    float4 Pos : SV_Position;
     float2 UV : TEXCOORD;
+    float4 Color : COLOR;
     uint Instance : SV_InstanceID;
 };
 
 float4 main(GSOut In) : SV_TARGET
 {
-    float4 Out = (float4) 0.0f;
-    
-    Out = albedoTexture.Sample(pointSampler, In.UV);
-    
-    if (Out.a <= 0.0f)
+    uint id = In.Instance;
+    float4 color = { 0.0f, 0.0f, 0.0f, 0.0f };
+    float2 uv = In.UV;
+    color = albedoTexture.Sample(anisotropicSampler, uv);
+    color *= particles[id].curColor;
+
+    if (color.a <= 0.0f)
         discard;
-    
-    return Out;
+        
+    return color;
+
 }

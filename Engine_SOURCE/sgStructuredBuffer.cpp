@@ -67,7 +67,7 @@ namespace sg::graphics
 				return false;
 		}
 
-		if (cpuAccess)
+		//if (cpuAccess)
 			CreateRWBuffer();
 
 		return true;

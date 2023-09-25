@@ -52,10 +52,12 @@ cbuffer HPBar : register(b7)
 
 cbuffer ParticleSystem : register(b8)
 {
-    uint elementCount;
     float elapsedTime;
     float deltaTime;
-    int particleSystemPad;
+
+		// Count
+    uint particleCount;
+    int ParticlePad;
 }
 
 cbuffer Noise : register(b9)
@@ -66,7 +68,6 @@ cbuffer Noise : register(b9)
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);
 Texture2D noiseTexture : register(t15);
-Texture2D gameView : register(t61);
 
 struct LightAttribute
 {
@@ -82,13 +83,39 @@ struct LightAttribute
 
 struct Particle
 {
-    float4 position;
-    float4 direction;
-    
-    float endTime;
-    float time;
+		// color
+    float4 startColor;
+    float4 middleColor;
+    float4 endColor;
+    float4 curColor;
+
+		// position
+    float2 startPos;
+    float2 endPos;
+    float2 curPos;
+
+		// scale
+    float2 startScale;
+    float2 endScale;
+    float2 curScale;
+
+		// rotation
+    float startAngle;
+    float endAngle;
+    float curAngle;
+
+		// speed
     float speed;
+
+		// time
+    float creationTime;
+    float lifeTime;
+
+		// Count
+    uint particleCount;
     uint active;
+    uint particleInWorldSpace;
+    uint particlepad[3];
 };
 
 struct ParticleShared
@@ -156,4 +183,54 @@ void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
             lightColor += lightsAttribute[idx].color * ratio;
         }
     }
+}
+float4x4 CreateTranslationMatrix(float x, float y, float z)
+{
+    return float4x4(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 0, 1,
+        x, y, z, 1
+    );
+}
+float4x4 CreateTranslationMatrix(float3 translation)
+{
+    return CreateTranslationMatrix(translation.x, translation.y, translation.z);
+}
+
+float4x4 CreateScaleMatrix(float x, float y, float z)
+{
+    return float4x4(
+        x, 0, 0, 0,
+        0, y, 0, 0,
+        0, 0, z, 0,
+        0, 0, 0, 1
+    );
+}
+
+float4x4 CreateScaleMatrix(float3 scale)
+{
+    return CreateScaleMatrix(scale.x, scale.y, scale.z);
+}
+
+float4x4 CreateScaleMatrix(float scale, bool scaleZ = false)
+{
+    return CreateScaleMatrix(scale, scale, scaleZ ? scale : 1);
+}
+float4x4 CreateRotationMatrix(float angle, float3 axis)
+{
+    float c, s;
+    sincos(angle, s, c);
+
+    float t = 1 - c;
+    float x = axis.x;
+    float y = axis.y;
+    float z = axis.z;
+
+    return float4x4(
+        t * x * x + c, t * x * y - s * z, t * x * z + s * y, 0,
+        t * x * y + s * z, t * y * y + c, t * y * z - s * x, 0,
+        t * x * z - s * y, t * y * z + s * x, t * z * z + c, 0,
+        0, 0, 0, 1
+    );
 }

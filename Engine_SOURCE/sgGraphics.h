@@ -142,13 +142,40 @@ namespace sg::graphics
 
 	struct Particle
 	{
-		math::Vector4 position;
-		math::Vector4 direction;
+		// color
+		math::Vector4 startColor;
+		math::Vector4 middleColor;
+		math::Vector4 endColor;
+		math::Vector4 curColor;
 
-		float endTime;
-		float time;
+		// position
+		math::Vector2 startPos;
+		math::Vector2 endPos;
+		math::Vector2 curPos;
+
+		// scale
+		math::Vector2 startScale;
+		math::Vector2 endScale;
+		math::Vector2 curScale;
+
+		// rotation
+		float startAngle;
+		float endAngle;
+		float curAngle;
+
+		// speed
 		float speed;
+
+		// time
+		float creationTime;
+		float lifeTime;
+
+		// Count
+		UINT particleCount;
 		UINT active;
+
+		UINT particleInWorldSpace;
+		UINT particlepad[3];
 	};
 
 	struct ParticleShared

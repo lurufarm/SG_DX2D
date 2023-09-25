@@ -262,12 +262,18 @@ namespace sg::graphics
 
 	bool sg::graphics::GraphicDevice_Dx11::CreateRenderTargetView(ID3D11Resource* pResource, const D3D11_RENDER_TARGET_VIEW_DESC* pDesc, ID3D11RenderTargetView** ppRTView)
 	{
-		return false;
+		if (FAILED(mDevice->CreateRenderTargetView(pResource, pDesc, ppRTView)))
+			return false;
+
+		return true;
 	}
 
 	bool sg::graphics::GraphicDevice_Dx11::CreateUnorderedAccessView(ID3D11Resource* pResource, const D3D11_UNORDERED_ACCESS_VIEW_DESC* pDesc, ID3D11UnorderedAccessView** ppUAView)
 	{
-		return false;
+		if (FAILED(mDevice->CreateUnorderedAccessView(pResource, pDesc, ppUAView)))
+			return false;
+
+		return true;
 	}
 
 

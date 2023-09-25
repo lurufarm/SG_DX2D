@@ -71,9 +71,11 @@ namespace renderer
 
 	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
 	{
-		UINT elementCount;
 		float elapsedTime;
 		float deltaTime;
+
+		// Count
+		UINT particleCount;
 		int ParticlePad;
 	};
 

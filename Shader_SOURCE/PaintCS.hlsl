@@ -1,3 +1,4 @@
+#include "globals.hlsli"
 RWTexture2D<float4> tex : register(u0);
 
 //https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/sv-dispatchthreadid

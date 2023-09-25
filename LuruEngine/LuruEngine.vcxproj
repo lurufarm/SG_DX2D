@@ -211,6 +211,7 @@
     <ClInclude Include="Monsters.h" />
     <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="Monster_Ranged.h" />
+    <ClInclude Include="particletest.h" />
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
     <ClInclude Include="Ranged_Ent.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
@@ -326,6 +327,7 @@
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="Monster_Ranged.cpp" />
+    <ClCompile Include="particletest.cpp" />
     <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
     <ClCompile Include="Ranged_Ent.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />

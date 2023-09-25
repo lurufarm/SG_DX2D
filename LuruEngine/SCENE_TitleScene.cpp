@@ -15,6 +15,8 @@
 #include "UI_Select.h"
 #include "UI_FocusBox.h"
 
+#include "particletest.h"
+
 namespace sg
 {
 	TitleScene::TitleScene()
@@ -31,8 +33,8 @@ namespace sg
 		GetDevice()->SetBgColor(BgColor);
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
-		object::Instantiate<Img_Title>(eLayerType::BGImg, this);
-		object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
+		//object::Instantiate<Img_Title>(eLayerType::BGImg, this);
+		//object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
 
 		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		Camera* cameraComp = camera->AddComp<Camera>();
@@ -43,6 +45,12 @@ namespace sg
 		Vector4 lightcolor = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
 		lightcomp->SetType(eLightType::Directional);
 		lightcomp->SetColor(lightcolor);
+
+
+		particletest* test = new particletest();
+		test->Initialize();
+		AddGameObj(eLayerType::BGImg, test);
+
 	}
 	void TitleScene::Update()
 	{
