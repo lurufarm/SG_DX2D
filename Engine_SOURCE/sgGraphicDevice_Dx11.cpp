@@ -1,6 +1,7 @@
 #include "sgGraphicDevice_Dx11.h"
 #include "sgApplication.h"
 #include "sgRenderer.h"
+#include "sgResources.h"
 
 extern sg::Application application;
 
@@ -47,6 +48,8 @@ namespace sg::graphics
 		mDevice->CreateRenderTargetView((ID3D11Resource*)mRenderTarget->GetTexture().Get()
 			, nullptr, renderTargetView.GetAddressOf());
 		mRenderTarget->SetRTV(renderTargetView);
+
+		Resources::Insert<sg::graphics::Texture>(L"RenderTarget", mRenderTarget);
 
 		D3D11_TEXTURE2D_DESC depthStencilDesc = {};
 		depthStencilDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL;
@@ -102,7 +105,7 @@ namespace sg::graphics
 		dxgiDesc.OutputWindow = hWnd;
 		dxgiDesc.Windowed = true;
 		dxgiDesc.BufferCount = desc->BufferCount;
-		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;
+		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
 
 		dxgiDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 		dxgiDesc.BufferDesc.Width = desc->BufferDesc.Width;
@@ -189,6 +192,15 @@ namespace sg::graphics
 		, ID3D11VertexShader** ppVertexShader)
 	{
 		if (FAILED(mDevice->CreateVertexShader(pShaderBytecode, BytecodeLength, nullptr, ppVertexShader)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateGeometryShader(const void* pShaderBytecode
+		, SIZE_T BytecodeLength
+		, ID3D11GeometryShader** ppGeometryShader)
+	{
+		if (FAILED(mDevice->CreateGeometryShader(pShaderBytecode, BytecodeLength, nullptr, ppGeometryShader)))
 			return false;
 
 		return true;
@@ -305,16 +317,28 @@ namespace sg::graphics
 	{
 		mContext->VSSetShader(pVertexShader, 0, 0);
 	}
+	void GraphicDevice_Dx11::BindHullShader(ID3D11HullShader* pHullShader)
+	{
+		mContext->HSSetShader(pHullShader, 0, 0);
+	}
 
+	void GraphicDevice_Dx11::BindDomainShader(ID3D11DomainShader* pDomainShader)
+	{
+		mContext->DSSetShader(pDomainShader, 0, 0);
+	}
+	void GraphicDevice_Dx11::BindGeometryShader(ID3D11GeometryShader* pGeometryShader)
+	{
+		mContext->GSSetShader(pGeometryShader, 0, 0);
+	}
 	void GraphicDevice_Dx11::BindPixelShader(ID3D11PixelShader* pPixelShader)
 	{
 		mContext->PSSetShader(pPixelShader, 0, 0);
 	}
-	void sg::graphics::GraphicDevice_Dx11::BindComputeShader(ID3D11ComputeShader* pComputeShader)
+	void GraphicDevice_Dx11::BindComputeShader(ID3D11ComputeShader* pComputeShader)
 	{
 		mContext->CSSetShader(pComputeShader, 0, 0);
 	}
-	void sg::graphics::GraphicDevice_Dx11::Dispatch(UINT ThreadGroupCountX, UINT Y, UINT Z)
+	void GraphicDevice_Dx11::Dispatch(UINT ThreadGroupCountX, UINT Y, UINT Z)
 	{
 		mContext->Dispatch(ThreadGroupCountX, Y, Z);
 	}
@@ -402,7 +426,7 @@ namespace sg::graphics
 		}
 	}
 
-	void sg::graphics::GraphicDevice_Dx11::BindUnorderedAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts)
+	void GraphicDevice_Dx11::BindUnorderedAccess(UINT slot, ID3D11UnorderedAccessView** ppUnorderedAccessViews, const UINT* pUAVInitialCounts)
 	{
 		mContext->CSSetUnorderedAccessViews(slot, 1, ppUnorderedAccessViews, pUAVInitialCounts);
 	}

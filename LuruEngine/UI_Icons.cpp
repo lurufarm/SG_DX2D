@@ -29,6 +29,7 @@ namespace sg
 		{
 		case 0: // 코인
 			SetMaterial(L"UICoin");
+			//SetMaterial(L"UICoin");
 			mTr->SetPosition(180, 100, -1.0f);
 			break;
 		case 1: // 옵션

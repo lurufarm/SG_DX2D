@@ -19,6 +19,7 @@
 #include "Interact_LobbyGate.h"
 #include "Interact_Gate.h"
 #include "Img_LobbyTorch.h"
+#include "..\Engine_SOURCE\sgParticleSystem.h"
 
 extern sg::Application application;
 
@@ -52,7 +53,7 @@ namespace sg
 #pragma region Forest
 		//Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
 		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, /*pos,*/ eLayerType::BGImg, this);
+		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, /*pos,*/ eLayerType::BGImg, this);
 
 
 		//Vector3 pos = Vector3(-11.0f, -15.0f, 0.0f);

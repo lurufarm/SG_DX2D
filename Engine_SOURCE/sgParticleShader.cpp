@@ -30,19 +30,5 @@ namespace sg::graphics
 	void ParticleShader::SetParticleBuffer(StructuredBuffer* particleBuffer)
 	{
 		mParticleBuffer = particleBuffer;
-
-		//ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Particle];
-
-		//static float elapsedTime = 0.0f;
-		//elapsedTime += Time::DeltaTime();
-
-		//renderer::ParticleCB data = {};
-		//data.elementCount = mParticleBuffer->GetStride();
-		//data.elapsedTime = elapsedTime;
-		//data.deltaTime = Time::DeltaTime();
-
-		//cb->SetData(&data);
-		//cb->Bind(eShaderStage::CS);
-
 	}
 }

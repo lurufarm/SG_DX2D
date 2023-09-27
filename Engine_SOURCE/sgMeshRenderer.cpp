@@ -60,6 +60,10 @@ namespace sg
 		tr->BindConstantBuffer();
 		Time::BindConstantBuffer();
 		BindConstantBuffer();
+		// Input assembler 정점 데이터 정보 지정
+		mMesh->BindBuffer();
+		// Bind VS, PS
+		mMaterial->Binds();
 
 		Animator* animator = GetOwner()->GetComp<Animator>();
 		if (animator)
@@ -67,10 +71,6 @@ namespace sg
 			animator->Binds();
 		}
 
-		// Input assembler 정점 데이터 정보 지정
-		mMesh->BindBuffer();
-		// Bind VS, PS
-		mMaterial->Binds();
 
 
 		// Draw Render Target

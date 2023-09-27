@@ -3,14 +3,12 @@
 struct VSIn
 {
     float3 LocalPos : POSITION;
-    float2 UV : TEXCOORD;
     uint Instance : SV_InstanceID;
 };
 
 struct VSOut
 {
     float4 LocalPos : SV_Position;
-    float2 UV : TEXCOORD;
     uint Instance : SV_InstanceID;
 };
 

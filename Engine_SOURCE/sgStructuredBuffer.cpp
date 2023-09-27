@@ -4,7 +4,8 @@
 namespace sg::graphics
 {
 	StructuredBuffer::StructuredBuffer()
-		: mSRV(nullptr)
+		: GpuBuffer()
+		, mSRV(nullptr)
 		, mType(eViewType::None)
 		, mSize(0)
 		, mStride(0)

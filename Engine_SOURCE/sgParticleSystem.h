@@ -15,75 +15,55 @@ namespace sg
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
-
-
-		void InitializeParticles(int count, Vector2 spos, Vector2 dpos, Vector4 scolor, Vector4 mcolor, Vector4 dcolor, float sp, float ltime, float ctime = 0.0f);
-
-		void SetCount(UINT cnt) { mCount = cnt; }
-		void SetStartPos(Vector2 pos) { mDefaultParticle.startPos = pos; }
-		void SetEndPos(Vector2 pos) { mDefaultParticle.endPos = pos; }
-		void SetTexture(std::shared_ptr<Texture> tex)
-		{
-			mParticleTexture = tex;
-			GetMaterial()->SetTexture(tex);
-		}
-		void SetPosRange(float range, float range2)
-		{
-			mStartPosRange = range;
-			mEndPosRange = range2;
-		}
-		void SetScaleRange(float range, float range2)
-		{
-			mScaleRange1 = range;
-			mScaleRange2 = range2;
-		}
-
-		void SetParticleColor(Vector4 startColor, Vector4 endColor, Vector4 middleColor = Vector4::Zero)
-		{
-			mDefaultParticle.startColor = startColor;
-			mDefaultParticle.endColor = endColor;
-			if (middleColor == Vector4::Zero)
-			{
-				mDefaultParticle.middleColor =
-					Vector4::Lerp(
-						mDefaultParticle.startColor
-						, mDefaultParticle.endColor
-						, 0.5);
-			}
-			else
-				mDefaultParticle.middleColor = middleColor;
-		}
-
-		void SetLifeTime(float settime) { mDefaultParticle.lifeTime = settime; }
-		void SetParticleSpeed(float speed) { mDefaultSpeed = speed; }
-
 		void BindConstantBuffer();
 
-		Vector2 RandomStartPos(Vector2 pos);
-		Vector2 RandomEndPos(Vector2 pos);
-		Vector2 RandomScale();
+		void InitializeRandomFunc();
+		Vector4 RandomPos(Vector4 pos, float range);
+		float RandomScale();
 		float RandomAngle();
 		float RandomTime(float time);
 		float RandomFloat(float value, float range);
-		UINT RandomUINT(UINT num, UINT range);
+
+		void SetParticleMaterial(std::wstring material) 
+		{ 
+			mMaterial = Resources::Find<Material>(material);
+		}
+		void SetParticleOptions(UINT count, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq);
+		void SetTarget(GameObject* target) { mTarget = target; }
+		Vector4 GetStartColor() { return mStartColor; }
+		Vector4 GetMiddleColor() { return mMiddleColor; }
+		Vector4 GetEndColor() { return mEndColor; }
 
 
 	private:
-		graphics::StructuredBuffer* mParticleBuffer;
+		graphics::StructuredBuffer* mBuffer;
 		graphics::StructuredBuffer* mSharedBuffer;
-
-		std::shared_ptr<ParticleShader> mParticleShader;
-		std::shared_ptr<Texture> mParticleTexture;
+		std::shared_ptr<Material> mMaterial;
+		std::shared_ptr<ParticleShader> mCS;
 
 		Particle mParticles[1000];
-		Particle mDefaultParticle;
-		UINT mCount;
+
+		UINT  mCount;
+		Vector4 mStartPos;
+		Vector4 mEndPos;
+		float mStartSize;
+		float mEndSize;
+		Vector2 mScaleRange;
+		float mStartAngle;
+		float mEndAngle;
+		float mSpeed;
+		Vector4 mStartColor;
+		Vector4 mEndColor;
+		Vector4 mMiddleColor;
+
+		float   mLifeTime;
+		float	mFrequency;
+
+		GameObject* mTarget;
+
 		float mTime;
 		float mElapsedTime;
-		float mStartPosRange;
-		float mEndPosRange;
-		float mScaleRange1;
-		float mScaleRange2;
-		float mDefaultSpeed;
+
+
 	};
 }

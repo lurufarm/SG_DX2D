@@ -182,8 +182,6 @@ namespace sg
 				case sg::graphics::eRenderingMode::Transparent:
 					mTransparentGameObjects.push_back(obj);
 					break;
-				case sg::graphics::eRenderingMode::End:
-					break;
 				default:
 					break;
 				}

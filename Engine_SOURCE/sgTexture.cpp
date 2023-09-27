@@ -31,7 +31,7 @@ namespace sg::graphics
 			mDesc.SampleDesc.Count = 1;
 			mDesc.SampleDesc.Quality = 0;
 
-			mDesc.MipLevels = 0;
+			mDesc.MipLevels = 1;
 			mDesc.MiscFlags = 0;
 
 			mWidth = width;
@@ -53,7 +53,7 @@ namespace sg::graphics
 			tSRVDesc.Format = mDesc.Format;
 			tSRVDesc.Texture2D.MipLevels = 1;
 			tSRVDesc.Texture2D.MostDetailedMip = 0;
-			tSRVDesc.ViewDimension = D3D11_SRV_DIMENSION::D3D10_1_SRV_DIMENSION_TEXTURE2D;
+			tSRVDesc.ViewDimension = D3D11_SRV_DIMENSION::D3D11_SRV_DIMENSION_TEXTURE2D;
 
 			if (!GetDevice()->CreateShaderResourceView(mTexture.Get(), &tSRVDesc, mSRV.GetAddressOf()))
 				return false;
@@ -65,7 +65,7 @@ namespace sg::graphics
 			tRTVDesc.Texture2D.MipSlice = 0;
 			tRTVDesc.ViewDimension = D3D11_RTV_DIMENSION::D3D11_RTV_DIMENSION_TEXTURE2D;
 
-			if (!GetDevice()->CreateRenderTargetView(mTexture.Get(), &tRTVDesc, mRTV.GetAddressOf()))
+			if (!GetDevice()->CreateRenderTargetView(mTexture.Get(), nullptr, mRTV.GetAddressOf()))
 				return false;
 		}
 

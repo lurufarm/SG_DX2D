@@ -1,7 +1,5 @@
 #include "globals.hlsli"
 
-
-
 struct VSOut
 {
     float4 LocalPos : SV_Position;
@@ -18,16 +16,18 @@ struct GSOut
 [maxvertexcount(6)]
 void main(point VSOut In[1], inout TriangleStream<GSOut> output)
 {
-    GSOut Out[4] = { (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f };
     
     if (particles[In[0].Instance].active == 0)
         return;
-    
-    float3 worldPos = (In[0].LocalPos.xy)
+
+    GSOut Out[4] = { (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f };
+
+    float3 worldPos = (In[0].LocalPos.xyz)
                     //+ WorldMatrix._41_42_43 
-                    + particles[In[0].Instance].curPos.xy;
+                    + particles[In[0].Instance].position.xyz;
     
     float3 viewPos = mul(float4(worldPos, 1.0f), ViewMatrix).xyz;
+    
     
     float3 NewPos[4] =
     {
@@ -37,22 +37,19 @@ void main(point VSOut In[1], inout TriangleStream<GSOut> output)
         viewPos - float3(-0.5f, -0.5f, 0.f) * float3(0.2f, 0.2f, 1.f)
     };
     
+
     for (int i = 0; i < 4; ++i)
     {
-        Out[i].Pos = mul(float4(NewPos[i], 1.0f), ProjectionMatrix);
-        //Out[i].Pos = float4(NewPos[i], 1.0f);
+        float t = min(particles[In[0].Instance].curTime / particles[In[0].Instance].lifeTime, 1.0f);
+        float scale = lerp(particles[In[0].Instance].scale.x, particles[In[0].Instance].scale.y, t);
+        Out[i].Pos = mul(float4(NewPos[i] * scale, 1.0f), ProjectionMatrix);
     }
     
+
     Out[0].UV = float2(0.0f, 0.0f);
     Out[1].UV = float2(1.0f, 0.0f);
     Out[2].UV = float2(1.0f, 1.0f);
     Out[3].UV = float2(0.0f, 1.0f);
-    
-
-    //Out[0].Instance = In[0].Instance;
-    //Out[1].Instance = In[0].Instance;
-    //Out[2].Instance = In[0].Instance;
-    //Out[3].Instance = In[0].Instance;
     
     // 0 -- 1
     // | \  |

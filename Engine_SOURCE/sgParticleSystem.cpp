@@ -1,15 +1,12 @@
 #include "sgParticleSystem.h"
-
 #include "sgTime.h"
-#include "sgConstantBuffer.h"
-#include "sgStructuredBuffer.h"
-#include "sgParticleShader.h"
-#include "sgRenderer.h"
 #include "sgMesh.h"
 #include "sgMaterial.h"
 #include "sgResources.h"
 #include "sgTransform.h"
 #include "sgGameObject.h"
+#include "sgConstantBuffer.h"
+#include "sgRenderer.h"
 #include <random>
 
 std::random_device rd;
@@ -19,69 +16,90 @@ namespace sg
 {
 	ParticleSystem::ParticleSystem()
 		: mCount(0)
+		, mStartPos(Vector4::Zero)
+		, mEndPos(Vector4::Zero)
+		, mStartSize(1.0f)
+		, mEndSize(1.0f)
+		, mStartAngle(0.0f)
+		, mEndAngle(0.0f)
+		, mSpeed(0.0f)
+		, mStartColor(Vector4::Zero)
+		, mEndColor(Vector4::Zero)
+		, mMiddleColor(Vector4::Zero)
+		, mLifeTime(0.0f)
 		, mTime(0.0f)
-		, mStartPosRange(0.3f)
-		, mEndPosRange(0.3f)
-		, mScaleRange1(0.8f)
-		, mScaleRange2(1.2f)
-		, mDefaultSpeed(5.0f)
-
+		, mFrequency(0.0f)
+		, mTarget(nullptr)
+		, mMaterial(nullptr)
 	{
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
-		SetMesh(mesh);
-		mParticleShader = Resources::Find<ParticleShader>(L"ParticleSystemShader");
+		SetMesh(mesh);	
 
-		mDefaultParticle = {};
+		mCS = Resources::Find<ParticleShader>(L"ParticleSystemShader");
+
+		for (size_t i = 0; i < mCount; i++)
+		{
+			Vector4 pos = Vector4::Zero;
+			mParticles[i].position = pos;
+			mParticles[i].direction = pos;
+			mParticles[i].speed = 0.3f;
+			mParticles[i].active = 0;
+		}
+
+		mSharedBuffer = new graphics::StructuredBuffer();
+		mSharedBuffer->Create(sizeof(ParticleShared), 1, eViewType::UAV, nullptr, true);
 	}
 	ParticleSystem::~ParticleSystem()
 	{
 		delete mSharedBuffer;
-		delete mParticleBuffer;
+		delete mBuffer;
 	}
 	void ParticleSystem::Initialize()
 	{
-		for (size_t i = 0; i < mCount; i++)
+		SetMaterial(mMaterial);
+		Vector3 pos = GetOwner()->GetComp<Transform>()->GetPosition();
+		mStartPos = Vector4(pos.x, pos.y, 0.0f, 0.0f);
+
+		for (size_t i = 0; i < 1000; i++)
 		{
-			//Particle particle;
+			if (mTarget)
+			{
+				Vector3 targetpos = mTarget->GetComp<Transform>()->GetPosition();
+				mEndPos = Vector4(targetpos.x, targetpos.y, 0.0f, 1.0f);
+				mEndPos = RandomPos(mEndPos, 3.0f);
+			}
 
-			mParticles[i].particleCount = mCount;
-			mParticles[i].active = 1;
-			mParticles[i].startColor = mDefaultParticle.startColor;
-			mParticles[i].middleColor = mDefaultParticle.middleColor;
-			mParticles[i].endColor = mDefaultParticle.endColor;
-			mParticles[i].curColor = mDefaultParticle.startColor;
-			mParticles[i].startPos = RandomStartPos(mDefaultParticle.startPos);
-			mParticles[i].endPos = RandomEndPos(mDefaultParticle.endPos);
-			mParticles[i].curPos = mParticles[i].startPos;
-			mParticles[i].startScale = RandomScale();
-			mParticles[i].endScale = RandomScale();
-			mParticles[i].curScale = mParticles[i].startScale;
-			mParticles[i].startAngle = RandomAngle();
-			mParticles[i].endAngle = RandomAngle();
-			mParticles[i].curAngle = mParticles[i].startAngle;
-			mParticles[i].speed = RandomFloat(mDefaultParticle.speed, .0f);
-			mParticles[i].lifeTime = RandomTime(mDefaultParticle.lifeTime);
-			mParticles[i].creationTime = RandomTime(0.15);
-			mParticles[i].particleInWorldSpace = true;
+			mEndPos = Vector4(2.0f, 2.0f, 0.0f, 0.0f);
+			mEndPos = RandomPos(mEndPos, 3.0f);
 
+			mParticles[i].position = RandomPos(mStartPos, 0.5f);
+			mParticles[i].direction = Vector4(mEndPos.x - mStartPos.x, mEndPos.y - mStartPos.y, 1.0f, 1.0f);
+			mParticles[i].direction.Normalize();
+			mParticles[i].color = mStartColor;
+			mParticles[i].scale = Vector2(RandomScale(), RandomScale());
+			mParticles[i].rotation = Vector2(RandomAngle(), RandomAngle());
+			mParticles[i].speed = RandomTime(mSpeed);
+			mParticles[i].creationTime = RandomTime(0.5f);
+			mParticles[i].lifeTime = RandomTime(mLifeTime);
+			mParticles[i].curTime = 0.0f;
+			mParticles[i].active = 0;
 		}
 
-		mTime = 0.0f;
+		mElapsedTime = 0.0f;
+		mBuffer = new graphics::StructuredBuffer();
+		mBuffer->Create(sizeof(Particle), mCount, eViewType::UAV, &mParticles);
 
-		mParticleBuffer = new graphics::StructuredBuffer();
-		mParticleBuffer->Create(sizeof(Particle), 1000, eViewType::UAV, &mParticles, true);
 
-		mSharedBuffer = new graphics::StructuredBuffer();
-		mSharedBuffer->Create(sizeof(ParticleShared), 1, eViewType::UAV, nullptr, true);
 	}
 	void ParticleSystem::Update()
 	{
 	}
 	void ParticleSystem::LateUpdate()
 	{
-		float AliveTime = 0.05f;
+		float AliveTime = mFrequency;
 		mTime += Time::DeltaTime();
-		mElapsedTime = Time::DeltaTime();
+		mElapsedTime += Time::DeltaTime();
+
 		if (mTime > AliveTime)
 		{
 			float f = (mTime / AliveTime);
@@ -89,7 +107,7 @@ namespace sg
 			mTime = f - floor(f);
 
 			ParticleShared shareData = {};
-			shareData.sharedActiveCount = 4;
+			shareData.sharedActiveCount = mCount / 10;
 			mSharedBuffer->SetData(&shareData, 1);
 		}
 		else
@@ -105,62 +123,52 @@ namespace sg
 		GetOwner()->GetComp<Transform>()->BindConstantBuffer();
 		BindConstantBuffer();
 
-		mParticleShader->SetParticleBuffer(mParticleBuffer);
-		mParticleShader->SetSharedBuffer(mSharedBuffer);
-		mParticleShader->OnExcute();
+		mCS->SetParticleBuffer(mBuffer);
+		mCS->SetSharedBuffer(mSharedBuffer);
+		mCS->OnExcute();
 
-		
-		mParticleBuffer->BindSRV(eShaderStage::VS, 14);
-		mParticleBuffer->BindSRV(eShaderStage::GS, 14);
-		mParticleBuffer->BindSRV(eShaderStage::PS, 14);
+		mBuffer->BindSRV(eShaderStage::VS, 14);
+		mBuffer->BindSRV(eShaderStage::GS, 14);
+		mBuffer->BindSRV(eShaderStage::PS, 14);
 
-		GetMaterial()->SetTexture(mParticleTexture);
 		GetMaterial()->Binds();
 		GetMesh()->RenderInstanced(mCount);
 
-		mParticleBuffer->Clear();
-		GetMaterial()->Clear();
+		mBuffer->Clear();
 	}
-
-	void ParticleSystem::InitializeParticles(int count, Vector2 spos, Vector2 dpos, Vector4 scolor, Vector4 mcolor, Vector4 dcolor, float sp, float ltime, float ctime)
-	{
-		mCount = count;
-		mDefaultParticle.startPos = spos;
-		mDefaultParticle.endPos = dpos;
-		mDefaultParticle.startColor = scolor;
-		mDefaultParticle.middleColor = mcolor;
-		mDefaultParticle.endColor = dcolor;
-		mDefaultParticle.lifeTime = ltime;
-		mDefaultParticle.creationTime = ctime;
-		mDefaultParticle.speed = sp;
-	}
-
 	void ParticleSystem::BindConstantBuffer()
 	{
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Particle];
-		renderer::ParticleCB data = {};
 
-		data.elapsedTime = mElapsedTime;
+		renderer::ParticleCB data = {};
+		data.elementCount = mCount;
+		data.elpasedTime = mElapsedTime;
 		data.deltaTime = Time::DeltaTime();
-		data.particleCount = mCount;
+		data.startColor = mStartColor;
+		data.middleColor = mMiddleColor;
+		data.endColor = mEndColor;
 
 		cb->SetData(&data);
-
 		for (int i = 0; i < (int)eShaderStage::End; i++)
 			cb->Bind((eShaderStage)i);
 	}
-
-	Vector2 ParticleSystem::RandomStartPos(Vector2 pos)
+	void ParticleSystem::InitializeRandomFunc()
 	{
+		std::random_device rd;
+		std::mt19937 gen(rd());
+	}
+	Vector4 ParticleSystem::RandomPos(Vector4 pos, float range)
+	{
+		InitializeRandomFunc();
+
 		const float PI = 3.141592;
 		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
 
 		// random distance
-		float range = mStartPosRange;
 		float randomRange = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range);
 
 		// angle + distance
-		Vector2 randomPos = pos;
+		Vector4 randomPos = pos;
 		randomPos.x += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * cos(angle);
 		randomPos.y += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * sin(angle);
 		//randomPos.z = -0.1f;
@@ -168,39 +176,24 @@ namespace sg
 		return randomPos;
 	}
 
-	Vector2 ParticleSystem::RandomEndPos(Vector2 pos)
+	float ParticleSystem::RandomScale()
 	{
-		const float PI = 3.141592;
-		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
+		InitializeRandomFunc();
 
-		// random distance
-		float range = mEndPosRange;
-		float randomRange = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range);
-
-		// angle + distance
-		Vector2 randomPos = pos;
-		randomPos.x += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * cos(angle);
-		randomPos.y += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * sin(angle);
-		//randomPos.z = -0.1f;
-
-		return randomPos;
-	}
-
-	Vector2 ParticleSystem::RandomScale()
-	{
-		std::uniform_real_distribution<> dis(mScaleRange1, mScaleRange2);
+		std::uniform_real_distribution<> dis(mScaleRange.x, mScaleRange.y);
 		float randomValue = dis(gen);
 
-		return Vector2(randomValue, randomValue);
+		return randomValue;
 	}
 	float ParticleSystem::RandomAngle()
 	{
+		InitializeRandomFunc();
 
-		Vector2 direction = mDefaultParticle.endPos - mDefaultParticle.startPos;
+		Vector4 direction = mEndPos - mStartPos;
 		float angleInRadians = atan2(direction.y, direction.x);
 		float angleInDegrees = angleInRadians * (180.0f / 3.141592);
 
-		std::uniform_int_distribution<> dis(angleInDegrees - 15, angleInDegrees + 15);
+		std::uniform_int_distribution<> dis(angleInDegrees - 30, angleInDegrees + 30);
 
 		float randomAngle = dis(gen);
 
@@ -210,17 +203,27 @@ namespace sg
 	}
 	float ParticleSystem::RandomTime(float time)
 	{
-		std::uniform_real_distribution<> dis(-0.15, 0.15);
+		InitializeRandomFunc();
 
-		return time += dis(gen);
+		std::uniform_real_distribution<> dis(0.0f, time * 2.0f);
+
+		return dis(gen);
 	}
 	float ParticleSystem::RandomFloat(float value, float range)
 	{
-		std::uniform_real_distribution<> dis(value - range, value + range);
-		return dis(gen);
+		return 0.0f;
 	}
-	UINT ParticleSystem::RandomUINT(UINT num, UINT range)
+	void ParticleSystem::SetParticleOptions(UINT count, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq)
 	{
-		return 0;
+		mCount = count;
+		mScaleRange = sRange;
+		mSpeed = speed;
+		mStartColor = sColor;
+		mEndColor = eColor;
+		mMiddleColor = mColor;
+		mLifeTime = lTime;
+		mFrequency = freq;
+		mElapsedTime = 0.0f;
+		Initialize();
 	}
 }

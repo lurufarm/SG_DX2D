@@ -38,6 +38,12 @@ namespace sg
 			GetDevice()->CreateVertexShader(mVSBlob->GetBufferPointer()
 				, mVSBlob->GetBufferSize(), mVS.GetAddressOf());
 		}
+		else if (stage == eShaderStage::GS)
+		{
+			GetDevice()->CompileFromfile(fullpath, funcname, "gs_5_0", mGSBlob.GetAddressOf());
+			GetDevice()->CreateGeometryShader(mGSBlob->GetBufferPointer()
+				, mGSBlob->GetBufferSize(), mGS.GetAddressOf());
+		}
 		else if (stage == eShaderStage::PS)
 		{
 			GetDevice()->CompileFromfile(fullpath, funcname, "ps_5_0", mPSBlob.GetAddressOf());
@@ -52,6 +58,7 @@ namespace sg
 		GetDevice()->BindInputLayout(mInputLayout);
 
 		GetDevice()->BindVertexShader(mVS.Get());
+		GetDevice()->BindGeometryShader(mGS.Get());
 		GetDevice()->BindPixelShader(mPS.Get());
 
 		Microsoft::WRL::ComPtr<ID3D11RasterizerState> rsState = renderer::rasterizerStates[(UINT)mRSType];

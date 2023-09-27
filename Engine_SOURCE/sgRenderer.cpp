@@ -368,13 +368,16 @@ namespace renderer
 		uavTexture->Create(1024, 1024, DXGI_FORMAT_B8G8R8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
 		sg::Resources::Insert(L"PaintTexture", uavTexture);
 
-		std::shared_ptr<Texture> particle = std::make_shared<Texture>();
-		Resources::Load<Texture>(L"particletest", L"..\\Resources\\particle\\HardCircle.png");
+		std::shared_ptr<Texture> particle = Resources::Load<Texture>(L"particleCircle", L"..\\Resources\\Particle\\HardCircle.png");
 		sg::Resources::Insert(L"particletest", particle);
 
-		Resources::Load<Texture>(L"Noise01", L"..\Resources\\Particle\\noise_01.png");
-		Resources::Load<Texture>(L"Noise02", L"..\Resources\\Particle\\noise_02.png");
-		Resources::Load<Texture>(L"Noise03", L"..\Resources\\Particle\\noise_03.jpg");
+		std::shared_ptr<Texture> noise01 = Resources::Load<Texture>(L"Noise01", L"..\\Resources\\Particle\\noise_01.png");
+		std::shared_ptr<Texture> noise02 = Resources::Load<Texture>(L"Noise02", L"..\\Resources\\Particle\\noise_02.png");
+		std::shared_ptr<Texture> noise03 = Resources::Load<Texture>(L"Noise03", L"..\\Resources\\Particle\\noise_03.jpg");
+		sg::Resources::Insert(L"Noise01", noise01);
+		sg::Resources::Insert(L"Noise02", noise02);
+		sg::Resources::Insert(L"Noise03", noise03);
+
 	}
 
 	void LoadShader()
@@ -479,9 +482,6 @@ namespace renderer
 		std::shared_ptr<Shader> AniShader2
 			= Resources::Find<Shader>(L"SpriteAniShader2");
 
-		std::shared_ptr<Shader> ParticleShader
-			= Resources::Find<Shader>(L"ParticleShader");
-
 		std::shared_ptr<Shader> SelectSceneShader
 			= Resources::Find<Shader>(L"CatPatternShader");
 
@@ -497,20 +497,21 @@ namespace renderer
 		std::shared_ptr<Shader> HPBarShader
 			= Resources::Find<Shader>(L"HPBarShader");
 
+		std::shared_ptr<Shader> ParticleShader
+			= Resources::Find<Shader>(L"ParticleShader");
+
 
 #pragma endregion
 #pragma region Basic Texture and Basic Material declaration 
 		std::shared_ptr<Texture> texture;
 		std::shared_ptr<Material> material;
 
-
-		std::shared_ptr<Texture> particleTexx2
-			= Resources::Find<Texture>(L"particletest");
-		material = std::make_shared<Material>();
-		material->SetShader(ParticleShader);
-		material->SetTexture(particleTexx2);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"ParticleMaterial2", material);
+		std::shared_ptr<Texture> particleTexx2 = Resources::Find<Texture>(L"particletest");
+		std::shared_ptr<Material> particlematerial = std::make_shared<Material>();
+		particlematerial->SetShader(ParticleShader);
+		particlematerial->SetTexture(particleTexx2);
+		particlematerial->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ParticleMaterial2", particlematerial);
 
 		// Test
 		//texture	= Resources::Load<Texture>(L"Cat", L"..\\Resources\\Texture\\Cat.png");
@@ -530,10 +531,10 @@ namespace renderer
 
 		// particle Material
 		
-		material = std::make_shared<Material>();
-		material->SetShader(ParticleShader);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"ParticleMaterial", material);
+		//material = std::make_shared<Material>();
+		//material->SetShader(ParticleShader);
+		//material->SetRendereringMode(eRenderingMode::Transparent);
+		//Resources::Insert(L"ParticleMaterial", material);
 
 		// Tile
 		texture = Resources::Load<Texture>(L"TilePalette", L"..\\Resources\\Tile\\tilepalette.bmp");

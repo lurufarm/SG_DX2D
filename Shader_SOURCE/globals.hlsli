@@ -52,12 +52,14 @@ cbuffer HPBar : register(b7)
 
 cbuffer ParticleSystem : register(b8)
 {
+    float4 startColor;
+    float4 middleColor;
+    float4 endColor;
+    
+    uint elementCount;
     float elapsedTime;
     float deltaTime;
-
-		// Count
-    uint particleCount;
-    int ParticlePad;
+    int padd2;
 }
 
 cbuffer Noise : register(b9)
@@ -83,39 +85,19 @@ struct LightAttribute
 
 struct Particle
 {
-		// color
-    float4 startColor;
-    float4 middleColor;
-    float4 endColor;
-    float4 curColor;
+    float4 position;
+    float4 direction;
+    float4 color;
+    float2 scale;
+    float2 rotation;
 
-		// position
-    float2 startPos;
-    float2 endPos;
-    float2 curPos;
-
-		// scale
-    float2 startScale;
-    float2 endScale;
-    float2 curScale;
-
-		// rotation
-    float startAngle;
-    float endAngle;
-    float curAngle;
-
-		// speed
     float speed;
-
-		// time
-    float creationTime;
     float lifeTime;
+    float creationTime;
+    float curTime;
 
-		// Count
-    uint particleCount;
     uint active;
-    uint particleInWorldSpace;
-    uint particlepad[3];
+    float particlePad[3];
 };
 
 struct ParticleShared

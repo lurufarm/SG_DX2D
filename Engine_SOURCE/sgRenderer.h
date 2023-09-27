@@ -71,12 +71,14 @@ namespace renderer
 
 	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
 	{
-		float elapsedTime;
-		float deltaTime;
+		Vector4 startColor;
+		Vector4 middleColor;
+		Vector4 endColor;
 
-		// Count
-		UINT particleCount;
-		int ParticlePad;
+		UINT elementCount;
+		float elpasedTime;
+		float deltaTime;
+		int padd2;
 	};
 
 	CBUFFER(NoiseCB, CBSLOT_NOISE)
