@@ -346,6 +346,10 @@ namespace sg
 				pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
 				mOwner->SetStat(pStat);
 			}
+			else
+			{
+				mOwner->SetTransParent(true);
+			}
 		}
 	}
 	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
@@ -363,6 +367,7 @@ namespace sg
 	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
 	{
 		mAttacked = false;
+		mOwner->SetTransParent(false);
 		//mFSMState = ePlayerFSM::Idle;
 	}
 	std::wstring SCRIPT_Player::AnimationName(const std::wstring& animation)

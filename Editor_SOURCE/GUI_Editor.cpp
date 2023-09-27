@@ -1,4 +1,5 @@
 #include "GUI_Editor.h"
+#include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgResources.h"
 #include "..\Engine_SOURCE\sgMesh.h"
@@ -18,6 +19,7 @@ namespace gui
 	std::vector<GUI_Widget*> GUI_Editor::mWidgets = {};
 	std::vector<GUI_EditorObject*> GUI_Editor::mEditorObjects = {};
 	std::vector<GUI_DebugObject*> GUI_Editor::mDebugObjects = {};
+	bool GUI_Editor::mOn = true;
 
 	void GUI_Editor::Initialize()
 	{
@@ -55,6 +57,14 @@ namespace gui
 	}
 	void GUI_Editor::Update()
 	{
+		if (sg::Input::KeyD(sg::eKeyCode::O))
+		{
+			if (mOn)
+				mOn = false;
+			else if (mOn == false)
+				mOn = true;
+		}
+
 		for (GUI_EditorObject* Eobj : mEditorObjects)
 		{
 			Eobj->Update();
@@ -70,17 +80,20 @@ namespace gui
 	}
 	void GUI_Editor::Render()
 	{
-		for (GUI_EditorObject* Eobj : mEditorObjects)
+		if (mOn)
 		{
-			Eobj->Render();
-		}
+			for (GUI_EditorObject* Eobj : mEditorObjects)
+			{
+				Eobj->Render();
+			}
 
-		for (const sg::graphics::DebugMesh& mesh
-			: renderer::debugMeshs)
-		{
-			DebugRender(mesh);
+			for (const sg::graphics::DebugMesh& mesh
+				: renderer::debugMeshs)
+			{
+				DebugRender(mesh);
+			}
+			renderer::debugMeshs.clear();
 		}
-		renderer::debugMeshs.clear();
 	}
 
 	void GUI_Editor::Release()

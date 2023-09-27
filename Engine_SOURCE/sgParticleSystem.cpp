@@ -30,7 +30,7 @@ namespace sg
 		, mTime(0.0f)
 		, mFrequency(0.0f)
 		, mTarget(nullptr)
-		, mMaterial(nullptr)
+		, mPMaterial(nullptr)
 	{
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);	
@@ -56,7 +56,7 @@ namespace sg
 	}
 	void ParticleSystem::Initialize()
 	{
-		SetMaterial(mMaterial);
+		SetMaterial(mPMaterial);
 		Vector3 pos = GetOwner()->GetComp<Transform>()->GetPosition();
 		mStartPos = Vector4(pos.x, pos.y, 0.0f, 0.0f);
 

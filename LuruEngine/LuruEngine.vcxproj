@@ -168,6 +168,7 @@
     <ClInclude Include="Char_Cheese.h" />
     <ClInclude Include="Char_Lucy.h" />
     <ClInclude Include="Char_Robo.h" />
+    <ClInclude Include="Effect_BigDust.h" />
     <ClInclude Include="Effect_Explosion.h" />
     <ClInclude Include="Effect_FirePlate.h" />
     <ClInclude Include="Effect_Hit.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="particletest.h" />
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
     <ClInclude Include="Ranged_Ent.h" />
+    <ClInclude Include="SCENE_PlayScene2.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_OldEnt.h" />
@@ -286,6 +288,7 @@
     <ClCompile Include="Char_Cheese.cpp" />
     <ClCompile Include="Char_Lucy.cpp" />
     <ClCompile Include="Char_Robo.cpp" />
+    <ClCompile Include="Effect_BigDust.cpp" />
     <ClCompile Include="Effect_Explosion.cpp" />
     <ClCompile Include="Effect_FirePlate.cpp" />
     <ClCompile Include="Effect_Hit.cpp" />
@@ -330,6 +333,7 @@
     <ClCompile Include="particletest.cpp" />
     <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
     <ClCompile Include="Ranged_Ent.cpp" />
+    <ClCompile Include="SCENE_PlayScene2.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_OldEnt.cpp" />

@@ -28,5 +28,7 @@ namespace gui
 		static std::vector<GUI_Widget*> mWidgets;
 		static std::vector<GUI_EditorObject*> mEditorObjects;
 		static std::vector<GUI_DebugObject*> mDebugObjects;
+
+		static bool mOn;
 	};
 }

@@ -116,8 +116,8 @@ namespace sg
 
 		PlayScene::OnEnter();
 
-		//const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd04_00" };
-		//TilePalette::AutoLoad(path0);
+		const std::wstring path0 = { L"..\\Resources\\Tile\\forestdg01_00" };
+		TilePalette::AutoLoad(path0);
 
 	}
 	void Stage0_Forest05::OnExit()

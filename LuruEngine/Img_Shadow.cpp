@@ -17,6 +17,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"ImgShadow");
 		mMr->Initialize();
+		SetTransParent(true);
 	}
 	void Img_Shadow::Update()
 	{

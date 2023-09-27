@@ -343,6 +343,12 @@
     <ClCompile Include="particletest.cpp">
       <Filter>x</Filter>
     </ClCompile>
+    <ClCompile Include="SCENE_PlayScene2.cpp">
+      <Filter>Scene\SCENE_PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_BigDust.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -692,6 +698,12 @@
     </ClInclude>
     <ClInclude Include="particletest.h">
       <Filter>x</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE_PlayScene2.h">
+      <Filter>Scene\SCENE_PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_BigDust.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

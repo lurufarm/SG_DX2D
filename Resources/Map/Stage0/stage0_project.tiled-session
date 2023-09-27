@@ -3,15 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "stage0_boss.tmx",
     "console.history": [
         "asd"
     ],
     "expandedProjectPaths": [
-        "Source/ForestDg",
-        "Source",
         "Source/ForestFd",
-        "."
+        ".",
+        "Source/ForestDg",
+        "Source"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -20,6 +20,14 @@
             "scaleInEditor": 1
         },
         "ObstacleAct1Dg1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Source/ForestBossBluffEdge1.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Source/ForestBossFloor1.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -111,6 +119,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "stage0_boss.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 269.33333333333326,
+                "y": 300
+            }
+        },
         "stage0_forestdg_1.tmx": {
             "scale": 1.5,
             "selectedLayer": 3,
@@ -184,16 +200,22 @@
     },
     "last.externalTilesetPath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestFd",
     "last.imagePath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
-    "map.height": 50,
+    "map.height": 30,
     "map.lastUsedFormat": "tmx",
     "map.layerDataFormat": null,
     "map.tileHeight": 18,
     "map.tileWidth": 18,
-    "map.width": 50,
+    "map.width": 30,
     "openFiles": [
+        "stage0_boss.tmx",
+        "Source/ForestBossFloor1.tsx",
+        "Source/ForestBossBluffEdge1.tsx"
     ],
     "project": "stage0_project.tiled-project",
     "recentFiles": [
+        "Source/ForestBossBluffEdge1.tsx",
+        "Source/ForestBossFloor1.tsx",
+        "stage0_boss.tmx",
         "stage0_forestdg_1.tmx",
         "stage0_forestfd_4.tmx",
         "Source/ForestDg/ForestDgWaterEdge1.tsx",
@@ -202,10 +224,7 @@
         "Source/ForestDg/ForestDgWaterDeep1.tsx",
         "Source/ForestDg/ObstacleAct1Dg1.tsx",
         "stage0_forestfd_1.tmx",
-        "stage0_forestfd_2.tmx",
-        "stage0_forestfd_3.tmx",
-        "stage0_forestdg_4.tmx",
-        "Source/ForestDg/ForestFdWaterDeep1.tsx"
+        "stage0_forestfd_2.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

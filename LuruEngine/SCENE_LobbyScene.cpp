@@ -137,7 +137,7 @@ namespace sg
 				Vector4 ecolor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 				test->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.0f));
 				ps->SetParticleMaterial(L"ParticleMaterial2");
-				ps->SetParticleOptions(100, Vector2(100.0f, 100.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
+				ps->SetParticleOptions(100, Vector2(5.0f, 8.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
 			}
 
 		}

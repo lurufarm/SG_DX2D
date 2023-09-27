@@ -5,6 +5,7 @@
 #include "Bullet_FireOrbs.h"
 #include "Bullet_SKGroundFires.h"
 #include "Img_Shadow.h"
+#include "Effect_BigDust.h"
 #include <random>
 
 
@@ -225,6 +226,9 @@ namespace sg
 					mAttackable = true;
 					mTime2 = 0.0f;
 					mLaunched = true;
+					Vector3 dustpos = skpos;
+					dustpos.y -= 15.0f;
+					object::Instantiate<Effect_BigDust>(dustpos, eLayerType::Monster_Effect, SceneManager::GetActiveScene());
 				}
 			}
 		}

@@ -31,7 +31,7 @@ namespace sg
 				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 				mLastPos = mTarget->GetComp<Transform>()->GetPosition();
 				LastPos_RandomDir();
-				mTotalDuration = GetDistance() / 200.0f;
+				mTotalDuration = GetDistance() / 1000.0f;
 			}
 			else if (mProjType == eMProjType::Basic_NearCardinalDir)
 			{
