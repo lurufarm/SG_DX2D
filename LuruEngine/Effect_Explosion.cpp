@@ -4,7 +4,7 @@ namespace sg
 {
 	Effect_Explosion::Effect_Explosion()
 	{
-		SetName(L"Effect_Hit");
+		SetName(L"Effect_Explosion");
 		Effect_Explosion::Initialize();
 	}
 	Effect_Explosion::~Effect_Explosion()

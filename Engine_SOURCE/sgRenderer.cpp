@@ -923,7 +923,6 @@ namespace renderer
 
 #pragma endregion
 
-
 #pragma region Item Icon
 		texture = Resources::Load<Texture>(L"Item_BonusLife", L"..\\Resources\\Item\\BonusLife.png");
 		material = std::make_shared<Material>();
@@ -1055,77 +1054,104 @@ namespace renderer
 #pragma endregion
 
 #pragma region Monster
+	
+		// forest fd
+		{
+			texture = Resources::Load<Texture>(L"Monster_SlimeA", L"..\\Resources\\Monster\\SlimeA.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSlimeA", material);
 
-		texture = Resources::Load<Texture>(L"Monster_SlimeA", L"..\\Resources\\Monster\\SlimeA.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobSlimeA", material);
+			texture = Resources::Load<Texture>(L"Monster_SlimeB", L"..\\Resources\\Monster\\SlimeB.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSlimeB", material);
 
-		texture = Resources::Load<Texture>(L"Monster_SlimeB", L"..\\Resources\\Monster\\SlimeB.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobSlimeB", material);
-
-		texture = Resources::Load<Texture>(L"Monster_CannibalFlowerA", L"..\\Resources\\Monster\\CannibalFlowerA.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobCannibalFlowerA", material);
+			texture = Resources::Load<Texture>(L"Monster_CannibalFlowerA", L"..\\Resources\\Monster\\CannibalFlowerA.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobCannibalFlowerA", material);
 
 
-		texture = Resources::Load<Texture>(L"Monster_Ent", L"..\\Resources\\Monster\\Ent.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobEnt", material);
+			texture = Resources::Load<Texture>(L"Monster_Ent", L"..\\Resources\\Monster\\Ent.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEnt", material);
 
-		texture = Resources::Load<Texture>(L"Monster_Larva", L"..\\Resources\\Monster\\Larva.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobLarva", material);
+			texture = Resources::Load<Texture>(L"Monster_Larva", L"..\\Resources\\Monster\\Larva.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobLarva", material);
 
-		texture = Resources::Load<Texture>(L"Monster_EliteLarva", L"..\\Resources\\Monster\\EliteLarva.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobEliteLarva", material);
+			texture = Resources::Load<Texture>(L"Monster_EliteLarva", L"..\\Resources\\Monster\\EliteLarva.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEliteLarva", material);
 
-		texture = Resources::Load<Texture>(L"Monster_Cannibals", L"..\\Resources\\Monster\\Cannibals.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobCannibals", material);
+			texture = Resources::Load<Texture>(L"Monster_Cannibals", L"..\\Resources\\Monster\\Cannibals.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobCannibals", material);
 
-		texture = Resources::Load<Texture>(L"Monster_EliteCannibals", L"..\\Resources\\Monster\\EliteCannibals.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobEliteCannibals", material);
+			texture = Resources::Load<Texture>(L"Monster_EliteCannibals", L"..\\Resources\\Monster\\EliteCannibals.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEliteCannibals", material);
 
-		texture = Resources::Load<Texture>(L"Monster_OldEnt", L"..\\Resources\\Monster\\Bosses\\OldEnt.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobOldEnt", material);
+			texture = Resources::Load<Texture>(L"Monster_OldEnt", L"..\\Resources\\Monster\\Bosses\\OldEnt.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobOldEnt", material);
+		}
 
-		texture = Resources::Load<Texture>(L"Monster_SkelKnight", L"..\\Resources\\Monster\\Bosses\\skeletonknight.png");
-		material = std::make_shared<Material>();
-		material->SetShader(AniShader);
-		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::Transparent);
-		Resources::Insert(L"MobSkelKnight", material);
+		// forest dg
+		{
+			texture = Resources::Load<Texture>(L"Monster_Bat", L"..\\Resources\\Monster\\Bat.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobBat", material);
+
+			texture = Resources::Load<Texture>(L"Monster_Bomb", L"..\\Resources\\Monster\\Bomb.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobBomb", material);
+
+			texture = Resources::Load<Texture>(L"Monster_Zombie", L"..\\Resources\\Monster\\Zombie.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobZombie", material);
+
+			texture = Resources::Load<Texture>(L"Monster_SkelKnight", L"..\\Resources\\Monster\\Bosses\\skeletonknight.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSkelKnight", material);
+		};
 
 #pragma endregion
 	}

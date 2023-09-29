@@ -75,7 +75,9 @@ namespace sg
 
 
 #pragma region Monsters
-		object::Instantiate<Boss_SkelKnight>(eLayerType::Monster, this);
+		//object::Instantiate<Boss_SkelKnight>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);

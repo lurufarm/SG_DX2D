@@ -3,6 +3,7 @@
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
+#include "sg.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -19,7 +20,7 @@ namespace sg
 	void SCRIPT_MeleeMob::Initialize()
 	{
 		mOwner = (Monster_Melee*)GetOwner();
-		mOwner->GetComp<Collider2D>()->SetSize(Vector2(1.2f, 1.2f));
+		mColSize = mOwner->GetComp<Collider2D>()->GetCSize();
 		mTarget = Player;
 		mFSMState = eFSMState::Spwan;
 		mDirection = false;
@@ -27,19 +28,18 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Update()
 	{
-		//mTime += Time::DeltaTime();
-
-		Transform* tr = mOwner->GetComp<Transform>();
-		Transform* ptr = mTarget->GetComp<Transform>();
-
-		Vector3 pos = tr->GetPosition();
-		Vector3 ppos = ptr->GetPosition();
 
 		// ÇÊ¼ö
 		if (mOwner->GetStat().mCurHP <= 0)
 			mFSMState = eFSMState::Death;
 		if (mTarget == nullptr || mTarget->GetState() == GameObject::eState::Dead)
 			mFSMState = eFSMState::Idle;
+
+		Transform* tr = mOwner->GetComp<Transform>();
+		Transform* ptr = mTarget->GetComp<Transform>();
+
+		Vector3 pos = tr->GetPosition();
+		Vector3 ppos = ptr->GetPosition();
 
 		if (pos.x <= ppos.x)
 			mDirection = true;
@@ -52,18 +52,23 @@ namespace sg
 			Spawn();
 			break;
 		case sg::SCRIPT_MeleeMob::eFSMState::Idle:
+			mOwner->GetComp<Collider2D>()->SetSize(mColSize);
 			Idle();
 			break;
 		case sg::SCRIPT_MeleeMob::eFSMState::Move:
+			mOwner->GetComp<Collider2D>()->SetSize(mColSize);
 			Move();
 			break;
 		case sg::SCRIPT_MeleeMob::eFSMState::Attack:
+			mOwner->GetComp<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 			Attack();
 			break;
 		case sg::SCRIPT_MeleeMob::eFSMState::Attacked:
+			mOwner->GetComp<Collider2D>()->SetSize(mColSize);
 			Attacked();
 			break;
 		case sg::SCRIPT_MeleeMob::eFSMState::Death:
+			mOwner->GetComp<Collider2D>()->SetSize(mColSize);
 			Death();
 			break;
 		}
@@ -85,7 +90,6 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
-
 	}
 	void SCRIPT_MeleeMob::OnCollisionStay(Collider2D* other)
 	{
@@ -146,10 +150,10 @@ namespace sg
 			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
 		}
+
 		if (GetDistance() > mOwner->GetStat().mRange * 1.5f)
-		{
 			mFSMState = eFSMState::Move;
-		}
+
 		else if (at->GetActiveAni()->IsComplete())
 		{
 			mFSMState = eFSMState::Idle;
@@ -158,37 +162,43 @@ namespace sg
 
 		if (ownerName == L"SlimeA" || ownerName == L"SlimeB" || ownerName == L"EliteCannibals")
 		{
-			if (Index > 2 && Index <= 6)
-			{
-				mAttack = true;
-			}
+			if (Index == 4)
+				mAttackable = true;
 			else
-			{
-				mAttack = false;
-			}
+				mAttackable = false;
 		}
 		else if (ownerName == L"Larva" || ownerName == L"EliteLarva")
 		{
-			if (Index > 2 && Index <= 6)
-			{
-				mAttack = true;
-			}
+			if (Index == 3)
+				mAttackable = true;
 			else
-			{
-				mAttack = false;
-			}
+				mAttackable = false;
 		}
 		else if (ownerName == L"Cannibals")
 		{
-			if (Index > 2 || Index <= 5)
-			{
-				mAttack = true;
-			}
+			if (Index == 3)
+				mAttackable = true;
 			else
-			{
-				mAttack = false;
-			}
-		}		
+				mAttackable = false;
+		}
+		else if (ownerName == L"Bat")
+		{
+			if (Index == 4)
+				mAttackable = true;
+			else
+				mAttackable = false;
+		}
+		else if (ownerName == L"Zombie")
+		{
+			if (Index == 5)
+				mAttackable = true;
+			else
+				mAttackable = false;
+		}
+		else
+		{
+			mAttackable = false;
+		}
 
 	}
 	void SCRIPT_MeleeMob::Attacked()
