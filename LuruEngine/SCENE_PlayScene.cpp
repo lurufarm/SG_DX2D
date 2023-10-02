@@ -30,6 +30,7 @@ namespace sg
 	UI_FocusBoxes2* PlayScene::mFocus = nullptr;
 
 	PlayScene::PlayScene()
+		: mDLight(nullptr)
 	{
 	}
 	PlayScene::~PlayScene()
@@ -37,12 +38,18 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
-		GameObject* mLight = new GameObject();
-		mLg = mLight->AddComp<Light>();
-		AddGameObj(eLayerType::Light, mLight);
-		mLg->SetType(eLightType::Directional);
-		mLg->SetColor(mDayLight);
-		//mLg->SetColor(Vector4::Zero);
+		if (mDLight == nullptr)
+		{
+			mDLight = new GameObject();
+			mLg = mDLight->AddComp<Light>();
+			AddGameObj(eLayerType::Light, mDLight);
+			mLg->SetType(eLightType::Directional);
+			mLg->SetColor(mDayLight);
+		}
+		else
+		{
+			mLg = mDLight->GetComp<Light>();
+		}
 
 		if (mFocus == nullptr)
 			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
@@ -145,7 +152,6 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		renderer::lightsBuffer->Clear();
 
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
@@ -160,6 +166,7 @@ namespace sg
 			Vector3 cpos = company->GetComp<SCRIPT_Company>()->RandPos(mStartPos);
 			company->GetComp<Transform>()->SetPosition(cpos);
 		}
+
 
 		AddGameObj(eLayerType::UI, mFocus);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[0]);
@@ -176,8 +183,9 @@ namespace sg
 	}
 	void PlayScene::OnExit()
 	{
-		//renderer::lightsBuffer->Clear();
+		renderer::lightsBuffer->Clear();
 
+		mLg->SetColor(Vector4::Zero);
 		DeleteGameObj(eLayerType::Player, Player);
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
@@ -212,20 +220,20 @@ namespace sg
 	}
 	Vector3 PlayScene::RandPos()
 	{
-			const float PI = 3.141592;
-			float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
+		const float PI = 3.141592;
+		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
 
-			// random distance
-			float distance = 30.0f;
-			float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * distance);
+		// random distance
+		float distance = 30.0f;
+		float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * distance);
 
-			// angle + distance
-			Vector3 randomPos = mCrackPos[SelectPos()];
-			randomPos.x += randomDistance * cos(angle);
-			randomPos.y	+= randomDistance * sin(angle);
-			randomPos.z = -0.1f;
+		// angle + distance
+		Vector3 randomPos = mCrackPos[SelectPos()];
+		randomPos.x += randomDistance * cos(angle);
+		randomPos.y += randomDistance * sin(angle);
+		randomPos.z = -0.1f;
 
-			return randomPos;
+		return randomPos;
 	}
 	void PlayScene::ChangeLight()
 	{
@@ -304,12 +312,21 @@ namespace sg
 			mLg->SetColor(mDayLight);
 		}
 	}
-	void PlayScene::CreateCompanyLight(Gobj_Character* character)
+	Light* PlayScene::CreateCompanyLight(Gobj_Character* character)
 	{
-		mPlayerLight[mLightnum] = object::Instantiate<Gobj_Light>(eLayerType::Light, this);
-		mPlayerLight[mLightnum]->SetTarget(character);
-		mPlayerLight[mLightnum]->SetLightRadius(30.0f);
-		mPlayerLight[mLightnum]->SetLightColor(Vector4(0.6f, 0.4f, 0.2f, 0.8f));
-		mLightnum++;
+		Light* companyLight;
+		//mPlayerLight[mLightnum] = object::Instantiate<Gobj_Light>(eLayerType::Light, this);
+		//mPlayerLight[mLightnum]->SetTarget(character);
+		//mPlayerLight[mLightnum]->SetLightRadius(30.0f);
+		//mPlayerLight[mLightnum]->SetLightColor(Vector4(0.6f, 0.4f, 0.2f, 0.8f));
+		//companyLight = mPlayerLight[mLightnum]->GetComp<Light>();
+		//mLightnum++;
+
+		companyLight = character->AddComp<Light>();
+		companyLight->SetType(eLightType::Point);
+		companyLight->SetRadius(30.0f);
+		companyLight->SetColor(Vector4(0.6f, 0.4f, 0.2f, 0.8f));
+
+		return companyLight;
 	}
 }

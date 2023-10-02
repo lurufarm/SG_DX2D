@@ -6,6 +6,9 @@
 #include "..\Engine_SOURCE\sgMaterial.h"
 #include "sgScript.h"
 
+#include "sgLayer.h"
+#include "sgScene.h"
+
 namespace sg
 {
 	class GameObject : public Entity
@@ -152,6 +155,12 @@ namespace sg
 		void SetTransParent(bool value) { mTransParent = value; }
 		bool GetTransparent() { return mTransParent; }
 
+		class Layer* GetMyLayer() { return mMyLayer; }
+		class Scene* GetMyScene() { return mMyScene; }
+
+		void SetMyLayer(class Layer* layer) { mMyLayer = layer; }
+		void SetMyScene(class Scene* scene) { mMyScene = scene; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
@@ -159,5 +168,9 @@ namespace sg
 		int mOrder;
 		bool mbSelected;
 		bool mTransParent;
+
+		class Layer* mMyLayer;
+		class Scene* mMyScene;
+
 	};
 }

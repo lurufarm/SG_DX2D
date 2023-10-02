@@ -32,26 +32,26 @@ namespace sg
 	void Stage0_Forest05::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
+		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
 		mCrackPos[0] = Vector3(165.0f, -180.0f, -0.5f);
 		mCrackPos[1] = Vector3(0.0f, -55.0f, -0.5f);
 		mCrackPos[2] = Vector3(-15.0f, 240.0f, -0.5f);
-		mStartPos = Vector3(-75.0f, -310.0f, -1.0f);
+		mStartPos = Vector3(-300.0f, 95.0f, -1.0f);
 
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, pos, eLayerType::BGImg, this);
-		//object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
 
-		GameObject* Forest04camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
-		mCamera = Forest04camera->AddComp<Camera>();
-		Forest04camera->AddComp<SCRIPT_MainCamera>();
+		GameObject* Forest05camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		mCamera = Forest05camera->AddComp<Camera>();
+		Forest05camera->AddComp<SCRIPT_MainCamera>();
 
 		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
 		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
-		Vector3 gpos0 = Vector3(-82.0f, 430.0f, -0.1f);
-		Vector3 gpos1 = Vector3(-45.0f, 430.0f, -0.1f);
-		Vector3 gpos2 = Vector3(8.0, 430.0f, -0.1f);
+		Vector3 gpos0 = Vector3(-82.0f, 390.0f, -0.1f);
+		Vector3 gpos1 = Vector3(-45.0f, 390.0f, -0.1f);
+		Vector3 gpos2 = Vector3(-8.0, 390.0f, -0.1f);
 
 		mRewardPos = gpos1;
 		mRewardPos.y -= 80.0f;
@@ -96,25 +96,25 @@ namespace sg
 		//object::Instantiate<Boss_OldEnt>(eLayerType::Monster, this);
 #pragma endregion
 
-		PlayScene::Initialize();
+		PlayScene2::Initialize();
 	}
 	void Stage0_Forest05::Update()
 	{
-		PlayScene::Update();
+		PlayScene2::Update();
 	}
 	void Stage0_Forest05::LateUpdate()
 	{
-		PlayScene::LateUpdate();
+		PlayScene2::LateUpdate();
 	}
 	void Stage0_Forest05::Render()
 	{
-		PlayScene::Render();
+		PlayScene2::Render();
 	}
 	void Stage0_Forest05::OnEnter()
 	{
 		renderer::mainCamera = mCamera;
 
-		PlayScene::OnEnter();
+		PlayScene2::OnEnter();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestdg01_00" };
 		TilePalette::AutoLoad(path0);
@@ -122,7 +122,7 @@ namespace sg
 	}
 	void Stage0_Forest05::OnExit()
 	{
-		PlayScene::OnExit();
+		PlayScene2::OnExit();
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);
