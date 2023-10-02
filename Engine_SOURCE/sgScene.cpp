@@ -59,10 +59,12 @@ namespace sg
 	}
 	void Scene::AddGameObj(eLayerType type, GameObject* gameObj)
 	{
+		gameObj->SetMyScene(this);
 		mLayers[(int)type].AddGameObj(gameObj);
 	}
 	void Scene::DeleteGameObj(eLayerType type, GameObject* gameObj)
 	{
+		gameObj->SetMyScene(nullptr);
 		mLayers[(int)type].DeleteGameObj(gameObj);
 	}
 }

@@ -5,6 +5,8 @@
 #include "sgPaintShader.h"
 #include "sgStructuredBuffer.h"
 #include "sgParticleShader.h"
+#include "sgSceneManager.h"
+#include "sgScene.h"
 
 namespace renderer
 {
@@ -20,7 +22,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 	
 	// light
-	std::vector<Light*> lights = {};
+	std::multimap<sg::Scene*, sg::Light*> lights = {};
 	StructuredBuffer* lightsBuffer = nullptr;
 
 	//
@@ -1192,10 +1194,15 @@ namespace renderer
 	void BindLights()
 	{
 		std::vector<LightAttribute> lightsAttributes = {};
-		for (Light* light : lights)
+		lightsAttributes.clear();
+		sg::Scene* activeScene = sg::SceneManager::GetActiveScene();
+		for (auto light : lights)
 		{
-			LightAttribute attribute = light->GetAttribute();
-			lightsAttributes.push_back(attribute);
+			if (light.first == activeScene)
+			{
+				LightAttribute attribute = light.second->GetAttribute();
+				lightsAttributes.push_back(attribute);
+			}
 		}
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);

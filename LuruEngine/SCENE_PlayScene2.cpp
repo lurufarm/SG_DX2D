@@ -38,33 +38,15 @@ namespace sg
 	}
 	void PlayScene2::Initialize()
 	{
-		GameObject* mLight = new GameObject();
-		mLg = mLight->AddComp<Light>();
-		AddGameObj(eLayerType::Light, mLight);
-		mLg->SetType(eLightType::Directional);
-		mLg->SetColor(mEveningLight);
-		//mLg->SetColor(Vector4::Zero);
+		//GameObject* light = new GameObject();
+		//AddGameObj(eLayerType::Light, light);
+		//Light* lightComp = light->AddComp<Light>();
+		//lightComp->SetType(eLightType::Directional);
+		//lightComp->SetColor(Vector4(0.0f, 0.0f, 0.0f, 1.0f));
+
 
 		if (mFocus == nullptr)
 			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
-
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::InteractableObject, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Effect, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_Bullet2, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster_BulletBehindMonster, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Player_Bullet, eLayerType::Monster, true);
-		CollisionManager::SetLayer(eLayerType::Player_Beam, eLayerType::Monster, true);
-		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Monster_Bullet2, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Monster_BulletBehindMonster, eLayerType::Tile, true);
-		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
 		if (mItem0)
 		{
@@ -114,7 +96,6 @@ namespace sg
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
 
-
 		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)
 		{
 			mGate0->Open();
@@ -127,12 +108,9 @@ namespace sg
 				object::Instantiate<Item_Selected>(mRewardPos, eLayerType::Item, SceneManager::GetActiveScene());
 			}
 		}
-
 		if (mActiveMobs.size() < 5)
 			SpawnMob();
 		PurgeDeadMobs();
-		mTime += Time::DeltaTime();
-		//ChangeLight();
 
 		Scene::Update();
 	}
@@ -150,7 +128,6 @@ namespace sg
 
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
-
 
 		AddGameObj(eLayerType::Player, Player);
 		Player->GetComp<Transform>()->SetPosition(mStartPos);
@@ -177,8 +154,6 @@ namespace sg
 	}
 	void PlayScene2::OnExit()
 	{
-		//renderer::lightsBuffer->Clear();
-
 		DeleteGameObj(eLayerType::Player, Player);
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
@@ -188,11 +163,9 @@ namespace sg
 		{
 			DeleteGameObj(eLayerType::UI, ui);
 		}
-
 	}
 	Gobj_Item* PlayScene2::MakeItem(Vector3 pos)
 	{
-
 		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
 		std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
 		std::uniform_int_distribution<> dist(0, 9);  // 0과 1 사이의 균등 분포
@@ -207,8 +180,6 @@ namespace sg
 		{
 			return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
 		}
-
-		//return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
 
 	}
 	Vector3 PlayScene2::RandPos()
@@ -227,83 +198,6 @@ namespace sg
 		randomPos.z = -0.1f;
 
 		return randomPos;
-	}
-	void PlayScene2::ChangeLight()
-	{
-		if (mTime < 65.0f)
-		{
-			for (size_t i = 0; i < mLightnum; i++)
-			{
-				mPlayerLight[i]->SetLightOff();
-			}
-		}
-
-		if (mTime > 60.0f)
-			mTime2 += Time::DeltaTime();
-
-
-		if (mTime > 60.0f && mTime <= 65.0f)
-		{
-			if (mTime2 >= 5.0f)
-				mTime2 = 0.0f;
-
-			Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 5.0f);
-			mLg->SetColor(changecolor);
-		}
-		else if (mTime > 65.0f && mTime <= 125.0f)
-		{
-			for (size_t i = 0; i < mLightnum; i++)
-			{
-				mPlayerLight[i]->SetLightOn();
-			}
-			mTime2 = 0.0f;
-			mLg->SetColor(mAfternoonLight);
-		}
-		else if (mTime > 125.0f && mTime <= 130.0f)
-		{
-			if (mTime2 >= 5.0f)
-				mTime2 = 0.0f;
-
-			Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 5.0f);
-			mLg->SetColor(changecolor);
-
-		}
-		else if (mTime > 130.0f && mTime <= 190.0f)
-		{
-			mTime2 = 0.0f;
-			mLg->SetColor(mEveningLight);
-		}
-		else if (mTime > 190.0f && mTime <= 200.0f)
-		{
-			if (mTime2 >= 10.0f)
-				mTime2 = 0.0f;
-
-			Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 10.0f);
-			mLg->SetColor(changecolor);
-
-		}
-		else if (mTime > 200.0f && mTime <= 260.0f)
-		{
-			mTime2 = 0.0f;
-			mLg->SetColor(mDawnLight);
-		}
-		else if (mTime > 260.0f && mTime <= 280.0f)
-		{
-			for (size_t i = 0; i < mLightnum; i++)
-			{
-				mPlayerLight[i]->SetLightOff();
-			}
-			if (mTime2 >= 20.0f)
-				mTime2 = 0.0f;
-
-			Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 20.0f);
-			mLg->SetColor(changecolor);
-		}
-		else if (mTime > 280.0f)
-		{
-			mTime = 0.0f;
-			mLg->SetColor(mDayLight);
-		}
 	}
 	void PlayScene2::CreateCompanyLight(Gobj_Character* character)
 	{

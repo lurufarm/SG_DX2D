@@ -3,6 +3,7 @@
 #include "sgSceneManager.h"
 #include "sgGameObject.h"
 #include "sgTransform.h"
+#include "sgScene.h"
 
 namespace sg
 {
@@ -11,7 +12,7 @@ namespace sg
 	Light::Light()
 		: Component(eComponentType::Light)
 	{
-		mPlus = false;
+		mNum++;
 	}
 	Light::~Light()
 	{
@@ -21,29 +22,12 @@ namespace sg
 	}
 	void Light::Update()
 	{
-		if (GetOwner()->GetState() != GameObject::eState::Active)
-		{
-			mOn = false;
-		}
-		else if (GetOwner()->GetState() == GameObject::eState::Active)
-		{
-			mOn = true;
-		}
-
-		if (mPlus == false && mOn)
-		{
-			mNum++;
-			mPlus = true;
-		}
-		if (mPlus == true && mOn == false)
-		{
-			mNum--;
-			mPlus = false;
-		}
+		mScene = GetOwner()->GetMyScene();
 	}
 	void Light::LateUpdate()
 	{
-		renderer::lights.push_back(this);
+		renderer::lights.insert(std::make_pair(mScene, this));
+
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
 		mAttribute.position = Vector4(pos.x, pos.y, pos.z, 1.0f);

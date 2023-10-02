@@ -91,7 +91,7 @@ namespace sg
 
 		void ChangeLight();
 
-		void CreateCompanyLight(class Gobj_Character* character);
+		Light* CreateCompanyLight(class Gobj_Character* character);
 
 
 	protected:
@@ -130,8 +130,8 @@ namespace sg
 		static class UI_FocusBoxes2* mFocus;
 
 	private:
-		GameObject* mLight;
 		Light* mLg;
+		GameObject* mDLight;
 
 	};
 }

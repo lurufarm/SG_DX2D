@@ -21,7 +21,6 @@ namespace sg
 		SetMaterial(L"AnimationMaterial");
 
 		mAni = AddComp<Animator>();
-		mLg = AddComp<Light>();
 
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"Img_LobbyTorch", L"..\\Resources\\Lobby\\LobbyTorch.png");
 
@@ -31,6 +30,7 @@ namespace sg
 
 		mAni->PlayAnimation(L"Ani_LobbyTorch", true, true);
 
+		mLg = AddComp<Light>();
 		mLg->SetType(eLightType::Point);
 		mLg->SetRadius(30.0f);
 		mLg->SetColor(Vector4(0.1f, 0.4f, 0.6f, 0.5f));
