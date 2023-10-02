@@ -3,7 +3,6 @@
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
-#include "sg.h"
 
 extern sg::Gobj_Player* Player;
 

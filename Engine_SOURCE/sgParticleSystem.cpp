@@ -35,6 +35,9 @@ namespace sg
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);	
 
+		mPMaterial = Resources::Find<Material>(L"particletest");
+		SetMaterial(mPMaterial);
+
 		mCS = Resources::Find<ParticleShader>(L"ParticleSystemShader");
 
 		for (size_t i = 0; i < mCount; i++)
@@ -56,6 +59,7 @@ namespace sg
 	}
 	void ParticleSystem::Initialize()
 	{
+		GameObject* owner = GetOwner();
 		SetMaterial(mPMaterial);
 		Vector3 pos = GetOwner()->GetComp<Transform>()->GetPosition();
 		mStartPos = Vector4(pos.x, pos.y, 0.0f, 0.0f);
@@ -131,16 +135,18 @@ namespace sg
 		mBuffer->BindSRV(eShaderStage::GS, 14);
 		mBuffer->BindSRV(eShaderStage::PS, 14);
 
-		GetMaterial()->Binds();
-		GetMesh()->RenderInstanced(mCount);
+		mPMaterial->Binds();
+		this->GetMesh()->RenderInstanced(mCount);
 
-		mBuffer->Clear();
+		//mBuffer->Clear();
 	}
 	void ParticleSystem::BindConstantBuffer()
 	{
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Particle];
 
 		renderer::ParticleCB data = {};
+		Vector3 ownerpos = GetOwner()->GetComp<Transform>()->GetPosition();
+		data.ownerPos = Vector4(ownerpos.x, ownerpos.y, ownerpos.z, 1.0f);
 		data.elementCount = mCount;
 		data.elpasedTime = mElapsedTime;
 		data.deltaTime = Time::DeltaTime();
@@ -197,7 +203,7 @@ namespace sg
 
 		float randomAngle = dis(gen);
 
-		randomAngle *= 3.141592f / 180.0f;
+		randomAngle = sgGetAngleInRadian(randomAngle);
 
 		return randomAngle;
 	}
@@ -224,6 +230,6 @@ namespace sg
 		mLifeTime = lTime;
 		mFrequency = freq;
 		mElapsedTime = 0.0f;
-		Initialize();
+		//Initialize();
 	}
 }

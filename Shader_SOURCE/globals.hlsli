@@ -52,6 +52,7 @@ cbuffer HPBar : register(b7)
 
 cbuffer ParticleSystem : register(b8)
 {
+    float4 ownerPos;
     float4 startColor;
     float4 middleColor;
     float4 endColor;

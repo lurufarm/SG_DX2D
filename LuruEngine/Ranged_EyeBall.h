@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class Range__EyeBall : public Monster_Ranged
+	class Ranged_EyeBall : public Monster_Ranged
 	{
 	public:
-		Range__EyeBall();
-		~Range__EyeBall();
+		Ranged_EyeBall();
+		~Ranged_EyeBall();
 
 		void Initialize();
 		void Update();

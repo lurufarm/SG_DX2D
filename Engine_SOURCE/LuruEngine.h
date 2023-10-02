@@ -20,3 +20,15 @@
 #include "CommonInclude.h"
 #include "sgEnums.h"
 #include "sgMath.h"
+
+
+
+namespace sg
+{
+	using namespace math;
+
+	float sgLerp(float a, float b, float t);
+	float sgGetAngle(Vector2 dir);
+	float sgGetAngleInRadian(float degree);
+	Vector2 sgGetBeamPos(float radius, float angle, Vector2 startPos);
+}

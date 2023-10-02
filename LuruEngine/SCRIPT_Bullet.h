@@ -29,20 +29,7 @@ namespace sg
 			direction.Normalize();
 			return direction;
 		}
-		float GetAngle(Vector2 dir)
-		{
-			float angleRad = std::acos(dir.x); // acos 함수를 사용하여 x축과의 각도를 구한다.
-			if (dir.y < 0) // 방향 벡터의 y값이 음수면 각도를 음수로 변환한다.
-			{
-				angleRad = -angleRad;
-			}
-			return angleRad * 180.0f / 3.141592f;
-		}
-		float GetAngleInRadian(float degree)
-		{
-			return degree * (3.141592f / 180.0f);
-		}
-		Vector2 GetRoboBeamPos(float radius, float angle)
+		Vector2 GetBeamPos(float radius, float angle)
 		{
 			float x = radius * cos(angle) + mFirstPos.x;
 			float y = radius * sin(angle) + mFirstPos.y;

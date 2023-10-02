@@ -12,4 +12,5 @@
 #include "Melee_Bat.h"
 #include "Melee_Bomb.h"
 #include "Melee_Zombie.h"
+#include "Ranged_EyeBall.h"
 #include "Boss_SkelKnight.h"

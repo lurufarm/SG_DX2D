@@ -1145,12 +1145,35 @@ namespace renderer
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"MobZombie", material);
 
+			texture = Resources::Load<Texture>(L"Monster_EyeBall", L"..\\Resources\\Monster\\Eyeball.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEyeBall", material);
+
+			texture = Resources::Load<Texture>(L"Img_EyeBallLine", L"..\\Resources\\Monster\\EyeballLine.png");
+			material = std::make_shared<Material>();
+			material->SetShader(shader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"ImgEyeBallLine", material);
+
+			texture = Resources::Load<Texture>(L"Img_EyeBallProj", L"..\\Resources\\Monster\\EyeballProj.png");
+			material = std::make_shared<Material>();
+			material->SetShader(shader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"ImgEyeBallProj", material);
+
+
 			texture = Resources::Load<Texture>(L"Monster_SkelKnight", L"..\\Resources\\Monster\\Bosses\\skeletonknight.png");
 			material = std::make_shared<Material>();
 			material->SetShader(AniShader);
 			material->SetTexture(texture);
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"MobSkelKnight", material);
+
 		};
 
 #pragma endregion

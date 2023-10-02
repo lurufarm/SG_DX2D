@@ -5,7 +5,6 @@
 #include "..\Engine_SOURCE\sgAnimator.h"
 #include "Gobj_Monster.h"
 #include "Effect_MobExplosion.h"
-#include "sg.h"
 #include "Monsters.h"
 
 namespace sg

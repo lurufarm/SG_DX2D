@@ -6,7 +6,6 @@
 #include "..\Engine_SOURCE\sgAnimator.h"
 #include "Gobj_Monster.h"
 #include "Effect_MobExplosion.h"
-#include "sg.h"
 
 namespace sg
 {
@@ -29,7 +28,7 @@ namespace sg
 
 		float distance = GetDistance();
 		float t = min(mTime / 2, 1.0f);
-		float speed = sg::Lerp(mOwner->GetStat().mSpeed * 2, 10.0f, t);
+		float speed = sgLerp(mOwner->GetStat().mSpeed * 2, 10.0f, t);
 		float distanceToMove = speed * Time::DeltaTime();
 		Vector3 direction = GetDirection();
 		direction.Normalize();
