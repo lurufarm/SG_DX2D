@@ -26,16 +26,16 @@ namespace sg
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void OnCollisionEnter(Collider2D* other);
-		virtual void OnCollisionStay(Collider2D* other);
-		virtual void OnCollisionExit(Collider2D* other);
+		virtual void OnCollisionEnter(Collider2D* other) override;
+		virtual void OnCollisionStay(Collider2D* other) override;
+		virtual void OnCollisionExit(Collider2D* other) override;
 
-		void Spawn();
-		void Idle();
-		void Move();
-		void Attack();
-		void Attacked();
-		void Death();
+		virtual void Spawn();
+		virtual void Idle();
+		virtual void Move();
+		virtual void Attack();
+		virtual void Attacked();
+		virtual void Death();
 
 		std::wstring AnimationName(const std::wstring& animation);
 
@@ -43,16 +43,19 @@ namespace sg
 		Vector3 GetDirection();
 		eFSMState GetMeleeState() { return mFSMState; }
 
-		bool mAttack;
+		bool mAttackable;
 
-	private:
+
+	protected:
+		bool mDirection;
+		bool mAttacked;
 		eFSMState mFSMState;
 		class Gobj_Monster* mOwner;
 		class Gobj_Player* mTarget;
-		bool mDirection;
-		bool mAttacked;
 		bool mDeath;
 		float mTime;
+
+		Vector2 mColSize;
 
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";

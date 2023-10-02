@@ -26,7 +26,11 @@ namespace sg
 		float RandomTime(float time);
 		float RandomFloat(float value, float range);
 
-		void SetParticleMaterial(std::wstring material) { mPMaterial = Resources::Find<sg::graphics::Material>(material); }
+		void SetParticleMaterial(std::wstring material) 
+		{ 
+			mPMaterial = Resources::Find<sg::graphics::Material>(material); 
+			SetMaterial(mPMaterial);
+		}
 		void SetParticleOptions(UINT count, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq);
 		void SetTarget(GameObject* target) { mTarget = target; }
 		Vector4 GetStartColor() { return mStartColor; }
@@ -38,6 +42,7 @@ namespace sg
 		graphics::StructuredBuffer* mBuffer;
 		graphics::StructuredBuffer* mSharedBuffer;
 		std::shared_ptr<Material> mPMaterial;
+		std::shared_ptr<Mesh> mPMesh;
 		std::shared_ptr<ParticleShader> mCS;
 
 		Particle mParticles[1000];

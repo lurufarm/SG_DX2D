@@ -29,6 +29,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
             {
                 ParticleBuffer[DTid.x].active = 1;
                 ParticleBuffer[DTid.x].curTime = ParticleBuffer[DTid.x].creationTime;
+                ParticleBuffer[DTid.x].position = ownerPos;
             }
             break;
 //            }
@@ -45,7 +46,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
             ParticleBuffer[DTid.x].curTime += deltaTime;
             ParticleBuffer[DTid.x].position.x += ParticleBuffer[DTid.x].direction.x * ParticleBuffer[DTid.x].speed * deltaTime;
             ParticleBuffer[DTid.x].position.y += ParticleBuffer[DTid.x].direction.y * ParticleBuffer[DTid.x].speed * deltaTime;
-            ParticleBuffer[DTid.x].position.z = 0.0f;
+            ParticleBuffer[DTid.x].position.z = ownerPos.z;
             ParticleBuffer[DTid.x].position.w = 1.0f;
             
 

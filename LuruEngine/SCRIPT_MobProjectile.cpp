@@ -25,7 +25,8 @@ namespace sg
 		{
 			mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 			mLastPos = mTarget->GetComp<Transform>()->GetPosition();
-			mTotalDuration = GetDistance() / 200.0f;
+			mTotalDuration = Time::DeltaTime() * 2;
+
 			if (mProjType == eMProjType::Basic_RandDir)
 			{
 				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
@@ -46,6 +47,15 @@ namespace sg
 				mLastPos = mProj->GetLastPos();
 				mTotalDuration = GetDistance() / 20.0f;
 				mLastPos += mFirstPos;
+			}
+			else if (mProjType == eMProjType::BloodSpit)
+			{
+				mFirstPos.y -= 5.0f;
+				mLastPos = mProj->GetLastPos();
+				Vector2 direction = GetDirection();
+				float angleDegree = sgGetAngle(direction) - 90.0f;
+				Transform* tr = mProj->GetComp<Transform>();
+				tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 			}
 		}
 		else
@@ -104,7 +114,8 @@ namespace sg
 		else if (mProjType == eMProjType::Basic 
 			|| mProjType == eMProjType::Basic_RandDir 
 			|| mProjType == eMProjType::Basic_NearCardinalDir
-			|| mProjType == eMProjType::Basic_Dir)
+			|| mProjType == eMProjType::Basic_Dir
+			|| mProjType == eMProjType::BloodSpit)
 		{
 			IsActivated = true;
 			curPos = mFirstPos + (t * 5.0f)* GetDirection();

@@ -7,6 +7,8 @@
 #include "Bullet_PoisonOrb.h"
 #include "Bullet_EntRock.h"
 #include "Effect_ProjectileDest.h"
+#include "Img_EyeBallLine.h"
+
 
 extern sg::Gobj_Player* Player;
 
@@ -152,39 +154,51 @@ namespace sg
 		}
 
 		mTime += Time::DeltaTime();
-
 		Animator* at = mOwner->GetComp<Animator>();
+		int Index = at->GetActiveAni()->GetAniIndex();
+		std::wstring ownerName = mOwner->GetName();
+		std::wstring aniName = at->GetActiveAni()->GetKey();
+
 		if (mTime >= mOwner->GetStat().mCooldown)
 		{
 			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
 		}		
 
-		if (mOwner->GetName() == L"CannibalFlowerA")
+		if (!mLaunched)
 		{
-			if (at->GetActiveAni()->GetAniIndex() == 3 
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
-				&& mLaunched == false)
+			if (ownerName == L"CannibalFlowerA")
 			{
-				Bullet_PoisonOrb* pob = object::Instantiate<Bullet_PoisonOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
-				mLaunched = true;
+				if (Index == 3
+					&& aniName == AnimationName(attack))
+				{
+					Bullet_PoisonOrb* pob = object::Instantiate<Bullet_PoisonOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"Ent")
+			{
+				if (Index == 7
+					&& aniName == AnimationName(attack))
+				{
+					Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
+					pos.z += 0.1f;
+					Effect_ProjectileDest* epd = object::Instantiate<Effect_ProjectileDest>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+					Bullet_EntRock* erk = object::Instantiate<Bullet_EntRock>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"EyeBall")
+			{
+				if (Index == 2
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Img_EyeBallLine>(mOwner, eLayerType::Effect, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
 			}
 		}
-		else if (mOwner->GetName() == L"Ent")
-		{
-			if (at->GetActiveAni()->GetAniIndex() == 7 
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack) 
-				&& mLaunched == false)
-			{
-				Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
-				pos.z += 0.1f;
-				Effect_ProjectileDest* epd = object::Instantiate<Effect_ProjectileDest>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
-				Bullet_EntRock* erk = object::Instantiate<Bullet_EntRock>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
-				mLaunched = true;
-			}
-		}
-
-		if (mLaunched && at->GetActiveAni()->IsComplete())
+		else if (at->GetActiveAni()->IsComplete())
 		{
 			at->PlayAnimation(AnimationName(idle), true, mDirection);
 			mFSMState = eFSMState::Idle;

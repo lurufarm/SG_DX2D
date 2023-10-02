@@ -117,22 +117,22 @@ namespace sg
 	}
 	void LobbyScene::Update()
 	{
-		if (Input::KeyD(eKeyCode::SPACE))
-		{
-			{
-				GameObject* test = new GameObject();
-				test->SetName(L"Particle");
-				AddGameObj(eLayerType::Monster, test);
-				ParticleSystem* ps = test->AddComp<ParticleSystem>();
-				Vector4 scolor = Vector4(0.3f, 1.0f, 0.2f, 1.0f);
-				Vector4 mcolor = Vector4(1.0f, 0.3f, 0.2f, 1.0f);
-				Vector4 ecolor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-				test->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.0f));
-				ps->SetParticleMaterial(L"ParticleMaterial2");
-				ps->SetParticleOptions(100, Vector2(5.0f, 8.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
-			}
+		//if (Input::KeyD(eKeyCode::SPACE))
+		//{
+		//	{
+		//		GameObject* test = new GameObject();
+		//		test->SetName(L"Particle");
+		//		AddGameObj(eLayerType::Monster, test);
+		//		ParticleSystem* ps = test->AddComp<ParticleSystem>();
+		//		Vector4 scolor = Vector4(0.3f, 1.0f, 0.2f, 1.0f);
+		//		Vector4 mcolor = Vector4(1.0f, 0.3f, 0.2f, 1.0f);
+		//		Vector4 ecolor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		//		test->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.0f));
+		//		ps->SetParticleMaterial(L"ParticleMaterial2");
+		//		ps->SetParticleOptions(100, Vector2(5.0f, 8.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
+		//	}
 
-		}
+		//}
 		Scene::Update();
 	}
 	void LobbyScene::LateUpdate()

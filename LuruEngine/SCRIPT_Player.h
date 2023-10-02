@@ -21,12 +21,24 @@ namespace sg
 		void Initialize() override;
 		void Update() override;
 
+
+		template <typename Monster>
+		Vector3 GetAttackedDir(Monster* mob)
+		{
+			GameObject* obj = dynamic_cast<GameObject*>(mob);
+			Vector3 dir3 = obj->GetComp<Transform>()->GetPosition();
+			Vector3 mypos = mOwner->GetComp<Transform>()->GetPosition();
+			mypos -= dir3;
+			mypos.Normalize();
+			return mypos;
+		}
+
 		void OnCollisionEnter(Collider2D* other) override;
 		void OnCollisionStay(Collider2D* other) override;
 		void OnCollisionExit(Collider2D* other) override;
 
+
 		std::wstring AnimationName(const std::wstring& animation);
-		
 		ePlayerFSM GetState() { return mFSMState; }
 		float GetDistanceToEnemy()
 		{
@@ -54,7 +66,8 @@ namespace sg
 				return mOwner->GetStat().mRange * 2.0f + 1.0f;
 			}
 		}
-
+		void DeductPlayerHP(Gobj_Character::CharStat& pStat, float damage);
+		void DeductPlayerHP(Gobj_Character::CharStat& pStat, GameObject* attacker);
 	private:
 
 		void Idle();
@@ -71,7 +84,10 @@ namespace sg
 		bool mAttacked = false;
 		bool mDeath = false;
 
+		Vector3 mAttackedDir;
+
 		float mTime;
+		float mAttackedTime;
 		
 		std::wstring idle = L"Idle";
 		std::wstring move = L"Move";

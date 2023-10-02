@@ -18,10 +18,12 @@
 #include "Bullet_RoboBeam.h"
 
 #include "SCRIPT_MeleeMob.h"
+#include "SCRIPT_MeleeZombie.h"
 #include "SCRIPT_MobProjectile.h"
 #include "SCRIPT_SkelKnight.h"
 #include "Effect_OldEntStem.h"
 #include "Effect_LaserFiring.h"
+#include "Effect_MobExplosion.h"
 
 
 extern sg::Gobj_Player* Player;
@@ -34,8 +36,10 @@ namespace sg
 		mOwner = (Gobj_Player*)GetOwner();
 		mDirection = true;
 		mTime = 0.0f;
+		mAttackedTime = 0.0f;
 		mAttacked = false;
 		mDeath = false;
+		mAttackedDir = Vector3::Zero;
 	}
 
 	void SCRIPT_Player::Update()
@@ -48,6 +52,13 @@ namespace sg
 		}
 		if (mAttacked)
 		{
+			mAttackedTime += Time::DeltaTime();
+			if (mAttackedTime >= 0.5f)
+			{
+				mAttacked = false;
+				mAttackedTime = 0.0f;
+			}
+				
 			mFSMState = ePlayerFSM::Attacked;
 		}
 		else
@@ -115,7 +126,107 @@ namespace sg
 			if (mOwner->GetEnemyNearby() && mAttacked == false && mDeath == false)
 				mFSMState = ePlayerFSM::Attack;
 		}
-	};
+	}
+
+	void SCRIPT_Player::DeductPlayerHP(Gobj_Character::CharStat& pStat, float damage)
+	{
+		pStat.mCurHP -= damage * pStat.mDefence;
+		mOwner->SetStat(pStat);
+	}
+	void SCRIPT_Player::DeductPlayerHP(Gobj_Character::CharStat& pStat, GameObject* attacker)
+	{
+		Gobj_Monster::MobStat mobStat = static_cast<Gobj_Monster*>(attacker)->GetStat();
+		pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
+		mOwner->SetStat(pStat);
+	}
+
+	void SCRIPT_Player::OnCollisionEnter(Collider2D* other)
+	{
+		//GameObject* otherOwner = other->GetOwner();
+		//SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
+
+		//if (skelKnight != nullptr)
+		//	mOwner->SetTransParent(true);
+
+		//if (mDeath || mAttacked) 
+		//	return;
+
+		//mAttackedDir = GetAttackedDir(otherOwner);
+		//SCRIPT_MeleeMob* meleeMob = otherOwner->GetComp<SCRIPT_MeleeMob>();
+		//SCRIPT_MobProjectile* mobProj = otherOwner->GetComp<SCRIPT_MobProjectile>();
+		//Gobj_Effect* effect = otherOwner->GetComp<Gobj_Effect>();
+
+		//mAttackedDir = GetAttackedDir(other->GetOwner());
+		//Gobj_Character::CharStat pStat = mOwner->GetStat();
+
+		//if (meleeMob != nullptr && meleeMob->mAttackable)
+		//{
+		//	mAttacked = true;
+		//	DeductPlayerHP(pStat, meleeMob->GetOwner());
+		//}
+		//else if (mobProj != nullptr && mobProj->GetProjActivated())
+		//{
+		//	mAttacked = true;
+		//	DeductPlayerHP(pStat, mobProj->GetOwner());
+		//}
+		//else if (skelKnight != nullptr && skelKnight->mAttackable)
+		//{
+		//	mAttacked = true;
+		//	mOwner->SetTransParent(true);
+		//	DeductPlayerHP(pStat, skelKnight->GetOwner());
+		//}
+		//else if (effect != nullptr)
+		//{
+		//	mAttacked = true;
+		//	DeductPlayerHP(pStat, 8.0f);
+		//}
+	}
+	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
+	{
+		GameObject* otherOwner = other->GetOwner();
+		SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
+
+		if (skelKnight != nullptr)
+			mOwner->SetTransParent(true);
+
+		if (mDeath || mAttacked)
+			return;
+
+		mAttackedDir = GetAttackedDir(otherOwner);
+		SCRIPT_MeleeMob* meleeMob = otherOwner->GetComp<SCRIPT_MeleeMob>();
+		SCRIPT_MobProjectile* mobProj = otherOwner->GetComp<SCRIPT_MobProjectile>();
+		Gobj_Effect* effect = otherOwner->GetComp<Gobj_Effect>();
+
+		mAttackedDir = GetAttackedDir(other->GetOwner());
+		Gobj_Character::CharStat pStat = mOwner->GetStat();
+
+		if (meleeMob != nullptr && meleeMob->mAttackable)
+		{
+			mAttacked = true;
+			DeductPlayerHP(pStat, meleeMob->GetOwner());
+		}
+		else if (mobProj != nullptr && mobProj->GetProjActivated())
+		{
+			mAttacked = true;
+			DeductPlayerHP(pStat, mobProj->GetOwner());
+		}
+		else if (skelKnight != nullptr && skelKnight->mAttackable)
+		{
+			mAttacked = true;
+			mOwner->SetTransParent(true);
+			DeductPlayerHP(pStat, skelKnight->GetOwner());
+		}
+		else if (effect != nullptr)
+		{
+			mAttacked = true;
+			DeductPlayerHP(pStat, 8.0f);
+		}
+	}
+	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
+	{
+		mOwner->SetTransParent(false);
+	}
+
 
 	void SCRIPT_Player::Idle()
 	{
@@ -137,8 +248,8 @@ namespace sg
 		{
 			mKey = Input::GetAnyKeyInfo();
 
-			if (mKey.key == eKeyCode::A 
-				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None 
+			if (mKey.key == eKeyCode::A
+				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None
 				&& Input::GetKeyState(eKeyCode::S) == eKeyState::None)
 			{
 				mDirection = false;
@@ -146,8 +257,8 @@ namespace sg
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (mKey.key == eKeyCode::D 
-				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None 
+			else if (mKey.key == eKeyCode::D
+				&& Input::GetKeyState(eKeyCode::W) == eKeyState::None
 				&& Input::GetKeyState(eKeyCode::S) == eKeyState::None)
 			{
 				mDirection = true;
@@ -155,24 +266,24 @@ namespace sg
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (mKey.key == eKeyCode::W 
-				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None 
+			else if (mKey.key == eKeyCode::W
+				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None
 				&& Input::GetKeyState(eKeyCode::D) == eKeyState::None)
 			{
 				pos.y += speed * Time::DeltaTime();
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (mKey.key == eKeyCode::S 
-				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None 
+			else if (mKey.key == eKeyCode::S
+				&& Input::GetKeyState(eKeyCode::A) == eKeyState::None
 				&& Input::GetKeyState(eKeyCode::D) == eKeyState::None)
 			{
 				pos.y -= speed * Time::DeltaTime();
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			
-			if (Input::KeyP(eKeyCode::A) 
+
+			if (Input::KeyP(eKeyCode::A)
 				&& Input::KeyP(eKeyCode::W))
 			{
 				mDirection = false;
@@ -181,7 +292,7 @@ namespace sg
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (Input::KeyP(eKeyCode::A) 
+			else if (Input::KeyP(eKeyCode::A)
 				&& Input::KeyP(eKeyCode::S))
 			{
 				mDirection = false;
@@ -190,7 +301,7 @@ namespace sg
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (Input::KeyP(eKeyCode::D) 
+			else if (Input::KeyP(eKeyCode::D)
 				&& Input::KeyP(eKeyCode::W))
 			{
 				mDirection = true;
@@ -199,7 +310,7 @@ namespace sg
 				tr->SetPosition(pos);
 				mAni->PlayAnimation(AnimationName(move), true, mDirection);
 			}
-			else if (Input::KeyP(eKeyCode::D) 
+			else if (Input::KeyP(eKeyCode::D)
 				&& Input::KeyP(eKeyCode::S))
 			{
 				mDirection = true;
@@ -229,15 +340,15 @@ namespace sg
 		}
 		if (mTime >= mOwner->GetStat().mCooldown && mOwner->GetStat().mRange * 2.0f >= GetDistanceToEnemy())
 		{
-			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
-			if (mOwner->GetChar()->GetName() == L"Cheese")
+			//mAni->PlayAnimation(AnimationName(attack), false, mDirection);
+			/*if (mOwner->GetChar()->GetName() == L"Cheese")
 			{
 				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
 					object::ShootBullet<Bullet_CheeseArrow>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 				}
 			}
-			else if (mOwner->GetChar()->GetName() == L"Lucy")
+			else */if (mOwner->GetChar()->GetName() == L"Lucy")
 			{
 				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
@@ -252,13 +363,13 @@ namespace sg
 				object::Instantiate<Effect_LaserFiring>(epos, eLayerType::Player_Effect, SceneManager::GetActiveScene());
 				object::ShootBullet<Bullet_RoboBeam>(RoboBeamRange, eLayerType::Player_Beam, SceneManager::GetActiveScene());
 			}
-			mTime = 0.0f;	
+			mTime = 0.0f;
 		}
 		if (Input::GetAnyKey())
 			mFSMState = ePlayerFSM::Move;
 		else if (Input::GetAnyKey() == false && mAni->GetActiveAni()->IsComplete())
 		{
-			mFSMState = ePlayerFSM ::Idle;
+			mFSMState = ePlayerFSM::Idle;
 			mAni->PlayAnimation(AnimationName(idle), true, mDirection);
 		}
 	}
@@ -267,20 +378,27 @@ namespace sg
 		Animator* mAni = mOwner->GetComp<Animator>();
 		mAni->PlayAnimation(AnimationName(attacked), false, mDirection);
 		mTime = 0.0f;
+		Transform* tr = mOwner->GetComp<Transform>();
+		Vector3 pos = tr->GetPosition();
 
-		if (mAni->GetActiveAni()->IsComplete() && mAni->GetActiveAni()->GetKey() == AnimationName(attacked))
+		if (mAttacked)
 		{
-			mAttacked = false;
+			pos += mAttackedDir * 20.0f * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+
+		if (mAni->GetActiveAni()->GetKey() == AnimationName(attacked) && mAni->GetActiveAni()->IsComplete())
+		{
 			mFSMState = ePlayerFSM::Idle;
 		}
 		if (Input::GetAnyKey() && mAni->GetActiveAni()->IsComplete() && mAni->GetActiveAni()->GetKey() == AnimationName(attacked))
 		{
-			mAttacked = false;
 			mFSMState = ePlayerFSM::Move;
 		}
 		if (mOwner->GetStat().mCurHP <= 0)
 		{
 			mAttacked = false;
+			mDeath = true;
 			mFSMState = ePlayerFSM::Death;
 		}
 
@@ -294,82 +412,8 @@ namespace sg
 			SceneManager::LoadScene(L"02_LobbyScene");
 
 	}
-	void SCRIPT_Player::OnCollisionEnter(Collider2D* other)
-	{
-		SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
-		SCRIPT_MobProjectile* sp = other->GetOwner()->GetComp<SCRIPT_MobProjectile>();
-		Effect_OldEntStem* oes = dynamic_cast<Effect_OldEntStem*>(other->GetOwner());
-		SCRIPT_SkelKnight* ssk = other->GetOwner()->GetComp<SCRIPT_SkelKnight>();
-		//Boss_SkelKnight* bsk = dynamic_cast<Boss_SkelKnight*>(other->GetOwner());
 
-		if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false) // 일반 몬스터 근거리 공격에 맞았을 때
-		{
-			mAttacked = true;
-			Gobj_Character::CharStat pStat = mOwner->GetStat();
-			Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
-			pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
-			mOwner->SetStat(pStat);
-		}
-		else if (sp != nullptr) // 일반 몬스터 Proj에 맞았을 때
-		{
-			if (mAttacked == false && mDeath == false && sp->GetProjActivated())
-			{
-				mAttacked = true;
-				Gobj_Character::CharStat pStat = mOwner->GetStat();
-				if (((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner() != nullptr)
-				{
-					Gobj_Monster::MobStat mobStat = ((Gobj_MobProjectile*)sp->GetOwner())->GetProjOwner()->GetStat();
-					pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
-				}
-				else
-					pStat.mCurHP -= 8.0f - (8.0f * pStat.mDefence);
-				mOwner->SetStat(pStat);
-			}
-		}
-		else if (oes != nullptr) // OldEnt 뿌리에 맞았을 때
-		{
-			if (mAttacked == false && mDeath == false)
-			{
-				mAttacked = true;
-				Gobj_Character::CharStat pStat = mOwner->GetStat();
-				pStat.mCurHP -= 8.0f - (8.0f * pStat.mDefence);
-				mOwner->SetStat(pStat);
-			}
-		}
-		else if (ssk != nullptr)
-		{
-			if (mAttacked == false && mDeath == false && ssk->mAttackable)
-			{
-				mAttacked = true;
-				Gobj_Character::CharStat pStat = mOwner->GetStat();
-				Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)ssk->GetOwner())->GetStat();
-				pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
-				mOwner->SetStat(pStat);
-			}
-			else
-			{
-				mOwner->SetTransParent(true);
-			}
-		}
-	}
-	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
-	{
-		//SCRIPT_MeleeMob* sm = other->GetOwner()->GetComp<SCRIPT_MeleeMob>();
-		//if (sm != nullptr && sm->mAttack && mAttacked == false && mDeath == false)
-		//{
-		//	mAttacked = true;
-		//	Gobj_Character::CharStat pStat = mOwner->GetStat();
-		//	Gobj_Monster::MobStat mobStat = ((Gobj_Monster*)sm->GetOwner())->GetStat();
-		//	pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
-		//	mOwner->SetStat(pStat);
-		//}
-	}
-	void SCRIPT_Player::OnCollisionExit(Collider2D* other)
-	{
-		mAttacked = false;
-		mOwner->SetTransParent(false);
-		//mFSMState = ePlayerFSM::Idle;
-	}
+
 	std::wstring SCRIPT_Player::AnimationName(const std::wstring& animation)
 	{
 		std::wstring animationName = L"Ani_";

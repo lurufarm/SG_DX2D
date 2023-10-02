@@ -6,7 +6,7 @@ namespace sg
 	{
 		mStat.mLev = 1;
 		mStat.mLife = 0;
-		mStat.mStrength = 15.0f;
+		mStat.mStrength = 0.0f;
 		mStat.mDefence = 0.0f;
 		mStat.mCooldown = 1.0f;
 		mStat.mRange = 70.0f;

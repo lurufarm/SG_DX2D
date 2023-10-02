@@ -36,10 +36,6 @@ namespace sg
 		float GetDistance();
 		Vector3 GetDirection();
 		void SelectAttack();
-		float Lerp(float a, float b, float t)
-		{
-			return (1 - t) * a + t * b;
-		}
 
 		bool mAttackable;
 

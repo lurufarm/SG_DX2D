@@ -157,8 +157,10 @@
     <ClInclude Include="Boss_OldEnt.h" />
     <ClInclude Include="Boss_SkelKnight.h" />
     <ClInclude Include="Bullet_Apple.h" />
+    <ClInclude Include="Bullet_BloodSpit.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
+    <ClInclude Include="Img_EyeBallLine.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
     <ClInclude Include="Bullet_FireOrbs.h" />
     <ClInclude Include="Bullet_LucyBomb.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Effect_Hit.h" />
     <ClInclude Include="Effect_LaserFiring.h" />
     <ClInclude Include="Effect_LaserHit.h" />
+    <ClInclude Include="Effect_MobExplosion.h" />
     <ClInclude Include="Effect_OldEntStem.h" />
     <ClInclude Include="Effect_ProjectileDest.h" />
     <ClInclude Include="Effect_ProjectileDest2.h" />
@@ -203,21 +206,27 @@
     <ClInclude Include="Item_AbilityEnhancer.h" />
     <ClInclude Include="Item_Chars.h" />
     <ClInclude Include="Item_Selected.h" />
+    <ClInclude Include="Melee_Bat.h" />
+    <ClInclude Include="Melee_Bomb.h" />
     <ClInclude Include="Melee_Cannibals.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
     <ClInclude Include="Melee_EliteLarva.h" />
     <ClInclude Include="Melee_Larva.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
+    <ClInclude Include="Melee_Zombie.h" />
     <ClInclude Include="Monsters.h" />
     <ClInclude Include="Monster_Melee.h" />
     <ClInclude Include="Monster_Ranged.h" />
-    <ClInclude Include="particletest.h" />
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
     <ClInclude Include="Ranged_Ent.h" />
+    <ClInclude Include="Ranged_EyeBall.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SCENE_PlayScene2.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
+    <ClInclude Include="SCRIPT_MeleeBomb.h" />
+    <ClInclude Include="SCRIPT_MeleeZombie.h" />
     <ClInclude Include="SCRIPT_OldEnt.h" />
     <ClInclude Include="SCRIPT_Bullet.h" />
     <ClInclude Include="SCRIPT_Company.h" />
@@ -277,8 +286,10 @@
     <ClCompile Include="Boss_OldEnt.cpp" />
     <ClCompile Include="Boss_SkelKnight.cpp" />
     <ClCompile Include="Bullet_Apple.cpp" />
+    <ClCompile Include="Bullet_BloodSpit.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
+    <ClCompile Include="Img_EyeBallLine.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />
     <ClCompile Include="Bullet_FireOrbs.cpp" />
     <ClCompile Include="Bullet_LucyBomb.cpp" />
@@ -294,6 +305,7 @@
     <ClCompile Include="Effect_Hit.cpp" />
     <ClCompile Include="Effect_LaserFiring.cpp" />
     <ClCompile Include="Effect_LaserHit.cpp" />
+    <ClCompile Include="Effect_MobExplosion.cpp" />
     <ClCompile Include="Effect_OldEntStem.cpp" />
     <ClCompile Include="Effect_ProjectileDest.cpp" />
     <ClCompile Include="Effect_ProjectileDest2.cpp" />
@@ -322,20 +334,25 @@
     <ClCompile Include="Item_AbilityEnhancer.cpp" />
     <ClCompile Include="Item_Chars.cpp" />
     <ClCompile Include="Item_Selected.cpp" />
+    <ClCompile Include="Melee_Bat.cpp" />
+    <ClCompile Include="Melee_Bomb.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
     <ClCompile Include="Melee_EliteLarva.cpp" />
     <ClCompile Include="Melee_Larva.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
+    <ClCompile Include="Melee_Zombie.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="Monster_Ranged.cpp" />
-    <ClCompile Include="particletest.cpp" />
     <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
     <ClCompile Include="Ranged_Ent.cpp" />
+    <ClCompile Include="Ranged_EyeBall.cpp" />
     <ClCompile Include="SCENE_PlayScene2.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
+    <ClCompile Include="SCRIPT_MeleeBomb.cpp" />
+    <ClCompile Include="SCRIPT_MeleeZombie.cpp" />
     <ClCompile Include="SCRIPT_OldEnt.cpp" />
     <ClCompile Include="SCRIPT_Bullet.cpp" />
     <ClCompile Include="SCRIPT_Company.cpp" />
@@ -390,6 +407,9 @@
     <ClCompile Include="UI_Exit.cpp" />
     <ClCompile Include="UI_FocusBox.cpp" />
     <ClCompile Include="UI_FocusBoxes.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LuruEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -71,6 +71,7 @@ namespace renderer
 
 	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
 	{
+		Vector4 ownerPos;
 		Vector4 startColor;
 		Vector4 middleColor;
 		Vector4 endColor;

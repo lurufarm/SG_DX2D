@@ -31,7 +31,7 @@ namespace sg
 		if (mBulletType == eBulletType::Cheese)
 		{
 			Vector2 direction = GetDirection();
-			float angleDegree = GetAngle(direction) - 90.0f;
+			float angleDegree = sgGetAngle(direction) - 90.0f;
 			Transform* tr = mBullet->GetComp<Transform>();
 			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 		}
@@ -39,9 +39,9 @@ namespace sg
 		{
 			mLastPos = mPlayer->GetTarget()->GetComp<Transform>()->GetPosition();
 			Vector2 direction = GetDirection();
-			float angleDegree = GetAngle(direction) - 90.0f;
-			float angleRadian = GetAngleInRadian(angleDegree + 90.0f);
-			Vector2 pos = GetRoboBeamPos(160.0f, angleRadian);
+			float angleDegree = sgGetAngle(direction) - 90.0f;
+			float angleRadian = sgGetAngleInRadian(angleDegree + 90.0f);
+			Vector2 pos = GetBeamPos(160.0f, angleRadian);
 			Vector3 lastpos = Vector3(pos.x, pos.y, -1.0f);
 			Transform* tr = mBullet->GetComp<Transform>();
 			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));

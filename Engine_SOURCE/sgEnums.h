@@ -78,6 +78,7 @@ namespace sg::enums
 		Basic_RandDir,
 		Basic_NearCardinalDir,
 		Basic_Dir,
+		BloodSpit,
 		End,
 	};
 
