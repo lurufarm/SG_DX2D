@@ -3,6 +3,7 @@
 #include "sgSceneManager.h"
 #include "sgGameObject.h"
 #include "sgTransform.h"
+#include "sgScene.h"
 
 namespace sg
 {
@@ -11,7 +12,7 @@ namespace sg
 	Light::Light()
 		: Component(eComponentType::Light)
 	{
-		mPlus = false;
+		mNum++;
 	}
 	Light::~Light()
 	{

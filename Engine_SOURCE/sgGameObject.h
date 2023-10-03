@@ -6,6 +6,9 @@
 #include "..\Engine_SOURCE\sgMaterial.h"
 #include "sgScript.h"
 
+#include "sgLayer.h"
+#include "sgScene.h"
+
 namespace sg
 {
 	class GameObject : public Entity

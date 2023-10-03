@@ -4,6 +4,7 @@
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgFontWrapper.h"
 #include "SCENE_PlayScene.h"
+#include "SCENE_PlayScene2.h"
 #include "Interact_Gate.h"
 #include "Item_AbilityEnhancer.h"
 #include "Gobj_Item.h"
@@ -49,8 +50,16 @@ namespace sg
 			{
 				Scene* sc = SceneManager::LoadNextScene();
 				PlayScene* ps = dynamic_cast<PlayScene*>(sc);
-				ps->SelectedItemID = mItem->GetItemID();
-				mItem->SetItemActivate(true);
+				if (ps != nullptr)
+				{
+					ps->SelectedItemID = mItem->GetItemID();
+				}
+				else
+				{
+					PlayScene2* ps2 = dynamic_cast<PlayScene2*>(sc);
+					ps2->SelectedItemID = mItem->GetItemID();
+				}
+					mItem->SetItemActivate(true);
 			}
 		}
 	}

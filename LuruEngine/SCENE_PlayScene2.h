@@ -114,10 +114,10 @@ namespace sg
 		Vector3 mStartPos;
 		Vector3 mRewardPos;
 
-		const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
-		const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
-		const Vector4 mEveningLight = Vector4(0.1f, 0.2f, 0.4f, 1.0f);
-		const Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
+		//const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+		//const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
+		//const Vector4 mEveningLight = Vector4(0.1f, 0.1f, 0.2f, 1.0f);
+		//const Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
 
 		static float mTime;
 		static float mTime2;
@@ -130,7 +130,6 @@ namespace sg
 		static class UI_FocusBoxes2* mFocus;
 
 	private:
-		GameObject* mLight;
 		Light* mLg;
 
 	};

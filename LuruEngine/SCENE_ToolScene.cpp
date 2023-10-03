@@ -37,32 +37,10 @@ namespace sg
 		Scene::Initialize();
 		TilePalette::Initialize();
 
-#pragma region LobbyScene Making
-
-		//object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
-		//Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
-		//Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
-		//Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
-		//Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
-
-		//Img_LobbyTorch* torch0 = object::Instantiate<Img_LobbyTorch>(Vector3(30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
-		//Img_LobbyTorch* torch1 = object::Instantiate<Img_LobbyTorch>(Vector3(-30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
-
-
-#pragma endregion
 #pragma region Forest
 		//Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
 		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, /*pos,*/ eLayerType::BGImg, this);
-
-
-		//Vector3 pos = Vector3(-11.0f, -15.0f, 0.0f);
-		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd03, pos, eLayerType::BGImg, this);
-
-
-		//object::Instantiate<Interact_Gate>(0, Vector3(-82.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
-		//object::Instantiate<Interact_Gate>(0, Vector3(-45.0f, 430.0f, -0.1f), eLayerType::InteractableObject, this);
-		//object::Instantiate<Interact_Gate>(0, Vector3(8.0, 430.0f, -0.1f), eLayerType::InteractableObject, this);
 
 #pragma endregion
 

@@ -65,14 +65,6 @@ namespace sg
 
 		Player->Initialize();
 
-		//GameObject* obj = new GameObject();
-		//obj->SetName(L"Particle");
-		//AddGameObj(eLayerType::Monster, obj);
-		//ParticleSystem* ps = obj->AddComp<ParticleSystem>();
-		//obj->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.50f));
-		//obj->GetComp<Transform>()->SetScale(0.2f, 0.2f, 0.2f);
-		
-
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
 		object::Instantiate<Img_Space1>(eLayerType::BGImg, this)->AddComp<SCRIPT_BGCamera>();
@@ -137,7 +129,6 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
-		//renderer::lightsBuffer->Clear();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
 		TilePalette::AutoLoad(path0);
