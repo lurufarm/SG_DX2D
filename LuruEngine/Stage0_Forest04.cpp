@@ -124,6 +124,5 @@ namespace sg
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);
-
 	}
 }
