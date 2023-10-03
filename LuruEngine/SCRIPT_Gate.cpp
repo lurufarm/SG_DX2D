@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgGameObject.h"
 #include "..\Engine_SOURCE\sgSceneManager.h"
+#include "..\Engine_SOURCE\sgFontWrapper.h"
 #include "SCENE_PlayScene.h"
 #include "Interact_Gate.h"
 #include "Item_AbilityEnhancer.h"
@@ -26,6 +27,23 @@ namespace sg
 		if (mOwner->GetIsOpen())
 		{
 			mItem->SetState(GameObject::eState::Active);
+
+			if (mOwner->GetSelected())
+			{
+				//FontWrapper::DrawFont(L"추가 생명", 10, 30, 20, FONT_RGBA(255, 0, 255, 255));
+
+				int itemID = mItem->GetItemID();
+				switch (itemID)
+				{
+				case 0:
+					break;
+				case 1 :
+					break;
+					
+				default:
+					break;
+				}
+			}
 
 			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::N))
 			{

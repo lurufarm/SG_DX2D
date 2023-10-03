@@ -74,12 +74,7 @@ namespace sg
 
 
 	}
-	void SCRIPT_MeleeMob::LateUpdate()
-	{
-	}
-	void SCRIPT_MeleeMob::Render()
-	{
-	}
+
 	void SCRIPT_MeleeMob::OnCollisionEnter(Collider2D* other)
 	{
 		if (other->GetOwner() == dynamic_cast<Gobj_Bullet*>(other->GetOwner()))
@@ -190,6 +185,13 @@ namespace sg
 		else if (ownerName == L"Zombie")
 		{
 			if (Index == 5)
+				mAttackable = true;
+			else
+				mAttackable = false;
+		}
+		else if (ownerName == L"Skeleton")
+		{
+			if (Index == 3)
 				mAttackable = true;
 			else
 				mAttackable = false;

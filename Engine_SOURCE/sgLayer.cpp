@@ -77,6 +77,7 @@ namespace sg
 	}
 	void Layer::AddGameObj(GameObject* gameObj)
 	{
+		gameObj->SetMyLayer(this);
 		mGameObjects.push_back(gameObj);
 	}
 	void Layer::DeleteGameObj(GameObject* gameObj)
@@ -86,6 +87,7 @@ namespace sg
 		{
 			if (gameObj == *iter)
 			{
+				gameObj->SetMyLayer(nullptr);
 				mGameObjects.erase(iter);
 				return;
 			}

@@ -21,6 +21,8 @@ namespace sg
 	}
 	void Light::Update()
 	{
+		mScene = GetOwner()->GetMyScene();
+
 		if (GetOwner()->GetState() != GameObject::eState::Active)
 		{
 			mOn = false;
@@ -43,7 +45,8 @@ namespace sg
 	}
 	void Light::LateUpdate()
 	{
-		renderer::lights.push_back(this);
+		if (mScene != nullptr)
+			renderer::lights.insert(std::make_pair(mScene->GetName(), this));
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
 		mAttribute.position = Vector4(pos.x, pos.y, pos.z, 1.0f);

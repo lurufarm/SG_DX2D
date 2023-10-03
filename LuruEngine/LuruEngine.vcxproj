@@ -160,6 +160,7 @@
     <ClInclude Include="Bullet_BloodSpit.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
+    <ClInclude Include="Bullet_LightningOrb.h" />
     <ClInclude Include="Img_EyeBallLine.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
     <ClInclude Include="Bullet_FireOrbs.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Melee_EliteCannibals.h" />
     <ClInclude Include="Melee_EliteLarva.h" />
     <ClInclude Include="Melee_Larva.h" />
+    <ClInclude Include="Melee_Skeleton.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Melee_Zombie.h" />
@@ -221,6 +223,7 @@
     <ClInclude Include="Ranged_CannibalFlowerA.h" />
     <ClInclude Include="Ranged_Ent.h" />
     <ClInclude Include="Ranged_EyeBall.h" />
+    <ClInclude Include="Ranged_SkelMage.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SCENE_PlayScene2.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
@@ -289,6 +292,7 @@
     <ClCompile Include="Bullet_BloodSpit.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
+    <ClCompile Include="Bullet_LightningOrb.cpp" />
     <ClCompile Include="Img_EyeBallLine.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />
     <ClCompile Include="Bullet_FireOrbs.cpp" />
@@ -340,6 +344,7 @@
     <ClCompile Include="Melee_EliteCannibals.cpp" />
     <ClCompile Include="Melee_EliteLarva.cpp" />
     <ClCompile Include="Melee_Larva.cpp" />
+    <ClCompile Include="Melee_Skeleton.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Melee_Zombie.cpp" />
@@ -348,6 +353,7 @@
     <ClCompile Include="Ranged_CannibalFlowerA.cpp" />
     <ClCompile Include="Ranged_Ent.cpp" />
     <ClCompile Include="Ranged_EyeBall.cpp" />
+    <ClCompile Include="Ranged_SkelMage.cpp" />
     <ClCompile Include="SCENE_PlayScene2.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />

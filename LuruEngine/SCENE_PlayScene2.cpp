@@ -38,11 +38,11 @@ namespace sg
 	}
 	void PlayScene2::Initialize()
 	{
-		GameObject* mLight = new GameObject();
-		mLg = mLight->AddComp<Light>();
-		AddGameObj(eLayerType::Light, mLight);
-		mLg->SetType(eLightType::Directional);
-		mLg->SetColor(mEveningLight);
+		//GameObject* mLight = new GameObject();
+		//mLg = mLight->AddComp<Light>();
+		//AddGameObj(eLayerType::Light, mLight);
+		//mLg->SetType(eLightType::Directional);
+		//mLg->SetColor(mEveningLight);
 		//mLg->SetColor(Vector4::Zero);
 
 		if (mFocus == nullptr)

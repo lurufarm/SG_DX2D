@@ -373,6 +373,15 @@
     <ClCompile Include="Bullet_BloodSpit.cpp">
       <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
     </ClCompile>
+    <ClCompile Include="Melee_Skeleton.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_SkelMage.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_LightningOrb.cpp">
+      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -754,6 +763,15 @@
     <ClInclude Include="Bullet_BloodSpit.h">
       <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
     </ClInclude>
+    <ClInclude Include="Melee_Skeleton.h">
+      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_SkelMage.h">
+      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_LightningOrb.h">
+      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="x">
@@ -920,6 +938,12 @@
     </Filter>
     <Filter Include="Obj\Gobj_Monster\Ranged\EyeBall">
       <UniqueIdentifier>{bd85fe97-6466-4c12-9ee6-2da1cf5ba400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg\Skeleton">
+      <UniqueIdentifier>{d62f3108-a2b9-46c5-91ff-d235c57cfc69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Ranged\SkelMage">
+      <UniqueIdentifier>{89645cc7-e9b9-4220-863a-d5a7b79f2dd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

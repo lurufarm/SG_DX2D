@@ -126,6 +126,28 @@ namespace sg
 			return comp;
 		}
 
+		template <typename T>
+		T* AddComp2(T* comp)
+		{
+			Component* buff
+				= dynamic_cast<Component*>(comp);
+			Script* script
+				= dynamic_cast<Script*>(buff);
+
+			if (buff == nullptr)
+				return nullptr;
+
+			if (script == nullptr)
+				mComponents.push_back(buff);
+			else
+				mScripts.push_back(script);
+
+			comp->SetOwner(this);
+			comp->Initialize();
+
+			return comp;
+		}
+
 		void SetState(eState state) { mState = state; }
 		eState GetState() { return mState; }
 
@@ -152,6 +174,12 @@ namespace sg
 		void SetTransParent(bool value) { mTransParent = value; }
 		bool GetTransparent() { return mTransParent; }
 
+		class Layer* GetMyLayer() { return mMyLayer; }
+		class Scene* GetMyScene() { return mMyScene; }
+
+		void SetMyLayer(class Layer* layer) { mMyLayer = layer; }
+		void SetMyScene(class Scene* scene) { mMyScene = scene; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
@@ -159,5 +187,9 @@ namespace sg
 		int mOrder;
 		bool mbSelected;
 		bool mTransParent;
+
+		class Layer* mMyLayer;
+		class Scene* mMyScene;
+
 	};
 }

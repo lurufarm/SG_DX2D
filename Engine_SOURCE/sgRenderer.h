@@ -96,7 +96,7 @@ namespace renderer
 	
 	// Light
 	extern sg::graphics::StructuredBuffer* lightsBuffer;
-	extern std::vector<sg::Light*> lights;
+	extern std::multimap<std::wstring, sg::Light*> lights;
 
 	extern sg::Camera* mainCamera;
 	extern std::vector<sg::Camera*> cameras;

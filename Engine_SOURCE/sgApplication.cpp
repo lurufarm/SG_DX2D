@@ -5,6 +5,7 @@
 #include "sgRenderer.h"
 #include "sgSceneManager.h"
 #include "sgCollisionManager.h"
+#include "sgFontWrapper.h"
 
 namespace sg
 {
@@ -29,6 +30,7 @@ namespace sg
 	{
 		Time::Initialize(); 
 		Input::Initialize();
+		FontWrapper::Initialize();
 
 		renderer::Initialize();
 		SceneManager::Initialize();
@@ -49,11 +51,12 @@ namespace sg
 		Time::Render();
 
 		graphicDevice->ClearTarget();
+
 		graphicDevice->UpdateViewPort();
 
 		//SceneManager::Render();
 		renderer::Render();
-		//graphicDevice->Draw();
+		FontWrapper::Render();
 
 	}
 	void Application::Destroy()

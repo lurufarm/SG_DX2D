@@ -361,7 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-
-# Photoshop
-Resources/psd/*.psd
-/Resources/Map/Stage0/stage0_1.png

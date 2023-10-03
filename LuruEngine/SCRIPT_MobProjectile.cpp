@@ -91,6 +91,21 @@ namespace sg
 			curPos.z = -1.0f;
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 		}
+		else if (mProjType == eMProjType::LightningOrb)
+		{
+			float speed = GetSpeed() * mTotalDuration * 7.0f;
+			IsActivated = true;
+			// Set the amplitude of the sine wave
+			float amplitude = 10.0f;
+			// Set the frequency of the sine wave
+			float frequency = 0.1f;
+
+			// Calculate the new position
+			curPos.x = mFirstPos.x + curDir.x * t * speed;
+			curPos.y = mFirstPos.y + curDir.y * t * speed + sin(t * frequency) * amplitude;
+			curPos.z = -1.0f;
+			mProj->GetComp<Transform>()->SetPosition(curPos);
+		}
 		else if (mProjType == eMProjType::EntRock)
 		{
 			float curveHeight = 30.0f; // ∞Óº±¿« ≥Ù¿Ã

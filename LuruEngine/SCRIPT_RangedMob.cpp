@@ -5,6 +5,7 @@
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
 #include "Bullet_PoisonOrb.h"
+#include "Bullet_LightningOrb.h"
 #include "Bullet_EntRock.h"
 #include "Effect_ProjectileDest.h"
 #include "Img_EyeBallLine.h"
@@ -86,17 +87,17 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
-		if (mFSMState == eFSMState::Attack)
-		{
-			if (other->GetOwner() == mTarget)
-			{
-				Gobj_Character::CharStat stat = mTarget->GetStat();
+		//if (mFSMState == eFSMState::Attack)
+		//{
+		//	if (other->GetOwner() == mTarget)
+		//	{
+		//		Gobj_Character::CharStat stat = mTarget->GetStat();
 
-				stat.mCurHP -= mOwner->GetStat().mStrength;
+		//		stat.mCurHP -= mOwner->GetStat().mStrength;
 
-				mTarget->SetStat(stat);
-			}
-		}
+		//		mTarget->SetStat(stat);
+		//	}
+		//}
 	}
 	void SCRIPT_RangedMob::OnCollisionStay(Collider2D* other)
 	{
@@ -194,6 +195,15 @@ namespace sg
 					&& aniName == AnimationName(attack))
 				{
 					object::Instantiate<Img_EyeBallLine>(mOwner, eLayerType::Effect, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"SkelMage")
+			{
+				if (Index == 4
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Bullet_LightningOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 					mLaunched = true;
 				}
 			}

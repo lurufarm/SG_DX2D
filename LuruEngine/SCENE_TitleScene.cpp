@@ -16,6 +16,7 @@
 #include "UI_FocusBox.h"
 
 #include "..\Engine_SOURCE\sgParticleSystem.h"
+#include "..\Engine_SOURCE\sgFontWrapper.h"
 
 namespace sg
 {
@@ -63,6 +64,7 @@ namespace sg
 	}
 	void TitleScene::Render()
 	{
+
 		Scene::Render();
 	}
 	void TitleScene::OnEnter()

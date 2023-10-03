@@ -23,26 +23,25 @@ void main(point VSOut In[1], inout TriangleStream<GSOut> output)
     GSOut Out[4] = { (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f, (GSOut) 0.0f };
 
     float3 worldPos = (In[0].LocalPos.xyz)
-                    //+ WorldMatrix._41_42_43 
                     + particles[In[0].Instance].position.xyz;
     
     float3 viewPos = mul(float4(worldPos, 1.0f), ViewMatrix).xyz;
-    
+    float t = min(particles[In[0].Instance].curTime / particles[In[0].Instance].lifeTime, 1.0f);
+    float scale = lerp(particles[In[0].Instance].scale.x, particles[In[0].Instance].scale.y, t);
+
     
     float3 NewPos[4] =
     {
-        viewPos - float3(-0.5f, 0.5f, 0.f) * float3(0.2f, 0.2f, 1.f),
-        viewPos - float3(0.5f, 0.5f, 0.f) * float3(0.2f, 0.2f, 1.f),
-        viewPos - float3(0.5f, -0.5f, 0.f) * float3(0.2f, 0.2f, 1.f),
-        viewPos - float3(-0.5f, -0.5f, 0.f) * float3(0.2f, 0.2f, 1.f)
+        viewPos - float3(-0.5f, 0.5f, 0.f) * float3(0.2f, 0.2f, 1.f) * scale,
+        viewPos - float3(0.5f, 0.5f, 0.f) * float3(0.2f, 0.2f, 1.f) * scale,
+        viewPos - float3(0.5f, -0.5f, 0.f) * float3(0.2f, 0.2f, 1.f) * scale,
+        viewPos - float3(-0.5f, -0.5f, 0.f) * float3(0.2f, 0.2f, 1.f) * scale
     };
     
 
     for (int i = 0; i < 4; ++i)
     {
-        float t = min(particles[In[0].Instance].curTime / particles[In[0].Instance].lifeTime, 1.0f);
-        float scale = lerp(particles[In[0].Instance].scale.x, particles[In[0].Instance].scale.y, t);
-        Out[i].Pos = mul(float4(NewPos[i] * scale, 1.0f), ProjectionMatrix);
+        Out[i].Pos = mul(float4(NewPos[i], 1.0f), ProjectionMatrix);
     }
     
 

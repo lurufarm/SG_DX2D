@@ -106,6 +106,9 @@
     <Filter Include="GameObject\Component\Particle">
       <UniqueIdentifier>{2f2c94cf-9a7c-4a05-aaef-db9a87c8740f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Font">
+      <UniqueIdentifier>{f4ea57b0-a85d-4b60-90bd-7721b61f2d87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -222,6 +225,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgParticleShader.h">
       <Filter>Resource\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgFontWrapper.h">
+      <Filter>Resource\Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -322,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgParticleShader.cpp">
       <Filter>Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgFontWrapper.cpp">
+      <Filter>Resource\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

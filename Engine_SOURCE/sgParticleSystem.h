@@ -31,7 +31,7 @@ namespace sg
 			mPMaterial = Resources::Find<sg::graphics::Material>(material); 
 			SetMaterial(mPMaterial);
 		}
-		void SetParticleOptions(UINT count, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq);
+		void SetParticleOptions(UINT count, Vector2 pRange, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq);
 		void SetTarget(GameObject* target) { mTarget = target; }
 		Vector4 GetStartColor() { return mStartColor; }
 		Vector4 GetMiddleColor() { return mMiddleColor; }
@@ -52,6 +52,7 @@ namespace sg
 		Vector4 mEndPos;
 		float mStartSize;
 		float mEndSize;
+		Vector2 mPosRange;
 		Vector2 mScaleRange;
 		float mStartAngle;
 		float mEndAngle;

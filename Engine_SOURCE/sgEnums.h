@@ -73,6 +73,7 @@ namespace sg::enums
 	enum class eMProjType
 	{
 		PoisonOrb,
+		LightningOrb,
 		EntRock,
 		Basic,
 		Basic_RandDir,

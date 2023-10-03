@@ -41,9 +41,9 @@ namespace sg
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg01, pos, eLayerType::BGImg, this);
 		//object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
 
-		GameObject* Forest04camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
-		mCamera = Forest04camera->AddComp<Camera>();
-		Forest04camera->AddComp<SCRIPT_MainCamera>();
+		GameObject* Forest05camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		mCamera = Forest05camera->AddComp<Camera>();
+		Forest05camera->AddComp<SCRIPT_MainCamera>();
 
 		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);

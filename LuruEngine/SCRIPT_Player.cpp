@@ -142,44 +142,24 @@ namespace sg
 
 	void SCRIPT_Player::OnCollisionEnter(Collider2D* other)
 	{
-		//GameObject* otherOwner = other->GetOwner();
-		//SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
+		GameObject* otherOwner = other->GetOwner();
+		SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
 
-		//if (skelKnight != nullptr)
-		//	mOwner->SetTransParent(true);
+		if (skelKnight != nullptr)
+			mOwner->SetTransParent(true);
 
-		//if (mDeath || mAttacked) 
-		//	return;
+		if (mDeath || mAttacked)
+			return;
 
-		//mAttackedDir = GetAttackedDir(otherOwner);
-		//SCRIPT_MeleeMob* meleeMob = otherOwner->GetComp<SCRIPT_MeleeMob>();
-		//SCRIPT_MobProjectile* mobProj = otherOwner->GetComp<SCRIPT_MobProjectile>();
-		//Gobj_Effect* effect = otherOwner->GetComp<Gobj_Effect>();
+		mAttackedDir = GetAttackedDir(otherOwner);
+		SCRIPT_MobProjectile* mobProj = otherOwner->GetComp<SCRIPT_MobProjectile>();
+		Gobj_Character::CharStat pStat = mOwner->GetStat();
+		if (mobProj != nullptr && mobProj->GetProjActivated())
+		{
+			mAttacked = true;
+			DeductPlayerHP(pStat, mobProj->GetProjOwner());
+		}
 
-		//mAttackedDir = GetAttackedDir(other->GetOwner());
-		//Gobj_Character::CharStat pStat = mOwner->GetStat();
-
-		//if (meleeMob != nullptr && meleeMob->mAttackable)
-		//{
-		//	mAttacked = true;
-		//	DeductPlayerHP(pStat, meleeMob->GetOwner());
-		//}
-		//else if (mobProj != nullptr && mobProj->GetProjActivated())
-		//{
-		//	mAttacked = true;
-		//	DeductPlayerHP(pStat, mobProj->GetOwner());
-		//}
-		//else if (skelKnight != nullptr && skelKnight->mAttackable)
-		//{
-		//	mAttacked = true;
-		//	mOwner->SetTransParent(true);
-		//	DeductPlayerHP(pStat, skelKnight->GetOwner());
-		//}
-		//else if (effect != nullptr)
-		//{
-		//	mAttacked = true;
-		//	DeductPlayerHP(pStat, 8.0f);
-		//}
 	}
 	void SCRIPT_Player::OnCollisionStay(Collider2D* other)
 	{
@@ -196,8 +176,6 @@ namespace sg
 		SCRIPT_MeleeMob* meleeMob = otherOwner->GetComp<SCRIPT_MeleeMob>();
 		SCRIPT_MobProjectile* mobProj = otherOwner->GetComp<SCRIPT_MobProjectile>();
 		Gobj_Effect* effect = otherOwner->GetComp<Gobj_Effect>();
-
-		mAttackedDir = GetAttackedDir(other->GetOwner());
 		Gobj_Character::CharStat pStat = mOwner->GetStat();
 
 		if (meleeMob != nullptr && meleeMob->mAttackable)
@@ -207,8 +185,9 @@ namespace sg
 		}
 		else if (mobProj != nullptr && mobProj->GetProjActivated())
 		{
+			mAttackedDir = GetAttackedDir(mobProj);
 			mAttacked = true;
-			DeductPlayerHP(pStat, mobProj->GetOwner());
+			DeductPlayerHP(pStat, mobProj->GetProjOwner());
 		}
 		else if (skelKnight != nullptr && skelKnight->mAttackable)
 		{

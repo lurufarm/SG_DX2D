@@ -34,14 +34,16 @@ namespace sg
 		mMr->Initialize();
 
 
-		ParticleSystem* mPs = AddComp<ParticleSystem>();
+		ParticleSystem* mPs = new ParticleSystem();
 		Vector4 scolor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		Vector4 mcolor = Vector4(1.0f, 0.7f, 0.0f, 0.6f);
 		Vector4 ecolor = Vector4(1.0f, 0.0f, 0.0f, 0.2f);
 		mPs->SetParticleMaterial(L"ParticleMaterial2");
-		mPs->SetTarget(Player);
-		mPs->SetParticleOptions(1000, Vector2(10.0f, 13.0f), 30.0f, scolor, ecolor, mcolor, 5.0f, 1.0f);
-		mPs->Initialize();
+		mPs->SetTarget(this);
+		mPs->SetParticleOptions(100, Vector2(10.0, 100.0f), Vector2(3.0f, 4.0f), 3.0f, scolor, ecolor, mcolor, 2.0f, 0.01f);
+		mPs = this->AddComp2<ParticleSystem>(mPs);
+
+
 		AddComp<SCRIPT_MobProjectile>();
 	}
 	void Bullet_BloodSpit::Update()

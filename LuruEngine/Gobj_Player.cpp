@@ -61,18 +61,19 @@ namespace sg
 		if (Input::KeyD(eKeyCode::SPACE))
 		{
 			{
-				GameObject* test = new GameObject();
-				test->SetName(L"Particle");
-				SceneManager::GetActiveScene()->AddGameObj(eLayerType::Monster, test);
-				ParticleSystem* ps = test->AddComp<ParticleSystem>();
+				//GameObject* test = new GameObject();
+				//test->SetName(L"Particle");
+				//SceneManager::GetActiveScene()->AddGameObj(eLayerType::Monster, test);
+				ParticleSystem* ps = new ParticleSystem();
 				Vector4 scolor = Vector4(0.3f, 1.0f, 0.2f, 1.0f);
 				Vector4 mcolor = Vector4(1.0f, 0.3f, 0.2f, 1.0f);
 				Vector4 ecolor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-				test->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.0f));
+				//test->GetComp<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1.0f));
 				ps->SetParticleMaterial(L"ParticleMaterial2");
 				ps->SetTarget(this);
-				ps->SetParticleOptions(100, Vector2(5.0f, 8.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
-				ps->Initialize();
+				ps->SetParticleOptions(100, Vector2::Zero, Vector2(5.0f, 8.0f), 5.0f, scolor, ecolor, mcolor, 3.0f, 0.3f);
+				ps = this->AddComp2<ParticleSystem>(ps);
+
 			}
 
 		}

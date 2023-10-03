@@ -30,11 +30,8 @@ namespace sg
 		std::shared_ptr<Texture> atlas0 = Resources::Load<Texture>(L"Nor_Gate", L"..\\Resources\\Map\\Common\\NorGate.png");
 		std::shared_ptr<Texture> atlas1 = Resources::Load<Texture>(L"Boss_Gate", L"..\\Resources\\Map\\Common\\BossGate.png");
 		mAni->Create(L"Nor_Gate_Closed", atlas0, Vector2::Zero, Vector2(30.0f, 24.0f), 1, Vector2::Zero, 1.0f);
-		//mAni->Create(L"Nor_Gate_Opened", atlas0, Vector2(0.0f, 24.0f), Vector2(30.0f, 24.0f), 1, Vector2::Zero, 1.0f);
 		mAni->Create(L"Boss_Gate_Closed", atlas1, Vector2::Zero, Vector2(30.0f, 24.0f), 1, Vector2::Zero, 1.0f);
-		//mAni->Create(L"Boss_Gate_Opened", atlas1, Vector2(0.0f, 24.0f), Vector2(30.0f, 24.0f), 1, Vector2::Zero, 1.0f);
 
-		//AddComp<SCRIPT_Gate>();
 
 		switch (mGateType)
 		{

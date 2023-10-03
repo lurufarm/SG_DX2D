@@ -47,6 +47,7 @@ namespace sg
 
 
 		bool GetProjActivated() { return IsActivated; }
+		Gobj_Monster* GetProjOwner() { return mProjOwner; }
 		float GetSpeed();
 		float GetRange();
 

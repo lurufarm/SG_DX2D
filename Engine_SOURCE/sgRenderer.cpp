@@ -5,6 +5,7 @@
 #include "sgPaintShader.h"
 #include "sgStructuredBuffer.h"
 #include "sgParticleShader.h"
+#include "sgSceneManager.h"
 
 namespace renderer
 {
@@ -20,7 +21,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 	
 	// light
-	std::vector<Light*> lights = {};
+	std::multimap<std::wstring, sg::Light*> lights = {};
 	StructuredBuffer* lightsBuffer = nullptr;
 
 	//
@@ -1166,6 +1167,19 @@ namespace renderer
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"ImgEyeBallProj", material);
 
+			texture = Resources::Load<Texture>(L"Monster_Skeleton", L"..\\Resources\\Monster\\skeleton.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSkeleton", material);
+
+			texture = Resources::Load<Texture>(L"Monster_SkelMage", L"..\\Resources\\Monster\\skeletonMage.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSkelMage", material);
 
 			texture = Resources::Load<Texture>(L"Monster_SkelKnight", L"..\\Resources\\Monster\\Bosses\\skeletonknight.png");
 			material = std::make_shared<Material>();
@@ -1192,10 +1206,15 @@ namespace renderer
 	void BindLights()
 	{
 		std::vector<LightAttribute> lightsAttributes = {};
-		for (Light* light : lights)
+		lightsAttributes.clear();
+		sg::Scene* activeScene = sg::SceneManager::GetActiveScene();
+		for (auto light : lights)
 		{
-			LightAttribute attribute = light->GetAttribute();
-			lightsAttributes.push_back(attribute);
+			if (light.first == activeScene->GetName())
+			{
+				LightAttribute attribute = light.second->GetAttribute();
+				lightsAttributes.push_back(attribute);
+			}
 		}
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);

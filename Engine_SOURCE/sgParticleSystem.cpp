@@ -70,14 +70,14 @@ namespace sg
 			{
 				Vector3 targetpos = mTarget->GetComp<Transform>()->GetPosition();
 				mEndPos = Vector4(targetpos.x, targetpos.y, 0.0f, 1.0f);
-				mEndPos = RandomPos(mEndPos, 3.0f);
+				mEndPos = RandomPos(mEndPos, mPosRange.y);
 			}
 
 			mEndPos = Vector4(2.0f, 2.0f, 0.0f, 0.0f);
-			mEndPos = RandomPos(mEndPos, 3.0f);
+			mEndPos = RandomPos(mEndPos, mPosRange.y);
 
-			mParticles[i].position = RandomPos(mStartPos, 0.5f);
-			mParticles[i].direction = Vector4(mEndPos.x - mStartPos.x, mEndPos.y - mStartPos.y, 1.0f, 1.0f);
+			mParticles[i].position = RandomPos(mStartPos, mPosRange.x);
+			mParticles[i].direction = Vector4(mEndPos.x - mStartPos.x, mEndPos.y - mStartPos.y, 0.0f, 1.0f);
 			mParticles[i].direction.Normalize();
 			mParticles[i].color = mStartColor;
 			mParticles[i].scale = Vector2(RandomScale(), RandomScale());
@@ -219,9 +219,10 @@ namespace sg
 	{
 		return 0.0f;
 	}
-	void ParticleSystem::SetParticleOptions(UINT count, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq)
+	void ParticleSystem::SetParticleOptions(UINT count, Vector2 pRange, Vector2 sRange, float speed, Vector4 sColor, Vector4 eColor, Vector4 mColor, float lTime, float freq)
 	{
 		mCount = count;
+		mPosRange = pRange;
 		mScaleRange = sRange;
 		mSpeed = speed;
 		mStartColor = sColor;
@@ -230,6 +231,5 @@ namespace sg
 		mLifeTime = lTime;
 		mFrequency = freq;
 		mElapsedTime = 0.0f;
-		//Initialize();
 	}
 }

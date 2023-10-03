@@ -2,6 +2,7 @@
 #include "sgApplication.h"
 #include "sgRenderer.h"
 #include "..\LuruEngine\Gobj_Player.h"
+#include "sgFontWrapper.h"
 
 extern sg::Application application;
 extern sg::Gobj_Player* Player;
@@ -49,14 +50,13 @@ namespace sg
 			float FPS = 1.0f / (float)mDeltaTime;
 			Vector3 ppos = Player->GetComp<Transform>()->GetPosition();
 			//swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
-			swprintf_s(szFloat, 50, L"X : %f, Y : %f, Z : &f", ppos.x, ppos.y, ppos.z);
+			swprintf_s(szFloat, 50, L"X : %f, Y : %f, Z : %f", ppos.x, ppos.y, ppos.z);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hwnd, szFloat);
 
 			//TextOut(hdc, 0, 0, szFloat, 20);
 			mSecond = 0.0;
 		}
-
 	}
 	void Time::BindConstantBuffer()
 	{

@@ -33,5 +33,8 @@ namespace sg
 		bool mPlus;
 		LightAttribute mAttribute;
 		static int mNum;
+
+		class Scene* mScene;
+
 	};
 }

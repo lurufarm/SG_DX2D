@@ -72,11 +72,10 @@ namespace sg
 		mItem1 = MakeItem(gpos1);
 		mItem2 = MakeItem(gpos2);
 
-
-
 #pragma region Monsters
 		//object::Instantiate<Boss_SkelKnight>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
