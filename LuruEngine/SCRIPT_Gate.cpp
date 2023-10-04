@@ -31,6 +31,11 @@ namespace sg
 
 			if (mOwner->GetSelected())
 			{
+
+				//wcscpy_s(FontWrapper::mText, L"Test");
+				//FontWrapper::SetFontOption(800, 400, 20.0f, FONT_RGBA(255, 0, 255, 255));
+
+
 				//FontWrapper::DrawFont(L"추가 생명", 10, 30, 20, FONT_RGBA(255, 0, 255, 255));
 
 				int itemID = mItem->GetItemID();

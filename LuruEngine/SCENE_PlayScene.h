@@ -40,9 +40,11 @@ namespace sg
 
 			return dist(gen);
 		}
-	
-		class Gobj_Item* MakeItem(Vector3 pos);
 		
+		void InitializeItemIds();
+		class Gobj_Item* MakeItem(Vector3 pos);
+		Vector3 RandPos();
+
 		void SpawnMob()
 		{
 			if (mPausedMobs.size() > 8)
@@ -68,7 +70,6 @@ namespace sg
 			}
 		}
 
-		Vector3 RandPos();
 
 		void PurgeDeadMobs()
 		{
@@ -107,12 +108,16 @@ namespace sg
 		class Gobj_Item* mItem1;
 		class Gobj_Item* mItem2;
 
+		std::vector<int> mEnhenceItemIDs;
+		std::vector<int> mCharItemIDs;
+
 		Gobj_Light* mPlayerLight[4];
 		int mLightnum = 1;
 
 		Vector3 mCrackPos[3];
 		Vector3 mStartPos;
 		Vector3 mRewardPos;
+		Vector3 mGatePos[3];
 
 		const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 		const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);

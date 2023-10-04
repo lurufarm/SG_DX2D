@@ -18,7 +18,6 @@ namespace sg
 			forestdg03,
 			forestdg04,
 			forestboss01,
-			forestboss02,
 			end,
 		};
 

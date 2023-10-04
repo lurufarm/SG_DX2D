@@ -6,7 +6,7 @@ namespace sg
 	class Item_AbilityEnhancer : public Gobj_Item
 	{
 	public:
-		Item_AbilityEnhancer();
+		Item_AbilityEnhancer(int num);
 		~Item_AbilityEnhancer();
 
 		void Initialize();

@@ -32,11 +32,9 @@ namespace sg
 
 		mAni->PlayAnimation(L"Ani_Crack_Normal", true, true);
 
-		//mLg->SetType(eLightType::Point);
-		//mLg->SetRadius(30.0f);
-		//mLg->SetColor(Vector4(0.1f, 0.4f, 0.6f, 0.5f));
-
-
+		mLg = AddComp<Light>();
+		mLg->SetType(eLightType::Point);
+		mLg->SetRadius(20.0f);
 	}
 	void Img_Crack::Update()
 	{
@@ -48,6 +46,7 @@ namespace sg
 		}
 		else
 		{
+			mLg->SetColor(Vector4::Zero);
 			mAni->PlayAnimation(L"Ani_Crack_Explosion", false, true);
 		}
 

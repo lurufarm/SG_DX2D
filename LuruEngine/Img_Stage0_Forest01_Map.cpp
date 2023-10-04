@@ -44,6 +44,9 @@ namespace sg
 		case sg::Img_Stage0_Map::Stage0::forestdg04:
 			SetMaterial(L"Stage0ForestDg04_Map");
 			break;
+		case sg::Img_Stage0_Map::Stage0::forestboss01:
+			SetMaterial(L"BossStage");
+			break;
 		}
 
 		mMr->Initialize();

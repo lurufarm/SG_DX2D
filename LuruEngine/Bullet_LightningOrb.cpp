@@ -22,9 +22,9 @@ namespace sg
 		mType = eMProjType::LightningOrb;
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
-
-		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"LightningOrb", L"..\\Resources\\Monster\\PoisonOrb.png");
-		mAni->Create(L"Ani_LightningOrb", atlas, Vector2::Zero, Vector2(8.0f, 8.0f), 4, Vector2::Zero, 0.05f);
+		mCol->SetSize(Vector2(0.6f, 0.6f));
+		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"LightningOrb", L"..\\Resources\\Monster\\LightningOrb.png");
+		mAni->Create(L"Ani_LightningOrb", atlas, Vector2::Zero, Vector2(14.0f, 14.0f), 4, Vector2::Zero, 0.05f);
 		mMr->Initialize();
 		mAni->PlayAnimation(L"Ani_LightningOrb", true, true);
 

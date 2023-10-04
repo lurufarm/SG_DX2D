@@ -4,7 +4,9 @@
 #include "SCENE_PlayScene.h"
 #include "Img_LevUP2.h"
 #include "SCRIPT_Item.h"
+#include "Gobj_Player.h"
 
+extern sg::Gobj_Player* Player;
 
 namespace sg
 {
@@ -14,7 +16,15 @@ namespace sg
 		if (ps)
 			mID = ps->SelectedItemID;
 		else
-			mID = 0;
+		{
+			std::wstring charName = Player->GetChar()->GetName();
+			if (charName == L"Cheese")
+				mID = 20;
+			else if (charName == L"Lucy")
+				mID = 21;
+			else if (charName == L"Robo")
+				mID = 22;
+		}
 		Item_Selected::Initialize();
 	}
 	Item_Selected::~Item_Selected()
@@ -24,7 +34,7 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
-		mCol = GetComp<Collider2D>();
+		mCol = AddComp<Collider2D>();
 		SetMesh();
 
 		switch (mID)
@@ -81,12 +91,6 @@ namespace sg
 	}
 	void Item_Selected::Update()
 	{
-		PlayScene* ps = dynamic_cast<PlayScene*>(SceneManager::GetActiveScene());
-		if (ps)
-			mID = ps->SelectedItemID;
-		else
-			mID = 0;
-
 		switch (mID)
 		{
 		case 0: // 보너스 라이프 mLife
@@ -128,10 +132,10 @@ namespace sg
 		case 20: // cheese선택
 			SetMaterial(L"Item_Cheeseicon");
 			break;
-		case 21: // cheese선택
+		case 21: // Lucy선택
 			SetMaterial(L"Item_Lucyicon");
 			break;
-		case 22: // cheese선택
+		case 22: // Robo선택
 			SetMaterial(L"Item_Roboicon");
 			break;
 		}

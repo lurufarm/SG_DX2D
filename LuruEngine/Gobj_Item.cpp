@@ -6,7 +6,6 @@ namespace sg
 	Gobj_Item::Gobj_Item()
 	{
 		AddComp<MeshRenderer>();
-		AddComp<Collider2D>();
 		AddComp<Animator>();
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
@@ -19,7 +18,6 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
-		mCol = GetComp<Collider2D>();
 	}
 	void Gobj_Item::Update()
 	{

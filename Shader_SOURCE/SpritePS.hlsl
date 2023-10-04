@@ -28,7 +28,8 @@ float4 main(VSOut In) : SV_TARGET
     }
     
     color *= lightColor;
-    
+//    color = saturate(color);
+
     return color;
 }
 // CatPattern
@@ -47,7 +48,8 @@ float4 Select_catpattern(VSOut In) : SV_TARGET
     }
     
     color *= lightColor;
-    
+//    color = saturate(color);
+
     return color;
 }
 
@@ -68,6 +70,7 @@ float4 lobby_space1(VSOut In) : SV_TARGET
     }
     
     color *= lightColor;
+//    color = saturate(color);
 
     return color;
 }
@@ -89,6 +92,7 @@ float4 lobby_space2(VSOut In) : SV_TARGET
     }
 
     color *= lightColor;
+//    color = saturate(color);
 
     return color;
 }
@@ -113,7 +117,8 @@ float4 Tile(VSOut In) : SV_TARGET
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     color *= lightColor;
-    
+//    color = saturate(color);
+
     return color;
 }
 
@@ -137,6 +142,7 @@ float4 HPBar(VSOut In) : SV_TARGET
     }
 
     color = albedoTexture.Sample(pointSampler, In.UV);
-    
+//    color = saturate(color);
+
     return color;
 }   

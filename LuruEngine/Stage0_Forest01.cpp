@@ -37,6 +37,12 @@ namespace sg
 		mCrackPos[1] = Vector3(-140.0f, 265.0f, -0.5f);
 		mCrackPos[2] = Vector3(-315.0f, 155.0f, -0.5f);
 		mStartPos = Vector3(-180.0f, -75.0f, -1.0f);
+		mGatePos[0] = Vector3(-210.0f, 380.0f, -0.1f);
+		mGatePos[1] = Vector3(-173.0f, 380.0f, -0.1f);
+		mGatePos[2] = Vector3(-136.0f, 380.0f, -0.1f);
+
+		mRewardPos = mGatePos[1];
+		mRewardPos.y -= 80.0f;
 
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd01, pos, eLayerType::BGImg, this);
 		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
@@ -48,29 +54,15 @@ namespace sg
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
 		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
-		Vector3 gpos0 = Vector3(-210.0f, 380.0f, -0.1f);
-		Vector3 gpos1 = Vector3(-173.0f, 380.0f, -0.1f);
-		Vector3 gpos2 = Vector3(-136.0f, 380.0f, -0.1f);
-
-		mRewardPos = gpos1;
-		mRewardPos.y -= 80.0f;
 		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
-		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
-		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
-		mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
+		mGate0 = object::Instantiate<Interact_Gate>(0, mGatePos[0], eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, mGatePos[2], eLayerType::InteractableObject, this);
 
 		mGate0->SetNextScene(L"04_Stage0_Forest02");
 		mGate1->SetNextScene(L"04_Stage0_Forest02");
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
-
-		gpos0.y += 30.0f;
-		gpos1.y += 30.0f;
-		gpos2.y += 30.0f;
-
-		mItem0 = MakeItem(gpos0);
-		mItem1 = MakeItem(gpos1);
-		mItem2 = MakeItem(gpos2);
 
 #pragma region Monsters
 		//object::Instantiate<Boss_SkelKnight>(eLayerType::Monster, this);
@@ -108,6 +100,14 @@ namespace sg
 	}
 	void Stage0_Forest01::Update()
 	{
+		std::wstring charName = Player->GetChar()->GetName();
+		if (charName == L"Cheese")
+			SelectedItemID = 20;
+		else if (charName == L"Lucy")
+			SelectedItemID = 21;
+		else if (charName == L"Robo")
+			SelectedItemID = 22;
+
 		PlayScene::Update();
 	}
 	void Stage0_Forest01::LateUpdate()

@@ -382,6 +382,27 @@
     <ClCompile Include="Bullet_LightningOrb.cpp">
       <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
     </ClCompile>
+    <ClCompile Include="Stage0_Forest06.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_Forest07.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_Forest08.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage0_BossStage.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Torch.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_EliteBat.cpp">
+      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_TextBG.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -732,9 +753,6 @@
     <ClInclude Include="Effect_BigDust.h">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Melee_Bat.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
-    </ClInclude>
     <ClInclude Include="Melee_Bomb.h">
       <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bomb</Filter>
     </ClInclude>
@@ -744,7 +762,6 @@
     <ClInclude Include="SCRIPT_MeleeBomb.h">
       <Filter>Script\SCRIPT_Monster\Melee</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Effect_MobExplosion.h">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
@@ -771,6 +788,33 @@
     </ClInclude>
     <ClInclude Include="Bullet_LightningOrb.h">
       <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest06.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest07.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_Forest08.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage0_BossStage.h">
+      <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Torch.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Bat.h">
+      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_EliteBat.h">
+      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>x</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_TextBG.h">
+      <Filter>Obj\Gobj_UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -947,6 +991,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="LuruEngine.rc" />
+    <ResourceCompile Include="LuruEngine.rc">
+      <Filter>x</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

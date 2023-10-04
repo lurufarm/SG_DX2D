@@ -921,6 +921,14 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage0ForestDg04_Map", material);
 
+		// BossStage
+		texture = Resources::Load<Texture>(L"Img_BossStage", L"..\\Resources\\Map\\Stage0\\stage0_boss.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"BossStage", material);
+
 
 #pragma endregion
 
@@ -1131,6 +1139,13 @@ namespace renderer
 			material->SetTexture(texture);
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"MobBat", material);
+
+			texture = Resources::Load<Texture>(L"Monster_EliteBat", L"..\\Resources\\Monster\\EliteBat.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEliteBat", material);
 
 			texture = Resources::Load<Texture>(L"Monster_Bomb", L"..\\Resources\\Monster\\Bomb.png");
 			material = std::make_shared<Material>();

@@ -7,8 +7,8 @@ namespace sg
 	{
 		SetName(L"EyeBall");
 
-		mStat.mCurHP = 18;
-		mStat.mMaxHP = 18;
+		mStat.mCurHP = 22;
+		mStat.mMaxHP = 22;
 		mStat.mStrength = 4;
 		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;

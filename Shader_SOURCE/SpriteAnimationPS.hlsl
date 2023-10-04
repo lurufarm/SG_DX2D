@@ -61,6 +61,8 @@ float4 main(VSOut In) : SV_TARGET
             color.a = 0.5f;
     }
         
+//    color = saturate(color);
+
     return color;
 }
 
@@ -103,6 +105,7 @@ float4 main2(VSOut In) : SV_TARGET
     color.a -= 0.5f;
     color.xyz *= lightColor.xyz;
 
-    
+//    color = saturate(color);
+
     return color;
 }

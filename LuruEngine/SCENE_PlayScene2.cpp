@@ -20,6 +20,7 @@
 #include "Item_Selected.h"
 #include "UI_HpBar.h"
 #include "UI_HpBase.h"
+#include "Img_Crack.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -38,12 +39,14 @@ namespace sg
 	}
 	void PlayScene2::Initialize()
 	{
-		//GameObject* light = new GameObject();
-		//AddGameObj(eLayerType::Light, light);
-		//Light* lightComp = light->AddComp<Light>();
-		//lightComp->SetType(eLightType::Directional);
-		//lightComp->SetColor(Vector4(0.0f, 0.0f, 0.0f, 1.0f));
+		mGatePos[0].y += 30.0f;
+		mGatePos[1].y += 30.0f;
+		mGatePos[2].y += 30.0f;
 
+		InitializeItemIds();
+		mItem0 = MakeItem(mGatePos[0]);
+		mItem1 = MakeItem(mGatePos[1]);
+		mItem2 = MakeItem(mGatePos[2]);
 
 		if (mFocus == nullptr)
 			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
@@ -85,8 +88,13 @@ namespace sg
 			mPlayerLight[0]->SetTarget(Player);
 			mPlayerLight[0]->SetLightType(eLightType::Point);
 			mPlayerLight[0]->SetLightRadius(30.0f);
-			mPlayerLight[0]->SetLightColor(Vector4(0.6f, 0.4f, 0.2f, 0.8f));
+			mPlayerLight[0]->SetLightColor(Vector4(0.6f, 0.5f, 0.4f, 0.8f));
 		}
+
+		mCrack0->GetComp<Light>()->SetColor(Vector4(0.5f, 0.4f, 0.3f, 0.3f));
+		mCrack1->GetComp<Light>()->SetColor(Vector4(0.5f, 0.4f, 0.3f, 0.3f));
+		mCrack2->GetComp<Light>()->SetColor(Vector4(0.5f, 0.4f, 0.3f, 0.3f));
+
 		Scene::Initialize();
 	}
 	void PlayScene2::Update()
@@ -126,7 +134,7 @@ namespace sg
 	{
 		renderer::lightsBuffer->Clear();
 
-		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+		float bgcolor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
 
 		AddGameObj(eLayerType::Player, Player);
@@ -164,6 +172,20 @@ namespace sg
 			DeleteGameObj(eLayerType::UI, ui);
 		}
 	}
+	void PlayScene2::InitializeItemIds()
+	{
+		mEnhenceItemIDs.clear();
+		mCharItemIDs.clear();
+
+		for (size_t i = 0; i < 12; i++)
+		{
+			mEnhenceItemIDs.push_back(i);
+		}
+		for (size_t i = 0; i < 3; i++)
+		{
+			mCharItemIDs.push_back(20 + i);
+		}
+	}
 	Gobj_Item* PlayScene2::MakeItem(Vector3 pos)
 	{
 		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
@@ -172,15 +194,29 @@ namespace sg
 
 		int a = dist(gen);
 
-		if (a <= 4)
+		if (a <= 6)
 		{
-			return object::Instantiate<Item_AbilityEnhancer>(pos, eLayerType::Item, this);
+			int first = mEnhenceItemIDs.front();
+			int last = mEnhenceItemIDs.back();
+
+			std::uniform_int_distribution<> distitemID(first, last);  // 0과 1 사이의 균등 분포
+			int num = distitemID(gen);
+			mEnhenceItemIDs.erase(std::remove(mEnhenceItemIDs.begin(), mEnhenceItemIDs.end(), num), mEnhenceItemIDs.end());
+			return object::Instantiate<Item_AbilityEnhancer>(num, pos, eLayerType::Item, this);
+
+
 		}
-		else if (a > 4)
+		else if (a > 6)
 		{
+			int first = mCharItemIDs.front();
+			int last = mCharItemIDs.back();
+
+			std::uniform_int_distribution<> distitemID(first, last);  // 0과 1 사이의 균등 분포
+			int num = distitemID(gen);
+			mCharItemIDs.erase(std::remove(mCharItemIDs.begin(), mCharItemIDs.end(), num), mCharItemIDs.end());
 			return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
 		}
-
+		//return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
 	}
 	Vector3 PlayScene2::RandPos()
 	{

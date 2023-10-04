@@ -3,16 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "stage0_boss.tmx",
+    "activeFile": "stage0_forestdg_4.tmx",
     "console.history": [
         "asd"
     ],
     "expandedProjectPaths": [
-        "Source/ForestFd",
         ".",
+        "Source/ForestFd",
         "Source/ForestDg",
         "Source"
     ],
+    "exportAsImage.visibleLayersOnly": false,
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
@@ -123,8 +124,8 @@
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 269.33333333333326,
-                "y": 300
+                "x": 353.33333333333326,
+                "y": 358.66666666666663
             }
         },
         "stage0_forestdg_1.tmx": {
@@ -139,27 +140,27 @@
             "scaleInDock": 1
         },
         "stage0_forestdg_2.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 2,
+            "scale": 0.75,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 427.33333333333326,
-                "y": 498.3333333333333
+                "x": 564,
+                "y": 520
             }
         },
         "stage0_forestdg_3.tmx": {
-            "scale": 1,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 374,
-                "y": 544.5
+                "x": 392.6666666666667,
+                "y": 483.3333333333333
             }
         },
         "stage0_forestdg_4.tmx": {
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 472,
-                "y": 599
+                "x": 450,
+                "y": 595
             }
         },
         "stage0_forestfd_1.tmx": {
@@ -207,24 +208,22 @@
     "map.tileWidth": 18,
     "map.width": 30,
     "openFiles": [
-        "stage0_boss.tmx",
-        "Source/ForestBossFloor1.tsx",
-        "Source/ForestBossBluffEdge1.tsx"
+        "stage0_forestdg_4.tmx"
     ],
     "project": "stage0_project.tiled-project",
     "recentFiles": [
-        "Source/ForestBossBluffEdge1.tsx",
+        "stage0_forestdg_4.tmx",
+        "stage0_forestdg_3.tmx",
         "Source/ForestBossFloor1.tsx",
+        "Source/ForestBossBluffEdge1.tsx",
+        "Source/ForestDg/ForestDgFloor1.tsx",
+        "stage0_forestdg_2.tmx",
         "stage0_boss.tmx",
         "stage0_forestdg_1.tmx",
         "stage0_forestfd_4.tmx",
         "Source/ForestDg/ForestDgWaterEdge1.tsx",
-        "Source/ForestDg/ForestDgFloor1.tsx",
         "Source/ForestDg/ForestDgWall2.tsx",
-        "Source/ForestDg/ForestDgWaterDeep1.tsx",
-        "Source/ForestDg/ObstacleAct1Dg1.tsx",
-        "stage0_forestfd_1.tmx",
-        "stage0_forestfd_2.tmx"
+        "Source/ForestDg/ForestDgWaterDeep1.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

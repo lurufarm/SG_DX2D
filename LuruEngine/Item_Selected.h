@@ -17,6 +17,8 @@ namespace sg
 		int GetItemID () { return mID; }
 
 	private:
+		class Collider2D* mCol;
+
 		int mID;
 		Vector3 mPos;
 		float mTime;

@@ -35,6 +35,12 @@ namespace sg
 		mCrackPos[1] = Vector3(-110.0f, 245.0f, -0.5f);
 		mCrackPos[2] = Vector3(-70.0f, -130.0f, -0.5f);
 		mStartPos = Vector3(170.0f, -205.0f, -1.0f);
+		mGatePos[0] = Vector3(170.0f, 375.0f, -0.1f);
+		mGatePos[1] = Vector3(207.0f, 375.0f, -0.1f);
+		mGatePos[2] = Vector3(244.0f, 375.0f, -0.1f);
+
+		mRewardPos = mGatePos[1];
+		mRewardPos.y -= 80.0f;
 
 		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd03, pos, eLayerType::BGImg, this);
 		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
@@ -43,35 +49,19 @@ namespace sg
 		mCamera = Forest03camera->AddComp<Camera>();
 		Forest03camera->AddComp<SCRIPT_MainCamera>();
 
-
-
 		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
 		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
 
-		Vector3 gpos0 = Vector3(170.0f, 375.0f, -0.1f);
-		Vector3 gpos1 = Vector3(207.0f, 375.0f, -0.1f);
-		Vector3 gpos2 = Vector3(244.0f, 375.0f, -0.1f);
-
-		mRewardPos = gpos1;
-		mRewardPos.y -= 80.0f;
 		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
 
-		mGate0 = object::Instantiate<Interact_Gate>(0, gpos0, eLayerType::InteractableObject, this);
-		mGate1 = object::Instantiate<Interact_Gate>(0, gpos1, eLayerType::InteractableObject, this);
-		mGate2 = object::Instantiate<Interact_Gate>(0, gpos2, eLayerType::InteractableObject, this);
+		mGate0 = object::Instantiate<Interact_Gate>(0, mGatePos[0], eLayerType::InteractableObject, this);
+		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);
+		mGate2 = object::Instantiate<Interact_Gate>(0, mGatePos[2], eLayerType::InteractableObject, this);
 
 		mGate0->SetNextScene(L"05_Stage0_Forest04");
 		mGate1->SetNextScene(L"05_Stage0_Forest04");
 		mGate2->SetNextScene(L"05_Stage0_Forest04");
-
-		gpos0.y += 20.0;
-		gpos1.y += 20.0;
-		gpos2.y += 20.0;
-
-		mItem0 = MakeItem(gpos0);
-		mItem1 = MakeItem(gpos1);
-		mItem2 = MakeItem(gpos2);
 
 #pragma region Monsters
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);

@@ -202,6 +202,7 @@
     <ClInclude Include="Img_RewardPlate.h" />
     <ClInclude Include="Img_Shadow.h" />
     <ClInclude Include="Img_StartingPlate.h" />
+    <ClInclude Include="Img_Torch.h" />
     <ClInclude Include="Interact_Gate.h" />
     <ClInclude Include="Interact_LobbyCardBook.h" />
     <ClInclude Include="Item_AbilityEnhancer.h" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Melee_Bat.h" />
     <ClInclude Include="Melee_Bomb.h" />
     <ClInclude Include="Melee_Cannibals.h" />
+    <ClInclude Include="Melee_EliteBat.h" />
     <ClInclude Include="Melee_EliteCannibals.h" />
     <ClInclude Include="Melee_EliteLarva.h" />
     <ClInclude Include="Melee_Larva.h" />
@@ -246,10 +248,14 @@
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
     <ClInclude Include="SCRIPT_UICamera.h" />
+    <ClInclude Include="Stage0_BossStage.h" />
+    <ClInclude Include="Stage0_Forest08.h" />
     <ClInclude Include="Stage0_Forest02.h" />
     <ClInclude Include="Stage0_Forest03.h" />
     <ClInclude Include="Stage0_Forest04.h" />
     <ClInclude Include="Stage0_Forest05.h" />
+    <ClInclude Include="Stage0_Forest06.h" />
+    <ClInclude Include="Stage0_Forest07.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -284,6 +290,7 @@
     <ClInclude Include="UI_Exit.h" />
     <ClInclude Include="UI_FocusBox.h" />
     <ClInclude Include="UI_FocusBoxes.h" />
+    <ClInclude Include="UI_TextBG.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boss_OldEnt.cpp" />
@@ -333,6 +340,7 @@
     <ClCompile Include="Img_RewardPlate.cpp" />
     <ClCompile Include="Img_Shadow.cpp" />
     <ClCompile Include="Img_StartingPlate.cpp" />
+    <ClCompile Include="Img_Torch.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
     <ClCompile Include="Interact_LobbyCardBook.cpp" />
     <ClCompile Include="Item_AbilityEnhancer.cpp" />
@@ -341,6 +349,7 @@
     <ClCompile Include="Melee_Bat.cpp" />
     <ClCompile Include="Melee_Bomb.cpp" />
     <ClCompile Include="Melee_Cannibals.cpp" />
+    <ClCompile Include="Melee_EliteBat.cpp" />
     <ClCompile Include="Melee_EliteCannibals.cpp" />
     <ClCompile Include="Melee_EliteLarva.cpp" />
     <ClCompile Include="Melee_Larva.cpp" />
@@ -375,10 +384,14 @@
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
     <ClCompile Include="SCRIPT_UICamera.cpp" />
+    <ClCompile Include="Stage0_BossStage.cpp" />
+    <ClCompile Include="Stage0_Forest08.cpp" />
     <ClCompile Include="Stage0_Forest02.cpp" />
     <ClCompile Include="Stage0_Forest03.cpp" />
     <ClCompile Include="Stage0_Forest04.cpp" />
     <ClCompile Include="Stage0_Forest05.cpp" />
+    <ClCompile Include="Stage0_Forest06.cpp" />
+    <ClCompile Include="Stage0_Forest07.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />
@@ -413,6 +426,7 @@
     <ClCompile Include="UI_Exit.cpp" />
     <ClCompile Include="UI_FocusBox.cpp" />
     <ClCompile Include="UI_FocusBoxes.cpp" />
+    <ClCompile Include="UI_TextBG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LuruEngine.rc" />

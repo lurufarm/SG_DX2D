@@ -8,9 +8,9 @@ namespace sg
 	std::vector<int> Item_AbilityEnhancer::mUsingItems = {};
 	UINT Item_AbilityEnhancer::mItemSpawnCount[12] = {};
 
-	Item_AbilityEnhancer::Item_AbilityEnhancer()
+	Item_AbilityEnhancer::Item_AbilityEnhancer(int num)
 	{
-		mItemID = RandomNumber();
+		mItemID = num;
 		mActivate = false;
 		Item_AbilityEnhancer::Initialize();
 	}
@@ -21,7 +21,6 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
-		mCol = GetComp<Collider2D>();
 		mAni = GetComp<Animator>();
 
 		SetMesh();

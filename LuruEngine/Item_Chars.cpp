@@ -20,7 +20,6 @@ namespace sg
 	{
 		mTr = GetComp<Transform>();
 		mMr = GetComp<MeshRenderer>();
-		mCol = GetComp<Collider2D>();
 		mAni = GetComp<Animator>();
 
 		SetMesh();

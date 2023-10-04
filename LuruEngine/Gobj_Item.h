@@ -27,7 +27,6 @@ namespace sg
 	protected:
 		Transform* mTr;
 		MeshRenderer* mMr;
-		Collider2D* mCol;
 		Animator* mAni;
 		Gobj_Player* mPlayer;
 

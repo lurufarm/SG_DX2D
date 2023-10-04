@@ -10,7 +10,8 @@ namespace sg
 		mStat.mDefence = 0.0f;
 		mStat.mCooldown = 1.0f;
 		mStat.mRange = 70.0f;
-		mStat.mSpeed = 40.0f;
+		mStat.mSpeed = 100.0f;
+		//mStat.mSpeed = 40.0f;
 		mStat.mAttackSpeed = 80.0f;
 		mStat.mAttackDuration = 0.0f;
 		mStat.mAttackCount = 1;

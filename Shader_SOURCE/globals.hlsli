@@ -162,7 +162,8 @@ void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
         
         if (length < lightsAttribute[idx].radius)
         {
-            float ratio = 1.0f - (length / lightsAttribute[idx].radius);
+//            float ratio = 1.0f - (length / lightsAttribute[idx].radius);
+            float ratio = 1.0f - smoothstep(0, lightsAttribute[idx].radius, length);
             lightColor += lightsAttribute[idx].color * ratio;
         }
     }

@@ -6,11 +6,11 @@ namespace sg
 	{
 		SetName(L"Skeleton");
 
-		mStat.mCurHP = 15;
-		mStat.mMaxHP = 15;
+		mStat.mCurHP = 18;
+		mStat.mMaxHP = 18;
 		mStat.mStrength = 3;
 		mStat.mDefence = 0.0f;
-		mStat.mSpeed = 30.0f;
+		mStat.mSpeed = 25.0f;
 		mStat.mRange = 30.0f;
 		mStat.mCooldown = 1.0f;
 		mStat.dropEXP = 20.0f;

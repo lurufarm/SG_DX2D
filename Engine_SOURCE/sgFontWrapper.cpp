@@ -27,6 +27,14 @@ namespace sg
 	{
 		DrawFont(mText, mXpos, mYpos, mFontSize, mFontColor);
 	}
+	void FontWrapper::Release()
+	{
+		mFW1Factory->Release();
+		mFW1Factory = nullptr;
+
+		mFontWrapper->Release();
+		mFontWrapper = nullptr;
+	}
 	void FontWrapper::DrawFont(const WCHAR* str, float x, float y, float size, UINT rgb)
 	{
 		ID3D11DeviceContext* pContext = graphics::GetDevice()->GetID3D11DeviceContext();
@@ -39,12 +47,11 @@ namespace sg
 			rgb,
 			FW1_RESTORESTATE);
 	}
-	void FontWrapper::Release()
+	void FontWrapper::SetFontOption(float x, float y, float size, UINT rgb)
 	{
-		mFW1Factory->Release();
-		mFW1Factory = nullptr;
-
-		mFontWrapper->Release();
-		mFontWrapper = nullptr;
+		mXpos = x;
+		mYpos = y;
+		mFontSize = size;
+		mFontColor = rgb;
 	}
 }

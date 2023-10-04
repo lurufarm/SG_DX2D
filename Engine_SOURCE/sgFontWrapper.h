@@ -23,15 +23,16 @@ namespace sg
 		static void Release();
 
 		static void DrawFont(const WCHAR* str, float x, float y, float size, UINT rgb);
-
+		static void SetFontOption(float x, float y, float size, UINT rgb);
 		static WCHAR mText[100];
-		static float mXpos;
-		static float mYpos;
-		static float mFontSize;
-		static UINT mFontColor;
 
 	private:
 		static IFW1Factory* mFW1Factory;
 		static IFW1FontWrapper* mFontWrapper;
+
+		static float mXpos;
+		static float mYpos;
+		static float mFontSize;
+		static UINT mFontColor;
 	};
 }
