@@ -1215,11 +1215,15 @@ namespace renderer
 				LightAttribute attribute = light.second->GetAttribute();
 				lightsAttributes.push_back(attribute);
 			}
+			else
+			{
+				LightAttribute attribute = {};
+				lightsAttributes.push_back(attribute);
+			}
 		}
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);
 		lightsBuffer->BindSRV(eShaderStage::PS, 13);
-
 	}
 
 	void BindNoiseTexture()

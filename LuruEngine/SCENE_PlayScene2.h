@@ -1,13 +1,11 @@
 #pragma once
 #include "..\Engine_SOURCE\sgScene.h"
 #include "Gobj_Monster.h"
-#include "Gobj_Light.h"
 #include "UI_FocusBoxes2.h"
 #include <random>
 
 namespace sg
 {
-	class Gobj_Light;
 	class PlayScene2 : public Scene
 	{
 	public:
@@ -88,9 +86,6 @@ namespace sg
 		}
 
 		int SelectedItemID;
-
-		void ChangeLight();
-
 		void CreateCompanyLight(class Gobj_Character* character);
 
 
@@ -107,7 +102,7 @@ namespace sg
 		class Gobj_Item* mItem1;
 		class Gobj_Item* mItem2;
 
-		Gobj_Light* mPlayerLight[4];
+		class Gobj_Light* mPlayerLight[4];
 		int mLightnum = 1;
 
 		Vector3 mCrackPos[3];
@@ -130,7 +125,6 @@ namespace sg
 		static class UI_FocusBoxes2* mFocus;
 
 	private:
-		Light* mLg;
 
 	};
 }

@@ -24,11 +24,11 @@ namespace sg
 	{
 		mScene = GetOwner()->GetMyScene();
 
-		if (GetOwner()->GetState() != GameObject::eState::Active)
+		if (mScene != SceneManager::GetActiveScene())
 		{
 			mOn = false;
 		}
-		else if (GetOwner()->GetState() == GameObject::eState::Active)
+		else
 		{
 			mOn = true;
 		}
