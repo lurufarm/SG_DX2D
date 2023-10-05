@@ -32,10 +32,7 @@ namespace sg
 
 		UINT SelectPos()
 		{
-			std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
-			std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
-			std::uniform_int_distribution<> dist(0, 2);  // 0과 1 사이의 균등 분포
-
+			std::uniform_int_distribution<>dist(0, 2);  // 0과 1 사이의 균등 분포
 			return dist(gen);
 		}
 
@@ -88,7 +85,6 @@ namespace sg
 
 
 	protected:
-
 		std::vector<class Gobj_Monster*> mPausedMobs;
 		std::vector<class Gobj_Monster*> mActiveMobs;
 
@@ -115,11 +111,6 @@ namespace sg
 		Vector3 mRewardPos;
 		Vector3 mGatePos[3];
 
-		//const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
-		//const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
-		//const Vector4 mEveningLight = Vector4(0.1f, 0.1f, 0.2f, 1.0f);
-		//const Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
-
 		static float mTime;
 		static float mTime2;
 
@@ -130,7 +121,13 @@ namespace sg
 		bool mClear = false;
 		static class UI_FocusBoxes2* mFocus;
 
+		std::random_device rd;
+		std::mt19937 gen;
+
 	private:
+		GameObject* mLight;
+		Light* mLg;
+
 
 	};
 }

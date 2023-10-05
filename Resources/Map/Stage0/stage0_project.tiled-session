@@ -3,15 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "stage0_forestdg_4.tmx",
+    "activeFile": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx",
     "console.history": [
         "asd"
     ],
     "expandedProjectPaths": [
-        ".",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1",
         "Source/ForestFd",
+        ".",
         "Source/ForestDg",
-        "Source"
+        "Source",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source"
     ],
     "exportAsImage.visibleLayersOnly": false,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -19,6 +21,46 @@
         "": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdFloor1.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdGrass1.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdTree1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdWaterDeep1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdWaterEdge1.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/ObstacleAct2Fd1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 246,
+                "y": 349.33333333333326
+            }
+        },
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 449,
+                "y": 487
+            }
         },
         "ObstacleAct1Dg1.tsx": {
             "scaleInDock": 1,
@@ -159,8 +201,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 450,
-                "y": 595
+                "x": 1510,
+                "y": -1110
             }
         },
         "stage0_forestfd_1.tmx": {
@@ -200,37 +242,40 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestFd",
-    "last.imagePath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage0/Source/ForestDg",
-    "map.height": 30,
+    "last.imagePath": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source",
+    "map.height": 40,
     "map.lastUsedFormat": "tmx",
     "map.layerDataFormat": null,
     "map.tileHeight": 18,
     "map.tileWidth": 18,
-    "map.width": 30,
+    "map.width": 40,
     "openFiles": [
-        "stage0_forestdg_4.tmx"
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/ObstacleAct2Fd1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdGrass1.tsx"
     ],
     "project": "stage0_project.tiled-project",
     "recentFiles": [
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdGrass1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/ObstacleAct2Fd1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx",
+        "Source/ForestDg/ObstacleAct1Dg1.tsx",
+        "Source/ForestFd/ObstacleAct1Fd1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdFloor1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdWaterEdge1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdWaterDeep1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdTree1.tsx",
         "stage0_forestdg_4.tmx",
-        "stage0_forestdg_3.tmx",
-        "Source/ForestBossFloor1.tsx",
-        "Source/ForestBossBluffEdge1.tsx",
-        "Source/ForestDg/ForestDgFloor1.tsx",
-        "stage0_forestdg_2.tmx",
-        "stage0_boss.tmx",
-        "stage0_forestdg_1.tmx",
-        "stage0_forestfd_4.tmx",
-        "Source/ForestDg/ForestDgWaterEdge1.tsx",
-        "Source/ForestDg/ForestDgWall2.tsx",
-        "Source/ForestDg/ForestDgWaterDeep1.tsx"
+        "stage0_forestdg_3.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
-    "tileset.margin": 0,
-    "tileset.spacing": 0,
+    "tileset.margin": 7,
+    "tileset.spacing": 14,
     "tileset.tileSize": {
-        "height": 18,
-        "width": 18
+        "height": 20,
+        "width": 20
     }
 }

@@ -7,9 +7,9 @@ namespace sg
 	std::vector<int> Item_Chars::mUsingCharIDs = {};
 	UINT Item_Chars::mItemSpawnCount[10] = {};
 
-	Item_Chars::Item_Chars()
+	Item_Chars::Item_Chars(int num)
 	{
-		mItemID = RandomNumber();
+		mItemID = num;
 		mActivate = false;
 		Item_Chars::Initialize();
 	}

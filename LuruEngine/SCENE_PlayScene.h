@@ -134,9 +134,13 @@ namespace sg
 		bool mClear = false;
 		static class UI_FocusBoxes2* mFocus;
 
+		std::random_device rd;
+		std::mt19937 gen;
+
 	private:
 		Light* mLg;
 		GameObject* mDLight;
+
 
 	};
 }

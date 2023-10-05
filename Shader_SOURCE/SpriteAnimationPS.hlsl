@@ -61,7 +61,7 @@ float4 main(VSOut In) : SV_TARGET
             color.a = 0.5f;
     }
         
-//    color = saturate(color);
+//    color = saturate(color); 
 
     return color;
 }

@@ -31,6 +31,7 @@ namespace sg
 
 	PlayScene::PlayScene()
 		: mDLight(nullptr)
+		, gen(rd())
 	{
 	}
 	PlayScene::~PlayScene()
@@ -38,14 +39,26 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
-		mGatePos[0].y += 30.0f;
-		mGatePos[1].y += 30.0f;
-		mGatePos[2].y += 30.0f;
-
 		InitializeItemIds();
 		mItem0 = MakeItem(mGatePos[0]);
 		mItem1 = MakeItem(mGatePos[1]);
 		mItem2 = MakeItem(mGatePos[2]);
+
+		mItem0->SetState(GameObject::eState::Paused);
+		mItem1->SetState(GameObject::eState::Paused);
+		mItem2->SetState(GameObject::eState::Paused);
+
+		mGate0->SetItem(mItem0);
+		mGate1->SetItem(mItem1);
+		mGate2->SetItem(mItem2);
+
+		mGate0->AddComp<SCRIPT_Gate>();
+		mGate1->AddComp<SCRIPT_Gate>();
+		mGate2->AddComp<SCRIPT_Gate>();
+
+		mGatePos[0].y += 30.0f;
+		mGatePos[1].y += 30.0f;
+		mGatePos[2].y += 30.0f;
 
 		if (mDLight == nullptr)
 		{
@@ -81,20 +94,7 @@ namespace sg
 		CollisionManager::SetLayer(eLayerType::Monster_BulletBehindMonster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Monster_Bullet, eLayerType::Effect, true);
 
-		if (mItem0)
-		{
-			mItem0->SetState(GameObject::eState::Paused);
-			mItem1->SetState(GameObject::eState::Paused);
-			mItem2->SetState(GameObject::eState::Paused);
 
-			mGate0->SetItem(mItem0);
-			mGate1->SetItem(mItem1);
-			mGate2->SetItem(mItem2);
-
-			mGate0->AddComp<SCRIPT_Gate>();
-			mGate1->AddComp<SCRIPT_Gate>();
-			mGate2->AddComp<SCRIPT_Gate>();
-		}
 		object::Instantiate<UI_HPBase>(eLayerType::UI, this);
 		object::Instantiate<UI_HPBar>(eLayerType::UI, this);
 
@@ -108,9 +108,7 @@ namespace sg
 		}
 
 		// 벡터 섞기
-		std::random_device rd;
-		std::mt19937 g(rd());
-		std::shuffle(mPausedMobs.begin(), mPausedMobs.end(), g);
+		std::shuffle(mPausedMobs.begin(), mPausedMobs.end(), gen);
 
 		if (mPlayerLight[0] == nullptr)
 		{
@@ -222,33 +220,22 @@ namespace sg
 	}
 	Gobj_Item* PlayScene::MakeItem(Vector3 pos)
 	{
-		std::random_device rd;  // 랜덤 시드를 얻기 위한 장치
-		std::mt19937 gen(rd());  // 메르센 트위스터 난수 생성기 초기화
-		std::uniform_int_distribution<> dist(0, 9);  // 0과 1 사이의 균등 분포
-
+		std::uniform_int_distribution<> dist(0, 9);
 		int a = dist(gen);
 
-		if (a <= 6)
+		if (a <= 6) 
 		{
-			int first = mEnhenceItemIDs.front();
-			int last = mEnhenceItemIDs.back();
-
-			std::uniform_int_distribution<> distitemID(first, last);  // 0과 1 사이의 균등 분포
-			int num = distitemID(gen);
-			mEnhenceItemIDs.erase(std::remove(mEnhenceItemIDs.begin(), mEnhenceItemIDs.end(), num), mEnhenceItemIDs.end());
+			int index = std::uniform_int_distribution<>(0, mEnhenceItemIDs.size() - 1)(gen);
+			int num = mEnhenceItemIDs[index];
+			mEnhenceItemIDs.erase(mEnhenceItemIDs.begin() + index);
 			return object::Instantiate<Item_AbilityEnhancer>(num, pos, eLayerType::Item, this);
-
-
 		}
-		else if (a > 6)
+		else 
 		{
-			int first = mCharItemIDs.front();
-			int last = mCharItemIDs.back();
-
-			std::uniform_int_distribution<> distitemID(first, last);  // 0과 1 사이의 균등 분포
-			int num = distitemID(gen);
-			mCharItemIDs.erase(std::remove(mCharItemIDs.begin(), mCharItemIDs.end(), num), mCharItemIDs.end());
-			return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
+			int index = std::uniform_int_distribution<>(0, mCharItemIDs.size() - 1)(gen);
+			int num = mCharItemIDs[index];
+			mCharItemIDs.erase(mCharItemIDs.begin() + index);
+			return object::Instantiate<Item_Chars>(num, pos, eLayerType::Item, this);
 		}
 		//return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
 	}

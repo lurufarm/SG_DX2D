@@ -6,7 +6,7 @@ namespace sg
 	class Item_Chars : public Gobj_Item
 	{
 	public:
-		Item_Chars();
+		Item_Chars(int num);
 		~Item_Chars();
 
 		void Initialize();

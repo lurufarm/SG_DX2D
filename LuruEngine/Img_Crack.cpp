@@ -34,7 +34,7 @@ namespace sg
 
 		mLg = AddComp<Light>();
 		mLg->SetType(eLightType::Point);
-		mLg->SetRadius(20.0f);
+		mLg->SetRadius(30.0f);
 	}
 	void Img_Crack::Update()
 	{
