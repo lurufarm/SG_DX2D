@@ -5,8 +5,11 @@
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
 #include "Bullet_PoisonOrb.h"
-#include "Bullet_LightningOrb.h"
 #include "Bullet_EntRock.h"
+#include "Bullet_LightningOrb.h"
+#include "Bullet_Fire.h"
+#include "Bullet_Spear.h"
+#include "Bullet_MummyBomb.h"
 #include "Effect_ProjectileDest.h"
 #include "Img_EyeBallLine.h"
 
@@ -87,17 +90,6 @@ namespace sg
 				mFSMState = eFSMState::Attacked;
 			}
 		}
-		//if (mFSMState == eFSMState::Attack)
-		//{
-		//	if (other->GetOwner() == mTarget)
-		//	{
-		//		Gobj_Character::CharStat stat = mTarget->GetStat();
-
-		//		stat.mCurHP -= mOwner->GetStat().mStrength;
-
-		//		mTarget->SetStat(stat);
-		//	}
-		//}
 	}
 	void SCRIPT_RangedMob::OnCollisionStay(Collider2D* other)
 	{
@@ -137,19 +129,18 @@ namespace sg
 		Transform* tr = mOwner->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition();
 
-		float distance = GetDistance();
 		float distanceToMove = mOwner->GetStat().mSpeed * Time::DeltaTime();
 		Vector3 direction = GetDirection();
 		direction.Normalize();
 		pos += direction * distanceToMove;
 		tr->SetPosition(pos);
 
-		if (distance <= mOwner->GetStat().mRange)
+		if (GetDistance() <= mOwner->GetStat().mRange)
 			mFSMState = eFSMState::Attack;
 	}
 	void SCRIPT_RangedMob::Attack()
 	{
-		if (GetDistance() > mOwner->GetStat().mRange)
+		if (GetDistance() > mOwner->GetStat().mRange * 1.2f)
 		{
 			mFSMState = eFSMState::Move;
 		}
@@ -164,7 +155,12 @@ namespace sg
 		{
 			at->PlayAnimation(AnimationName(attack), false, mDirection);
 			mTime = 0.0f;
-		}		
+		}
+		else if (at->GetActiveAni()->IsComplete())
+		{
+			at->PlayAnimation(AnimationName(idle), true, mDirection);
+			mFSMState = eFSMState::Idle;
+		}
 
 		if (!mLaunched)
 		{
@@ -204,6 +200,33 @@ namespace sg
 					&& aniName == AnimationName(attack))
 				{
 					object::Instantiate<Bullet_LightningOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"FireLizard")
+			{
+				if (Index == 3
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Bullet_Fire>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"LizardSpear")
+			{
+				if (Index == 6
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Bullet_Spear>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"MummyBomb")
+			{
+				if (Index == 3
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Bullet_MummyBomb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 					mLaunched = true;
 				}
 			}

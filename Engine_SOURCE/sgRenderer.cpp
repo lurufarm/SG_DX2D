@@ -1060,6 +1060,13 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"Arrow", material);
 
+		texture = Resources::Load<Texture>(L"nothing", L"..\\Resources\\Effect\\null.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"TransparentMaterial", material);
+
 #pragma endregion
 
 #pragma region Monster
@@ -1204,6 +1211,97 @@ namespace renderer
 			Resources::Insert(L"MobSkelKnight", material);
 
 		};
+
+		// desert
+		{
+			// Bee
+			texture = Resources::Load<Texture>(L"Monster_Bee", L"..\\Resources\\Monster\\Bee.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobBee", material);
+			
+			// Elite Bee
+			texture = Resources::Load<Texture>(L"Monster_EliteBee", L"..\\Resources\\Monster\\EliteBee.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobEliteBee", material);
+
+			// Snake
+			texture = Resources::Load<Texture>(L"Monster_Snake", L"..\\Resources\\Monster\\Snake.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobSnake", material);
+
+			// Mummy
+			texture = Resources::Load<Texture>(L"Monster_Mummy", L"..\\Resources\\Monster\\Mummy.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobMummy", material);
+
+			// Mummy - Poison
+			texture = Resources::Load<Texture>(L"Monster_MummyPoison", L"..\\Resources\\Monster\\MummyPoison.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobMummyPoison", material);
+
+			// Mummy - Bomb
+			texture = Resources::Load<Texture>(L"Monster_MummyBomb	", L"..\\Resources\\Monster\\MummyBomb.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobMummyBomb", material);
+
+			// FireLizard
+			texture = Resources::Load<Texture>(L"Monster_Lizard	", L"..\\Resources\\Monster\\Lizard.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobLizard", material);
+
+			// Lizard - sword
+			texture = Resources::Load<Texture>(L"Monster_LizardSword", L"..\\Resources\\Monster\\LizardSword.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobLizardSword", material);
+
+			// Lizard - spear
+			texture = Resources::Load<Texture>(L"Monster_LizardSpear", L"..\\Resources\\Monster\\LizardSpear.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobLizardSpear", material);
+
+			// spear
+			texture = Resources::Load<Texture>(L"Img_Spear", L"..\\Resources\\Monster\\Spear.png");
+			material = std::make_shared<Material>();
+			material->SetShader(shader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"ImgSpear", material);
+
+			// Janubis
+			texture = Resources::Load<Texture>(L"Monster_Janubis", L"..\\Resources\\Monster\\Janubis.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobJanubis", material);
+		}
 
 #pragma endregion
 	}

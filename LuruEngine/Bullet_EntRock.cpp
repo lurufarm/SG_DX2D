@@ -5,7 +5,7 @@ namespace sg
 {
 	Bullet_EntRock::Bullet_EntRock(Gobj_Monster* BulletOwner)
 	{
-		SetName(L"PoisonOrb");
+		SetName(L"EntRock");
 		this->SetProjOwner(BulletOwner);
 		mProjOwner = BulletOwner;
 		mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();

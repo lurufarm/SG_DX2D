@@ -170,13 +170,13 @@
       <Filter>Script\SCRIPT_etc</Filter>
     </ClCompile>
     <ClCompile Include="Melee_SlimeA.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Slime</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Slime</Filter>
     </ClCompile>
     <ClCompile Include="Melee_SlimeB.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Slime</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Slime</Filter>
     </ClCompile>
     <ClCompile Include="Ranged_CannibalFlowerA.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\CannibalFlower</Filter>
     </ClCompile>
     <ClCompile Include="Gobj_Monster.cpp">
       <Filter>Obj\Gobj_Monster\Base</Filter>
@@ -191,7 +191,7 @@
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClCompile>
     <ClCompile Include="Ranged_Ent.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Ent</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_MobProjectile.cpp">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
@@ -200,16 +200,16 @@
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Larva.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Larva</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Larva</Filter>
     </ClCompile>
     <ClCompile Include="Melee_EliteLarva.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Larva</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Larva</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Cannibals.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Cannibals</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Cannibals</Filter>
     </ClCompile>
     <ClCompile Include="Melee_EliteCannibals.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Cannibals</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Cannibals</Filter>
     </ClCompile>
     <ClCompile Include="Boss_OldEnt.cpp">
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
@@ -224,10 +224,10 @@
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_EntRock.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Ent</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_PoisonOrb.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\CannibalFlower</Filter>
     </ClCompile>
     <ClCompile Include="Effect_OldEntStem.cpp">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
@@ -344,10 +344,10 @@
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Bat.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bat</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Bomb.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bomb</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bomb</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_MeleeMob.cpp">
       <Filter>Script\SCRIPT_Monster\Melee</Filter>
@@ -359,28 +359,28 @@
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Zombie.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Zombie</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_MeleeZombie.cpp">
       <Filter>Script\SCRIPT_Monster\Melee</Filter>
     </ClCompile>
     <ClCompile Include="Ranged_EyeBall.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClCompile>
     <ClCompile Include="Img_EyeBallLine.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_BloodSpit.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClCompile>
     <ClCompile Include="Melee_Skeleton.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Skeleton</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Skeleton</Filter>
     </ClCompile>
     <ClCompile Include="Ranged_SkelMage.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\SkelMage</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_LightningOrb.cpp">
-      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\SkelMage</Filter>
     </ClCompile>
     <ClCompile Include="Stage0_Forest06.cpp">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
@@ -398,10 +398,55 @@
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
     <ClCompile Include="Melee_EliteBat.cpp">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bat</Filter>
     </ClCompile>
     <ClCompile Include="UI_TextBG.cpp">
       <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_Bee.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Bee</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_EliteBee.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Bee</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_LizardSword.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_Mummy.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_Snake.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Snake</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_FireLizard.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_LizardSpear.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_MummyBomb.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee_MummyPoison.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_Janubis.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Janubis</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_MummyBomb.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_FirePlate2.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_MeleeMummyPoison.cpp">
+      <Filter>Script\SCRIPT_Monster\Melee</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_Fire.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_Spear.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -574,13 +619,13 @@
       <Filter>Script\SCRIPT_etc</Filter>
     </ClInclude>
     <ClInclude Include="Melee_SlimeA.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Slime</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Slime</Filter>
     </ClInclude>
     <ClInclude Include="Melee_SlimeB.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Slime</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Slime</Filter>
     </ClInclude>
     <ClInclude Include="Ranged_CannibalFlowerA.h">
-      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\CannibalFlower</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Monster.h">
       <Filter>Obj\Gobj_Monster\Base</Filter>
@@ -595,7 +640,7 @@
       <Filter>Obj\Gobj_Monster\Base</Filter>
     </ClInclude>
     <ClInclude Include="Ranged_Ent.h">
-      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Ent</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_MobProjectile.h">
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
@@ -604,16 +649,16 @@
       <Filter>Script\SCRIPT_Monster\Ranged</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Larva.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Larva</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Larva</Filter>
     </ClInclude>
     <ClInclude Include="Melee_EliteLarva.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Larva</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Larva</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Cannibals.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Cannibals</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Cannibals</Filter>
     </ClInclude>
     <ClInclude Include="Melee_EliteCannibals.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestfd\Cannibals</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Cannibals</Filter>
     </ClInclude>
     <ClInclude Include="Boss_OldEnt.h">
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
@@ -628,10 +673,10 @@
       <Filter>Obj\Gobj_Monster\Boss\Old Ent</Filter>
     </ClInclude>
     <ClInclude Include="Bullet_EntRock.h">
-      <Filter>Obj\Gobj_Monster\Ranged\Ent</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\Ent</Filter>
     </ClInclude>
     <ClInclude Include="Bullet_PoisonOrb.h">
-      <Filter>Obj\Gobj_Monster\Ranged\CannibalFlower</Filter>
+      <Filter>Obj\Gobj_Monster\Forestfd\CannibalFlower</Filter>
     </ClInclude>
     <ClInclude Include="Effect_OldEntStem.h">
       <Filter>Obj\Gobj_Effect\Monster</Filter>
@@ -754,7 +799,7 @@
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Bomb.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bomb</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bomb</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_MeleeMob.h">
       <Filter>Script\SCRIPT_Monster\Melee</Filter>
@@ -766,28 +811,28 @@
       <Filter>Obj\Gobj_Effect\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Zombie.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Zombie</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_MeleeZombie.h">
       <Filter>Script\SCRIPT_Monster\Melee</Filter>
     </ClInclude>
     <ClInclude Include="Ranged_EyeBall.h">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClInclude>
     <ClInclude Include="Img_EyeBallLine.h">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClInclude>
     <ClInclude Include="Bullet_BloodSpit.h">
-      <Filter>Obj\Gobj_Monster\Ranged\EyeBall</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\EyeBall</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Skeleton.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Skeleton</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Skeleton</Filter>
     </ClInclude>
     <ClInclude Include="Ranged_SkelMage.h">
-      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\SkelMage</Filter>
     </ClInclude>
     <ClInclude Include="Bullet_LightningOrb.h">
-      <Filter>Obj\Gobj_Monster\Ranged\SkelMage</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\SkelMage</Filter>
     </ClInclude>
     <ClInclude Include="Stage0_Forest06.h">
       <Filter>Scene\SCENE_PlayScene\Stage0</Filter>
@@ -805,16 +850,61 @@
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
     <ClInclude Include="Melee_Bat.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bat</Filter>
     </ClInclude>
     <ClInclude Include="Melee_EliteBat.h">
-      <Filter>Obj\Gobj_Monster\Melee\Forestdg\Bat</Filter>
+      <Filter>Obj\Gobj_Monster\Forestdg\Bat</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>x</Filter>
     </ClInclude>
     <ClInclude Include="UI_TextBG.h">
       <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Bee.h">
+      <Filter>Obj\Gobj_Monster\Desert\Bee</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_EliteBee.h">
+      <Filter>Obj\Gobj_Monster\Desert\Bee</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_LizardSword.h">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Mummy.h">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_Snake.h">
+      <Filter>Obj\Gobj_Monster\Desert\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_FireLizard.h">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_LizardSpear.h">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_MummyBomb.h">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee_MummyPoison.h">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_Janubis.h">
+      <Filter>Obj\Gobj_Monster\Desert\Janubis</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_MummyBomb.h">
+      <Filter>Obj\Gobj_Monster\Desert\Mummy</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_FirePlate2.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_MeleeMummyPoison.h">
+      <Filter>Script\SCRIPT_Monster\Melee</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_Fire.h">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_Spear.h">
+      <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -884,29 +974,17 @@
     <Filter Include="Obj\Gobj_Monster">
       <UniqueIdentifier>{4b73aad8-2239-4188-ad83-9a06494fd633}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee">
-      <UniqueIdentifier>{5d9ed76a-43b4-49ae-addb-2ec406ede695}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj\Gobj_Effect">
       <UniqueIdentifier>{76562c19-dd0c-4553-998f-300a072c7bbe}</UniqueIdentifier>
     </Filter>
     <Filter Include="Obj\Gobj_Character\Base">
       <UniqueIdentifier>{6522034b-e846-4de8-ae27-602fbd4798e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Ranged">
-      <UniqueIdentifier>{895ef6ff-3297-44f3-ba8c-3a7ef2cc8630}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Ranged\CannibalFlower">
-      <UniqueIdentifier>{bed02df0-e594-4a19-8a80-09bc58017bda}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj\Gobj_Monster\Base">
       <UniqueIdentifier>{b40d41e0-e642-4fe9-8007-f6ec99addd57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\SCENE_PlayScene\Stage0">
       <UniqueIdentifier>{78a36665-781c-4e17-a79b-6da385a4a117}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Ranged\Ent">
-      <UniqueIdentifier>{21cb6722-2c79-4387-ac9d-09477e499564}</UniqueIdentifier>
     </Filter>
     <Filter Include="Script">
       <UniqueIdentifier>{b9d5412c-b543-4318-871b-3d8a37f65a99}</UniqueIdentifier>
@@ -953,41 +1031,65 @@
     <Filter Include="Obj\Gobj_Monster\Boss\SkeletonKnight">
       <UniqueIdentifier>{4a424a2a-daa1-4deb-bc82-643169fc93cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestfd">
-      <UniqueIdentifier>{0e7f7ba3-d8cd-4907-9bce-cd0ce18902be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestfd\Larva">
-      <UniqueIdentifier>{5d27284b-2256-499f-bd0f-4d87b667c2f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestfd\Cannibals">
-      <UniqueIdentifier>{eac19ce0-a3f9-4a5b-bb3a-5261fa7bece0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestfd\Slime">
-      <UniqueIdentifier>{c46f5ee5-3f32-4b4a-8eab-5c74d4cbd128}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg">
-      <UniqueIdentifier>{b65dd946-7752-43a7-a41f-33f2d74a96c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg\Bat">
-      <UniqueIdentifier>{f7560261-50c0-4ab1-9145-248449f34eea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg\Bomb">
-      <UniqueIdentifier>{feea7fd8-1905-4333-a40d-0f0fdb11fb59}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Script\SCRIPT_Monster\Melee">
       <UniqueIdentifier>{a35bcde3-abb2-4b5a-b708-998f00be6e65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg\Zombie">
+    <Filter Include="Obj\Gobj_Monster\Forestdg">
+      <UniqueIdentifier>{b65dd946-7752-43a7-a41f-33f2d74a96c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestdg\Bat">
+      <UniqueIdentifier>{f7560261-50c0-4ab1-9145-248449f34eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestdg\Bomb">
+      <UniqueIdentifier>{feea7fd8-1905-4333-a40d-0f0fdb11fb59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestdg\Zombie">
       <UniqueIdentifier>{d11bb384-84af-4634-b9ec-f0cf15f57c15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Ranged\EyeBall">
-      <UniqueIdentifier>{bd85fe97-6466-4c12-9ee6-2da1cf5ba400}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Obj\Gobj_Monster\Melee\Forestdg\Skeleton">
+    <Filter Include="Obj\Gobj_Monster\Forestdg\Skeleton">
       <UniqueIdentifier>{d62f3108-a2b9-46c5-91ff-d235c57cfc69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obj\Gobj_Monster\Ranged\SkelMage">
+    <Filter Include="Obj\Gobj_Monster\Forestfd">
+      <UniqueIdentifier>{0e7f7ba3-d8cd-4907-9bce-cd0ce18902be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestfd\Larva">
+      <UniqueIdentifier>{5d27284b-2256-499f-bd0f-4d87b667c2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestfd\Cannibals">
+      <UniqueIdentifier>{eac19ce0-a3f9-4a5b-bb3a-5261fa7bece0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestfd\Slime">
+      <UniqueIdentifier>{c46f5ee5-3f32-4b4a-8eab-5c74d4cbd128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert">
+      <UniqueIdentifier>{bdf7e54e-42a2-4724-a31f-26a9ef9d61c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestfd\CannibalFlower">
+      <UniqueIdentifier>{bed02df0-e594-4a19-8a80-09bc58017bda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestfd\Ent">
+      <UniqueIdentifier>{21cb6722-2c79-4387-ac9d-09477e499564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestdg\EyeBall">
+      <UniqueIdentifier>{bd85fe97-6466-4c12-9ee6-2da1cf5ba400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Forestdg\SkelMage">
       <UniqueIdentifier>{89645cc7-e9b9-4220-863a-d5a7b79f2dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert\Bee">
+      <UniqueIdentifier>{024ebf14-20f0-4c42-ab9b-9ad2af85db82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert\Lizard">
+      <UniqueIdentifier>{b0d437a0-cafd-41fd-b996-aa580c5ff1f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert\Mummy">
+      <UniqueIdentifier>{d9d768c1-2764-44b3-a0e8-c376b754be99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert\Snake">
+      <UniqueIdentifier>{5e5d0eda-e3b1-42f2-b5ff-4538fdad281d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Gobj_Monster\Desert\Janubis">
+      <UniqueIdentifier>{97e8bf1a-83c3-476c-9e31-ea80b2ccf63b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -63,9 +63,13 @@ namespace sg
 		SetMaterial(mPMaterial);
 		Vector3 pos = GetOwner()->GetComp<Transform>()->GetPosition();
 		mStartPos = Vector4(pos.x, pos.y, 0.0f, 0.0f);
+		mStartPos = RandomPos(mStartPos, mPosRange.x);
 
 		for (size_t i = 0; i < 1000; i++)
 		{
+			mEndPos = Vector4(2.0f, 2.0f, 0.0f, 0.0f);
+			mEndPos = RandomPos(mEndPos, mPosRange.y);
+
 			if (mTarget)
 			{
 				Vector3 targetpos = mTarget->GetComp<Transform>()->GetPosition();
@@ -73,10 +77,7 @@ namespace sg
 				mEndPos = RandomPos(mEndPos, mPosRange.y);
 			}
 
-			mEndPos = Vector4(2.0f, 2.0f, 0.0f, 0.0f);
-			mEndPos = RandomPos(mEndPos, mPosRange.y);
-
-			mParticles[i].position = RandomPos(mStartPos, mPosRange.x);
+			mParticles[i].position = mStartPos;
 			mParticles[i].direction = Vector4(mEndPos.x - mStartPos.x, mEndPos.y - mStartPos.y, 0.0f, 1.0f);
 			mParticles[i].direction.Normalize();
 			mParticles[i].color = mStartColor;

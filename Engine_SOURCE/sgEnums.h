@@ -75,10 +75,13 @@ namespace sg::enums
 		PoisonOrb,
 		LightningOrb,
 		EntRock,
+		MummyBomb,
+		Spear,
 		Basic,
 		Basic_RandDir,
 		Basic_NearCardinalDir,
 		Basic_Dir,
+		Fire,
 		BloodSpit,
 		End,
 	};

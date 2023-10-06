@@ -26,11 +26,16 @@ namespace sg
 		Vector3 GetAttackedDir(Monster* mob)
 		{
 			GameObject* obj = dynamic_cast<GameObject*>(mob);
-			Vector3 dir3 = obj->GetComp<Transform>()->GetPosition();
-			Vector3 mypos = mOwner->GetComp<Transform>()->GetPosition();
-			mypos -= dir3;
-			mypos.Normalize();
-			return mypos;
+			if (obj != nullptr)
+			{
+				Vector3 dir3 = obj->GetComp<Transform>()->GetPosition();
+				Vector3 mypos = mOwner->GetComp<Transform>()->GetPosition();
+				mypos -= dir3;
+				mypos.Normalize();
+				return mypos;
+			}
+			else
+				return Vector3::Zero;
 		}
 
 		void OnCollisionEnter(Collider2D* other) override;

@@ -7,6 +7,7 @@
 #include "Effect_Hit.h"
 #include "Effect_Explosion.h"
 #include "Effect_FirePlate.h"
+#include "Effect_FirePlate2.h"
 #include "Effect_ProjectileDest.h"
 #include "Effect_RockDust.h"
 
@@ -29,24 +30,27 @@ namespace sg
 
 			if (mProjType == eMProjType::Basic_RandDir)
 			{
-				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 				mLastPos = mTarget->GetComp<Transform>()->GetPosition();
 				LastPos_RandomDir();
 				mTotalDuration = GetDistance() / 1000.0f;
 			}
 			else if (mProjType == eMProjType::Basic_NearCardinalDir)
 			{
-				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 				mLastPos = mProj->GetLastPos();
 				mTotalDuration = GetDistance() / 20.0f;
 				mLastPos += mFirstPos;
 			}
 			else if (mProjType == eMProjType::Basic_Dir)
 			{
-				mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
 				mLastPos = mProj->GetLastPos();
 				mTotalDuration = GetDistance() / 20.0f;
 				mLastPos += mFirstPos;
+			}
+			else if (mProjType == eMProjType::Fire)
+			{
+				mFirstPos = mProj->GetFirstPos();
+				mLastPos = mFirstPos;
+				mTotalDuration = 0;
 			}
 			else if (mProjType == eMProjType::BloodSpit)
 			{
@@ -123,9 +127,67 @@ namespace sg
 			curPos = Vector3(x, y, z);
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 
-			if (GetDistance() <= 15.0f)
+			if (GetDistance() <= 30.0f)
 				IsActivated = true;
 		}
+		else if (mProjType == eMProjType::MummyBomb)
+		{
+			float curveHeight = 30.0f; // 곡선의 높이
+			float curveDuration = 1.0f; // 곡선 운동 시간
+
+			// 시간의 변화량을 계산
+			float t2 = mTime / curveDuration;
+
+			// 포물선 곡선을 따르도록 x, y, z 좌표 계산
+			float xDist = mLastPos.x - mFirstPos.x; // x 좌표의 이동 거리
+			float yDist = mLastPos.y - mFirstPos.y; // y 좌표의 이동 거리
+			float x = mFirstPos.x + t2 * xDist;
+			float y = mFirstPos.y + t2 * yDist + curveHeight * 4.0f * t2 * (1.0f - t2);
+			float z = -1.0f;
+			curPos = Vector3(x, y, z);
+			mProj->GetComp<Transform>()->SetPosition(curPos);
+
+			if (GetDistance() <= 30.0f)
+				IsActivated = true;
+			if (GetDistance() <= 5.0f)
+			{
+				object::Instantiate<Effect_Explosion>(curPos, eLayerType::Effect, SceneManager::GetActiveScene());
+				object::Instantiate<Effect_FirePlate2>(Vector3(curPos.x, curPos.y, curPos.z + 0.1f), eLayerType::Monster_Effect, SceneManager::GetActiveScene());
+				mProj->SetState(GameObject::eState::Dead);
+			}
+		}
+		else if (mProjType == eMProjType::Spear)
+		{
+			float curveHeight = 30.0f; // 곡선의 높이
+			float curveDuration = 1.0f; // 곡선 운동 시간
+
+			// 시간의 변화량을 계산
+			float t2 = mTime / curveDuration;
+
+			// 포물선 곡선을 따르도록 x, y, z 좌표 계산
+			float xDist = mLastPos.x - mFirstPos.x; // x 좌표의 이동 거리
+			float yDist = mLastPos.y - mFirstPos.y; // y 좌표의 이동 거리
+			float x = mFirstPos.x + t2 * xDist;
+			float y = mFirstPos.y + t2 * yDist + curveHeight * 4.0f * t2 * (1.0f - t2);
+			float z = -1.0f;
+			curPos = Vector3(x, y, z);
+
+			Vector3 direction = curPos - mFirstPos;
+			direction.Normalize(); // 방향 벡터를 정규화
+			float angle = sgGetAngleInRadian(90.0f);
+			float yaw = atan2(direction.y, direction.x);
+			
+			mProj->GetComp<Transform>()->SetPosition(curPos);
+			mProj->GetComp<Transform>()->SetRotation(Vector3(0.0f, 0.0f, yaw - angle));
+
+			//if (GetDistance() <= 30.0f)
+			//	IsActivated = true;
+			//if (GetDistance() <= 5.0f)
+			//{
+			//}
+		}
+		else if (mProjType == eMProjType::Fire)
+			IsActivated = true;
 		else if (mProjType == eMProjType::Basic 
 			|| mProjType == eMProjType::Basic_RandDir 
 			|| mProjType == eMProjType::Basic_NearCardinalDir
@@ -139,10 +201,10 @@ namespace sg
 		}
 
 		 // 사정거리 이상이 되면 사라짐
-		if (GetDistance() >= GetRange() * 2.0f)
-		{
-			mProj->SetState(GameObject::eState::Dead);
-		}
+		//if (GetDistance() >= GetRange() * 2.0f)
+		//{
+		//	mProj->SetState(GameObject::eState::Dead);
+		//}
 	}
 	void SCRIPT_MobProjectile::OnCollisionEnter(Collider2D* other)
 	{
@@ -169,6 +231,19 @@ namespace sg
 				object::Instantiate<Effect_RockDust>(Vector3(pos.x, pos.y + 10, pos.z - 1.0f), eLayerType::Effect, SceneManager::GetActiveScene());
 				mProj->SetState(GameObject::eState::Dead);
 			}
+			else if (mProjOwner->GetName() == L"MummyBomb")
+			{
+				pos = mProj->GetComp<Transform>()->GetPosition();
+				object::Instantiate<Effect_Explosion>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+				object::Instantiate<Effect_FirePlate2>(Vector3(pos.x, pos.y, pos.z + 0.1f), eLayerType::Monster_Effect, SceneManager::GetActiveScene());
+				mProj->SetState(GameObject::eState::Dead);
+
+			}
+			else if (mProjOwner->GetName() == L"FireLizard")
+			{
+				pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
+				object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
+			}
 			else
 			{
 				pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
@@ -181,7 +256,6 @@ namespace sg
 			Vector3 pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
 			object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
 			mProj->SetState(GameObject::eState::Dead);
-
 		}
 	}
 	void SCRIPT_MobProjectile::OnCollisionStay(Collider2D* other)

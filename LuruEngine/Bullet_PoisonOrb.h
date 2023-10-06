@@ -7,6 +7,7 @@ namespace sg
 	{
 	public:
 		Bullet_PoisonOrb(Gobj_Monster* BulletOwner);
+		Bullet_PoisonOrb(Gobj_Monster* BulletOwner, Vector3 dir);
 		virtual ~Bullet_PoisonOrb();
 		
 		void Initialize();

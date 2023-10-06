@@ -16,3 +16,14 @@
 #include "Ranged_EyeBall.h"
 #include "Ranged_SkelMage.h"
 #include "Boss_SkelKnight.h"
+
+#include "Melee_Bee.h"
+#include "Melee_EliteBee.h"
+#include "Melee_Snake.h"
+#include "Melee_Mummy.h"
+#include "Melee_MummyPoison.h"
+#include "Ranged_MummyBomb.h"
+#include "Melee_LizardSword.h"
+#include "Ranged_LizardSpear.h"
+#include "Ranged_FireLizard.h"
+

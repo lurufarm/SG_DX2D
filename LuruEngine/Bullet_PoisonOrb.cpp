@@ -9,17 +9,30 @@ namespace sg
 		this->SetProjOwner(BulletOwner);
 		mProjOwner = BulletOwner;
 		mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+		mType = eMProjType::PoisonOrb;
+
+		Bullet_PoisonOrb::Initialize();
+	}
+	Bullet_PoisonOrb::Bullet_PoisonOrb(Gobj_Monster* BulletOwner, Vector3 dir)
+	{
+		SetName(L"PoisonOrb");
+		this->SetProjOwner(BulletOwner);
+		mProjOwner = BulletOwner;
+		mFirstPos = mProjOwner->GetComp<Transform>()->GetPosition();
+		mType = eMProjType::Basic_Dir;
+		mLastPos = dir;
+
 		Bullet_PoisonOrb::Initialize();
 	}
 	Bullet_PoisonOrb::~Bullet_PoisonOrb()
 	{
+		int a = 0;
 	}
 	void Bullet_PoisonOrb::Initialize()
 	{
 		mMr = GetComp<MeshRenderer>();
 		mAni = AddComp<Animator>();
 		mCol = GetComp<Collider2D>();
-		mType = eMProjType::PoisonOrb;
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 
@@ -29,9 +42,6 @@ namespace sg
 		mAni->PlayAnimation(L"Ani_PoisonOrb", true, true);
 
 		mCol->SetSize(Vector2(0.8f, 0.8f));
-
-		//Gobj_MobProjectile::Initialize();
-
 		AddComp<SCRIPT_MobProjectile>();
 	}
 	void Bullet_PoisonOrb::Update()

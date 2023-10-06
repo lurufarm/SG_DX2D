@@ -154,53 +154,87 @@ namespace sg
 			at->PlayAnimation(AnimationName(idle), true, mDirection);
 		}
 
-		if (ownerName == L"SlimeA" || ownerName == L"SlimeB" || ownerName == L"EliteCannibals")
+		if (at->GetActiveAni()->GetKey() == AnimationName(attack))
 		{
-			if (Index == 4)
-				mAttackable = true;
+			if (ownerName == L"SlimeA" || ownerName == L"SlimeB" || ownerName == L"EliteCannibals")
+			{
+				if (Index == 4)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Larva" || ownerName == L"EliteLarva")
+			{
+				if (Index == 3)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Cannibals")
+			{
+				if (Index == 3)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Bat")
+			{
+				if (Index == 4)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Zombie")
+			{
+				if (Index == 5)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Skeleton")
+			{
+				if (Index == 3)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Bee" || ownerName == L"EliteBee")
+			{
+				if (Index == 3)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"LizardSword")
+			{
+				if (Index == 2)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Snake")
+			{
+				if (Index == 1)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"Mummy")
+			{
+				if (Index == 3)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
 			else
+			{
 				mAttackable = false;
-		}
-		else if (ownerName == L"Larva" || ownerName == L"EliteLarva")
-		{
-			if (Index == 3)
-				mAttackable = true;
-			else
-				mAttackable = false;
-		}
-		else if (ownerName == L"Cannibals")
-		{
-			if (Index == 3)
-				mAttackable = true;
-			else
-				mAttackable = false;
-		}
-		else if (ownerName == L"Bat")
-		{
-			if (Index == 4)
-				mAttackable = true;
-			else
-				mAttackable = false;
-		}
-		else if (ownerName == L"Zombie")
-		{
-			if (Index == 5)
-				mAttackable = true;
-			else
-				mAttackable = false;
-		}
-		else if (ownerName == L"Skeleton")
-		{
-			if (Index == 3)
-				mAttackable = true;
-			else
-				mAttackable = false;
+			}
 		}
 		else
 		{
 			mAttackable = false;
 		}
-
 	}
 	void SCRIPT_MeleeMob::Attacked()
 	{

@@ -14,6 +14,7 @@ namespace sg
 
 			delete gameObj;
 			gameObj = nullptr;
+
 		}
 	}
 	void Layer::Initialize()
