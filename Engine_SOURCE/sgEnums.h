@@ -75,10 +75,11 @@ namespace sg::enums
 	{
 		PoisonOrb,
 		LightningOrb,
+		WhirlWind,
 		EntRock,
 		MummyBomb,
 		Spear,
-		WhirlWind,
+		BigOrb,
 		Basic,
 		Basic_RandDir,
 		Basic_NearCardinalDir,

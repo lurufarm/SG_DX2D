@@ -79,16 +79,11 @@ namespace sg
 
 		if (other->GetOwner() == bullet)
 		{
-			//if (mAttacked == false)
-			//{
-				//mFSMState = eFSMState::Attacked;
-				int hp = mOwner->GetStat().mCurHP;
-				Gobj_Character::CharStat pStat = bullet->GetBulletOwner()->GetStat();
-				hp -= (pStat.mStrength * pStat.mDamageScaling) - (pStat.mStrength * mOwner->GetStat().mDefence);
-				mOwner->SetStatHP(hp);
-			//}
+			int hp = mOwner->GetStat().mCurHP;
+			Gobj_Character::CharStat pStat = bullet->GetBulletOwner()->GetStat();
+			hp -= (pStat.mStrength * pStat.mDamageScaling) - (pStat.mStrength * mOwner->GetStat().mDefence);
+			mOwner->SetStatHP(hp);
 		}
-
 	}
 	void SCRIPT_SkelKnight::OnCollisionStay(Collider2D* other)
 	{

@@ -154,13 +154,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boss_Centipede.h" />
     <ClInclude Include="Boss_OldEnt.h" />
     <ClInclude Include="Boss_SkelKnight.h" />
     <ClInclude Include="Bullet_Apple.h" />
+    <ClInclude Include="Bullet_BigGreenOrb.h" />
     <ClInclude Include="Bullet_BloodSpit.h" />
     <ClInclude Include="Bullet_CheeseArrow.h" />
     <ClInclude Include="Bullet_EntRock.h" />
     <ClInclude Include="Bullet_Fire.h" />
+    <ClInclude Include="Bullet_GreenOrb.h" />
     <ClInclude Include="Bullet_LightningOrb.h" />
     <ClInclude Include="Bullet_MummyBomb.h" />
     <ClInclude Include="Bullet_Spear.h" />
@@ -247,6 +250,7 @@
     <ClInclude Include="SCENE_PlayScene2.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
+    <ClInclude Include="SCRIPT_Centipede.h" />
     <ClInclude Include="SCRIPT_MeleeBomb.h" />
     <ClInclude Include="SCRIPT_MeleeMummyPoison.h" />
     <ClInclude Include="SCRIPT_MeleeZombie.h" />
@@ -311,13 +315,16 @@
     <ClInclude Include="UI_TextBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boss_Centipede.cpp" />
     <ClCompile Include="Boss_OldEnt.cpp" />
     <ClCompile Include="Boss_SkelKnight.cpp" />
     <ClCompile Include="Bullet_Apple.cpp" />
+    <ClCompile Include="Bullet_BigGreenOrb.cpp" />
     <ClCompile Include="Bullet_BloodSpit.cpp" />
     <ClCompile Include="Bullet_CheeseArrow.cpp" />
     <ClCompile Include="Bullet_EntRock.cpp" />
     <ClCompile Include="Bullet_Fire.cpp" />
+    <ClCompile Include="Bullet_GreenOrb.cpp" />
     <ClCompile Include="Bullet_LightningOrb.cpp" />
     <ClCompile Include="Bullet_MummyBomb.cpp" />
     <ClCompile Include="Bullet_Spear.cpp" />
@@ -401,6 +408,7 @@
     <ClCompile Include="SCENE_PlayScene2.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
+    <ClCompile Include="SCRIPT_Centipede.cpp" />
     <ClCompile Include="SCRIPT_MeleeBomb.cpp" />
     <ClCompile Include="SCRIPT_MeleeMummyPoison.cpp" />
     <ClCompile Include="SCRIPT_MeleeZombie.cpp" />

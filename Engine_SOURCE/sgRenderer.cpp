@@ -428,8 +428,8 @@ namespace renderer
 		particleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
 		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
 		particleShader->SetRSState(eRSType::SolidNone);
-		particleShader->SetDSState(eDSType::NoWrite);
-		particleShader->SetBSState(eBSType::AlphaBlend);
+		particleShader->SetDSState(eDSType::Less);
+		particleShader->SetBSState(eBSType::OneOne);
 		particleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 		sg::Resources::Insert(L"ParticleShader", particleShader);
 
@@ -498,7 +498,7 @@ namespace renderer
 		std::shared_ptr<Shader> HPBarShader
 			= Resources::Find<Shader>(L"HPBarShader");
 
-		std::shared_ptr<Shader> ParticleShader
+		std::shared_ptr<Shader> ParticleSystemShader
 			= Resources::Find<Shader>(L"ParticleShader");
 
 
@@ -509,7 +509,7 @@ namespace renderer
 
 		std::shared_ptr<Texture> particleTexx2 = Resources::Find<Texture>(L"particletest");
 		std::shared_ptr<Material> particlematerial = std::make_shared<Material>();
-		particlematerial->SetShader(ParticleShader);
+		particlematerial->SetShader(ParticleSystemShader);
 		particlematerial->SetTexture(particleTexx2);
 		particlematerial->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"ParticleMaterial2", particlematerial);
@@ -533,7 +533,7 @@ namespace renderer
 		// particle Material
 		
 		//material = std::make_shared<Material>();
-		//material->SetShader(ParticleShader);
+		//material->SetShader(ParticleSystemShader);
 		//material->SetRendereringMode(eRenderingMode::Transparent);
 		//Resources::Insert(L"ParticleMaterial", material);
 
@@ -1301,6 +1301,14 @@ namespace renderer
 			material->SetTexture(texture);
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"MobJanubis", material);
+
+			texture = Resources::Load<Texture>(L"Monster_Centipede", L"..\\Resources\\Monster\\Bosses\\Centipede.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobCentipede", material);
+
 		}
 
 #pragma endregion

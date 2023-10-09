@@ -21,7 +21,7 @@ float4 main(GSOut In) : SV_TARGET
         color.y *= particles[id].color.y;
         color.z *= particles[id].color.z;
         color.w *= particles[id].color.a;
-        color = saturate(color);
+//        color = saturate(color);
     }
 
     return color;

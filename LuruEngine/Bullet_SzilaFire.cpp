@@ -42,28 +42,31 @@ namespace sg
 		mFirstPos.y -= 3.0f;
 		mTr->SetPosition(mFirstPos);
 
-		mPs = new ParticleSystem();
-		Vector4 scolor = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		Vector4 mcolor = Vector4(0.8f, 1.0f, 0.0f, 1.0f);
-		Vector4 ecolor = Vector4(1.0f, 0.9f, 0.0f, 1.0f);
+		mPs = new ParticleSystem(); // 재
+		Vector4 scolor = Vector4(0.3f, 1.0f, 0.3f, 0.8f);
+		Vector4 mcolor = Vector4(0.3f, 0.3f, 0.3f, 0.8f);
+		Vector4 ecolor = Vector4(0.3f, 0.3f, 0.3f, 0.3f);
 		mPs->SetParticleMaterial(L"ParticleMaterial2");
 		mPs->SetTarget(this->mTarget);
-		mPs->SetParticleOptions(300, Vector2(20.0, 5.0f), Vector2(10.0f, 30.0f), 60.0f, scolor, ecolor, mcolor, 0.5f, 0.1f);
+		mPs->SetParticleOptions(500, Vector2(30.0, 30.0f), Vector2(5.0f, 8.0f), 60.0f, scolor, ecolor, mcolor, 0.5f, 0.05f);
 		mPs = AddComp2<ParticleSystem>(mPs);
 
-		ParticleSystem* mPs2 = new ParticleSystem();
-		Vector4 scolor2 = Vector4(0.8f, 0.2f, 0.0f, 1.0f);
-		Vector4 mcolor2 = Vector4(1.0f, 0.5f, 0.1f, 1.0f);
-		Vector4 ecolor2 = Vector4(0.2f, 1.0f, 0.0f, 1.0f);
+		ParticleSystem* mPs2 = new ParticleSystem(); // 초록 불
+		Vector4 scolor2 = Vector4(0.2f, 1.0f, 0.0f, 0.8f);
+		Vector4 mcolor2 = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		Vector4 ecolor2 = Vector4(1.0f, 1.0f, 0.0f, 0.8f);
 		mPs2->SetParticleMaterial(L"ParticleMaterial2");
 		mPs2->SetTarget(this->mTarget);
-		mPs2->SetParticleOptions(300, Vector2(20.0, 5.0f), Vector2(10.0f, 30.0f), 60.0f, scolor2, mcolor2, ecolor2, 0.5f, 0.1f);
+		mPs2->SetParticleOptions(1000, Vector2(20.0, 5.0f), Vector2(25.0f, 35.0f), 60.0f, scolor2, mcolor2, ecolor2, 0.5f, 0.05f);
 		mPs2 = AddComp2<ParticleSystem>(mPs2);
 
-		ParticleSystem* mPs3 = new ParticleSystem();
+		ParticleSystem* mPs3 = new ParticleSystem(); // 주황~빨강 불
+		Vector4 scolor3 = Vector4(1.0f, 0.3f, 0.0f, 0.8f);
+		Vector4 mcolor3 = Vector4(1.0f, 0.0f, 0.0f, 0.8f);
+		Vector4 ecolor3 = Vector4(1.0f, 1.0f, 0.0f, 0.8f);
 		mPs3->SetParticleMaterial(L"ParticleMaterial2");
 		mPs3->SetTarget(this->mTarget);
-		mPs3->SetParticleOptions(300, Vector2(20.0, 5.0f), Vector2(10.0f, 30.0f), 60.0f, scolor, ecolor, mcolor, 0.5f, 0.1f);
+		mPs3->SetParticleOptions(500, Vector2(20.0, 10.0f), Vector2(10.0f, 30.0f), 60.0f, scolor3, ecolor3, mcolor3, 0.5f, 0.05f);
 		mPs3 = AddComp2<ParticleSystem>(mPs3);
 
 

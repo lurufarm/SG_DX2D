@@ -27,4 +27,5 @@
 #include "Ranged_LizardSpear.h"
 #include "Ranged_FireLizard.h"
 #include "Ranged_Janubis.h"
+#include "Boss_Centipede.h"
 
