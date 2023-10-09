@@ -164,6 +164,9 @@
     <ClInclude Include="Bullet_LightningOrb.h" />
     <ClInclude Include="Bullet_MummyBomb.h" />
     <ClInclude Include="Bullet_Spear.h" />
+    <ClInclude Include="Bullet_SzilaFire.h" />
+    <ClInclude Include="Bullet_WhirlWind.h" />
+    <ClInclude Include="Char_Szila.h" />
     <ClInclude Include="Effect_FirePlate2.h" />
     <ClInclude Include="Img_EyeBallLine.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
@@ -318,6 +321,9 @@
     <ClCompile Include="Bullet_LightningOrb.cpp" />
     <ClCompile Include="Bullet_MummyBomb.cpp" />
     <ClCompile Include="Bullet_Spear.cpp" />
+    <ClCompile Include="Bullet_SzilaFire.cpp" />
+    <ClCompile Include="Bullet_WhirlWind.cpp" />
+    <ClCompile Include="Char_Szila.cpp" />
     <ClCompile Include="Effect_FirePlate2.cpp" />
     <ClCompile Include="Img_EyeBallLine.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />

@@ -32,11 +32,13 @@ namespace sg
 			{
 				mFirstPos = Player->GetComp<Transform>()->GetPosition();
 				mLastPos = Player->GetTarget()->GetComp<Transform>()->GetPosition();
+				mTarget = Player->GetTarget();
 			}
 			else
 			{
 				mFirstPos = mBulletOwner->GetComp<Transform>()->GetPosition();
 				mLastPos = mBulletOwner->GetComp<SCRIPT_Company>()->GetTarget()->GetComp<Transform>()->GetPosition();
+				mTarget = mBulletOwner->GetComp<SCRIPT_Company>()->GetTarget();
 			}
 		}
 	}

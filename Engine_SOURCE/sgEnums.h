@@ -67,6 +67,7 @@ namespace sg::enums
 		Cheese,
 		Lucy,
 		Robo,
+		Szila,
 		End,
 	};
 	
@@ -77,6 +78,7 @@ namespace sg::enums
 		EntRock,
 		MummyBomb,
 		Spear,
+		WhirlWind,
 		Basic,
 		Basic_RandDir,
 		Basic_NearCardinalDir,

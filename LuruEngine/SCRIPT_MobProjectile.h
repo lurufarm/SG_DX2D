@@ -30,13 +30,13 @@ namespace sg
 			return direction;
 		}
 
-		void LastPos_RandomDir()
+		void LastPos_RandomDir(float range)
 		{
 			const float PI = 3.141592;
 			float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
 
 			// random distance
-			float distance = 30.0f;
+			float distance = range;
 			float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * distance);
 
 			// angle + distance

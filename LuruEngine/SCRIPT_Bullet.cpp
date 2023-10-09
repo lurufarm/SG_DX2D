@@ -47,6 +47,24 @@ namespace sg
 			tr->SetRotation(Vector3(0.0f, 0.0f, angleDegree));
 			tr->SetPosition(lastpos);
 		}
+		else if (mBulletType == eBulletType::Szila)
+		{
+			Vector3 dir = mLastPos - mFirstPos;
+			dir.z = 0.0f;
+			dir.Normalize();
+			float angle = sgGetAngle(Vector2(dir.x, dir.y));
+			float angle2 = angle;
+			angle = sgGetAngleInRadian(angle + 90.0f);
+			angle2 = sgGetAngleInRadian(angle2);
+			Collider2D* col = mBullet->GetComp<Collider2D>();
+			col->SetSize(Vector2(30.0f, 100.0f));
+			Vector2 pos2d = sgGetBeamPos(col->GetCSize().y / 2, angle2, Vector2(mFirstPos.x, mFirstPos.y));
+			pos2d.x -= mFirstPos.x;
+			pos2d.y -= mFirstPos.y;
+			col->SetCenter(pos2d);
+			mBullet->GetComp<Transform>()->SetRotation(0.0f, 0.0f, angle);
+
+		}
 	}
 	void SCRIPT_Bullet::Update()
 	{
@@ -94,7 +112,11 @@ namespace sg
 				mBullet->SetState(GameObject::eState::Dead);
 			}
 		}
-
+		if (mBulletType == eBulletType::Szila)
+		{
+			if (mTime >= 2.0f)
+				mBullet->SetState(GameObject::eState::Dead);
+		}
 
 		 //모든 Bullet은 사정거리 이상이 되면 사라진다.
 
@@ -111,7 +133,7 @@ namespace sg
 		else if (mBulletType == eBulletType::Robo)
 			object::Instantiate<Effect_LaserHit>(Vector3(pos.x, pos.y, pos.z - 1.0f), eLayerType::Player_Effect, SceneManager::GetActiveScene());
 
-		if (mBulletType != eBulletType::Robo)
+		if (mBulletType != eBulletType::Robo && mBulletType != eBulletType::Szila)
 		{
 			object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
 			GetOwner()->SetState(GameObject::eState::Dead);

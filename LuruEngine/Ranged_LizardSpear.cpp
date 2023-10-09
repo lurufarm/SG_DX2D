@@ -31,7 +31,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 
-		mAtlas = Resources::Find<Material>(L"MobLizard");
+		mAtlas = Resources::Find<Material>(L"MobLizardSpear");
 
 		mAni->Create(L"Ani_LizardSpear_Idle", mAtlas->GetTexture(), Vector2::Zero, Vector2(31.0f, 25.0f), 6, Vector2::Zero, 0.1f);
 		mAni->Create(L"Ani_LizardSpear_Move", mAtlas->GetTexture(), Vector2(0.0f, 25.0f), Vector2(31.0f, 25.0f), 8, Vector2::Zero, 0.1f);

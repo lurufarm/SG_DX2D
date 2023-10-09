@@ -3,6 +3,7 @@
 #include "..\LuruEngine\Char_Cheese.h"
 #include "..\LuruEngine\Char_Lucy.h"
 #include "..\LuruEngine\Char_Robo.h"
+#include "..\LuruEngine\Char_Szila.h"
 
 namespace sg
 {
@@ -16,11 +17,12 @@ namespace sg
 		Char_Cheese* cheese = new Char_Cheese();
 		Char_Lucy* lucy = new Char_Lucy();
 		Char_Robo* robo = new Char_Robo();
+		Char_Szila* szila = new Char_Szila();
 		mAllChars.insert(std::make_pair(cheese->GetName(), cheese));
 		mAllChars.insert(std::make_pair(lucy->GetName(), lucy));
 		mAllChars.insert(std::make_pair(robo->GetName(), robo));
-		//cheese->Initialize();
-		//lucy->Initialize();
+		mAllChars.insert(std::make_pair(szila->GetName(), szila));
+
 	}
 	void SceneManager::Update()
 	{

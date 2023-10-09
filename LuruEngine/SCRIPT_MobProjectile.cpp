@@ -31,7 +31,7 @@ namespace sg
 			if (mProjType == eMProjType::Basic_RandDir)
 			{
 				mLastPos = mTarget->GetComp<Transform>()->GetPosition();
-				LastPos_RandomDir();
+				LastPos_RandomDir(30.0f);
 				mTotalDuration = GetDistance() / 1000.0f;
 			}
 			else if (mProjType == eMProjType::Basic_NearCardinalDir)
@@ -51,6 +51,12 @@ namespace sg
 				mFirstPos = mProj->GetFirstPos();
 				mLastPos = mFirstPos;
 				mTotalDuration = 0;
+			}
+			else if (mProjType == eMProjType::WhirlWind)
+			{
+				mLastPos = mTarget->GetComp<Transform>()->GetPosition();
+				LastPos_RandomDir(50.0f);
+				mTotalDuration = Time::DeltaTime();
 			}
 			else if (mProjType == eMProjType::BloodSpit)
 			{
@@ -90,8 +96,8 @@ namespace sg
 			float frequency = 15.0f;
 
 			// Calculate the new position
-			curPos.x = mFirstPos.x + curDir.x * t * speed;
-			curPos.y = mFirstPos.y + curDir.y * t * speed + sin(t * frequency) * amplitude;
+			curPos.x = mFirstPos.x + curDir.x * t * speed - (sin(t * frequency) * amplitude * curDir.y);
+			curPos.y = mFirstPos.y + curDir.y * t * speed + (sin(t * frequency) * amplitude * curDir.x);
 			curPos.z = -1.0f;
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 		}
@@ -105,9 +111,25 @@ namespace sg
 			float frequency = 0.1f;
 
 			// Calculate the new position
-			curPos.x = mFirstPos.x + curDir.x * t * speed;
-			curPos.y = mFirstPos.y + curDir.y * t * speed + sin(t * frequency) * amplitude;
+			curPos.x = mFirstPos.x + curDir.x * t * speed - (sin(t * frequency) * amplitude * curDir.y);
+			curPos.y = mFirstPos.y + curDir.y * t * speed + (sin(t * frequency) * amplitude * curDir.x);
 			curPos.z = -1.0f;
+			mProj->GetComp<Transform>()->SetPosition(curPos);
+		}
+		else if (mProjType == eMProjType::WhirlWind)
+		{
+			float speed = GetSpeed() * mTotalDuration * 1.5f;
+			IsActivated = true;
+			// Set the amplitude of the sine wave
+			float amplitude = 20.0f;
+			// Set the frequency of the sine wave
+			float frequency = 0.05f;
+
+			// Calculate the new position
+			curPos.x = mFirstPos.x + curDir.x * t * speed - (sin(t * frequency) * amplitude * curDir.y);
+			curPos.y = mFirstPos.y + curDir.y * t * speed + (sin(t * frequency) * amplitude * curDir.x);
+			curPos.z = -1.0f;
+
 			mProj->GetComp<Transform>()->SetPosition(curPos);
 		}
 		else if (mProjType == eMProjType::EntRock)
@@ -174,11 +196,11 @@ namespace sg
 
 			Vector3 direction = curPos - mFirstPos;
 			direction.Normalize(); // 방향 벡터를 정규화
-			float angle = sgGetAngleInRadian(90.0f);
-			float yaw = atan2(direction.y, direction.x);
+			float an = sgGetAngleInRadian(180.0f);
+			float yaw = sgGetAngle(Vector2(direction.y, direction.x));
 			
+			mProj->GetComp<Transform>()->SetRotation(Vector3(0.0f, 0.0f, -yaw + an));
 			mProj->GetComp<Transform>()->SetPosition(curPos);
-			mProj->GetComp<Transform>()->SetRotation(Vector3(0.0f, 0.0f, yaw - angle));
 
 			//if (GetDistance() <= 30.0f)
 			//	IsActivated = true;

@@ -62,6 +62,12 @@ namespace sg
 					mObject->SetState(GameObject::eState::Paused);
 					LobbyScene::FocusBoxesActive();
 				}
+				else if (mObject->GetBoxes(0, 3)->GetSelected())
+				{
+					Player->SetChar(SceneManager::GetChar(L"Szila"));
+					mObject->SetState(GameObject::eState::Paused);
+					LobbyScene::FocusBoxesActive();
+				}
 			}
 		}
 

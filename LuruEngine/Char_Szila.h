@@ -1,14 +1,13 @@
 #pragma once
-#include "Monster_Ranged.h"
+#include "Gobj_Character.h"
 
 namespace sg
 {
-	class Ranged_Janubis : public Monster_Ranged
+	class Char_Szila : public Gobj_Character
 	{
 	public:
-
-		Ranged_Janubis();
-		~Ranged_Janubis();
+		Char_Szila();
+		~Char_Szila();
 
 		void Initialize();
 		void Update();

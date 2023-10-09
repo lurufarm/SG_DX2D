@@ -26,4 +26,5 @@
 #include "Melee_LizardSword.h"
 #include "Ranged_LizardSpear.h"
 #include "Ranged_FireLizard.h"
+#include "Ranged_Janubis.h"
 

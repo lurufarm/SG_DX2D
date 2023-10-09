@@ -16,6 +16,7 @@
 #include "Bullet_CheeseArrow.h"
 #include "Bullet_LucyBomb.h"
 #include "Bullet_RoboBeam.h"
+#include "Bullet_SzilaFire.h"
 
 #include "SCRIPT_MeleeMob.h"
 #include "SCRIPT_MeleeZombie.h"
@@ -313,13 +314,14 @@ namespace sg
 	{
 		mTime += Time::DeltaTime();
 		Animator* mAni = GetOwner()->GetComp<Animator>();
+		int Index = mAni->GetActiveAni()->GetAniIndex();
 		if (mOwner->GetEnemyNearby() == false)
 		{
 			mFSMState = ePlayerFSM::Idle;
 		}
 		if (mTime >= mOwner->GetStat().mCooldown && mOwner->GetStat().mRange * 2.0f >= GetDistanceToEnemy())
 		{
-			//mAni->PlayAnimation(AnimationName(attack), false, mDirection);
+			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
 			/*if (mOwner->GetChar()->GetName() == L"Cheese")
 			{
 				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
@@ -342,6 +344,11 @@ namespace sg
 				object::Instantiate<Effect_LaserFiring>(epos, eLayerType::Player_Effect, SceneManager::GetActiveScene());
 				object::ShootBullet<Bullet_RoboBeam>(RoboBeamRange, eLayerType::Player_Beam, SceneManager::GetActiveScene());
 			}
+			else if (mOwner->GetChar()->GetName() == L"Szila")
+			{
+					object::ShootBullet<Bullet_SzilaFire>(1, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+			}
+
 			mTime = 0.0f;
 		}
 		if (Input::GetAnyKey())

@@ -77,8 +77,8 @@ namespace sg
 				mEndPos = RandomPos(mEndPos, mPosRange.y);
 			}
 
-			mParticles[i].position = mStartPos;
-			mParticles[i].direction = Vector4(mEndPos.x - mStartPos.x, mEndPos.y - mStartPos.y, 0.0f, 1.0f);
+			mParticles[i].position = RandomPos(mStartPos, mPosRange.x);
+			mParticles[i].direction = Vector4(mEndPos.x - mParticles[i].position.x, mEndPos.y - mParticles[i].position.y, mEndPos.z - mParticles[i].position.z, 1.0f);
 			mParticles[i].direction.Normalize();
 			mParticles[i].color = mStartColor;
 			mParticles[i].scale = Vector2(RandomScale(), RandomScale());
@@ -178,7 +178,8 @@ namespace sg
 		Vector4 randomPos = pos;
 		randomPos.x += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * cos(angle);
 		randomPos.y += static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range) * sin(angle);
-		//randomPos.z = -0.1f;
+		std::uniform_real_distribution<> dis(-1.5f, 0.0f);
+		randomPos.z = dis(gen);
 
 		return randomPos;
 	}

@@ -10,6 +10,7 @@
 #include "Bullet_Fire.h"
 #include "Bullet_Spear.h"
 #include "Bullet_MummyBomb.h"
+#include "Bullet_WhirlWind.h"
 #include "Effect_ProjectileDest.h"
 #include "Img_EyeBallLine.h"
 
@@ -227,6 +228,17 @@ namespace sg
 					&& aniName == AnimationName(attack))
 				{
 					object::Instantiate<Bullet_MummyBomb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					mLaunched = true;
+				}
+			}
+			else if (ownerName == L"Janubis")
+			{
+				if (Index == 3
+					&& aniName == AnimationName(attack))
+				{
+					object::Instantiate<Bullet_WhirlWind>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					object::Instantiate<Bullet_WhirlWind>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
+					
 					mLaunched = true;
 				}
 			}

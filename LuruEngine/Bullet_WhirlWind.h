@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class Bullet_Spear : public Gobj_MobProjectile
+	class Bullet_WhirlWind : public Gobj_MobProjectile
 	{
 	public:
-		Bullet_Spear(Gobj_Monster* BulletOwner);
-		~Bullet_Spear();
+		Bullet_WhirlWind(Gobj_Monster* BulletOwner);
+		~Bullet_WhirlWind();
 
 		void Initialize();
 		void Update();

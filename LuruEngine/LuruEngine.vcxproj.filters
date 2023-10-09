@@ -448,6 +448,15 @@
     <ClCompile Include="Bullet_Spear.cpp">
       <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
     </ClCompile>
+    <ClCompile Include="Char_Szila.cpp">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_SzilaFire.cpp">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_WhirlWind.cpp">
+      <Filter>Obj\Gobj_Monster\Desert\Janubis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -905,6 +914,15 @@
     </ClInclude>
     <ClInclude Include="Bullet_Spear.h">
       <Filter>Obj\Gobj_Monster\Desert\Lizard</Filter>
+    </ClInclude>
+    <ClInclude Include="Char_Szila.h">
+      <Filter>Obj\Gobj_Character\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_SzilaFire.h">
+      <Filter>Obj\Gobj_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_WhirlWind.h">
+      <Filter>Obj\Gobj_Monster\Desert\Janubis</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
