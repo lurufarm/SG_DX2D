@@ -41,4 +41,22 @@ namespace sg
 
 		return Vector2(x, y);
 	}
+
+	Vector3 sgRandomPos(Vector3 pos, float range)
+	{
+		// random angle
+		const float PI = 3.141592;
+		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
+
+		// random distance
+		float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * range);
+
+		// angle + distance
+		Vector3 randomPos;
+		randomPos.x = pos.x + randomDistance * cos(angle);
+		randomPos.y = pos.y + randomDistance * sin(angle);
+		randomPos.z = pos.z + 0.01f;
+
+		return randomPos;
+	}
 }

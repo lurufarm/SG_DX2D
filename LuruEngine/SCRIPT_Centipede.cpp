@@ -5,6 +5,7 @@
 
 #include "Bullet_BigGreenOrb.h"
 #include "Bullet_GreenOrb.h"
+#include "Melee_WormEggs.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -116,7 +117,8 @@ namespace sg
 			&& at->GetActiveAni()->IsComplete())
 		{
 			mFSMState = eFSMState::Move2;
-			mOwner->GetComp<Transform>()->SetPosition(RandomPos());
+			Vector3 pos = mTarget->GetComp<Transform>()->GetPosition();
+			mOwner->GetComp<Transform>()->SetPosition(sgRandomPos(pos, 100.0f));
 		}
 
 	}
@@ -141,21 +143,45 @@ namespace sg
 		Animator* at = mOwner->GetComp<Animator>();
 		int index = at->GetActiveAni()->GetAniIndex();
 
+		if (mLaunched)
+		{
+			mFSMState = eFSMState::Idle;
+			return;
+		}
 
 		if (mAttackNum == 0) // big orb
 		{
+			if (mTime >= mOwner->GetStat().mCooldown)
+			{
+				at->PlayAnimation(AnimationName(attack), false, mDirection);
+				mTime = 0.0f;
+				mLaunched = false;
+			}
+
 			if (index == 8
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack)
-				&& mLaunched == false)
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack))
 			{
 				object::Instantiate<Bullet_BigGreenOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 				mLaunched = true;
 			}
-
 		}
 		else if (mAttackNum == 1) // spawn scarabs
 		{
+			Vector3 pos = mOwner->GetComp<Transform>()->GetPosition();
+			pos.y -= 30.0f;
 
+			if (mTime >= mOwner->GetStat().mCooldown)
+			{
+				at->PlayAnimation(AnimationName(attack2), false, mDirection);
+				mTime = 0.0f;
+				mLaunched = false;
+			}
+			if (index == 9
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack2))
+			{
+				object::Instantiate<Melee_WormEggs>(pos, eLayerType::Monster, SceneManager::GetActiveScene());
+				mLaunched = true;
+			}
 		}
 		else if (mAttackNum == 2) // spread orbs
 		{
@@ -164,15 +190,15 @@ namespace sg
 			{
 				mOrbNum = 0;
 				mLaunched = false;
-				at->PlayAnimation(AnimationName(attack2), false, mDirection);
+				at->PlayAnimation(AnimationName(attack3), false, mDirection);
 				mTime = 0.0f;
 			}
 			if (index > 5
 				&& index < 10
-				&& at->GetActiveAni()->GetKey() == AnimationName(attack2)
+				&& at->GetActiveAni()->GetKey() == AnimationName(attack3)
 				&& mLaunched == false)
 			{
-				if (mTime2 >= 0.01f)
+				if (mTime2 >= 0.03f)
 				{
 					object::Instantiate<Bullet_GreenOrb>(mOwner, eLayerType::Monster_Bullet, SceneManager::GetActiveScene());
 					mTime2 = 0.0f;
@@ -237,22 +263,5 @@ namespace sg
 
 		mAttackNum = dist(gen);
 	}
-	Vector3 SCRIPT_Centipede::RandomPos()
-	{
 
-		// random angle
-		const float PI = 3.141592;
-		float angle = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 2 * PI);
-
-		// random distance
-		float randomDistance = static_cast<float>(rand() / static_cast<float>(RAND_MAX) * 100);
-
-		// angle + distance
-		Vector3 randomPos;
-		randomPos.x = mTarget->GetComp<Transform>()->GetPosition().x + randomDistance * cos(angle);
-		randomPos.y = mTarget->GetComp<Transform>()->GetPosition().y + randomDistance * sin(angle);
-		randomPos.z = mTarget->GetComp<Transform>()->GetPosition().z + 0.01f;
-
-		return randomPos;
-	}
 }

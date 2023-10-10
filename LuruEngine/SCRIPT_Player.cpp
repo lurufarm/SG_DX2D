@@ -22,6 +22,7 @@
 #include "SCRIPT_MeleeZombie.h"
 #include "SCRIPT_MobProjectile.h"
 #include "SCRIPT_SkelKnight.h"
+#include "SCRIPT_Centipede.h"
 #include "Effect_OldEntStem.h"
 #include "Effect_LaserFiring.h"
 #include "Effect_MobExplosion.h"
@@ -145,8 +146,9 @@ namespace sg
 	{
 		GameObject* otherOwner = other->GetOwner();
 		SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
+		SCRIPT_Centipede* centiped = otherOwner->GetComp<SCRIPT_Centipede>();
 
-		if (skelKnight != nullptr)
+		if (skelKnight != nullptr || centiped == nullptr)
 			mOwner->SetTransParent(true);
 
 		if (mDeath || mAttacked)

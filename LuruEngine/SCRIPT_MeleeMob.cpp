@@ -1,8 +1,11 @@
 #include "SCRIPT_MeleeMob.h"
+#include "..\Engine_SOURCE\sgObject.h"
 #include "Monster_Melee.h"
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
 #include "Gobj_Bullet.h"
+#include "Melee_Scarab.h"
+#include "Melee_Bee.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -24,6 +27,7 @@ namespace sg
 		mFSMState = eFSMState::Spwan;
 		mDirection = false;
 		mDeath = false;
+
 	}
 	void SCRIPT_MeleeMob::Update()
 	{
@@ -103,8 +107,13 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Idle()
 	{
-		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 		mAttacked = false;
+		if (mOwner->GetName() == L"WormEggs")
+		{
+			mFSMState = eFSMState::Attack;
+			return;
+		}
+		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(idle), true, mDirection);
 
 		if (GetDistance() > mOwner->GetStat().mRange * 1.5f)
 		{
@@ -117,6 +126,11 @@ namespace sg
 	}
 	void SCRIPT_MeleeMob::Move()
 	{
+		if (mOwner->GetName() == L"WormEggs")
+		{
+			mFSMState = eFSMState::Attack;
+			return;
+		}
 		mOwner->GetComp<Animator>()->PlayAnimation(AnimationName(move), true, mDirection);
 
 		Transform* tr = mOwner->GetComp<Transform>();
@@ -225,6 +239,21 @@ namespace sg
 					mAttackable = true;
 				else
 					mAttackable = false;
+			}
+			else if (ownerName == L"Scarab")
+			{
+				if (Index == 2)
+					mAttackable = true;
+				else
+					mAttackable = false;
+			}
+			else if (ownerName == L"WormEggs")
+			{
+				if (Index == 6)
+				{
+					Vector3 pos = mOwner->GetComp<Transform>()->GetPosition();
+					object::Instantiate<Melee_Bee>(sgRandomPos(pos, 30.0f), eLayerType::Monster, SceneManager::GetActiveScene());
+				}
 			}
 			else
 			{

@@ -65,7 +65,9 @@ namespace sg
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
 
 #pragma region Monsters
-		object::Instantiate<Boss_Centipede>(eLayerType::Monster, this);
+		//object::Instantiate<Boss_Centipede>(eLayerType::Monster, this);
+		object::Instantiate<Melee_test>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Scarab>(eLayerType::Monster, this);
 		//object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
 		//object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
 		//object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);

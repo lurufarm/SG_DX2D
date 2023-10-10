@@ -27,5 +27,8 @@
 #include "Ranged_LizardSpear.h"
 #include "Ranged_FireLizard.h"
 #include "Ranged_Janubis.h"
+#include "Melee_WormEggs.h"
+#include "Melee_test.h"
+#include "Melee_Scarab.h"
 #include "Boss_Centipede.h"
 

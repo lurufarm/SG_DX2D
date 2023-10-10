@@ -31,4 +31,5 @@ namespace sg
 	float sgGetAngle(Vector2 dir);
 	float sgGetAngleInRadian(float degree);
 	Vector2 sgGetBeamPos(float radius, float angle, Vector2 startPos);
+	Vector3 sgRandomPos(Vector3 pos, float range);
 }

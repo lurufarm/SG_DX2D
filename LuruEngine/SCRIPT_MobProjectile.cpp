@@ -42,8 +42,9 @@ namespace sg
 			}
 			else if (mProjType == eMProjType::Basic_Dir)
 			{
+				mFirstPos = mProj->GetFirstPos();
 				mLastPos = mProj->GetLastPos();
-				mTotalDuration = GetDistance() / 20.0f;
+				mTotalDuration = Time::DeltaTime() * 2;
 				mLastPos += mFirstPos;
 			}
 			else if (mProjType == eMProjType::Fire)
@@ -73,12 +74,6 @@ namespace sg
 			mFirstPos = mProj->GetFirstPos();
 			mLastPos = mProj->GetLastPos();
 			mTotalDuration = GetDistance() / 100.0f;
-			if (mProjType == eMProjType::Basic_Dir)
-			{
-				mLastPos = mProj->GetLastPos();
-				mTotalDuration = Time::DeltaTime();
-				mLastPos += mFirstPos;
-			}
 		}
 
 		IsLaunched = false;

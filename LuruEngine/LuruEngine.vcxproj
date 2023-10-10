@@ -230,10 +230,13 @@
     <ClInclude Include="Melee_LizardSword.h" />
     <ClInclude Include="Melee_Mummy.h" />
     <ClInclude Include="Melee_MummyPoison.h" />
+    <ClInclude Include="Melee_Scarab.h" />
     <ClInclude Include="Melee_Skeleton.h" />
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Melee_Snake.h" />
+    <ClInclude Include="Melee_test.h" />
+    <ClInclude Include="Melee_WormEggs.h" />
     <ClInclude Include="Melee_Zombie.h" />
     <ClInclude Include="Monsters.h" />
     <ClInclude Include="Monster_Melee.h" />
@@ -270,6 +273,7 @@
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
     <ClInclude Include="SCRIPT_UICamera.h" />
+    <ClInclude Include="SCRIPT_WormEggs.h" />
     <ClInclude Include="Stage0_BossStage.h" />
     <ClInclude Include="Stage0_Forest08.h" />
     <ClInclude Include="Stage0_Forest02.h" />
@@ -390,10 +394,13 @@
     <ClCompile Include="Melee_LizardSword.cpp" />
     <ClCompile Include="Melee_Mummy.cpp" />
     <ClCompile Include="Melee_MummyPoison.cpp" />
+    <ClCompile Include="Melee_Scarab.cpp" />
     <ClCompile Include="Melee_Skeleton.cpp" />
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Melee_Snake.cpp" />
+    <ClCompile Include="Melee_test.cpp" />
+    <ClCompile Include="Melee_WormEggs.cpp" />
     <ClCompile Include="Melee_Zombie.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
     <ClCompile Include="Monster_Ranged.cpp" />
@@ -428,6 +435,7 @@
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
     <ClCompile Include="SCRIPT_UICamera.cpp" />
+    <ClCompile Include="SCRIPT_WormEggs.cpp" />
     <ClCompile Include="Stage0_BossStage.cpp" />
     <ClCompile Include="Stage0_Forest08.cpp" />
     <ClCompile Include="Stage0_Forest02.cpp" />

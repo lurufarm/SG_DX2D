@@ -17,6 +17,7 @@ namespace sg
 	{
 		SetName(L"GreenOrb");
 		mBOrb = BOrb;
+		mProjOwner = mBOrb->GetProjOwner();
 		mFirstPos = mBOrb->GetComp<Transform>()->GetPosition();
 		mType = eMProjType::Basic_Dir;
 		mLastPos = Vector3(dir.x, dir.y, 0.0f);

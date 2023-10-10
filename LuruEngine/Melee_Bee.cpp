@@ -1,6 +1,4 @@
 #include "Melee_Bee.h"
-#include "Melee_Bomb.h"
-#include "SCRIPT_MeleeBomb.h"
 
 namespace sg
 {

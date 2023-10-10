@@ -24,7 +24,10 @@ namespace sg
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->Update();
+			if (gameObj)
+				gameObj->Update();
+			else
+				int a = 0;
 		}
 	}
 	void Layer::LateUpdate()
@@ -39,7 +42,8 @@ namespace sg
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->Render();
+			if (gameObj->GetState() == GameObject::eState::Active)
+				gameObj->Render();
 		}
 	}
 	void Layer::Destroy()

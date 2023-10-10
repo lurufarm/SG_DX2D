@@ -1302,6 +1302,23 @@ namespace renderer
 			material->SetRendereringMode(eRenderingMode::Transparent);
 			Resources::Insert(L"MobJanubis", material);
 
+			// Scarab
+			texture = Resources::Load<Texture>(L"Monster_Scarab", L"..\\Resources\\Monster\\Scarab.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobScarab", material);
+
+			// WormEggs
+			texture = Resources::Load<Texture>(L"Monster_WormEggs", L"..\\Resources\\Monster\\WormEggs.png");
+			material = std::make_shared<Material>();
+			material->SetShader(AniShader);
+			material->SetTexture(texture);
+			material->SetRendereringMode(eRenderingMode::Transparent);
+			Resources::Insert(L"MobWormEggs", material);
+
+			// Centipede
 			texture = Resources::Load<Texture>(L"Monster_Centipede", L"..\\Resources\\Monster\\Bosses\\Centipede.png");
 			material = std::make_shared<Material>();
 			material->SetShader(AniShader);
