@@ -10,6 +10,7 @@
 #include "Effect_FirePlate2.h"
 #include "Effect_ProjectileDest.h"
 #include "Effect_RockDust.h"
+#include "Effect_DustExplosion.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -205,9 +206,10 @@ namespace sg
 
 			if (GetDistance() <= 30.0f)
 				IsActivated = true;
-			//if (GetDistance() <= 5.0f)
-			//{
-			//}
+			if (GetDistance() <= 5.0f)
+			{
+				mProj->SetState(GameObject::eState::Dead);
+			}
 		}
 		else if (mProjType == eMProjType::BigOrb)
 		{

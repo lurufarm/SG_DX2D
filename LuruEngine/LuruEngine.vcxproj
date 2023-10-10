@@ -170,7 +170,10 @@
     <ClInclude Include="Bullet_SzilaFire.h" />
     <ClInclude Include="Bullet_WhirlWind.h" />
     <ClInclude Include="Char_Szila.h" />
+    <ClInclude Include="Effect_DustExplosion.h" />
     <ClInclude Include="Effect_FirePlate2.h" />
+    <ClInclude Include="Effect_PoisionExplosion.h" />
+    <ClInclude Include="Effect_SmokePoison.h" />
     <ClInclude Include="Img_EyeBallLine.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
     <ClInclude Include="Bullet_FireOrbs.h" />
@@ -211,6 +214,7 @@
     <ClInclude Include="Img_LobbyTorch.h" />
     <ClInclude Include="Img_RewardPlate.h" />
     <ClInclude Include="Img_Shadow.h" />
+    <ClInclude Include="Img_Stage1_Desert_Map.h" />
     <ClInclude Include="Img_StartingPlate.h" />
     <ClInclude Include="Img_Torch.h" />
     <ClInclude Include="Interact_Gate.h" />
@@ -235,7 +239,6 @@
     <ClInclude Include="Melee_SlimeA.h" />
     <ClInclude Include="Melee_SlimeB.h" />
     <ClInclude Include="Melee_Snake.h" />
-    <ClInclude Include="Melee_test.h" />
     <ClInclude Include="Melee_WormEggs.h" />
     <ClInclude Include="Melee_Zombie.h" />
     <ClInclude Include="Monsters.h" />
@@ -249,6 +252,7 @@
     <ClInclude Include="Ranged_LizardSpear.h" />
     <ClInclude Include="Ranged_MummyBomb.h" />
     <ClInclude Include="Ranged_SkelMage.h" />
+    <ClInclude Include="Ranged_WormEggs.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SCENE_PlayScene2.h" />
     <ClInclude Include="SCENE_ToolScene.h" />
@@ -273,7 +277,6 @@
     <ClInclude Include="SCRIPT_Tile1.h" />
     <ClInclude Include="SCRIPT_UI.h" />
     <ClInclude Include="SCRIPT_UICamera.h" />
-    <ClInclude Include="SCRIPT_WormEggs.h" />
     <ClInclude Include="Stage0_BossStage.h" />
     <ClInclude Include="Stage0_Forest08.h" />
     <ClInclude Include="Stage0_Forest02.h" />
@@ -282,6 +285,12 @@
     <ClInclude Include="Stage0_Forest05.h" />
     <ClInclude Include="Stage0_Forest06.h" />
     <ClInclude Include="Stage0_Forest07.h" />
+    <ClInclude Include="Stage1_BossStage.h" />
+    <ClInclude Include="Stage1_Desert01.h" />
+    <ClInclude Include="Stage1_Desert02.h" />
+    <ClInclude Include="Stage1_Desert03.h" />
+    <ClInclude Include="Stage1_Desert04.h" />
+    <ClInclude Include="Stage1_MidBoss.h" />
     <ClInclude Include="Tile_Image.h" />
     <ClInclude Include="Tile_Tile.h" />
     <ClInclude Include="Gobj_UI.h" />
@@ -335,7 +344,10 @@
     <ClCompile Include="Bullet_SzilaFire.cpp" />
     <ClCompile Include="Bullet_WhirlWind.cpp" />
     <ClCompile Include="Char_Szila.cpp" />
+    <ClCompile Include="Effect_DustExplosion.cpp" />
     <ClCompile Include="Effect_FirePlate2.cpp" />
+    <ClCompile Include="Effect_PoisionExplosion.cpp" />
+    <ClCompile Include="Effect_SmokePoison.cpp" />
     <ClCompile Include="Img_EyeBallLine.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />
     <ClCompile Include="Bullet_FireOrbs.cpp" />
@@ -375,6 +387,7 @@
     <ClCompile Include="Img_LobbyTorch.cpp" />
     <ClCompile Include="Img_RewardPlate.cpp" />
     <ClCompile Include="Img_Shadow.cpp" />
+    <ClCompile Include="Img_Stage1_Desert_Map.cpp" />
     <ClCompile Include="Img_StartingPlate.cpp" />
     <ClCompile Include="Img_Torch.cpp" />
     <ClCompile Include="Interact_Gate.cpp" />
@@ -399,7 +412,6 @@
     <ClCompile Include="Melee_SlimeA.cpp" />
     <ClCompile Include="Melee_SlimeB.cpp" />
     <ClCompile Include="Melee_Snake.cpp" />
-    <ClCompile Include="Melee_test.cpp" />
     <ClCompile Include="Melee_WormEggs.cpp" />
     <ClCompile Include="Melee_Zombie.cpp" />
     <ClCompile Include="Monster_Melee.cpp" />
@@ -412,6 +424,7 @@
     <ClCompile Include="Ranged_LizardSpear.cpp" />
     <ClCompile Include="Ranged_MummyBomb.cpp" />
     <ClCompile Include="Ranged_SkelMage.cpp" />
+    <ClCompile Include="Ranged_WormEggs.cpp" />
     <ClCompile Include="SCENE_PlayScene2.cpp" />
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
@@ -435,7 +448,6 @@
     <ClCompile Include="SCRIPT_Tile1.cpp" />
     <ClCompile Include="SCRIPT_UI.cpp" />
     <ClCompile Include="SCRIPT_UICamera.cpp" />
-    <ClCompile Include="SCRIPT_WormEggs.cpp" />
     <ClCompile Include="Stage0_BossStage.cpp" />
     <ClCompile Include="Stage0_Forest08.cpp" />
     <ClCompile Include="Stage0_Forest02.cpp" />
@@ -444,6 +456,12 @@
     <ClCompile Include="Stage0_Forest05.cpp" />
     <ClCompile Include="Stage0_Forest06.cpp" />
     <ClCompile Include="Stage0_Forest07.cpp" />
+    <ClCompile Include="Stage1_BossStage.cpp" />
+    <ClCompile Include="Stage1_Desert01.cpp" />
+    <ClCompile Include="Stage1_Desert02.cpp" />
+    <ClCompile Include="Stage1_Desert03.cpp" />
+    <ClCompile Include="Stage1_Desert04.cpp" />
+    <ClCompile Include="Stage1_MidBoss.cpp" />
     <ClCompile Include="Tile_Image.cpp" />
     <ClCompile Include="Tile_Tile.cpp" />
     <ClCompile Include="Gobj_UI.cpp" />

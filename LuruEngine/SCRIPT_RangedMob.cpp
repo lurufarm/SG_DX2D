@@ -13,6 +13,7 @@
 #include "Bullet_WhirlWind.h"
 #include "Effect_ProjectileDest.h"
 #include "Img_EyeBallLine.h"
+#include "Melee_Scarab.h"
 
 
 extern sg::Gobj_Player* Player;
@@ -141,7 +142,7 @@ namespace sg
 	}
 	void SCRIPT_RangedMob::Attack()
 	{
-		if (GetDistance() > mOwner->GetStat().mRange * 1.2f)
+		if (GetDistance() > mOwner->GetStat().mRange * 1.5f)
 		{
 			mFSMState = eFSMState::Move;
 		}

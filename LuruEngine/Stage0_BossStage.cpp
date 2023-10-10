@@ -32,7 +32,7 @@ namespace sg
 	void Stage0_BossStage::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
+		Vector3 pos = Vector3(-4.0f, -3.0f, 0.0f);
 		mStartPos = Vector3(-95.0f, -190.0f, -1.0f);
 		mCrackPos[0] = Vector3(145.0f, 150.0f, -0.5f);
 		mCrackPos[1] = Vector3(-175.0f, 30.0f, -0.5f);
@@ -66,9 +66,9 @@ namespace sg
 		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);
 		mGate2 = object::Instantiate<Interact_Gate>(0, mGatePos[2], eLayerType::InteractableObject, this);
 
-		mGate0->SetNextScene(L"02_LobbyScene");
-		mGate1->SetNextScene(L"02_LobbyScene");
-		mGate2->SetNextScene(L"02_LobbyScene");
+		mGate0->SetNextScene(L"20_Stage1_Desert01");
+		mGate1->SetNextScene(L"20_Stage1_Desert01");
+		mGate2->SetNextScene(L"20_Stage1_Desert01");
 
 #pragma region Monsters
 		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
@@ -95,8 +95,8 @@ namespace sg
 
 		PlayScene2::OnEnter();
 
-		//const std::wstring path0 = { L"..\\Resources\\Tile\\forestdg04_00" };
-		//TilePalette::AutoLoad(path0);
+		const std::wstring path0 = { L"..\\Resources\\Tile\\forestboss" };
+		TilePalette::AutoLoad(path0);
 	}
 	void Stage0_BossStage::OnExit()
 	{

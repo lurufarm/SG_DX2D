@@ -1,5 +1,4 @@
 #include "Melee_WormEggs.h"
-#include "SCRIPT_WormEggs.h"
 
 namespace sg
 {

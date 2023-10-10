@@ -12,6 +12,7 @@
 #include "Tile_TilePalette.h"
 
 #include "Img_Stage0_Forest01_Map.h"
+#include "Img_Stage1_Desert_Map.h"
 #include "Img_LobbyMap.h"
 #include "Interact_LobbyCharacter.h"
 #include "Interact_LobbyUpgrade.h"
@@ -42,15 +43,12 @@ namespace sg
 #pragma region Forest
 		//Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
 		//object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestfd04, pos, eLayerType::BGImg, this);
-		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg04, pos, eLayerType::BGImg, this);
+		Vector3 pos = Vector3(-4.5f, -3.0f, 0.0f);
+		object::Instantiate<Img_Stage1_Map>(Img_Stage1_Map::Stage1::desert04, pos, eLayerType::BGImg, this);
 
-		object::Instantiate<Img_Torch>(Vector3(-190, 220, 0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-135, -170, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(90, -210, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(145, 50, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-45, 225, -0.1f), eLayerType::BGImg, this);
 
+
+		
 
 #pragma endregion
 

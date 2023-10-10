@@ -13,6 +13,12 @@
 #include "Stage0_Forest07.h"
 #include "Stage0_Forest08.h"
 #include "Stage0_BossStage.h"
+#include "Stage1_Desert01.h"
+#include "Stage1_Desert02.h"
+#include "Stage1_Desert03.h"
+#include "Stage1_Desert04.h"
+#include "Stage1_MidBoss.h"
+#include "Stage1_BossStage.h"
 #include "SCENE_ToolScene.h"
 #include "Gobj_Player.h"
 
@@ -41,6 +47,13 @@ namespace sg
 		SceneManager::CreateScene<Stage0_Forest07>(L"09_Stage0_Forest07");
 		SceneManager::CreateScene<Stage0_Forest08>(L"10_Stage0_Forest08"); 
 		SceneManager::CreateScene<Stage0_BossStage>(L"11_Stage0_BossStage"); 
+
+		SceneManager::CreateScene<Stage1_Desert01>(L"20_Stage1_Desert01");
+		SceneManager::CreateScene<Stage1_Desert02>(L"21_Stage1_Desert02");
+		SceneManager::CreateScene<Stage1_Desert03>(L"22_Stage1_Desert03");
+		SceneManager::CreateScene<Stage1_Desert04>(L"23_Stage1_Desert04");
+
+
 		SceneManager::CreateScene<ToolScene>(L"99_ToolScene");
 
 		SceneManager::SetActiveScene(L"00_TitleScene");

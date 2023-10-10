@@ -1,13 +1,13 @@
 #pragma once
-#include "Monster_Melee.h"
+#include "Gobj_Effect.h"
 
 namespace sg
 {
-	class Melee_test : public Monster_Melee
+	class Effect_DustExplosion : public Gobj_Effect
 	{
 	public:
-		Melee_test();
-		~Melee_test();
+		Effect_DustExplosion();
+		~Effect_DustExplosion();
 
 		void Initialize();
 		void Update();

@@ -11,7 +11,7 @@ namespace sg
 
 		mStat.mCurHP = 310;
 		mStat.mMaxHP = 310;
-		mStat.mStrength = 4;
+		mStat.mStrength = 7;
 		mStat.mDefence = 0.3f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;

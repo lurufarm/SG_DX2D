@@ -9,9 +9,9 @@ namespace sg
 	{
 		SetName(L"Centipede");
 
-		mStat.mCurHP = 310;
-		mStat.mMaxHP = 310;
-		mStat.mStrength = 4;
+		mStat.mCurHP = 225;
+		mStat.mMaxHP = 225;
+		mStat.mStrength = 7;
 		mStat.mDefence = 0.3f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 180.0f;

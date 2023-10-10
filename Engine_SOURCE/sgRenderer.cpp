@@ -931,7 +931,50 @@ namespace renderer
 
 
 #pragma endregion
+#pragma region Stage1_Desert
 
+		// Stage1_Desert01 Map
+		texture = Resources::Load<Texture>(L"Stage1_Desert01_Map", L"..\\Resources\\Map\\Stage1\\stage1_desert_1.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage1Desert01_Map", material);
+
+		// Stage1_Desert02 Map
+		texture = Resources::Load<Texture>(L"Stage1_Desert02_Map", L"..\\Resources\\Map\\Stage1\\stage1_desert_2.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage1Desert02_Map", material);
+
+		// Stage1_Desert03 Map
+		texture = Resources::Load<Texture>(L"Stage1_Desert03_Map", L"..\\Resources\\Map\\Stage1\\stage1_desert_3.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage1Desert03_Map", material);
+		
+		// Stage1_Desert04 Map
+		texture = Resources::Load<Texture>(L"Stage1_Desert04_Map", L"..\\Resources\\Map\\Stage1\\stage1_desert_4.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage1Desert04_Map", material);
+
+		// Stage1_Desert04 Map
+		texture = Resources::Load<Texture>(L"Stage1_MidBoss_Map", L"..\\Resources\\Map\\Stage1\\stage1_midboss.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"Stage1MidBoss_Map", material);
+
+
+#pragma endregion
 #pragma region Item Icon
 		texture = Resources::Load<Texture>(L"Item_BonusLife", L"..\\Resources\\Item\\BonusLife.png");
 		material = std::make_shared<Material>();

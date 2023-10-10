@@ -22,13 +22,15 @@ namespace sg
 	}
 	void Layer::Update()
 	{
-		for (GameObject* gameObj : mGameObjects)
+
+		for (size_t i = 0; i < mGameObjects.size(); i++)
 		{
-			if (gameObj)
-				gameObj->Update();
-			else
-				int a = 0;
+			mGameObjects[i]->Update();
 		}
+		//for (GameObject* gameObj : mGameObjects)
+		//{
+		//		gameObj->Update();
+		//}
 	}
 	void Layer::LateUpdate()
 	{

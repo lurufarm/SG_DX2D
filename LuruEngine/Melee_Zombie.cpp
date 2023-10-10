@@ -12,7 +12,7 @@ namespace sg
 		mStat.mStrength = 3;
 		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;
-		mStat.mRange = 30.0f;
+		mStat.mRange = 20.0f;
 		mStat.mCooldown = 1.0f;
 		mStat.dropEXP = 20.0f;
 

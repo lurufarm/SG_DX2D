@@ -1,5 +1,7 @@
 #include "Melee_MummyPoison.h"
 #include "SCRIPT_MeleeMummyPoison.h"
+#include "Effect_PoisionExplosion.h"
+#include "..\Engine_SOURCE\sgObject.h"
 
 namespace sg
 {
@@ -20,6 +22,7 @@ namespace sg
 	}
 	Melee_MummyPoison::~Melee_MummyPoison()
 	{
+		object::Instantiate<Effect_PoisionExplosion>(mTr->GetPosition(), eLayerType::Effect, SceneManager::GetActiveScene());
 	}
 	void Melee_MummyPoison::Initialize()
 	{
