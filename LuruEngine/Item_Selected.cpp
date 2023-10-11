@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "SCENE_PlayScene.h"
+#include "SCENE_PlayScene2.h"
 #include "Img_LevUP2.h"
 #include "SCRIPT_Item.h"
 #include "Gobj_Player.h"
@@ -13,8 +14,11 @@ namespace sg
 	Item_Selected::Item_Selected()
 	{
 		PlayScene* ps = dynamic_cast<PlayScene*>(SceneManager::GetActiveScene());
+		PlayScene2* ps2 = dynamic_cast<PlayScene2*>(SceneManager::GetActiveScene());
 		if (ps)
 			mID = ps->SelectedItemID;
+		else if (ps2)
+			mID = ps2->SelectedItemID;
 		else
 		{
 			std::wstring charName = Player->GetChar()->GetName();

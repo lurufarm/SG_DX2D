@@ -39,6 +39,10 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
+		mGatePos[0].y += 30.0f;
+		mGatePos[1].y += 30.0f;
+		mGatePos[2].y += 30.0f;
+
 		InitializeItemIds();
 		mItem0 = MakeItem(mGatePos[0]);
 		mItem1 = MakeItem(mGatePos[1]);
@@ -56,9 +60,7 @@ namespace sg
 		mGate1->AddComp<SCRIPT_Gate>();
 		mGate2->AddComp<SCRIPT_Gate>();
 
-		mGatePos[0].y += 30.0f;
-		mGatePos[1].y += 30.0f;
-		mGatePos[2].y += 30.0f;
+
 
 		if (mDLight == nullptr)
 		{
@@ -159,6 +161,7 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
+		renderer::lightsBuffer->Clear();
 
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);

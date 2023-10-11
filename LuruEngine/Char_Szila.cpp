@@ -18,7 +18,7 @@ namespace sg
 		mStat.mMaxHP = 90;
 		mStat.mHPHealRatio = 0.05f;
 		mStat.mHPStealRatio = 0.0f;
-		mStat.mProjectileCount = 0;
+		mStat.mProjectileCount = 1;
 		mStat.mDamageScaling = 1.0f;
 		mStat.mExp = 0.0;
 

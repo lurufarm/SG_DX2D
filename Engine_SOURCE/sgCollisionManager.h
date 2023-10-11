@@ -71,5 +71,8 @@ namespace sg
 	private:
 		static std::bitset<LAYER_MAX> mMatrix[LAYER_MAX];
 		static std::map<UINT64, bool> mCollisionMap;
+
+		static bool mExit;
+
 	};
 }

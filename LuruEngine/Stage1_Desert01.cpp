@@ -38,9 +38,9 @@ namespace sg
 		mCrackPos[1] = Vector3(-105.0f, 170.0f, -0.5f);
 		mCrackPos[2] = Vector3(-85.0f, -45.0f, -0.5f);
 		mStartPos = Vector3(-25.0f, -185.0f, -1.0f);
-		mGatePos[0] = Vector3(-210.0f, 380.0f, -0.1f);
-		mGatePos[1] = Vector3(-173.0f, 380.0f, -0.1f);
-		mGatePos[2] = Vector3(-136.0f, 380.0f, -0.1f);
+		mGatePos[0] = Vector3(-70.0f, 255.0f, -0.1f);
+		mGatePos[1] = Vector3(-40.0f, 255.0f, -0.1f);
+		mGatePos[2] = Vector3(-10.0f, 255.0f, -0.1f);
 
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;

@@ -13,16 +13,13 @@ float4 main(GSOut In) : SV_TARGET
     float4 color = (float4) 0.0f;
     float2 uv = In.UV;
     color = albedoTexture.Sample(anisotropicSampler, uv);
+    color.x *= particles[id].color.x;
+    color.y *= particles[id].color.y;
+    color.z *= particles[id].color.z;
+    color.a *= particles[id].color.a;
+    
     if (color.a <= 0.0f)
         discard;
-    else
-    {
-        color.x *= particles[id].color.x;
-        color.y *= particles[id].color.y;
-        color.z *= particles[id].color.z;
-        color.w *= particles[id].color.a;
-//        color = saturate(color);
-    }
 
     return color;
 

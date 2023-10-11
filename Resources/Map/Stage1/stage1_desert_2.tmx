@@ -319,7 +319,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="4" name="Tile Layer 4" width="40" height="40" visible="0">
+ <layer id="4" name="Tile Layer 4" width="40" height="40">
   <data encoding="csv"/>
  </layer>
  <layer id="2" name="Tile Layer 2" width="40" height="40">

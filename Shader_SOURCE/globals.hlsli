@@ -107,7 +107,9 @@ struct ParticleShared
 };
 
 StructuredBuffer<LightAttribute> lightsAttribute : register(t13);
-StructuredBuffer<Particle> particles : register(t14);
+
+
+StructuredBuffer<Particle> particles : ](t14);
 
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);

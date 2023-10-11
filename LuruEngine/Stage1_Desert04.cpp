@@ -33,14 +33,14 @@ namespace sg
 	void Stage1_Desert04::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
-		mCrackPos[0] = Vector3(-145.0f, -105.0f, -0.5f);
-		mCrackPos[1] = Vector3(90.0f, 175.0f, -0.5f);
-		mCrackPos[2] = Vector3(-150.0f, 130.0f, -0.5f);
-		mStartPos = Vector3(230.0f, -100.0f, -1.0f);
-		mGatePos[0] = Vector3(-92, 360.0f, -0.1f);
-		mGatePos[1] = Vector3(-55.0f, 360.0f, -0.1f);
-		mGatePos[2] = Vector3(-18.0, 360.0f, -0.1f);
+		Vector3 pos = Vector3(-4.5f, -3.0f, 0.0f);
+		mCrackPos[0] = Vector3(95.0f, -125.0f, -0.5f);
+		mCrackPos[1] = Vector3(-180.0f, 105.0f, -0.5f);
+		mCrackPos[2] = Vector3(220.0f, 5.0f, -0.5f);
+		mStartPos = Vector3(-190.0f, -190.0f, -1.0f);
+		mGatePos[0] = Vector3(7.0f, 268.0f, -0.1f);
+		mGatePos[1] = Vector3(37.0f, 268.0f, -0.1f);
+		mGatePos[2] = Vector3(67.0f, 268.0f, -0.1f);
 
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
@@ -52,11 +52,10 @@ namespace sg
 		mCamera = Desert03camera->AddComp<Camera>();
 		Desert03camera->AddComp<SCRIPT_MainCamera>();
 
-		object::Instantiate<Img_Torch>(Vector3(205, -25, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-240, -50, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-255, 0, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-10, 100, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-135, 215, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(-190, -100, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(-250, 170, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(140, 215, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(200, -75, -0.1f), eLayerType::BGImg, this);
 
 		mCrack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
 		mCrack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
@@ -115,8 +114,8 @@ namespace sg
 
 		PlayScene2::OnEnter();
 
-		//const std::wstring path0 = { L"..\\Resources\\Tile\\desert03" };
-		//TilePalette::AutoLoad(path0);
+		const std::wstring path0 = { L"..\\Resources\\Tile\\desert04" };
+		TilePalette::AutoLoad(path0);
 
 	}
 	void Stage1_Desert04::OnExit()

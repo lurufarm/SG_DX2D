@@ -55,16 +55,17 @@ namespace sg
 			{
 				Scene* sc = SceneManager::LoadNextScene();
 				PlayScene* ps = dynamic_cast<PlayScene*>(sc);
+				PlayScene2* ps2 = dynamic_cast<PlayScene2*>(sc);
 				if (ps != nullptr)
 				{
 					ps->SelectedItemID = mItem->GetItemID();
 				}
-				else
+
+				if (ps2 != nullptr)
 				{
-					PlayScene2* ps2 = dynamic_cast<PlayScene2*>(sc);
 					ps2->SelectedItemID = mItem->GetItemID();
 				}
-					mItem->SetItemActivate(true);
+				mItem->SetItemActivate(true);
 			}
 		}
 	}

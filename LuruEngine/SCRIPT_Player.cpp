@@ -169,8 +169,8 @@ namespace sg
 		GameObject* otherOwner = other->GetOwner();
 		SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
 
-		if (skelKnight != nullptr)
-			mOwner->SetTransParent(true);
+		//if (skelKnight != nullptr)
+		//	mOwner->SetTransParent(true);
 
 		if (mDeath || mAttacked)
 			return;
@@ -348,7 +348,7 @@ namespace sg
 			}
 			else if (mOwner->GetChar()->GetName() == L"Szila")
 			{
-					object::ShootBullet<Bullet_SzilaFire>(1, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+					object::ShootBullet<Bullet_SzilaFire>(mOwner->GetStat().mProjectileCount, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			}
 
 			mTime = 0.0f;

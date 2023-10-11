@@ -3,17 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_3.tmx",
+    "activeFile": "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
     "console.history": [
         "asd"
     ],
     "expandedProjectPaths": [
         ".",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source",
         "Source/ForestFd",
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1",
+        "Source/ForestDg",
         "Source",
-        "Source/ForestDg"
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source"
     ],
     "exportAsImage.visibleLayersOnly": false,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -98,8 +98,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 393,
-                "y": 430
+                "x": 392,
+                "y": 429
             }
         },
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx": {
@@ -315,21 +315,23 @@
         "Source/DesertDgWall1.tsx",
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterEdge1.tsx",
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterDeep1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx"
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx"
     ],
     "project": "stage0_project.tiled-project",
     "recentFiles": [
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/ObstacleAct2Fd1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterDeep1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterEdge1.tsx",
-        "Source/DesertDgWall1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgGrass1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgFloor1.tsx",
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_3.tmx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdGrass1.tsx",
-        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgFloor1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgGrass1.tsx",
+        "Source/DesertDgWall1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterEdge1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertDgWaterDeep1.tsx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx",
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_1.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx",
+        "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/Source/DesertFdGrass1.tsx",
         "Source/DesertDgFloor1.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

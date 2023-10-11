@@ -35,14 +35,14 @@ namespace sg
 	void Stage1_Desert02::Initialize()
 	{
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
-		Vector3 pos = Vector3(-78.0f, -75.0f, 0.0f);
+		Vector3 pos = Vector3(65.0f, -75.0f, 0.0f);
 		mCrackPos[0] = Vector3(-140.0f, -100.0f, -0.5f);
-		mCrackPos[1] = Vector3(90.0f, -45, -0.5f);
+		mCrackPos[1] = Vector3(90.0f, 35, -0.5f);
 		mCrackPos[2] = Vector3(-115.0f, 40.0f, -0.5f);
 		mStartPos = Vector3(-190.0f, -240.0f, -1.0f);
-		mGatePos[0] = Vector3(98.0f, 370.0f, -0.1f);
-		mGatePos[1] = Vector3(135.0f, 370.0f, -0.1f);
-		mGatePos[2] = Vector3(172.0f, 370.0f, -0.1f);
+		mGatePos[0] = Vector3(-215.0f, 235.0f, -0.1f);
+		mGatePos[1] = Vector3(-185.0f, 235.0f, -0.1f);
+		mGatePos[2] = Vector3(-155.0f, 235.0f, -0.1f);
 
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;

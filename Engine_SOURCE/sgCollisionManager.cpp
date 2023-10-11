@@ -9,6 +9,7 @@ namespace sg
 {
 	std::bitset<LAYER_MAX> CollisionManager::mMatrix[LAYER_MAX] = {};
 	std::map<UINT64, bool> CollisionManager::mCollisionMap = {};
+	bool CollisionManager::mExit = false;
 
 
 	void CollisionManager::Initialize()
@@ -101,12 +102,11 @@ namespace sg
 			if (iter->second == true)
 			{
 				// 충돌하다가 나갈 때
-				iter->second = false;
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
+				iter->second = false;
 			}
 		}
-
 	}
 
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)

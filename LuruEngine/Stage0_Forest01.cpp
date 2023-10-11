@@ -37,9 +37,9 @@ namespace sg
 		mCrackPos[1] = Vector3(-140.0f, 265.0f, -0.5f);
 		mCrackPos[2] = Vector3(-315.0f, 155.0f, -0.5f);
 		mStartPos = Vector3(-180.0f, -75.0f, -1.0f);
-		mGatePos[0] = Vector3(-210.0f, 380.0f, -0.1f);
-		mGatePos[1] = Vector3(-173.0f, 380.0f, -0.1f);
-		mGatePos[2] = Vector3(-136.0f, 380.0f, -0.1f);
+		mGatePos[0] = Vector3(-210.0f, 400.0f, -0.1f);
+		mGatePos[1] = Vector3(-173.0f, 400.0f, -0.1f);
+		mGatePos[2] = Vector3(-136.0f, 400.0f, -0.1f);
 
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
@@ -65,7 +65,7 @@ namespace sg
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
 
 #pragma region Monsters
-		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
 
 
 

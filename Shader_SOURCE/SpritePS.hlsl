@@ -24,7 +24,7 @@ float4 main(VSOut In) : SV_TARGET
        
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
-        CalculateLight2D(lightColor, In.WorldPos, i);
+ //       CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
@@ -44,7 +44,7 @@ float4 Select_catpattern(VSOut In) : SV_TARGET
        
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
-        CalculateLight2D(lightColor, In.WorldPos, i);
+ //       CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
@@ -66,7 +66,7 @@ float4 lobby_space1(VSOut In) : SV_TARGET
        
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
-        CalculateLight2D(lightColor, In.WorldPos, i);
+//        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
@@ -88,7 +88,7 @@ float4 lobby_space2(VSOut In) : SV_TARGET
        
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
-        CalculateLight2D(lightColor, In.WorldPos, i);
+//        CalculateLight2D(lightColor, In.WorldPos, i);
     }
 
     color *= lightColor;
@@ -114,7 +114,7 @@ float4 Tile(VSOut In) : SV_TARGET
     
     for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
-        CalculateLight2D(lightColor, In.WorldPos, i);
+//        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     color *= lightColor;
 //    color = saturate(color);
@@ -141,7 +141,7 @@ float4 HPBar(VSOut In) : SV_TARGET
         discard;
     }
 
-    color = albedoTexture.Sample(pointSampler, In.UV);
+//    color = albedoTexture.Sample(pointSampler, In.UV);
 //    color = saturate(color);
 
     return color;

@@ -40,6 +40,10 @@ namespace sg
 	}
 	void PlayScene2::Initialize()
 	{
+		mGatePos[0].y += 30.0f;
+		mGatePos[1].y += 30.0f;
+		mGatePos[2].y += 30.0f;
+
 		InitializeItemIds();
 		mItem0 = MakeItem(mGatePos[0]);
 		mItem1 = MakeItem(mGatePos[1]);
@@ -66,9 +70,6 @@ namespace sg
 			AddGameObj(eLayerType::Light, mLight);
 		}
 
-		mGatePos[0].y += 30.0f;
-		mGatePos[1].y += 30.0f;
-		mGatePos[2].y += 30.0f;
 
 		if (mFocus == nullptr)
 			mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
