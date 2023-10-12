@@ -143,8 +143,6 @@ namespace sg::graphics
 		if (FAILED(mDevice->CreateTexture2D(desc, nullptr, ppTexture2D)))
 			return false;
 
-		//if (FAILED(mDevice->CreateDepthStencilView(mDepthStencilBuffer.Get(), nullptr, mDepthStencilView.GetAddressOf())))
-		//	return false;
 
 		return true;
 	}

@@ -49,15 +49,11 @@ namespace sg
 	void Application::Render()
 	{
 		Time::Render();
-
 		graphicDevice->ClearTarget();
-
 		graphicDevice->UpdateViewPort();
-
 		//SceneManager::Render();
 		renderer::Render();
 		FontWrapper::Render();
-
 	}
 	void Application::Destroy()
 	{

@@ -9,6 +9,7 @@
 #include "SCRIPT_MainCamera.h"
 #include "Img_Stage0_Forest01_Map.h"
 #include "Img_Crack.h"
+#include "Img_Torch.h"
 #include "Img_StartingPlate.h"
 #include "Img_RewardPlate.h"
 #include "Gobj_Player.h"
@@ -37,9 +38,9 @@ namespace sg
 		mCrackPos[1] = Vector3(-140.0f, 265.0f, -0.5f);
 		mCrackPos[2] = Vector3(-315.0f, 155.0f, -0.5f);
 		mStartPos = Vector3(-180.0f, -75.0f, -1.0f);
-		mGatePos[0] = Vector3(-210.0f, 400.0f, -0.1f);
-		mGatePos[1] = Vector3(-173.0f, 400.0f, -0.1f);
-		mGatePos[2] = Vector3(-136.0f, 400.0f, -0.1f);
+		mGatePos[0] = Vector3(-210.0f, 390.0f, -0.1f);
+		mGatePos[1] = Vector3(-173.0f, 390.0f, -0.1f);
+		mGatePos[2] = Vector3(-136.0f, 390.0f, -0.1f);
 
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
@@ -49,6 +50,11 @@ namespace sg
 		GameObject* Forest01camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		mCamera = Forest01camera->AddComp<Camera>();
 		Forest01camera->AddComp<SCRIPT_MainCamera>();
+		object::Instantiate<Img_Torch>(Vector3(-283, -55, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(45, -55, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(110, 170, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(-295, 230, -0.1f), eLayerType::BGImg, this);
+
 
 		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
 		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);

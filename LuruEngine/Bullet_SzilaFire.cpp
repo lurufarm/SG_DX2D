@@ -51,7 +51,7 @@ namespace sg
 
 		ParticleSystem* mPs2 = new ParticleSystem(); // ÃÊ·Ï ºÒ
 		Vector4 scolor2 = Vector4(0.0f, 1.0f, 0.0f, 0.5f);
-		Vector4 mcolor2 = Vector4(0.0f, 1.0f, 0.0f, 0.8f);
+		Vector4 mcolor2 = Vector4(1.0f, 0.8f, 0.0f, 0.8f);
 		Vector4 ecolor2 = Vector4(1.0f, 0.0f, 0.0f, 0.8f);
 		mPs2->SetParticleMaterial(L"ParticleMaterial2");
 		mPs2->SetTarget(this->mTarget);

@@ -162,7 +162,7 @@ namespace renderer
 		D3D11_DEPTH_STENCIL_DESC depthStencilDesc = {};
 
 		depthStencilDesc.DepthEnable = true;
-		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS;
+		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
 		depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 		depthStencilDesc.StencilEnable = false;
 		GetDevice()->CreateDepthStencilState(&depthStencilDesc
@@ -427,9 +427,9 @@ namespace renderer
 		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
 		particleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
 		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
-		particleShader->SetRSState(eRSType::SolidNone);
+		particleShader->SetRSState(eRSType::SolidBack);
 		particleShader->SetDSState(eDSType::Less);
-		particleShader->SetBSState(eBSType::OneOne);
+		particleShader->SetBSState(eBSType::AlphaBlend);
 		particleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 		sg::Resources::Insert(L"ParticleShader", particleShader);
 
@@ -1416,8 +1416,8 @@ namespace renderer
 		texture->BindShaderResource(eShaderStage::HS, 15);
 		texture->BindShaderResource(eShaderStage::DS, 15);
 		texture->BindShaderResource(eShaderStage::GS, 15);
-		texture->BindShaderResource(eShaderStage::PS, 15);
 		texture->BindShaderResource(eShaderStage::CS, 15);
+		texture->BindShaderResource(eShaderStage::PS, 15);
 
 		ConstantBuffer* cb = constantBuffer[(UINT)eCBType::Noise];
 		NoiseCB data = {};
@@ -1427,8 +1427,8 @@ namespace renderer
 		cb->SetData(&data);
 		cb->Bind(eShaderStage::VS);
 		cb->Bind(eShaderStage::GS);
-		cb->Bind(eShaderStage::PS);
 		cb->Bind(eShaderStage::CS);
+		cb->Bind(eShaderStage::PS);
 
 	}
 
@@ -1460,6 +1460,7 @@ namespace renderer
 			buff = nullptr;
 		}
 
+		//lightsBuffer->Clear();
 		delete lightsBuffer;
 		lightsBuffer = nullptr;
 	}

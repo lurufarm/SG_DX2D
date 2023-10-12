@@ -22,13 +22,14 @@ float4 main(VSOut In) : SV_TARGET
 	
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    //for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
- //       CalculateLight2D(lightColor, In.WorldPos, i);
+        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }
@@ -42,13 +43,13 @@ float4 Select_catpattern(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
- //       CalculateLight2D(lightColor, In.WorldPos, i);
+        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }
@@ -64,13 +65,13 @@ float4 lobby_space1(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
-//        CalculateLight2D(lightColor, In.WorldPos, i);
+        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
     color *= lightColor;
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }
@@ -86,13 +87,13 @@ float4 lobby_space2(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
        
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
-//        CalculateLight2D(lightColor, In.WorldPos, i);
+        CalculateLight2D(lightColor, In.WorldPos, i);
     }
 
     color *= lightColor;
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }
@@ -112,24 +113,18 @@ float4 Tile(VSOut In) : SV_TARGET
     
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
     
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
-//        CalculateLight2D(lightColor, In.WorldPos, i);
+        CalculateLight2D(lightColor, In.WorldPos, i);
     }
     color *= lightColor;
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }
 
 float4 HPBar(VSOut In) : SV_TARGET
 {
-//    float4 color = (0.0f, 0.0f, 0.0f, 1.0f);
-//    float2 UV = In.UV * (curHP / maxHP);  
-//    color = albedoTexture.Sample(pointSampler, UV);  
-//    return color;
-    
-    
     float4 color = (0.0f, 0.0f, 0.0f, 1.0f);
     
     // 여기서 비율을 계산합니다.
@@ -141,8 +136,8 @@ float4 HPBar(VSOut In) : SV_TARGET
         discard;
     }
 
-//    color = albedoTexture.Sample(pointSampler, In.UV);
-//    color = saturate(color);
+    color = albedoTexture.Sample(pointSampler, In.UV);
+    color = saturate(color);
 
     return color;
 }   

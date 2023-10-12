@@ -139,7 +139,7 @@ namespace sg
 	}
 	void PlayScene2::OnEnter()
 	{
-		renderer::lightsBuffer->Clear();
+		//renderer::lightsBuffer->Clear();
 
 		float bgcolor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
@@ -169,6 +169,8 @@ namespace sg
 	}
 	void PlayScene2::OnExit()
 	{
+		//renderer::lightsBuffer->Clear();
+
 		DeleteGameObj(eLayerType::Player, Player);
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{

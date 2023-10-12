@@ -129,6 +129,7 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
+		//renderer::lightsBuffer->Clear();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
 		TilePalette::AutoLoad(path0);
@@ -142,10 +143,10 @@ namespace sg
 		graphics::GetDevice()->SetBgColor(BgColor);
 		AddGameObj(eLayerType::Player, Player);
 		Player->Initialize2();
-		//Player->GetComp<Transform>()->SetPosition(0.0f, 0.0f, -2.0f);
 	}
 	void LobbyScene::OnExit()
 	{
+		//renderer::lightsBuffer->Clear();
 		DeleteGameObj(eLayerType::Player, Player);
 	}
 

@@ -161,7 +161,7 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		renderer::lightsBuffer->Clear();
+		//renderer::lightsBuffer->Clear();
 
 		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
@@ -193,7 +193,7 @@ namespace sg
 	}
 	void PlayScene::OnExit()
 	{
-		renderer::lightsBuffer->Clear();
+		//renderer::lightsBuffer->Clear();
 
 		mLg->SetColor(Vector4::Zero);
 		DeleteGameObj(eLayerType::Player, Player);

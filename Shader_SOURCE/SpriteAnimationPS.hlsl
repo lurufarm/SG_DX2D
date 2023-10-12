@@ -44,7 +44,7 @@ float4 main(VSOut In) : SV_TARGET
     }
 
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -61,7 +61,7 @@ float4 main(VSOut In) : SV_TARGET
             color.a = 0.5f;
     }
         
-//    color = saturate(color); 
+    color = saturate(color);
 
     return color;
 }
@@ -97,7 +97,7 @@ float4 main2(VSOut In) : SV_TARGET
     }
 
     float4 lightColor = float4(0.0f, 0.0f, 0.0f, 0.1f);
-    for (int i = 0; i < lightsAttribute[0].pad; i++)
+    for (int i = 0; i < 15; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -105,7 +105,7 @@ float4 main2(VSOut In) : SV_TARGET
     color.a -= 0.5f;
     color.xyz *= lightColor.xyz;
 
-//    color = saturate(color);
+    color = saturate(color);
 
     return color;
 }

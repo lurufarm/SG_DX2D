@@ -475,11 +475,41 @@
     <ClCompile Include="Melee_WormEggs.cpp">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
     </ClCompile>
-    <ClCompile Include="SCRIPT_WormEggs.cpp">
-      <Filter>Script\SCRIPT_Monster\Melee</Filter>
+    <ClCompile Include="Stage1_BossStage.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="Melee_test.cpp">
+    <ClCompile Include="Stage1_Desert01.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1_Desert02.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1_Desert03.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1_Desert04.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1_MidBoss.cpp">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_SmokePoison.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_DustExplosion.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_PoisionExplosion.cpp">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged_WormEggs.cpp">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Stage1_Desert_Map.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_Finish.cpp">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -966,11 +996,41 @@
     <ClInclude Include="Melee_WormEggs.h">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
     </ClInclude>
-    <ClInclude Include="SCRIPT_WormEggs.h">
-      <Filter>Script\SCRIPT_Monster\Melee</Filter>
+    <ClInclude Include="Stage1_MidBoss.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
     </ClInclude>
-    <ClInclude Include="Melee_test.h">
+    <ClInclude Include="Stage1_BossStage.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1_Desert01.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1_Desert02.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1_Desert03.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1_Desert04.h">
+      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_SmokePoison.h">
+      <Filter>Obj\Gobj_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_DustExplosion.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_PoisionExplosion.h">
+      <Filter>Obj\Gobj_Effect\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged_WormEggs.h">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Stage1_Desert_Map.h">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Finish.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
