@@ -3,7 +3,7 @@
 
 namespace sg
 {
-	std::vector<int> Item_Chars::mCharIDs = { 20, 21, 22 };
+	std::vector<int> Item_Chars::mCharIDs = { 20, 21, 22, 23 };
 	std::vector<int> Item_Chars::mUsingCharIDs = {};
 	UINT Item_Chars::mItemSpawnCount[10] = {};
 
@@ -30,6 +30,7 @@ namespace sg
 		mAni->Create(L"Ani_Item_Cheese", atlas, Vector2::Zero, Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_Item_Lucy", atlas, Vector2(0.0f, 24.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mAni->Create(L"Ani_Item_Robo", atlas, Vector2(0.0f, 48.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
+		mAni->Create(L"Ani_Item_Szila", atlas, Vector2(0.0f, 72.0f), Vector2(20.0f, 24.0f), 9, Vector2::Zero, 0.05f);
 		mMr->Initialize();
 
 		switch (mItemID)
@@ -43,11 +44,15 @@ namespace sg
 		case 22: // 로보
 			mAni->PlayAnimation(L"Ani_Item_Robo", false, true);
 			break;
+		case 23: // 실라
+			mAni->PlayAnimation(L"Ani_Item_Szila", false, true);
+			break;
+
 		}
 	}
 	void Item_Chars::Update()
 	{
-		for (size_t i = 20; i < 23; i++)
+		for (size_t i = 20; i < 24; i++)
 		{
 			if (mItemSpawnCount[i - 20] >= 5)
 				DeleteinUsingChars(i);
@@ -83,6 +88,15 @@ namespace sg
 				}
 				if (mItemSpawnCount[2] < 5)
 					mItemSpawnCount[2]++;
+				break;
+			case 23: // 실라
+				if (mItemSpawnCount[2] == 0)
+				{
+					DeleteinCharIDs(23);
+					mUsingCharIDs.push_back(23);
+				}
+				if (mItemSpawnCount[3] < 5)
+					mItemSpawnCount[3]++;
 				break;
 			}
 		}

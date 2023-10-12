@@ -28,6 +28,8 @@ namespace sg
 				mID = 21;
 			else if (charName == L"Robo")
 				mID = 22;
+			else if (charName == L"Szila")
+				mID = 23;
 		}
 		Item_Selected::Initialize();
 	}
@@ -88,6 +90,9 @@ namespace sg
 		case 22: // cheese선택
 			SetMaterial(L"Item_Roboicon");
 			break;
+		case 23:
+			SetMaterial(L"Item_Szilaicon");
+			break;
 		}
 		mMr->Initialize();
 
@@ -141,6 +146,9 @@ namespace sg
 			break;
 		case 22: // Robo선택
 			SetMaterial(L"Item_Roboicon");
+			break;
+		case 23:
+			SetMaterial(L"Item_Szilaicon");
 			break;
 		}
 

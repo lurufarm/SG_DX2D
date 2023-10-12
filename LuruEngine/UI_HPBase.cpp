@@ -24,7 +24,7 @@ namespace sg
 	void UI_HPBase::Update()
 	{
 		Vector3 pos = Player->GetComp<Transform>()->GetPosition();
-		pos.y += 20.0f;
+		pos.y += 10.0f;
 		mTr->SetPosition(pos);
 		Gobj_UI::Update();
 	}

@@ -190,7 +190,7 @@ namespace sg
 		{
 			mEnhenceItemIDs.push_back(i);
 		}
-		for (size_t i = 0; i < 3; i++)
+		for (size_t i = 0; i < 4; i++)
 		{
 			mCharItemIDs.push_back(20 + i);
 		}

@@ -46,6 +46,9 @@ namespace sg
 		Vector4 lightcolor = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
 		lightcomp->SetType(eLightType::Directional);
 		lightcomp->SetColor(lightcolor);
+		
+		//wcscpy_s(FontWrapper::mText, L"Test");
+		//FontWrapper::SetFontOption(10, 20, 20.0f, FONT_RGBA(255, 0, 255, 255));
 
 
 	}

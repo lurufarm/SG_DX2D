@@ -17,7 +17,7 @@ namespace sg
 		Vector3 camerapos = tr->GetPosition(); // 카메라의 위치
 		Vector3 playerpos = ptr->GetPosition(); // 플레이어의 위치
 
-		float speed = 0.08f;
+		float speed = 0.1f;
 			
 		Vector3 pos = camerapos + (playerpos - camerapos) * speed;
 

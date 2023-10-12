@@ -511,6 +511,18 @@
     <ClCompile Include="Img_Finish.cpp">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
     </ClCompile>
+    <ClCompile Include="Img_TextBG_left.cpp">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_TextBG_middle.cpp">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_TextBG_right.cpp">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_TextBG.cpp">
+      <Filter>Script\SCRIPT_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -1026,11 +1038,23 @@
     <ClInclude Include="Ranged_WormEggs.h">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
     </ClInclude>
-    <ClInclude Include="Img_Stage1_Desert_Map.h">
-      <Filter>Obj\Gobj_Img</Filter>
-    </ClInclude>
     <ClInclude Include="Img_Finish.h">
       <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_TextBG_left.h">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_Stage1_Desert_Map.h">
+      <Filter>Obj\Gobj_Img\PlaySceneImg</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_TextBG_right.h">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_TextBG_middle.h">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_TextBG.h">
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -691,6 +691,29 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIHPBar", material);
 
+		// img_textbg_left
+		texture = Resources::Load<Texture>(L"TextBG_left", L"..\\Resources\\UI\\TextBg_left.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ImgTextBGleft", material);
+
+		// img_textbg_middle
+		texture = Resources::Load<Texture>(L"TextBG_middle", L"..\\Resources\\UI\\TextBg_middle.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ImgTextBGmiddle", material);
+
+		// img_textbg_right
+		texture = Resources::Load<Texture>(L"TextBG_right", L"..\\Resources\\UI\\TextBg_right.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ImgTextBGright", material);
 
 #pragma endregion
 #pragma region Title Scene Material
@@ -1080,6 +1103,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"Item_Roboicon", material);
+
+		texture = Resources::Load<Texture>(L"Item_Szila", L"..\\Resources\\Item\\item_szila.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"Item_Szilaicon", material);
 
 #pragma endregion
 

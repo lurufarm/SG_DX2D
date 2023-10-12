@@ -31,15 +31,5 @@ namespace sg
 			pos.x += 150 * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		if (Input::KeyP(eKeyCode::Q))
-		{
-			pos.z -= 300 * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		if (Input::KeyP(eKeyCode::E))
-		{
-			pos.z += 300 * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
 	}
 }

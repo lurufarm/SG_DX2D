@@ -31,7 +31,7 @@ namespace sg
 			{
 				SetState(eState::Active);
 				pos = mMowner->GetComp<Transform>()->GetPosition();
-				pos.y += 20.0f;
+				pos.y += 10.0f;
 				mTr->SetPosition(pos);
 			}
 			else if (mMowner->GetState() == eState::Dead)
@@ -42,7 +42,7 @@ namespace sg
 		else
 		{
 			pos = Player->GetComp<Transform>()->GetPosition();
-			pos.y += 20.0f;
+			pos.y += 10.0f;
 			mTr->SetPosition(pos);
 		}
 		Gobj_UI::Update();
