@@ -11,6 +11,7 @@ namespace sg
 
 	Light::Light()
 		: Component(eComponentType::Light)
+		, mLightPos(Vector3::Zero)
 	{
 		mNum++;
 	}
@@ -49,7 +50,7 @@ namespace sg
 		if (mScene != nullptr)
 			renderer::lights.insert(std::make_pair(mScene->GetName(), this));
 		Transform* tr = GetOwner()->GetComp<Transform>();
-		Vector3 pos = tr->GetPosition();
+		Vector3 pos = tr->GetPosition() + mLightPos;
 		mAttribute.position = Vector4(pos.x, pos.y, pos.z, 1.0f);
 		mAttribute.direction = Vector4(tr->Forward().x, tr->Forward().y, tr->Forward().z, 1.0f);
 		mAttribute.pad = mNum;

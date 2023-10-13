@@ -174,6 +174,8 @@
     <ClInclude Include="Effect_FirePlate2.h" />
     <ClInclude Include="Effect_PoisionExplosion.h" />
     <ClInclude Include="Effect_SmokePoison.h" />
+    <ClInclude Include="Img_BulletIcon.h" />
+    <ClInclude Include="Img_CharIcon.h" />
     <ClInclude Include="Img_EyeBallLine.h" />
     <ClInclude Include="Bullet_FireOrb.h" />
     <ClInclude Include="Bullet_FireOrbs.h" />
@@ -330,6 +332,7 @@
     <ClInclude Include="UI_Exit.h" />
     <ClInclude Include="UI_FocusBox.h" />
     <ClInclude Include="UI_FocusBoxes.h" />
+    <ClInclude Include="UI_StatusBase.h" />
     <ClInclude Include="UI_TextBG.h" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +356,8 @@
     <ClCompile Include="Effect_FirePlate2.cpp" />
     <ClCompile Include="Effect_PoisionExplosion.cpp" />
     <ClCompile Include="Effect_SmokePoison.cpp" />
+    <ClCompile Include="Img_BulletIcon.cpp" />
+    <ClCompile Include="Img_CharIcon.cpp" />
     <ClCompile Include="Img_EyeBallLine.cpp" />
     <ClCompile Include="Bullet_FireOrb.cpp" />
     <ClCompile Include="Bullet_FireOrbs.cpp" />
@@ -506,6 +511,7 @@
     <ClCompile Include="UI_Exit.cpp" />
     <ClCompile Include="UI_FocusBox.cpp" />
     <ClCompile Include="UI_FocusBoxes.cpp" />
+    <ClCompile Include="UI_StatusBase.cpp" />
     <ClCompile Include="UI_TextBG.cpp" />
   </ItemGroup>
   <ItemGroup>

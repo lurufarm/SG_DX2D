@@ -715,6 +715,75 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"ImgTextBGright", material);
 
+		// UI_Status
+		texture = Resources::Load<Texture>(L"UI_StatusBase", L"..\\Resources\\UI\\status\\status_base.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_StatusBase", material);
+
+		// UI_Status_Character icons
+
+		texture = Resources::Load<Texture>(L"UI_Cheeseicon", L"..\\Resources\\UI\\status\\status_cheeseicon.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Cheeseicon", material);
+
+		texture = Resources::Load<Texture>(L"UI_Cheesebullet", L"..\\Resources\\UI\\status\\cheesebullet.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Cheesebullet", material);
+
+		texture = Resources::Load<Texture>(L"UI_Lucyicon", L"..\\Resources\\UI\\status\\status_lucyicon.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Lucyicon", material);
+
+		texture = Resources::Load<Texture>(L"UI_Lucybullet", L"..\\Resources\\UI\\status\\lucybullet.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Lucybullet", material);
+
+		texture = Resources::Load<Texture>(L"UI_Roboicon", L"..\\Resources\\UI\\status\\status_roboicon.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Roboicon", material);
+
+		texture = Resources::Load<Texture>(L"UI_Robobeam", L"..\\Resources\\UI\\status\\robobeam.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Robobeam", material);
+
+		texture = Resources::Load<Texture>(L"UI_Szilaicon", L"..\\Resources\\UI\\status\\status_szilaicon.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Szilaicon", material);
+
+		texture = Resources::Load<Texture>(L"UI_Szilafire", L"..\\Resources\\UI\\status\\szilafire.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::CutOut);
+		Resources::Insert(L"UI_Szilafire", material);
+
+
+
+
 #pragma endregion
 #pragma region Title Scene Material
 
@@ -812,6 +881,13 @@ namespace renderer
 		material->SetTexture(texture);
 		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"ImgShadow", material);
+
+		texture = Resources::Load<Texture>(L"Img_SunLight", L"..\\Resources\\Effect\\Light1.png");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetTexture(texture);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ImgSunLight", material);
 
 #pragma endregion
 #pragma region Lobby Scene Material

@@ -21,6 +21,7 @@
 #include "UI_HpBar.h"
 #include "UI_HpBase.h"
 #include "Img_Crack.h"
+#include "Img_Finish.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -116,6 +117,7 @@ namespace sg
 			mGate0->Open();
 			mGate1->Open();
 			mGate2->Open();
+			object::Instantiate<Img_Finish>(eLayerType::UI_Box, this);
 			mClear = true;
 			if (mItem0)
 			{

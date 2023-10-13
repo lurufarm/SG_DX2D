@@ -8,12 +8,19 @@ void sg::SCRIPT_UI::Initialize()
 	mPlayer = Player;
 	Transform* tr = GetOwner()->GetComp<Transform>();
 	mOwnerPos = tr->GetPosition();
+
+	Transform* ptr = mPlayer->GetComp<Transform>();
+	GetOwner()->GetComp<Transform>()->SetPosition(ptr->GetPosition() + mOwnerPos);
+
 }
 
 void sg::SCRIPT_UI::Update()
 {
 	Transform* ptr = mPlayer->GetComp<Transform>();
-
 	GetOwner()->GetComp<Transform>()->SetPosition(ptr->GetPosition() + mOwnerPos);
+	//if (GetOwner()->GetComp<Light>())
+	//{
+	//	GetOwner()->GetComp<Light>()->SetLightPos();
+	//}
 
 }

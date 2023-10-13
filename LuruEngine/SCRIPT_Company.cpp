@@ -9,7 +9,7 @@
 #include "Bullet_LucyBomb.h"
 #include "Bullet_RoboBeam.h"
 #include "Effect_LaserFiring.h"
-
+#include "UI_StatusBase.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -27,6 +27,7 @@ namespace sg
 
 		//mPlayer = Player;
 		mOwner = (Gobj_Character*)GetOwner();
+		UI_StatusBase::MakeStatusSheet(mOwner);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObj(eLayerType::Player, mOwner);
 		PlayScene* playsc = dynamic_cast<PlayScene*>(scene);

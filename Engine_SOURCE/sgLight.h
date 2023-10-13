@@ -26,12 +26,17 @@ namespace sg
 		float GetRadius()				{ return mAttribute.radius; }
 		float GetAngle()				{ return mAttribute.angle; }
 
+		void SetLightPos(Vector3 pos) { mLightPos = pos; }
+
 		static void ClearNum() { mNum = 0; }
 
 	private:
 		bool mOn;
 		bool mPlus;
 		LightAttribute mAttribute;
+
+		Vector3 mLightPos;
+
 		static int mNum;
 
 		class Scene* mScene;

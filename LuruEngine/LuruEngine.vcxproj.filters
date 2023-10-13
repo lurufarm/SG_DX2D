@@ -523,6 +523,15 @@
     <ClCompile Include="SCRIPT_TextBG.cpp">
       <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
+    <ClCompile Include="UI_StatusBase.cpp">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_CharIcon.cpp">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="Img_BulletIcon.cpp">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -1055,6 +1064,15 @@
     </ClInclude>
     <ClInclude Include="SCRIPT_TextBG.h">
       <Filter>Script\SCRIPT_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_StatusBase.h">
+      <Filter>Obj\Gobj_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_CharIcon.h">
+      <Filter>Obj\Gobj_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="Img_BulletIcon.h">
+      <Filter>Obj\Gobj_Img</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

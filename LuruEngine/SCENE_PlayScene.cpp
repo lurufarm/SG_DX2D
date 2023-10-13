@@ -6,9 +6,10 @@
 #include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgObject.h"
 #include "Gobj_Player.h"
-#include "SCRIPT_Company.h"
-#include "SCRIPT_Gate.h"
 #include "UI_FocusBoxes2.h"
+#include "UI_HpBar.h"
+#include "UI_HpBase.h"
+#include "Img_Finish.h"
 #include "Gobj_Interactable.h"
 #include "Gobj_Light.h"
 #include "Interact_Gate.h"
@@ -17,8 +18,9 @@
 #include "Item_AbilityEnhancer.h"
 #include "Item_Chars.h"
 #include "Item_Selected.h"
-#include "UI_HpBar.h"
-#include "UI_HpBase.h"
+#include "SCRIPT_Company.h"
+#include "SCRIPT_Gate.h"
+#include "UI_StatusBase.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -39,6 +41,12 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
+		if (mStatus == nullptr)
+		{
+			mStatus = object::Instantiate<UI_StatusBase>(eLayerType::UI, this);
+			mStatus->SetState(GameObject::eState::Paused);
+			mStatus->Initialize();
+		}
 		mGatePos[0].y += 30.0f;
 		mGatePos[1].y += 30.0f;
 		mGatePos[2].y += 30.0f;
@@ -129,12 +137,17 @@ namespace sg
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
 
+		if (Input::KeyD(eKeyCode::J))
+		{
+			mStatus->SetState(GameObject::eState::Active);
+		}
 
 		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)
 		{
 			mGate0->Open();
 			mGate1->Open();
 			mGate2->Open();
+			object::Instantiate<Img_Finish>(eLayerType::UI_Box, this);
 			mClear = true;
 			if (mItem0)
 			{

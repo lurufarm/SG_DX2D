@@ -3,11 +3,11 @@
 
 namespace sg
 {
-	class Img_Finish : public Gobj_Img
+	class Img_BulletIcon : public Gobj_Img
 	{
 	public:
-		Img_Finish();
-		~Img_Finish();
+		Img_BulletIcon(int num);
+		~Img_BulletIcon();
 
 		void Initialize();
 		void Update();
@@ -15,5 +15,8 @@ namespace sg
 		void Render();
 
 	private:
+
+		int mIconNum;
+
 	};
 }

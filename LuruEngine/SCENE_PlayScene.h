@@ -140,6 +140,8 @@ namespace sg
 	private:
 		Light* mLg;
 		GameObject* mDLight;
+		class UI_StatusBase* mStatus;
+
 
 
 	};

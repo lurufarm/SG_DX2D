@@ -121,13 +121,12 @@ namespace sg
 				fontPos.y += 5.0f;
 				fontPos = WorldPosToScreen(fontPos);
 				FontWrapper::SetFontOption(fontPos.x, fontPos.y, 25.0f, FONT_RGBA(255, 255, 255, 255));
-
 			}
 			else
 			{
 				if (mTextBG)
 					mTextBG->SetState(GameObject::eState::Paused);
-				wcscpy_s(FontWrapper::mText, L"");
+					//wcscpy_s(FontWrapper::mText, L"");
 			}
 
 			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::N))

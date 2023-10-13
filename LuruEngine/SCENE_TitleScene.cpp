@@ -18,6 +18,8 @@
 #include "..\Engine_SOURCE\sgParticleSystem.h"
 #include "..\Engine_SOURCE\sgFontWrapper.h"
 
+#include "UI_StatusBase.h"
+
 namespace sg
 {
 	TitleScene::TitleScene()
@@ -36,6 +38,8 @@ namespace sg
 
 		object::Instantiate<Img_Title>(eLayerType::BGImg, this);
 		object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
+
+
 
 		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		Camera* cameraComp = camera->AddComp<Camera>();
