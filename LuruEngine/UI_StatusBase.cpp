@@ -16,7 +16,6 @@ namespace sg
 
 	UI_StatusBase::UI_StatusBase()
 	{
-		mStatuses.clear();
 	}
 	UI_StatusBase::~UI_StatusBase()
 	{
@@ -27,15 +26,30 @@ namespace sg
 		mMr = GetComp<MeshRenderer>();
 		
 		SetMesh();
-		SetMaterial(L"UI_StatusBase");
+		SetMaterial(L"UIStatusBase");
+		//SetMaterial(L"TransparentMaterial");
 		mMr->Initialize();
-		mFocus = object::Instantiate<UI_FocusBoxes>(GetMyScene(), eLayerType::UI, GetMyScene());
-
+		mFocus = object::Instantiate<UI_FocusBoxes>(GetMyScene(), eLayerType::UI_Box, GetMyScene());
 		AddComp<SCRIPT_UI>();
 
 	}
 	void UI_StatusBase::Update()
 	{
+		for (size_t i = 0; i < mStatuses.size(); i++)
+		{
+			if (mStatuses[i]->charBox->GetSelected())
+			{
+				mStatuses[i]->charIcon->SetSelected(true);
+				if (this->GetState() == Active)
+					mStatuses[i]->bulletIcon->SetState(Active);
+			}
+			else
+			{
+				mStatuses[i]->charIcon->SetSelected(false);
+				mStatuses[i]->bulletIcon->SetState(Paused);
+			}
+		}
+
 		Gobj_UI::Update();
 	}
 	void UI_StatusBase::LateUpdate()
@@ -62,14 +76,14 @@ namespace sg
 
 		StatusSet* PlayerState = new StatusSet();
 		mStatuses.push_back(PlayerState);
-		Vector3 playerBoxPos = Vector3(-43.0f + (mStatuses.size() - 1 * 20.0f), 72.0f, -0.1f);
-		Vector3 projIconPos = Vector3(-38.0f, 37.0f, -0.1f);
+		Vector3 playerBoxPos = Vector3(-44.0f + (mStatuses.size() - 1) * 20.0f, 72.0f, -1.2f);
+		Vector3 projIconPos = Vector3(-38.0f, 37.0f, -1.2f);
 
 		PlayerState->charNum = characterNum;
 		PlayerState->character = character;
-		PlayerState->charIcon = object::Instantiate<Img_CharIcon>(characterNum, eLayerType::UI, SceneManager::GetActiveScene());
-		PlayerState->bulletIcon = object::Instantiate<Img_BulletIcon>(characterNum, eLayerType::UI, SceneManager::GetActiveScene());
-		PlayerState->charBox = object::Instantiate<UI_CharBox>(eLayerType::UI, SceneManager::GetActiveScene());
+		PlayerState->charIcon = object::Instantiate<Img_CharIcon>(characterNum, eLayerType::UI_Box, this->GetMyScene());
+		PlayerState->bulletIcon = object::Instantiate<Img_BulletIcon>(characterNum, eLayerType::UI_Box, this->GetMyScene());
+		PlayerState->charBox = object::Instantiate<UI_CharBox>(eLayerType::UI_Box, this->GetMyScene());
 
 		PlayerState->charIcon->GetComp<Transform>()->SetPosition(playerBoxPos);
 		PlayerState->bulletIcon->GetComp<Transform>()->SetPosition(projIconPos);
@@ -79,8 +93,57 @@ namespace sg
 		PlayerState->bulletIcon->AddComp<SCRIPT_UI>();
 		PlayerState->charBox->AddComp<SCRIPT_UI>();
 
-		PlayerState->charBox->SetOrder(mStatuses.size() - 1);
+		PlayerState->charBox->SetOrder(mStatuses.size());
 		mFocus->AddSelectObj(PlayerState->charBox);
+		mFocus->SetSelectObj(mStatuses[0]->charBox);
+
+		StateUpdate();
+	}
+
+	void UI_StatusBase::StateUpdate()
+	{
+		mFocus->SetState(GetState());
+		mFocus->mBoxes[0]->SetState(GetState());
+		mFocus->mBoxes[1]->SetState(GetState());
+		mFocus->mBoxes[2]->SetState(GetState());
+		mFocus->mBoxes[3]->SetState(GetState());
+		for (size_t i = 0; i < mStatuses.size(); i++)
+		{
+			mStatuses[i]->charBox->SetState(GetState());
+			mStatuses[i]->charIcon->SetState(GetState());
+			mStatuses[i]->bulletIcon->SetState(GetState());
+		}
+	}
+	void UI_StatusBase::SceneUpdate()
+	{
+		Scene* now = SceneManager::GetActiveScene();
+		now->DeleteGameObj(eLayerType::UI, this);
+		now->DeleteGameObj(eLayerType::UI_Box, mFocus);
+		now->DeleteGameObj(eLayerType::UI_Box, mFocus->mBoxes[0]);
+		now->DeleteGameObj(eLayerType::UI_Box, mFocus->mBoxes[1]);
+		now->DeleteGameObj(eLayerType::UI_Box, mFocus->mBoxes[2]);
+		now->DeleteGameObj(eLayerType::UI_Box, mFocus->mBoxes[3]);
+		for (size_t i = 0; i < mStatuses.size(); i++)
+		{
+			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->charBox);
+			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->charIcon);
+			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->bulletIcon);
+		}
+
+		Scene* next = SceneManager::GetNextScene();
+		next->AddGameObj(eLayerType::UI, this);
+		next->AddGameObj(eLayerType::UI_Box, mFocus);
+		next->AddGameObj(eLayerType::UI_Box, mFocus->mBoxes[0]);
+		next->AddGameObj(eLayerType::UI_Box, mFocus->mBoxes[1]);
+		next->AddGameObj(eLayerType::UI_Box, mFocus->mBoxes[2]);
+		next->AddGameObj(eLayerType::UI_Box, mFocus->mBoxes[3]);
+		for (size_t i = 0; i < mStatuses.size(); i++)
+		{
+			next->AddGameObj(eLayerType::UI, mStatuses[i]->charBox);
+			next->AddGameObj(eLayerType::UI, mStatuses[i]->charIcon);
+			next->AddGameObj(eLayerType::UI, mStatuses[i]->bulletIcon);
+		}
+
 	}
 
 }

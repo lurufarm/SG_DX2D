@@ -2,12 +2,15 @@
 #include "sgTime.h"
 #include "sgInput.h"
 #include "sgSceneManager.h"
+#include "sgObject.h"
+#include "..\LuruEngine\UI_StatusBase.h"
 
 namespace sg
 {
 	Scene::Scene()
 	{
 		mLayers.resize((int)sg::enums::eLayerType::End);
+		//mStatus->Initialize();
 		Scene::Initialize();
 	}
 	Scene::~Scene()

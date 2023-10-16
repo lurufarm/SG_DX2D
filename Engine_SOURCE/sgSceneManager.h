@@ -4,6 +4,7 @@
 namespace sg
 {
 	class Gobj_Character;
+	class UI_StatusBase;
 	class SceneManager
 	{
 	public:
@@ -43,6 +44,7 @@ namespace sg
 		}
 
 		static Scene* LoadNextScene();
+		static Scene* GetNextScene();
 
 		static void AddChar(std::wstring key, Gobj_Character* character)
 		{
@@ -69,12 +71,15 @@ namespace sg
 				return nullptr;
 		}
 
+		static UI_StatusBase* GetStatusBase() { return mStatus; }
 
 	private:
 		static Scene* mActiveScene;
 		static std::map<std::wstring, Scene*> mScenes;
 
 		static std::map<std::wstring, Gobj_Character*> mAllChars;
+		static UI_StatusBase* mStatus;
+
 	};
 }
 

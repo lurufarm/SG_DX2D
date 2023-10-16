@@ -576,7 +576,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UIExitButton", material);
 		
 		 // UI_SelectBox 0 (top left)
@@ -584,7 +584,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UISBox_tl", material);
 		
 		 // UI_SelectBox 1 (top right)
@@ -592,7 +592,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UISBox_tr", material);
 		
 		 // UI_SelectBox 2 (bottom left)
@@ -600,7 +600,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UISBox_bl", material);
 		
 		 // UI_SelectBox 3 (bottom right)
@@ -608,7 +608,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UISBox_br", material);
 
 		// UI_Coin
@@ -616,7 +616,7 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
+		material->SetRendereringMode(eRenderingMode::Transparent);
 		Resources::Insert(L"UICoin", material);
 		
 		// UI_Option
@@ -720,8 +720,8 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_StatusBase", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIStatusBase", material);
 
 		// UI_Status_Character icons
 
@@ -729,57 +729,57 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Cheeseicon", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UICheeseicon", material);
 
 		texture = Resources::Load<Texture>(L"UI_Cheesebullet", L"..\\Resources\\UI\\status\\cheesebullet.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Cheesebullet", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UICheesebullet", material);
 
 		texture = Resources::Load<Texture>(L"UI_Lucyicon", L"..\\Resources\\UI\\status\\status_lucyicon.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Lucyicon", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UILucyicon", material);
 
 		texture = Resources::Load<Texture>(L"UI_Lucybullet", L"..\\Resources\\UI\\status\\lucybullet.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Lucybullet", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UILucybullet", material);
 
 		texture = Resources::Load<Texture>(L"UI_Roboicon", L"..\\Resources\\UI\\status\\status_roboicon.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Roboicon", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIRoboicon", material);
 
 		texture = Resources::Load<Texture>(L"UI_Robobeam", L"..\\Resources\\UI\\status\\robobeam.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Robobeam", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UIRobobeam", material);
 
 		texture = Resources::Load<Texture>(L"UI_Szilaicon", L"..\\Resources\\UI\\status\\status_szilaicon.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Szilaicon", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISzilaicon", material);
 
 		texture = Resources::Load<Texture>(L"UI_Szilafire", L"..\\Resources\\UI\\status\\szilafire.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetTexture(texture);
-		material->SetRendereringMode(eRenderingMode::CutOut);
-		Resources::Insert(L"UI_Szilafire", material);
+		material->SetRendereringMode(eRenderingMode::Transparent);
+		Resources::Insert(L"UISzilafire", material);
 
 
 

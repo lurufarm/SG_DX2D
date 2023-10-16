@@ -94,6 +94,7 @@ namespace sg
 
 		Light* CreateCompanyLight(class Gobj_Character* character);
 
+		class UI_StatusBase* GetStatusBase() { return mStatus; }
 
 	protected:
 		
@@ -136,11 +137,12 @@ namespace sg
 
 		std::random_device rd;
 		std::mt19937 gen;
+		class UI_StatusBase* mStatus;
+
 
 	private:
 		Light* mLg;
 		GameObject* mDLight;
-		class UI_StatusBase* mStatus;
 
 
 

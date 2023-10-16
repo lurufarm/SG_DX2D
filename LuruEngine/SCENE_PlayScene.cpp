@@ -41,12 +41,8 @@ namespace sg
 	}
 	void PlayScene::Initialize()
 	{
-		if (mStatus == nullptr)
-		{
-			mStatus = object::Instantiate<UI_StatusBase>(eLayerType::UI, this);
-			mStatus->SetState(GameObject::eState::Paused);
-			mStatus->Initialize();
-		}
+		mStatus = SceneManager::GetStatusBase();
+
 		mGatePos[0].y += 30.0f;
 		mGatePos[1].y += 30.0f;
 		mGatePos[2].y += 30.0f;
@@ -136,10 +132,19 @@ namespace sg
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
 		}
-
+		
 		if (Input::KeyD(eKeyCode::J))
 		{
-			mStatus->SetState(GameObject::eState::Active);
+			if (mStatus->GetState() == GameObject::eState::Paused)
+			{
+				mStatus->SetState(GameObject::eState::Active);
+				mStatus->StateUpdate();
+			}
+			else if (mStatus->GetState() == GameObject::eState::Active)
+			{
+				mStatus->SetState(GameObject::eState::Paused);
+				mStatus->StateUpdate();
+			}
 		}
 
 		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)
@@ -206,7 +211,7 @@ namespace sg
 	}
 	void PlayScene::OnExit()
 	{
-		//renderer::lightsBuffer->Clear();
+		mStatus->SceneUpdate();
 
 		mLg->SetColor(Vector4::Zero);
 		DeleteGameObj(eLayerType::Player, Player);
@@ -253,7 +258,7 @@ namespace sg
 			mCharItemIDs.erase(mCharItemIDs.begin() + index);
 			return object::Instantiate<Item_Chars>(num, pos, eLayerType::Item, this);
 		}
-		//return object::Instantiate<Item_Chars>(pos, eLayerType::Item, this);
+		//return object::Instantiate<Item_Chars>(22, pos, eLayerType::Item, this);
 	}
 	Vector3 PlayScene::RandPos()
 	{

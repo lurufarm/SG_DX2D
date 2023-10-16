@@ -31,7 +31,6 @@ namespace sg
 			mObject->SetState(GameObject::eState::Paused);
 		}
 
-
 		if (Input::KeyD(eKeyCode::ENTER))
 		{
 			if (mObject->GetState() == GameObject::eState::Paused)
@@ -68,6 +67,7 @@ namespace sg
 					mObject->SetState(GameObject::eState::Paused);
 					LobbyScene::FocusBoxesActive();
 				}
+
 			}
 		}
 

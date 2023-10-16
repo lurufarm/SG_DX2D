@@ -24,7 +24,17 @@ namespace sg
 		void LateUpdate();
 		void Render();
 		
-		static void MakeStatusSheet(class Gobj_Character* character);
+		void MakeStatusSheet(class Gobj_Character* character);
+		void StateUpdate();
+		void SceneUpdate();
+
+		bool GetStatusSheetEmpty() 
+		{ 
+			if (mStatuses.empty())
+				return true;
+			else
+				return false;
+		}
 
 	private:
 
@@ -33,6 +43,7 @@ namespace sg
 
 		static std::vector<StatusSet*> mStatuses;
 		static class UI_FocusBoxes* mFocus;
+		Scene* mScene;
 
 	};
 }

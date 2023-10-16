@@ -144,6 +144,7 @@ namespace sg
 					ps2->SelectedItemID = mItem->GetItemID();
 				}
 				mItem->SetItemActivate(true);
+				wcscpy_s(FontWrapper::mText, L"");
 			}
 		}
 		else

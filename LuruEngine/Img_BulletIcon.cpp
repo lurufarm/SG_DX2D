@@ -1,10 +1,12 @@
 #include "Img_BulletIcon.h"
+#include "SCRIPT_UI.h"
 
 namespace sg
 {
 	Img_BulletIcon::Img_BulletIcon(int num)
 	{
 		mIconNum = num;
+		Img_BulletIcon::Initialize();
 	}
 	Img_BulletIcon::~Img_BulletIcon()
 	{
@@ -18,21 +20,20 @@ namespace sg
 		switch (mIconNum)
 		{
 		case 0:
-			SetMaterial(L"UI_Cheesebullet");
+			SetMaterial(L"UICheesebullet");
 			break;
 		case 1:
-			SetMaterial(L"UI_Lucybullet");
+			SetMaterial(L"UILucybullet");
 			break;
 		case 2:
-			SetMaterial(L"UI_Robobeam");
+			SetMaterial(L"UIRobobeam");
 			break;
 		case 3:
-			SetMaterial(L"UI_Szilafire");
+			SetMaterial(L"UISzilafire");
 			break;
 		}
 
 		mMr->Initialize();
-
 	}
 	void Img_BulletIcon::Update()
 	{

@@ -74,43 +74,45 @@ namespace sg
 			pp2.Normalize();
 			pp3.Normalize();
 
-			mBoxes[0]->GetComp<Transform>()->SetPosition(p0 + pp0 * mAccDeltaTime);
-			mBoxes[1]->GetComp<Transform>()->SetPosition(p1 + pp1 * mAccDeltaTime);
-			mBoxes[2]->GetComp<Transform>()->SetPosition(p2 + pp2 * mAccDeltaTime);
-			mBoxes[3]->GetComp<Transform>()->SetPosition(p3 + pp3 * mAccDeltaTime);
+			mBoxes[0]->GetComp<Transform>()->SetPosition(p0 + pp0 * (mAccDeltaTime * 0.3f));
+			mBoxes[1]->GetComp<Transform>()->SetPosition(p1 + pp1 * (mAccDeltaTime * 0.3f));
+			mBoxes[2]->GetComp<Transform>()->SetPosition(p2 + pp2 * (mAccDeltaTime * 0.3f));
+			mBoxes[3]->GetComp<Transform>()->SetPosition(p3 + pp3 * (mAccDeltaTime * 0.3f));
 
 			UINT now = mObj->GetOrder();
-
-			if (Input::KeyD(eKeyCode::A))
+			if (mObjs.size() > 1)
 			{
-				if (now >= 2)
+				if (Input::KeyD(eKeyCode::LEFT))
 				{
-					GameObject* prevobj = mObj;
-					if (prevobj)
-						prevobj->SetSelected(false);
-
-					this->Initialize();
-					now--;
-					std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
-					mObj = iter->second;
-					mObj->SetSelected(true);
-				}
-			}
-			else if (Input::KeyD(eKeyCode::D))
-			{
-				std::map<UINT, GameObject*>::iterator upperBoundIter = mObjs.upper_bound(now);
-				if (upperBoundIter != mObjs.end())
-				{
-					GameObject* prevobj = mObj;
-					if (prevobj)
-						prevobj->SetSelected(false);
-					this->Initialize();
-					now = upperBoundIter->first;
-					std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
-					if (iter != mObjs.end())
+					if (now >= 2)
 					{
+						GameObject* prevobj = mObj;
+						if (prevobj)
+							prevobj->SetSelected(false);
+
+						this->Initialize();
+						now--;
+						std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
 						mObj = iter->second;
 						mObj->SetSelected(true);
+					}
+				}
+				else if (Input::KeyD(eKeyCode::RIGHT))
+				{
+					std::map<UINT, GameObject*>::iterator upperBoundIter = mObjs.upper_bound(now);
+					if (upperBoundIter != mObjs.end())
+					{
+						GameObject* prevobj = mObj;
+						if (prevobj)
+							prevobj->SetSelected(false);
+						this->Initialize();
+						now = upperBoundIter->first;
+						std::map<UINT, GameObject*>::iterator iter = mObjs.find(now);
+						if (iter != mObjs.end())
+						{
+							mObj = iter->second;
+							mObj->SetSelected(true);
+						}
 					}
 				}
 			}

@@ -54,8 +54,10 @@ namespace sg
 			return nullptr;
 		}
 
+
 	protected:
 		std::vector<Layer> mLayers;
+		//static class UI_StatusBase* mStatus;
 
 	private:
 

@@ -169,21 +169,24 @@ namespace sg
 			else
 			{
 				std::shared_ptr<Material> mt = mr->GetMaterial();
-				eRenderingMode mode = mt->GetRenderingMode();
-
-				switch (mode)
+				if (mt)
 				{
-				case sg::graphics::eRenderingMode::Opaque:
-					mOpaqueGameObjects.push_back(obj);
-					break;
-				case sg::graphics::eRenderingMode::CutOut:
-					mCutOutGameObjects.push_back(obj);
-					break;
-				case sg::graphics::eRenderingMode::Transparent:
-					mTransparentGameObjects.push_back(obj);
-					break;
-				default:
-					break;
+
+					eRenderingMode mode = mt->GetRenderingMode();
+					switch (mode)
+					{
+					case sg::graphics::eRenderingMode::Opaque:
+						mOpaqueGameObjects.push_back(obj);
+						break;
+					case sg::graphics::eRenderingMode::CutOut:
+						mCutOutGameObjects.push_back(obj);
+						break;
+					case sg::graphics::eRenderingMode::Transparent:
+						mTransparentGameObjects.push_back(obj);
+						break;
+					default:
+						break;
+					}
 				}
 			}
 		}

@@ -1,4 +1,5 @@
 #include "UI_CharBox.h"
+#include "SCRIPT_UI.h"
 
 namespace sg
 {
@@ -18,6 +19,7 @@ namespace sg
 		SetMesh();
 		SetMaterial(L"AnimationMaterial");
 		mMr->SetImgScale(mTr->GetScale());
+
 	}
 	void UI_CharBox::Update()
 	{

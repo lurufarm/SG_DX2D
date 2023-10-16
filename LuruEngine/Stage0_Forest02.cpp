@@ -66,7 +66,7 @@ namespace sg
 		mGate2->SetNextScene(L"05_Stage0_Forest03");
 
 #pragma region Monsters
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);

@@ -19,6 +19,8 @@
 #include "Item_AbilityEnhancer.h"
 #include "Item_Selected.h"
 
+#include "UI_StatusBase.h"
+
 extern sg::Gobj_Player* Player;
 
 namespace sg
@@ -32,6 +34,11 @@ namespace sg
 	}
 	void Stage0_Forest01::Initialize()
 	{
+		mStatus = SceneManager::GetStatusBase();
+		mStatus->SetState(GameObject::eState::Paused);
+		AddGameObj(eLayerType::UI, mStatus);
+		mStatus->Initialize();
+
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(-11.0f, 5.0f, 0.0f);
 		mCrackPos[0] = Vector3(90.0f, 130.0f, -0.5f);
@@ -114,6 +121,13 @@ namespace sg
 			SelectedItemID = 21;
 		else if (charName == L"Robo")
 			SelectedItemID = 22;
+		else if (charName == L"Szila")
+			SelectedItemID = 23;
+
+		if (mStatus->GetStatusSheetEmpty())
+			mStatus->MakeStatusSheet(Player->GetChar());
+		mStatus->StateUpdate();
+
 
 		PlayScene::Update();
 	}

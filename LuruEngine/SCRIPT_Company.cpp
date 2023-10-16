@@ -27,7 +27,6 @@ namespace sg
 
 		//mPlayer = Player;
 		mOwner = (Gobj_Character*)GetOwner();
-		UI_StatusBase::MakeStatusSheet(mOwner);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObj(eLayerType::Player, mOwner);
 		PlayScene* playsc = dynamic_cast<PlayScene*>(scene);
