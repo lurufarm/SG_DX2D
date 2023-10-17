@@ -116,6 +116,10 @@ namespace sg
 					}
 				}
 			}
+			else
+			{
+				mObj->SetSelected(true);
+			}
 		}
 
 		GameObject::Update();

@@ -123,6 +123,7 @@ namespace sg
 
 		std::random_device rd;
 		std::mt19937 gen;
+		class UI_StatusBase* mStatus;
 
 	private:
 		GameObject* mLight;

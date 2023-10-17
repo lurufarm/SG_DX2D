@@ -11,6 +11,7 @@
 #include "Gobj_Item.h"
 #include "UI_TextBG.h"
 #include "Img_TextBG_left.h"
+#include "Gobj_Font.h"
 #include "Gobj_Player.h"
 
 extern sg::Gobj_Player* Player;
@@ -25,12 +26,20 @@ namespace sg
 	}
 	void SCRIPT_Gate::Initialize()
 	{
-
 		mOwner = (Interact_Gate*)GetOwner();
+		mText = object::Instantiate<Gobj_Font>(eLayerType::UI, mOwner->GetMyScene());
+		mTextBG = object::Instantiate<UI_TextBG>(2, eLayerType::UI, mOwner->GetMyScene());
+		mTextBG->SetState(GameObject::eState::Paused);
+		mTextBG->Initialize();
 	}
 	void SCRIPT_Gate::Update()
 	{
 		mItem = mOwner->GetItem();
+		Vector3 fontPos = mTextBG->GetTextBGL()->GetComp<Transform>()->GetPosition();
+		fontPos.x += 3.0f;
+		fontPos.y += 5.0f;
+		fontPos = WorldPosToScreen(fontPos);
+		mText->SetFontOption(fontPos.x, fontPos.y, 25.0f, FONT_RGBA(255, 255, 255, 255));
 
 		if (mOwner->GetIsOpen())
 		{
@@ -39,94 +48,85 @@ namespace sg
 			Vector3 opos = mOwner->GetComp<Transform>()->GetPosition();
 			float distance = Vector2(ppos.x - opos.x, ppos.y - opos.y).Length();
 
-			if (mOwner->GetSelected() && distance <= 80.0f)
+			if (mOwner->GetSelected() && distance <= 60.0f)
 			{
-				if (mTextBG == nullptr)
-				{
-					mTextBG = object::Instantiate<UI_TextBG>(2, eLayerType::UI, mOwner->GetMyScene());
-					mTextBG->Initialize();
-				}
 				mTextBG->SetState(GameObject::eState::Active);
+				mText->SetState(GameObject::eState::Active);
 				int itemID = mItem->GetItemID();
 				switch (itemID)
 				{
 				case 0:
 					mTextBG->SetTextBGSize(3.0f);
-					wcscpy_s(FontWrapper::mText, L"추가 생명");
+					mText->SetText(L"추가 생명");
 					break;
 				case 1 :
 					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"흡혈");
+					mText->SetText(L"흡혈");
 					break;
 				case 2:
 					mTextBG->SetTextBGSize(3.0f);
-					wcscpy_s(FontWrapper::mText, L"질긴 생명");
+					mText->SetText(L"질긴 생명");
 					break;
 				case 3:
 					mTextBG->SetTextBGSize(3.0f);
-					wcscpy_s(FontWrapper::mText, L"공격력 증가");
+					mText->SetText(L"공격력 증가");
 					break;
 				case 4:
 					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"방어력 증가");
+					mText->SetText(L"방어력 증가");
 					break;
 				case 5:
 					mTextBG->SetTextBGSize(3.0f);
-					wcscpy_s(FontWrapper::mText, L"공격 범위 증가");
+					mText->SetText(L"공격 범위 증가");
 					break;
 				case 6:
 					mTextBG->SetTextBGSize(5.0f);
-					wcscpy_s(FontWrapper::mText, L"공격 지속시간 증가");
+					mText->SetText(L"공격 지속시간 증가");
 					break;
 				case 7:
 					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"멀티 샷");
+					mText->SetText(L"멀티 샷");
 					break;
 				case 8:
 					mTextBG->SetTextBGSize(5.0f);
-					wcscpy_s(FontWrapper::mText, L"발사체 갯수 증가");
+					mText->SetText(L"발사체 갯수 증가");
 					break;
 				case 9:
 					mTextBG->SetTextBGSize(4.0f);
-					wcscpy_s(FontWrapper::mText, L"공격 속도 증가");
+					mText->SetText(L"공격 속도 증가");
 					break;
 				case 10:
 					mTextBG->SetTextBGSize(4.0f);
-					wcscpy_s(FontWrapper::mText, L"이동 속도 증가");
+					mText->SetText(L"이동 속도 증가");
 					break;
 				case 11:
 					mTextBG->SetTextBGSize(4.0f);
-					wcscpy_s(FontWrapper::mText, L"최대 체력 증가");
+					mText->SetText(L"최대 체력 증가");
 					break;
 				case 20:
-					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"치즈");
+					mTextBG->SetTextBGSize(1.5f);
+					mText->SetText(L"치즈");
 					break;
 				case 21:
-					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"루시");
+					mTextBG->SetTextBGSize(1.5f);
+					mText->SetText(L"루시");
 					break;
 				case 22:
-					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"로보");
+					mTextBG->SetTextBGSize(1.5f);
+					mText->SetText(L"로보");
 					break;
 				case 23:
-					mTextBG->SetTextBGSize(2.0f);
-					wcscpy_s(FontWrapper::mText, L"실라");
+					mTextBG->SetTextBGSize(1.5f);
+					mText->SetText(L"실라");
 					break;
 				}
 
-				Vector3 fontPos = mTextBG->GetTextBGL()->GetComp<Transform>()->GetPosition();
-				fontPos.x += 3.0f;
-				fontPos.y += 5.0f;
-				fontPos = WorldPosToScreen(fontPos);
-				FontWrapper::SetFontOption(fontPos.x, fontPos.y, 25.0f, FONT_RGBA(255, 255, 255, 255));
 			}
 			else
 			{
-				if (mTextBG)
-					mTextBG->SetState(GameObject::eState::Paused);
-					//wcscpy_s(FontWrapper::mText, L"");
+				mTextBG->SetState(GameObject::eState::Paused);
+				mText->SetText(L"");
+				mText->SetState(GameObject::eState::Paused);
 			}
 
 			if (mOwner->GetSelected() && Input::KeyD(eKeyCode::N))
@@ -144,14 +144,15 @@ namespace sg
 					ps2->SelectedItemID = mItem->GetItemID();
 				}
 				mItem->SetItemActivate(true);
-				wcscpy_s(FontWrapper::mText, L"");
+				mText->SetText(L"");
+				mText->SetState(GameObject::eState::Paused);
 			}
 		}
 		else
 		{
-			if (mTextBG)
-				mTextBG->SetState(GameObject::eState::Paused);
-			wcscpy_s(FontWrapper::mText, L"");
+			mTextBG->SetState(GameObject::eState::Paused);
+			mText->SetText(L"");
+			mText->SetState(GameObject::eState::Paused);
 		}
 	}
 	void SCRIPT_Gate::OnCollisionEnter(Collider2D* other)

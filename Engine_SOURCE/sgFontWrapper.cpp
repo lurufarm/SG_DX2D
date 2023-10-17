@@ -1,10 +1,12 @@
 #include "sgFontWrapper.h"
 #include "sgGraphicDevice_Dx11.h"
+#include "..\LuruEngine\Gobj_Font.h"
 
 namespace sg
 {
 	IFW1Factory* FontWrapper::mFW1Factory = nullptr;
 	IFW1FontWrapper* FontWrapper::mFontWrapper = nullptr;
+	std::vector<Gobj_Font*> FontWrapper::mAllText = {};
 	WCHAR FontWrapper::mText[100] = {};
 	float FontWrapper::mXpos = 0.0f;
 	float FontWrapper::mYpos = 0.0f;
@@ -25,7 +27,16 @@ namespace sg
 	}
 	void FontWrapper::Render()
 	{
-		DrawFont(mText, mXpos, mYpos, mFontSize, mFontColor);
+		for (Gobj_Font* text : mAllText)
+		{
+			if (text->GetText().empty())
+				continue;
+
+			Vector3 FontOption = text->GetFontOption();
+			UINT FontColor = text->GetFontColor();
+			DrawFont(text->GetText().c_str(), FontOption.x, FontOption.y, FontOption.z, FontColor);
+		}
+		mAllText.clear();
 	}
 	void FontWrapper::Release()
 	{

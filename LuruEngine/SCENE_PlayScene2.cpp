@@ -22,6 +22,7 @@
 #include "UI_HpBase.h"
 #include "Img_Crack.h"
 #include "Img_Finish.h"
+#include "UI_StatusBase.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -41,6 +42,8 @@ namespace sg
 	}
 	void PlayScene2::Initialize()
 	{
+		mStatus = SceneManager::GetStatusBase();
+
 		mGatePos[0].y += 30.0f;
 		mGatePos[1].y += 30.0f;
 		mGatePos[2].y += 30.0f;
@@ -110,6 +113,20 @@ namespace sg
 		if (Input::KeyD(eKeyCode::B))
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
+		}
+
+		if (Input::KeyD(eKeyCode::J))
+		{
+			if (mStatus->GetState() == GameObject::eState::Paused)
+			{
+				mStatus->SetState(GameObject::eState::Active);
+				mStatus->StateUpdate();
+			}
+			else if (mStatus->GetState() == GameObject::eState::Active)
+			{
+				mStatus->SetState(GameObject::eState::Paused);
+				mStatus->StateUpdate();
+			}
 		}
 
 		if (mActiveMobs.size() == 0 && mPausedMobs.size() == 0 && mClear == false)

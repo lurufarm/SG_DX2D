@@ -35,5 +35,6 @@ namespace sg
 		class Interact_Gate* mOwner;
 		class Gobj_Item* mItem;
 		class UI_TextBG* mTextBG;
+		class Gobj_Font* mText;
 	};
 }

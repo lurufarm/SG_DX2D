@@ -37,16 +37,16 @@ namespace sg
 	{
 		for (size_t i = 0; i < mStatuses.size(); i++)
 		{
-			if (mStatuses[i]->charBox->GetSelected())
-			{
-				mStatuses[i]->charIcon->SetSelected(true);
-				if (this->GetState() == Active)
-					mStatuses[i]->bulletIcon->SetState(Active);
-			}
-			else
+			if (mStatuses[i]->charBox->GetSelected() == false)
 			{
 				mStatuses[i]->charIcon->SetSelected(false);
 				mStatuses[i]->bulletIcon->SetState(Paused);
+			}
+			else
+			{
+				mStatuses[i]->charIcon->SetSelected(true);
+				if (GetState() == Active)
+					mStatuses[i]->bulletIcon->SetState(Active);
 			}
 		}
 

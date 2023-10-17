@@ -5,6 +5,7 @@
 #include "..\Engine_SOURCE\sgSceneManager.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
 #include "..\Engine_SOURCE\sgObject.h"
+#include "..\Engine_SOURCE\sgFontWrapper.h"
 #include "Gobj_Player.h"
 #include "UI_FocusBoxes2.h"
 #include "UI_HpBar.h"

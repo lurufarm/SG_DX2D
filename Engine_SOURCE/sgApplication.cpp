@@ -51,7 +51,6 @@ namespace sg
 		Time::Render();
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
-		//SceneManager::Render();
 		renderer::Render();
 		FontWrapper::Render();
 	}

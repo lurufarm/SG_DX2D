@@ -159,10 +159,10 @@ namespace sg
 					mPlayer->EXP(150);
 				else
 				{
-					if (robo->GetComp<SCRIPT_Company>())
-						robo->EXP(150);
+					if (szila->GetComp<SCRIPT_Company>())
+						szila->EXP(150);
 					else
-						robo->AddComp<SCRIPT_Company>();
+						szila->AddComp<SCRIPT_Company>();
 					if (GetOwner()->GetMyScene() == dynamic_cast<PlayScene*>(GetOwner()->GetMyScene()))
 					{
 						SceneManager::GetStatusBase()->MakeStatusSheet(szila);
