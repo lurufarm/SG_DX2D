@@ -158,13 +158,12 @@ namespace sg
 	}
 	void PlayScene2::OnEnter()
 	{
-		//renderer::lightsBuffer->Clear();
-
 		float bgcolor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		GetDevice()->SetBgColor(bgcolor);
 
 		AddGameObj(eLayerType::Player, Player);
 		Player->GetComp<Transform>()->SetPosition(mStartPos);
+		Player->Heal(1);
 
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
@@ -188,7 +187,7 @@ namespace sg
 	}
 	void PlayScene2::OnExit()
 	{
-		//renderer::lightsBuffer->Clear();
+		mStatus->SceneUpdate();
 
 		DeleteGameObj(eLayerType::Player, Player);
 		for (Gobj_Character* company : Player->GetActiveCompanies())

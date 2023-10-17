@@ -22,17 +22,17 @@ namespace sg
 	}
 	UI_CharSelect::~UI_CharSelect()
 	{
-		for (size_t i = 0; i < 2; i++)
-		{
-			for (size_t j = 0; j < 5; j++)
-			{
-				mBoxes[i][j]->SetState(GameObject::eState::Dead);
-			}
-		}
+		//for (size_t i = 0; i < 2; i++)
+		//{
+		//	for (size_t j = 0; j < 5; j++)
+		//	{
+		//		mBoxes[i][j]->SetState(GameObject::eState::Dead);
+		//	}
+		//}
 		//object::Destroy(mFocus);
 		//delete mFocus;
-		SceneManager::GetActiveScene()->DeleteGameObj(eLayerType::UI, mFocus);
-		object::Destroy(mFocus);
+		//SceneManager::GetActiveScene()->DeleteGameObj(eLayerType::UI, mFocus);
+		//object::Destroy(mFocus);
 	}
 	void UI_CharSelect::Initialize()
 	{

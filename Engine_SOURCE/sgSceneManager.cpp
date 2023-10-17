@@ -44,6 +44,9 @@ namespace sg
 	}
 	void SceneManager::Release()
 	{
+		delete mStatus;
+		mStatus = nullptr;
+
 		for (auto iter : mScenes)
 		{
 			delete iter.second;

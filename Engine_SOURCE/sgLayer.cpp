@@ -7,15 +7,21 @@ namespace sg
 	}
 	Layer::~Layer()
 	{
-		for (GameObject* gameObj : mGameObjects)
+
+		for (size_t i = 0; i < mGameObjects.size(); i++)
 		{
-			if (gameObj == nullptr)
-				continue;
-
-			delete gameObj;
-			gameObj = nullptr;
-
+			delete mGameObjects[i];
+			mGameObjects[i] = nullptr;
 		}
+		//for (GameObject* gameObj : mGameObjects)
+		//{
+		//	if (gameObj == nullptr)
+		//		continue;
+
+		//	delete gameObj;
+		//	gameObj = nullptr;
+
+		//}
 	}
 	void Layer::Initialize()
 	{

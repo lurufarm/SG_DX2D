@@ -120,7 +120,7 @@ namespace sg
 		Vector3 mRewardPos;
 		Vector3 mGatePos[3];
 
-		const Vector4 mDayLight = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+		const Vector4 mDayLight = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
 		const Vector4 mAfternoonLight = Vector4(0.5f, 0.3f, 0.2f, 1.0f);
 		const Vector4 mEveningLight = Vector4(0.1f, 0.2f, 0.4f, 1.0f);
 		const Vector4 mDawnLight = Vector4(0.3f, 0.3f, 0.5f, 1.0f);
@@ -138,11 +138,11 @@ namespace sg
 		std::random_device rd;
 		std::mt19937 gen;
 		class UI_StatusBase* mStatus;
+		Gobj_Light* mDLight;
 
 
 	private:
-		Light* mLg;
-		GameObject* mDLight;
+		//Light* mLg;
 
 
 

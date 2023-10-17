@@ -1500,6 +1500,7 @@ namespace renderer
 			if (light.first == activeScene->GetName())
 			{
 				LightAttribute attribute = light.second->GetAttribute();
+				attribute.pad = lights.size();
 				lightsAttributes.push_back(attribute);
 			}
 			else
@@ -1511,6 +1512,8 @@ namespace renderer
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);
 		lightsBuffer->BindSRV(eShaderStage::PS, 13);
+		lights.clear();
+
 	}
 
 	void BindNoiseTexture()
@@ -1541,7 +1544,7 @@ namespace renderer
 
 	void Render()
 	{
-		BindNoiseTexture();
+		//BindNoiseTexture();
 		BindLights();
 		for (Camera* cam : cameras)
 		{
@@ -1550,9 +1553,10 @@ namespace renderer
 
 			cam->Render();
 		}
-
 		cameras.clear();
 		lights.clear();
+		lightsBuffer->Clear();
+
 	}
 
 	void Release()

@@ -119,6 +119,8 @@ namespace sg
 	}
 	void Stage0_Forest02::OnExit()
 	{
+		//renderer::lightsBuffer->Clear();
+
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);

@@ -112,11 +112,8 @@ namespace sg
 					else
 					{
 						cheese->AddComp<SCRIPT_Company>();
-						if (GetOwner()->GetMyScene() == dynamic_cast<PlayScene*>(GetOwner()->GetMyScene()))
-						{
-							SceneManager::GetStatusBase()->MakeStatusSheet(cheese);
-							SceneManager::GetStatusBase()->StateUpdate();
-						}
+						SceneManager::GetStatusBase()->MakeStatusSheet(cheese);
+						SceneManager::GetStatusBase()->StateUpdate();
 					}
 				}
 				break;
@@ -128,13 +125,11 @@ namespace sg
 					if (lucy->GetComp<SCRIPT_Company>())
 						lucy->EXP(150);
 					else
-						lucy->AddComp<SCRIPT_Company>();
-					if (GetOwner()->GetMyScene() == dynamic_cast<PlayScene*>(GetOwner()->GetMyScene()))
 					{
+						lucy->AddComp<SCRIPT_Company>();
 						SceneManager::GetStatusBase()->MakeStatusSheet(lucy);
 						SceneManager::GetStatusBase()->StateUpdate();
 					}
-
 				}
 				break;
 			case 22:
@@ -145,13 +140,11 @@ namespace sg
 					if (robo->GetComp<SCRIPT_Company>())
 						robo->EXP(150);
 					else
-						robo->AddComp<SCRIPT_Company>();
-					if (GetOwner()->GetMyScene() == dynamic_cast<PlayScene*>(GetOwner()->GetMyScene()))
 					{
+						robo->AddComp<SCRIPT_Company>();
 						SceneManager::GetStatusBase()->MakeStatusSheet(robo);
 						SceneManager::GetStatusBase()->StateUpdate();
 					}
-
 				}
 				break;
 			case 23:
@@ -162,13 +155,11 @@ namespace sg
 					if (szila->GetComp<SCRIPT_Company>())
 						szila->EXP(150);
 					else
-						szila->AddComp<SCRIPT_Company>();
-					if (GetOwner()->GetMyScene() == dynamic_cast<PlayScene*>(GetOwner()->GetMyScene()))
 					{
+						szila->AddComp<SCRIPT_Company>();
 						SceneManager::GetStatusBase()->MakeStatusSheet(szila);
 						SceneManager::GetStatusBase()->StateUpdate();
 					}
-
 				}
 				break;
 			}

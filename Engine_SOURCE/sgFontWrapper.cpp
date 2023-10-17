@@ -40,6 +40,8 @@ namespace sg
 	}
 	void FontWrapper::Release()
 	{
+		mAllText.clear();
+
 		mFW1Factory->Release();
 		mFW1Factory = nullptr;
 

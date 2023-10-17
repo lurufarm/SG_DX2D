@@ -30,10 +30,10 @@ namespace sg
 	}
 	UI_FocusBoxes2::~UI_FocusBoxes2()
 	{
-		mBoxes[0]->SetState(Dead);
-		mBoxes[1]->SetState(Dead);
-		mBoxes[2]->SetState(Dead);
-		mBoxes[3]->SetState(Dead);
+		//for (size_t i = 0; i < 4; i++)
+		//{
+		//	mBoxes[i]->SetState(Dead);
+		//}
 	}
 	void UI_FocusBoxes2::Initialize()
 	{

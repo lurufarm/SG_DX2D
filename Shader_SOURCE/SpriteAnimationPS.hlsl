@@ -44,7 +44,7 @@ float4 main(VSOut In) : SV_TARGET
     }
 
     float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
@@ -97,7 +97,7 @@ float4 main2(VSOut In) : SV_TARGET
     }
 
     float4 lightColor = float4(0.0f, 0.0f, 0.0f, 0.1f);
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < lightsAttribute[0].pad; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }

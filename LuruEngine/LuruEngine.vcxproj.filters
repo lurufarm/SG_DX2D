@@ -1088,9 +1088,6 @@
     <Filter Include="Tile">
       <UniqueIdentifier>{aaac7fa7-0a6b-4091-9385-90d98e9bdd26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Load">
-      <UniqueIdentifier>{a79c56fb-2fc3-4902-b6d0-024541fb2aec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Obj">
       <UniqueIdentifier>{8a4a42e5-757f-4a3e-9d9b-c8eba17f1ca8}</UniqueIdentifier>
     </Filter>

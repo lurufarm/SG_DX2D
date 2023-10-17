@@ -64,20 +64,16 @@ namespace sg
 		mGate0->AddComp<SCRIPT_Gate>();
 		mGate1->AddComp<SCRIPT_Gate>();
 		mGate2->AddComp<SCRIPT_Gate>();
-
-
-
 		if (mDLight == nullptr)
 		{
-			mDLight = new GameObject();
-			mLg = mDLight->AddComp<Light>();
-			AddGameObj(eLayerType::Light, mDLight);
-			mLg->SetType(eLightType::Directional);
-			mLg->SetColor(mDayLight);
-		}
-		else
-		{
-			mLg = mDLight->GetComp<Light>();
+
+			mDLight = object::Instantiate<Gobj_Light>(eLayerType::Light, this);
+			mDLight->SetLightType(eLightType::Directional);
+			mDLight->SetLightColor(mDayLight);
+			//mLg = mDLight->GetComp<Light>();
+			//AddGameObj(eLayerType::Light, mDLight);
+			//mLg->SetType(eLightType::Directional);
+			//mLg->SetColor(mDayLight);
 		}
 
 		if (mFocus == nullptr)
@@ -129,6 +125,8 @@ namespace sg
 	}
 	void PlayScene::Update()
 	{
+		mTime += Time::DeltaTime();
+
 		if (Input::KeyD(eKeyCode::B))
 		{
 			SceneManager::LoadScene(L"02_LobbyScene");
@@ -165,8 +163,7 @@ namespace sg
 		if (mActiveMobs.size() < 5)
 			SpawnMob();
 		PurgeDeadMobs();
-		mTime += Time::DeltaTime();
-		ChangeLight();
+		//ChangeLight();
 
 		Scene::Update();
 	}
@@ -180,22 +177,20 @@ namespace sg
 	}
 	void PlayScene::OnEnter()
 	{
-		//renderer::lightsBuffer->Clear();
-
-		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+		//mDLight->SetLightOff();
+		//mDLight->SetLightOn();
+		float bgcolor[4] = { 0.5f, 0.5f, 0.5f, 0.0f };
 		GetDevice()->SetBgColor(bgcolor);
-
 
 		AddGameObj(eLayerType::Player, Player);
 		Player->GetComp<Transform>()->SetPosition(mStartPos);
-
+		Player->Heal(1);
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
 			AddGameObj(eLayerType::Player, company);
 			Vector3 cpos = company->GetComp<SCRIPT_Company>()->RandPos(mStartPos);
 			company->GetComp<Transform>()->SetPosition(cpos);
 		}
-
 
 		AddGameObj(eLayerType::UI, mFocus);
 		AddGameObj(eLayerType::UI, mFocus->mBoxes[0]);
@@ -214,8 +209,8 @@ namespace sg
 	{
 		mStatus->SceneUpdate();
 
-		mLg->SetColor(Vector4::Zero);
 		DeleteGameObj(eLayerType::Player, Player);
+
 		for (Gobj_Character* company : Player->GetActiveCompanies())
 		{
 			DeleteGameObj(eLayerType::Player, company);
@@ -298,7 +293,8 @@ namespace sg
 				mTime2 = 0.0f;
 
 			Vector4 changecolor = Vector4::Lerp(mDayLight, mAfternoonLight, mTime2 / 5.0f);
-			mLg->SetColor(changecolor);
+			//mLg->SetColor(changecolor);
+			mDLight->SetLightColor(changecolor);
 		}
 		else if (mTime > 65.0f && mTime <= 125.0f)
 		{
@@ -307,7 +303,8 @@ namespace sg
 				mPlayerLight[i]->SetLightOn();
 			}
 			mTime2 = 0.0f;
-			mLg->SetColor(mAfternoonLight);
+			//mLg->SetColor(mAfternoonLight);
+			mDLight->SetLightColor(mAfternoonLight);
 		}
 		else if (mTime > 125.0f && mTime <= 130.0f)
 		{
@@ -315,13 +312,14 @@ namespace sg
 				mTime2 = 0.0f;
 
 			Vector4 changecolor = Vector4::Lerp(mAfternoonLight, mEveningLight, mTime2 / 5.0f);
-			mLg->SetColor(changecolor);
-
+			//mLg->SetColor(changecolor);
+			mDLight->SetLightColor(changecolor);
 		}
 		else if (mTime > 130.0f && mTime <= 190.0f)
 		{
 			mTime2 = 0.0f;
-			mLg->SetColor(mEveningLight);
+			//mLg->SetColor(mEveningLight);
+			mDLight->SetLightColor(mEveningLight);
 		}
 		else if (mTime > 190.0f && mTime <= 200.0f)
 		{
@@ -329,13 +327,14 @@ namespace sg
 				mTime2 = 0.0f;
 
 			Vector4 changecolor = Vector4::Lerp(mEveningLight, mDawnLight, mTime2 / 10.0f);
-			mLg->SetColor(changecolor);
-
+			//mLg->SetColor(changecolor);
+			mDLight->SetLightColor(changecolor);
 		}
 		else if (mTime > 200.0f && mTime <= 260.0f)
 		{
 			mTime2 = 0.0f;
-			mLg->SetColor(mDawnLight);
+			//mLg->SetColor(mDawnLight);
+			mDLight->SetLightColor(mDawnLight);
 		}
 		else if (mTime > 260.0f && mTime <= 280.0f)
 		{
@@ -347,23 +346,20 @@ namespace sg
 				mTime2 = 0.0f;
 
 			Vector4 changecolor = Vector4::Lerp(mDawnLight, mDayLight, mTime2 / 20.0f);
-			mLg->SetColor(changecolor);
+			//mLg->SetColor(changecolor);
+			mDLight->SetLightColor(changecolor);
+
 		}
 		else if (mTime > 280.0f)
 		{
 			mTime = 0.0f;
-			mLg->SetColor(mDayLight);
+			//mLg->SetColor(mDayLight);
+			mDLight->SetLightColor(mDayLight);
 		}
 	}
 	Light* PlayScene::CreateCompanyLight(Gobj_Character* character)
 	{
 		Light* companyLight;
-		//mPlayerLight[mLightnum] = object::Instantiate<Gobj_Light>(eLayerType::Light, this);
-		//mPlayerLight[mLightnum]->SetTarget(character);
-		//mPlayerLight[mLightnum]->SetLightRadius(30.0f);
-		//mPlayerLight[mLightnum]->SetLightColor(Vector4(0.6f, 0.4f, 0.2f, 0.8f));
-		//companyLight = mPlayerLight[mLightnum]->GetComp<Light>();
-		//mLightnum++;
 
 		companyLight = character->AddComp<Light>();
 		companyLight->SetType(eLightType::Point);

@@ -124,6 +124,9 @@ namespace sg
 	void SCRIPT_Bullet::OnCollisionEnter(Collider2D* other)
 	{
 		Vector3 pos = other->GetOwner()->GetComp<Transform>()->GetPosition();
+		
+		if (dynamic_cast<Gobj_Monster*>(other->GetOwner()))
+			mPlayer->HPSteal();
 
 		if (mBullet->GetBulletType() == eBulletType::Lucy)
 		{
@@ -138,6 +141,7 @@ namespace sg
 			object::Instantiate<Effect_Hit>(pos, eLayerType::Effect, SceneManager::GetActiveScene());
 			GetOwner()->SetState(GameObject::eState::Dead);
 		}
+
 	}
 	void SCRIPT_Bullet::OnCollisionStay(Collider2D* other)
 	{

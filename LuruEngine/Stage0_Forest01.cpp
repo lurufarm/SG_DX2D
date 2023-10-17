@@ -34,9 +34,10 @@ namespace sg
 	}
 	void Stage0_Forest01::Initialize()
 	{
+		
 		mStatus = SceneManager::GetStatusBase();
 		mStatus->SetState(GameObject::eState::Paused);
-		AddGameObj(eLayerType::UI, mStatus);
+		AddGameObj(eLayerType::UI_Box, mStatus);
 		mStatus->Initialize();
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
@@ -141,7 +142,6 @@ namespace sg
 	}
 	void Stage0_Forest01::OnEnter()
 	{
-	
 		renderer::mainCamera = mCamera;
 
 		PlayScene::OnEnter();

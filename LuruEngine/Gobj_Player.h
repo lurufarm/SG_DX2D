@@ -43,7 +43,7 @@ namespace sg
 		void BonusLife() { mpStat.mLife = 1; }
 		void Heal(float value) { mpStat.mCurHP += mpStat.mMaxHP * mpStat.mHPHealRatio * value; }
 		void HPSteal() { mpStat.mCurHP += mpStat.mStrength * mpStat.mHPStealRatio; }
-		void EnhenceHPHealRatio() { mpStat.mHPHealRatio += 0.05f; }
+		void EnhenceHPHealRatio() { mpStat.mHPHealRatio += 0.03f; }
 		void EnhenceHPStealRatio() { mpStat.mHPStealRatio += 0.02f; }
 		void EnhenceMaxHP()
 		{
@@ -74,7 +74,7 @@ namespace sg
 				mpStat.mDamageScaling = 0.75f;
 			}
 		}
-		void EnhenceSpeed() { mpStat.mSpeed += mpStat.mSpeed *= 0.1f; }		
+		void EnhenceSpeed() { mpStat.mSpeed += mpStat.mSpeed * 0.1f; }		
 		void EXP(int exp)
 		{
 			mpStat.mExp += exp;

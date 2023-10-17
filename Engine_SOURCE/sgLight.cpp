@@ -12,8 +12,10 @@ namespace sg
 	Light::Light()
 		: Component(eComponentType::Light)
 		, mLightPos(Vector3::Zero)
+		, mLightColor(Vector4::Zero)
+		, mOn(true)
 	{
-		mNum++;
+		//mNum++;
 	}
 	Light::~Light()
 	{
@@ -24,36 +26,17 @@ namespace sg
 	void Light::Update()
 	{
 		mScene = GetOwner()->GetMyScene();
-
-		if (mScene != SceneManager::GetActiveScene())
-		{
-			mOn = false;
-		}
-		else
-		{
-			mOn = true;
-		}
-
-		if (mPlus == false && mOn)
-		{
-			mNum++;
-			mPlus = true;
-		}
-		if (mPlus == true && mOn == false)
-		{
-			mNum--;
-			mPlus = false;
-		}
 	}
 	void Light::LateUpdate()
 	{
-		if (mScene != nullptr)
+		if (mScene != nullptr && mOn)
 			renderer::lights.insert(std::make_pair(mScene->GetName(), this));
 		Transform* tr = GetOwner()->GetComp<Transform>();
 		Vector3 pos = tr->GetPosition() + mLightPos;
 		mAttribute.position = Vector4(pos.x, pos.y, pos.z, 1.0f);
 		mAttribute.direction = Vector4(tr->Forward().x, tr->Forward().y, tr->Forward().z, 1.0f);
-		mAttribute.pad = mNum;
+		mAttribute.color = mLightColor;
+		//mAttribute.pad = mNum;
 	}
 	void Light::Render()
 	{
