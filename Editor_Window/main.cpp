@@ -7,6 +7,7 @@
 #include "..\Engine_SOURCE\sgApplication.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgResources.h"
+#include "..\Engine_SOURCE\sgFmod.h"
 #include "..\Engine_SOURCE\sgFontWrapper.h"
 #include "LoadScenes.h"
 #include "GUI_Editor.h"
@@ -84,6 +85,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
     renderer::Release();
     sg::SceneManager::Release();
+    sg::Fmod::Release();
     sg::FontWrapper::Release();
     gui::GUI_Editor::Release();
 

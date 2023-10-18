@@ -1,0 +1,31 @@
+#pragma once
+#include "..\Engine_SOURCE\sgGameObject.h"
+#include "..\Engine_SOURCE\sgAudioClip.h"
+#include "..\Engine_SOURCE\sgAudioSource.h"
+
+namespace sg
+{
+	class Gobj_Sound : public GameObject
+	{
+	public:
+		Gobj_Sound();
+		~Gobj_Sound();
+
+		void Initialize();
+		void Update();
+		//void LateUpdate();
+
+		void Play() { mPlay = true; }
+		void Stop() { mPlay = false; }
+
+		void SetSound(std::wstring source);
+		void SetSoundLoop(bool value) { mLoop = value; }
+
+	private:
+		AudioSource* mAc;
+		std::shared_ptr<AudioClip> mClip;
+		bool mPlay;
+		bool mLoop;
+
+	};
+}

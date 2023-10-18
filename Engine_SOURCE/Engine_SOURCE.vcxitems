@@ -19,6 +19,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgCollisionManager.h" />
@@ -27,6 +30,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgFontWrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.h" />
@@ -61,6 +65,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgCollisionManager.cpp" />
@@ -68,6 +75,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sgComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgFontWrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sgGraphicDevice_Dx11.cpp" />

@@ -163,7 +163,7 @@ namespace sg
 		if (mActiveMobs.size() < 5)
 			SpawnMob();
 		PurgeDeadMobs();
-		//ChangeLight();
+		ChangeLight();
 
 		Scene::Update();
 	}

@@ -15,6 +15,12 @@
 #include "..\Engine_SOURCE\sgCollider2D.h"
 #include "..\Engine_SOURCE\sgParticleSystem.h"
 
+#include "..\Engine_SOURCE\sgAudioListener.h"
+#include "..\Engine_SOURCE\sgAudioClip.h"
+#include "..\Engine_SOURCE\sgAudioSource.h"
+
+
+
 #include "SCRIPT_CameraScript.h"
 #include "SCRIPT_GridScript.h"
 
@@ -61,9 +67,15 @@ namespace sg
 	}
 	void LobbyScene::Initialize()
 	{
+
+
 		Player = object::MakePlayer();
 
 		Player->Initialize();
+		//AudioSource* as = Player->AddComp<AudioSource>();
+		//as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\0.mp3"));
+		//as->Play();
+
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
@@ -80,8 +92,8 @@ namespace sg
 		Interact_LobbyCardBook* cardbook = object::Instantiate<Interact_LobbyCardBook>(Vector3(35.75, -50.0f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyGate* gate = object::Instantiate<Interact_LobbyGate>(Vector3(0.0f, 95.0f, -0.1f), eLayerType::InteractableObject, this);
 
-		UI_Icons* ui0 = object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
-		UI_Icons* ui1 = object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
+		//UI_Icons* ui0 = object::Instantiate<UI_Icons>(0, eLayerType::UI, this);
+		//UI_Icons* ui1 = object::Instantiate<UI_Icons>(1, eLayerType::UI, this);
 
 		mFocus = object::Instantiate<UI_FocusBoxes2>(this, eLayerType::UI, this);
 		mFocus->AddSelectObj(character);

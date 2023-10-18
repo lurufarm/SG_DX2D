@@ -109,6 +109,9 @@
     <Filter Include="Resource\Font">
       <UniqueIdentifier>{f4ea57b0-a85d-4b60-90bd-7721b61f2d87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Sound">
+      <UniqueIdentifier>{93ecaf66-2c25-49f1-acf4-305475b67a59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -228,6 +231,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sgFontWrapper.h">
       <Filter>Resource\Font</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgFmod.h">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioSource.h">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioClip.h">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sgAudioListener.h">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgApplication.cpp">
@@ -331,6 +346,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sgFontWrapper.cpp">
       <Filter>Resource\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgFmod.cpp">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioSource.cpp">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioClip.cpp">
+      <Filter>GameObject\Component\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sgAudioListener.cpp">
+      <Filter>GameObject\Component\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

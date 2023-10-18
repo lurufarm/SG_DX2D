@@ -3,14 +3,13 @@
 #include "sgInput.h"
 #include "sgSceneManager.h"
 #include "sgObject.h"
-#include "..\LuruEngine\UI_StatusBase.h"
+#include "sgLayer.h"
 
 namespace sg
 {
 	Scene::Scene()
 	{
 		mLayers.resize((int)sg::enums::eLayerType::End);
-		//mStatus->Initialize();
 		Scene::Initialize();
 	}
 	Scene::~Scene()
@@ -41,7 +40,6 @@ namespace sg
 	}
 	void Scene::Render()
 	{
-
 		for (Layer& layer : mLayers)
 		{
 			layer.Render();
@@ -69,5 +67,33 @@ namespace sg
 	{
 		gameObj->SetMyScene(nullptr);
 		mLayers[(int)type].DeleteGameObj(gameObj);
+	}
+	template<typename T>
+	inline std::vector<T*> Scene::FindObjectsOfType()
+	{
+		std::vector<T*> findObjs = {};
+		for (Layer* layer : mLayers)
+		{
+			auto gameObjs = layer->GetGameObjects();
+			for (GameObject* obj : gameObjs)
+			{
+				T* buff = dynamic_cast<T*>(obj);
+				if (buff != nullptr)
+					findObjs.push_back(buff);
+			}
+		}
+
+		return findObjs;
+	}
+	Scene* Scene::GetMyScene(Layer* layer)
+	{
+		for (Layer& lay : mLayers)
+		{
+			if (&lay == layer)
+			{
+				return this;
+			}
+		}
+		return nullptr;
 	}
 }

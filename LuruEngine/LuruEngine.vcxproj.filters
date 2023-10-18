@@ -535,6 +535,9 @@
     <ClCompile Include="Gobj_Font.cpp">
       <Filter>Obj\Etc</Filter>
     </ClCompile>
+    <ClCompile Include="Gobj_Sound.cpp">
+      <Filter>Obj\Etc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Img_LobbyMap.h">
@@ -1078,6 +1081,9 @@
       <Filter>Obj\Gobj_Img</Filter>
     </ClInclude>
     <ClInclude Include="Gobj_Font.h">
+      <Filter>Obj\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Gobj_Sound.h">
       <Filter>Obj\Etc</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 		 
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
+#include "..\Engine_SOURCE\sgAudioListener.h"
 
 #include "SCRIPT_CameraScript.h"
 
@@ -19,6 +20,7 @@
 #include "..\Engine_SOURCE\sgFontWrapper.h"
 
 #include "UI_StatusBase.h"
+#include "Gobj_Sound.h"
 
 namespace sg
 {
@@ -39,8 +41,6 @@ namespace sg
 		object::Instantiate<Img_Title>(eLayerType::BGImg, this);
 		object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
 
-
-
 		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
 		Camera* cameraComp = camera->AddComp<Camera>();
 
@@ -53,7 +53,11 @@ namespace sg
 		
 		//wcscpy_s(FontWrapper::mText, L"Test");
 		//FontWrapper::SetFontOption(10, 20, 20.0f, FONT_RGBA(255, 0, 255, 255));
-
+		Gobj_Sound* bgm = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		bgm->SetSound(L"BGM_Title");
+		bgm->SetSoundLoop(true);
+		bgm->Play();
+		camera->AddComp<AudioListener>();
 
 	}
 	void TitleScene::Update()

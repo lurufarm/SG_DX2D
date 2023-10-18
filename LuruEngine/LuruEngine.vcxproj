@@ -120,8 +120,8 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinFilesInUnityFile>2</MinFilesInUnityFile>
-      <MaxFilesInUnityFile>0</MaxFilesInUnityFile>
+      <MinFilesInUnityFile>10</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>20</MaxFilesInUnityFile>
       <MinUnityFiles>1</MinUnityFiles>
     </ClCompile>
     <Link>
@@ -175,6 +175,7 @@
     <ClInclude Include="Effect_PoisionExplosion.h" />
     <ClInclude Include="Effect_SmokePoison.h" />
     <ClInclude Include="Gobj_Font.h" />
+    <ClInclude Include="Gobj_Sound.h" />
     <ClInclude Include="Img_BulletIcon.h" />
     <ClInclude Include="Img_CharIcon.h" />
     <ClInclude Include="Img_EyeBallLine.h" />
@@ -358,6 +359,7 @@
     <ClCompile Include="Effect_PoisionExplosion.cpp" />
     <ClCompile Include="Effect_SmokePoison.cpp" />
     <ClCompile Include="Gobj_Font.cpp" />
+    <ClCompile Include="Gobj_Sound.cpp" />
     <ClCompile Include="Img_BulletIcon.cpp" />
     <ClCompile Include="Img_CharIcon.cpp" />
     <ClCompile Include="Img_EyeBallLine.cpp" />

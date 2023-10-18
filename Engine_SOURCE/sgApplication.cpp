@@ -5,6 +5,7 @@
 #include "sgRenderer.h"
 #include "sgSceneManager.h"
 #include "sgCollisionManager.h"
+#include "sgFmod.h"
 #include "sgFontWrapper.h"
 
 namespace sg
@@ -30,6 +31,7 @@ namespace sg
 	{
 		Time::Initialize(); 
 		Input::Initialize();
+		Fmod::Initialize();
 		FontWrapper::Initialize();
 
 		renderer::Initialize();

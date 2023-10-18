@@ -15,6 +15,8 @@ namespace sg::enums
 		Script,
 		Light,
 		Camera,
+		AudioListener,
+		AudioSource,
 		End,
 	};
 
@@ -50,6 +52,7 @@ namespace sg::enums
 		Tile_Image,
 		Animation,
 		ComputeShader,
+		AudioClip,
 		End,
 	};
 

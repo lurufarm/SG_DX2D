@@ -1,9 +1,11 @@
 #pragma once
 #include "sgEntity.h"
-#include "sgLayer.h"
+//#include "sgLayer.h"
 
 namespace sg
 {
+	class Layer;
+	class GameObject;
 	class Scene : public Entity
 	{
 	public:
@@ -19,45 +21,18 @@ namespace sg
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		void AddGameObj(eLayerType type, GameObject* gameObj);
-		void DeleteGameObj(eLayerType type, GameObject* gameObj);
+		void AddGameObj(enums::eLayerType type, GameObject* gameObj);
+		void DeleteGameObj(enums::eLayerType type, GameObject* gameObj);
 
 		template <typename T>
-		std::vector <T*> FindObjectsOfType()
-		{
-			std::vector<T*> findObjs = {};
-			for (Layer* layer : mLayers)
-			{
-				auto gameObjs = layer->GetGameObjects();
-				for (GameObject* obj : gameObjs)
-				{
-					T* buff = dynamic_cast<T*>(obj);
-					if (buff != nullptr)
-						findObjs.push_back(buff);
-				}
-			}
-			
-			return findObjs;
-		}
+		std::vector <T*> FindObjectsOfType();
 
-		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
+		Layer& GetLayer(enums::eLayerType type) { return mLayers[(UINT)type]; }
 
-		Scene* GetMyScene(Layer* layer)
-		{
-			for (Layer& lay : mLayers)
-			{
-				if (&lay == layer)
-				{
-					return this;
-				}
-			}
-			return nullptr;
-		}
-
+		Scene* GetMyScene(Layer* layer);
 
 	protected:
 		std::vector<Layer> mLayers;
-		//static class UI_StatusBase* mStatus;
 
 	private:
 

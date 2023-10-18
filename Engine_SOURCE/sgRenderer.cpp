@@ -2,6 +2,7 @@
 #include "sgResources.h"
 #include "sgTexture.h"
 #include "sgMaterial.h"
+#include "sgAudioClip.h"
 #include "sgPaintShader.h"
 #include "sgStructuredBuffer.h"
 #include "sgParticleShader.h"
@@ -372,12 +373,17 @@ namespace renderer
 		std::shared_ptr<Texture> particle = Resources::Load<Texture>(L"particleCircle", L"..\\Resources\\Particle\\HardCircle.png");
 		sg::Resources::Insert(L"particletest", particle);
 
-		std::shared_ptr<Texture> noise01 = Resources::Load<Texture>(L"Noise01", L"..\\Resources\\Particle\\noise_01.png");
-		std::shared_ptr<Texture> noise02 = Resources::Load<Texture>(L"Noise02", L"..\\Resources\\Particle\\noise_02.png");
-		std::shared_ptr<Texture> noise03 = Resources::Load<Texture>(L"Noise03", L"..\\Resources\\Particle\\noise_03.jpg");
-		sg::Resources::Insert(L"Noise01", noise01);
-		sg::Resources::Insert(L"Noise02", noise02);
-		sg::Resources::Insert(L"Noise03", noise03);
+		// sound
+		std::shared_ptr<AudioClip> ac = Resources::Load<AudioClip>(L"BGM0", L"..\\Resources\\Sound\\title.wav");
+		sg::Resources::Insert(L"BGM_Title", ac);
+
+
+		//std::shared_ptr<Texture> noise01 = Resources::Load<Texture>(L"Noise01", L"..\\Resources\\Particle\\noise_01.png");
+		//std::shared_ptr<Texture> noise02 = Resources::Load<Texture>(L"Noise02", L"..\\Resources\\Particle\\noise_02.png");
+		//std::shared_ptr<Texture> noise03 = Resources::Load<Texture>(L"Noise03", L"..\\Resources\\Particle\\noise_03.jpg");
+		//sg::Resources::Insert(L"Noise01", noise01);
+		//sg::Resources::Insert(L"Noise02", noise02);
+		//sg::Resources::Insert(L"Noise03", noise03);
 
 	}
 
