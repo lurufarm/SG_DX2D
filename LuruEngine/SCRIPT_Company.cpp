@@ -8,6 +8,7 @@
 #include "Bullet_CheeseArrow.h"
 #include "Bullet_LucyBomb.h"
 #include "Bullet_RoboBeam.h"
+#include "Bullet_SzilaFire.h"
 #include "Effect_LaserFiring.h"
 #include "UI_StatusBase.h"
 
@@ -221,6 +222,10 @@ namespace sg
 				epos.z -= 2.0f;
 				object::Instantiate<Effect_LaserFiring>(epos, eLayerType::Player_Effect, SceneManager::GetActiveScene());
 				object::ShootBullet<Bullet_RoboBeam>(RoboBeamRange, eLayerType::Player_Beam, SceneManager::GetActiveScene());
+			}
+			else if (mOwner->GetName() == L"Szila")
+			{
+				object::ShootBullet<Bullet_SzilaFire>(mOwner->GetStat().mProjectileCount, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			}
 			mTime = 0.0f;
 		}

@@ -52,6 +52,7 @@ namespace sg
 		SceneManager::CreateScene<Stage1_Desert02>(L"21_Stage1_Desert02");
 		SceneManager::CreateScene<Stage1_Desert03>(L"22_Stage1_Desert03");
 		SceneManager::CreateScene<Stage1_Desert04>(L"23_Stage1_Desert04");
+		SceneManager::CreateScene<Stage1_MidBoss>(L"24_Stage1_MidBoss");
 
 
 		SceneManager::CreateScene<ToolScene>(L"99_ToolScene");

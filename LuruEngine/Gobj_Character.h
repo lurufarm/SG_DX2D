@@ -89,7 +89,7 @@ namespace sg
 				mStat.mDamageScaling = 0.75f;
 			}
 		}
-		void EnhenceSpeed() { mStat.mSpeed += mStat.mSpeed *= 0.1f; }
+		void EnhenceSpeed() { mStat.mSpeed += mStat.mSpeed * 0.1f; }
 		void EXP(int exp)
 		{
 			mStat.mExp += exp;

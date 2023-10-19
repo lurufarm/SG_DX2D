@@ -13,7 +13,7 @@ namespace sg
 		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 10.0f;
 		mStat.mRange = 100.0f;
-		mStat.mCooldown = 2.0f;
+		mStat.mCooldown = 3.0f;
 		mStat.dropEXP = 10.0f;
 
 		Ranged_CannibalFlowerA::Initialize();

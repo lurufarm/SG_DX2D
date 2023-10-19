@@ -60,7 +60,6 @@ namespace sg
 	UI_FocusBoxes2* LobbyScene::mFocus = nullptr;
 
 	LobbyScene::LobbyScene()
-		//: mFocus(nullptr)
 	{
 		SetName(L"02_LobbyScene");
 	}

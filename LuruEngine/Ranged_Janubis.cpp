@@ -7,8 +7,8 @@ namespace sg
 	{
 		SetName(L"Janubis");
 
-		mStat.mCurHP = 999;
-		mStat.mMaxHP = 999;
+		mStat.mCurHP = 50;
+		mStat.mMaxHP = 50;
 		mStat.mStrength = 5;
 		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 25.0f;

@@ -1103,7 +1103,6 @@ namespace renderer
 		material->SetRendereringMode(eRenderingMode::CutOut);
 		Resources::Insert(L"Stage1MidBoss_Map", material);
 
-
 #pragma endregion
 #pragma region Item Icon
 		texture = Resources::Load<Texture>(L"Item_BonusLife", L"..\\Resources\\Item\\BonusLife.png");
