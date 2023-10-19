@@ -18,18 +18,18 @@ namespace sg
 	}
 	void Gobj_Sound::Update()
 	{
-		mAc->SetClip(mClip);
-		if (mPlay)
-			mAc->Play();
-		else
-			mAc->Stop();
-		mAc->SetLoop(mLoop);
+		//mAc->SetClip(mClip);
+		//if (mPlay)
+		//	mAc->Play();
+		//else
+		//	mAc->Stop();
+		//mAc->SetLoop(mLoop);
 
 		GameObject::Update();
 	}
 	void Gobj_Sound::SetSound(std::wstring source)
 	{
 		mClip = Resources::Find<AudioClip>(source);
-		//mAc->SetClip
+		mAc->SetClip(mClip);
 	}
 }

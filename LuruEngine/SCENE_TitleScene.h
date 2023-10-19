@@ -17,7 +17,9 @@ namespace sg
 		virtual void OnEnter();
 		virtual void OnExit();
 
+		class Gobj_Sound* GetTItleBGM() { return mBGM; }
+
 	private:
-		
+		class Gobj_Sound* mBGM;
 	};
 }

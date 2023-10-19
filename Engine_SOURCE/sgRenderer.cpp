@@ -376,6 +376,31 @@ namespace renderer
 		// sound
 		std::shared_ptr<AudioClip> ac = Resources::Load<AudioClip>(L"BGM0", L"..\\Resources\\Sound\\title.wav");
 		sg::Resources::Insert(L"BGM_Title", ac);
+		ac = Resources::Load<AudioClip>(L"BGM1", L"..\\Resources\\Sound\\lobby.wav");
+		sg::Resources::Insert(L"BGM_Lobby", ac);
+		ac = Resources::Load<AudioClip>(L"BGM2", L"..\\Resources\\Sound\\forestfd.wav");
+		sg::Resources::Insert(L"BGM_FFD", ac);
+		ac = Resources::Load<AudioClip>(L"BGM3", L"..\\Resources\\Sound\\forestdg.wav");
+		sg::Resources::Insert(L"BGM_FDG", ac);
+		ac = Resources::Load<AudioClip>(L"BGM4", L"..\\Resources\\Sound\\desertfd.wav");
+		sg::Resources::Insert(L"BGM_DFD", ac);
+		ac = Resources::Load<AudioClip>(L"BGM5", L"..\\Resources\\Sound\\desertdg.wav");
+		sg::Resources::Insert(L"BGM_DDG", ac);
+		ac = Resources::Load<AudioClip>(L"BGM6", L"..\\Resources\\Sound\\boss.wav");
+		sg::Resources::Insert(L"BGM_BOSS", ac);
+
+		ac = Resources::Load<AudioClip>(L"hit_Cheese", L"..\\Resources\\Sound\\hit_cheese.wav");
+		sg::Resources::Insert(L"Hit_Cheese", ac);
+		ac = Resources::Load<AudioClip>(L"hit_Cheese", L"..\\Resources\\Sound\\hit_lucy.wav");
+		sg::Resources::Insert(L"Hit_Lucy", ac);
+		ac = Resources::Load<AudioClip>(L"hit_Cheese", L"..\\Resources\\Sound\\hit_robo.wav");
+		sg::Resources::Insert(L"Hit_Robo", ac);
+		ac = Resources::Load<AudioClip>(L"hit_Cheese", L"..\\Resources\\Sound\\hit_robo2.wav");
+		sg::Resources::Insert(L"Hit_Robo2", ac);
+		ac = Resources::Load<AudioClip>(L"hit_Cheese", L"..\\Resources\\Sound\\hit_szila.wav");
+		sg::Resources::Insert(L"Hit_Szila", ac);
+
+
 
 
 		//std::shared_ptr<Texture> noise01 = Resources::Load<Texture>(L"Noise01", L"..\\Resources\\Particle\\noise_01.png");

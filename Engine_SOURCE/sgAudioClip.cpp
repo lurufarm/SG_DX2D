@@ -38,7 +38,7 @@ namespace sg
 		else
 			mSound->setMode(FMOD_LOOP_OFF);
 
-		mChannel->setVolume(0.05);
+		mChannel->setVolume(0.02);
 
 		Fmod::SoundPlay(mSound, &mChannel);
 	}

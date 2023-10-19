@@ -20,6 +20,7 @@
 #include "Item_Selected.h"
 
 #include "UI_StatusBase.h"
+#include "Gobj_Sound.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -34,7 +35,10 @@ namespace sg
 	}
 	void Stage0_Forest01::Initialize()
 	{
-		
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM->SetSound(L"BGM_FFD");
+
+
 		mStatus = SceneManager::GetStatusBase();
 		mStatus->SetState(GameObject::eState::Paused);
 		AddGameObj(eLayerType::UI_Box, mStatus);
@@ -79,35 +83,35 @@ namespace sg
 		mGate2->SetNextScene(L"04_Stage0_Forest02");
 
 #pragma region Monsters
-		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
 
 
 
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene::Initialize();
@@ -148,6 +152,8 @@ namespace sg
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd01_01" };
 		TilePalette::AutoLoad(path0);
+
+		mBGM->Play();
 
 	}
 	void Stage0_Forest01::OnExit()

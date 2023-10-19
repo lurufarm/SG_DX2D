@@ -22,6 +22,7 @@ namespace sg
 
 	private:
 		static class UI_FocusBoxes2* mFocus;
+		class Gobj_Sound* mBGM;
 		class Camera* mCamera;
 	};
 }

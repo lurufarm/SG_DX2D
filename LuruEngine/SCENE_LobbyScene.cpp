@@ -51,6 +51,8 @@
 #include "SCRIPT_UICamera.h"
 #include "SCRIPT_BGCamera.h"
 
+#include "Gobj_Sound.h"
+
 extern sg::Gobj_Player* Player;
 
 namespace sg
@@ -67,15 +69,11 @@ namespace sg
 	}
 	void LobbyScene::Initialize()
 	{
-
-
 		Player = object::MakePlayer();
-
 		Player->Initialize();
-		//AudioSource* as = Player->AddComp<AudioSource>();
-		//as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\0.mp3"));
-		//as->Play();
 
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM->SetSound(L"BGM_Lobby");
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
@@ -141,6 +139,7 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
+		mBGM->Play();
 		//renderer::lightsBuffer->Clear();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
@@ -158,7 +157,7 @@ namespace sg
 	}
 	void LobbyScene::OnExit()
 	{
-		//renderer::lightsBuffer->Clear();
+		mBGM->Stop();
 		DeleteGameObj(eLayerType::Player, Player);
 	}
 

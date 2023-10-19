@@ -15,8 +15,8 @@ namespace sg
 		void Update();
 		//void LateUpdate();
 
-		void Play() { mPlay = true; }
-		void Stop() { mPlay = false; }
+		void Play() { /*mPlay = true;  */mAc->Play(); }
+		void Stop() { /*mPlay = false; */mAc->Stop(); }
 
 		void SetSound(std::wstring source);
 		void SetSoundLoop(bool value) { mLoop = value; }

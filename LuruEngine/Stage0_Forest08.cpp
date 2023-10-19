@@ -16,6 +16,8 @@
 #include "Monsters.h"
 #include "Interact_Gate.h"
 #include "UI_FocusBoxes2.h"
+#include "Gobj_Sound.h"
+#include "Stage0_Forest05.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -117,6 +119,9 @@ namespace sg
 	}
 	void Stage0_Forest08::OnExit()
 	{
+		Gobj_Sound* bgm = dynamic_cast<Stage0_Forest05*>(SceneManager::FindScene(L"07_Stage0_Forest05"))->GetForestDGBGM();
+		bgm->Stop();
+
 		PlayScene2::OnExit();
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);

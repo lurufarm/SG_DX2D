@@ -324,14 +324,15 @@ namespace sg
 		if (mTime >= mOwner->GetStat().mCooldown && mOwner->GetStat().mRange * 2.0f >= GetDistanceToEnemy())
 		{
 			mAni->PlayAnimation(AnimationName(attack), false, mDirection);
-			/*if (mOwner->GetChar()->GetName() == L"Cheese")
+			if (mOwner->GetChar()->GetName() == L"Cheese")
 			{
 				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
 					object::ShootBullet<Bullet_CheeseArrow>(i, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 				}
+				
 			}
-			else */if (mOwner->GetChar()->GetName() == L"Lucy")
+			else if (mOwner->GetChar()->GetName() == L"Lucy")
 			{
 				for (size_t i = 1; i <= mOwner->GetStat().mProjectileCount; i++)
 				{
@@ -348,7 +349,7 @@ namespace sg
 			}
 			else if (mOwner->GetChar()->GetName() == L"Szila")
 			{
-					object::ShootBullet<Bullet_SzilaFire>(mOwner->GetStat().mProjectileCount, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
+				object::ShootBullet<Bullet_SzilaFire>(mOwner->GetStat().mProjectileCount, eLayerType::Player_Bullet, SceneManager::GetActiveScene());
 			}
 
 			mTime = 0.0f;

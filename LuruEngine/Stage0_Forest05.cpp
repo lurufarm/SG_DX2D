@@ -1,6 +1,4 @@
 #include "Stage0_Forest05.h"
-
-#include "Stage0_Forest05.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
@@ -18,6 +16,7 @@
 #include "Interact_Gate.h"
 #include "UI_FocusBoxes2.h"
 #include "Img_Torch.h"
+#include "Gobj_Sound.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -32,6 +31,9 @@ namespace sg
 	}
 	void Stage0_Forest05::Initialize()
 	{
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM->SetSound(L"BGM_FDG");
+
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
 		mCrackPos[0] = Vector3(165.0f, -180.0f, -0.5f);
@@ -111,6 +113,8 @@ namespace sg
 	}
 	void Stage0_Forest05::OnEnter()
 	{
+		mBGM->Play();
+
 		renderer::mainCamera = mCamera;
 
 		PlayScene2::OnEnter();

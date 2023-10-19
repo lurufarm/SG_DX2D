@@ -33,6 +33,9 @@ namespace sg
 	}
 	void TitleScene::Initialize()
 	{
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM->SetSound(L"BGM_Title");
+		mBGM->Play();
 
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		GetDevice()->SetBgColor(BgColor);
@@ -53,10 +56,6 @@ namespace sg
 		
 		//wcscpy_s(FontWrapper::mText, L"Test");
 		//FontWrapper::SetFontOption(10, 20, 20.0f, FONT_RGBA(255, 0, 255, 255));
-		Gobj_Sound* bgm = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
-		bgm->SetSound(L"BGM_Title");
-		bgm->SetSoundLoop(true);
-		bgm->Play();
 		camera->AddComp<AudioListener>();
 
 	}
@@ -75,12 +74,10 @@ namespace sg
 	}
 	void TitleScene::Render()
 	{
-
 		Scene::Render();
 	}
 	void TitleScene::OnEnter()
 	{
-
 	}
 	void TitleScene::OnExit()
 	{

@@ -7,6 +7,8 @@
 #include "..\Engine_SOURCE\sgTransform.h"
 #include "..\Engine_SOURCE\sgCamera.h"
 
+#include "SCENE_TitleScene.h"
+
 #include "SCRIPT_CameraScript.h"
 
 #include "Img_CatPattern.h"
@@ -14,6 +16,8 @@
 
 #include "UI_Select.h"
 #include "UI_Exit.h"
+
+#include "Gobj_Sound.h"
 
 
 namespace sg
@@ -86,6 +90,8 @@ namespace sg
 	}
 	void SelectScene::OnExit()
 	{
-
+		Scene* sc = SceneManager::FindScene(L"00_TitleScene");
+		Gobj_Sound* bgm = dynamic_cast<TitleScene*>(sc)->GetTItleBGM();
+		bgm->Stop();
 	}
 }
