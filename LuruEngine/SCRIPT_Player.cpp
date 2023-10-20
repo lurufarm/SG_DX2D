@@ -137,9 +137,12 @@ namespace sg
 	}
 	void SCRIPT_Player::DeductPlayerHP(Gobj_Character::CharStat& pStat, GameObject* attacker)
 	{
-		Gobj_Monster::MobStat mobStat = static_cast<Gobj_Monster*>(attacker)->GetStat();
-		pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
-		mOwner->SetStat(pStat);
+		if (attacker != nullptr)
+		{
+			Gobj_Monster::MobStat mobStat = static_cast<Gobj_Monster*>(attacker)->GetStat();
+			pStat.mCurHP -= mobStat.mStrength - (mobStat.mStrength * pStat.mDefence);
+			mOwner->SetStat(pStat);
+		}
 	}
 
 	void SCRIPT_Player::OnCollisionEnter(Collider2D* other)

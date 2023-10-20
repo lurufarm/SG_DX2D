@@ -71,18 +71,18 @@ namespace sg
 		Player = object::MakePlayer();
 		Player->Initialize();
 
-		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
 		mBGM->SetSound(L"BGM_Lobby");
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
-		object::Instantiate<Img_Space1>(eLayerType::BGImg, this)->AddComp<SCRIPT_BGCamera>();
-		object::Instantiate<Img_Space2>(eLayerType::BGImg, this)->AddComp<SCRIPT_BGCamera>();
-		object::Instantiate<Img_LobbyMap>(eLayerType::BGImg, this);
-		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::BGImg, this);
-		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BGImg, this);
-		Img_LobbyTorch* torch0 = object::Instantiate<Img_LobbyTorch>(Vector3(30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
-		Img_LobbyTorch* torch1 = object::Instantiate<Img_LobbyTorch>(Vector3(-30.f, 50.0f, -0.5f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Space1>(eLayerType::BG, this)->AddComp<SCRIPT_BGCamera>();
+		object::Instantiate<Img_Space2>(eLayerType::BG, this)->AddComp<SCRIPT_BGCamera>();
+		object::Instantiate<Img_LobbyMap>(eLayerType::BG, this);
+		object::Instantiate<Img_LobbyMolding>(Vector3(-71.5, 55.25, 0.0f), eLayerType::BG, this);
+		object::Instantiate<Img_LobbyMolding>(Vector3(71.5, 55.25, 0.0f), eLayerType::BG, this);
+		Img_LobbyTorch* torch0 = object::Instantiate<Img_LobbyTorch>(Vector3(30.f, 50.0f, -0.5f), eLayerType::BG, this);
+		Img_LobbyTorch* torch1 = object::Instantiate<Img_LobbyTorch>(Vector3(-30.f, 50.0f, -0.5f), eLayerType::BG, this);
 
 		Interact_LobbyCharacter* character = object::Instantiate<Interact_LobbyCharacter>(Vector3(-35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);
 		Interact_LobbyUpgrade* upgrade = object::Instantiate<Interact_LobbyUpgrade>(Vector3(35.75, 6.5f, -0.1f), eLayerType::InteractableObject, this);

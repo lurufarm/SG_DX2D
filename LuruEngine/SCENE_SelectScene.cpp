@@ -39,7 +39,7 @@ namespace sg
 		Img_SelectText* party_text = object::Instantiate<Img_SelectText>(false, eLayerType::UI, this);
 		UI_Exit* exit = object::Instantiate<UI_Exit>(eLayerType::UI, this);
 
-		Img_CatPattern* pattern = object::Instantiate<Img_CatPattern>(eLayerType::BGImg, this);
+		Img_CatPattern* pattern = object::Instantiate<Img_CatPattern>(eLayerType::BG, this);
 
 		mFocus = object::Instantiate<UI_FocusBoxes>(this, eLayerType::UI, this);
 		mFocus->AddSelectObj(exit);
@@ -47,7 +47,7 @@ namespace sg
 		mFocus->AddSelectObj(party);
 		mFocus->SetSelectObj(story);
 
-		GameObject* SelectSceneMaincamera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		GameObject* SelectSceneMaincamera = object::Instantiate<GameObject>(cameraPos, eLayerType::BG, this);
 		SelectSceneMaincamera->SetName(L"SelectSceneMaincamera");
 		Camera* MaincameraComp = SelectSceneMaincamera->AddComp<Camera>();
 		MaincameraComp->TurnLayerMask(eLayerType::UI, false);

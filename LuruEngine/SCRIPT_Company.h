@@ -31,6 +31,7 @@ namespace sg
 
 		Vector3 RandPos(Vector3 pos);
 		Vector3 RandomDirection();
+		Vector3 OppositeDirection(Vector3 pos);
 
 		std::wstring AnimationName(const std::wstring& animation);
 		float GetDistanceToPlayer()

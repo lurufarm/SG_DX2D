@@ -1,6 +1,6 @@
 #include "Stage1_Desert02.h"
+#include "Stage1_Desert01.h"
 
-#include "Stage0_Forest02.h"
 #include "..\Engine_SOURCE\sgInput.h"
 #include "..\Engine_SOURCE\sgRenderer.h"
 #include "..\Engine_SOURCE\sgCollisionManager.h"
@@ -19,6 +19,7 @@
 #include "Interact_Gate.h"
 #include "UI_FocusBoxes2.h"
 #include "Item_AbilityEnhancer.h"
+#include "Gobj_Sound.h"
 
 
 extern sg::Gobj_Player* Player;
@@ -47,26 +48,26 @@ namespace sg
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
 
-		object::Instantiate<Img_Stage1_Map>(Img_Stage1_Map::Stage1::desert02, pos, eLayerType::BGImg, this);
-		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_Stage1_Map>(Img_Stage1_Map::Stage1::desert02, pos, eLayerType::BG, this);
+		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BG, this);
 
-		GameObject* Desert02camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		GameObject* Desert02camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BG, this);
 		mCamera = Desert02camera->AddComp<Camera>();
 		Desert02camera->AddComp<SCRIPT_MainCamera>();
 
-		object::Instantiate<Img_Torch>(Vector3(-85, -185, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-210, 0, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-105, 180, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(55, 165, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(60, -75, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(-85, -185, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-210, 0, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-105, 180, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(55, 165, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(60, -75, -0.1f), eLayerType::BG, this);
 
 
 
-		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
-		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
-		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
+		Img_Crack* crack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BG, this);
+		Img_Crack* crack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BG, this);
+		Img_Crack* crack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BG, this);
 
-		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BG, this);
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, mGatePos[0], eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);
@@ -130,6 +131,8 @@ namespace sg
 	}
 	void Stage1_Desert02::OnExit()
 	{
+		Gobj_Sound* bgm = dynamic_cast<Stage1_Desert01*>(SceneManager::FindScene(L"20_Stage1_Desert01"))->GetDesertFDBGM();
+		bgm->Stop();
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);

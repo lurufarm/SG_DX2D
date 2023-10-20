@@ -37,7 +37,10 @@ namespace sg
 		}
 		else if (mBulletType == eBulletType::Robo)
 		{
-			mLastPos = mPlayer->GetTarget()->GetComp<Transform>()->GetPosition();
+			if (mPlayer->GetTarget())
+				mLastPos = mPlayer->GetTarget()->GetComp<Transform>()->GetPosition();
+			if (mBulletOwner->GetTarget())
+				mLastPos = mBulletOwner->GetTarget()->GetComp<Transform>()->GetPosition();
 			Vector2 direction = GetDirection();
 			float angleDegree = sgGetAngle(direction) - 90.0f;
 			float angleRadian = sgGetAngleInRadian(angleDegree + 90.0f);

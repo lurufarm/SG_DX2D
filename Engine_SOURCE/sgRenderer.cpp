@@ -818,7 +818,7 @@ namespace renderer
 #pragma endregion
 #pragma region Title Scene Material
 
-		 // BGImg
+		 // BG
 		texture = Resources::Load<Texture>(L"Title", L"..\\Resources\\Title\\title.png");
 		material = std::make_shared<Material>();
 		material->SetShader(shader);

@@ -43,25 +43,25 @@ namespace sg
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
 
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg03, pos, eLayerType::BGImg, this);
-		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestdg03, pos, eLayerType::BG, this);
+		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BG, this);
 
-		GameObject* Forest07camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		GameObject* Forest07camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BG, this);
 		mCamera = Forest07camera->AddComp<Camera>();
 		Forest07camera->AddComp<SCRIPT_MainCamera>();
 
-		object::Instantiate<Img_Torch>(Vector3(5, -60, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-205, 180, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-295, -210, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-120, -310, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(185, 180, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(5, -60, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-205, 180, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-295, -210, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-120, -310, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(185, 180, -0.1f), eLayerType::BG, this);
 
 
-		mCrack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
-		mCrack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
-		mCrack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
+		mCrack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BG, this);
+		mCrack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BG, this);
+		mCrack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BG, this);
 
-		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BG, this);
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, mGatePos[0], eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);

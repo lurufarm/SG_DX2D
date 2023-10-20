@@ -16,6 +16,7 @@ namespace sg
 
 		void OnEnter();
 		void OnExit();
-
+	private:
+		class Gobj_Sound* mBGM;
 	};
 }

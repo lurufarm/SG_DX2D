@@ -17,6 +17,7 @@
 #include "Monsters.h"
 #include "Interact_Gate.h"
 #include "UI_FocusBoxes2.h"
+#include "Gobj_Sound.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -31,6 +32,9 @@ namespace sg
 	}
 	void Stage0_BossStage::Initialize()
 	{
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
+		mBGM->SetSound(L"BGM_BOSS");
+
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(-4.0f, -3.0f, 0.0f);
 		mStartPos = Vector3(-95.0f, -190.0f, -1.0f);
@@ -43,24 +47,24 @@ namespace sg
 		mRewardPos = mGatePos[1];
 		mRewardPos.y -= 80.0f;
 
-		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestboss01, pos, eLayerType::BGImg, this);
-		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_Stage0_Map>(Img_Stage0_Map::Stage0::forestboss01, pos, eLayerType::BG, this);
+		object::Instantiate<Img_StartingPlate>(mStartPos, eLayerType::BG, this);
 
-		GameObject* Forest08camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		GameObject* Forest08camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BG, this);
 		mCamera = Forest08camera->AddComp<Camera>();
 		Forest08camera->AddComp<SCRIPT_MainCamera>();
 
-		object::Instantiate<Img_Torch>(Vector3(150, -170, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-135, -75, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-100, 100, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(90, 205, -0.1f), eLayerType::BGImg, this);
-		object::Instantiate<Img_Torch>(Vector3(-45, -10, -0.1f), eLayerType::BGImg, this);
+		object::Instantiate<Img_Torch>(Vector3(150, -170, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-135, -75, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-100, 100, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(90, 205, -0.1f), eLayerType::BG, this);
+		object::Instantiate<Img_Torch>(Vector3(-45, -10, -0.1f), eLayerType::BG, this);
 
-		mCrack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BGImg, this);
-		mCrack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BGImg, this);
-		mCrack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BGImg, this);
+		mCrack0 = object::Instantiate<Img_Crack>(mCrackPos[0], eLayerType::BG, this);
+		mCrack1 = object::Instantiate<Img_Crack>(mCrackPos[1], eLayerType::BG, this);
+		mCrack2 = object::Instantiate<Img_Crack>(mCrackPos[2], eLayerType::BG, this);
 
-		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BGImg, this);
+		object::Instantiate<Img_RewardPlate>(mRewardPos, eLayerType::BG, this);
 
 		mGate0 = object::Instantiate<Interact_Gate>(0, mGatePos[0], eLayerType::InteractableObject, this);
 		mGate1 = object::Instantiate<Interact_Gate>(0, mGatePos[1], eLayerType::InteractableObject, this);
@@ -109,15 +113,17 @@ namespace sg
 	}
 	void Stage0_BossStage::OnEnter()
 	{
-		renderer::mainCamera = mCamera;
 
+		renderer::mainCamera = mCamera;
 		PlayScene2::OnEnter();
+		mBGM->Play();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestboss" };
 		TilePalette::AutoLoad(path0);
 	}
 	void Stage0_BossStage::OnExit()
 	{
+		mBGM->Stop();
 		PlayScene2::OnExit();
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);

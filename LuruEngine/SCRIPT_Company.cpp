@@ -112,7 +112,7 @@ namespace sg
 			mFSMState = eCompanyFSM::Move2;
 			if (prefsm != mFSMState)
 			{
-				mRandomDirection = RandomDirection();
+				mRandomDirection = OppositeDirection(other->GetOwner()->GetComp<Transform>()->GetPosition());
 			}
 		}
 	}
@@ -275,6 +275,14 @@ namespace sg
 		direction.Normalize();
 
 		return direction;
+	}
+	Vector3 SCRIPT_Company::OppositeDirection(Vector3 pos)
+	{
+		Vector3 mypos = mOwner->GetComp<Transform>()->GetPosition();
+		mypos -= pos;
+		mypos.Normalize();
+
+		return mypos;
 	}
 	std::wstring SCRIPT_Company::AnimationName(const std::wstring& animation)
 	{

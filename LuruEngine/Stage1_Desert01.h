@@ -17,5 +17,11 @@ namespace sg
 		void OnEnter();
 		void OnExit();
 
+		class Gobj_Sound* GetDesertFDBGM() { return mBGM; }
+
+	private:
+
+		class Gobj_Sound* mBGM;
+
 	};
 }

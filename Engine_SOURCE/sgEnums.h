@@ -23,7 +23,7 @@ namespace sg::enums
 	enum class eLayerType
 	{
 		Grid,
-		BGImg,
+		BG,
 		Tile,
 		InteractableObject,
 		Monster_BulletBehindMonster,

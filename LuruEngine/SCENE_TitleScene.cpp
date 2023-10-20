@@ -33,7 +33,7 @@ namespace sg
 	}
 	void TitleScene::Initialize()
 	{
-		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BGImg, this);
+		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
 		mBGM->SetSound(L"BGM_Title");
 		mBGM->Play();
 
@@ -41,10 +41,10 @@ namespace sg
 		GetDevice()->SetBgColor(BgColor);
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 
-		object::Instantiate<Img_Title>(eLayerType::BGImg, this);
-		object::Instantiate<Img_Logo>(eLayerType::BGImg, this);
+		object::Instantiate<Img_Title>(eLayerType::BG, this);
+		object::Instantiate<Img_Logo>(eLayerType::BG, this);
 
-		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BGImg, this);
+		GameObject* camera = object::Instantiate<GameObject>(cameraPos, eLayerType::BG, this);
 		Camera* cameraComp = camera->AddComp<Camera>();
 
 		GameObject* light = new GameObject();
