@@ -130,6 +130,30 @@ namespace sg
 		}
 
 		template <typename T>
+		T* AddComp(auto parameter)
+		{
+			T* comp = new T(parameter);
+
+			Component* buff
+				= dynamic_cast<Component*>(comp);
+			Script* script
+				= dynamic_cast<Script*>(buff);
+
+			if (buff == nullptr)
+				return nullptr;
+
+			if (script == nullptr)
+				mComponents.push_back(buff);
+			else
+				mScripts.push_back(script);
+
+			comp->SetOwner(this);
+			comp->Initialize();
+
+			return comp;
+		}
+
+		template <typename T>
 		T* AddComp2(T* comp)
 		{
 			Component* buff

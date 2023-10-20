@@ -35,6 +35,7 @@ namespace sg
 	{
 		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
 		mBGM->SetSound(L"BGM_DFD");
+		mBGM->SetSoundLoop(true);
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(-4.5f, -3.0f, 0.0f);
@@ -77,31 +78,31 @@ namespace sg
 
 #pragma region Monsters
 
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene::Initialize();

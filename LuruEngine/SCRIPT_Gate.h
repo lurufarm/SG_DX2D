@@ -16,20 +16,20 @@ namespace sg
 		virtual void OnCollisionStay(Collider2D* other);
 		virtual void OnCollisionExit(Collider2D* other);
 
-		Vector3 WorldPosToScreen(const Vector3 pos)
-		{
-			Viewport viewport = {};
-			viewport.width = 1600.0f;
-			viewport.height = 900.0f;
-			viewport.x = 0;
-			viewport.y = 0;
-			viewport.minDepth = 0.0f;
-			viewport.maxDepth = 1.0f;
+		//Vector3 WorldPosToScreen(const Vector3 pos)
+		//{
+		//	Viewport viewport = {};
+		//	viewport.width = 1600.0f;
+		//	viewport.height = 900.0f;
+		//	viewport.x = 0;
+		//	viewport.y = 0;
+		//	viewport.minDepth = 0.0f;
+		//	viewport.maxDepth = 1.0f;
 
-			Vector3 screenPos = viewport.Project(pos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+		//	Vector3 screenPos = viewport.Project(pos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 
-			return screenPos;
-		};
+		//	return screenPos;
+		//};
 
 	private:
 		class Interact_Gate* mOwner;

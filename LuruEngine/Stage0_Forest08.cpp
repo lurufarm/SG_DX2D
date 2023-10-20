@@ -72,25 +72,25 @@ namespace sg
 		mGate2->SetNextScene(L"11_Stage0_BossStage");
 
 #pragma region Monsters
-		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_EyeBall>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_SkelMage>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene2::Initialize();

@@ -151,7 +151,7 @@ namespace sg
 		SCRIPT_SkelKnight* skelKnight = otherOwner->GetComp<SCRIPT_SkelKnight>();
 		SCRIPT_Centipede* centiped = otherOwner->GetComp<SCRIPT_Centipede>();
 
-		if (skelKnight != nullptr || centiped == nullptr)
+		if (skelKnight != nullptr || centiped != nullptr)
 			mOwner->SetTransParent(true);
 
 		if (mDeath || mAttacked)

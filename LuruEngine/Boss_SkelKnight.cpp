@@ -9,8 +9,8 @@ namespace sg
 	{
 		SetName(L"SkelKnight");
 
-		mStat.mCurHP = 310;
-		mStat.mMaxHP = 310;
+		mStat.mCurHP = 100;
+		mStat.mMaxHP = 100;
 		mStat.mStrength = 7;
 		mStat.mDefence = 0.3f;
 		mStat.mSpeed = 10.0f;

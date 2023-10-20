@@ -266,6 +266,7 @@
     <ClInclude Include="SCENE_ToolScene.h" />
     <ClInclude Include="SCRIPT_BGCamera.h" />
     <ClInclude Include="SCRIPT_Centipede.h" />
+    <ClInclude Include="SCRIPT_CharInfo.h" />
     <ClInclude Include="SCRIPT_MeleeBomb.h" />
     <ClInclude Include="SCRIPT_MeleeMummyPoison.h" />
     <ClInclude Include="SCRIPT_MeleeZombie.h" />
@@ -294,7 +295,6 @@
     <ClInclude Include="Stage0_Forest05.h" />
     <ClInclude Include="Stage0_Forest06.h" />
     <ClInclude Include="Stage0_Forest07.h" />
-    <ClInclude Include="Stage1_BossStage.h" />
     <ClInclude Include="Stage1_Desert01.h" />
     <ClInclude Include="Stage1_Desert02.h" />
     <ClInclude Include="Stage1_Desert03.h" />
@@ -447,6 +447,7 @@
     <ClCompile Include="SCENE_ToolScene.cpp" />
     <ClCompile Include="SCRIPT_BGCamera.cpp" />
     <ClCompile Include="SCRIPT_Centipede.cpp" />
+    <ClCompile Include="SCRIPT_CharInfo.cpp" />
     <ClCompile Include="SCRIPT_MeleeBomb.cpp" />
     <ClCompile Include="SCRIPT_MeleeMummyPoison.cpp" />
     <ClCompile Include="SCRIPT_MeleeZombie.cpp" />
@@ -475,7 +476,6 @@
     <ClCompile Include="Stage0_Forest05.cpp" />
     <ClCompile Include="Stage0_Forest06.cpp" />
     <ClCompile Include="Stage0_Forest07.cpp" />
-    <ClCompile Include="Stage1_BossStage.cpp" />
     <ClCompile Include="Stage1_Desert01.cpp" />
     <ClCompile Include="Stage1_Desert02.cpp" />
     <ClCompile Include="Stage1_Desert03.cpp" />

@@ -19,7 +19,7 @@ namespace sg
 		void Stop() { /*mPlay = false; */mAc->Stop(); }
 
 		void SetSound(std::wstring source);
-		void SetSoundLoop(bool value) { mLoop = value; }
+		void SetSoundLoop(bool value);
 
 	private:
 		AudioSource* mAc;

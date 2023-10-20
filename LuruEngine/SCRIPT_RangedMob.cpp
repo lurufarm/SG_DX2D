@@ -38,6 +38,8 @@ namespace sg
 	}
 	void SCRIPT_RangedMob::Update()
 	{
+		mTime += Time::DeltaTime();
+
 		Transform* tr = mOwner->GetComp<Transform>();
 		Transform* ptr = mTarget->GetComp<Transform>();
 
@@ -147,7 +149,6 @@ namespace sg
 			mFSMState = eFSMState::Move;
 		}
 
-		mTime += Time::DeltaTime();
 		Animator* at = mOwner->GetComp<Animator>();
 		int Index = at->GetActiveAni()->GetAniIndex();
 		std::wstring ownerName = mOwner->GetName();

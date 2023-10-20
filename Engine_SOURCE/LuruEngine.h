@@ -32,4 +32,6 @@ namespace sg
 	float sgGetAngleInRadian(float degree);
 	Vector2 sgGetBeamPos(float radius, float angle, Vector2 startPos);
 	Vector3 sgRandomPos(Vector3 pos, float range);
+	Vector3 WorldPosToScreen(const Vector3 pos);
+
 }

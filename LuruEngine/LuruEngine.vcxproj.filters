@@ -475,9 +475,6 @@
     <ClCompile Include="Melee_WormEggs.cpp">
       <Filter>Obj\Gobj_Monster\Desert\Scarab</Filter>
     </ClCompile>
-    <ClCompile Include="Stage1_BossStage.cpp">
-      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
-    </ClCompile>
     <ClCompile Include="Stage1_Desert01.cpp">
       <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
     </ClCompile>
@@ -537,6 +534,9 @@
     </ClCompile>
     <ClCompile Include="Gobj_Sound.cpp">
       <Filter>Obj\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="SCRIPT_CharInfo.cpp">
+      <Filter>Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1026,9 +1026,6 @@
     <ClInclude Include="Stage1_MidBoss.h">
       <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
     </ClInclude>
-    <ClInclude Include="Stage1_BossStage.h">
-      <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
-    </ClInclude>
     <ClInclude Include="Stage1_Desert01.h">
       <Filter>Scene\SCENE_PlayScene\Stage1</Filter>
     </ClInclude>
@@ -1085,6 +1082,9 @@
     </ClInclude>
     <ClInclude Include="Gobj_Sound.h">
       <Filter>Obj\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="SCRIPT_CharInfo.h">
+      <Filter>Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

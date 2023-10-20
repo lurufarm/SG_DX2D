@@ -6,6 +6,8 @@
 #include "Img_CharIcon.h"
 #include "Img_BulletIcon.h"
 #include "SCRIPT_UI.h"
+#include "SCRIPT_CharInfo.h"
+#include "Gobj_Font.h"
 
 extern sg::Gobj_Player* Player;
 
@@ -41,12 +43,16 @@ namespace sg
 			{
 				mStatuses[i]->charIcon->SetSelected(false);
 				mStatuses[i]->bulletIcon->SetState(Paused);
+				mStatuses[i]->Status->SetState(Paused);
 			}
 			else
 			{
 				mStatuses[i]->charIcon->SetSelected(true);
 				if (GetState() == Active)
+				{
 					mStatuses[i]->bulletIcon->SetState(Active);
+					mStatuses[i]->Status->SetState(Active);
+				}
 			}
 		}
 
@@ -76,22 +82,29 @@ namespace sg
 
 		StatusSet* PlayerState = new StatusSet();
 		mStatuses.push_back(PlayerState);
-		Vector3 playerBoxPos = Vector3(-44.0f + (mStatuses.size() - 1) * 20.0f, 72.0f, -1.2f);
+		Vector3 playerBoxPos = Vector3(-43.0f + (mStatuses.size() - 1) * 20.0f, 72.0f, -1.2f);
 		Vector3 projIconPos = Vector3(-38.0f, 37.0f, -1.2f);
+		Vector3 statusPos = Vector3(-43.0f, 22.0f, -1.2f);
 
 		PlayerState->charNum = characterNum;
 		PlayerState->character = character;
 		PlayerState->charIcon = object::Instantiate<Img_CharIcon>(characterNum, eLayerType::UI_Box, this->GetMyScene());
 		PlayerState->bulletIcon = object::Instantiate<Img_BulletIcon>(characterNum, eLayerType::UI_Box, this->GetMyScene());
 		PlayerState->charBox = object::Instantiate<UI_CharBox>(eLayerType::UI_Box, this->GetMyScene());
+		PlayerState->Status = object::Instantiate<Gobj_Font>(eLayerType::UI_Box, this->GetMyScene());
 
 		PlayerState->charIcon->GetComp<Transform>()->SetPosition(playerBoxPos);
 		PlayerState->bulletIcon->GetComp<Transform>()->SetPosition(projIconPos);
 		PlayerState->charBox->GetComp<Transform>()->SetPosition(playerBoxPos);
+		PlayerState->Status->GetComp<Transform>()->SetPosition(statusPos);
 
 		PlayerState->charIcon->AddComp<SCRIPT_UI>();
 		PlayerState->bulletIcon->AddComp<SCRIPT_UI>();
 		PlayerState->charBox->AddComp<SCRIPT_UI>();
+
+		PlayerState->Status->AddComp<SCRIPT_UI>();
+		PlayerState->Status->AddComp<SCRIPT_CharInfo>(characterNum);
+		
 
 		PlayerState->charBox->SetOrder(mStatuses.size());
 		mFocus->AddSelectObj(PlayerState->charBox);
@@ -112,6 +125,7 @@ namespace sg
 			mStatuses[i]->charBox->SetState(GetState());
 			mStatuses[i]->charIcon->SetState(GetState());
 			mStatuses[i]->bulletIcon->SetState(GetState());
+			mStatuses[i]->Status->SetState(GetState());
 		}
 	}
 	void UI_StatusBase::SceneUpdate()
@@ -128,6 +142,7 @@ namespace sg
 			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->charBox);
 			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->charIcon);
 			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->bulletIcon);
+			now->DeleteGameObj(eLayerType::UI, mStatuses[i]->Status);
 		}
 
 		Scene* next = SceneManager::GetNextScene();
@@ -142,6 +157,7 @@ namespace sg
 			next->AddGameObj(eLayerType::UI, mStatuses[i]->charBox);
 			next->AddGameObj(eLayerType::UI, mStatuses[i]->charIcon);
 			next->AddGameObj(eLayerType::UI, mStatuses[i]->bulletIcon);
+			next->AddGameObj(eLayerType::UI, mStatuses[i]->Status);
 		}
 
 	}

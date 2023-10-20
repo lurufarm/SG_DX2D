@@ -82,24 +82,24 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 344,
-                "y": 603
+                "x": 360,
+                "y": 359.75
             }
         },
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_2.tmx": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 405,
-                "y": 621
+                "x": 288,
+                "y": 431.5
             }
         },
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_3.tmx": {
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 392,
-                "y": 429
+                "x": 449,
+                "y": 540.5
             }
         },
         "C:/Users/sg/DX_D2/LuruEngine/Resources/Map/Stage1/stage1_desert_4.tmx": {

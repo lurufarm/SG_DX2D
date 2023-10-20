@@ -34,7 +34,8 @@ namespace sg
 	void Stage1_Desert03::Initialize()
 	{
 		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
-		mBGM->SetSound(L"BGM_DFD");
+		mBGM->SetSound(L"BGM_DDG");
+		mBGM->SetSoundLoop(true);
 
 		Vector3 cameraPos = Vector3(0.0f, 0.0f, -10.0f);
 		Vector3 pos = Vector3(0.0f, -3.0f, 0.0f);
@@ -77,34 +78,34 @@ namespace sg
 		mGate2->SetNextScene(L"23_Stage1_Desert04");
 
 #pragma region Monsters
-		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
 
 #pragma endregion
 

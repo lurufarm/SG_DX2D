@@ -48,6 +48,10 @@ namespace sg
 		mGatePos[1].y += 30.0f;
 		mGatePos[2].y += 30.0f;
 
+		mCrackPos[0].z -= 0.1f;
+		mCrackPos[1].z -= 0.1f;
+		mCrackPos[2].z -= 0.1f;
+
 		InitializeItemIds();
 		mItem0 = MakeItem(mGatePos[0]);
 		mItem1 = MakeItem(mGatePos[1]);

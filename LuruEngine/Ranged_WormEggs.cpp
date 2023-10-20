@@ -15,7 +15,7 @@ namespace sg
 		mStat.mDefence = 0.0f;
 		mStat.mSpeed = 0.0f;
 		mStat.mRange = 1000.0f;
-		mStat.mCooldown = 20.0f;
+		mStat.mCooldown = 5.0f;
 		mStat.dropEXP = 20.0f;
 
 		Ranged_WormEggs::Initialize();

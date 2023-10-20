@@ -14,6 +14,7 @@ namespace sg
 			class Img_CharIcon* charIcon;
 			class Img_BulletIcon* bulletIcon;
 			class UI_CharBox* charBox;
+			class Gobj_Font* Status;
 		};
 
 		UI_StatusBase();

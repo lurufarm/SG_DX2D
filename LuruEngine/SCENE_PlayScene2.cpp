@@ -44,26 +44,34 @@ namespace sg
 	{
 		mStatus = SceneManager::GetStatusBase();
 
-		mGatePos[0].y += 30.0f;
-		mGatePos[1].y += 30.0f;
-		mGatePos[2].y += 30.0f;
+		mCrackPos[0].z -= 0.1f;
+		mCrackPos[1].z -= 0.1f;
+		mCrackPos[2].z -= 0.1f;
 
-		InitializeItemIds();
-		mItem0 = MakeItem(mGatePos[0]);
-		mItem1 = MakeItem(mGatePos[1]);
-		mItem2 = MakeItem(mGatePos[2]);
+		if (mGate0)
+		{
 
-		mItem0->SetState(GameObject::eState::Paused);
-		mItem1->SetState(GameObject::eState::Paused);
-		mItem2->SetState(GameObject::eState::Paused);
+			mGatePos[0].y += 30.0f;
+			mGatePos[1].y += 30.0f;
+			mGatePos[2].y += 30.0f;
 
-		mGate0->SetItem(mItem0);
-		mGate1->SetItem(mItem1);
-		mGate2->SetItem(mItem2);
+			InitializeItemIds();
+			mItem0 = MakeItem(mGatePos[0]);
+			mItem1 = MakeItem(mGatePos[1]);
+			mItem2 = MakeItem(mGatePos[2]);
 
-		mGate0->AddComp<SCRIPT_Gate>();
-		mGate1->AddComp<SCRIPT_Gate>();
-		mGate2->AddComp<SCRIPT_Gate>();
+			mItem0->SetState(GameObject::eState::Paused);
+			mItem1->SetState(GameObject::eState::Paused);
+			mItem2->SetState(GameObject::eState::Paused);
+
+			mGate0->SetItem(mItem0);
+			mGate1->SetItem(mItem1);
+			mGate2->SetItem(mItem2);
+
+			mGate0->AddComp<SCRIPT_Gate>();
+			mGate1->AddComp<SCRIPT_Gate>();
+			mGate2->AddComp<SCRIPT_Gate>();
+		}
 
 		if (mLight == nullptr)
 		{
@@ -247,7 +255,7 @@ namespace sg
 		Vector3 randomPos = mCrackPos[SelectPos()];
 		randomPos.x += randomDistance * cos(angle);
 		randomPos.y += randomDistance * sin(angle);
-		randomPos.z = -0.1f;
+		randomPos.z = -0.6f;
 
 		return randomPos;
 	}

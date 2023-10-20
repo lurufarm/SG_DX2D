@@ -95,7 +95,7 @@ namespace sg
 			// Set the amplitude of the sine wave
 			float amplitude = 5.0f;
 			// Set the frequency of the sine wave
-			float frequency = 15.0f;
+			float frequency = 1.0f;
 
 			// Calculate the new position
 			curPos.x = mFirstPos.x + curDir.x * t * speed - (sin(t * frequency) * amplitude * curDir.y);

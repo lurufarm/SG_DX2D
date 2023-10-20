@@ -32,4 +32,8 @@ namespace sg
 		mClip = Resources::Find<AudioClip>(source);
 		mAc->SetClip(mClip);
 	}
+	void Gobj_Sound::SetSoundLoop(bool value)
+	{
+		mAc->SetLoop(value);
+	}
 }

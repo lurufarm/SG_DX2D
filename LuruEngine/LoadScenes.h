@@ -18,7 +18,6 @@
 #include "Stage1_Desert03.h"
 #include "Stage1_Desert04.h"
 #include "Stage1_MidBoss.h"
-#include "Stage1_BossStage.h"
 #include "SCENE_ToolScene.h"
 #include "Gobj_Player.h"
 

@@ -66,31 +66,31 @@ namespace sg
 		mGate2->SetNextScene(L"05_Stage0_Forest03");
 
 #pragma region Monsters
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene::Initialize();

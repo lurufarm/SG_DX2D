@@ -35,6 +35,7 @@ namespace sg
 
 		if (mShadow == nullptr)
 			mShadow = object::Instantiate<Img_Shadow>(mOwner->GetComp<Transform>()->GetPosition(), eLayerType::BG, SceneManager::GetActiveScene());
+		mShadow->SetState(mOwner->GetState());
 
 		Vector3 shadowpos = pos;
 		shadowpos.y -= 35.0f;
