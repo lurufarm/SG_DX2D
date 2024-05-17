@@ -33,9 +33,9 @@ namespace sg
 	}
 	void TitleScene::Initialize()
 	{
-		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
-		mBGM->SetSound(L"BGM_Title");
-		mBGM->Play();
+		//mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
+		//mBGM->SetSound(L"BGM_Title");
+		//mBGM->Play();
 
 		float BgColor[3] = { 0.0f, 0.0f, 0.0f };
 		GetDevice()->SetBgColor(BgColor);

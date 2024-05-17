@@ -66,26 +66,26 @@ namespace sg
 		mGate2->SetNextScene(L"07_Stage0_Forest05");
 
 #pragma region Monsters
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
-		//object::Instantiate<Boss_OldEnt>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_CannibalFlowerA>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Ent>(eLayerType::Monster, this);
+		object::Instantiate<Boss_OldEnt>(eLayerType::Monster, this);
 #pragma endregion
 		
 		PlayScene::Initialize();
@@ -119,8 +119,8 @@ namespace sg
 		mFocus->DeleteSelectobj(mGate1);
 		mFocus->DeleteSelectobj(mGate2);
 
-		Gobj_Sound* bgm = dynamic_cast<Stage0_Forest01*>(SceneManager::FindScene(L"03_Stage0_Forest01"))->GetForestFDBGM();
-		bgm->Stop();
+		//Gobj_Sound* bgm = dynamic_cast<Stage0_Forest01*>(SceneManager::FindScene(L"03_Stage0_Forest01"))->GetForestFDBGM();
+		//bgm->Stop();
 
 	}
 }

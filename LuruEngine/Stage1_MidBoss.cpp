@@ -74,7 +74,7 @@ namespace sg
 
 
 #pragma region Monsters
-		//object::Instantiate<Boss_Centipede>(eLayerType::Monster, this);
+		object::Instantiate<Boss_Centipede>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene2::Initialize();

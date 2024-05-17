@@ -3,6 +3,7 @@
 #include "Gobj_Font.h"
 #include "Gobj_Player.h"
 #include "Gobj_Character.h"
+#include <string>
 
 namespace sg
 {
@@ -27,12 +28,20 @@ namespace sg
 		{
 			Vector3 pos = mOwner->GetComp<Transform>()->GetPosition();
 			pos = WorldPosToScreen(pos);
-			mOwner->SetFontOption(pos.x, pos.y, 20.0f, FONT_RGBA(255, 255, 255, 255));
+			mOwner->SetFontOption(pos.x, pos.y, 15.0f, FONT_RGBA(255, 255, 255, 255));
+			
+			std::wstring text;
+			text += L"공격력		";
+			text += std::to_wstring(mChar->GetStat().mStrength);
+			text += L"\n방어력		";
+			text += std::to_wstring(mChar->GetStat().mDefence);
+			text += L"\n이동속도		";
+			text += std::to_wstring(mChar->GetStat().mSpeed);
+			text += L"\n공격속도		";
+			text += std::to_wstring(mChar->GetStat().mAttackSpeed);
 
-			//std::wstring text = (L"공격력			");
-			//text += mChar->GetStat().mStrength;
-			//mOwner->SetText(text.s);
-			mOwner->SetText(L"공격력		test\n이동속도		test\n공격속도		test\n발사체 수		test\n");
+
+			mOwner->SetText(text.c_str());
 		}
 		else
 			mOwner->SetText(L"");

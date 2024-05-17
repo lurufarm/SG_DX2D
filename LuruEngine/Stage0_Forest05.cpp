@@ -76,31 +76,31 @@ namespace sg
 		mGate2->SetNextScene(L"08_Stage0_Forest06");
 
 #pragma region Monsters
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bat>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Zombie>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Skeleton>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene2::Initialize();
@@ -119,7 +119,7 @@ namespace sg
 	}
 	void Stage0_Forest05::OnEnter()
 	{
-		mBGM->Play();
+		//mBGM->Play();
 
 		renderer::mainCamera = mCamera;
 

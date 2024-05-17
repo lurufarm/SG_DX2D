@@ -536,7 +536,7 @@
       <Filter>Obj\Etc</Filter>
     </ClCompile>
     <ClCompile Include="SCRIPT_CharInfo.cpp">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1084,7 +1084,7 @@
       <Filter>Obj\Etc</Filter>
     </ClInclude>
     <ClInclude Include="SCRIPT_CharInfo.h">
-      <Filter>Script</Filter>
+      <Filter>Script\SCRIPT_UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

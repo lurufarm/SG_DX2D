@@ -82,27 +82,27 @@ namespace sg
 		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Bee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
+		object::Instantiate<Melee_EliteBee>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
 		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
 		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene::Initialize();
@@ -128,12 +128,12 @@ namespace sg
 		const std::wstring path0 = { L"..\\Resources\\Tile\\desert01" };
 		TilePalette::AutoLoad(path0);
 
-		mBGM->Play();
+		//mBGM->Play();
 
 	}
 	void Stage1_Desert01::OnExit()
 	{
-		mBGM->Stop();
+		//mBGM->Stop();
 
 		mFocus->DeleteSelectobj(mGate0);
 		mFocus->DeleteSelectobj(mGate1);

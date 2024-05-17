@@ -91,7 +91,7 @@ namespace sg
 	void SelectScene::OnExit()
 	{
 		Scene* sc = SceneManager::FindScene(L"00_TitleScene");
-		Gobj_Sound* bgm = dynamic_cast<TitleScene*>(sc)->GetTItleBGM();
-		bgm->Stop();
+		//Gobj_Sound* bgm = dynamic_cast<TitleScene*>(sc)->GetTItleBGM();
+		//bgm->Stop();
 	}
 }

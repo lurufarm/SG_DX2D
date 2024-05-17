@@ -138,7 +138,7 @@ namespace sg
 	}
 	void LobbyScene::OnEnter()
 	{
-		mBGM->Play();
+		//mBGM->Play();
 		//renderer::lightsBuffer->Clear();
 
 		const std::wstring path0 = { L"..\\Resources\\Tile\\LobbyScene_00" };
@@ -156,7 +156,7 @@ namespace sg
 	}
 	void LobbyScene::OnExit()
 	{
-		mBGM->Stop();
+		//mBGM->Stop();
 		DeleteGameObj(eLayerType::Player, Player);
 	}
 

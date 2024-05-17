@@ -74,35 +74,35 @@ namespace sg
 		mGate2->SetNextScene(L"24_Stage1_MidBoss");
 
 #pragma region Monsters
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
-		//object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_WormEggs>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Mummy>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Snake>(eLayerType::Monster, this);
+		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		object::Instantiate<Melee_MummyPoison>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_MummyBomb>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Melee_LizardSword>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_LizardSpear>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_FireLizard>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
+		object::Instantiate<Ranged_Janubis>(eLayerType::Monster, this);
 #pragma endregion
 
 		PlayScene2::Initialize();
@@ -131,8 +131,8 @@ namespace sg
 	}
 	void Stage1_Desert04::OnExit()
 	{
-		Gobj_Sound* bgm = dynamic_cast<Stage1_Desert03*>(SceneManager::FindScene(L"22_Stage1_Desert03"))->GetDesertDGBGM();
-		bgm->Stop();
+		//Gobj_Sound* bgm = dynamic_cast<Stage1_Desert03*>(SceneManager::FindScene(L"22_Stage1_Desert03"))->GetDesertDGBGM();
+		//bgm->Stop();
 
 		PlayScene2::OnExit();
 		mFocus->DeleteSelectobj(mGate0);

@@ -35,9 +35,9 @@ namespace sg
 	}
 	void Stage0_Forest01::Initialize()
 	{
-		mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
-		mBGM->SetSound(L"BGM_FFD");
-		mBGM->SetSoundLoop(true);
+		//mBGM = object::Instantiate<Gobj_Sound>(eLayerType::BG, this);
+		//mBGM->SetSound(L"BGM_FFD");
+		//mBGM->SetSoundLoop(true);
 
 
 		mStatus = SceneManager::GetStatusBase();
@@ -92,20 +92,20 @@ namespace sg
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeA>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
+		object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_SlimeB>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
-		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Larva>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
+		object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
 		//object::Instantiate<Melee_Cannibals>(eLayerType::Monster, this);
@@ -150,7 +150,7 @@ namespace sg
 		const std::wstring path0 = { L"..\\Resources\\Tile\\forestfd01_01" };
 		TilePalette::AutoLoad(path0);
 
-		mBGM->Play();
+		//mBGM->Play();
 
 	}
 	void Stage0_Forest01::OnExit()
